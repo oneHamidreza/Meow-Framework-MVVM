@@ -1,2 +1,3 @@
 rootProject.name='Meow Framework MVVM'
 include ':Sample'
+include ':meowframework'

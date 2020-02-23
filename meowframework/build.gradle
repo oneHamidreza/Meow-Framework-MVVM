@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
@@ -6,7 +6,6 @@ android {
     compileSdkVersion SDK_VERSION_COMPILE
 
     defaultConfig {
-        applicationId PACKAGE_NAME +"_sample"
         minSdkVersion SDK_VERSION_MIN
         targetSdkVersion SDK_VERSION_TARGET
 
@@ -14,6 +13,7 @@ android {
         versionName generateVersionName(APP_VERSION_MAJOR, APP_VERSION_MINOR, APP_VERSION_PATCH)
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
     }
 
     buildTypes {
