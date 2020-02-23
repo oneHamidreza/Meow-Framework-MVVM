@@ -16,19 +16,19 @@ sealed class Response<out T> {
     /**
      * Success response model in restful api.
      * @property T containing the type of embedded class in Response
-     * @property data containing the received data from a restful api at success status.
+     * @property data containing the received data from a restful api at success status
      */
     class Success<out T>(val data: T) : Response<T>()
 
     /**
-     * Success Response in restful api.
-     * @property exception containing the exception at fail status.
-     * @property code containing the http response code.
-     * @property error containing the error has been exist or not.
-     * @property errors containing the errorX items if has been exists.
-     * @property message containing the http message.
-     * @property method containing the http method.
-     * @property path containing the http path.
+     * Success response in restful api.
+     * @property exception containing the exception at fail status
+     * @property code containing the http response code
+     * @property error containing the error has been exist or not
+     * @property errors containing the errorX items if has been exists
+     * @property message containing the http message
+     * @property method containing the http method
+     * @property path containing the http path
      */
     data class Error(val exception: Throwable,
                      val code: Int? = null,
@@ -40,9 +40,9 @@ sealed class Response<out T> {
 }
 
 /**
- * Error Response in restful api.
- * @property message containing the errror message .
- * @property path containing the http path.
+ * Error response in restful api.
+ * @property message containing the error message
+ * @property path containing the http path
  */
 data class ErrorX(
         val message: String,
