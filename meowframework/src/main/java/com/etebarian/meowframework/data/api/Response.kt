@@ -2,6 +2,7 @@ package com.etebarian.meowframework.data.api
 
 /**
  * The model of Response in restful api by success and fail statuses.
+ *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-02-24
@@ -9,12 +10,14 @@ package com.etebarian.meowframework.data.api
 
 /**
  * The parent of restful api responses.
+ *
  * @property T containing the type of embedded class in Response
  */
 sealed class Response<out T> {
 
     /**
      * Success response model in restful api.
+     *
      * @property T containing the type of embedded class in Response
      * @property data containing the received data from a restful api at success status
      */
@@ -22,6 +25,7 @@ sealed class Response<out T> {
 
     /**
      * Success response in restful api.
+     *
      * @property exception containing the exception at fail status
      * @property code containing the http response code
      * @property error containing the error has been exist or not
@@ -41,6 +45,7 @@ sealed class Response<out T> {
 
 /**
  * Error response in restful api.
+ *
  * @property message containing the error message
  * @property path containing the http path
  */
