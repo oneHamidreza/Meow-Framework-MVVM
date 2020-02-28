@@ -1,4 +1,4 @@
-package com.etebarian.meowframework
+package meow
 
 /**
  * Created by 1HE on 2020-02-24.
@@ -35,10 +35,15 @@ object AppConfig {
 
         object Library {
             const val APPCOMPAT = "1.1.0"
+            const val LIFECYCLE = "2.2.0"
             const val KTX_CORE = "1.2.0"
+            const val COROUTINE = "1.3.0-gradle"
+            const val SERIALIZE = "1.3.61"
+            const val OKHTTP = "4.4.0"
+            const val RETROFIT = "2.7.2"
+            const val MOSHI = "1.9.2"
             const val JUNIT = "5.3.2"
         }
-
     }
 
     fun generateVersionCode(): Int {

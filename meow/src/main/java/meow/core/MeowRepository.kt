@@ -1,4 +1,4 @@
-package com.etebarian.meowframework.core
+package meow.core
 
 /**
  * The Base of Repository.

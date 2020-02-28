@@ -1,4 +1,4 @@
-package com.etebarian.meowframework.data.api
+package meow.api
 
 /**
  * The model of Response in restful api by success and fail statuses.
