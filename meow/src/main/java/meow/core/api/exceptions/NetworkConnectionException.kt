@@ -1,4 +1,4 @@
-package meow.api.exceptions
+package meow.core.api.exceptions
 
 /**
  * A exception class for network connection issue such as NO WIFI or NO CELUAR NETWORK and etc

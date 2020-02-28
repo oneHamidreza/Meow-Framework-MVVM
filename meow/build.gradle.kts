@@ -1,5 +1,6 @@
 import meow.AppConfig
 import meow.AppConfig.Versions
+import meow.AppConfig.Library
 import org.jetbrains.kotlin.config.KotlinCompilerVersion
 
 plugins {
@@ -37,24 +38,10 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-
-    //KOTLIN
+    // KOTLIN
     implementation(kotlin("stdlib-jdk8", KotlinCompilerVersion.VERSION))
-    implementation(kotlin("serialization", Versions.Library.SERIALIZE))
-    implementation(kotlinx("coroutines-core", Versions.Library.COROUTINE))
 
-    // ANDROIDX
-    implementation("androidx.appcompat:appcompat:${Versions.Library.APPCOMPAT}")
-    implementation("androidx.core:core-ktx:${Versions.Library.KTX_CORE}")
-    implementation("androidx.lifecycle:lifecycle-extensions:${Versions.Library.LIFECYCLE}")
-
-    // AND OTHERS
-    implementation("com.squareup.okhttp3:okhttp:${Versions.Library.OKHTTP}")
-    implementation("com.squareup.retrofit2:retrofit:${Versions.Library.RETROFIT}")
-    implementation("com.squareup.retrofit2:converter-moshi:${Versions.Library.RETROFIT}")
-    implementation("com.squareup.moshi:moshi:${Versions.Library.MOSHI}")
-    implementation("com.squareup.moshi:moshi-kotlin:${Versions.Library.MOSHI}")
+    Library.deps.forEach {
+        implementation(it)
+    }
 }
-
-fun kotlinx(module: String, version: String? = null): Any =
-        "org.jetbrains.kotlinx:kotlinx-$module${version?.let { ":$version" } ?: ""}"

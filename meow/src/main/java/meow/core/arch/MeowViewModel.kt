@@ -1,4 +1,4 @@
-package meow.core
+package meow.core.arch
 
 import androidx.lifecycle.ViewModel
 

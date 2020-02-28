@@ -1,4 +1,4 @@
-package meow.core
+package meow.core.api
 
 /**
  * Created by 1HE on 2020-02-24.

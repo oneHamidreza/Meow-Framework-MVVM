@@ -1,5 +1,7 @@
 package meow
 
+import org.gradle.api.artifacts.dsl.DependencyHandler
+
 /**
  * Created by 1HE on 2020-02-24.
  */
@@ -15,6 +17,25 @@ object AppConfig {
             RC("rc"),
             STABLE("")
         }
+    }
+
+    object Library {
+        val deps = arrayOf(
+                // core
+                kotlin("serialization", "1.3.61"),
+                kotlinx("coroutines-core", "1.3.0-gradle"),
+                // android x
+                "androidx.core:core-ktx:1.2.0",
+                "androidx.appcompat:appcompat:1.1.0",
+                "androidx.lifecycle:lifecycle-extensions:2.2.0",
+                // connection & parsing data
+                "com.squareup.okhttp3:okhttp:4.4.0",
+                "com.squareup.retrofit2:retrofit:2.7.2",
+                "com.squareup.retrofit2:converter-moshi:2.7.2",
+                "com.squareup.moshi:moshi:1.9.2",
+                "com.squareup.moshi:moshi-kotlin:1.9.2"
+        )
+
     }
 
     /*
@@ -33,17 +54,7 @@ object AppConfig {
         const val SDK_MIN = 19
         const val SDK_TARGET = 29
 
-        object Library {
-            const val APPCOMPAT = "1.1.0"
-            const val LIFECYCLE = "2.2.0"
-            const val KTX_CORE = "1.2.0"
-            const val COROUTINE = "1.3.0-gradle"
-            const val SERIALIZE = "1.3.61"
-            const val OKHTTP = "4.4.0"
-            const val RETROFIT = "2.7.2"
-            const val MOSHI = "1.9.2"
-            const val JUNIT = "5.3.2"
-        }
+
     }
 
     fun generateVersionCode(): Int {
@@ -55,3 +66,9 @@ object AppConfig {
         return "${Versions.MAJOR}.${Versions.MINOR}.${Versions.PATCH}$type"
     }
 }
+
+fun kotlin(module: String, version: String? = null): Any =
+        "org.jetbrains.kotlin:kotlin-$module${version?.let { ":$version" } ?: ""}"
+
+fun kotlinx(module: String, version: String? = null): Any =
+        "org.jetbrains.kotlinx:kotlinx-$module${version?.let { ":$version" } ?: ""}"

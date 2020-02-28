@@ -1,4 +1,4 @@
-package meow.api
+package meow.core.api
 
 /**
  * The model of Response in restful api by success and fail statuses.
