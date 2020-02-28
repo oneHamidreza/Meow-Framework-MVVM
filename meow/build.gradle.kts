@@ -1,10 +1,12 @@
+import meow.AppConfig
 import meow.AppConfig.Versions
 import org.jetbrains.kotlin.config.KotlinCompilerVersion
 
 plugins {
     id("com.android.library")
     kotlin("android")
-    kotlin("android.extensions")
+    kotlin("android.extensions")//todo maybe delete
+//    kotlin("kapt")
 }
 
 android {
@@ -14,8 +16,8 @@ android {
         minSdkVersion(Versions.SDK_MIN)
         targetSdkVersion(Versions.SDK_TARGET)
 
-        versionCode = meow.AppConfig.generateVersionCode()
-        versionName = meow.AppConfig.generateVersionName()
+        versionCode = AppConfig.generateVersionCode()
+        versionName = AppConfig.generateVersionName()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -51,6 +53,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:${Versions.Library.RETROFIT}")
     implementation("com.squareup.retrofit2:converter-moshi:${Versions.Library.RETROFIT}")
     implementation("com.squareup.moshi:moshi:${Versions.Library.MOSHI}")
+    implementation("com.squareup.moshi:moshi-kotlin:${Versions.Library.MOSHI}")
 }
 
 fun kotlinx(module: String, version: String? = null): Any =

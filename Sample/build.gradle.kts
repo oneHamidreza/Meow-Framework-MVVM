@@ -1,6 +1,6 @@
-import com.etebarian.meowframework.AppConfig
-import com.etebarian.meowframework.AppConfig.Build
-import com.etebarian.meowframework.AppConfig.Versions
+import meow.AppConfig
+import meow.AppConfig.Build
+import meow.AppConfig.Versions
 import org.jetbrains.kotlin.config.KotlinCompilerVersion
 
 plugins {
@@ -30,15 +30,35 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+
+    implementation(project(":meow"))
+
+    //KOTLIN
     implementation(kotlin("stdlib-jdk8", KotlinCompilerVersion.VERSION))
+    implementation(kotlin("serialization", Versions.Library.SERIALIZE))
+    implementation(kotlinx("coroutines-core", Versions.Library.COROUTINE))
+
+    // ANDROIDX
     implementation("androidx.appcompat:appcompat:${Versions.Library.APPCOMPAT}")
     implementation("androidx.core:core-ktx:${Versions.Library.KTX_CORE}")
+    implementation("androidx.lifecycle:lifecycle-extensions:${Versions.Library.LIFECYCLE}")
 
-//    testImplementation "org.junit.jupiter:junit-jupiter-api:$JUNIT_VERSION"
-//    testImplementation "org.junit.jupiter:junit-jupiter-params:$JUNIT_VERSION"
-//    runtime "org.junit.jupiter:junit-jupiter-engine:$JUNIT_VERSION"
+    // AND OTHERS
+    implementation("com.squareup.okhttp3:okhttp:${Versions.Library.OKHTTP}")
+    implementation("com.squareup.retrofit2:retrofit:${Versions.Library.RETROFIT}")
+    implementation("com.squareup.retrofit2:converter-moshi:${Versions.Library.RETROFIT}")
+    implementation("com.squareup.moshi:moshi:${Versions.Library.MOSHI}")
+    implementation("com.squareup.moshi:moshi-kotlin:${Versions.Library.MOSHI}")
 }
+
+fun kotlinx(module: String, version: String? = null): Any =
+        "org.jetbrains.kotlinx:kotlinx-$module${version?.let { ":$version" } ?: ""}"
