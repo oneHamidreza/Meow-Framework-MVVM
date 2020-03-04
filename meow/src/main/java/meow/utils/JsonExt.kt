@@ -16,27 +16,35 @@
 
 package meow.utils
 
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+import com.squareup.moshi.Moshi
+import okio.BufferedSource
+import java.lang.Exception
 
 /**
- * The Extensions of Coroutine.
+ * The Extensions of Json Data.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-02
+ * @since   2020-03-01
  */
 
-fun launchSilent(
-    context: CoroutineContext = Dispatchers.IO,
-    exceptionHandler: CoroutineExceptionHandler? = null,
-    job: Job = Job(),
-    start: CoroutineStart = CoroutineStart.DEFAULT,
-    block: suspend CoroutineScope.() -> Unit
-): Job {
-    val coroutineScope = if (exceptionHandler != null)
-        CoroutineScope(context + job + exceptionHandler)
-    else
-        CoroutineScope(context + job)
-    return coroutineScope.launch(context, start, block)
+inline fun <reified T> BufferedSource?.fetchByClass(): T? {
+    if (this == null) return null
+    return try {
+        Moshi.Builder().build().adapter(createClass<T>()).fromJson(this)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        null
+    }
 }
+
+inline fun <reified T> String?.fetchByClass(clazz: Class<T>): T? {
+    if (this == null) return null
+    return try {
+        Moshi.Builder().build().adapter(clazz).fromJson(this)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        null
+    }
+}
+ 

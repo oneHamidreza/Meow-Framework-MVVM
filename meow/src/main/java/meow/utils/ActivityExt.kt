@@ -16,27 +16,18 @@
 
 package meow.utils
 
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import meow.core.arch.MeowViewModel
 
 /**
- * The Extensions of Coroutine.
+ * The Extensions of [AppCompatActivity].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-02
  */
 
-fun launchSilent(
-    context: CoroutineContext = Dispatchers.IO,
-    exceptionHandler: CoroutineExceptionHandler? = null,
-    job: Job = Job(),
-    start: CoroutineStart = CoroutineStart.DEFAULT,
-    block: suspend CoroutineScope.() -> Unit
-): Job {
-    val coroutineScope = if (exceptionHandler != null)
-        CoroutineScope(context + job + exceptionHandler)
-    else
-        CoroutineScope(context + job)
-    return coroutineScope.launch(context, start, block)
+inline fun <reified VM : MeowViewModel> AppCompatActivity.initViewModel(): VM {
+    return ViewModelProvider.AndroidViewModelFactory(application).create(createClass<VM>())
 }

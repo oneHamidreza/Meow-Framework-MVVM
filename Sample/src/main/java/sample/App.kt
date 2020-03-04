@@ -14,29 +14,29 @@
  * limitations under the License.
  */
 
-package meow.utils
+package sample
 
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+import android.app.Application
+import meow.core.MeowController
 
 /**
- * The Extensions of Coroutine.
+ * Sample Application class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-02
+ * @since   2020-03-01
  */
 
-fun launchSilent(
-    context: CoroutineContext = Dispatchers.IO,
-    exceptionHandler: CoroutineExceptionHandler? = null,
-    job: Job = Job(),
-    start: CoroutineStart = CoroutineStart.DEFAULT,
-    block: suspend CoroutineScope.() -> Unit
-): Job {
-    val coroutineScope = if (exceptionHandler != null)
-        CoroutineScope(context + job + exceptionHandler)
-    else
-        CoroutineScope(context + job)
-    return coroutineScope.launch(context, start, block)
+class App : Application() {
+
+    private val isDebug = BuildConfig.DEBUG
+
+    override fun onCreate() {
+        super.onCreate()
+        MeowController(
+            isDebugMode = isDebug,
+            isLogTagNative = false
+        ).init(this)
+
+    }
 }

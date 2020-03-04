@@ -8,6 +8,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("android.extensions")
+    id("kotlinx-serialization")
 }
 
 android {
@@ -36,17 +37,31 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    dataBinding {
+        isEnabled = true
+    }
 }
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    //KOTLIN
+    // KOTLIN
     implementation(kotlin("stdlib-jdk8", KotlinCompilerVersion.VERSION))
 
     implementation(project(":meow"))
 
-    // ANDROIDX
-    Library.deps.forEach {
+    // MAIN DEPENDENCIES
+    Library.mainDependencies.forEach {
         implementation(it)
     }
+
+    // EXCLUSIVE DEPENDENCIES
+    Library.sampleDependencies.forEach {
+        implementation(it)
+    }
+
 }

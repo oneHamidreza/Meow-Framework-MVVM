@@ -16,27 +16,17 @@
 
 package meow.utils
 
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+import meow.core.api.MeowStatus
 
 /**
- * The Extensions of Coroutine.
+ * The Extensions of [MeowStatus].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-02
+ * @since   2020-03-01
  */
 
-fun launchSilent(
-    context: CoroutineContext = Dispatchers.IO,
-    exceptionHandler: CoroutineExceptionHandler? = null,
-    job: Job = Job(),
-    start: CoroutineStart = CoroutineStart.DEFAULT,
-    block: suspend CoroutineScope.() -> Unit
-): Job {
-    val coroutineScope = if (exceptionHandler != null)
-        CoroutineScope(context + job + exceptionHandler)
-    else
-        CoroutineScope(context + job)
-    return coroutineScope.launch(context, start, block)
-}
+fun MeowStatus?.isNothing() = this is MeowStatus.Nothing
+fun MeowStatus?.isLoading() = this is MeowStatus.Loading
+fun MeowStatus?.isSuccess() = this is MeowStatus.Success
+fun MeowStatus?.isError() = this is MeowStatus.Error

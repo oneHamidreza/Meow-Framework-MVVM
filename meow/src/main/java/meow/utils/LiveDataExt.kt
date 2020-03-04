@@ -16,27 +16,20 @@
 
 package meow.utils
 
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 
 /**
- * The Extensions of Coroutine.
+ * The Extensions of [LiveData].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-02
+ * @since   2/29/2020
  */
 
-fun launchSilent(
-    context: CoroutineContext = Dispatchers.IO,
-    exceptionHandler: CoroutineExceptionHandler? = null,
-    job: Job = Job(),
-    start: CoroutineStart = CoroutineStart.DEFAULT,
-    block: suspend CoroutineScope.() -> Unit
-): Job {
-    val coroutineScope = if (exceptionHandler != null)
-        CoroutineScope(context + job + exceptionHandler)
-    else
-        CoroutineScope(context + job)
-    return coroutineScope.launch(context, start, block)
+fun <T> LiveData<T>.safeObserve(observer: (T) -> Unit) {
+    val archObserver = Observer<T> { value ->
+        if (value is T) observer(value)
+    }
+    observeForever(archObserver)
 }

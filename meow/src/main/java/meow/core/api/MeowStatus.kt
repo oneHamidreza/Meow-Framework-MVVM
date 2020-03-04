@@ -14,29 +14,24 @@
  * limitations under the License.
  */
 
-package meow.utils
-
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+package meow.core.api
 
 /**
- * The Extensions of Coroutine.
+ * The status of MVVM action class containing [Nothing], [Loading], [Success], [Error].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-02
+ * @since   2020-03-01
  */
 
-fun launchSilent(
-    context: CoroutineContext = Dispatchers.IO,
-    exceptionHandler: CoroutineExceptionHandler? = null,
-    job: Job = Job(),
-    start: CoroutineStart = CoroutineStart.DEFAULT,
-    block: suspend CoroutineScope.() -> Unit
-): Job {
-    val coroutineScope = if (exceptionHandler != null)
-        CoroutineScope(context + job + exceptionHandler)
-    else
-        CoroutineScope(context + job)
-    return coroutineScope.launch(context, start, block)
+sealed class MeowStatus {
+    abstract val response: MeowResponse<*>?
+
+    data class Nothing(override val response: MeowResponse<*>? = null) : MeowStatus()
+
+    data class Loading(override val response: MeowResponse<*>? = null) : MeowStatus()
+
+    data class Success(override val response: MeowResponse<*>) : MeowStatus()
+
+    data class Error(override val response: MeowResponse<*>) : MeowStatus()
 }

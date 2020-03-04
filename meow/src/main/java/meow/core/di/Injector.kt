@@ -14,29 +14,30 @@
  * limitations under the License.
  */
 
-package meow.utils
+package meow.core.di
 
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+import android.content.Context
 
 /**
- * The Extensions of Coroutine.
+ * The Legacy Injector of MVVM AppContext.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-02
+ * @since   2020-03-04
  */
 
-fun launchSilent(
-    context: CoroutineContext = Dispatchers.IO,
-    exceptionHandler: CoroutineExceptionHandler? = null,
-    job: Job = Job(),
-    start: CoroutineStart = CoroutineStart.DEFAULT,
-    block: suspend CoroutineScope.() -> Unit
-): Job {
-    val coroutineScope = if (exceptionHandler != null)
-        CoroutineScope(context + job + exceptionHandler)
-    else
-        CoroutineScope(context + job)
-    return coroutineScope.launch(context, start, block)
+object Injector {
+
+    lateinit var contextArgs: ContextArgs
+
+    fun provideContextArgs(ca: ContextArgs): ContextArgs {
+        contextArgs = ca
+        return contextArgs
+    }
+
+    fun context() = contextArgs.context
 }
+
+class ContextArgs(
+    var context: Context
+)

@@ -13,30 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package sample.di
 
-package meow.utils
-
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+import org.kodein.di.Kodein
+import org.kodein.di.erased.bind
+import org.kodein.di.erased.provider
+import org.kodein.di.erased.singleton
 
 /**
- * The Extensions of Coroutine.
+ * Data Injector of application (api base url, user login).
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-02
+ * @since   2020-03-01
  */
 
-fun launchSilent(
-    context: CoroutineContext = Dispatchers.IO,
-    exceptionHandler: CoroutineExceptionHandler? = null,
-    job: Job = Job(),
-    start: CoroutineStart = CoroutineStart.DEFAULT,
-    block: suspend CoroutineScope.() -> Unit
-): Job {
-    val coroutineScope = if (exceptionHandler != null)
-        CoroutineScope(context + job + exceptionHandler)
-    else
-        CoroutineScope(context + job)
-    return coroutineScope.launch(context, start, block)
+val dataInjectors = Kodein {
+    bind<String>("apiURL") with singleton { "http://192.168.1.10:8080" }
+    bind<Boolean>("isLogin") with provider { true }
 }

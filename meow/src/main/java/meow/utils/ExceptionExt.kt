@@ -16,27 +16,37 @@
 
 package meow.utils
 
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+import meow.core.controller
 
 /**
- * The Extensions of Coroutine.
+ * The Extensions of [Exception].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-02
+ * @since   2020-03-04
  */
 
-fun launchSilent(
-    context: CoroutineContext = Dispatchers.IO,
-    exceptionHandler: CoroutineExceptionHandler? = null,
-    job: Job = Job(),
-    start: CoroutineStart = CoroutineStart.DEFAULT,
-    block: suspend CoroutineScope.() -> Unit
-): Job {
-    val coroutineScope = if (exceptionHandler != null)
-        CoroutineScope(context + job + exceptionHandler)
-    else
-        CoroutineScope(context + job)
-    return coroutineScope.launch(context, start, block)
+fun allowReport(exp: Exception): Boolean {
+    return when (exp) {
+//        is NumberParseException -> false
+        else -> true
+    }
 }
+
+inline fun <T> avoidException(
+    allowPrint: Boolean = controller.isDebugMode,
+    exceptionBlock: () -> T? = { null },
+    finallyBlock: () -> T? = { null },
+    tryBlock: () -> T? = { null }
+) =
+    try {
+        tryBlock()
+    } catch (e: Exception) {
+        if (allowPrint)
+            e.printStackTrace()
+        if (allowReport(e))
+            controller.onException(e)
+        exceptionBlock()
+    } finally {
+        finallyBlock()
+    }

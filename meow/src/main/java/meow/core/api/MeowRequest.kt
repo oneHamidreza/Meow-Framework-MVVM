@@ -14,29 +14,16 @@
  * limitations under the License.
  */
 
-package meow.utils
-
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+package meow.core.api
 
 /**
- * The Extensions of Coroutine.
+ * The Base interface of MVVM requests suchs API or database requests.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-02
+ * @since   2020-02-29
  */
 
-fun launchSilent(
-    context: CoroutineContext = Dispatchers.IO,
-    exceptionHandler: CoroutineExceptionHandler? = null,
-    job: Job = Job(),
-    start: CoroutineStart = CoroutineStart.DEFAULT,
-    block: suspend CoroutineScope.() -> Unit
-): Job {
-    val coroutineScope = if (exceptionHandler != null)
-        CoroutineScope(context + job + exceptionHandler)
-    else
-        CoroutineScope(context + job)
-    return coroutineScope.launch(context, start, block)
+interface MeowRequest {
+    fun validate() = true
 }

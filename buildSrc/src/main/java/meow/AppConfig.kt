@@ -1,10 +1,29 @@
+/*
+ * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package meow
 
-import org.gradle.api.artifacts.dsl.DependencyHandler
-
 /**
- * Created by 1HE on 2020-02-24.
+ * Build Application Configure object containing build info, dependencies, versioning.
+ *
+ * @author  Hamidreza Etebarian
+ * @version 1.0.0
+ * @since   2020-02-24
  */
+
 object AppConfig {
 
     object Build {
@@ -20,21 +39,29 @@ object AppConfig {
     }
 
     object Library {
-        val deps = arrayOf(
-                // core
-                kotlin("serialization", "1.3.61"),
-                kotlinx("coroutines-core", "1.3.0-gradle"),
-                // android x
-                "androidx.core:core-ktx:1.2.0",
-                "androidx.appcompat:appcompat:1.1.0",
-                "androidx.lifecycle:lifecycle-extensions:2.2.0",
-                // connection & parsing data
-                "com.squareup.okhttp3:okhttp:4.4.0",
-                "com.squareup.retrofit2:retrofit:2.7.2",
-                "com.squareup.retrofit2:converter-moshi:2.7.2",
-                "com.squareup.moshi:moshi:1.9.2",
-                "com.squareup.moshi:moshi-kotlin:1.9.2"
+        val mainDependencies = arrayOf(
+            // core
+            kotlinx("serialization-runtime", "0.14.0"),
+            kotlinx("coroutines-core", "1.3.0-gradle"),
+            // android x
+            "com.google.android.material:material:1.1.0-rc02",
+            "androidx.lifecycle:lifecycle-common-java8:2.2.0",
+            "androidx.lifecycle:lifecycle-extensions:2.2.0-rc03",
+            "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0",
+            "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0",
+            "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0-rc03",
+            // connection & parsing data
+            "com.squareup.okhttp3:okhttp:4.4.0",
+            "com.squareup.retrofit2:retrofit:2.7.2",
+            "com.squareup.retrofit2:converter-moshi:2.7.2",
+            "com.squareup.moshi:moshi:1.9.2",
+            "com.squareup.moshi:moshi-kotlin:1.9.2",
+            // dependency injection
+            "org.kodein.di:kodein-di-core:6.5.2",
+            "org.kodein.di:kodein-di-erased:6.5.2"
         )
+
+        val sampleDependencies = emptyArray<String>()
 
     }
 
@@ -53,8 +80,6 @@ object AppConfig {
         const val SDK_COMPILE = 29
         const val SDK_MIN = 19
         const val SDK_TARGET = 29
-
-
     }
 
     fun generateVersionCode(): Int {
@@ -67,8 +92,5 @@ object AppConfig {
     }
 }
 
-fun kotlin(module: String, version: String? = null): Any =
-        "org.jetbrains.kotlin:kotlin-$module${version?.let { ":$version" } ?: ""}"
-
 fun kotlinx(module: String, version: String? = null): Any =
-        "org.jetbrains.kotlinx:kotlinx-$module${version?.let { ":$version" } ?: ""}"
+    "org.jetbrains.kotlinx:kotlinx-$module${version?.let { ":$version" } ?: ""}"

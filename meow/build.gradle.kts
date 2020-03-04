@@ -6,8 +6,9 @@ import org.jetbrains.kotlin.config.KotlinCompilerVersion
 plugins {
     id("com.android.library")
     kotlin("android")
-    kotlin("android.extensions")//todo maybe delete
-//    kotlin("kapt")
+    kotlin("android.extensions")
+    id("kotlinx-serialization")
+    kotlin("kapt")
 }
 
 android {
@@ -34,6 +35,14 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    dataBinding {
+        isEnabled = true
+    }
 }
 
 dependencies {
@@ -41,7 +50,10 @@ dependencies {
     // KOTLIN
     implementation(kotlin("stdlib-jdk8", KotlinCompilerVersion.VERSION))
 
-    Library.deps.forEach {
+//     MOSHI SERIALIZE
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.9.2")
+
+    Library.mainDependencies.forEach {
         implementation(it)
     }
 }

@@ -14,29 +14,25 @@
  * limitations under the License.
  */
 
-package meow.utils
+package sample.data
 
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+import com.squareup.moshi.FromJson
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.JsonReader
 
 /**
- * The Extensions of Coroutine.
+ * User Json Adapter class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-02
+ * @since   2020-03-01
  */
 
-fun launchSilent(
-    context: CoroutineContext = Dispatchers.IO,
-    exceptionHandler: CoroutineExceptionHandler? = null,
-    job: Job = Job(),
-    start: CoroutineStart = CoroutineStart.DEFAULT,
-    block: suspend CoroutineScope.() -> Unit
-): Job {
-    val coroutineScope = if (exceptionHandler != null)
-        CoroutineScope(context + job + exceptionHandler)
-    else
-        CoroutineScope(context + job)
-    return coroutineScope.launch(context, start, block)
+class UserJsonAdapter {
+
+    @FromJson
+    fun fromJson(jsonReader: JsonReader, delegate: JsonAdapter<User>): User? {
+        val value = jsonReader.nextString()
+        return User()
+    }
 }
