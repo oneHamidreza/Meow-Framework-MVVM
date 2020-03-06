@@ -1,3 +1,7 @@
+package meow.utils
+
+import android.os.Build
+
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -14,28 +18,21 @@
  * limitations under the License.
  */
 
-package sample.di
-
-import meow.core.api.MeowApi
-import org.kodein.di.Kodein
-import org.kodein.di.erased.bind
-import org.kodein.di.erased.instance
-import org.kodein.di.erased.provider
-import org.kodein.di.erased.singleton
-import sample.data.AppApi
-import sample.data.User
-
 /**
- * Core Injector of application (api, apiOptions, okHttpClient, repositories).
+ * The Extensions of OS & Build.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-01
+ * @since   2020-03-06
  */
 
-val coreInjector = Kodein {
-
-    bind<MeowApi>() with provider { AppApi("refreshTokenValue") }
-
-    bind<User.Repository>() with singleton { User.Repository(instance()) }
+fun getDeviceModel(): String {
+    val manufacturer = Build.MANUFACTURER
+    val model = Build.MODEL ?: return manufacturer ?: "Unknown Device"
+    return if (model.startsWith(manufacturer)) {
+        model.capitalizeFirst()
+    } else {
+        manufacturer.capitalizeFirst() + " " + model
+    }
 }
+ 

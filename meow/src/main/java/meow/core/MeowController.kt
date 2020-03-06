@@ -17,6 +17,7 @@
 package meow.core
 
 import android.app.Application
+import meow.core.api.MeowSession
 import meow.core.di.ContextArgs
 import meow.core.di.Injector
 
@@ -31,6 +32,7 @@ import meow.core.di.Injector
 val controller = MeowController()
 
 class MeowController(
+    val meowSession: MeowSession = MeowSession(),
     var isDebugMode: Boolean = true,
     var isLogTagNative: Boolean = true,
     var apiSuccessRange: IntRange = 200..200,

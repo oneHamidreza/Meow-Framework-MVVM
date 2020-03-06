@@ -13,29 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package sample.di
-
-import meow.core.api.MeowApi
-import org.kodein.di.Kodein
-import org.kodein.di.erased.bind
-import org.kodein.di.erased.instance
-import org.kodein.di.erased.provider
-import org.kodein.di.erased.singleton
-import sample.data.AppApi
-import sample.data.User
+package meow.core.os
 
 /**
- * Core Injector of application (api, apiOptions, okHttpClient, repositories).
+ * Describe class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-01
+ * @since   2020-03-06
  */
-
-val coreInjector = Kodein {
-
-    bind<MeowApi>() with provider { AppApi("refreshTokenValue") }
-
-    bind<User.Repository>() with singleton { User.Repository(instance()) }
-}
+ 
+ 

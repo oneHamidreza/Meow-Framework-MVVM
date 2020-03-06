@@ -14,28 +14,33 @@
  * limitations under the License.
  */
 
-package sample.di
+package meow.utils
 
-import meow.core.api.MeowApi
-import org.kodein.di.Kodein
-import org.kodein.di.erased.bind
-import org.kodein.di.erased.instance
-import org.kodein.di.erased.provider
-import org.kodein.di.erased.singleton
-import sample.data.AppApi
-import sample.data.User
+import java.util.*
 
 /**
- * Core Injector of application (api, apiOptions, okHttpClient, repositories).
+ * The Extensions of [String].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-01
+ * @since   2020-03-06
  */
 
-val coreInjector = Kodein {
+fun generateUUID() = UUID.randomUUID().toString()
 
-    bind<MeowApi>() with provider { AppApi("refreshTokenValue") }
+/**
+ * Capitalize first character in string.
+ * If input is empty return empty string.
+ * @return a string that capitalized first character.
+ */
+fun String?.capitalizeFirst(): String {
+    if (isNullOrEmpty())
+        return ""
 
-    bind<User.Repository>() with singleton { User.Repository(instance()) }
+    val first = this!![0]
+    return if (Character.isUpperCase(first)) {
+        this
+    } else {
+        Character.toUpperCase(first) + this.substring(1)
+    }
 }

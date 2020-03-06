@@ -14,28 +14,26 @@
  * limitations under the License.
  */
 
-package sample.di
+package meow.core.api
 
-import meow.core.api.MeowApi
-import org.kodein.di.Kodein
-import org.kodein.di.erased.bind
-import org.kodein.di.erased.instance
-import org.kodein.di.erased.provider
-import org.kodein.di.erased.singleton
-import sample.data.AppApi
-import sample.data.User
+import android.os.Build
+import meow.utils.getDeviceModel
 
 /**
- * Core Injector of application (api, apiOptions, okHttpClient, repositories).
+ * The Meow Session Api class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-01
+ * @since   2020-03-06
  */
 
-val coreInjector = Kodein {
-
-    bind<MeowApi>() with provider { AppApi("refreshTokenValue") }
-
-    bind<User.Repository>() with singleton { User.Repository(instance()) }
-}
+class MeowSession(
+    var deviceModel: String = getDeviceModel(),
+    var deviceOS: String = "android",
+    var deviceOSVersionName: String = Build.VERSION.CODENAME,
+    var deviceOSVersionCode: Int = Build.VERSION.SDK_INT,
+    var appVersionCode: Int = 0,
+    var appVersionName: String = "0.0.0",
+    var uuid: String = "",
+    var pushNotificationToken: String = ""
+)

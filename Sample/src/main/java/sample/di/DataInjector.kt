@@ -29,6 +29,5 @@ import org.kodein.di.erased.singleton
  */
 
 val dataInjectors = Kodein {
-    bind<String>("apiURL") with singleton { "http://192.168.1.10:8080" }
     bind<Boolean>("isLogin") with provider { true }
 }

@@ -16,12 +16,18 @@
 
 package meow.core.api
 
+import android.webkit.WebSettings
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
+import meow.core.controller
+import meow.core.di.Injector
+import meow.utils.avoidException
+import meow.utils.hasNetwork
+import meow.utils.logD
+import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 
 /**
  * The class of Api Utils such as OKHTTP client, Retrofit Configuration containing Moshi Adapter.
@@ -32,19 +38,50 @@ import retrofit2.converter.moshi.MoshiConverterFactory
  * @since   2020-02-28
  */
 
-open class MeowApi(
-    val okHttpClient: OkHttpClient,
-    val options: Options
-) {
+typealias InterceptorBlock = (builder: Request.Builder) -> Unit
 
-    //todo add cache
-    //todo add authenticator
+val TAG = "MeowApi"
+
+val meowClientBuilder = OkHttpClient.Builder().apply {
+    connectTimeout(30, TimeUnit.SECONDS)
+    readTimeout(60, TimeUnit.SECONDS)
+    writeTimeout(60, TimeUnit.SECONDS)
+    cache(Cache(Injector.context().cacheDir, 10 * 1024 * 1024))
+    if (controller.isDebugMode)
+        addNetworkInterceptor(MeowLoggingInterceptor())
+}
+
+val userAgent by lazy {
+    WebSettings.getDefaultUserAgent(Injector.context()).replace(Regex("[^A-Za-z0-9 ().,_/]"), "")
+}
+
+fun getCacheInterceptorBlock(options: MeowApi.Options): InterceptorBlock = {
+    if (Injector.context().hasNetwork())
+        it.header("Cache-Control", "no-cache")
+    else if (options.isEnabledCache)
+        it.header(
+            "Cache-Control",
+            "public, only-if-cached, max-stale=$options.maxStateSecond"
+        )
+}
+
+abstract class MeowApi(open val options: Options = Options()) {
+
+    abstract fun getOkHttpClient(): OkHttpClient
+    abstract fun getBaseUrl(): String
 
     fun createDefaultService(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(options.baseUrl)
-            .client(okHttpClient)
+            .baseUrl(getBaseUrl())
+            .client(getOkHttpClient())
             .build()
+    }
+
+    open fun getRefreshTokenResponse(): retrofit2.Response<MeowOauthToken>? {
+        return null
+    }
+
+    open fun onSaveOauth(oauthToken: MeowOauthToken) {
     }
 
     @Suppress("UNCHECKED_CAST")
@@ -57,19 +94,99 @@ open class MeowApi(
             .addConverterFactory(MoshiConverterFactory.create(moshi)).build().create(T::class.java)
     }
 
-    sealed class Authorization(val interceptor: Interceptor) {
-        class JWT(
-            isLogin: Boolean,
-            token: String
-        ) : Authorization(Interceptor {
-            val builder = it.request().newBuilder()
+    open fun onUnauthorizedAfterAuthenticate() {
+    }
+
+    sealed class Authorization(val interceptorBlock: InterceptorBlock) {
+        class SimpleToken(
+            var isLogin: Boolean,
+            var token: String
+        ) : Authorization({
             if (isLogin)
-                builder.addHeader("Authorization", "Bearer $token")
-            it.proceed(builder.build())
+                it.header("Authorization", "Bearer $token")
         })
     }
 
+    class RefreshToken(
+        val meowApi: MeowApi,
+        val token: Authorization.SimpleToken
+    ) : Authenticator {
+
+        override fun authenticate(route: Route?, response: Response): Request? {
+            return if (token.isLogin) {
+                logD(
+                    TAG,
+                    "response code in authenticator : " + response.code + " , response count : " + responseCount(
+                        response
+                    )
+                )
+                if (responseCount(response) >= 2) {
+                    logD(TAG, "response count is full")
+                    // If both the original callApi and the callApi with refreshed token failed,
+                    // it will probably keep failing, so don't try again.
+                    null
+                } else {
+                    val tokenResponse =
+                        avoidException { meowApi.getRefreshTokenResponse() } ?: return null
+
+                    return when {
+                        tokenResponse.code() == HttpCodes.OK.code -> {
+                            logD(TAG, "new token is created by refresh token")
+
+                            val newToken = tokenResponse.body() ?: return null
+                            meowApi.onSaveOauth(newToken)
+                            token
+
+                            response.request.newBuilder()
+                                .header("Authorization", token.apply { isLogin = true }.token)
+                                .build()
+                        }
+                        tokenResponse.code() == HttpCodes.UNAUTHORIZED.code -> {
+                            logD(TAG, "unAuthorize when getting new token")
+                            meowApi.onUnauthorizedAfterAuthenticate()
+                            null
+                        }
+                        else -> {
+                            null
+                        }
+                    }
+                }
+            } else {
+                null
+            }
+        }
+    }
+
     class Options(
-        var baseUrl: String
+        var isEnabledCache: Boolean = false,
+        var cacheMaxStaleSecond: Long = 30 * 60L
     )
+
+}
+
+fun MeowApi.enableCache() = apply { options.isEnabledCache = true }
+fun MeowApi.changeCacheInDay(day: Int) = apply { options.cacheMaxStaleSecond = day * 24 * 60 * 60L }
+fun MeowApi.changeCacheInHour(hour: Int) = apply { options.cacheMaxStaleSecond = hour * 60 * 60L }
+fun MeowApi.changeCacheInMinutes(minute: Int) = apply { options.cacheMaxStaleSecond = minute * 60L }
+fun MeowApi.changeCacheInSeconds(seconds: Int) =
+    apply { options.cacheMaxStaleSecond = seconds.toLong() }
+
+fun OkHttpClient.Builder.addBuilderBlocks(interceptorBlocks: List<InterceptorBlock>) {
+    addInterceptor {
+        val request = it.request().newBuilder()
+        interceptorBlocks.forEach {
+            it(request)
+        }
+        it.proceed(request.build())
+    }
+}
+
+fun Authenticator.responseCount(response: Response?): Int {
+    var rs = response?.priorResponse
+    var result = 1
+    while (rs != null) {
+        result++
+        rs = rs.priorResponse
+    }
+    return result
 }
