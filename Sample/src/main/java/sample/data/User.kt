@@ -20,6 +20,7 @@ import com.squareup.moshi.Json
 import kotlinx.serialization.Serializable
 import meow.core.api.MeowApi
 import meow.core.api.MeowRequest
+import meow.core.api.enableCache
 import meow.core.arch.MeowRepository
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -56,9 +57,10 @@ class User {
         }
     }
 
-    class Repository(private val api: MeowApi) : MeowRepository() {
+    class Repository(private val api: AppApi) : MeowRepository() {
         suspend fun getUserByIdApi(request: RequestGet): Model {
-            return api.createServiceByAdapter<Api>().getUserById(request.id)
+            return api.enableCache().createServiceByAdapter<Api>()
+                .getUserById(request.id)
         }
     }
 

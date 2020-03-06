@@ -42,6 +42,7 @@ class UserGetViewModel : MeowViewModel() {
     fun apiCall(request: User.RequestGet) {
         modelLiveData.safeApiCall(
             request = request,
+            isNetworkRequired = false,
             apiAction = { repository.getUserByIdApi(request) },
             job = job.value
         ) { _, it ->
