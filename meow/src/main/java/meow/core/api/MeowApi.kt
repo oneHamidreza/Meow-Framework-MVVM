@@ -171,7 +171,7 @@ fun MeowApi.changeCacheInMinutes(minute: Int) = apply { options.cacheMaxStaleSec
 fun MeowApi.changeCacheInSeconds(seconds: Int) =
     apply { options.cacheMaxStaleSecond = seconds.toLong() }
 
-fun OkHttpClient.Builder.addBuilderBlocks(interceptorBlocks: List<InterceptorBlock>) {
+fun OkHttpClient.Builder.addInterceptorBlocks(interceptorBlocks: List<InterceptorBlock>) {
     addInterceptor {
         val request = it.request().newBuilder()
         interceptorBlocks.forEach {

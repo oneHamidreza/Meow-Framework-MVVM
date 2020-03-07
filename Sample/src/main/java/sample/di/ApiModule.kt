@@ -21,10 +21,13 @@ import meow.core.api.*
 import okhttp3.OkHttpClient
 import org.kodein.di.Kodein.Module
 import org.kodein.di.erased.bind
+import org.kodein.di.erased.instance
 import org.kodein.di.erased.provider
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
+import sample.App
+import sample.data.DataSource
 
 /**
  * The Module of application (resources, shared preferences).
@@ -35,25 +38,27 @@ import retrofit2.http.POST
  */
 
 val apiModule = Module("Network Module", false) {
-    bind() from provider { AppApi("refreshTokenValue") }
+    bind() from provider { AppApi(instance(), "refreshTokenValue") }
 }
 
-fun createOkHttpClient(api: AppApi, options: MeowApi.Options) = meowClientBuilder.apply {
-//    val isLogin : Boolean = Kodein.direct { instance<Boolean>() }//todo
-    val authorization = MeowApi.Authorization.SimpleToken(false, "xxx")
+fun createOkHttpClient(api: AppApi, options: MeowApi.Options, dataSource: DataSource) =
+    meowClientBuilder.apply {
+        val isLogin = dataSource.isLogin()
+        val authorization = MeowApi.Authorization.SimpleToken(isLogin, "xxx")
 
     val interceptorBlocks: List<InterceptorBlock> = listOf(
         getCacheInterceptorBlock(options),
         authorization.interceptorBlock,
         { it.header("User-Agent", userAgent) }
     )
-    addBuilderBlocks(interceptorBlocks)
+        addInterceptorBlocks(interceptorBlocks)
 
     authenticator(MeowApi.RefreshToken(api, authorization))
 
 }.build()
 
 class AppApi(
+    var app: App,
     var refreshToken: String? = null,
     override var options: Options = Options()
 ) : MeowApi(options) {
@@ -65,11 +70,11 @@ class AppApi(
     }
 
     override fun getOkHttpClient(): OkHttpClient {
-        return createOkHttpClient(this, options)
+        return createOkHttpClient(this, options, DataSource(app))
     }
 
     override fun getBaseUrl(): String {
-        return "http://192.168.1.10:8080"
+        return "http://192.168.1.10:8888"
     }
 
     interface Oauth {

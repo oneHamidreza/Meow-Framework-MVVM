@@ -20,6 +20,7 @@ import com.squareup.moshi.Json
 import kotlinx.serialization.Serializable
 import meow.core.api.exceptions.NetworkConnectionException
 import meow.core.api.exceptions.UnexpectedException
+import meow.utils.isNotNullOrEmpty
 
 /**
  * The model of Response in restful api by success and fail statuses.
@@ -38,6 +39,12 @@ sealed class MeowResponse<T>(
     open val code: Int = 0,
     open var data: T? = null
 ) {
+
+    /**
+     * Cancellation response model in restful api with http code UNKNOWN when request is canceled.
+     *
+     */
+    class Cancellation() : MeowResponse<Nothing>()
 
     /**
      * Success response model in restful api with http code 200.
@@ -75,7 +82,13 @@ sealed class MeowResponse<T>(
      * Network Error response model in restful api with http code UNKNOWN.
      *
      */
-    class NetworkError : Error<SimpleModel>(exception = NetworkConnectionException())
+    class NetworkError : Error<Nothing>(exception = NetworkConnectionException())
+
+    /**
+     * Connection Error response model in restful api with http code UNKNOWN.
+     *
+     */
+    class ConnectionError : Error<Nothing>(exception = NetworkConnectionException())
 
     /**
      * Network Error response model in restful api with http code UNKNOWN.
@@ -107,7 +120,15 @@ data class SimpleModel(
     @Json(name = "message") var message: String? = null,
     @Json(name = "body") var body: String? = null,
     @Json(name = "name") var name: String? = null
-)
+) {
+    val messageIfExist: String?
+        get() = when {
+            message.isNotNullOrEmpty() -> message
+            name.isNotNullOrEmpty() -> name
+            body.isNotNullOrEmpty() -> body
+            else -> null
+        }
+}
 
 @Serializable
 data class FormErrorModel(

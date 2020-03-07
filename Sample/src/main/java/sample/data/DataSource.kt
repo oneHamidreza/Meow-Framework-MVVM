@@ -41,10 +41,7 @@ class DataSource(var app: App) : KodeinAware {
     suspend fun getUserById(request: User.RequestGet) =
         api.createServiceByAdapter<User.Api>().getUserById(request.id)
 
-    fun x() = "xxx"
-
-    fun fetchTest() = spMain.get("user", "xxx")
-
+    fun isLogin() = false
     fun fetchUser() = spMain.get("user", User.Model())
     fun saveUser(it: User.Model) = spMain.put("user", it)
 }

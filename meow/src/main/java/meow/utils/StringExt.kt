@@ -44,3 +44,5 @@ fun String?.capitalizeFirst(): String {
         Character.toUpperCase(first) + this.substring(1)
     }
 }
+
+fun String?.isNotNullOrEmpty() = !isNullOrEmpty()

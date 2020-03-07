@@ -18,6 +18,7 @@ object MeowLog {
 fun logD(tag: String = "", m: Any?, tr: Throwable? = null): Int {
     return if (controller.isDebugMode) {
         val t = createTag(tag)
+        println("xxx $t")
         printSystemIfTest(t, m.toString(), tr)
         Log.d(t, m.toString(), tr)
     } else 0
@@ -57,7 +58,7 @@ fun logW(tag: String = "", m: Any?, tr: Throwable? = null): Int {
 
 private fun createTag(tag: String): String {
     if (controller.isLogTagNative)
-        return tag
+        return if (tag.isEmpty()) "meow" else tag
 
     val t = avoidException(
         tryBlock = {

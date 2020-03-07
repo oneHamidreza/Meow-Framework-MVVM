@@ -14,26 +14,16 @@
  * limitations under the License.
  */
 
-package meow.core.api
+package meow.utils
+
+import android.content.res.Resources
 
 /**
- * The status of MVVM action class containing [Nothing], [Loading], [Success], [Error].
+ * The Extensions of [Resources] class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-01
+ * @since   2020-03-07
  */
 
-sealed class MeowStatus {
-    abstract val response: MeowResponse<*>?
-
-    data class Nothing(override val response: MeowResponse<*>? = null) : MeowStatus()
-
-    data class Loading(override val response: MeowResponse<*>? = null) : MeowStatus()
-
-    data class Success(override val response: MeowResponse<*>) : MeowStatus()
-
-    data class Error(override val response: MeowResponse<*>) : MeowStatus()
-
-    data class Cancellation(override val response: MeowResponse<*>? = null) : MeowStatus()
-}
+fun Resources?.getStringCompat(resId: Int) = this?.getString(resId) ?: ""

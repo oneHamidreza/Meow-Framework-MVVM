@@ -1,6 +1,6 @@
 import meow.AppConfig
-import meow.AppConfig.Versions
 import meow.AppConfig.Library
+import meow.AppConfig.Versions
 import org.jetbrains.kotlin.config.KotlinCompilerVersion
 
 plugins {
@@ -42,6 +42,10 @@ android {
 
     dataBinding {
         isEnabled = true
+    }
+
+    lintOptions {
+        isAbortOnError = true
     }
 }
 

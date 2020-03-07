@@ -28,5 +28,6 @@ import meow.core.api.MeowStatus
 
 fun MeowStatus?.isNothing() = this is MeowStatus.Nothing
 fun MeowStatus?.isLoading() = this is MeowStatus.Loading
+fun MeowStatus?.isCancellation() = this is MeowStatus.Cancellation
 fun MeowStatus?.isSuccess() = this is MeowStatus.Success
 fun MeowStatus?.isError() = this is MeowStatus.Error

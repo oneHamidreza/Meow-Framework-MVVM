@@ -18,6 +18,7 @@ package meow.core.arch
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Job
 import kotlinx.io.IOException
@@ -25,10 +26,10 @@ import meow.controller
 import meow.core.api.MeowRequest
 import meow.core.api.MeowResponse
 import meow.core.api.MeowStatus
-import meow.core.api.SimpleModel
 import meow.core.di.Injector
 import meow.utils.*
 import retrofit2.HttpException
+import java.net.SocketTimeoutException
 
 /**
  * The Base of View Model in MVVM architecture.
@@ -40,9 +41,8 @@ import retrofit2.HttpException
 
 open class MeowViewModel : ViewModel() {
 
-    var job = lazy {
-        Job()
-    }
+    var jobWithIds = mutableListOf<Pair<Int, Job>>()
+
     var exceptionHandler = CoroutineExceptionHandler { _, t ->
         if (controller.isDebugMode) {
             logD(m = t.message)
@@ -50,45 +50,70 @@ open class MeowViewModel : ViewModel() {
         }
     }
 
-    fun <T> MutableLiveData<MeowStatus>.safeApiCall(
+    fun <T : Any> MutableLiveData<MeowStatus>.safeApiCall(
         request: MeowRequest? = null,
-        job: Job = Job(),
         isNetworkRequired: Boolean = true,
+        job: Job = Job(),
         apiAction: suspend () -> T,
         resultBlock: (response: MeowResponse<*>, responseModel: T?) -> Unit
+    ) = launchSilent(
+        exceptionHandler = exceptionHandler,
+        job = job
     ) {
-        launchSilent(
-            exceptionHandler = exceptionHandler,
-            job = job
-        ) {
-            if (request?.validate() == false)
-                resultBlock(MeowResponse.RequestNotValid(request), null)
 
-            if (isNetworkRequired && Injector.context().hasNotNetwork())
-                postValue(MeowStatus.Error(MeowResponse.NetworkError()))
-            else
-                postValue(MeowStatus.Loading())
+        if (request?.validate() == false) {
+            resultBlock(MeowResponse.RequestNotValid(request), null)
+            return@launchSilent
+        }
 
-            val response = try {
-                val dataIfExists = try {
-                    apiAction()
-                } catch (e: Exception) {
-                    if (controller.isDebugMode)
-                        e.printStackTrace()
-                    throw(e)
-                }
-                MeowResponse.Success(dataIfExists)
+        if (isNetworkRequired && Injector.context().hasNotNetwork()) {
+            postValue(MeowStatus.Error(MeowResponse.NetworkError()))
+            return@launchSilent
+        } else
+            postValue(MeowStatus.Loading())
+
+        var lastId = jobWithIds.lastOrNull()?.first ?: 0
+        lastId++
+        jobWithIds.add(Pair(lastId, job))
+
+        val response = try {
+            val dataIfExists = try {
+                apiAction()
             } catch (e: Exception) {
                 if (controller.isDebugMode)
                     e.printStackTrace()
-                when (e) {
-                    is IOException -> MeowResponse.NetworkError()
-                    is HttpException -> createResponseFromHttpError<SimpleModel>(e)
-                    else -> MeowResponse.ParseError(exception = e)
-                }
+                throw(e)
             }
-            response.processAndPush(this@safeApiCall)
-            resultBlock(response, response.data as? T?)
+            MeowResponse.Success(dataIfExists)
+        } catch (e: Exception) {
+            if (controller.isDebugMode)
+                e.printStackTrace()
+            when (e) {
+                is SocketTimeoutException -> MeowResponse.ConnectionError()
+                is IOException -> MeowResponse.NetworkError()
+                is HttpException -> createResponseFromHttpError(e)
+                is CancellationException -> MeowResponse.Cancellation()
+                else -> MeowResponse.ParseError(exception = e)
+            }
         }
+
+        response.processAndPush(this@safeApiCall)
+        val data = avoidException { response.data as? T? }
+        resultBlock(response, data)
+        cancelAllJobs()
+    }
+
+    private fun cancelAndRemoveJob(job: Job) {
+        avoidException {
+            job.cancel()
+        }
+        val found = jobWithIds.find { it.second == job }
+        if (found != null)
+            jobWithIds.remove(found)
+    }
+
+    open fun cancelAllJobs() {
+        jobWithIds.forEach { avoidException { it.second.cancel() } }
+        jobWithIds.clear()
     }
 }

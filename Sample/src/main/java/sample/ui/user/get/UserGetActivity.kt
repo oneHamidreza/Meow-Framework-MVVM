@@ -18,7 +18,6 @@ package sample.ui.user.get
 
 import android.os.Bundle
 import android.widget.Toast
-import meow.core.api.MeowResponse
 import meow.utils.*
 import sample.R
 import sample.data.User
@@ -43,10 +42,13 @@ class UserGetActivity : BaseActivity<ActivityUserGetBinding>() {
 
         binding.btApiCall.apply {
             setOnClickListener {
-//                viewModel.apiCall(User.RequestGet("1"))
-                viewModel.fetchUserOffline()
+                viewModel.apiCall(User.RequestGet("1"))
             }
             performClick()
+        }
+
+        binding.btCancel.setOnClickListener {
+            viewModel.cancelAllJobs()
         }
 
         observeViewModel()
@@ -55,8 +57,16 @@ class UserGetActivity : BaseActivity<ActivityUserGetBinding>() {
     private fun observeViewModel() {
         viewModel.modelLiveData.safeObserve {
             binding.model = viewModel.model
-            println(it)
+            logD(m = "New Status Received : $it")
             when {
+                it.isCancellation() -> {
+                    hideLoading()
+                    showError("Canceling is Working")
+                }
+                it.isError() -> {
+                    hideLoading()
+                    showError(it.response.createErrorMessage(resources))
+                }
                 it.isLoading() -> {
                     showLoading()
                 }
@@ -65,14 +75,6 @@ class UserGetActivity : BaseActivity<ActivityUserGetBinding>() {
                     binding.model = viewModel.model
                     Toast.makeText(this, "Success!", Toast.LENGTH_LONG).show()
                 }
-                it.isError() -> {
-                    hideLoading()
-                    val response = it.response as MeowResponse.Error
-                    val message = "response.isError: ${response.exception?.message}"
-                    showError(message)//todo create message
-                }
-                else ->
-                    showError("response.isNull")
             }
         }
     }
@@ -85,7 +87,7 @@ class UserGetActivity : BaseActivity<ActivityUserGetBinding>() {
     }
 
     private fun showError(message: String) {
-        logD("user-get", message)
+        binding.tvStatus.text = message
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
