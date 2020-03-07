@@ -14,28 +14,33 @@
  * limitations under the License.
  */
 
-package sample.di
+package meow
 
-import meow.core.api.MeowApi
-import org.kodein.di.Kodein
-import org.kodein.di.erased.bind
-import org.kodein.di.erased.instance
-import org.kodein.di.erased.provider
-import org.kodein.di.erased.singleton
-import sample.data.AppApi
-import sample.data.User
+import android.app.Application
+import meow.core.api.MeowSession
+import meow.core.di.ContextArgs
+import meow.core.di.Injector
 
 /**
- * Core Injector of application (api, apiOptions, okHttpClient, repositories).
+ * 🐈 This CAT can control configurations and UI properties in one Application. Just trust it.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-01
  */
 
-val coreInjector = Kodein {
+val controller = MeowController()
 
-    bind<MeowApi>() with provider { AppApi("refreshTokenValue") }
+class MeowController(
+    val meowSession: MeowSession = MeowSession(),
+    var isDebugMode: Boolean = true,
+    var isLogTagNative: Boolean = true,
+    var apiSuccessRange: IntRange = 200..200,
+    var onException: (exception: Exception) -> Unit = {}
+) {
 
-    bind<User.Repository>() with singleton { User.Repository(instance()) }
+    fun init(app: Application) {
+        Injector.provideContextArgs(ContextArgs(app))
+    }
+
 }

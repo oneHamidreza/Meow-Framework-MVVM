@@ -17,7 +17,16 @@
 package sample
 
 import android.app.Application
-import meow.core.MeowController
+import meow.MeowController
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.androidXModule
+import org.kodein.di.direct
+import org.kodein.di.erased.bind
+import org.kodein.di.erased.singleton
+import sample.di.apiModule
+import sample.di.appModule
+import sample.di.viewModelModule
 
 /**
  * Sample Application class.
@@ -27,16 +36,25 @@ import meow.core.MeowController
  * @since   2020-03-01
  */
 
-class App : Application() {
+class App : Application(), KodeinAware {
+
+    override val kodein = Kodein.lazy {
+        bind() from singleton { this@App }
+        bind() from singleton { kodein.direct }
+        import(androidXModule(this@App))
+        import(appModule)
+        import(apiModule)
+        import(viewModelModule)
+    }
 
     private val isDebug = BuildConfig.DEBUG
 
     override fun onCreate() {
         super.onCreate()
+
         MeowController(
             isDebugMode = isDebug,
             isLogTagNative = false
         ).init(this)
-
     }
 }

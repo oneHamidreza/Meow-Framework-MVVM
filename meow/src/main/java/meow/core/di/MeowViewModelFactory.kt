@@ -14,33 +14,25 @@
  * limitations under the License.
  */
 
-package meow.core
+package meow.core.di
 
-import android.app.Application
-import meow.core.api.MeowSession
-import meow.core.di.ContextArgs
-import meow.core.di.Injector
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import org.kodein.di.DKodein
+import org.kodein.di.erased.instance
 
 /**
- * 🐈 This CAT can control configurations and UI properties in one Application. Just trust it.
+ * The Kodein View Model Factory class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-01
+ * @since   2020-03-07
  */
 
-val controller = MeowController()
+inline class MeowViewModelFactory(private val injector: DKodein) : ViewModelProvider.Factory {
 
-class MeowController(
-    val meowSession: MeowSession = MeowSession(),
-    var isDebugMode: Boolean = true,
-    var isLogTagNative: Boolean = true,
-    var apiSuccessRange: IntRange = 200..200,
-    var onException: (exception: Exception) -> Unit = {}
-) {
-
-    fun init(app: Application) {
-        Injector.provideContextArgs(ContextArgs(app))
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return injector.instance<ViewModel>() as T?
+            ?: modelClass.newInstance()
     }
-
 }

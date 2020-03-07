@@ -19,7 +19,7 @@ package meow.core.api
 import android.webkit.WebSettings
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import meow.core.controller
+import meow.controller
 import meow.core.di.Injector
 import meow.utils.avoidException
 import meow.utils.hasNetwork

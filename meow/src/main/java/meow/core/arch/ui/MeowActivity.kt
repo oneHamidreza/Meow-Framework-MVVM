@@ -21,9 +21,6 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.ViewModelProvider
-import meow.core.arch.MeowViewModel
-import meow.utils.initViewModel
 
 /**
  * The Base of Activity.
@@ -33,10 +30,9 @@ import meow.utils.initViewModel
  * @since   2020-02-28
  */
 
-abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : AppCompatActivity() {
+abstract class MeowActivity<B : ViewDataBinding> : AppCompatActivity() {
 
     protected lateinit var binding: B
-    lateinit var viewModel: VM
 
     @LayoutRes
     protected abstract fun layoutId(): Int

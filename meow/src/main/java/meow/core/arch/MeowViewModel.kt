@@ -19,15 +19,13 @@ package meow.core.arch
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.withContext
 import kotlinx.io.IOException
+import meow.controller
 import meow.core.api.MeowRequest
 import meow.core.api.MeowResponse
 import meow.core.api.MeowStatus
 import meow.core.api.SimpleModel
-import meow.core.controller
 import meow.core.di.Injector
 import meow.utils.*
 import retrofit2.HttpException
@@ -89,39 +87,8 @@ open class MeowViewModel : ViewModel() {
                     else -> MeowResponse.ParseError(exception = e)
                 }
             }
-            processAndPush(response)
+            response.processAndPush(this@safeApiCall)
             resultBlock(response, response.data as? T?)
         }
     }
-
-    private fun <T> createResponseFromHttpError(throwable: HttpException): MeowResponse.Error<*> {
-        return avoidException(
-            tryBlock = {
-                throwable.response()?.errorBody()?.source()?.let {
-                    MeowResponse.HttpError(
-                        code = throwable.code(),
-                        data = it.fetchByClass(),
-                        exception = throwable
-                    )
-                } ?: MeowResponse.UnExpectedError()
-            },
-            exceptionBlock = {
-                MeowResponse.HttpError(
-                    code = throwable.code(),
-                    exception = throwable
-                )
-            }) ?: MeowResponse.UnExpectedError()
-    }
-
-    fun MutableLiveData<MeowStatus>.processAndPush(response: MeowResponse<*>) {
-        avoidException {
-            val statusWithRepository = when {
-                response.isError() -> MeowStatus.Error(response)
-                response.isSuccess() -> MeowStatus.Success(response)
-                else -> MeowStatus.Error(response)
-            }
-            postValue(statusWithRepository)
-        }
-    }
-
 }

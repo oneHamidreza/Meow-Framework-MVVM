@@ -13,21 +13,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package sample.di
 
-import org.kodein.di.Kodein
+import meow.core.data.MeowSharedPreferences
+import org.kodein.di.Kodein.Module
 import org.kodein.di.erased.bind
-import org.kodein.di.erased.provider
+import org.kodein.di.erased.instance
 import org.kodein.di.erased.singleton
+import sample.BuildConfig
+import sample.data.DataSource
 
 /**
- * Data Injector of application (api base url, user login).
+ * The Module of application (resources, shared preferences).
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-01
+ * @since   2020-03-06
  */
 
-val dataInjectors = Kodein {
-    bind<Boolean>("isLogin") with provider { true }
+val appModule = Module("App Module", false) {
+    bind() from singleton { DataSource(instance()) }
+    bind("spMain") from singleton {
+        MeowSharedPreferences(
+            instance(),
+            "mainSettings_v1"
+        )
+    }
+    bind("spUpdate") from singleton {
+        MeowSharedPreferences(
+            instance(),
+            "updateSettings_v" + BuildConfig.VERSION_CODE
+        )
+    }
 }

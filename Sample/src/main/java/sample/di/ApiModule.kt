@@ -14,37 +14,33 @@
  * limitations under the License.
  */
 
-package sample.data
+package sample.di
 
+import meow.controller
 import meow.core.api.*
-import meow.core.controller
-import meow.core.di.Injector
-import meow.utils.hasNetwork
-import okhttp3.Cache
 import okhttp3.OkHttpClient
-import org.kodein.di.erased.instance
+import org.kodein.di.Kodein.Module
+import org.kodein.di.erased.bind
+import org.kodein.di.erased.provider
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
-import sample.di.dataInjectors
-import java.util.concurrent.TimeUnit
 
 /**
- * The Api of Application class.
+ * The Module of application (resources, shared preferences).
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-06
  */
 
-/*
-    Optimize OkHttp For Caching
-    https://medium.com/@bapspatil/caching-with-retrofit-store-responses-offline-71439ed32fda
-*/
+val apiModule = Module("Network Module", false) {
+    bind() from provider { AppApi("refreshTokenValue") }
+}
 
 fun createOkHttpClient(api: AppApi, options: MeowApi.Options) = meowClientBuilder.apply {
-    val isLogin by dataInjectors.instance<Boolean>("isLogin")
-    val authorization = MeowApi.Authorization.SimpleToken(isLogin, "xxx")
+//    val isLogin : Boolean = Kodein.direct { instance<Boolean>() }//todo
+    val authorization = MeowApi.Authorization.SimpleToken(false, "xxx")
 
     val interceptorBlocks: List<InterceptorBlock> = listOf(
         getCacheInterceptorBlock(options),

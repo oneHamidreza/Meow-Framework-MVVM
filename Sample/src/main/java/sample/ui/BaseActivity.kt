@@ -14,21 +14,23 @@
  * limitations under the License.
  */
 
-package meow.utils
+package sample.ui
 
-import android.app.Application
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import meow.core.arch.MeowViewModel
+import androidx.databinding.ViewDataBinding
+import meow.core.arch.ui.MeowActivity
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.closestKodein
 
 /**
- * The Extensions of [AppCompatActivity].
+ * The Base Activity class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-02
+ * @since   2020-03-06
  */
 
-inline fun <reified VM : MeowViewModel> Application.initViewModel(): VM {
-    return ViewModelProvider.AndroidViewModelFactory(this).create(createClass<VM>())
+abstract class BaseActivity<B : ViewDataBinding> : MeowActivity<B>(), KodeinAware {
+
+    override val kodein by closestKodein()
+
 }

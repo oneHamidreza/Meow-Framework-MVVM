@@ -16,9 +16,12 @@
 
 package meow.utils
 
+import androidx.lifecycle.MutableLiveData
+import meow.controller
 import meow.core.api.HttpCodes
 import meow.core.api.MeowResponse
-import meow.core.controller
+import meow.core.api.MeowStatus
+import retrofit2.HttpException
 
 /**
  * The Extensions of [MeowResponse].
@@ -37,3 +40,35 @@ fun <T> MeowResponse<T>.isForbidden() = this.code == HttpCodes.FORBIDDEN.code
 fun <T> MeowResponse<T>.isNotFound() = this.code == HttpCodes.NOT_FOUND.code
 fun <T> MeowResponse<T>.isUnprocessableEntity() = this.code == HttpCodes.UNPROCESSABLE_ENTITY.code
 fun <T> MeowResponse<T>.isError() = this is MeowResponse.Error
+
+fun <T> createResponseFromHttpError(throwable: HttpException): MeowResponse.Error<*> {
+    return avoidException(
+        tryBlock = {
+            throwable.response()?.errorBody()?.source()?.let {
+                MeowResponse.HttpError(
+                    code = throwable.code(),
+                    data = it.fetchByClass(),
+                    exception = throwable
+                )
+            } ?: MeowResponse.UnExpectedError()
+        },
+        exceptionBlock = {
+            MeowResponse.HttpError(
+                code = throwable.code(),
+                exception = throwable
+            )
+        }) ?: MeowResponse.UnExpectedError()
+}
+
+fun MeowResponse<*>.processAndPush(liveData: MutableLiveData<MeowStatus>) {
+    avoidException {
+        val statusWithRepository = when {
+            isError() -> MeowStatus.Error(this)
+            isSuccess() -> MeowStatus.Success(this)
+            else -> MeowStatus.Error(this)
+        }
+        liveData.postValue(statusWithRepository)
+    }
+}
+
+fun <T> ofSuccessState(data: T) = MeowStatus.Success(MeowResponse.Success(data))

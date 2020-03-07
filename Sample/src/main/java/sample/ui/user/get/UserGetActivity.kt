@@ -19,11 +19,11 @@ package sample.ui.user.get
 import android.os.Bundle
 import android.widget.Toast
 import meow.core.api.MeowResponse
-import meow.core.arch.ui.MeowActivity
 import meow.utils.*
 import sample.R
 import sample.data.User
 import sample.databinding.ActivityUserGetBinding
+import sample.ui.BaseActivity
 
 /**
  * [User]/Get Activity class.
@@ -33,18 +33,18 @@ import sample.databinding.ActivityUserGetBinding
  * @since   2020-02-29
  */
 
-class UserGetActivity : MeowActivity<ActivityUserGetBinding, UserGetViewModel>() {
+class UserGetActivity : BaseActivity<ActivityUserGetBinding>() {
 
+    private val viewModel: UserGetViewModel by viewModel()
     override fun layoutId() = R.layout.activity_user_get
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel = initViewModel()
-
         binding.btApiCall.apply {
             setOnClickListener {
-                viewModel.apiCall(User.RequestGet("1"))
+//                viewModel.apiCall(User.RequestGet("1"))
+                viewModel.fetchUserOffline()
             }
             performClick()
         }
@@ -54,6 +54,7 @@ class UserGetActivity : MeowActivity<ActivityUserGetBinding, UserGetViewModel>()
 
     private fun observeViewModel() {
         viewModel.modelLiveData.safeObserve {
+            binding.model = viewModel.model
             println(it)
             when {
                 it.isLoading() -> {

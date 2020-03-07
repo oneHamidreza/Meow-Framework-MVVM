@@ -58,7 +58,10 @@ object AppConfig {
             "com.squareup.moshi:moshi-kotlin:1.9.2",
             // dependency injection
             "org.kodein.di:kodein-di-core:6.5.2",
-            "org.kodein.di:kodein-di-erased:6.5.2"
+            "org.kodein.di:kodein-di-erased:6.5.2",
+            "org.kodein.di:kodein-di-framework-android-x:6.5.2",
+            // secure shared preferences
+            "in.co.ophio:secure-preferences:0.1.3"
         )
 
         val sampleDependencies = emptyArray<String>()

@@ -18,9 +18,7 @@ package sample.data
 
 import com.squareup.moshi.Json
 import kotlinx.serialization.Serializable
-import meow.core.api.MeowApi
 import meow.core.api.MeowRequest
-import meow.core.api.enableCache
 import meow.core.arch.MeowRepository
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -41,10 +39,15 @@ class User {
         @Json(name = "first_name") var firstName: String? = null,
         @Json(name = "last_name") var lastName: String? = null
     ) {
+
         val alias: String
             get() {
-                return firstName.orEmpty() + " " + lastName.orEmpty()
+                return firstName.orEmpty() + " " + lastName.orEmpty() + " (" + id + ")"
             }//todo remove extra
+
+        override fun toString(): String {
+            return "Model(id=$id, firstName=$firstName, lastName=$lastName)"
+        }
     }
 
     @Serializable
@@ -57,11 +60,11 @@ class User {
         }
     }
 
-    class Repository(private val api: AppApi) : MeowRepository() {
-        suspend fun getUserByIdApi(request: RequestGet): Model {
-            return api.enableCache().createServiceByAdapter<Api>()
-                .getUserById(request.id)
-        }
+    class Repository(private val ds: DataSource) : MeowRepository() {
+
+        suspend fun getUserByIdApi(request: RequestGet) = ds.getUserById(request)
+        fun getSavedUser() = ds.fetchUser()
+        fun saveUser(it: Model) = ds.saveUser(it)
     }
 
     interface Api {

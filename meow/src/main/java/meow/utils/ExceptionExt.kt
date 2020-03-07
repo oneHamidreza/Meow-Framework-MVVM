@@ -16,7 +16,7 @@
 
 package meow.utils
 
-import meow.core.controller
+import meow.controller
 
 /**
  * The Extensions of [Exception].

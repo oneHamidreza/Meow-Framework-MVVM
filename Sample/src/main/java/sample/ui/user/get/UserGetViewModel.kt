@@ -19,10 +19,8 @@ package sample.ui.user.get
 import androidx.lifecycle.MutableLiveData
 import meow.core.api.MeowStatus
 import meow.core.arch.MeowViewModel
-import meow.utils.launchSilent
-import org.kodein.di.erased.instance
+import meow.utils.ofSuccessState
 import sample.data.User
-import sample.di.coreInjector
 
 /**
  * User/Get View Model class.
@@ -32,9 +30,7 @@ import sample.di.coreInjector
  * @since   2020-02-29
  */
 
-class UserGetViewModel : MeowViewModel() {
-
-    private val repository by coreInjector.instance<User.Repository>()
+class UserGetViewModel(val repository: User.Repository) : MeowViewModel() {
 
     var modelLiveData = MutableLiveData<MeowStatus>()
     var model: User.Model? = null
@@ -48,7 +44,11 @@ class UserGetViewModel : MeowViewModel() {
         ) { _, it ->
             model = it
         }
+    }
 
+    fun fetchUserOffline() {
+        model = repository.getSavedUser()
+        modelLiveData.postValue(ofSuccessState(model))
     }
 
 }

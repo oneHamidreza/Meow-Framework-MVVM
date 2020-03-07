@@ -17,8 +17,8 @@
 package meow.utils
 
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okio.BufferedSource
-import java.lang.Exception
 
 /**
  * The Extensions of Json Data.
@@ -28,23 +28,49 @@ import java.lang.Exception
  * @since   2020-03-01
  */
 
+val moshiBuilder = Moshi.Builder().add(KotlinJsonAdapterFactory())
+
 inline fun <reified T> BufferedSource?.fetchByClass(): T? {
     if (this == null) return null
     return try {
-        Moshi.Builder().build().adapter(createClass<T>()).fromJson(this)
+        moshiBuilder.build().adapter(createClass<T>()).fromJson(this)
     } catch (e: Exception) {
         e.printStackTrace()
         null
     }
 }
 
-inline fun <reified T> String?.fetchByClass(clazz: Class<T>): T? {
+inline fun <reified T> String?.fetchByClass(): T? {
     if (this == null) return null
     return try {
-        Moshi.Builder().build().adapter(clazz).fromJson(this)
+        moshiBuilder.build().adapter(createClass<T>()).fromJson(this)
     } catch (e: Exception) {
         e.printStackTrace()
         null
+    }
+}
+
+inline fun <reified T : Any> T?.toJson(): String {
+    if (this == null) return "{}"
+    return try {
+        moshiBuilder
+            .add(KotlinJsonAdapterFactory())
+            .build().adapter(createClass<T>()).toJson(this)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        "{}"
+    }
+}
+
+inline fun <reified T : Any> List<T>?.toJson(): String {
+    if (this == null) return "[]"
+    return try {
+        moshiBuilder
+            .add(KotlinJsonAdapterFactory())
+            .build().adapter(createClass<List<T>>()).toJson(this)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        "[]"
     }
 }
  

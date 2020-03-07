@@ -14,21 +14,31 @@
  * limitations under the License.
  */
 
-package meow.utils
+package sample.di
 
-import android.app.Application
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import meow.core.arch.MeowViewModel
+import meow.core.di.MeowViewModelFactory
+import org.kodein.di.Kodein.Module
+import org.kodein.di.direct
+import org.kodein.di.erased.bind
+import org.kodein.di.erased.instance
+import org.kodein.di.erased.provider
+import org.kodein.di.erased.singleton
+import sample.data.User
+import sample.ui.user.get.UserGetViewModel
 
 /**
- * The Extensions of [AppCompatActivity].
+ * The Module of application (resources, shared preferences).
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-02
+ * @since   2020-03-06
  */
 
-inline fun <reified VM : MeowViewModel> Application.initViewModel(): VM {
-    return ViewModelProvider.AndroidViewModelFactory(this).create(createClass<VM>())
+val viewModelModule = Module("View Model Module", false) {
+    bind<ViewModelProvider.Factory>() with singleton { MeowViewModelFactory(kodein.direct) }
+    bind() from provider {
+        UserGetViewModel(instance())
+    }
+    bind() from singleton { User.Repository(instance()) }
 }

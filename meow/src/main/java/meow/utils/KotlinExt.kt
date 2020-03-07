@@ -25,3 +25,6 @@ package meow.utils
  */
 
 inline fun <reified T> createClass() = Class.forName(T::class.java.name) as Class<T>
+
+fun Any?.print() = apply { print(this) }
+fun Any?.println() = apply { println(this) }

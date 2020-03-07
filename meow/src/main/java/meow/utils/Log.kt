@@ -3,7 +3,7 @@
 package meow.utils
 
 import android.util.Log
-import meow.core.controller
+import meow.controller
 
 /**
  * Created by 1HE on 9/16/2018.
