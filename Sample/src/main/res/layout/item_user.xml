@@ -2,11 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
         <variable
             name="viewModel"
             type="sample.ui.user.index.UserIndexViewModel" />
-
         <variable
             name="model"
             type="sample.data.User" />
