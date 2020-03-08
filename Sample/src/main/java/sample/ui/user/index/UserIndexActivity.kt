@@ -24,7 +24,6 @@ import sample.R
 import sample.data.User
 import sample.databinding.ActivityUserIndexBinding
 import sample.ui.BaseActivity
-import sample.ui.user.UserAdapter
 
 /**
  * [User]/Index Activity class.

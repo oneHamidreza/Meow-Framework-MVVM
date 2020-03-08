@@ -1,4 +1,4 @@
-package sample.ui.user
+package sample.ui.user.index
 
 import android.app.Application
 import android.view.ViewGroup
@@ -6,7 +6,6 @@ import meow.core.arch.ui.MeowAdapter
 import meow.core.arch.ui.MeowViewHolder
 import sample.data.User
 import sample.databinding.ItemUserBinding
-import sample.ui.user.index.UserIndexViewModel
 
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
@@ -40,14 +39,19 @@ typealias DiffCallback = User.DiffCallback
 class UserAdapter(
     app: Application,
     override var viewModel: ViewModel
-) : MeowAdapter<Model, ViewHolder, ViewModel>(app, viewModel, DiffCallback()) {
+) : MeowAdapter<Model, ViewHolder, ViewModel>(
+    app, viewModel,
+    DiffCallback()
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemUserBinding.inflate(inflater, parent, false)
         return MeowViewHolder(binding.root) { _, model, viewModel ->
-            binding.viewModel = viewModel
-            binding.model = model
-            binding.executePendingBindings()
+            binding.let {
+                it.viewModel = viewModel
+                it.model = model
+                it.executePendingBindings()
+            }
         }
     }
 
