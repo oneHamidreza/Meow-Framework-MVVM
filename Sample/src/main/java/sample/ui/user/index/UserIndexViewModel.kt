@@ -34,20 +34,20 @@ import sample.data.User
 
 class UserIndexViewModel(
     override val app: App,
-    val repository: User.Repository
+    private val repository: User.Repository
 ) : MeowViewModel(app) {
 
     val resources: Resources by instance()
 
     var eventLiveData = MutableLiveData<MeowEvent>()
-    val items = MutableLiveData<List<User>>()
+    val listLiveData = MutableLiveData<List<User>>()
 
     fun apiCall() {
         eventLiveData.safeApiCall(
             isNetworkRequired = true,
             apiAction = { repository.getUsersApi() }
         ) { _, it ->
-            items.postValue(it)
+            listLiveData.postValue(it)
         }
     }
 

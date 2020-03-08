@@ -77,9 +77,9 @@ class UserIndexActivity : BaseActivity<ActivityUserIndexBinding>() {
                 }
             }
         }
-        viewModel.items.safeObserve {
+
+        viewModel.listLiveData.safeObserve {
             listAdapter.submitList(it)
-            logD(m = "onFetch : ${it.size}")
         }
     }
 
