@@ -14,49 +14,50 @@
  * limitations under the License.
  */
 
-package sample.ui.user.get
+package sample.ui.user.index
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import meow.utils.*
 import sample.R
 import sample.data.User
-import sample.databinding.ActivityUserGetBinding
+import sample.databinding.ActivityUserIndexBinding
 import sample.ui.BaseActivity
+import sample.ui.user.UserAdapter
 
 /**
- * [User]/Get Activity class.
+ * [User]/Index Activity class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-02-29
  */
 
-class UserGetActivity : BaseActivity<ActivityUserGetBinding>() {
+class UserIndexActivity : BaseActivity<ActivityUserIndexBinding>() {
 
-    private val viewModel: UserGetViewModel by viewModel()
-    override fun layoutId() = R.layout.activity_user_get
+    private lateinit var listAdapter: UserAdapter
+
+    private val viewModel: UserIndexViewModel by viewModel()
+    override fun layoutId() = R.layout.activity_user_index
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.btApiCall.apply {
-            setOnClickListener {
-                viewModel.apiCall(User.RequestGet("1"))
-            }
-            performClick()
-        }
+        binding.viewModel = viewModel
+        binding.recyclerView.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        listAdapter = UserAdapter(application, viewModel)
+        binding.recyclerView.adapter = listAdapter
 
-        binding.btCancel.setOnClickListener {
-            viewModel.cancelAllJobs()
-        }
+        viewModel.apiCall()
 
         observeViewModel()
+
     }
 
     private fun observeViewModel() {
         viewModel.eventLiveData.safeObserve {
-            binding.model = viewModel.model
             logD(m = "New Status Received : $it")
             when {
                 it.isCancellation() -> {
@@ -71,11 +72,15 @@ class UserGetActivity : BaseActivity<ActivityUserGetBinding>() {
                     showLoading()
                 }
                 it.isSuccess() -> {
+//                    binding.recyclerView.adapter = listAdapter
                     hideLoading()
-                    binding.model = viewModel.model
                     Toast.makeText(this, "Success!", Toast.LENGTH_LONG).show()
                 }
             }
+        }
+        viewModel.items.safeObserve {
+            listAdapter.submitList(it)
+            logD(m = "onFetch : ${it.size}")
         }
     }
 
@@ -87,7 +92,6 @@ class UserGetActivity : BaseActivity<ActivityUserGetBinding>() {
     }
 
     private fun showError(message: String) {
-        binding.tvStatus.text = message
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

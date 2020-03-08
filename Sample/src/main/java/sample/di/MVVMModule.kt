@@ -16,8 +16,7 @@
 
 package sample.di
 
-import androidx.lifecycle.ViewModelProvider
-import meow.core.di.MeowViewModelFactory
+import meow.utils.bindAutoTag
 import org.kodein.di.Kodein.Module
 import org.kodein.di.direct
 import org.kodein.di.erased.bind
@@ -26,6 +25,7 @@ import org.kodein.di.erased.provider
 import org.kodein.di.erased.singleton
 import sample.data.User
 import sample.ui.user.get.UserGetViewModel
+import sample.ui.user.index.UserIndexViewModel
 
 /**
  * The Module of application (resources, shared preferences).
@@ -36,9 +36,17 @@ import sample.ui.user.get.UserGetViewModel
  */
 
 val viewModelModule = Module("View Model Module", false) {
-    bind<ViewModelProvider.Factory>() with singleton { MeowViewModelFactory(kodein.direct) }
-    bind() from provider {
-        UserGetViewModel(instance())
+    bindAutoTag<UserGetViewModel>() with provider {
+        UserGetViewModel(
+            kodein.direct.instance(),
+            instance()
+        )
+    }
+    bindAutoTag<UserIndexViewModel>() with provider {
+        UserIndexViewModel(
+            kodein.direct.instance(),
+            instance()
+        )
     }
     bind() from singleton { User.Repository(instance()) }
 }

@@ -14,41 +14,41 @@
  * limitations under the License.
  */
 
-package sample.ui.user.get
+package sample.ui.user.index
 
+import android.content.res.Resources
 import androidx.lifecycle.MutableLiveData
 import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
-import meow.utils.ofSuccessEvent
+import org.kodein.di.erased.instance
 import sample.App
 import sample.data.User
 
 /**
- * User/Get View Model class.
+ * [User]/Index View Model class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-02-29
+ * @since   2020-03-08
  */
 
-class UserGetViewModel(app: App, val repository: User.Repository) : MeowViewModel(app) {
+class UserIndexViewModel(
+    override val app: App,
+    val repository: User.Repository
+) : MeowViewModel(app) {
+
+    val resources: Resources by instance()
 
     var eventLiveData = MutableLiveData<MeowEvent>()
-    var model: User? = null
+    val items = MutableLiveData<List<User>>()
 
-    fun apiCall(request: User.RequestGet) {
+    fun apiCall() {
         eventLiveData.safeApiCall(
-            request = request,
-            isNetworkRequired = false,
-            apiAction = { repository.getUserByIdApi(request) }
+            isNetworkRequired = true,
+            apiAction = { repository.getUsersApi() }
         ) { _, it ->
-            model = it
+            items.postValue(it)
         }
-    }
-
-    fun fetchUserOffline() {
-        model = repository.getSavedUser()
-        eventLiveData.postValue(ofSuccessEvent(model))
     }
 
 }

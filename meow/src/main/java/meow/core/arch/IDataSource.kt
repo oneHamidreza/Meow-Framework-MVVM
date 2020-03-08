@@ -1,3 +1,7 @@
+package meow.core.arch
+
+import android.app.Application
+
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -14,17 +18,14 @@
  * limitations under the License.
  */
 
-package meow.utils
-
 /**
- * The Extensions of Kotlin.
+ * Interface of DataSource class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-01
+ * @since   2020-03-08
  */
 
-inline fun <reified T> createClass() = Class.forName(T::class.java.name) as Class<T>
-
-fun <T> T.print() = apply { print(this) }
-fun <T> T.println() = apply { println(this) }
+interface IDataSource {
+    val app: Application
+}

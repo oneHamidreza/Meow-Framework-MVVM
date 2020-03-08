@@ -39,16 +39,12 @@ import org.kodein.di.erased.instance
     https://proandroiddev.com/android-viewmodel-dependency-injection-with-kodein-249f80f083c9
 */
 
-inline fun <reified T : ViewModel> Kodein.Builder.bindViewModel(overrides: Boolean? = null): Kodein.Builder.TypeBinder<T> {
-    return bind<T>(T::class.java.simpleName, overrides)
+inline fun <reified VM : ViewModel, T> T.viewModel(): Lazy<VM> where T : KodeinAware, T : FragmentActivity {
+    return lazy { ViewModelProviders.of(this, direct.instance()).get(VM::class.java) }
 }
 
 inline fun <reified T : ViewModel> Kodein.Builder.bindAutoTag(overrides: Boolean? = null): Kodein.Builder.TypeBinder<T> {
     return bind<T>(T::class.java.simpleName, overrides)
-}
-
-inline fun <reified VM : ViewModel, T> T.viewModel(): Lazy<VM> where T : KodeinAware, T : FragmentActivity {
-    return lazy { ViewModelProviders.of(this, direct.instance()).get(VM::class.java) }
 }
 
 //inline fun <reified VM : ViewModel> VM.overrideInjectionRuleForTesting() =

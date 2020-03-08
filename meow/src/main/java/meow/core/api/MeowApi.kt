@@ -19,8 +19,8 @@ package meow.core.api
 import android.webkit.WebSettings
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import meow.MeowApp
 import meow.controller
-import meow.core.di.Injector
 import meow.utils.avoidException
 import meow.utils.hasNetwork
 import meow.utils.logD
@@ -42,21 +42,20 @@ typealias InterceptorBlock = (builder: Request.Builder) -> Unit
 
 val TAG = "MeowApi"
 
-val meowClientBuilder = OkHttpClient.Builder().apply {
+fun MeowApp.getMeowClientBuilder() = OkHttpClient.Builder().apply {
     connectTimeout(30, TimeUnit.SECONDS)
     readTimeout(60, TimeUnit.SECONDS)
     writeTimeout(60, TimeUnit.SECONDS)
-    cache(Cache(Injector.context().cacheDir, 10 * 1024 * 1024))
+    cache(Cache(cacheDir, 10 * 1024 * 1024))
     if (controller.isDebugMode)
         addNetworkInterceptor(MeowLoggingInterceptor())
 }
 
-val userAgent by lazy {
-    WebSettings.getDefaultUserAgent(Injector.context()).replace(Regex("[^A-Za-z0-9 ().,_/]"), "")
-}
+fun MeowApp.getUserAgent() =
+    WebSettings.getDefaultUserAgent(this).replace(Regex("[^A-Za-z0-9 ().,_/]"), "")
 
-fun getCacheInterceptorBlock(options: MeowApi.Options): InterceptorBlock = {
-    if (Injector.context().hasNetwork())
+fun MeowApp.getCacheInterceptorBlock(options: MeowApi.Options): InterceptorBlock = {
+    if (hasNetwork())
         it.header("Cache-Control", "no-cache")
     else if (options.isEnabledCache)
         it.header(
@@ -65,7 +64,9 @@ fun getCacheInterceptorBlock(options: MeowApi.Options): InterceptorBlock = {
         )
 }
 
-abstract class MeowApi(open val options: Options = Options()) {
+abstract class MeowApi(
+    open val options: Options = Options()
+) {
 
     abstract fun getOkHttpClient(): OkHttpClient
     abstract fun getBaseUrl(): String
@@ -181,7 +182,7 @@ fun OkHttpClient.Builder.addInterceptorBlocks(interceptorBlocks: List<Intercepto
     }
 }
 
-fun Authenticator.responseCount(response: Response?): Int {
+fun responseCount(response: Response?): Int {
     var rs = response?.priorResponse
     var result = 1
     while (rs != null) {

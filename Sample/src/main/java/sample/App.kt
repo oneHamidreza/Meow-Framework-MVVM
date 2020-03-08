@@ -16,7 +16,7 @@
 
 package sample
 
-import android.app.Application
+import meow.MeowApp
 import meow.MeowController
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -36,12 +36,13 @@ import sample.di.viewModelModule
  * @since   2020-03-01
  */
 
-class App : Application(), KodeinAware {
+class App : MeowApp(), KodeinAware {
 
     override val kodein = Kodein.lazy {
         bind() from singleton { this@App }
         bind() from singleton { kodein.direct }
         import(androidXModule(this@App))
+        import(meowModule)
         import(appModule)
         import(apiModule)
         import(viewModelModule)

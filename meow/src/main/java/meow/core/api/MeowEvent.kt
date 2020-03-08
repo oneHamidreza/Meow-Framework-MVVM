@@ -17,23 +17,23 @@
 package meow.core.api
 
 /**
- * The status of MVVM action class containing [Nothing], [Loading], [Success], [Error].
+ * The event of MVVM class containing [Nothing], [Loading], [Success], [Error], [Cancellation].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-01
  */
 
-sealed class MeowStatus {
+sealed class MeowEvent {
     abstract val response: MeowResponse<*>?
 
-    data class Nothing(override val response: MeowResponse<*>? = null) : MeowStatus()
+    data class Nothing(override val response: MeowResponse<*>? = null) : MeowEvent()
 
-    data class Loading(override val response: MeowResponse<*>? = null) : MeowStatus()
+    data class Loading(override val response: MeowResponse<*>? = null) : MeowEvent()
 
-    data class Success(override val response: MeowResponse<*>) : MeowStatus()
+    data class Success(override val response: MeowResponse<*>) : MeowEvent()
 
-    data class Error(override val response: MeowResponse<*>) : MeowStatus()
+    data class Error(override val response: MeowResponse<*>) : MeowEvent()
 
-    data class Cancellation(override val response: MeowResponse<*>? = null) : MeowStatus()
+    data class Cancellation(override val response: MeowResponse<*>? = null) : MeowEvent()
 }

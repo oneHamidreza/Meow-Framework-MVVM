@@ -14,20 +14,25 @@
  * limitations under the License.
  */
 
-package meow.utils
+package meow.core.arch
 
-import meow.core.api.MeowStatus
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import org.kodein.di.DKodein
+import org.kodein.di.erased.instance
 
 /**
- * The Extensions of [MeowStatus].
+ * The Kodein View Model Factory class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-01
+ * @since   2020-03-07
  */
 
-fun MeowStatus?.isNothing() = this is MeowStatus.Nothing
-fun MeowStatus?.isLoading() = this is MeowStatus.Loading
-fun MeowStatus?.isCancellation() = this is MeowStatus.Cancellation
-fun MeowStatus?.isSuccess() = this is MeowStatus.Success
-fun MeowStatus?.isError() = this is MeowStatus.Error
+class MeowViewModelFactory(private val injector: DKodein) : ViewModelProvider.Factory {
+
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return injector.instance<ViewModel>(tag = modelClass.simpleName) as T?
+            ?: modelClass.newInstance()
+    }
+}

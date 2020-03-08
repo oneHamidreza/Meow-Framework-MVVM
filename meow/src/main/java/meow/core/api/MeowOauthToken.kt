@@ -42,7 +42,6 @@ class MeowOauthToken {
     var tokenType: String? = null
         @SuppressLint("DefaultLocale")
         set(value) {
-            val s = okhttp3.Dispatcher().maxRequests
             if (value == null) {
                 field = ""
                 return

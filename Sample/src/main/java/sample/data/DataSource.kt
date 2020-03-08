@@ -16,6 +16,8 @@
 
 package sample.data
 
+import android.content.res.Resources
+import meow.core.arch.IDataSource
 import meow.core.data.MeowSharedPreferences
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
@@ -31,17 +33,23 @@ import sample.di.AppApi
  * @since   2020-03-06
  */
 
-class DataSource(var app: App) : KodeinAware {
+class DataSource(override var app: App) : IDataSource, KodeinAware {
 
     override val kodein by closestKodein(app)
     val api: AppApi by instance()
+    val resources: Resources by instance()
     val spMain: MeowSharedPreferences by instance("spMain")
     val spUpdate: MeowSharedPreferences by instance("spUpdate")
+
+    val userRepository: User.Repository by instance()
 
     suspend fun getUserById(request: User.RequestGet) =
         api.createServiceByAdapter<User.Api>().getUserById(request.id)
 
+    suspend fun getUsers() =
+        api.createServiceByAdapter<User.Api>().getUsers()
+
     fun isLogin() = false
-    fun fetchUser() = spMain.get("user", User.Model())
-    fun saveUser(it: User.Model) = spMain.put("user", it)
+    fun fetchUser() = spMain.get("user", User())
+    fun saveUser(it: User) = spMain.put("user", it)
 }

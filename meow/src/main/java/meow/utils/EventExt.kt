@@ -14,30 +14,20 @@
  * limitations under the License.
  */
 
-package meow.core.di
+package meow.utils
 
-import android.content.Context
+import meow.core.api.MeowEvent
 
 /**
- * The Legacy Injector of MVVM AppContext.
+ * The Extensions of [MeowEvent].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-04
+ * @since   2020-03-01
  */
 
-object Injector {
-
-    lateinit var contextArgs: ContextArgs
-
-    fun provideContextArgs(ca: ContextArgs): ContextArgs {
-        contextArgs = ca
-        return contextArgs
-    }
-
-    fun context() = contextArgs.context
-}
-
-class ContextArgs(
-    var context: Context
-)
+fun MeowEvent?.isNothing() = this is MeowEvent.Nothing
+fun MeowEvent?.isLoading() = this is MeowEvent.Loading
+fun MeowEvent?.isCancellation() = this is MeowEvent.Cancellation
+fun MeowEvent?.isSuccess() = this is MeowEvent.Success
+fun MeowEvent?.isError() = this is MeowEvent.Error

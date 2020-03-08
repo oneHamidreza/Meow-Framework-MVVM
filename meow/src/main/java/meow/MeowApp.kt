@@ -1,3 +1,13 @@
+package meow
+
+import android.app.Application
+import androidx.lifecycle.ViewModelProvider
+import meow.core.arch.MeowViewModelFactory
+import org.kodein.di.Kodein
+import org.kodein.di.direct
+import org.kodein.di.erased.bind
+import org.kodein.di.erased.singleton
+
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -14,25 +24,22 @@
  * limitations under the License.
  */
 
-package meow.core.di
-
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import org.kodein.di.DKodein
-import org.kodein.di.erased.instance
-
 /**
- * The Kodein View Model Factory class.
+ * The Base of Application class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-07
+ * @since   2020-03-08
  */
 
-inline class MeowViewModelFactory(private val injector: DKodein) : ViewModelProvider.Factory {
+open class MeowApp : Application() {
 
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return injector.instance<ViewModel>() as T?
-            ?: modelClass.newInstance()
+    val meowModule = Kodein.Module("Base Module", false) {
+        bind<ViewModelProvider.Factory>() with singleton {
+            MeowViewModelFactory(
+                kodein.direct
+            )
+        }
     }
+
 }

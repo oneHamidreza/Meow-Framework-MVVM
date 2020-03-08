@@ -18,8 +18,6 @@ package meow
 
 import android.app.Application
 import meow.core.api.MeowSession
-import meow.core.di.ContextArgs
-import meow.core.di.Injector
 
 /**
  * 🐈 This CAT can control configurations and UI properties in one Application. Just trust it.
@@ -29,7 +27,7 @@ import meow.core.di.Injector
  * @since   2020-03-01
  */
 
-val controller = MeowController()
+var controller = MeowController()
 
 class MeowController(
     val meowSession: MeowSession = MeowSession(),
@@ -40,7 +38,7 @@ class MeowController(
 ) {
 
     fun init(app: Application) {
-        Injector.provideContextArgs(ContextArgs(app))
+        controller = this
     }
 
 }

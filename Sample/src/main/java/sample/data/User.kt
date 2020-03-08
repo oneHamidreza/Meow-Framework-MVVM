@@ -16,6 +16,7 @@
 
 package sample.data
 
+import androidx.recyclerview.widget.DiffUtil
 import com.squareup.moshi.Json
 import kotlinx.serialization.Serializable
 import meow.core.api.MeowRequest
@@ -31,23 +32,20 @@ import retrofit2.http.Path
  * @since   2020-03-01
  */
 
-class User {
+@Serializable
+data class User(
+    @Json(name = "id") var id: String? = null,
+    @Json(name = "first_name") var firstName: String? = null,
+    @Json(name = "last_name") var lastName: String? = null
+) {
 
-    @Serializable
-    data class Model(
-        @Json(name = "id") var id: String? = null,
-        @Json(name = "first_name") var firstName: String? = null,
-        @Json(name = "last_name") var lastName: String? = null
-    ) {
+    val alias: String
+        get() {
+            return firstName.orEmpty() + " " + lastName.orEmpty() + " (" + id + ")"
+        }//todo remove extra
 
-        val alias: String
-            get() {
-                return firstName.orEmpty() + " " + lastName.orEmpty() + " (" + id + ")"
-            }//todo remove extra
-
-        override fun toString(): String {
-            return "Model(id=$id, firstName=$firstName, lastName=$lastName)"
-        }
+    override fun toString(): String {
+        return "User(id=$id, firstName=$firstName, lastName=$lastName)"
     }
 
     @Serializable
@@ -63,13 +61,35 @@ class User {
     class Repository(private val ds: DataSource) : MeowRepository() {
 
         suspend fun getUserByIdApi(request: RequestGet) = ds.getUserById(request)
+        suspend fun getUsersApi() = ds.getUsers()
+
         fun getSavedUser() = ds.fetchUser()
-        fun saveUser(it: Model) = ds.saveUser(it)
+        fun saveUser(it: User) = ds.saveUser(it)
     }
 
     interface Api {
         @GET("user/{id}")
-        suspend fun getUserById(@Path("id") id: String?): Model
+        suspend fun getUserById(@Path("id") id: String?): User
+
+        @GET("users")
+        suspend fun getUsers(): List<User>
     }
+
+
+    /**
+     * Callback for calculating the diff between two non-null items in a list.
+     * https://github.com/android/architecture-samples
+     *
+     * Used by ListAdapter to calculate the minimum number of changes between and old list and a new
+     * list that's been passed to `submitList`.
+     */
+    class DiffCallback : DiffUtil.ItemCallback<User>() {
+
+        override fun areItemsTheSame(oldItem: User, newItem: User) = oldItem.id == newItem.id
+
+        override fun areContentsTheSame(oldItem: User, newItem: User) = oldItem == newItem
+
+    }
+
 
 }

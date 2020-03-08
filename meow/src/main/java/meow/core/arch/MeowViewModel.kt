@@ -16,18 +16,21 @@
 
 package meow.core.arch
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Job
 import kotlinx.io.IOException
 import meow.controller
+import meow.core.api.MeowEvent
 import meow.core.api.MeowRequest
 import meow.core.api.MeowResponse
-import meow.core.api.MeowStatus
-import meow.core.di.Injector
 import meow.utils.*
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
 
@@ -39,7 +42,9 @@ import java.net.SocketTimeoutException
  * @since   2020-02-24
  */
 
-open class MeowViewModel : ViewModel() {
+open class MeowViewModel(open val app: Application) : AndroidViewModel(app), KodeinAware {
+
+    override val kodein: Kodein by closestKodein()
 
     var jobWithIds = mutableListOf<Pair<Int, Job>>()
 
@@ -50,7 +55,7 @@ open class MeowViewModel : ViewModel() {
         }
     }
 
-    fun <T : Any> MutableLiveData<MeowStatus>.safeApiCall(
+    fun <T : Any> MutableLiveData<MeowEvent>.safeApiCall(
         request: MeowRequest? = null,
         isNetworkRequired: Boolean = true,
         job: Job = Job(),
@@ -61,16 +66,16 @@ open class MeowViewModel : ViewModel() {
         job = job
     ) {
 
-        if (request?.validate() == false) {
+        if (request != null && !request.validate()) {
             resultBlock(MeowResponse.RequestNotValid(request), null)
             return@launchSilent
         }
 
-        if (isNetworkRequired && Injector.context().hasNotNetwork()) {
-            postValue(MeowStatus.Error(MeowResponse.NetworkError()))
+        if (isNetworkRequired && app.hasNotNetwork()) {
+            postValue(MeowEvent.Error(MeowResponse.NetworkError()))
             return@launchSilent
         } else
-            postValue(MeowStatus.Loading())
+            postValue(MeowEvent.Loading())
 
         var lastId = jobWithIds.lastOrNull()?.first ?: 0
         lastId++
@@ -112,7 +117,7 @@ open class MeowViewModel : ViewModel() {
             jobWithIds.remove(found)
     }
 
-    open fun cancelAllJobs() {
+    fun cancelAllJobs() {
         jobWithIds.forEach { avoidException { it.second.cancel() } }
         jobWithIds.clear()
     }

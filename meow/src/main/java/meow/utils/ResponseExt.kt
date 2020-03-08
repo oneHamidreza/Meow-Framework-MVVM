@@ -21,8 +21,8 @@ import androidx.lifecycle.MutableLiveData
 import meow.R
 import meow.controller
 import meow.core.api.HttpCodes
+import meow.core.api.MeowEvent
 import meow.core.api.MeowResponse
-import meow.core.api.MeowStatus
 import meow.core.api.SimpleModel
 import retrofit2.HttpException
 
@@ -71,19 +71,19 @@ fun createResponseFromHttpError(throwable: HttpException): MeowResponse.Error<*>
         }) ?: MeowResponse.UnExpectedError()
 }
 
-fun MeowResponse<*>.processAndPush(liveData: MutableLiveData<MeowStatus>) {
+fun MeowResponse<*>.processAndPush(liveData: MutableLiveData<MeowEvent>) {
     avoidException {
-        val statusWithRepository = when {
-            isCancellation() -> MeowStatus.Cancellation(this)
-            isError() -> MeowStatus.Error(this)
-            isSuccess() -> MeowStatus.Success(this)
-            else -> MeowStatus.Error(this)
+        val eventWithRepository = when {
+            isCancellation() -> MeowEvent.Cancellation(this)
+            isError() -> MeowEvent.Error(this)
+            isSuccess() -> MeowEvent.Success(this)
+            else -> MeowEvent.Error(this)
         }
-        liveData.postValue(statusWithRepository)
+        liveData.postValue(eventWithRepository)
     }
 }
 
-fun <T> ofSuccessState(data: T) = MeowStatus.Success(MeowResponse.Success(data))
+fun <T> ofSuccessEvent(data: T) = MeowEvent.Success(MeowResponse.Success(data))
 
 fun MeowResponse<*>?.createErrorMessage(resources: Resources): String {
     if (this == null)

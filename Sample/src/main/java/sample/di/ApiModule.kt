@@ -42,20 +42,20 @@ val apiModule = Module("Network Module", false) {
 }
 
 fun createOkHttpClient(api: AppApi, options: MeowApi.Options, dataSource: DataSource) =
-    meowClientBuilder.apply {
+    api.app.getMeowClientBuilder().apply {
         val isLogin = dataSource.isLogin()
         val authorization = MeowApi.Authorization.SimpleToken(isLogin, "xxx")
 
-    val interceptorBlocks: List<InterceptorBlock> = listOf(
-        getCacheInterceptorBlock(options),
-        authorization.interceptorBlock,
-        { it.header("User-Agent", userAgent) }
-    )
+        val interceptorBlocks: List<InterceptorBlock> = listOf(
+            api.app.getCacheInterceptorBlock(options),
+            authorization.interceptorBlock,
+            { it.header("User-Agent", api.app.getUserAgent()) }
+        )
         addInterceptorBlocks(interceptorBlocks)
 
-    authenticator(MeowApi.RefreshToken(api, authorization))
+        authenticator(MeowApi.RefreshToken(api, authorization))
 
-}.build()
+    }.build()
 
 class AppApi(
     var app: App,

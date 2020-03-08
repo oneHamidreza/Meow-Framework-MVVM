@@ -1,9 +1,4 @@
-package meow.core.arch.ui
-
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import org.kodein.di.DKodein
-import org.kodein.di.erased.instanceOrNull
+package meow.utils
 
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
@@ -26,12 +21,5 @@ import org.kodein.di.erased.instanceOrNull
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-06
+ * @since   2020-03-08
  */
-
-class MeowViewModelFactory(private val injector: DKodein) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return injector.instanceOrNull<ViewModel>(tag = modelClass.simpleName) as T?
-            ?: modelClass.newInstance()
-    }
-}
