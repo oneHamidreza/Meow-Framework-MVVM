@@ -44,15 +44,19 @@ class UserIndexActivity : BaseActivity<ActivityUserIndexBinding>() {
         super.onCreate(savedInstanceState)
 
         binding.viewModel = viewModel
-        binding.recyclerView.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        listAdapter = UserAdapter(application, viewModel)
-        binding.recyclerView.adapter = listAdapter
+        binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            addItemDecoration { position, outRect ->
+                if (position == 0)
+                    outRect.top = 24.toPx()
+            }
+            listAdapter = UserAdapter(application, viewModel)
+            adapter = listAdapter
+        }
 
         viewModel.apiCall()
 
         observeViewModel()
-
     }
 
     private fun observeViewModel() {

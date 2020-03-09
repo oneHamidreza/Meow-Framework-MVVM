@@ -14,32 +14,22 @@
  * limitations under the License.
  */
 
-package meow
-
-import android.app.Application
-import androidx.lifecycle.ViewModelProvider
-import meow.core.arch.MeowViewModelFactory
-import org.kodein.di.Kodein
-import org.kodein.di.direct
-import org.kodein.di.erased.bind
-import org.kodein.di.erased.singleton
+package meow.widget
 
 /**
- * The Base of Application class.
+ * The ProgressBar interface.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-08
+ * @since   2020-03-09
  */
 
-open class MeowApp : Application() {
+interface ProgressBarImpl {
 
-    val meowModule = Kodein.Module("Base Module", false) {
-        bind<ViewModelProvider.Factory>() with singleton {
-            MeowViewModelFactory(
-                kodein.direct
-            )
-        }
-    }
+    fun hide()
+
+    fun show()
+
+    fun setIndeterminateProgress(indeterminate: Boolean)
 
 }
