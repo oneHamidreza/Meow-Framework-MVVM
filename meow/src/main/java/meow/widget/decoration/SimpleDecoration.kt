@@ -1,5 +1,3 @@
-package meow.utils
-
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -16,10 +14,34 @@ package meow.utils
  * limitations under the License.
  */
 
+package meow.widget.decoration
+
+import android.graphics.Rect
+import android.view.View
+import androidx.recyclerview.widget.RecyclerView
+
 /**
- * Describe class.
+ * The Simple Recycler View Decoration class inherits from [RecyclerView.ItemDecoration].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-08
+ * @since   2020-03-09
  */
+
+typealias ItemOffsetBlock = (position: Int, outRect: Rect) -> Unit
+
+@Suppress("unused")
+class SimpleDecoration(
+    var block: ItemOffsetBlock
+) : RecyclerView.ItemDecoration() {
+
+    override fun getItemOffsets(
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
+        val position = parent.getChildAdapterPosition(view)
+        block(position, outRect)
+    }
+}

@@ -1,3 +1,9 @@
+package meow.utils
+
+import androidx.recyclerview.widget.RecyclerView
+import meow.widget.decoration.ItemOffsetBlock
+import meow.widget.decoration.SimpleDecoration
+
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -14,25 +20,14 @@
  * limitations under the License.
  */
 
-package meow.utils
-
-import android.content.Context
-import android.content.res.Resources
-import androidx.core.content.ContextCompat
-import meow.controller
-
 /**
- * The Extensions of [Resources] class.
+ * Describe class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-07
+ * @since   2020-03-08
  */
 
-fun Resources?.getStringCompat(resId: Int) = this?.getString(resId) ?: ""
-fun Resources?.getDimensionToPx(resId: Int) = this?.getDimension(resId)?.toInt() ?: 0
 
-fun Context?.getStringCompat(resId: Int) = this?.resources.getStringCompat(resId)
-fun Context?.getDimensionToPx(resId: Int) = this?.resources.getDimensionToPx(resId)
-fun Context?.getColorCompat(resId: Int) =
-    if (this == null) 0 else controller.onColorGet(this!!, ContextCompat.getColor(this, resId))
+fun RecyclerView.addItemDecoration(block: ItemOffsetBlock) =
+    addItemDecoration(SimpleDecoration(block))

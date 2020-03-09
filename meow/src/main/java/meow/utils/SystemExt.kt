@@ -1,7 +1,3 @@
-package meow.utils
-
-import android.os.Build
-
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -17,6 +13,15 @@ import android.os.Build
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+package meow.utils
+
+import android.content.Context
+import android.graphics.Point
+import android.os.Build
+import android.util.DisplayMetrics
+import android.view.WindowManager
+import meow.controller
 
 /**
  * The Extensions of OS & Build.
@@ -34,5 +39,37 @@ fun getDeviceModel(): String {
     } else {
         manufacturer.capitalizeFirst() + " " + model
     }
+
 }
- 
+
+/**
+ * Get display width and height in pixel.
+ * context is the Android Context and can be null. if it is null then returns a object from Point with zero values.
+ * @return size of display in pixel (WxH) in a [Point] object.
+ */
+fun Context?.getDisplaySize(): Point {
+    if (this == null)
+        return Point(0, 0)
+
+    return avoidException(
+        tryBlock = {
+            val wm = this.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            val display = wm.defaultDisplay
+            val p = Point()
+
+            val realMetrics = DisplayMetrics()
+            display.getRealMetrics(realMetrics)
+            p.x = realMetrics.widthPixels
+            p.y = realMetrics.heightPixels
+
+            p
+        },
+        exceptionBlock = { Point() })!!
+}
+
+
+fun Float.toPx() = this * controller.dpi
+fun Int.toPx() = this * controller.dpi.toInt()
+
+fun Float.toDp() = this / controller.dpi
+fun Int.toDp() = (this.toFloat() / controller.dpi).toInt()

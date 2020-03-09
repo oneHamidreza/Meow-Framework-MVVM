@@ -17,6 +17,8 @@
 package meow
 
 import android.app.Application
+import android.content.Context
+import android.util.LayoutDirection
 import meow.core.api.MeowSession
 
 /**
@@ -34,11 +36,18 @@ class MeowController(
     var isDebugMode: Boolean = true,
     var isLogTagNative: Boolean = true,
     var apiSuccessRange: IntRange = 200..200,
-    var onException: (exception: Exception) -> Unit = {}
+    var onException: (exception: Exception) -> Unit = {},
+    var dpi: Float = 1f,
+    var layoutDirection: Int = LayoutDirection.INHERIT,
+    var onColorGet: (context: Context, color: Int) -> Int = { _, color -> color }
 ) {
+
+    val isRtl: Boolean
+        get() = layoutDirection == LayoutDirection.RTL
 
     fun init(app: Application) {
         controller = this
+        dpi = app.resources.displayMetrics.density
     }
 
 }

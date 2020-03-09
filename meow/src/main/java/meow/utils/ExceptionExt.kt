@@ -33,6 +33,7 @@ fun allowReport(exp: Exception): Boolean {
     }
 }
 
+
 inline fun <T> avoidException(
     allowPrint: Boolean = controller.isDebugMode,
     exceptionBlock: () -> T? = { null },
