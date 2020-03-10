@@ -54,8 +54,9 @@ class App : MeowApp(), KodeinAware {
         super.onCreate()
 
         MeowController(
+            this,
             isDebugMode = isDebug,
             isLogTagNative = false
-        ).init(this)
+        ).init()
     }
 }

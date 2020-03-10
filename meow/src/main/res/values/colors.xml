@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="divider_recyclerview">#12000000</color>
+    <color name="error_primary">#b00020</color>
+    <color name="on_error_primary">#ffffff</color>
 
 </resources>

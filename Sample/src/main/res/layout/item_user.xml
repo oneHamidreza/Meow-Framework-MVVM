@@ -16,8 +16,11 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tvX"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAppearance="@style/textAppearance.Body1"
+            android:textColor="@color/on_app_background"
             android:text="@{model.alias}" />
 
     </LinearLayout>

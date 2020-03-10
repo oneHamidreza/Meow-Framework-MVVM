@@ -16,11 +16,13 @@
 
 package meow.utils
 
+import android.app.UiModeManager
 import android.content.Context
 import android.graphics.Point
 import android.os.Build
 import android.util.DisplayMetrics
 import android.view.WindowManager
+import androidx.core.content.ContextCompat
 import meow.controller
 
 /**
@@ -73,3 +75,9 @@ fun Int.toPx() = this * controller.dpi.toInt()
 
 fun Float.toDp() = this / controller.dpi
 fun Int.toDp() = (this.toFloat() / controller.dpi).toInt()
+
+fun Context?.isNightModeFromSettings(): Boolean {
+    if (this == null) return false
+    val uiModeManager = ContextCompat.getSystemService(this, UiModeManager::class.java)
+    return uiModeManager?.nightMode != UiModeManager.MODE_NIGHT_NO
+}

@@ -13,6 +13,31 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            app:subtitle="Primary Surface"
+            app:title="Toolbar" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btChangeMode"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.getTextByDayNightMode()}"
+            android:onClick="@{viewModel::onClickedChangeMode}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="TEST"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="@color/on_app_background" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"

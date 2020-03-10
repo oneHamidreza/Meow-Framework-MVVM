@@ -2,6 +2,9 @@
 
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
 
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
         <!-- Original AppCompat attributes. -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorSecondary">@color/secondary</item>
@@ -40,5 +43,4 @@
         <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Button</item>
         <item name="textAppearanceOverline">@style/TextAppearance.MaterialComponents.Overline</item>
     </style>
-
 </resources>

@@ -26,5 +26,12 @@ package meow.utils
 
 inline fun <reified T> createClass() = Class.forName(T::class.java.name) as Class<T>
 
-fun <T> T.print() = apply { print(this) }
-fun <T> T.println() = apply { println(this) }
+fun <T> T.print(m: String = "") = apply {
+    kotlin.io.print("$m ")
+    print(this)
+}
+
+fun <T> T.println(m: String = "") = apply {
+    kotlin.io.print("$m ")
+    println(this)
+}

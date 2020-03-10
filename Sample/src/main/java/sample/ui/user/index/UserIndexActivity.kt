@@ -20,6 +20,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import meow.utils.*
+import meow.widget.decoration.MeowDividerDecoration
 import sample.R
 import sample.data.User
 import sample.databinding.ActivityUserIndexBinding
@@ -43,6 +44,8 @@ class UserIndexActivity : BaseActivity<ActivityUserIndexBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setSupportActionBar(binding.toolbar)
+
         binding.viewModel = viewModel
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -50,6 +53,7 @@ class UserIndexActivity : BaseActivity<ActivityUserIndexBinding>() {
                 if (position == 0)
                     outRect.top = 24.toPx()
             }
+            addItemDecoration(MeowDividerDecoration(context))
             listAdapter = UserAdapter(application, viewModel)
             adapter = listAdapter
         }
@@ -75,9 +79,7 @@ class UserIndexActivity : BaseActivity<ActivityUserIndexBinding>() {
                     showLoading()
                 }
                 it.isSuccess() -> {
-//                    binding.recyclerView.adapter = listAdapter
                     hideLoading()
-                    Toast.makeText(this, "Success!", Toast.LENGTH_LONG).show()
                 }
             }
         }
@@ -97,4 +99,5 @@ class UserIndexActivity : BaseActivity<ActivityUserIndexBinding>() {
     private fun showError(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
+
 }

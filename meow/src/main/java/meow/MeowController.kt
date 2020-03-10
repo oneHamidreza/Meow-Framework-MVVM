@@ -19,7 +19,9 @@ package meow
 import android.app.Application
 import android.content.Context
 import android.util.LayoutDirection
+import androidx.appcompat.app.AppCompatDelegate
 import meow.core.api.MeowSession
+import meow.utils.isNightModeFromSettings
 
 /**
  * 🐈 This CAT can control configurations and UI properties in one Application. Just trust it.
@@ -29,25 +31,47 @@ import meow.core.api.MeowSession
  * @since   2020-03-01
  */
 
-var controller = MeowController()
+lateinit var controller: MeowController
 
 class MeowController(
+    val app: Application,
     val meowSession: MeowSession = MeowSession(),
     var isDebugMode: Boolean = true,
     var isLogTagNative: Boolean = true,
     var apiSuccessRange: IntRange = 200..200,
     var onException: (exception: Exception) -> Unit = {},
-    var dpi: Float = 1f,
+    var dpi: Float = app.resources.displayMetrics.density,
     var layoutDirection: Int = LayoutDirection.INHERIT,
-    var onColorGet: (context: Context, color: Int) -> Int = { _, color -> color }
+    var onColorGet: (context: Context, color: Int) -> Int = { _, color -> color },
+    var forceNightMode: Boolean = false
 ) {
 
-    val isRtl: Boolean
+    var theme = if (app.isNightModeFromSettings() || forceNightMode) Theme.NIGHT else Theme.DAY
+        set(value) {
+            field = value
+            val nightMode = when (value) {
+                Theme.DAY -> AppCompatDelegate.MODE_NIGHT_NO
+                Theme.NIGHT -> AppCompatDelegate.MODE_NIGHT_YES
+            }
+            AppCompatDelegate.setDefaultNightMode(nightMode)
+        }
+
+    val isNightMode
+        get() = theme == Theme.NIGHT
+
+    val isRtl
         get() = layoutDirection == LayoutDirection.RTL
 
-    fun init(app: Application) {
+    fun init() {
         controller = this
-        dpi = app.resources.displayMetrics.density
+    }
+
+    fun swapTheme() {
+        theme = if (isNightMode) Theme.DAY else Theme.NIGHT
+    }
+
+    enum class Theme {
+        DAY, NIGHT
     }
 
 }

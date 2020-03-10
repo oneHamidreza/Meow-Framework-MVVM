@@ -17,7 +17,9 @@
 package sample.ui.user.index
 
 import android.content.res.Resources
+import android.view.View
 import androidx.lifecycle.MutableLiveData
+import meow.controller
 import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
 import org.kodein.di.erased.instance
@@ -50,5 +52,11 @@ class UserIndexViewModel(
             listLiveData.postValue(it)
         }
     }
+
+    fun onClickedChangeMode(view: View) {
+        controller.swapTheme()
+    }
+
+    fun getTextByDayNightMode() = if (controller.isNightMode) "Day Mode" else "Night Mode"
 
 }

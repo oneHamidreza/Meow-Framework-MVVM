@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- todo maybe no need -->
+
+    <style name="textAppearance.Headline1" parent="@style/TextAppearance.MaterialComponents.Headline1">
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
+    </style>
+
+    <style name="textAppearance.Headline2" parent="@style/TextAppearance.MaterialComponents.Headline2">
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
+    </style>
+
+    <style name="textAppearance.Headline3" parent="@style/TextAppearance.MaterialComponents.Headline3">
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
+    </style>
+
+    <style name="textAppearance.Headline4" parent="@style/TextAppearance.MaterialComponents.Headline4">
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
+    </style>
+
+    <style name="textAppearance.Headline5" parent="@style/TextAppearance.MaterialComponents.Headline5">
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
+    </style>
+
+    <style name="textAppearance.Headline6" parent="@style/TextAppearance.MaterialComponents.Headline6">
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
+    </style>
+
+    <style name="textAppearance.Body1" parent="@style/TextAppearance.MaterialComponents.Body1">
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
+    </style>
+
+    <style name="textAppearance.Body2" parent="@style/TextAppearance.MaterialComponents.Body2">
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
+    </style>
+
+    <style name="textAppearance.Subtitle1" parent="@style/TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
+    </style>
+
+    <style name="textAppearance.Subtitle2" parent="@style/TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
+    </style>
+
+    <style name="textAppearance.Caption" parent="@style/TextAppearance.MaterialComponents.Caption">
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
+    </style>
+
+    <style name="textAppearance.Overline" parent="@style/TextAppearance.MaterialComponents.Overline">
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
+    </style>
+
+    <style name="textAppearance.Button" parent="@style/TextAppearance.MaterialComponents.Button">
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
+    </style>
+
+</resources>

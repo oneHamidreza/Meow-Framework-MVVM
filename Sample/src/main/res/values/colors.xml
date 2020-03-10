@@ -10,10 +10,10 @@
     <color name="secondary_dark">#190023</color>
     <color name="secondary_variant">@color/secondary_dark</color>
     <color name="on_secondary">#ffffff</color>
-    <color name="app_background">#ffffff</color>
-    <color name="on_app_background">#000000</color>
-    <color name="error_primary">#b00020</color>
-    <color name="on_error_primary">#ffffff</color>
-    <color name="surface">#000000</color>
-    <color name="on_surface">#b00020</color>
+    <!--    <color name="app_background">#ffffff</color>-->
+    <!--    <color name="on_app_background">#000000</color>-->
+    <!--    <color name="error_primary">#b00020</color>-->
+    <!--    <color name="on_error_primary">#ffffff</color>-->
+    <!--    <color name="surface">#ffffff</color>-->
+    <!--    <color name="on_surface">#000000</color>-->
 </resources>

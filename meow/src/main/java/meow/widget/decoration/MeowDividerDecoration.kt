@@ -37,7 +37,7 @@ import meow.utils.toPx
  */
 
 @Suppress("unused")
-class DividerDecoration(
+class MeowDividerDecoration(
     context: Context,
     marginStart: Int = 0,
     marginEnd: Int = 0,
