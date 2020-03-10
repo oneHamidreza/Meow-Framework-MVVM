@@ -35,8 +35,8 @@ import meow.widget.ProgressBarImpl
 sealed class MeowFlow {
 
     class DetailApi(
-        val containerViews: Array<View>,
-        val visibilityWhenLoading: Int = View.GONE
+        private val containerViews: Array<View>,
+        private val visibilityWhenLoading: Int = View.GONE
     ) : Api() {
         init {
             onBeforeAction = {

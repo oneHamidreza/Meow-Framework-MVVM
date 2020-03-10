@@ -41,8 +41,6 @@ class DataSource(override var app: App) : IDataSource, KodeinAware {
     val spMain: MeowSharedPreferences by instance("spMain")
     val spUpdate: MeowSharedPreferences by instance("spUpdate")
 
-    val userRepository: User.Repository by instance()
-
     suspend fun getUserById(request: User.RequestGet) =
         api.createServiceByAdapter<User.Api>().getUserById(request.id)
 

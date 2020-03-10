@@ -1,14 +1,3 @@
-package sample.ui.user.index
-
-import android.app.Application
-import android.view.ViewGroup
-import meow.core.arch.ui.MeowAdapter
-import meow.core.arch.ui.MeowViewHolder
-import meow.utils.getColorCompat
-import sample.R
-import sample.data.User
-import sample.databinding.ItemUserBinding
-
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -25,8 +14,19 @@ import sample.databinding.ItemUserBinding
  * limitations under the License.
  */
 
+package sample.ui.user.index
+
+import android.app.Application
+import android.view.ViewGroup
+import meow.core.arch.ui.MeowAdapter
+import meow.core.arch.ui.MeowViewHolder
+import meow.utils.getColorCompat
+import sample.R
+import sample.data.User
+import sample.databinding.ItemUserBinding
+
 /**
- * Describe class.
+ * [User] Adapter class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -50,7 +50,7 @@ class UserAdapter(
         val binding = ItemUserBinding.inflate(inflater, parent, false)
         return MeowViewHolder(binding.root) { _, model, viewModel ->
             binding.let {
-                it.tvX.setTextColor(parent.context.getColorCompat(R.color.on_app_background))// bug fix for realtime day/night mode TODO Report google ?
+                it.tvX.setTextColor(parent.context.getColorCompat(R.color.material_on_surface_emphasis_high_type))// bug fix for realtime day/night mode TODO Report google ?
                 it.viewModel = viewModel
                 it.model = model
                 it.executePendingBindings()
