@@ -32,7 +32,7 @@ import meow.widget.ProgressBarImpl
  * @since   2020-03-10
  */
 
-sealed class MeowComponent {
+sealed class MeowFlow {
 
     class DetailApi(
         val containerViews: Array<View>,
@@ -68,7 +68,7 @@ sealed class MeowComponent {
             progressBarImpl?.hide()
             dialog?.hide()
         }
-    ) : MeowComponent() {
+    ) : MeowFlow() {
         fun observe(liveData: LiveData<MeowEvent>?) {
             liveData?.safeObserve {
                 when {

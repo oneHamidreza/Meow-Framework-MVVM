@@ -18,7 +18,7 @@ package sample.ui.user.detail
 
 import android.os.Bundle
 import android.widget.Toast
-import meow.core.arch.MeowComponent
+import meow.core.arch.MeowFlow
 import meow.utils.createErrorMessage
 import meow.utils.viewModel
 import sample.R
@@ -49,7 +49,7 @@ class UserDetailActivity : BaseActivity<ActivityUserDetailBinding>() {
 
     private fun observeViewModel() {
         binding.viewModel = viewModel
-        MeowComponent.DetailApi(arrayOf(binding.tvModel, binding.tvStatus)).apply {
+        MeowFlow.DetailApi(arrayOf(binding.tvModel, binding.tvStatus)).apply {
             onCancellationAction = {
                 showError("Canceling is Working")
             }
