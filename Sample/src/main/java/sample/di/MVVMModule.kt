@@ -24,7 +24,7 @@ import org.kodein.di.erased.instance
 import org.kodein.di.erased.provider
 import org.kodein.di.erased.singleton
 import sample.data.User
-import sample.ui.user.get.UserGetViewModel
+import sample.ui.user.detail.UserDetailViewModel
 import sample.ui.user.index.UserIndexViewModel
 
 /**
@@ -36,8 +36,8 @@ import sample.ui.user.index.UserIndexViewModel
  */
 
 val viewModelModule = Module("View Model Module", false) {
-    bindAutoTag<UserGetViewModel>() with provider {
-        UserGetViewModel(
+    bindAutoTag<UserDetailViewModel>() with provider {
+        UserDetailViewModel(
             kodein.direct.instance(),
             instance()
         )

@@ -14,19 +14,20 @@
  * limitations under the License.
  */
 
-package meow.utils
-
-import meow.core.api.MeowEvent
+package meow.widget
 
 /**
- * The Extensions of [MeowEvent].
+ * The Error interface.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-01
+ * @since   2020-03-10
  */
 
-fun MeowEvent?.isLoading() = this is MeowEvent.Loading
-fun MeowEvent?.isCancellation() = this is MeowEvent.Cancellation
-fun MeowEvent?.isSuccess() = this is MeowEvent.Success
-fun MeowEvent?.isError() = this is MeowEvent.Error
+interface ErrorImpl {
+
+    fun hide()
+
+    fun show()
+
+}

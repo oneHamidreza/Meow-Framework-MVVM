@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package sample.ui.user.get
+package sample.ui.user.detail
 
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
@@ -31,12 +32,16 @@ import sample.data.User
  * @since   2020-02-29
  */
 
-class UserGetViewModel(app: App, val repository: User.Repository) : MeowViewModel(app) {
+class UserDetailViewModel(app: App, val repository: User.Repository) : MeowViewModel(app) {
 
     var eventLiveData = MutableLiveData<MeowEvent>()
     var model: User? = null
 
-    fun apiCall(request: User.RequestGet) {
+    fun onClickedApiCall(view: View) = requestApi(User.RequestGet("2"))
+
+    fun onClickedCancelJobs(view: View) = cancelAllJobs()
+
+    fun requestApi(request: User.RequestGet) {
         eventLiveData.safeApiCall(
             request = request,
             isNetworkRequired = false,

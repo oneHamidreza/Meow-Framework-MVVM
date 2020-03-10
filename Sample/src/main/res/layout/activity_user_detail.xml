@@ -2,6 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
+        <variable
+            name="viewModel"
+            type="sample.ui.user.detail.UserDetailViewModel" />
+
         <variable
             name="model"
             type="sample.data.User" />
@@ -31,13 +36,15 @@
             android:id="@+id/btApiCall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Api Call" />
+            android:text="Api Call"
+            android:onClick="@{viewModel::onClickedApiCall}" />
 
         <Button
             android:id="@+id/btCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cancel" />
+            android:text="Cancel"
+            android:onClick="@{viewModel::onClickedCancelJobs}" />
 
 
     </LinearLayout>

@@ -17,7 +17,7 @@
 package meow.core.api
 
 /**
- * The event of MVVM class containing [Nothing], [Loading], [Success], [Error], [Cancellation].
+ * The event of MVVM class containing [Loading], [Success], [Error], [Cancellation].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -26,8 +26,6 @@ package meow.core.api
 
 sealed class MeowEvent {
     abstract val response: MeowResponse<*>?
-
-    data class Nothing(override val response: MeowResponse<*>? = null) : MeowEvent()
 
     data class Loading(override val response: MeowResponse<*>? = null) : MeowEvent()
 
