@@ -20,30 +20,28 @@ import android.os.Bundle
 import android.widget.Toast
 import meow.core.arch.MeowFlow
 import meow.utils.createErrorMessage
-import meow.utils.viewModel
 import sample.R
 import sample.data.User
-import sample.databinding.ActivityUserDetailBinding
-import sample.ui.BaseActivity
+import sample.databinding.FragmentUserDetailBinding
+import sample.ui.base.BaseFragment
 
 /**
- * [User]/Get Activity class.
+ * [User]/Detail Fragment class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-02-29
  */
 
-class UserDetailActivity : BaseActivity<ActivityUserDetailBinding>() {
+class UserDetailFragment : BaseFragment<FragmentUserDetailBinding, UserDetailViewModel>() {
 
-    private val viewModel: UserDetailViewModel by viewModel()
-    override fun layoutId() = R.layout.activity_user_detail
+    override fun viewModelClass() = UserDetailViewModel::class.java
+    override fun layoutId() = R.layout.fragment_user_detail
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
         observeViewModel()
-
         viewModel.requestApi(User.RequestGet("1"))
     }
 
@@ -64,6 +62,6 @@ class UserDetailActivity : BaseActivity<ActivityUserDetailBinding>() {
 
     private fun showError(message: String) {
         binding.tvStatus.text = message
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

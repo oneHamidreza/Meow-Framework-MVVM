@@ -14,14 +14,19 @@
  * limitations under the License.
  */
 
-package meow.core.arch
+package sample.ui.main
+
+import meow.core.arch.MeowViewModel
+import sample.App
 
 /**
- * The Base of Repository in MVVM architecture.
+ * [Main] View Model class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-02-24
+ * @since   2020-03-10
  */
 
-open class MeowRepository
+class MainViewModel(
+    override val app: App
+) : MeowViewModel(app)

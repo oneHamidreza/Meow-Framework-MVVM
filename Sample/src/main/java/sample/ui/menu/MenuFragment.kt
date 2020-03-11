@@ -1,3 +1,11 @@
+package sample.ui.menu
+
+import android.os.Bundle
+import androidx.navigation.fragment.findNavController
+import sample.R
+import sample.databinding.FragmentMenuBinding
+import sample.ui.base.BaseFragment
+
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -14,25 +22,23 @@
  * limitations under the License.
  */
 
-package meow.core.arch
-
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import org.kodein.di.DKodein
-import org.kodein.di.erased.instance
-
 /**
- * Kodein View Model Factory class.
+ * Menu Fragment class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-07
+ * @since   2020-03-11
  */
 
-class MeowViewModelFactory(private val injector: DKodein) : ViewModelProvider.Factory {
+class MenuFragment : BaseFragment<FragmentMenuBinding, MenuViewModel>() {
 
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return injector.instance<ViewModel>(tag = modelClass.simpleName) as T?
-            ?: modelClass.newInstance()
+    override fun layoutId() = R.layout.fragment_menu
+    override fun viewModelClass() = MenuViewModel::class.java
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        binding.viewModel = viewModel
+        viewModel.navController = findNavController()
     }
+
 }

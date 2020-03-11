@@ -57,9 +57,9 @@ fun createOkHttpClient(api: AppApi, options: MeowApi.Options, dataSource: DataSo
 
     }.build()
 
-class AppApi(
-    var app: App,
-    var refreshToken: String? = null,
+open class AppApi(
+    open var app: App,
+    open var refreshToken: String? = null,
     override var options: Options = Options()
 ) : MeowApi(options) {
 
@@ -86,3 +86,12 @@ class AppApi(
     }
 }
 
+class TestAppApi(
+    override var app: App,
+    override var refreshToken: String? = null,
+    override var options: Options = Options()
+) : AppApi(app, refreshToken, options) {
+    override fun getBaseUrl(): String {
+        return "test-api.com"
+    }
+}

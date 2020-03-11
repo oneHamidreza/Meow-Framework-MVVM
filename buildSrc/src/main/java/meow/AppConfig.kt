@@ -40,28 +40,32 @@ object AppConfig {
 
     object Library {
         val mainDependencies = arrayOf(
-            // core
+            // Core
             kotlinx("serialization-runtime", "0.14.0"),
             kotlinx("coroutines-core", "1.3.0-gradle"),
-            // android x
+            // Material
             "com.google.android.material:material:1.1.0",
+            // Lifecycle
             "androidx.lifecycle:lifecycle-common-java8:2.2.0",
-            "androidx.lifecycle:lifecycle-extensions:2.2.0-rc03",
+            "androidx.lifecycle:lifecycle-extensions:2.2.0",
             "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0",
             "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0",
-            "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0-rc03",
-            // connection & parsing data
+            "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-alpha01",
+            // OkHttp & Retrofit & Moshi
             "com.squareup.okhttp3:okhttp:4.4.0",
             "com.squareup.retrofit2:retrofit:2.7.2",
             "com.squareup.retrofit2:converter-moshi:2.7.2",
             "com.squareup.moshi:moshi:1.9.2",
             "com.squareup.moshi:moshi-kotlin:1.9.2",
-            // dependency injection
+            // Kodein
             "org.kodein.di:kodein-di-core:6.5.2",
             "org.kodein.di:kodein-di-erased:6.5.2",
             "org.kodein.di:kodein-di-framework-android-x:6.5.2",
-            // secure shared preferences
-            "in.co.ophio:secure-preferences:0.1.3"
+            // Secure Shared Preferences
+            "in.co.ophio:secure-preferences:0.1.3",
+            // Navigation
+            "androidx.navigation:navigation-fragment-ktx:2.3.0-alpha03",
+            "androidx.navigation:navigation-ui-ktx:2.3.0-alpha03"
         )
 
         val sampleDependencies = emptyArray<String>()

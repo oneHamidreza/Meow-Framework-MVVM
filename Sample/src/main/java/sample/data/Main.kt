@@ -1,7 +1,3 @@
-package meow.core.arch
-
-import android.app.Application
-
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -18,14 +14,17 @@ import android.app.Application
  * limitations under the License.
  */
 
+package sample.data
+
+import kotlinx.serialization.Serializable
+
 /**
- * Interface of DataSource class.
+ * Main Model class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-08
+ * @since   2020-03-10
  */
 
-interface IDataSource {
-    val app: Application
-}
+@Serializable
+data class Main(var isFromLogin: Boolean = false)

@@ -19,7 +19,7 @@ package meow.utils
 import java.util.*
 
 /**
- * The Extensions of [String].
+ * Extensions of [String].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

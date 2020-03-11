@@ -1,9 +1,3 @@
-package meow.utils
-
-import androidx.recyclerview.widget.RecyclerView
-import meow.widget.decoration.ItemOffsetBlock
-import meow.widget.decoration.SimpleDecoration
-
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -20,14 +14,19 @@ import meow.widget.decoration.SimpleDecoration
  * limitations under the License.
  */
 
+package meow.utils
+
+import androidx.recyclerview.widget.RecyclerView
+import meow.widget.decoration.ItemOffsetBlock
+import meow.widget.decoration.SimpleDecoration
+
 /**
- * Describe class.
+ * Extensions of [RecyclerView] class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-08
  */
-
 
 fun RecyclerView.addItemDecoration(block: ItemOffsetBlock) =
     addItemDecoration(SimpleDecoration(block))

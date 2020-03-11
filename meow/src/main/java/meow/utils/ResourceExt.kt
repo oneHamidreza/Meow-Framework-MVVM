@@ -22,7 +22,7 @@ import androidx.core.content.ContextCompat
 import meow.controller
 
 /**
- * The Extensions of [Resources] class.
+ * Extensions of [Resources] class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

@@ -27,7 +27,7 @@ import meow.core.api.SimpleModel
 import retrofit2.HttpException
 
 /**
- * The Extensions of [MeowResponse].
+ * Extensions of [MeowResponse].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

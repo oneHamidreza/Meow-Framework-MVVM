@@ -14,25 +14,28 @@
  * limitations under the License.
  */
 
-package meow.core.arch
+package sample.ui.menu
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import org.kodein.di.DKodein
-import org.kodein.di.erased.instance
+import android.app.Application
+import android.view.View
+import androidx.navigation.NavController
+import meow.core.arch.MeowViewModel
+import sample.R
 
 /**
- * Kodein View Model Factory class.
+ * Menu View Model class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-07
+ * @since   2020-03-11
  */
 
-class MeowViewModelFactory(private val injector: DKodein) : ViewModelProvider.Factory {
+class MenuViewModel(app: Application) : MeowViewModel(app) {
 
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return injector.instance<ViewModel>(tag = modelClass.simpleName) as T?
-            ?: modelClass.newInstance()
+    lateinit var navController: NavController
+
+    fun onClickedUserDetailApi(@Suppress("UNUSED_PARAMETER") view: View) {
+        navController.navigate(R.id.fragmentUserDetail)
     }
+
 }

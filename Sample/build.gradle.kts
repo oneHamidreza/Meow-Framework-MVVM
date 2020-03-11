@@ -9,6 +9,7 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     id("kotlinx-serialization")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {

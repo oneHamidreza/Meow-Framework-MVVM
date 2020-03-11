@@ -43,7 +43,7 @@ class MeowController(
     var dpi: Float = app.resources.displayMetrics.density,
     var layoutDirection: Int = LayoutDirection.INHERIT,
     var onColorGet: (context: Context, color: Int) -> Int = { _, color -> color },
-    var forceNightMode: Boolean = false
+    forceNightMode: Boolean = false
 ) {
 
     var theme = if (app.isNightModeFromSettings() || forceNightMode) Theme.NIGHT else Theme.DAY

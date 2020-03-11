@@ -14,23 +14,18 @@
  * limitations under the License.
  */
 
-package sample.ui
+package meow.core.arch
 
-import androidx.databinding.ViewDataBinding
-import meow.core.arch.ui.MeowActivity
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.closestKodein
+import android.app.Application
 
 /**
- * The Base Activity class.
+ * Data Source interface.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-06
+ * @since   2020-03-08
  */
 
-abstract class BaseActivity<B : ViewDataBinding> : MeowActivity<B>(), KodeinAware {
-
-    override val kodein by closestKodein()
-
+interface DataSourceImpl {
+    val app: Application
 }

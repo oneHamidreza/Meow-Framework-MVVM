@@ -37,9 +37,10 @@ class UserDetailViewModel(app: App, val repository: User.Repository) : MeowViewM
     var eventLiveData = MutableLiveData<MeowEvent>()
     var model: User? = null
 
-    fun onClickedApiCall(view: View) = requestApi(User.RequestGet("2"))
+    fun onClickedApiCall(@Suppress("UNUSED_PARAMETER") view: View) =
+        requestApi(User.RequestGet("2"))
 
-    fun onClickedCancelJobs(view: View) = cancelAllJobs()
+    fun onClickedCancelJobs(@Suppress("UNUSED_PARAMETER") view: View) = cancelAllJobs()
 
     fun requestApi(request: User.RequestGet) {
         eventLiveData.safeApiCall(

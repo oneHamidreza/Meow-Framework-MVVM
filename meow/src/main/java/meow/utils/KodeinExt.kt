@@ -16,17 +16,18 @@
 
 package meow.utils
 
-import androidx.fragment.app.FragmentActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProviders
+import meow.core.arch.MeowViewModel
+import meow.core.arch.MeowViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.direct
 import org.kodein.di.erased.bind
-import org.kodein.di.erased.instance
 
 /**
- * The Extensions of [Kodein] class.
+ * Extensions of [Kodein] class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -39,48 +40,14 @@ import org.kodein.di.erased.instance
     https://proandroiddev.com/android-viewmodel-dependency-injection-with-kodein-249f80f083c9
 */
 
-inline fun <reified VM : ViewModel, T> T.viewModel(): Lazy<VM> where T : KodeinAware, T : FragmentActivity {
-    return lazy { ViewModelProviders.of(this, direct.instance()).get(VM::class.java) }
+fun <VM : MeowViewModel, T> T.viewModel(clazz: Class<VM>): Lazy<VM> where T : KodeinAware, T : AppCompatActivity {
+    return lazy { MeowViewModelFactory(kodein.direct).create(clazz) }
+}
+
+fun <VM : MeowViewModel, T> T.viewModel(clazz: Class<VM>): Lazy<VM> where T : KodeinAware, T : Fragment {
+    return lazy { MeowViewModelFactory(kodein.direct).create(clazz) }
 }
 
 inline fun <reified T : ViewModel> Kodein.Builder.bindAutoTag(overrides: Boolean? = null): Kodein.Builder.TypeBinder<T> {
     return bind<T>(T::class.java.simpleName, overrides)
 }
-
-//inline fun <reified VM : ViewModel> VM.overrideInjectionRuleForTesting() =
-//    KodeinViewModelInjector.overrideInjectionRuleForTesting(
-//        VM::class.java, this)
-//
-//@Suppress("unused")
-//inline fun <reified VM : ViewModel> VM.clearInjectionRuleForTesting() =
-//    KodeinViewModelInjector.clearInjectionRuleForTesting(VM::class.java)
-
-//inline fun <reified VM : ViewModel> viewModelBinder(
-//    baseContainer: Kodein = KodeinViewModelInjector.container,
-//    crossinline binder: (Kodein.Builder.() -> Unit)
-//) = lazy {
-//    getMeowKodeinFactory<VM>(baseContainer, binder).create(createClass())
-//}
-//
-//inline fun <reified VM : ViewModel> getMeowKodeinFactory(
-//    baseContainer: Kodein,
-//    crossinline binder: (Kodein.Builder.() -> Unit)
-//) = object : ViewModelProvider.Factory {
-//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-////                val testViewModel = KodeinViewModelInjector
-////                    .getTestViewModel(VM::class.java)
-//        val testViewModel = null
-//        @Suppress("UNCHECKED_CAST")
-//        return when (testViewModel) {
-//            null ->
-//                Kodein {
-//                    extend(baseContainer)
-//                    binder.invoke(this)
-//                }.run {
-//                    val viewModel by instance<VM>()
-//                    viewModel
-//                }
-//            else -> testViewModel
-//        } as T
-//    }
-//}

@@ -32,14 +32,12 @@ import org.kodein.di.erased.singleton
  * @since   2020-03-08
  */
 
-open class MeowApp : Application() {
-
-    val meowModule = Kodein.Module("Base Module", false) {
-        bind<ViewModelProvider.Factory>() with singleton {
-            MeowViewModelFactory(
-                kodein.direct
-            )
-        }
+val meowModule = Kodein.Module("Base Module", false) {
+    bind<ViewModelProvider.Factory>() with singleton {
+        MeowViewModelFactory(
+            kodein.direct
+        )
     }
-
 }
+
+open class MeowApp : Application()

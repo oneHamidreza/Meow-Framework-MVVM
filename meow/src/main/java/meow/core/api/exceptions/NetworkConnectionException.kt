@@ -17,7 +17,7 @@
 package meow.core.api.exceptions
 
 /**
- * A exception class for network connection issue such as NO WIFI or NO CELUAR NETWORK and etc
+ * Exception class for network connection issue such as NO WIFI or NO CELUAR NETWORK and etc
  * and containing no internet connection statuses.
  *
  * @author  Hamidreza Etebarian
@@ -28,6 +28,6 @@ package meow.core.api.exceptions
 /**
  * NetworkConnectionException class.
  *
- * @property message containing the string of message exception.
+ * @property message is the string of message exception.
  */
 class NetworkConnectionException(message: String? = "Internet connection required.") : Exception(message)

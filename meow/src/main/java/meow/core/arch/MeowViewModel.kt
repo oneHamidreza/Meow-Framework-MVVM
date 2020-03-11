@@ -17,6 +17,7 @@
 package meow.core.arch
 
 import android.app.Application
+import android.content.res.Resources
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CancellationException
@@ -31,6 +32,7 @@ import meow.utils.*
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
+import org.kodein.di.erased.instance
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
 
@@ -45,6 +47,7 @@ import java.net.SocketTimeoutException
 open class MeowViewModel(open val app: Application) : AndroidViewModel(app), KodeinAware {
 
     override val kodein: Kodein by closestKodein()
+    val resources: Resources by instance()
 
     var jobWithIds = mutableListOf<Pair<Int, Job>>()
 

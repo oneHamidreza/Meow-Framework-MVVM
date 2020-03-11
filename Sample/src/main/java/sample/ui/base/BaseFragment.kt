@@ -14,25 +14,18 @@
  * limitations under the License.
  */
 
-package meow.core.arch
+package sample.ui.base
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import org.kodein.di.DKodein
-import org.kodein.di.erased.instance
+import androidx.databinding.ViewDataBinding
+import meow.core.arch.MeowViewModel
+import meow.core.ui.MeowFragment
 
 /**
- * Kodein View Model Factory class.
+ * Base Fragment class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-07
+ * @since   2020-03-11
  */
 
-class MeowViewModelFactory(private val injector: DKodein) : ViewModelProvider.Factory {
-
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return injector.instance<ViewModel>(tag = modelClass.simpleName) as T?
-            ?: modelClass.newInstance()
-    }
-}
+abstract class BaseFragment<B : ViewDataBinding, VM : MeowViewModel> : MeowFragment<B, VM>()

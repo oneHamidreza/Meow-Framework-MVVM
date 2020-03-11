@@ -22,7 +22,7 @@ import android.net.ConnectivityManager
 import androidx.fragment.app.Fragment
 
 /**
- * The Extensions of Network.
+ * Extensions of Network.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

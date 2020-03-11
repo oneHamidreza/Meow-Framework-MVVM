@@ -1,16 +1,3 @@
-package meow.core.arch.ui
-
-import android.app.Application
-import android.view.LayoutInflater
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
-import meow.core.arch.MeowViewModel
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.closestKodein
-import org.kodein.di.erased.instance
-import org.kodein.di.erased.on
-
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -27,8 +14,21 @@ import org.kodein.di.erased.on
  * limitations under the License.
  */
 
+package meow.core.ui
+
+import android.app.Application
+import android.view.LayoutInflater
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import meow.core.arch.MeowViewModel
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.closestKodein
+import org.kodein.di.erased.instance
+import org.kodein.di.erased.on
+
 /**
- * The Meow of Recycler View Adapter class inherits from [RecyclerView.Adapter].
+ * Meow Adapter class inherits from [RecyclerView.Adapter].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

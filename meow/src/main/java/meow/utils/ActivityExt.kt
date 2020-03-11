@@ -16,19 +16,10 @@
 
 package meow.utils
 
-import android.app.Application
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import meow.core.arch.MeowViewModel
-
 /**
- * The Extensions of [AppCompatActivity].
+ * Extensions of [AppCompatActivity].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-02
  */
-
-inline fun <reified VM : MeowViewModel> Application.initViewModel(): VM {
-    return ViewModelProvider.AndroidViewModelFactory(this).create(createClass<VM>())
-}

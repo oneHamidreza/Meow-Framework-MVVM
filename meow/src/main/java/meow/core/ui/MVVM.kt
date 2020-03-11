@@ -14,35 +14,27 @@
  * limitations under the License.
  */
 
-package meow.core.arch.ui
+package meow.core.ui
 
-import android.os.Bundle
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import meow.core.arch.MeowViewModel
 
 /**
- * The Base of Activity.
+ * MVVM interface.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-02-28
+ * @since   2020-03-11
  */
 
-abstract class MeowActivity<B : ViewDataBinding> : AppCompatActivity() {
+interface MVVM<B : ViewDataBinding, VM : MeowViewModel> {
 
-    protected lateinit var binding: B
+    var binding: B
 
     @LayoutRes
-    protected abstract fun layoutId(): Int
+    fun layoutId(): Int
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        bindContentView(layoutId())
-    }
+    fun viewModelClass(): Class<VM>
 
-    private fun bindContentView(layoutId: Int) {
-        binding = DataBindingUtil.setContentView(this, layoutId)
-    }
 }

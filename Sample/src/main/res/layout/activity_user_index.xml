@@ -15,9 +15,7 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
-            style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/Toolbar"
             app:subtitle="Primary Surface"
             app:title="Toolbar" />
 

@@ -19,7 +19,7 @@ package meow.utils
 import meow.core.api.MeowEvent
 
 /**
- * The Extensions of [MeowEvent].
+ * Extensions of [MeowEvent].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

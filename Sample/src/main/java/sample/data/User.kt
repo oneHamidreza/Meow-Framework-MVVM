@@ -20,7 +20,6 @@ import androidx.recyclerview.widget.DiffUtil
 import com.squareup.moshi.Json
 import kotlinx.serialization.Serializable
 import meow.core.api.MeowRequest
-import meow.core.arch.MeowRepository
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -58,7 +57,7 @@ data class User(
         }
     }
 
-    class Repository(private val ds: DataSource) : MeowRepository() {
+    class Repository(private val ds: DataSource) {
 
         suspend fun getUserByIdApi(request: RequestGet) = ds.getUserById(request)
         suspend fun getUsersApi() = ds.getUsers()

@@ -17,7 +17,7 @@
 package meow.utils
 
 /**
- * The Extensions of Kotlin.
+ * Extensions of Kotlin.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

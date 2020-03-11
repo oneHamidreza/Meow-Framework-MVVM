@@ -18,8 +18,8 @@ package sample.ui.user.index
 
 import android.app.Application
 import android.view.ViewGroup
-import meow.core.arch.ui.MeowAdapter
-import meow.core.arch.ui.MeowViewHolder
+import meow.core.ui.MeowAdapter
+import meow.core.ui.MeowViewHolder
 import meow.utils.getColorCompat
 import sample.R
 import sample.data.User

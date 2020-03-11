@@ -26,7 +26,7 @@ import androidx.core.content.ContextCompat
 import meow.controller
 
 /**
- * The Extensions of OS & Build.
+ * Extensions of OS & Build.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

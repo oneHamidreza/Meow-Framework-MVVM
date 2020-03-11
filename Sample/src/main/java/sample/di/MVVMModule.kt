@@ -24,18 +24,30 @@ import org.kodein.di.erased.instance
 import org.kodein.di.erased.provider
 import org.kodein.di.erased.singleton
 import sample.data.User
+import sample.ui.main.MainViewModel
+import sample.ui.menu.MenuViewModel
 import sample.ui.user.detail.UserDetailViewModel
 import sample.ui.user.index.UserIndexViewModel
 
 /**
- * The Module of application (resources, shared preferences).
+ * The Module of MVVM (ViewModels, Repositories).
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-06
  */
 
-val viewModelModule = Module("View Model Module", false) {
+val mvvmModule = Module("MVVM Module", false) {
+    bindAutoTag<MainViewModel>() with provider {
+        MainViewModel(
+            kodein.direct.instance()
+        )
+    }
+    bindAutoTag<MenuViewModel>() with provider {
+        MenuViewModel(
+            kodein.direct.instance()
+        )
+    }
     bindAutoTag<UserDetailViewModel>() with provider {
         UserDetailViewModel(
             kodein.direct.instance(),

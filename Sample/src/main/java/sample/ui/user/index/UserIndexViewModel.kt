@@ -16,13 +16,11 @@
 
 package sample.ui.user.index
 
-import android.content.res.Resources
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import meow.controller
 import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
-import org.kodein.di.erased.instance
 import sample.App
 import sample.data.User
 
@@ -38,8 +36,6 @@ class UserIndexViewModel(
     override val app: App,
     private val repository: User.Repository
 ) : MeowViewModel(app) {
-
-    val resources: Resources by instance()
 
     var eventLiveData = MutableLiveData<MeowEvent>()
     val listLiveData = MutableLiveData<List<User>>()

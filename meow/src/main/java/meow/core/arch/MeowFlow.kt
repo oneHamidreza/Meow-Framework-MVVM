@@ -20,12 +20,13 @@ import android.app.Dialog
 import android.view.View
 import androidx.lifecycle.LiveData
 import meow.core.api.MeowEvent
+import meow.core.arch.MeowFlow.DetailApi
 import meow.utils.*
 import meow.widget.ErrorImpl
 import meow.widget.ProgressBarImpl
 
 /**
- * The Meow Component class.
+ * Meow Flow class containing [DetailApi].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

@@ -20,7 +20,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 
 /**
- * The Extensions of [LiveData].
+ * Extensions of [LiveData].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

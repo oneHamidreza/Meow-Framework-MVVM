@@ -21,7 +21,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okio.BufferedSource
 
 /**
- * The Extensions of Json Data.
+ * Extensions of Json Data.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

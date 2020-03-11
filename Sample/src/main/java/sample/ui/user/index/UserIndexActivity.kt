@@ -24,7 +24,7 @@ import meow.widget.decoration.MeowDividerDecoration
 import sample.R
 import sample.data.User
 import sample.databinding.ActivityUserIndexBinding
-import sample.ui.BaseActivity
+import sample.ui.base.BaseActivity
 
 /**
  * [User]/Index Activity class.
@@ -34,12 +34,12 @@ import sample.ui.BaseActivity
  * @since   2020-02-29
  */
 
-class UserIndexActivity : BaseActivity<ActivityUserIndexBinding>() {
+class UserIndexActivity : BaseActivity<ActivityUserIndexBinding, UserIndexViewModel>() {
 
     private lateinit var listAdapter: UserAdapter
 
-    private val viewModel: UserIndexViewModel by viewModel()
     override fun layoutId() = R.layout.activity_user_index
+    override fun viewModelClass() = UserIndexViewModel::class.java
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

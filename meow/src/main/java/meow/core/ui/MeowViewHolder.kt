@@ -14,25 +14,27 @@
  * limitations under the License.
  */
 
-package meow.core.arch
+package meow.core.ui
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import org.kodein.di.DKodein
-import org.kodein.di.erased.instance
+import android.view.View
+
+import androidx.recyclerview.widget.RecyclerView
+import meow.core.arch.MeowViewModel
 
 /**
- * Kodein View Model Factory class.
+ * Meow View Holder class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-07
+ * @since   2020-03-11
  */
 
-class MeowViewModelFactory(private val injector: DKodein) : ViewModelProvider.Factory {
+class MeowViewHolder<T, VM : MeowViewModel>(
+    itemView: View?,
+    var onBindBlock: (position: Int, model: T, viewModel: VM) -> Unit
+) : RecyclerView.ViewHolder(itemView!!) {
 
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return injector.instance<ViewModel>(tag = modelClass.simpleName) as T?
-            ?: modelClass.newInstance()
+    fun onBind(position: Int, model: T, viewModel: VM) {
+        onBindBlock(position, model, viewModel)
     }
 }

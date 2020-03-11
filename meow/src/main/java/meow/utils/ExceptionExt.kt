@@ -19,7 +19,7 @@ package meow.utils
 import meow.controller
 
 /**
- * The Extensions of [Exception].
+ * Extensions of [Exception].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

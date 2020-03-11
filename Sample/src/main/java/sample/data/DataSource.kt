@@ -17,7 +17,7 @@
 package sample.data
 
 import android.content.res.Resources
-import meow.core.arch.IDataSource
+import meow.core.arch.DataSourceImpl
 import meow.core.data.MeowSharedPreferences
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
@@ -33,7 +33,7 @@ import sample.di.AppApi
  * @since   2020-03-06
  */
 
-class DataSource(override var app: App) : IDataSource, KodeinAware {
+class DataSource(override var app: App) : DataSourceImpl, KodeinAware {
 
     override val kodein by closestKodein(app)
     val api: AppApi by instance()
