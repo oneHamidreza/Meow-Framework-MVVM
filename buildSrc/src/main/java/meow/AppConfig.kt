@@ -51,6 +51,8 @@ object AppConfig {
             "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0",
             "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0",
             "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-alpha01",
+            // ExifInterface
+            "androidx.exifinterface:exifinterface:1.1.0",
             // OkHttp & Retrofit & Moshi
             "com.squareup.okhttp3:okhttp:4.4.0",
             "com.squareup.retrofit2:retrofit:2.7.2",

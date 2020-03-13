@@ -46,11 +46,24 @@
         <item name="textAppearanceCaption">@style/TextAppearance.MaterialComponents.Caption</item>
         <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Button</item>
         <item name="textAppearanceOverline">@style/TextAppearance.MaterialComponents.Overline</item>
+
+        <!--        <item name="actionOverflowButtonStyle">@style/ActionButtonOverflowStyle</item>-->
+        <!--        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>-->
     </style>
 
     <style name="Toolbar" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="MyToolbarStyle" parent="Theme.AppCompat"></style>
+
+    <style name="ActionButtonOverflowStyle">
+        <!--        <item name="android:color">@color/on_primary</item>-->
+    </style>
+
+    <style name="DrawerArrowStyle">
+        <!--        <item name="android:color">@color/on_primary</item>-->
     </style>
 
 </resources>
