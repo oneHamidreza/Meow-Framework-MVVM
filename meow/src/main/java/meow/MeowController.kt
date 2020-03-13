@@ -17,7 +17,6 @@
 package meow
 
 import android.app.Application
-import android.content.Context
 import android.util.LayoutDirection
 import androidx.appcompat.app.AppCompatDelegate
 import meow.core.api.MeowSession
@@ -42,7 +41,7 @@ class MeowController(
     var onException: (exception: Exception) -> Unit = {},
     var dpi: Float = app.resources.displayMetrics.density,
     var layoutDirection: Int = LayoutDirection.INHERIT,
-    var onColorGet: (context: Context, color: Int) -> Int = { _, color -> color },
+    var onColorGet: (color: Int) -> Int = { color -> color },
     forceNightMode: Boolean = false
 ) {
 

@@ -27,6 +27,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 //        setConsumerProguardFiles(kotlin.arrayOf("consumer-rules.pro"))
 
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {

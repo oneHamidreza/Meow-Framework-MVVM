@@ -18,7 +18,11 @@ package meow.utils
 
 import android.content.Context
 import android.content.res.Resources
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import meow.controller
 
 /**
@@ -35,4 +39,9 @@ fun Resources?.getDimensionToPx(resId: Int) = this?.getDimension(resId)?.toInt()
 fun Context?.getStringCompat(resId: Int) = this?.resources.getStringCompat(resId)
 fun Context?.getDimensionToPx(resId: Int) = this?.resources.getDimensionToPx(resId)
 fun Context?.getColorCompat(resId: Int) =
-    if (this == null) 0 else controller.onColorGet(this!!, ContextCompat.getColor(this, resId))
+    if (this == null) 0 else controller.onColorGet(ContextCompat.getColor(this, resId))
+
+fun Drawable?.setTintCompat(color: Int): Drawable {
+    if (this == null) return ColorDrawable(Color.TRANSPARENT)
+    return this!!.apply { DrawableCompat.setTint(this, color) }
+}

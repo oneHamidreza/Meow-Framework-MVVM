@@ -16,6 +16,7 @@
 
 package sample.ui.main
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -23,6 +24,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import meow.utils.safePost
+import meow.utils.setNavigateIconTint
 import sample.R
 import sample.databinding.ActivityMainBinding
 import sample.ui.base.BaseActivity
@@ -58,12 +61,19 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     }
 
     private fun setupNavigation() {
-        navController = findNavController(R.id.navHost)
+        navController = findNavController(R.id.navHost).apply {
+            addOnDestinationChangedListener { _, destination, _ ->
+            }
+        }
         appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.drawerLayout.setStatusBarBackground(R.color.primary_variant)
-        binding.navigationView.setupWithNavController(navController)
+
+        binding.apply {
+            drawerLayout.setStatusBarBackground(R.color.primary_variant)
+            navigationView.setupWithNavController(navController)
+        }
+        binding.toolbar.safePost(2000) { setNavigateIconTint(Color.RED) }
     }
 
     private fun observeViewModel() {
