@@ -20,10 +20,13 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import sample.R
 import sample.databinding.ActivityMainBinding
 import sample.ui.base.BaseActivity
+
 
 /**
  * Main Activity class.
@@ -37,6 +40,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
+    val nowFragment
+        get() = supportFragmentManager.findFragmentById(navController.currentDestination!!.id.apply {
+            print(
+                this
+            )
+        })
 
     override fun viewModelClass() = MainViewModel::class.java
     override fun layoutId() = R.layout.activity_main
@@ -44,15 +53,24 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(binding.toolbar)
+        setupNavigation()
+        observeViewModel()
+    }
 
+    private fun setupNavigation() {
         navController = findNavController(R.id.navHost)
-        appBarConfiguration = AppBarConfiguration(setOf(R.layout.fragment_user_detail))
+        appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        observeViewModel()
+        binding.drawerLayout.setStatusBarBackground(R.color.primary_variant)
+        binding.navigationView.setupWithNavController(navController)
     }
 
     private fun observeViewModel() {
         binding.viewModel = viewModel
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return (navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp())
     }
 }

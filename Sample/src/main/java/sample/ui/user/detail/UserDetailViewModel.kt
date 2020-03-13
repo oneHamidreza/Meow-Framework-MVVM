@@ -20,7 +20,6 @@ import android.view.View
 import androidx.lifecycle.MutableLiveData
 import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
-import meow.utils.ofSuccessEvent
 import sample.App
 import sample.data.User
 
@@ -34,7 +33,7 @@ import sample.data.User
 
 class UserDetailViewModel(app: App, val repository: User.Repository) : MeowViewModel(app) {
 
-    var eventLiveData = MutableLiveData<MeowEvent>()
+    var apiLiveData = MutableLiveData<MeowEvent<*>>()
     var model: User? = null
 
     fun onClickedApiCall(@Suppress("UNUSED_PARAMETER") view: View) =
@@ -43,7 +42,7 @@ class UserDetailViewModel(app: App, val repository: User.Repository) : MeowViewM
     fun onClickedCancelJobs(@Suppress("UNUSED_PARAMETER") view: View) = cancelAllJobs()
 
     fun requestApi(request: User.RequestGet) {
-        eventLiveData.safeApiCall(
+        apiLiveData.safeApiCall(
             request = request,
             isNetworkRequired = false,
             apiAction = { repository.getUserByIdApi(request) }
@@ -52,9 +51,9 @@ class UserDetailViewModel(app: App, val repository: User.Repository) : MeowViewM
         }
     }
 
-    fun fetchUserOffline() {
-        model = repository.getSavedUser()
-        eventLiveData.postValue(ofSuccessEvent(model))
-    }
+//    fun fetchUserOffline() {
+//        model = repository.getSavedUser()
+//        eventLiveData.postValue(ofSuccessEvent(model))
+//    }
 
 }

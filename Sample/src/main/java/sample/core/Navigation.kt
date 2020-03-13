@@ -14,26 +14,18 @@
  * limitations under the License.
  */
 
-package meow.utils
+package sample.core
 
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
+import androidx.navigation.ActionOnlyNavDirections
+import androidx.navigation.NavController
+import sample.R
 
 /**
- * Extensions of [LiveData].
+ * Navigation Extensions.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2/29/2020
+ * @since   2020-03-13
  */
 
-fun <T> LiveData<T>.safeObserve(owner: LifecycleOwner? = null, observer: (T) -> Unit) {
-    val archObserver = Observer<T> { value ->
-        if (value is T) avoidException { observer(value) }
-    }
-    if (owner != null)
-        observe(owner, archObserver)
-    else
-        observeForever(archObserver)
-}
+fun NavController.actionToUserDetail() = navigate(ActionOnlyNavDirections(R.id.actionToUserDetail))

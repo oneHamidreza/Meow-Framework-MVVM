@@ -24,14 +24,17 @@ package meow.core.api
  * @since   2020-03-01
  */
 
-sealed class MeowEvent {
-    abstract val response: MeowResponse<*>?
+sealed class MeowEvent<T> {
 
-    data class Loading(override val response: MeowResponse<*>? = null) : MeowEvent()
+    abstract val data: T?
 
-    data class Success(override val response: MeowResponse<*>) : MeowEvent()
+    data class Any<T>(override val data: T? = null) : MeowEvent<T>()
 
-    data class Error(override val response: MeowResponse<*>) : MeowEvent()
+    sealed class Api {
 
-    data class Cancellation(override val response: MeowResponse<*>? = null) : MeowEvent()
+        data class Loading(override val data: Nothing? = null) : MeowEvent<Nothing>()
+        data class Success(override val data: MeowResponse<*>) : MeowEvent<MeowResponse<*>>()
+        data class Error(override val data: MeowResponse<*>) : MeowEvent<MeowResponse<*>>()
+        data class Cancellation(override val data: Nothing) : MeowEvent<Nothing>()
+    }
 }

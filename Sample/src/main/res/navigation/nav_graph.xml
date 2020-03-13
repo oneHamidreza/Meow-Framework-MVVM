@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:startDestination="@id/fragmentMenu"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
     android:label="Main"
-    android:id="@+id/nav_graph">
+    app:startDestination="@id/fragmentMenu">
 
     <fragment
         android:id="@+id/fragmentMenu"
         android:name="sample.ui.menu.MenuFragment"
         android:label="Menu"
-        tools:layout="@layout/fragment_menu" />
+        tools:layout="@layout/fragment_menu">
+        <action
+            android:id="@+id/actionToUserDetail"
+            app:destination="@id/fragmentUserDetail" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragmentUserDetail"
         android:name="sample.ui.user.detail.UserDetailFragment"
         android:label="User Detail"
-        tools:layout="@layout/fragment_user_detail" />
+        tools:layout="@layout/fragment_user_detail">
+
+    </fragment>
 
 </navigation>

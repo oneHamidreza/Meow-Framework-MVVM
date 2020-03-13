@@ -18,7 +18,7 @@ package meow.utils
 
 import android.content.res.Resources
 import androidx.lifecycle.MutableLiveData
-import meow.R
+import com.etebarian.meowframework.R
 import meow.controller
 import meow.core.api.HttpCodes
 import meow.core.api.MeowEvent
@@ -37,20 +37,19 @@ import retrofit2.HttpException
 fun <T> MeowResponse<T>.isSuccess() =
     ((this as? MeowResponse.Success)?.code) in controller.apiSuccessRange
 
-fun <T> MeowResponse<T>?.isBadRequest() = this?.code == HttpCodes.BAD_REQUEST.code
-fun <T> MeowResponse<T>?.isUnAuthorized() = this?.code == HttpCodes.UNAUTHORIZED.code
-fun <T> MeowResponse<T>?.isForbidden() = this?.code == HttpCodes.FORBIDDEN.code
-fun <T> MeowResponse<T>?.isNotFound() = this?.code == HttpCodes.NOT_FOUND.code
-fun <T> MeowResponse<T>?.isUnprocessableEntity() = this?.code == HttpCodes.UNPROCESSABLE_ENTITY.code
-fun <T> MeowResponse<T>?.isCancellation() = this is MeowResponse.Cancellation
-fun <T> MeowResponse<T>?.isError() = this is MeowResponse.Error
-fun <T> MeowResponse<T>?.isHttpError() = this is MeowResponse.HttpError
-fun <T> MeowResponse<T>?.isParseError() = this is MeowResponse.ParseError
-fun <T> MeowResponse<T>?.isConnectionError() = this is MeowResponse.ConnectionError
-fun <T> MeowResponse<T>?.isNetworkError() = this is MeowResponse.NetworkError
-fun <T> MeowResponse<T>?.isGeneralError() = this is MeowResponse.GeneralError
-fun <T> MeowResponse<T>?.isUnexpectedError() = this is MeowResponse.UnExpectedError
-fun <T> MeowResponse<T>?.isRequestNotValidError() = this is MeowResponse.RequestNotValid
+fun MeowResponse<*>?.isBadRequest() = this?.code == HttpCodes.BAD_REQUEST.code
+fun MeowResponse<*>?.isUnAuthorized() = this?.code == HttpCodes.UNAUTHORIZED.code
+fun MeowResponse<*>?.isForbidden() = this?.code == HttpCodes.FORBIDDEN.code
+fun MeowResponse<*>?.isNotFound() = this?.code == HttpCodes.NOT_FOUND.code
+fun MeowResponse<*>?.isUnprocessableEntity() = this?.code == HttpCodes.UNPROCESSABLE_ENTITY.code
+fun MeowResponse<*>?.isError() = this is MeowResponse.Error
+fun MeowResponse<*>?.isHttpError() = this is MeowResponse.HttpError
+fun MeowResponse<*>?.isParseError() = this is MeowResponse.ParseError
+fun MeowResponse<*>?.isConnectionError() = this is MeowResponse.ConnectionError
+fun MeowResponse<*>?.isNetworkError() = this is MeowResponse.NetworkError
+fun MeowResponse<*>?.isGeneralError() = this is MeowResponse.GeneralError
+fun MeowResponse<*>?.isUnexpectedError() = this is MeowResponse.UnExpectedError
+fun MeowResponse<*>?.isRequestNotValidError() = this is MeowResponse.RequestNotValid
 
 fun createResponseFromHttpError(throwable: HttpException): MeowResponse.Error<*> {
     return avoidException(
@@ -71,29 +70,26 @@ fun createResponseFromHttpError(throwable: HttpException): MeowResponse.Error<*>
         }) ?: MeowResponse.UnExpectedError()
 }
 
-fun MeowResponse<*>.processAndPush(liveData: MutableLiveData<MeowEvent>) {
+fun MeowResponse<*>.processAndPush(liveData: MutableLiveData<MeowEvent<*>>) {
     avoidException {
         val eventWithRepository = when {
-            isCancellation() -> MeowEvent.Cancellation(this)
-            isError() -> MeowEvent.Error(this)
-            isSuccess() -> MeowEvent.Success(this)
-            else -> MeowEvent.Error(this)
+            isError() -> MeowEvent.Api.Error(this)
+            isSuccess() -> MeowEvent.Api.Success(this)
+            else -> MeowEvent.Api.Error(this)
         }
         liveData.postValue(eventWithRepository)
     }
 }
 
-fun <T> ofSuccessEvent(data: T) = MeowEvent.Success(MeowResponse.Success(data))
+fun <T> ofApiSuccessEvent(data: T) = MeowEvent.Api.Success(MeowResponse.Success(data))
 
 fun MeowResponse<*>?.createErrorMessage(resources: Resources): String {
     if (this == null)
         return resources.getStringCompat(R.string.error_response_unexpected).format(-100)
-    if (this.isCancellation())
-        return resources.getStringCompat(R.string.error_response_unexpected).format(-200)
     if (!this.isError())
-        return resources.getStringCompat(R.string.error_response_unexpected).format(-300)
-    if ((this as MeowResponse.Error).exception == null)
         return resources.getStringCompat(R.string.error_response_unexpected).format(-400)
+    if ((this as MeowResponse.Error<*>).exception == null)
+        return resources.getStringCompat(R.string.error_response_unexpected).format(-500)
 
     return when {
         isHttpError() -> {

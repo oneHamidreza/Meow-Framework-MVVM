@@ -27,6 +27,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
 import sample.App
+import sample.BuildConfig
 import sample.data.DataSource
 
 /**
@@ -74,7 +75,7 @@ open class AppApi(
     }
 
     override fun getBaseUrl(): String {
-        return "http://192.168.1.10:8888"
+        return BuildConfig.Api_IP
     }
 
     interface Oauth {

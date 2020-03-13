@@ -18,8 +18,10 @@ package meow.core.arch
 
 import android.app.Dialog
 import android.view.View
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import meow.core.api.MeowEvent
+import meow.core.api.MeowResponse
 import meow.core.arch.MeowFlow.DetailApi
 import meow.utils.*
 import meow.widget.ErrorImpl
@@ -57,9 +59,9 @@ sealed class MeowFlow {
         var dialog: Dialog? = null,
         var onBeforeAction: () -> Unit = { showLoading() },
         var onAfterAction: () -> Unit = { hideLoading() },
-        var onSuccessAction: (it: MeowEvent) -> Unit = {},
+        var onSuccessAction: (it: MeowResponse<*>) -> Unit = {},
         var onCancellationAction: () -> Unit = {},
-        var onErrorAction: (it: MeowEvent.Error) -> Unit = {},
+        var onErrorAction: (it: MeowEvent.Api.Error) -> Unit = {},
         var showLoading: () -> Unit = {
             progressBarImpl?.show()
             dialog?.show()
@@ -70,24 +72,24 @@ sealed class MeowFlow {
             dialog?.hide()
         }
     ) : MeowFlow() {
-        fun observe(liveData: LiveData<MeowEvent>?) {
-            liveData?.safeObserve {
+        fun observe(owner: LifecycleOwner?, liveData: LiveData<MeowEvent<*>>?) {
+            liveData?.safeObserve(owner) {
                 when {
-                    it.isLoading() -> {
+                    it.isApiLoading() -> {
                         onBeforeAction()
                     }
-                    it.isSuccess() -> {
+                    it.isApiSuccess() -> {
                         onAfterAction()
-                        onSuccessAction(it)
+                        onSuccessAction((it as MeowEvent.Api.Success).data)
                     }
-                    it.isCancellation() -> {
+                    it.isApiCancellation() -> {
                         onAfterAction()
                         onCancellationAction()
                     }
-                    it.isError() -> {
+                    it.isApiError() -> {
                         onAfterAction()
                         errorImpl?.show()
-                        onErrorAction(it as MeowEvent.Error)
+                        onErrorAction(it as MeowEvent.Api.Error)
                     }
                 }
             }

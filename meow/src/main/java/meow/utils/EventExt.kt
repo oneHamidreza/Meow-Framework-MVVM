@@ -26,7 +26,7 @@ import meow.core.api.MeowEvent
  * @since   2020-03-01
  */
 
-fun MeowEvent?.isLoading() = this is MeowEvent.Loading
-fun MeowEvent?.isCancellation() = this is MeowEvent.Cancellation
-fun MeowEvent?.isSuccess() = this is MeowEvent.Success
-fun MeowEvent?.isError() = this is MeowEvent.Error
+fun MeowEvent<*>?.isApiLoading() = this is MeowEvent.Api.Loading
+fun MeowEvent<*>?.isApiCancellation() = this is MeowEvent.Api.Cancellation
+fun MeowEvent<*>?.isApiSuccess() = this is MeowEvent.Api.Success
+fun MeowEvent<*>?.isApiError() = this is MeowEvent.Api.Error

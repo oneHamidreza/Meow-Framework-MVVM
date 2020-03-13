@@ -20,7 +20,7 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import meow.controller
-import meow.utils.toPx
+import meow.utils.dp
 
 /**
  * The Material Card Recycler View Decoration class inherits from [RecyclerView.ItemDecoration].
@@ -50,10 +50,10 @@ class MaterialCardDecoration(
 
     init {
         gapSize = if (hasShadow) gapSize - shadowSize else gapSize
-        gapSize = gapSize.toPx()
+        gapSize = gapSize.dp()
 
         gapStartSize = if (hasShadow) gapStartSize - shadowSize else gapStartSize
-        gapStartSize = gapStartSize.toPx()
+        gapStartSize = gapStartSize.dp()
 
         if (gapSize < 0)
             gapSize = 0
@@ -89,7 +89,7 @@ class MaterialCardDecoration(
             }
 
             if (m == (list?.size ?: 0) - 1) {
-                outRect.bottom = gapEndSize.toPx()
+                outRect.bottom = gapEndSize.dp()
             } else {
                 outRect.bottom = calculateGapSize()
             }
@@ -115,6 +115,6 @@ class MaterialCardDecoration(
         }
     }
 
-    private fun calculateGapSize() = if (hasShadow) gapSize - shadowSize.toPx() else gapSize
+    private fun calculateGapSize() = if (hasShadow) gapSize - shadowSize.dp() else gapSize
 
 }

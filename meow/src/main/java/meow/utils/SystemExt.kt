@@ -70,11 +70,11 @@ fun Context?.getDisplaySize(): Point {
 }
 
 
-fun Float.toPx() = this * controller.dpi
-fun Int.toPx() = this * controller.dpi.toInt()
+fun Float.dp() = this * controller.dpi
+fun Int.dp() = this * controller.dpi.toInt()
 
-fun Float.toDp() = this / controller.dpi
-fun Int.toDp() = (this.toFloat() / controller.dpi).toInt()
+fun Float.px() = this / controller.dpi
+fun Int.px() = (this.toFloat() / controller.dpi).toInt()
 
 fun Context?.isNightModeFromSettings(): Boolean {
     if (this == null) return false

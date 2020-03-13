@@ -22,11 +22,11 @@ import android.graphics.Rect
 import android.graphics.drawable.GradientDrawable
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import meow.R
+import com.etebarian.meowframework.R
 import meow.controller
+import meow.utils.dp
 import meow.utils.getColorCompat
 import meow.utils.getDimensionToPx
-import meow.utils.toPx
 
 /**
  * The Divider Recycler View Decoration class inherits from [RecyclerView.ItemDecoration].
@@ -53,8 +53,8 @@ class MeowDividerDecoration(
         divider.setSize(1, context.getDimensionToPx(R.dimen.divider_recyclerview_height))
         divider.setColor(context.getColorCompat(R.color.divider_recyclerview))
 
-        marginLeft = marginStart.toPx()
-        marginRight = marginEnd.toPx()
+        marginLeft = marginStart.dp()
+        marginRight = marginEnd.dp()
 
         if (controller.isRtl) {
             val holder = marginLeft
@@ -69,7 +69,7 @@ class MeowDividerDecoration(
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
-        outRect.bottom = 1.toPx()
+        outRect.bottom = 1.dp()
     }
 
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
