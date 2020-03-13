@@ -21,7 +21,10 @@ import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
+import androidx.annotation.*
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.drawable.DrawableCompat
 import meow.controller
 
@@ -33,15 +36,98 @@ import meow.controller
  * @since   2020-03-07
  */
 
-fun Resources?.getStringCompat(resId: Int) = this?.getString(resId) ?: ""
-fun Resources?.getDimensionToPx(resId: Int) = this?.getDimension(resId)?.toInt() ?: 0
 
-fun Context?.getStringCompat(resId: Int) = this?.resources.getStringCompat(resId)
-fun Context?.getDimensionToPx(resId: Int) = this?.resources.getDimensionToPx(resId)
-fun Context?.getColorCompat(resId: Int) =
+object ColorUtils {
+
+    /**
+     * Mix two colors and create new color by specified amount.
+     * @param color1 is first color in integer type.
+     * @param color2 is second color in integer type.
+     * @param amount is value for mixing two colors between 0 to 1.
+     * @return the mixed color.
+     */
+    fun mixTwoColors(
+        @ColorInt color1: Int,
+        @ColorInt color2: Int,
+        @FloatRange(from = 0.0, to = 1.0) amount: Float
+    ): Int {
+        if (amount !in 0f..1f)
+            throw IllegalArgumentException("The value of amount must be in range of 0 to 1")
+
+        val alphaChannel = 24
+        val redChannel = 16
+        val greenChannel = 8
+
+        val inverseAmount = 1.0f - amount
+
+        val a =
+            ((color1 shr alphaChannel and 0xff).toFloat() * amount + (color2 shr alphaChannel and 0xff).toFloat() * inverseAmount).toInt() and 0xff
+        val r =
+            ((color1 shr redChannel and 0xff).toFloat() * amount + (color2 shr redChannel and 0xff).toFloat() * inverseAmount).toInt() and 0xff
+        val g =
+            ((color1 shr greenChannel and 0xff).toFloat() * amount + (color2 shr greenChannel and 0xff).toFloat() * inverseAmount).toInt() and 0xff
+        val b =
+            ((color1 and 0xff).toFloat() * amount + (color2 and 0xff).toFloat() * inverseAmount).toInt() and 0xff
+
+        return a shl alphaChannel or (r shl redChannel) or (g shl greenChannel) or b
+    }
+
+    /**
+     * Get lighter or darker from a color by specified amount.
+     * @param color is the color in integer type.
+     * @param amount is a float that describes the state of lighter or darker function. choose value lower than 1 to get darker color and choose value higher than 1 to get lighter color.
+     * @return the lighter or darker color.
+     */
+    fun getLighterOrDarkerColor(
+        @ColorInt color: Int,
+        @FloatRange(from = 0.0, to = 1.0) amount: Float
+    ): Int {// dark : f < 1 , light : f > 1
+        val hsv = FloatArray(3)
+        Color.colorToHSV(color, hsv)
+        hsv[2] *= amount
+        return Color.HSVToColor(hsv)
+    }
+
+    /**
+     * Check the color is dark or light.
+     * @param color is the color in integer type.
+     * @param amount is a float that describes the state of lighter or darker function. choose value lower than 1 to get darker color and choose value higher than 1 to get lighter color.
+     * @return the lighter or darker color.
+     */
+    fun isColorDark(@ColorInt color: Int): Boolean {
+        val darkness =
+            1 - (0.299 * Color.red(color) + 0.587 * Color.green(color) + 0.114 * Color.blue(color)) / 255
+        return darkness >= 0.5
+    }
+
+}
+
+/**
+ * Change alpha from color.
+ * @param color is the color in integer type.
+ * @param alpha is a float that describes value of transparency of color. Choose value between 0 and 1.
+ */
+fun setAlpha(@ColorInt color: Int, @FloatRange(from = 0.0, to = 1.0) alpha: Float) =
+    ColorUtils.setAlphaComponent(color, (alpha * 255).toInt())
+
+fun Context?.getColorCompat(@ColorRes resId: Int) =
     if (this == null) 0 else controller.onColorGet(ContextCompat.getColor(this, resId))
 
-fun Drawable?.setTintCompat(color: Int): Drawable {
+fun Resources?.getDimensionToPx(@DimenRes resId: Int) = this?.getDimension(resId)?.toInt() ?: 0
+fun Resources?.getStringCompat(@StringRes resId: Int) = this?.getString(resId) ?: ""
+fun Resources?.getFloatCompat(@DimenRes resId: Int) =
+    if (this == null) 0f else ResourcesCompat.getFloat(this, resId)
+
+fun Resources?.getIntCompat(@IntegerRes resId: Int) = this?.getInteger(resId) ?: 0
+fun Resources?.getBooleanCompat(@BoolRes resId: Int) = this?.getBoolean(resId) ?: false
+
+fun Context?.getDimensionToPx(@DimenRes resId: Int) = this?.resources.getDimensionToPx(resId)
+fun Context?.getStringCompat(@StringRes resId: Int) = this?.resources.getStringCompat(resId)
+fun Context?.getFloatCompat(@DimenRes resId: Int) = this?.resources.getFloatCompat(resId)
+fun Context?.getIntCompat(@IntegerRes resId: Int) = this?.resources.getIntCompat(resId)
+fun Context?.getBooleanCompat(@BoolRes resId: Int) = this?.resources.getBooleanCompat(resId)
+
+fun Drawable?.setTintCompat(@ColorInt color: Int): Drawable {
     if (this == null) return ColorDrawable(Color.TRANSPARENT)
     return this!!.apply { DrawableCompat.setTint(this, color) }
 }

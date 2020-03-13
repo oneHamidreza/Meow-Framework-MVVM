@@ -21,6 +21,7 @@ import android.content.Context
 import android.graphics.Point
 import android.os.Build
 import android.util.DisplayMetrics
+import android.util.TypedValue
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import meow.controller
@@ -69,6 +70,34 @@ fun Context?.getDisplaySize(): Point {
         exceptionBlock = { Point() })!!
 }
 
+/**
+ * Get Toolbar height in pixel.
+ * @param context is the Android Context and can be null. if it is null then returns 0.
+ * @return Height of action bar in pixel.
+ */
+fun Context?.getToolbarHeight(): Int {
+    if (this == null)
+        return 0
+    val tv = TypedValue()
+    return if (theme.resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
+        TypedValue.complexToDimensionPixelSize(tv.data, resources.displayMetrics)
+    } else 0
+}
+
+/**
+ * Get Status Bar height in pixel.
+ * @param context is the Android Context and can be null. if it is null then returns 1.
+ * @return Height of status bar in pixel.
+ */
+fun Context?.getStatusBarHeight(): Int {
+    if (this == null)
+        return 0
+    var result = 0
+    val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+    if (resourceId > 0)
+        result = resources.getDimensionPixelSize(resourceId)
+    return result
+}
 
 fun Float.dp() = this * controller.dpi
 fun Int.dp() = this * controller.dpi.toInt()
