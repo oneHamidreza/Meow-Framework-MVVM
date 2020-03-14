@@ -14,7 +14,7 @@ import android.os.Build
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
-import meow.R
+import com.etebarian.meowframework.R
 import meow.controller
 
 
@@ -202,10 +202,21 @@ class MeowShapeDrawable {
         fun createFromTypedArray(context: Context, a: TypedArray): MeowShapeDrawable {
             val shapeDrawable = MeowShapeDrawable()
             shapeDrawable.shape = a.getInt(R.styleable.MeowShapeDrawable_msd_shape, GradientDrawable.RECTANGLE)
-            shapeDrawable.mainColor = controller.onColorGet(context, a.getColor(R.styleable.MeowShapeDrawable_msd_mainColor, 0))
+            shapeDrawable.mainColor =
+                controller.onColorGet(a.getColor(R.styleable.MeowShapeDrawable_msd_mainColor, 0))
             shapeDrawable.mainColorAlpha = a.getFloat(R.styleable.MeowShapeDrawable_msd_mainColorAlpha, 1f)
-            shapeDrawable.backgroundColor = controller.onColorGet(context, a.getColor(R.styleable.MeowShapeDrawable_msd_backgroundColor, 0))
-            shapeDrawable.rippleColor = controller.onColorGet(context, a.getColor(R.styleable.MeowShapeDrawable_msd_rippleColor, context.getColorCompat(R.color.ripple_default)))
+            shapeDrawable.backgroundColor = controller.onColorGet(
+                a.getColor(
+                    R.styleable.MeowShapeDrawable_msd_backgroundColor,
+                    0
+                )
+            )
+            shapeDrawable.rippleColor = controller.onColorGet(
+                a.getColor(
+                    R.styleable.MeowShapeDrawable_msd_rippleColor,
+                    context.getColorCompat(R.color.ripple_default)
+                )
+            )
             shapeDrawable.rippleColorAlpha = a.getFloat(R.styleable.MeowShapeDrawable_msd_rippleColorAlpha, context.getFloat(R.dimen.ripple_default))
             shapeDrawable.hasStroke = a.getBoolean(R.styleable.MeowShapeDrawable_msd_hasStroke, false)
             shapeDrawable.strokeWidth = a.getDimension(R.styleable.MeowShapeDrawable_msd_strokeWidth, 0f)
@@ -216,8 +227,18 @@ class MeowShapeDrawable {
             shapeDrawable.bottomLeftRadius = a.getDimension(R.styleable.MeowShapeDrawable_msd_radius_bottomLeft, 0f)
             shapeDrawable.bottomRightRadius = a.getDimension(R.styleable.MeowShapeDrawable_msd_radius_bottomRight, 0f)
             shapeDrawable.isGradient = a.getBoolean(R.styleable.MeowShapeDrawable_msd_isGradient, false)
-            shapeDrawable.gradientFirstColor = controller.onColorGet(context, a.getColor(R.styleable.MeowShapeDrawable_msd_gradientFirstColor, 0))
-            shapeDrawable.gradientSecondColor = controller.onColorGet(context, a.getColor(R.styleable.MeowShapeDrawable_msd_gradientSecondColor, 0))
+            shapeDrawable.gradientFirstColor = controller.onColorGet(
+                a.getColor(
+                    R.styleable.MeowShapeDrawable_msd_gradientFirstColor,
+                    0
+                )
+            )
+            shapeDrawable.gradientSecondColor = controller.onColorGet(
+                a.getColor(
+                    R.styleable.MeowShapeDrawable_msd_gradientSecondColor,
+                    0
+                )
+            )
             shapeDrawable.gradientOrientation = a.getInt(R.styleable.MeowShapeDrawable_msd_gradientOrientation, GradientDrawable.Orientation.TOP_BOTTOM.ordinal)
             shapeDrawable.gradientRadius = a.getDimension(R.styleable.MeowShapeDrawable_msd_gradientRadius, 0f)
             shapeDrawable.hasRipple = a.getBoolean(R.styleable.MeowShapeDrawable_msd_hasRipple, true)

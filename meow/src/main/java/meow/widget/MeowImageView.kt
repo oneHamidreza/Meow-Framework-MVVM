@@ -21,7 +21,7 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
-import meow.R
+import com.etebarian.meowframework.R
 import meow.controller
 import meow.utils.*
 import meow.widget.impl.MeowShapeDrawableImpl
@@ -58,7 +58,7 @@ open class MeowImageView : AppCompatImageView, MeowShapeDrawableImpl {
             draw()
         }
         get() {
-            return controller.onColorGet(context, field)
+            return controller.onColorGet(field)
         }
     var size = dip(24)
         set(value) {

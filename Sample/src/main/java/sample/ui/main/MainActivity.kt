@@ -29,17 +29,13 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
-import meow.utils.logD
-import sample.R
-import sample.databinding.ActivityMainBinding
-import sample.ui.base.BaseActivity
-import androidx.navigation.ui.setupWithNavController
+import meow.controller
 import meow.utils.logD
 import meow.utils.safePost
 import meow.utils.setNavigateIconTint
-import android.graphics.Color
-import androidx.navigation.ui.navigateUp
-
+import sample.R
+import sample.databinding.ActivityMainBinding
+import sample.ui.base.BaseActivity
 
 
 /**
@@ -65,6 +61,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun layoutId() = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        controller.defaultFontName = getString(R.string.font_mainRegular)
         super.onCreate(savedInstanceState)
         setSupportActionBar(binding.toolbar)
         setupNavigation()

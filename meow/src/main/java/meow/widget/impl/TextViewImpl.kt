@@ -22,7 +22,7 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.Gravity
-import meow.R
+import com.etebarian.meowframework.R
 import meow.controller
 import meow.utils.avoidExceptionFinal
 import meow.utils.isEmptyTrim

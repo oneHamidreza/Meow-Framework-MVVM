@@ -2,7 +2,7 @@ package meow.widget.impl
 
 import android.content.Context
 import android.util.AttributeSet
-import meow.R
+import com.etebarian.meowframework.R
 import meow.utils.MeowShapeDrawable
 import meow.utils.avoidExceptionFinal
 

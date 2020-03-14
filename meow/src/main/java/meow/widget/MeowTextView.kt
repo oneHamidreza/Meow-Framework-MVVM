@@ -20,7 +20,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
-import meow.R
+import com.etebarian.meowframework.R
 import meow.controller
 import meow.utils.MeowDrawableHelper
 import meow.utils.MeowShapeDrawable
@@ -113,12 +113,12 @@ open class MeowTextView : AppCompatTextView, TextViewImpl, MeowShapeDrawableImpl
     }
 
     override fun setTextColor(color: Int) {
-        val newColor = controller.onColorGet(context, color)
+        val newColor = controller.onColorGet(color)
         super.setTextColor(newColor)
     }
 
     override fun setTextColor(colors: ColorStateList) {
-        val newColor = controller.onColorGet(context, colors.defaultColor)
+        val newColor = controller.onColorGet(colors.defaultColor)
         super.setTextColor(newColor)
     }
 

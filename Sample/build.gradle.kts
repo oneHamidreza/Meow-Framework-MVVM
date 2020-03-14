@@ -1,9 +1,9 @@
+import com.android.build.gradle.internal.dsl.BuildType
 import meow.AppConfig
 import meow.AppConfig.Build
 import meow.AppConfig.Library
 import meow.AppConfig.Versions
 import java.util.*
-import com.android.build.gradle.internal.dsl.BuildType
 
 plugins {
     id("com.android.application")
@@ -28,6 +28,7 @@ android {
 //        setConsumerProguardFiles(kotlin.arrayOf("consumer-rules.pro"))
 
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled = true
     }
 
     buildTypes {

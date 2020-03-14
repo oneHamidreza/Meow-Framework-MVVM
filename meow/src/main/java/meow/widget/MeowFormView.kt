@@ -22,8 +22,8 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import com.etebarian.meowframework.R
 import com.google.i18n.phonenumbers.PhoneNumberUtil
-import meow.R
 import meow.utils.*
 
 

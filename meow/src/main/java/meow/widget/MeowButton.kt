@@ -19,8 +19,8 @@ package meow.widget
 import android.content.Context
 import android.content.res.ColorStateList
 import android.util.AttributeSet
+import com.etebarian.meowframework.R
 import com.google.android.material.button.MaterialButton
-import meow.R
 import meow.controller
 import meow.utils.ColorHelper
 import meow.utils.avoidExceptionFinal
@@ -102,10 +102,7 @@ open class MeowButton : MaterialButton, TextViewImpl {
         var newRippleColor = rippleColor
         if (controller.changeColor) {
             newRippleColor = ColorStateList.valueOf(
-                controller.onColorGet(
-                    context, rippleColor?.defaultColor
-                        ?: 0
-                )
+                controller.onColorGet(rippleColor?.defaultColor ?: 0)
             )
         }
 
@@ -133,7 +130,7 @@ open class MeowButton : MaterialButton, TextViewImpl {
         super.setBackgroundTintList(
             ColorStateList.valueOf(
                 controller.onColorGet(
-                    context, tintList?.defaultColor
+                    tintList?.defaultColor
                         ?: 0
                 )
             )
@@ -145,17 +142,17 @@ open class MeowButton : MaterialButton, TextViewImpl {
     }
 
     override fun setBackgroundColor(color: Int) {
-        val newColor = controller.onColorGet(context, color)
+        val newColor = controller.onColorGet(color)
         super.setBackgroundColor(newColor)
     }
 
     override fun setTextColor(color: Int) {
-        val newColor = controller.onColorGet(context, color)
+        val newColor = controller.onColorGet(color)
         super.setTextColor(newColor)
     }
 
     override fun setTextColor(colors: ColorStateList) {
-        val newColor = controller.onColorGet(context, colors.defaultColor)
+        val newColor = controller.onColorGet(colors.defaultColor)
         super.setTextColor(newColor)
     }
 }
