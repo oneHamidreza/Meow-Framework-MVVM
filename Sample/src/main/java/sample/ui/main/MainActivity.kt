@@ -24,6 +24,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import meow.utils.logD
 import meow.utils.safePost
 import meow.utils.setNavigateIconTint
 import sample.R
@@ -58,6 +59,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         setSupportActionBar(binding.toolbar)
         setupNavigation()
         observeViewModel()
+    }
+
+    override fun onKeyboardUp() {
+        logD(m = "onKeyboardUp called")
+    }
+
+    override fun onKeyboardDown(isFromOnCreate: Boolean) {
+        logD(m = "onKeyboardDown called: $isFromOnCreate")
     }
 
     private fun setupNavigation() {

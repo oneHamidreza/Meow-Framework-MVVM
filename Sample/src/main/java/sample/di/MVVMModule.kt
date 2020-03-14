@@ -21,7 +21,6 @@ import org.kodein.di.Kodein.Module
 import org.kodein.di.direct
 import org.kodein.di.erased.bind
 import org.kodein.di.erased.instance
-import org.kodein.di.erased.provider
 import org.kodein.di.erased.singleton
 import sample.data.User
 import sample.ui.main.MainViewModel
@@ -38,23 +37,23 @@ import sample.ui.user.index.UserIndexViewModel
  */
 
 val mvvmModule = Module("MVVM Module", false) {
-    bindAutoTag<MainViewModel>() with provider {
+    bindAutoTag<MainViewModel>() with singleton {
         MainViewModel(
             kodein.direct.instance()
         )
     }
-    bindAutoTag<MenuViewModel>() with provider {
+    bindAutoTag<MenuViewModel>() with singleton {
         MenuViewModel(
             kodein.direct.instance()
         )
     }
-    bindAutoTag<UserDetailViewModel>() with provider {
+    bindAutoTag<UserDetailViewModel>() with singleton {
         UserDetailViewModel(
             kodein.direct.instance(),
             instance()
         )
     }
-    bindAutoTag<UserIndexViewModel>() with provider {
+    bindAutoTag<UserIndexViewModel>() with singleton {
         UserIndexViewModel(
             kodein.direct.instance(),
             instance()

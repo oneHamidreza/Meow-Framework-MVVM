@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import meow.core.arch.MeowViewModel
+import meow.utils.KeyboardUtils
 import meow.utils.viewModel
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
@@ -37,17 +38,39 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel, T> : AppCom
     MVVM<B, VM>, KodeinAware
         where T : KodeinAware, T : MeowActivity<B, VM, T> {
 
+    open var isEnabledKeyboardUtils = true
+    var isShowingKeyboard = false
+
     override val kodein by closestKodein()
 
     override lateinit var binding: B
     val viewModel: VM by viewModel(viewModelClass())
 
+    private lateinit var keyboardUtils: KeyboardUtils
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindContentView(layoutId())
+        if (isEnabledKeyboardUtils) {
+            keyboardUtils = KeyboardUtils(this) {
+                isShowingKeyboard = it
+                if (it) onKeyboardUp() else onKeyboardDown(false)
+            }
+            keyboardUtils.enable()
+            onKeyboardDown(true)
+        }
     }
+
+    open fun onKeyboardUp() {}
+    open fun onKeyboardDown(isFromOnCreate: Boolean) {}
 
     private fun bindContentView(layoutId: Int) {
         binding = DataBindingUtil.setContentView(this, layoutId)
+    }
+
+    override fun onDestroy() {
+        if (isEnabledKeyboardUtils)
+            keyboardUtils.disable()
+        super.onDestroy()
     }
 }

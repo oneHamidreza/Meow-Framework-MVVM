@@ -21,8 +21,8 @@ import `in`.co.ophio.secure.core.ObscuredPreferencesBuilder
 import android.app.Application
 import android.content.SharedPreferences
 import meow.utils.avoidException
-import meow.utils.fetchByClass
-import meow.utils.toJson
+import meow.utils.toClass
+import meow.utils.toJsonString
 
 /**
  * Shared Preferences class with obscured key and data availability.
@@ -57,7 +57,7 @@ open class MeowSharedPreferences(
             is Float -> sp.getFloat(key, def) as T
             is Double -> sp.getFloat(key, def.toFloat()).toDouble() as T
             is String -> sp.getString(key, def) as T
-            else -> sp.getString(key, "").fetchByClass() ?: def
+            else -> sp.getString(key, "").toClass() ?: def
         }
     }
 
@@ -70,7 +70,7 @@ open class MeowSharedPreferences(
                 is Float -> sp.edit().putFloat(key, value).apply()
                 is Double -> sp.edit().putFloat(key, value.toFloat()).apply()
                 is String -> sp.edit().putString(key, value).apply()
-                else -> sp.edit().putString(key, value.toJson()).apply()
+                else -> sp.edit().putString(key, value.toJsonString()).apply()
             }
         }
     }

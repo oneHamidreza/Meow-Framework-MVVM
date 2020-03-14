@@ -57,7 +57,7 @@ fun createResponseFromHttpError(throwable: HttpException): MeowResponse.Error<*>
             throwable.response()?.errorBody()?.source()?.let {
                 MeowResponse.HttpError(
                     code = throwable.code(),
-                    data = it.fetchByClass(),
+                    data = it.toClass(),
                     exception = throwable
                 )
             } ?: MeowResponse.UnExpectedError()
