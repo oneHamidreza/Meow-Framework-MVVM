@@ -22,8 +22,8 @@ import androidx.lifecycle.LiveData
 import meow.core.api.MeowEvent
 import meow.core.arch.MeowFlow.DetailApi
 import meow.utils.*
-import meow.widget.ErrorImpl
-import meow.widget.ProgressBarImpl
+import meow.widget.impl.ErrorImpl
+import meow.widget.impl.ProgressBarImpl
 
 /**
  * Meow Flow class containing [DetailApi].

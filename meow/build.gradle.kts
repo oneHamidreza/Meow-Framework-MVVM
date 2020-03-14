@@ -57,6 +57,9 @@ dependencies {
 //     MOSHI SERIALIZE
     kapt("com.squareup.moshi:moshi-kotlin-codegen:1.9.2")
 
+    // GOOGLE PHONE NUMBER
+    implementation("com.googlecode.libphonenumber:libphonenumber:8.10.5")
+
     Library.mainDependencies.forEach {
         implementation(it)
     }

@@ -49,4 +49,9 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="MyShape" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
 </resources>

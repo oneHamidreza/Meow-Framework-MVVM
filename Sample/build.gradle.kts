@@ -25,6 +25,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 //        setConsumerProguardFiles(kotlin.arrayOf("consumer-rules.pro"))
+        multiDexEnabled = true
     }
 
     buildTypes {

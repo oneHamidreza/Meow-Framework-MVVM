@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="button_radius">4dp</dimen>
+    <dimen name="button_stroke">1.5dp</dimen>
+
+    <item name="ripple_default" format="float" type="dimen">0.24</item>
+
     <!-- todo research 1dp or 1px ? -->
     <dimen name="divider_recyclerview_height">1dp</dimen>
 

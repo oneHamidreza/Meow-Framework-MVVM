@@ -14,22 +14,20 @@
  * limitations under the License.
  */
 
-package meow.widget
+package meow.widget.impl
 
 /**
- * The ProgressBar interface.
+ * The Error interface.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-09
+ * @since   2020-03-10
  */
 
-interface ProgressBarImpl {
+interface ErrorImpl {
 
     fun hide()
 
     fun show()
-
-    fun setIndeterminateProgress(indeterminate: Boolean)
 
 }

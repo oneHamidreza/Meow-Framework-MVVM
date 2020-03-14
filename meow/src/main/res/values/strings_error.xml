@@ -13,4 +13,8 @@
     <string name="error_response_general">Unknown Error!. Try again later.</string>
     <string name="error_response_request_not_valid">Please check your request parameters.</string>
 
+    <string name="error_mobile_not_valid">Invalid Mobile Number</string>
+    <string name="error_email_not_valid">Invalid Email Address</string>
+    <string name="error_required_value">Please Enter Required Value</string>
+
 </resources>
