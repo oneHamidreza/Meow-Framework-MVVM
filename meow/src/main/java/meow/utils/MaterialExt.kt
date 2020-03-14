@@ -16,24 +16,15 @@
 
 package meow.utils
 
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
+import com.google.android.material.appbar.MaterialToolbar
 
 /**
- * Extensions of [LiveData].
+ * Material Components Extensions.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2/29/2020
+ * @since   2020-03-14
  */
 
-fun <T> LiveData<T>.safeObserve(owner: LifecycleOwner? = null, observer: (T) -> Unit) {
-    val archObserver = Observer<T> { value ->
-        if (value is T) avoidException { observer(value) }
-    }
-    if (owner != null)
-        observe(owner, archObserver)
-    else
-        observeForever(archObserver)
-}
+//todo not working
+fun MaterialToolbar.setNavigateIconTint(color: Int) = apply { navigationIcon.setTintCompat(color) }

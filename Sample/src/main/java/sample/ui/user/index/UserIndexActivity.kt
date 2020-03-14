@@ -45,13 +45,13 @@ class UserIndexActivity : BaseActivity<ActivityUserIndexBinding, UserIndexViewMo
         super.onCreate(savedInstanceState)
 
         setSupportActionBar(binding.toolbar)
+        observeViewModel()
 
-        binding.viewModel = viewModel
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             addItemDecoration { position, outRect ->
                 if (position == 0)
-                    outRect.top = 24.toPx()
+                    outRect.top = 24.dp()
             }
             addItemDecoration(MeowDividerDecoration(context))
             listAdapter = UserAdapter(application, viewModel)
@@ -59,26 +59,25 @@ class UserIndexActivity : BaseActivity<ActivityUserIndexBinding, UserIndexViewMo
         }
 
         viewModel.apiCall()
-
-        observeViewModel()
     }
 
     private fun observeViewModel() {
-        viewModel.eventLiveData.safeObserve {
-            logD(m = "New Status Received : $it")
+        binding.viewModel = viewModel
+        viewModel.apiLiveData.safeObserve {
+            logD(m = "New Event Received : $it")
             when {
-                it.isCancellation() -> {
+                it.isApiCancellation() -> {
                     hideLoading()
                     showError("Canceling is Working")
                 }
-                it.isError() -> {
+                it.isApiError() -> {
                     hideLoading()
-                    showError(it.response.createErrorMessage(resources))
+//                    showError(it.createErrorMessage(resources))
                 }
-                it.isLoading() -> {
+                it.isApiLoading() -> {
                     showLoading()
                 }
-                it.isSuccess() -> {
+                it.isApiSuccess() -> {
                     hideLoading()
                 }
             }

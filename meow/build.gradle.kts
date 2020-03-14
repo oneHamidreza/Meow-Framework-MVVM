@@ -1,7 +1,6 @@
 import meow.AppConfig
 import meow.AppConfig.Library
 import meow.AppConfig.Versions
-import org.jetbrains.kotlin.config.KotlinCompilerVersion
 
 plugins {
     id("com.android.library")
@@ -22,6 +21,7 @@ android {
         versionName = AppConfig.generateVersionName()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -45,16 +45,17 @@ android {
     }
 
     lintOptions {
-        isAbortOnError = true
+        isAbortOnError = false
+        isIgnoreWarnings = true
     }
 }
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     // KOTLIN
-    implementation(kotlin("stdlib-jdk8", KotlinCompilerVersion.VERSION))
+    implementation(kotlin("stdlib-jdk8", Versions.KOTLIN))
 
-//     MOSHI SERIALIZE
+    // MOSHI SERIALIZE
     kapt("com.squareup.moshi:moshi-kotlin-codegen:1.9.2")
 
     // GOOGLE PHONE NUMBER

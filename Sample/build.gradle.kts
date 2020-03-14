@@ -2,7 +2,8 @@ import meow.AppConfig
 import meow.AppConfig.Build
 import meow.AppConfig.Library
 import meow.AppConfig.Versions
-import org.jetbrains.kotlin.config.KotlinCompilerVersion
+import java.util.*
+import com.android.build.gradle.internal.dsl.BuildType
 
 plugins {
     id("com.android.application")
@@ -25,11 +26,28 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 //        setConsumerProguardFiles(kotlin.arrayOf("consumer-rules.pro"))
-        multiDexEnabled = true
+
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
+
+        fun BuildType.setupApiUrl() {
+            val properties = Properties().apply {
+                load(
+                    project.rootProject.file("local.properties").inputStream()
+                )
+            }
+            val apiUrl = properties.getProperty("api.ip") ?: "noIP"
+            buildConfigField("String", "Api_IP", "\"$apiUrl\"")
+        }
+
+        getByName("debug") {
+            setupApiUrl()
+        }
+
         getByName("release") {
+            setupApiUrl()
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
@@ -49,14 +67,15 @@ android {
     }
 
     lintOptions {
-        isAbortOnError = true
+        isAbortOnError = false
+        isIgnoreWarnings = true
     }
 }
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     // KOTLIN
-    implementation(kotlin("stdlib-jdk8", KotlinCompilerVersion.VERSION))
+    implementation(kotlin("stdlib-jdk8", org.jetbrains.kotlin.config.KotlinCompilerVersion.VERSION))
 
     implementation(project(":meow"))
 

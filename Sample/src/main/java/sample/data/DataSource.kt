@@ -16,7 +16,6 @@
 
 package sample.data
 
-import android.content.res.Resources
 import meow.core.arch.DataSourceImpl
 import meow.core.data.MeowSharedPreferences
 import org.kodein.di.KodeinAware
@@ -37,7 +36,6 @@ class DataSource(override var app: App) : DataSourceImpl, KodeinAware {
 
     override val kodein by closestKodein(app)
     val api: AppApi by instance()
-    val resources: Resources by instance()
     val spMain: MeowSharedPreferences by instance("spMain")
     val spUpdate: MeowSharedPreferences by instance("spUpdate")
 

@@ -51,6 +51,8 @@ object AppConfig {
             "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0",
             "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0",
             "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-alpha01",
+            // ExifInterface
+            "androidx.exifinterface:exifinterface:1.1.0",
             // OkHttp & Retrofit & Moshi
             "com.squareup.okhttp3:okhttp:4.4.0",
             "com.squareup.retrofit2:retrofit:2.7.2",
@@ -64,8 +66,8 @@ object AppConfig {
             // Secure Shared Preferences
             "in.co.ophio:secure-preferences:0.1.3",
             // Navigation
-            "androidx.navigation:navigation-fragment-ktx:2.3.0-alpha03",
-            "androidx.navigation:navigation-ui-ktx:2.3.0-alpha03"
+            "androidx.navigation:navigation-fragment-ktx:2.2.1",
+            "androidx.navigation:navigation-ui-ktx:2.2.1"
         )
 
         val sampleDependencies = emptyArray<String>()
@@ -87,6 +89,7 @@ object AppConfig {
         const val SDK_COMPILE = 29
         const val SDK_MIN = 19
         const val SDK_TARGET = 29
+        const val KOTLIN = "1.3.70"
     }
 
     fun generateVersionCode(): Int {

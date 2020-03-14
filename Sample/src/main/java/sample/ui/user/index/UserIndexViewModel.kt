@@ -37,11 +37,11 @@ class UserIndexViewModel(
     private val repository: User.Repository
 ) : MeowViewModel(app) {
 
-    var eventLiveData = MutableLiveData<MeowEvent>()
+    var apiLiveData = MutableLiveData<MeowEvent<*>>()
     val listLiveData = MutableLiveData<List<User>>()
 
     fun apiCall() {
-        eventLiveData.safeApiCall(
+        apiLiveData.safeApiCall(
             isNetworkRequired = true,
             apiAction = { repository.getUsersApi() }
         ) { _, it ->

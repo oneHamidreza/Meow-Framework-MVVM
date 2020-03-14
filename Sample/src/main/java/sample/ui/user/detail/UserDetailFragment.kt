@@ -41,12 +41,17 @@ class UserDetailFragment : BaseFragment<FragmentUserDetailBinding, UserDetailVie
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        initViewModel()
         observeViewModel()
+
         viewModel.requestApi(User.RequestGet("1"))
     }
 
-    private fun observeViewModel() {
+    private fun initViewModel() {
         binding.viewModel = viewModel
+    }
+
+    private fun observeViewModel() {
         MeowFlow.DetailApi(arrayOf(binding.tvModel, binding.tvStatus)).apply {
             onCancellationAction = {
                 showError("Canceling is Working")
@@ -55,9 +60,9 @@ class UserDetailFragment : BaseFragment<FragmentUserDetailBinding, UserDetailVie
                 binding.model = viewModel.model
             }
             onErrorAction = {
-                showError(it.response.createErrorMessage(resources))
+                showError(it.data.createErrorMessage(resources))
             }
-        }.observe(viewModel.eventLiveData)
+        }.observe(binding.lifecycleOwner!!, viewModel.apiLiveData)
     }
 
     private fun showError(message: String) {

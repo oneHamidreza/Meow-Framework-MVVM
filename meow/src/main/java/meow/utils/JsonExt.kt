@@ -30,7 +30,7 @@ import okio.BufferedSource
 
 val moshiBuilder = Moshi.Builder().add(KotlinJsonAdapterFactory())
 
-inline fun <reified T> BufferedSource?.fetchByClass(): T? {
+inline fun <reified T> BufferedSource?.toClass(): T? {
     if (this == null) return null
     return try {
         moshiBuilder.build().adapter(createClass<T>()).fromJson(this)
@@ -40,7 +40,7 @@ inline fun <reified T> BufferedSource?.fetchByClass(): T? {
     }
 }
 
-inline fun <reified T> String?.fetchByClass(): T? {
+inline fun <reified T> String?.toClass(): T? {
     if (this == null) return null
     return try {
         moshiBuilder.build().adapter(createClass<T>()).fromJson(this)
@@ -50,7 +50,7 @@ inline fun <reified T> String?.fetchByClass(): T? {
     }
 }
 
-inline fun <reified T : Any> T?.toJson(): String {
+inline fun <reified T : Any> T?.toJsonString(): String {
     if (this == null) return "{}"
     return try {
         moshiBuilder
@@ -62,7 +62,7 @@ inline fun <reified T : Any> T?.toJson(): String {
     }
 }
 
-inline fun <reified T : Any> List<T>?.toJson(): String {
+inline fun <reified T : Any> List<T>?.toJsonString(): String {
     if (this == null) return "[]"
     return try {
         moshiBuilder
@@ -73,4 +73,3 @@ inline fun <reified T : Any> List<T>?.toJson(): String {
         "[]"
     }
 }
- 

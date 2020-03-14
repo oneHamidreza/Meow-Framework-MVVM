@@ -1,8 +1,12 @@
 package sample.ui.menu
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.navigation.fragment.findNavController
+import meow.utils.safeObserve
+import meow.utils.setTintCompat
 import sample.R
+import sample.core.actionToUserDetail
 import sample.databinding.FragmentMenuBinding
 import sample.ui.base.BaseFragment
 
@@ -37,8 +41,18 @@ class MenuFragment : BaseFragment<FragmentMenuBinding, MenuViewModel>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        observeViewModel()
+
+        binding.ivTest.drawable.setTintCompat(Color.RED)
+    }
+
+    private fun observeViewModel() {
         binding.viewModel = viewModel
-        viewModel.navController = findNavController()
+        binding.viewModel!!.navigationLiveData.safeObserve(binding.lifecycleOwner) {
+            when (it) {
+                R.id.actionToUserDetail -> findNavController().actionToUserDetail()
+            }
+        }
     }
 
 }

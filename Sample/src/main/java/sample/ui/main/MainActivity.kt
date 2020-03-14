@@ -16,6 +16,7 @@
 
 package sample.ui.main
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -24,12 +25,22 @@ import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
-import meow.controller
+import meow.utils.logD
 import sample.R
 import sample.databinding.ActivityMainBinding
 import sample.ui.base.BaseActivity
+import androidx.navigation.ui.setupWithNavController
+import meow.utils.logD
+import meow.utils.safePost
+import meow.utils.setNavigateIconTint
+import android.graphics.Color
+import androidx.navigation.ui.navigateUp
+
+
 
 /**
  * Main Activity class.
@@ -43,14 +54,21 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
+    val nowFragment
+        get() = supportFragmentManager.findFragmentById(navController.currentDestination!!.id.apply {
+            print(
+                this
+            )
+        })
 
     override fun viewModelClass() = MainViewModel::class.java
     override fun layoutId() = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        controller.defaultFontName = getString(R.string.font_mainRegular)
         super.onCreate(savedInstanceState)
         setSupportActionBar(binding.toolbar)
+        setupNavigation()
+        observeViewModel()
 
         fv.setOnSubmitClickListener {
             Log.d("testText", "Text is : ${et.text.toString()}")
@@ -73,14 +91,37 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             }
         })
 
-        navController = findNavController(R.id.navHost)
-        appBarConfiguration = AppBarConfiguration(setOf(R.layout.fragment_user_detail))
+    }
+
+    override fun onKeyboardUp() {
+        logD(m = "onKeyboardUp called")
+    }
+
+    override fun onKeyboardDown(isFromOnCreate: Boolean) {
+        logD(m = "onKeyboardDown called: $isFromOnCreate")
+    }
+
+    private fun setupNavigation() {
+        navController = findNavController(R.id.navHost).apply {
+            addOnDestinationChangedListener { _, destination, _ ->
+            }
+        }
+        appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        observeViewModel()
+
+        binding.apply {
+            drawerLayout.setStatusBarBackground(R.color.primary_variant)
+            navigationView.setupWithNavController(navController)
+        }
+        binding.toolbar.safePost(2000) { setNavigateIconTint(Color.RED) }
     }
 
     private fun observeViewModel() {
         binding.viewModel = viewModel
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return (navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp())
     }
 }

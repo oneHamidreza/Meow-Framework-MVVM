@@ -18,8 +18,8 @@ package sample.ui.menu
 
 import android.app.Application
 import android.view.View
-import androidx.navigation.NavController
 import meow.core.arch.MeowViewModel
+import meow.core.arch.SingleLiveData
 import sample.R
 
 /**
@@ -32,10 +32,10 @@ import sample.R
 
 class MenuViewModel(app: Application) : MeowViewModel(app) {
 
-    lateinit var navController: NavController
+    val navigationLiveData = SingleLiveData<Int>()
 
     fun onClickedUserDetailApi(@Suppress("UNUSED_PARAMETER") view: View) {
-        navController.navigate(R.id.fragmentUserDetail)
+        navigationLiveData.postValue(R.id.actionToUserDetail)
     }
 
 }
