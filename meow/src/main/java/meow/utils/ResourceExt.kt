@@ -18,9 +18,13 @@ package meow.utils
 
 import android.content.Context
 import android.content.res.Resources
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.LayerDrawable
 import androidx.annotation.*
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
@@ -35,7 +39,6 @@ import meow.controller
  * @version 1.0.0
  * @since   2020-03-07
  */
-
 
 object ColorUtils {
 
@@ -130,4 +133,36 @@ fun Context?.getBooleanCompat(@BoolRes resId: Int) = this?.resources.getBooleanC
 fun Drawable?.setTintCompat(@ColorInt color: Int): Drawable {
     if (this == null) return ColorDrawable(Color.TRANSPARENT)
     return this!!.apply { DrawableCompat.setTint(this, color) }
+}
+
+fun Drawable.flip(): Drawable {
+    val arD = arrayOf(this)
+    return object : LayerDrawable(arD) {
+        override fun draw(canvas: Canvas) {
+            canvas.save()
+            canvas.scale(-1f, 1f, (bounds.width() / 2).toFloat(), (bounds.width() / 2).toFloat())
+            super.draw(canvas)
+            canvas.restore()
+        }
+    }
+}
+
+fun Drawable.toBitmap(): Bitmap {
+    val bitmap: Bitmap = if (intrinsicWidth <= 0 || intrinsicHeight <= 0) {
+        Bitmap.createBitmap(
+            1,
+            1,
+            Bitmap.Config.ARGB_8888
+        ) // Single color bitmap will be created of 1x1 pixel
+    } else {
+        Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, Bitmap.Config.ARGB_8888)
+    }
+
+    if (this is BitmapDrawable)
+        return bitmap
+
+    val canvas = Canvas(bitmap)
+    setBounds(0, 0, canvas.width, canvas.height)
+    draw(canvas)
+    return bitmap
 }
