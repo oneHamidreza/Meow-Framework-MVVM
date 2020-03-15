@@ -113,8 +113,13 @@ object ColorUtils {
 fun setAlpha(@ColorInt color: Int, @FloatRange(from = 0.0, to = 1.0) alpha: Float) =
     ColorUtils.setAlphaComponent(color, (alpha * 255).toInt())
 
-fun Context?.getColorCompat(@ColorRes resId: Int) =
-    if (this == null) 0 else controller.onColorGet(ContextCompat.getColor(this, resId))
+fun Context?.getColorCompat(@ColorRes resId: Int, useController: Boolean = true) =
+    if (this == null) 0 else if (useController) controller.onColorGet(
+        ContextCompat.getColor(
+            this,
+            resId
+        )
+    ) else ContextCompat.getColor(this, resId)
 
 fun Resources?.getDimensionToPx(@DimenRes resId: Int) = this?.getDimension(resId)?.toInt() ?: 0
 fun Resources?.getStringCompat(@StringRes resId: Int) = this?.getString(resId) ?: ""

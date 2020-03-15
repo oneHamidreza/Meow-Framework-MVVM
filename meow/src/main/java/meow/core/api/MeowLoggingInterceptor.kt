@@ -40,9 +40,6 @@ class MeowLoggingInterceptor : Interceptor {
                     + if (request.body != null) "Request Body >> ${request.body}" else ""
         )
 
-//        if (controller.apiSimulateDelay > 0L)
-//            SystemClock.sleep(controller.apiSimulateDelay)
-
         val response = chain.proceed(request)
         val t2 = System.nanoTime()
         val body = response.peekBody(1024 * 1024)

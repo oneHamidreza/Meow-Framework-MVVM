@@ -44,6 +44,10 @@ android {
         isEnabled = true
     }
 
+    viewBinding {
+        isEnabled = true
+    }
+
     lintOptions {
         isAbortOnError = false
         isIgnoreWarnings = true

@@ -14,24 +14,23 @@
  * limitations under the License.
  */
 
-package meow.core.api
+package meow.widget
+
+import android.content.res.ColorStateList
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.ViewCompat
+import androidx.databinding.BindingAdapter
+import meow.controller
 
 /**
- * The event of MVVM class containing [Loading], [Success], [Error], [Cancellation].
+ * [Toolbar] Extensions.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-01
+ * @since   2020-03-15
  */
 
-sealed class MeowEvent<T> {
-
-    abstract val data: T?
-
-    sealed class Api {
-        data class Loading(override val data: Nothing? = null) : MeowEvent<Nothing>()
-        data class Success(override val data: MeowResponse<*>) : MeowEvent<MeowResponse<*>>()
-        data class Error(override val data: MeowResponse<*>) : MeowEvent<MeowResponse<*>>()
-        data class Cancellation(override val data: Nothing) : MeowEvent<Nothing>()
-    }
+@BindingAdapter("backgroundTint")
+fun setBackgroundTint(view: Toolbar, color: ColorStateList) {
+    ViewCompat.setBackgroundTintList(view, controller.onColorStateListGet(color))
 }

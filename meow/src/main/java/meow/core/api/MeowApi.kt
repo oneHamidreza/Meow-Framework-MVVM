@@ -99,6 +99,7 @@ abstract class MeowApi(
     }
 
     sealed class Authorization(val interceptorBlock: InterceptorBlock) {
+        //todo add other types
         class SimpleToken(
             var isLogin: Boolean,
             var token: String

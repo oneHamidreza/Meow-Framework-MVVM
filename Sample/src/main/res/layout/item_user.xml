@@ -2,6 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
+        <import type="sample.R" />
+
+        <import type="meow.utils.ResourceExtKt" />
+
         <variable
             name="viewModel"
             type="sample.ui.user.index.UserIndexViewModel" />

@@ -32,6 +32,7 @@ import meow.utils.toJsonString
  * @since   2020-03-06
  */
 
+//todo farsi devices
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 open class MeowSharedPreferences(
     application: Application,

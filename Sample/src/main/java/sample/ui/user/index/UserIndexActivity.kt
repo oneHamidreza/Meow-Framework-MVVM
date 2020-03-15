@@ -58,12 +58,12 @@ class UserIndexActivity : BaseActivity<ActivityUserIndexBinding, UserIndexViewMo
             adapter = listAdapter
         }
 
-        viewModel.apiCall()
+//        viewModel.apiCall()
     }
 
     private fun observeViewModel() {
         binding.viewModel = viewModel
-        viewModel.apiLiveData.safeObserve {
+        viewModel.eventLiveData.safeObserve(this) {
             logD(m = "New Event Received : $it")
             when {
                 it.isApiCancellation() -> {
@@ -83,7 +83,7 @@ class UserIndexActivity : BaseActivity<ActivityUserIndexBinding, UserIndexViewMo
             }
         }
 
-        viewModel.listLiveData.safeObserve {
+        viewModel.listLiveData.safeObserve(this) {
             listAdapter.submitList(it)
         }
     }

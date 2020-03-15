@@ -34,7 +34,7 @@ inline fun <reified T> BufferedSource?.toClass(): T? {
     if (this == null) return null
     return try {
         moshiBuilder.build().adapter(createClass<T>()).fromJson(this)
-    } catch (e: Exception) {
+    } catch (e: Exception) {//todo avoid exception
         e.printStackTrace()
         null
     }

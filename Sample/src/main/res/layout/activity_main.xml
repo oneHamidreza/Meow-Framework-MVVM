@@ -29,12 +29,10 @@
 
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
-                    style="@style/Widget.MaterialComponents.Toolbar.Primary"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    style="@style/Toolbar"
+                    backgroundTint="@{@color/primary}" />
 
             </com.google.android.material.appbar.AppBarLayout>
-
 
             <fragment
                 android:id="@+id/navHost"

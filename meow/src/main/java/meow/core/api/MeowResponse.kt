@@ -44,15 +44,15 @@ sealed class MeowResponse<T>(
      * Cancellation response model in restful api with http code UNKNOWN when request is canceled.
      *
      */
-    class Cancellation() : MeowResponse<Nothing>()
+    class Cancellation : MeowResponse<Nothing>()
 
     /**
      * Success response model in restful api with http code 200.
      * some of web services give the client 200..399 range to success response.
      * so you can use [MeowController().apiSuccessRange].
      *
-     * @property T containing the type of embedded class in Response
-     * @property data containing the received data from a restful api at success status
+     * @property T is the type of embedded class in Response
+     * @property data is the received data from a restful api at success status
      */
     class Success<T>(override var data: T?) : MeowResponse<T>(HttpCodes.OK.code, data)
 
@@ -61,8 +61,8 @@ sealed class MeowResponse<T>(
      *
      */
     class HttpError(
-        override var data: SimpleModel? = null,
         override var code: Int = 0,
+        override var data: SimpleModel? = null,
         override var exception: Throwable? = null
     ) : Error<SimpleModel>()
 

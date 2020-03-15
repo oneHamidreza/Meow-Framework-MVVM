@@ -38,7 +38,7 @@ import meow.widget.impl.ProgressBarImpl
 sealed class MeowFlow {
 
     class DetailApi(
-        private val containerViews: Array<View>,
+        private val containerViews: Array<View> = arrayOf(),
         private val visibilityWhenLoading: Int = View.GONE
     ) : Api() {
         init {
@@ -55,13 +55,13 @@ sealed class MeowFlow {
 
     open class Api(
         var progressBarImpl: ProgressBarImpl? = null,
-        var errorImpl: ErrorImpl? = null,
+        var errorImpl: ErrorImpl? = null,//todo impl ???
         var dialog: Dialog? = null,
         var onBeforeAction: () -> Unit = { showLoading() },
         var onAfterAction: () -> Unit = { hideLoading() },
         var onSuccessAction: (it: MeowResponse<*>) -> Unit = {},
         var onCancellationAction: () -> Unit = {},
-        var onErrorAction: (it: MeowEvent.Api.Error) -> Unit = {},
+        var onErrorAction: (it: MeowEvent.Api.Error) -> Unit = {},//todo error handle
         var showLoading: () -> Unit = {
             progressBarImpl?.show()
             dialog?.show()
@@ -72,8 +72,8 @@ sealed class MeowFlow {
             dialog?.hide()
         }
     ) : MeowFlow() {
-        fun observe(owner: LifecycleOwner?, liveData: LiveData<MeowEvent<*>>?) {
-            liveData?.safeObserve(owner) {
+        fun observe(owner: LifecycleOwner?, liveData: LiveData<MeowEvent<*>>) {
+            liveData.safeObserve(owner) {
                 when {
                     it.isApiLoading() -> {
                         onBeforeAction()
@@ -88,7 +88,6 @@ sealed class MeowFlow {
                     }
                     it.isApiError() -> {
                         onAfterAction()
-                        errorImpl?.show()
                         onErrorAction(it as MeowEvent.Api.Error)
                     }
                 }

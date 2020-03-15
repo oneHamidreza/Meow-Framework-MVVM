@@ -35,3 +35,23 @@ fun <T> T.println(m: String = "") = apply {
     kotlin.io.print("$m ")
     println(this)
 }
+
+fun Any.setPrivateField(name: String, value: Any) {
+    avoidException {
+        this.javaClass.getDeclaredField(name).apply {
+            isAccessible = true
+            set(this@setPrivateField, value)
+        }
+    }
+}
+
+fun <T> Any.getPrivateField(name: String): IntArray? =
+    avoidException(
+        tryBlock = {
+            val filed = this.javaClass.getDeclaredField(name).apply {
+                isAccessible = true
+            }
+            (filed.get(this@getPrivateField) as IntArray)
+        },
+        exceptionBlock = { null }
+    )

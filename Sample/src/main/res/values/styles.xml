@@ -12,7 +12,7 @@
         <!-- Original AppCompat attributes. -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorSecondary">@color/secondary</item>
-        <item name="android:colorBackground">@color/app_background</item>
+        <item name="android:colorBackground">@color/background</item>
         <item name="colorError">@color/error_primary</item>
 
         <!-- New MaterialComponents attributes. -->
@@ -21,7 +21,7 @@
         <item name="colorSurface">@color/surface</item>
         <item name="colorOnPrimary">@color/on_primary</item>
         <item name="colorOnSecondary">@color/on_secondary</item>
-        <item name="colorOnBackground">@color/on_app_background</item>
+        <item name="colorOnBackground">@color/on_background</item>
         <item name="colorOnError">@color/on_error_primary</item>
         <item name="colorOnSurface">@color/on_surface</item>
         <item name="scrimBackground">@color/mtrl_scrim_color</item>

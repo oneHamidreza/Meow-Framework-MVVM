@@ -21,6 +21,7 @@ import android.view.ViewGroup
 import meow.core.ui.MeowAdapter
 import meow.core.ui.MeowViewHolder
 import meow.utils.getColorCompat
+import sample.BR
 import sample.R
 import sample.data.User
 import sample.databinding.ItemUserBinding
@@ -50,9 +51,9 @@ class UserAdapter(
         val binding = ItemUserBinding.inflate(inflater, parent, false)
         return MeowViewHolder(binding.root) { _, model, viewModel ->
             binding.let {
-                it.tvX.setTextColor(parent.context.getColorCompat(R.color.material_on_surface_emphasis_high_type))// bug fix for realtime day/night mode TODO Report google ?
+                it.tvX.setTextColor(parent.context.getColorCompat(R.color.material_on_surface_emphasis_high_type))// bug fix for realtime day/night mode
                 it.viewModel = viewModel
-                it.model = model
+                it.setVariable(BR.model, model)
                 it.executePendingBindings()
             }
         }

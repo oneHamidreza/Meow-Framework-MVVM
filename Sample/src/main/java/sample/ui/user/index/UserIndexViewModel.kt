@@ -37,11 +37,11 @@ class UserIndexViewModel(
     private val repository: User.Repository
 ) : MeowViewModel(app) {
 
-    var apiLiveData = MutableLiveData<MeowEvent<*>>()
+    var eventLiveData = MutableLiveData<MeowEvent<*>>()
     val listLiveData = MutableLiveData<List<User>>()
 
     fun apiCall() {
-        apiLiveData.safeApiCall(
+        eventLiveData.safeCallApi(
             isNetworkRequired = true,
             apiAction = { repository.getUsersApi() }
         ) { _, it ->
@@ -55,4 +55,5 @@ class UserIndexViewModel(
 
     fun getTextByDayNightMode() = if (controller.isNightMode) "Day Mode" else "Night Mode"
 
+    fun getPrefixText() = "AAA"
 }

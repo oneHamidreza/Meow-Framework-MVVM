@@ -53,12 +53,11 @@ open class MeowViewModel(open val app: Application) : AndroidViewModel(app), Kod
 
     var exceptionHandler = CoroutineExceptionHandler { _, t ->
         if (controller.isDebugMode) {
-            logD(m = t.message)
             t.printStackTrace()
         }
     }
 
-    fun <T> MutableLiveData<MeowEvent<*>>.safeApiCall(
+    fun <T> MutableLiveData<MeowEvent<*>>.safeCallApi(
         request: MeowRequest? = null,
         isNetworkRequired: Boolean = true,
         job: Job = Job(),
@@ -105,7 +104,7 @@ open class MeowViewModel(open val app: Application) : AndroidViewModel(app), Kod
             }
         }
 
-        response.processAndPush(this@safeApiCall)
+        response.processAndPush(this@safeCallApi)
         val data = avoidException { response.data as? T? }
         resultBlock(response, data)
         cancelAllJobs()
@@ -125,5 +124,6 @@ open class MeowViewModel(open val app: Application) : AndroidViewModel(app), Kod
         jobWithIds.clear()
     }
 
+    fun s(s: String) = s
 
 }

@@ -61,11 +61,13 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel, T> : AppCom
         }
     }
 
+    //todo change
     open fun onKeyboardUp() {}
     open fun onKeyboardDown(isFromOnCreate: Boolean) {}
 
     private fun bindContentView(layoutId: Int) {
         binding = DataBindingUtil.setContentView(this, layoutId)
+        binding.lifecycleOwner = this
     }
 
     override fun onDestroy() {

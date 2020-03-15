@@ -17,11 +17,13 @@
 package meow
 
 import android.app.Application
-import android.content.Context
+import android.content.res.ColorStateList
 import android.util.LayoutDirection
 import androidx.appcompat.app.AppCompatDelegate
 import meow.core.api.MeowSession
+import meow.utils.getPrivateField
 import meow.utils.isNightModeFromSettings
+import meow.utils.setPrivateField
 
 /**
  * 🐈 This CAT can control configurations and UI properties in one Application. Just trust it.
@@ -43,11 +45,21 @@ class MeowController(
     var dpi: Float = app.resources.displayMetrics.density,
     var layoutDirection: Int = LayoutDirection.INHERIT,
     var onColorGet: (color: Int) -> Int = { color -> color },
-    var defaultFontName :String = "",
-    var isForceFontPadding:Boolean = false,
-    var isPersian:Boolean = false,
-    var changeColor:Boolean = false,
-
+    internal var onColorStateListGet: (colorStateList: ColorStateList) -> ColorStateList = { color ->
+        color.apply {
+            val colors: IntArray = getPrivateField<Array<Int>>("mColors")!!
+            colors.forEachIndexed { index, it ->
+                colors[index] = onColorGet(it)
+            }
+            setPrivateField("mDefaultColor", onColorGet(defaultColor))
+            setPrivateField("mColors", colors)
+        }
+        ColorStateList.valueOf(onColorGet(color.defaultColor))
+    },
+    var defaultFontName: String = "",
+    var isForceFontPadding: Boolean = false,
+    var isPersian: Boolean = false,
+    var changeColor: Boolean = false,
     forceNightMode: Boolean = false
 ) {
 

@@ -9,6 +9,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("android.extensions")
+    kotlin("kapt")
     id("kotlinx-serialization")
     id("androidx.navigation.safeargs.kotlin")
 }
@@ -64,6 +65,10 @@ android {
     }
 
     dataBinding {
+        isEnabled = true
+    }
+
+    viewBinding {
         isEnabled = true
     }
 
