@@ -16,6 +16,9 @@
 
 package meow.core.api
 
+import android.content.res.Resources
+import com.etebarian.meowframework.R
+
 /**
  * The event of MVVM class containing [Loading], [Success], [Error], [Cancellation].
  *
@@ -32,6 +35,8 @@ sealed class MeowEvent<T> {
         data class Loading(override val data: Nothing? = null) : MeowEvent<Nothing>()
         data class Success(override val data: MeowResponse<*>) : MeowEvent<MeowResponse<*>>()
         data class Error(override val data: MeowResponse<*>) : MeowEvent<MeowResponse<*>>()
-        data class Cancellation(override val data: Nothing) : MeowEvent<Nothing>()
+        data class Cancellation(override val data: Nothing? = null) : MeowEvent<Nothing>() {
+            fun message(resources: Resources) = resources.getString(R.string.error_cancellation)
+        }
     }
 }

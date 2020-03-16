@@ -35,15 +35,20 @@ import org.kodein.di.android.closestKodein
  */
 
 abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel, T> : AppCompatActivity(),
-    MVVM<B, VM>, KodeinAware
-        where T : KodeinAware, T : MeowActivity<B, VM, T> {
+    FragmentActivityFlow,
+    MVVM<B, VM>,
+    KodeinAware
+        where T : MeowActivity<B, VM, T>, T : KodeinAware {
 
     open var isEnabledKeyboardUtils = true
     var isShowingKeyboard = false
 
     override val kodein by closestKodein()
+    override fun context() = this
 
     override lateinit var binding: B
+
+    //todo improve
     val viewModel: VM by viewModel(viewModelClass())
 
     private lateinit var keyboardUtils: KeyboardUtils
@@ -54,16 +59,20 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel, T> : AppCom
         if (isEnabledKeyboardUtils) {
             keyboardUtils = KeyboardUtils(this) {
                 isShowingKeyboard = it
-                if (it) onKeyboardUp() else onKeyboardDown(false)
+                if (it) onKeyboardStateChanged(
+                    isKeyboardUp = true,
+                    isFromOnCreate = false
+                ) else onKeyboardStateChanged(
+                    isKeyboardUp = false,
+                    isFromOnCreate = false
+                )
             }
             keyboardUtils.enable()
-            onKeyboardDown(true)
+            onKeyboardStateChanged(isKeyboardUp = false, isFromOnCreate = true)
         }
     }
 
-    //todo change
-    open fun onKeyboardUp() {}
-    open fun onKeyboardDown(isFromOnCreate: Boolean) {}
+    open fun onKeyboardStateChanged(isKeyboardUp: Boolean, isFromOnCreate: Boolean = false) {}
 
     private fun bindContentView(layoutId: Int) {
         binding = DataBindingUtil.setContentView(this, layoutId)

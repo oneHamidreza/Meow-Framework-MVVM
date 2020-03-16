@@ -122,7 +122,6 @@ fun Context?.getColorCompat(@ColorRes resId: Int, useController: Boolean = true)
     ) else ContextCompat.getColor(this, resId)
 
 fun Resources?.getDimensionToPx(@DimenRes resId: Int) = this?.getDimension(resId)?.toInt() ?: 0
-fun Resources?.getStringCompat(@StringRes resId: Int) = this?.getString(resId) ?: ""
 fun Resources?.getFloatCompat(@DimenRes resId: Int) =
     if (this == null) 0f else ResourcesCompat.getFloat(this, resId)
 
@@ -130,7 +129,6 @@ fun Resources?.getIntCompat(@IntegerRes resId: Int) = this?.getInteger(resId) ?:
 fun Resources?.getBooleanCompat(@BoolRes resId: Int) = this?.getBoolean(resId) ?: false
 
 fun Context?.getDimensionToPx(@DimenRes resId: Int) = this?.resources.getDimensionToPx(resId)
-fun Context?.getStringCompat(@StringRes resId: Int) = this?.resources.getStringCompat(resId)
 fun Context?.getFloatCompat(@DimenRes resId: Int) = this?.resources.getFloatCompat(resId)
 fun Context?.getIntCompat(@IntegerRes resId: Int) = this?.resources.getIntCompat(resId)
 fun Context?.getBooleanCompat(@BoolRes resId: Int) = this?.resources.getBooleanCompat(resId)

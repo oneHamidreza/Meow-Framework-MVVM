@@ -3,15 +3,17 @@
 
     <string name="error_network">No internet!. Check your network.</string>
     <string name="error_connection">Can\'t connect to server!. Check your network or try again later.</string>
+    <string name="error_response_unexpected">Unexpected Error! (code = %d). Try again later.</string>
+    <string name="error_response_parse">Parsing Data Error!. Try again later.</string>
+    <string name="error_response_general">Unknown Error!. Try again later.</string>
+    <string name="error_response_request_not_valid">Please check your request parameters.</string>
+    <string name="error_cancellation">The action canceled.</string>
+
     <string name="error_response_http_with_suggest">Http Error! %s (code = %d). Try again later.</string>
     <string name="error_response_http_suggest_unauthorized">Please login again</string>
     <string name="error_response_http_suggest_bad_request">Please check your request parameters</string>
     <string name="error_response_http_suggest_unprocessable_entity">Please check your request parameters</string>
     <string name="error_response_http_suggest_too_request">Please wait. There are too many requests now</string>
-    <string name="error_response_unexpected">Unexpected Error! (code = %d). Try again later.</string>
-    <string name="error_response_parse">Parsing Data Error!. Try again later.</string>
-    <string name="error_response_general">Unknown Error!. Try again later.</string>
-    <string name="error_response_request_not_valid">Please check your request parameters.</string>
 
     <string name="error_mobile_not_valid">Invalid Mobile Number</string>
     <string name="error_email_not_valid">Invalid Email Address</string>

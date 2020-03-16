@@ -42,6 +42,7 @@ fun MeowResponse<*>?.isUnAuthorized() = this?.code == HttpCodes.UNAUTHORIZED.cod
 fun MeowResponse<*>?.isForbidden() = this?.code == HttpCodes.FORBIDDEN.code
 fun MeowResponse<*>?.isNotFound() = this?.code == HttpCodes.NOT_FOUND.code
 fun MeowResponse<*>?.isUnprocessableEntity() = this?.code == HttpCodes.UNPROCESSABLE_ENTITY.code
+fun MeowResponse<*>?.isCancellation() = this is MeowResponse.Cancellation
 fun MeowResponse<*>?.isError() = this is MeowResponse.Error
 fun MeowResponse<*>?.isHttpError() = this is MeowResponse.HttpError
 fun MeowResponse<*>?.isParseError() = this is MeowResponse.ParseError
@@ -75,6 +76,7 @@ fun MeowResponse<*>.processAndPush(liveData: MutableLiveData<MeowEvent<*>>) {
         val eventWithRepository = when {
             isError() -> MeowEvent.Api.Error(this)
             isSuccess() -> MeowEvent.Api.Success(this)
+            isCancellation() -> MeowEvent.Api.Cancellation()
             else -> MeowEvent.Api.Error(this)
         }
         liveData.postValue(eventWithRepository)
@@ -85,33 +87,33 @@ fun <T> ofApiSuccessEvent(data: T) = MeowEvent.Api.Success(MeowResponse.Success(
 
 fun MeowResponse<*>?.createErrorMessage(resources: Resources): String {
     if (this == null)
-        return resources.getStringCompat(R.string.error_response_unexpected).format(-100)
+        return resources.getString(R.string.error_response_unexpected).format(-100)
     if (!this.isError())
-        return resources.getStringCompat(R.string.error_response_unexpected).format(-400)
+        return resources.getString(R.string.error_response_unexpected).format(-200)
     if ((this as MeowResponse.Error<*>).exception == null)
-        return resources.getStringCompat(R.string.error_response_unexpected).format(-500)
+        return resources.getString(R.string.error_response_unexpected).format(-300)
 
     return when {
         isHttpError() -> {
             val suggest = when (code) {
-                HttpCodes.UNAUTHORIZED.code -> resources.getStringCompat(R.string.error_response_http_suggest_unauthorized)
-                HttpCodes.BAD_REQUEST.code -> resources.getStringCompat(R.string.error_response_http_suggest_bad_request)
-                HttpCodes.UNPROCESSABLE_ENTITY.code -> resources.getStringCompat(R.string.error_response_http_suggest_unprocessable_entity)
-                HttpCodes.TOO_MANY_REQUESTS.code -> resources.getStringCompat(R.string.error_response_http_suggest_too_request)
+                HttpCodes.UNAUTHORIZED.code -> resources.getString(R.string.error_response_http_suggest_unauthorized)
+                HttpCodes.BAD_REQUEST.code -> resources.getString(R.string.error_response_http_suggest_bad_request)
+                HttpCodes.UNPROCESSABLE_ENTITY.code -> resources.getString(R.string.error_response_http_suggest_unprocessable_entity)
+                HttpCodes.TOO_MANY_REQUESTS.code -> resources.getString(R.string.error_response_http_suggest_too_request)
                 else -> ""
             }
             val modelIfExists = this.data as? SimpleModel?
             modelIfExists?.messageIfExist
-                ?: resources.getStringCompat(R.string.error_response_http_with_suggest)
+                ?: resources.getString(R.string.error_response_http_with_suggest)
                     .format(suggest, code)
         }
-        isParseError() -> resources.getStringCompat(R.string.error_response_parse)
-        isNetworkError() -> resources.getStringCompat(R.string.error_network)
-        isConnectionError() -> resources.getStringCompat(R.string.error_connection)
-        isGeneralError() -> resources.getStringCompat(R.string.error_response_general)
-        isUnexpectedError() -> resources.getStringCompat(R.string.error_response_unexpected)
+        isParseError() -> resources.getString(R.string.error_response_parse)
+        isNetworkError() -> resources.getString(R.string.error_network)
+        isConnectionError() -> resources.getString(R.string.error_connection)
+        isGeneralError() -> resources.getString(R.string.error_response_general)
+        isUnexpectedError() -> resources.getString(R.string.error_response_unexpected)
             .format(-400)
-        isRequestNotValidError() -> resources.getStringCompat(R.string.error_response_request_not_valid)
+        isRequestNotValidError() -> resources.getString(R.string.error_response_request_not_valid)
         else -> ""
     }
 }

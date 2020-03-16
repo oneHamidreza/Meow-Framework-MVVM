@@ -16,28 +16,20 @@
 
 package meow.core.ui
 
-import androidx.annotation.LayoutRes
-import androidx.databinding.ViewDataBinding
-import meow.core.arch.MeowViewModel
+import android.content.Context
+
 
 /**
- * MVVM interface.
+ * Fragment Activity Flow class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-11
+ * @since   2020-03-16
  */
 
-interface MVVM<B : ViewDataBinding, VM : MeowViewModel> {
+interface FragmentActivityFlow {
 
-    var binding: B
+    fun context(): Context
+    fun resources() = context().resources
 
-    @LayoutRes
-    fun layoutId(): Int
-
-    fun viewModelClass(): Class<VM>
-
-    fun initViewModel()
-
-    fun observeViewModel()
 }

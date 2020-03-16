@@ -39,12 +39,15 @@ import org.kodein.di.erased.kcontext
  * @since   2020-02-28
  */
 
-abstract class MeowFragment<B : ViewDataBinding, VM : MeowViewModel> : Fragment(), MVVM<B, VM>,
+abstract class MeowFragment<B : ViewDataBinding, VM : MeowViewModel> : Fragment(),
+    MVVM<B, VM>,
+    FragmentActivityFlow,
     KodeinAware {
 
     override val kodeinContext: KodeinContext<*> get() = kcontext(activity)
     private val _parentKodein by closestKodein()
     override val kodein by Kodein.lazy { extend(_parentKodein) }
+    override fun context() = requireContext()
 
     override lateinit var binding: B
     val viewModel: VM by viewModel(viewModelClass())
@@ -61,5 +64,7 @@ abstract class MeowFragment<B : ViewDataBinding, VM : MeowViewModel> : Fragment(
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
+        initViewModel()
+        observeViewModel()
     }
 }
