@@ -17,14 +17,15 @@
 package sample.ui.user.index
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import meow.utils.*
+import meow.core.arch.MeowFlow
+import meow.utils.addItemDecoration
+import meow.utils.dp
 import meow.widget.decoration.MeowDividerDecoration
 import sample.R
 import sample.data.User
-import sample.databinding.ActivityUserIndexBinding
-import sample.ui.base.BaseActivity
+import sample.databinding.FragmentUserIndexBinding
+import sample.ui.base.BaseFragment
 
 /**
  * [User]/Index Activity class.
@@ -34,18 +35,15 @@ import sample.ui.base.BaseActivity
  * @since   2020-02-29
  */
 
-class UserIndexActivity : BaseActivity<ActivityUserIndexBinding, UserIndexViewModel>() {
+class UserIndexFragment : BaseFragment<FragmentUserIndexBinding, UserIndexViewModel>() {
 
     private lateinit var listAdapter: UserAdapter
 
-    override fun layoutId() = R.layout.activity_user_index
+    override fun layoutId() = R.layout.fragment_user_index
     override fun viewModelClass() = UserIndexViewModel::class.java
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        setSupportActionBar(binding.toolbar)
-        observeViewModel()
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -54,45 +52,23 @@ class UserIndexActivity : BaseActivity<ActivityUserIndexBinding, UserIndexViewMo
                     outRect.top = 24.dp()
             }
             addItemDecoration(MeowDividerDecoration(context))
-            listAdapter = UserAdapter(application, viewModel)
+            listAdapter = UserAdapter(app, viewModel)
             adapter = listAdapter
         }
 
         viewModel.callApi()
     }
 
-    private fun observeViewModel() {
+    override fun initViewModel() {
         binding.viewModel = viewModel
-        viewModel.eventLiveData.safeObserve(this) {
-            logD(m = "New Event Received : $it")
-            when {
-                it.isApiCancellation() -> {
-                    hideLoading()
-                    showError("Canceling is Working")
-                }
-                it.isApiError() -> {
-                    hideLoading()
-//                    showError(it.createErrorMessage(resources))
-                }
-                it.isApiLoading() -> {
-                    showLoading()
-                }
-                it.isApiSuccess() -> {
-                    hideLoading()
-                }
-            }
-        }
     }
 
-    private fun showLoading() {
-        Toast.makeText(this, "Loading...", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun hideLoading() {
-    }
-
-    private fun showError(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    override fun observeViewModel() {
+        MeowFlow.GetDataFromApi(this).apply {
+            onShowLoading = { (requireActivity()).title = "Loading" }//todo getString()
+            onHideLoading = { requireActivity().title = "User Index" }
+            containerViews = arrayOf()
+        }.observe(binding.lifecycleOwner!!, viewModel.listLiveData)
     }
 
 }

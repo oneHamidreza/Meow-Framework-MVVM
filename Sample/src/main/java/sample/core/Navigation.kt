@@ -29,3 +29,4 @@ import sample.R
  */
 
 fun NavController.actionToUserDetail() = navigate(ActionOnlyNavDirections(R.id.actionToUserDetail))
+fun NavController.actionToUserIndex() = navigate(ActionOnlyNavDirections(R.id.actionToUserIndex))

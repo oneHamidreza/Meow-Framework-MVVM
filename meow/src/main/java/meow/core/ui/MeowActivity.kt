@@ -41,6 +41,7 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel, T> : AppCom
         where T : MeowActivity<B, VM, T>, T : KodeinAware {
 
     open var isEnabledKeyboardUtils = true
+
     var isShowingKeyboard = false
 
     override val kodein by closestKodein()
@@ -48,7 +49,6 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel, T> : AppCom
 
     override lateinit var binding: B
 
-    //todo improve
     val viewModel: VM by viewModel(viewModelClass())
 
     private lateinit var keyboardUtils: KeyboardUtils
@@ -56,6 +56,9 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel, T> : AppCom
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindContentView(layoutId())
+        initViewModel()
+        observeViewModel()
+
         if (isEnabledKeyboardUtils) {
             keyboardUtils = KeyboardUtils(this) {
                 isShowingKeyboard = it

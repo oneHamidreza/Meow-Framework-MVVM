@@ -16,32 +16,22 @@
 
 package sample.ui.main
 
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
-import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import kotlinx.android.synthetic.main.activity_main.*
 import meow.controller
 import meow.utils.getColorCompat
-import meow.utils.logD
-import meow.utils.safePost
-import meow.utils.setNavigateIconTint
 import sample.R
 import sample.databinding.ActivityMainBinding
 import sample.ui.base.BaseActivity
 
-
 /**
- * Main Activity class.
+ * [Main] Activity class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -52,12 +42,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
-    val nowFragment
-        get() = supportFragmentManager.findFragmentById(navController.currentDestination!!.id.apply {
-            print(
-                this
-            )
-        })
 
     override fun viewModelClass() = MainViewModel::class.java
     override fun layoutId() = R.layout.activity_main
@@ -67,37 +51,27 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         super.onCreate(savedInstanceState)
         setSupportActionBar(binding.toolbar)
         setupNavigation()
-        observeViewModel()
 
-        fv.setOnSubmitClickListener {
-            Log.d("testText", "Text is : ${et.text.toString()}")
-            Toast.makeText(this, et.text.toString(), Toast.LENGTH_LONG).show()
-//            fv.resetForm()
-        }
+//        fv.setOnSubmitClickListener {
+//            Log.d("testText", "Text is : ${et.text.toString()}")
+//            Toast.makeText(this, et.text.toString(), Toast.LENGTH_LONG).show()
+//        }
+//
+//        et.addTextChangedListener(object : TextWatcher {
+//            override fun afterTextChanged(s: Editable?) {
+//            }
+//
+//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+//            }
+//
+//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+//                if (et.text!!.length > et.counterMaxLength)
+//                    et.error = "Text is longer than allowed limit"
+//                else
+//                    et.isErrorEnabled = false
+//            }
+//        })
 
-        et.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (et.text!!.length > et.counterMaxLength)
-                    et.error = "Text is longer than allowed limit"
-                else
-                    et.isErrorEnabled = false
-            }
-        })
-
-    }
-
-    override fun onKeyboardUp() {
-        logD(m = "onKeyboardUp called")
-    }
-
-    override fun onKeyboardDown(isFromOnCreate: Boolean) {
-        logD(m = "onKeyboardDown called: $isFromOnCreate")
     }
 
     private fun setupNavigation() {
@@ -114,8 +88,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         }
     }
 
-    private fun observeViewModel() {
+    override fun initViewModel() {
         binding.viewModel = viewModel
+    }
+
+    override fun observeViewModel() {
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -17,9 +17,7 @@
 package sample.ui.user.detail
 
 import android.os.Bundle
-import android.widget.Toast
 import meow.core.arch.MeowFlow
-import meow.utils.createErrorMessage
 import sample.R
 import sample.data.User
 import sample.databinding.FragmentUserDetailBinding
@@ -36,7 +34,7 @@ import sample.ui.base.BaseFragment
 class UserDetailFragment : BaseFragment<FragmentUserDetailBinding, UserDetailViewModel>() {
 
     override fun viewModelClass() = UserDetailViewModel::class.java
-    override fun layoutId() = R.layout.fragment_user_detail//todo init
+    override fun layoutId() = R.layout.fragment_user_detail
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -51,23 +49,14 @@ class UserDetailFragment : BaseFragment<FragmentUserDetailBinding, UserDetailVie
         viewModel.callApi(User.RequestGet("1"))
     }
 
-    private fun initViewModel() {//todo Force complete
+    override fun initViewModel() {
         binding.viewModel = viewModel
     }
 
-    private fun observeViewModel() {//todo Force complete
-        MeowFlow.DetailApi(arrayOf(binding.tvModel, binding.tvStatus)).apply {
-            onCancellationAction = {
-                showError("Canceling is Working")
-            }
-            onErrorAction = {
-                showError(it.data.createErrorMessage(resources))
-            }
-        }.observe(binding.lifecycleOwner!!, viewModel.apiLiveData)
+    override fun observeViewModel() {
+        MeowFlow.GetDataFromApi(this).apply {
+            containerViews = arrayOf(binding.tvModel, binding.tvStatus)
+        }.observe(binding.lifecycleOwner, viewModel.apiLiveData)
     }
 
-    private fun showError(message: String) {
-        binding.tvStatus.text = message
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-    }
 }

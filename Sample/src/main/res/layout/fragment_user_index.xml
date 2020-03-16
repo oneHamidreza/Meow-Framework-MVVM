@@ -14,12 +14,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            style="@style/Toolbar"
-            app:subtitle="Primary Surface"
-            app:title="Toolbar" />
-
         <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"

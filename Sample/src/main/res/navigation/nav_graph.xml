@@ -8,8 +8,11 @@
 
     <action
         android:id="@+id/actionToUserDetail"
-        app:destination="@id/fragmentUserDetail"
-        app:enterAnim="@anim/fragment_fade_enter" />
+        app:destination="@id/fragmentUserDetail" />
+
+    <action
+        android:id="@+id/actionToUserIndex"
+        app:destination="@id/fragmentUserIndex" />
 
     <fragment
         android:id="@+id/fragmentMenu"
@@ -22,5 +25,11 @@
         android:name="sample.ui.user.detail.UserDetailFragment"
         android:label="User Detail"
         tools:layout="@layout/fragment_user_detail" />
+
+    <fragment
+        android:id="@+id/fragmentUserIndex"
+        android:name="sample.ui.user.index.UserIndexFragment"
+        android:label="User Index"
+        tools:layout="@layout/fragment_user_index" />
 
 </navigation>

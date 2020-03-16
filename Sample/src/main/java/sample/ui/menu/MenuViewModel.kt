@@ -38,4 +38,8 @@ class MenuViewModel(app: Application) : MeowViewModel(app) {
         navigationLiveData.postValue(R.id.actionToUserDetail)
     }
 
+    fun onClickedUserIndexApi(@Suppress("UNUSED_PARAMETER") view: View) {
+        navigationLiveData.postValue(R.id.actionToUserIndex)
+    }
+
 }

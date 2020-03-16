@@ -43,10 +43,10 @@ sealed class MeowFlow(open val flowInterface: FragmentActivityFlow) {
         init {
             onBeforeAction = {
                 containerViews.forEach { it.visibility = visibilityWhenLoading }
-                showLoading()
+                onShowLoading(null)
             }
             onAfterAction = {
-                hideLoading()
+                onHideLoading()
                 if (!lastStateHasBeenError)
                     containerViews.forEach { it.visibility = View.VISIBLE }
             }
@@ -73,9 +73,9 @@ sealed class MeowFlow(open val flowInterface: FragmentActivityFlow) {
 
         var dialog: Dialog? = null
 
-        var onBeforeAction: () -> Unit = { showLoading() }
+        var onBeforeAction: () -> Unit = { onShowLoading(null) }
 
-        var onAfterAction: () -> Unit = { hideLoading() }
+        var onAfterAction: () -> Unit = { onHideLoading() }
 
         var onSuccessAction: (it: MeowResponse<*>) -> Unit = {}
 
@@ -95,37 +95,39 @@ sealed class MeowFlow(open val flowInterface: FragmentActivityFlow) {
                 Toast.makeText(flowInterface.context(), it, Toast.LENGTH_LONG).show()
         }
 
-        var showLoading: () -> Unit = {
+        var onShowLoading: (text: String?) -> Unit = {
             progressBarImpl?.show()
             dialog?.show()
             errorImpl?.hide()
         }
 
-        var hideLoading: () -> Unit = {
+        var onHideLoading: () -> Unit = {
             progressBarImpl?.hide()
             dialog?.hide()
         }
 
-        fun observe(owner: LifecycleOwner?, liveData: LiveData<MeowEvent<*>>) {
+        fun observe(owner: LifecycleOwner?, liveData: LiveData<*>) {
             liveData.safeObserve(owner) {
-                when {
-                    it.isApiCancellation() -> {
-                        lastStateHasBeenError = true
-                        onAfterAction()
-                        onCancellationAction()
-                    }
-                    it.isApiLoading() -> {
-                        lastStateHasBeenError = false
-                        onBeforeAction()
-                    }
-                    it.isApiSuccess() -> {
-                        onAfterAction()
-                        onSuccessAction((it as MeowEvent.Api.Success).data)
-                    }
-                    it.isApiError() -> {
-                        lastStateHasBeenError = true
-                        onAfterAction()
-                        onErrorAction(it as MeowEvent.Api.Error)
+                if (it is MeowEvent<*>) {
+                    when {
+                        it.isApiCancellation() -> {
+                            lastStateHasBeenError = true
+                            onAfterAction()
+                            onCancellationAction()
+                        }
+                        it.isApiLoading() -> {
+                            lastStateHasBeenError = false
+                            onBeforeAction()
+                        }
+                        it.isApiSuccess() -> {
+                            onAfterAction()
+                            onSuccessAction((it as MeowEvent.Api.Success).data)
+                        }
+                        it.isApiError() -> {
+                            lastStateHasBeenError = true
+                            onAfterAction()
+                            onErrorAction(it as MeowEvent.Api.Error)
+                        }
                     }
                 }
             }
