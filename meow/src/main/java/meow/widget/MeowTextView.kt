@@ -22,10 +22,10 @@ import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import com.etebarian.meowframework.R
 import meow.controller
-import meow.utils.MeowDrawableHelper
-import meow.utils.MeowShapeDrawable
-import meow.utils.avoidExceptionFinal
-import meow.utils.getFont
+import meow.util.MeowDrawableHelper
+import meow.util.MeowShapeDrawable
+import meow.util.avoidExceptionFinal
+import meow.util.getFont
 import meow.widget.impl.MeowShapeDrawableImpl
 import meow.widget.impl.TextViewImpl
 

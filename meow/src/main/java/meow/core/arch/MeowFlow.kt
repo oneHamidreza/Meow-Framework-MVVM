@@ -25,7 +25,7 @@ import meow.core.api.MeowEvent
 import meow.core.api.MeowResponse
 import meow.core.arch.MeowFlow.GetDataFromApi
 import meow.core.ui.FragmentActivityFlow
-import meow.utils.*
+import meow.util.*
 import meow.widget.impl.ErrorImpl
 import meow.widget.impl.ProgressBarImpl
 

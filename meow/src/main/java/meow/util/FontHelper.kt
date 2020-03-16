@@ -1,4 +1,4 @@
-package meow.utils
+package meow.util
 
 import android.content.Context
 import android.graphics.Typeface

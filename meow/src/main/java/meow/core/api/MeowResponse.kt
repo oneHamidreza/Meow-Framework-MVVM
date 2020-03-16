@@ -20,7 +20,7 @@ import com.squareup.moshi.Json
 import kotlinx.serialization.Serializable
 import meow.core.api.exceptions.NetworkConnectionException
 import meow.core.api.exceptions.UnexpectedException
-import meow.utils.isNotNullOrEmpty
+import meow.util.isNotNullOrEmpty
 
 /**
  * The model of Response in restful api by success and fail statuses.

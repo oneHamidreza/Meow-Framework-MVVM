@@ -28,7 +28,7 @@ import meow.controller
 import meow.core.api.MeowEvent
 import meow.core.api.MeowRequest
 import meow.core.api.MeowResponse
-import meow.utils.*
+import meow.util.*
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein

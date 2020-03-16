@@ -16,7 +16,7 @@
 
 package sample.di
 
-import meow.utils.bindAutoTag
+import meow.util.bindAutoTag
 import org.kodein.di.Kodein.Module
 import org.kodein.di.direct
 import org.kodein.di.erased.bind

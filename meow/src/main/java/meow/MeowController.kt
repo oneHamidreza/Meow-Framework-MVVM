@@ -21,9 +21,9 @@ import android.content.res.ColorStateList
 import android.util.LayoutDirection
 import androidx.appcompat.app.AppCompatDelegate
 import meow.core.api.MeowSession
-import meow.utils.getPrivateField
-import meow.utils.isNightModeFromSettings
-import meow.utils.setPrivateField
+import meow.util.getPrivateField
+import meow.util.isNightModeFromSettings
+import meow.util.setPrivateField
 
 /**
  * 🐈 This CAT can control configurations and UI properties in one Application. Just trust it.

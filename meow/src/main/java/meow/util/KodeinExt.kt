@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package meow.utils
+package meow.util
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment

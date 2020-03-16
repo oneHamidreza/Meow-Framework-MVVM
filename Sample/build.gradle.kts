@@ -36,12 +36,10 @@ android {
 
         fun BuildType.setupApiUrl() {
             val properties = Properties().apply {
-                load(
-                    project.rootProject.file("local.properties").inputStream()
-                )
+                load(project.rootProject.file("local.properties").inputStream())
             }
-            val apiUrl = properties.getProperty("api.ip") ?: "noIP"
-            buildConfigField("String", "Api_IP", "\"$apiUrl\"")
+            val apiUrl = properties.getProperty("api.url")
+            buildConfigField("String", "API_URL", "\"$apiUrl\"")
         }
 
         getByName("debug") {

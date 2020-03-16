@@ -20,9 +20,9 @@ import `in`.co.ophio.secure.core.KeyStoreKeyGenerator
 import `in`.co.ophio.secure.core.ObscuredPreferencesBuilder
 import android.app.Application
 import android.content.SharedPreferences
-import meow.utils.avoidException
-import meow.utils.toClass
-import meow.utils.toJsonString
+import meow.util.avoidException
+import meow.util.toClass
+import meow.util.toJsonString
 
 /**
  * Shared Preferences class with obscured key and data availability.

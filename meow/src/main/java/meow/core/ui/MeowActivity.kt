@@ -21,8 +21,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import meow.core.arch.MeowViewModel
-import meow.utils.KeyboardUtils
-import meow.utils.viewModel
+import meow.util.KeyboardUtils
+import meow.util.viewModel
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 

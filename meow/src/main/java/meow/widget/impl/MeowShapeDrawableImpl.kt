@@ -3,8 +3,8 @@ package meow.widget.impl
 import android.content.Context
 import android.util.AttributeSet
 import com.etebarian.meowframework.R
-import meow.utils.MeowShapeDrawable
-import meow.utils.avoidExceptionFinal
+import meow.util.MeowShapeDrawable
+import meow.util.avoidExceptionFinal
 
 /**
  * Created by 1HE on 9/30/2018.

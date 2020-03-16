@@ -14,26 +14,12 @@
  * limitations under the License.
  */
 
-package meow.utils
-
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
+package meow.util
 
 /**
- * Extensions of [LiveData].
+ * Extensions of [AppCompatActivity].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2/29/2020
+ * @since   2020-03-02
  */
-
-fun <T> LiveData<T>.safeObserve(owner: LifecycleOwner? = null, observer: (T) -> Unit) {
-    val archObserver = Observer<T> { value ->
-        if (value is T) avoidException { observer(value) }
-    }
-    if (owner != null)
-        observe(owner, archObserver)
-    else
-        observeForever(archObserver)
-}

@@ -1,6 +1,6 @@
 @file:Suppress("unused", "MemberVisibilityCanBePrivate")
 
-package meow.utils
+package meow.util
 
 import android.util.Log
 import meow.controller

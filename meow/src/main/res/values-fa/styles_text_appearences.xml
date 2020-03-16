@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- todo maybe no need -->
-
     <style name="textAppearance.Headline1" parent="@style/TextAppearance.MaterialComponents.Headline1">
         <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>

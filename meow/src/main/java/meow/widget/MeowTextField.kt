@@ -28,8 +28,8 @@ import com.etebarian.meowframework.R
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import meow.controller
-import meow.utils.avoidExceptionFinal
-import meow.utils.getFont
+import meow.util.avoidExceptionFinal
+import meow.util.getFont
 import meow.widget.impl.TextViewImpl
 
 

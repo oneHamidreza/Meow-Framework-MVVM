@@ -25,7 +25,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import meow.MeowApp
 import meow.core.arch.MeowViewModel
-import meow.utils.viewModel
+import meow.util.viewModel
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.KodeinContext

@@ -1,7 +1,7 @@
 package sample.ui.menu
 
 import androidx.navigation.fragment.findNavController
-import meow.utils.safeObserve
+import meow.util.safeObserve
 import sample.R
 import sample.core.actionToUserDetail
 import sample.core.actionToUserIndex

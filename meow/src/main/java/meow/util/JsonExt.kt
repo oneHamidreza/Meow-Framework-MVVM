@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package meow.utils
+package meow.util
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -32,34 +32,27 @@ val moshiBuilder = Moshi.Builder().add(KotlinJsonAdapterFactory())
 
 inline fun <reified T> BufferedSource?.toClass(): T? {
     if (this == null) return null
-    return try {
+    return avoidException {
         moshiBuilder.build().adapter(createClass<T>()).fromJson(this)
-    } catch (e: Exception) {//todo avoid exception
-        e.printStackTrace()
-        null
     }
 }
 
 inline fun <reified T> String?.toClass(): T? {
     if (this == null) return null
-    return try {
+    return avoidException {
         moshiBuilder.build().adapter(createClass<T>()).fromJson(this)
-    } catch (e: Exception) {
-        e.printStackTrace()
-        null
     }
 }
 
 inline fun <reified T : Any> T?.toJsonString(): String {
     if (this == null) return "{}"
-    return try {
-        moshiBuilder
-            .add(KotlinJsonAdapterFactory())
-            .build().adapter(createClass<T>()).toJson(this)
-    } catch (e: Exception) {
-        e.printStackTrace()
-        "{}"
-    }
+    return avoidException(
+        tryBlock = {
+            moshiBuilder
+                .add(KotlinJsonAdapterFactory())
+                .build().adapter(createClass<T>()).toJson(this)
+        },
+        exceptionBlock = { "{}" }) ?: ""
 }
 
 inline fun <reified T : Any> List<T>?.toJsonString(): String {

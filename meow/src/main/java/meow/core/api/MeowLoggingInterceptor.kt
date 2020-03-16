@@ -16,7 +16,7 @@
 
 package meow.core.api
 
-import meow.utils.logD
+import meow.util.logD
 import okhttp3.Interceptor
 import okhttp3.Response
 

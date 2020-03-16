@@ -14,17 +14,35 @@
  * limitations under the License.
  */
 
-package meow.utils
+package meow.util
 
-import com.google.android.material.appbar.MaterialToolbar
+import java.util.*
 
 /**
- * Material Components Extensions.
+ * Extensions of [String].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-14
+ * @since   2020-03-06
  */
 
-//todo not working
-fun MaterialToolbar.setNavigateIconTint(color: Int) = apply { navigationIcon.setTintCompat(color) }
+fun generateUUID() = UUID.randomUUID().toString()
+
+/**
+ * Capitalize first character in string.
+ * If input is empty return empty string.
+ * @return a string that capitalized first character.
+ */
+fun String?.capitalizeFirst(): String {
+    if (isNullOrEmpty())
+        return ""
+
+    val first = this!![0]
+    return if (Character.isUpperCase(first)) {
+        this
+    } else {
+        Character.toUpperCase(first) + this.substring(1)
+    }
+}
+
+fun String?.isNotNullOrEmpty() = !isNullOrEmpty()

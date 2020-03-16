@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package meow.utils
+package meow.util
 
 import android.annotation.SuppressLint
 import android.content.Context

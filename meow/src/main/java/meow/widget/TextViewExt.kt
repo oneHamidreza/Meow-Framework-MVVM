@@ -1,14 +1,10 @@
 package meow.widget
 
-import android.annotation.SuppressLint
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import meow.controller
-import meow.utils.logD
-import meow.utils.print
-import meow.utils.toPersianNumber
+import meow.util.toPersianNumber
 
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.

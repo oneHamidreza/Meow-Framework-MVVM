@@ -24,9 +24,9 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.etebarian.meowframework.R
 import meow.controller
-import meow.utils.dp
-import meow.utils.getColorCompat
-import meow.utils.getDimensionToPx
+import meow.util.dp
+import meow.util.getColorCompat
+import meow.util.getDimensionToPx
 
 /**
  * The Divider Recycler View Decoration class inherits from [RecyclerView.ItemDecoration].

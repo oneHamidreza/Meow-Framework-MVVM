@@ -23,7 +23,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.etebarian.meowframework.R
 import meow.controller
-import meow.utils.*
+import meow.util.*
 import meow.widget.impl.MeowShapeDrawableImpl
 import kotlin.math.ceil
 

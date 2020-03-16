@@ -5,7 +5,7 @@
 
         <import type="sample.R" />
 
-        <import type="meow.utils.ResourceExtKt" />
+        <import type="meow.util.ResourceExtKt" />
 
         <variable
             name="viewModel"

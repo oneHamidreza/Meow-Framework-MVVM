@@ -42,63 +42,63 @@
                 app:defaultNavHost="true"
                 app:navGraph="@navigation/nav_graph" />
 
-            <meow.widget.MeowTextView
-                android:id="@+id/tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="متن نمونه"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                android:textColor="#000"
-                app:afterText=":1656"
-                app:beforeText="*"
-                app:fontPath="@string/font_mainBold" />
+            <!--            <meow.widget.MeowTextView-->
+            <!--                android:id="@+id/tv"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:text="متن نمونه"-->
+            <!--                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"-->
+            <!--                android:textColor="#000"-->
+            <!--                app:afterText=":1656"-->
+            <!--                app:beforeText="*"-->
+            <!--                app:fontPath="@string/font_mainBold" />-->
 
-            <meow.widget.MeowFormView
-                android:id="@+id/fv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-                app:resetForm="true">
+            <!--            <meow.widget.MeowFormView-->
+            <!--                android:id="@+id/fv"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:gravity="center"-->
+            <!--                android:orientation="vertical"-->
+            <!--                app:resetForm="true">-->
 
-                <meow.widget.MeowTextField
-                    android:id="@+id/et"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="24dp"
-                    android:hint="Mobile Number"
-                    android:padding="0dp"
-                    app:boxCornerRadiusTopEnd="8dp"
-                    app:boxCornerRadiusTopStart="8dp"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="12"
-                    app:errorEnabled="true"
-                    app:errorIconDrawable="@drawable/ic_error"
-                    app:isPersian="true"
-                    app:meow_inputType="email"
-                    app:meow_validateType="email"
-                    app:startIconDrawable="@drawable/ic_call"
-                    app:startIconTint="@color/primary" />
+            <!--                <meow.widget.MeowTextField-->
+            <!--                    android:id="@+id/et"-->
+            <!--                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_margin="24dp"-->
+            <!--                    android:hint="Mobile Number"-->
+            <!--                    android:padding="0dp"-->
+            <!--                    app:boxCornerRadiusTopEnd="8dp"-->
+            <!--                    app:boxCornerRadiusTopStart="8dp"-->
+            <!--                    app:counterEnabled="true"-->
+            <!--                    app:counterMaxLength="12"-->
+            <!--                    app:errorEnabled="true"-->
+            <!--                    app:errorIconDrawable="@drawable/ic_error"-->
+            <!--                    app:isPersian="true"-->
+            <!--                    app:meow_inputType="email"-->
+            <!--                    app:meow_validateType="email"-->
+            <!--                    app:startIconDrawable="@drawable/ic_call"-->
+            <!--                    app:startIconTint="@color/primary" />-->
 
-                <meow.widget.MeowButton
-                    android:id="@+id/bt"
-                    style="@style/Widget.MaterialComponents.Button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ثبت"
-                    android:textColor="#fff"
-                    app:attachToForm="true"
-                    app:shapeAppearance="@style/ShapeAppearance.MaterialComponents.MediumComponent" />
+            <!--                <meow.widget.MeowButton-->
+            <!--                    android:id="@+id/bt"-->
+            <!--                    style="@style/Widget.MaterialComponents.Button"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="ثبت"-->
+            <!--                    android:textColor="#fff"-->
+            <!--                    app:attachToForm="true"-->
+            <!--                    app:shapeAppearance="@style/ShapeAppearance.MaterialComponents.MediumComponent" />-->
 
-                <View
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:background="@color/primary"
-                    app:shapeAppearanceOverlay="@style/MyShape" />
+            <!--                <View-->
+            <!--                    android:layout_width="100dp"-->
+            <!--                    android:layout_height="100dp"-->
+            <!--                    android:background="@color/primary"-->
+            <!--                    app:shapeAppearanceOverlay="@style/MyShape" />-->
 
-            </meow.widget.MeowFormView>
+            <!--            </meow.widget.MeowFormView>-->
 
         </LinearLayout>
 

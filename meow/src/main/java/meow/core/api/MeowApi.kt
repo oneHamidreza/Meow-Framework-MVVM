@@ -21,9 +21,9 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import meow.MeowApp
 import meow.controller
-import meow.utils.avoidException
-import meow.utils.hasNetwork
-import meow.utils.logD
+import meow.util.avoidException
+import meow.util.hasNetwork
+import meow.util.logD
 import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -65,16 +65,15 @@ fun MeowApp.getCacheInterceptorBlock(options: MeowApi.Options): InterceptorBlock
 }
 
 abstract class MeowApi(
-    open val options: Options = Options()
+    open var baseUrl: String,
+    open var options: Options = Options()
 ) {
-
-    abstract fun getOkHttpClient(): OkHttpClient
-    abstract fun getBaseUrl(): String
+    lateinit var okHttpClient: OkHttpClient
 
     fun createDefaultService(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(getBaseUrl())
-            .client(getOkHttpClient())
+            .baseUrl(baseUrl)
+            .client(okHttpClient)
             .build()
     }
 

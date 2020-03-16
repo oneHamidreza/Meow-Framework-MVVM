@@ -22,9 +22,9 @@ import android.util.AttributeSet
 import com.etebarian.meowframework.R
 import com.google.android.material.button.MaterialButton
 import meow.controller
-import meow.utils.ColorHelper
-import meow.utils.avoidExceptionFinal
-import meow.utils.getFont
+import meow.util.ColorHelper
+import meow.util.avoidExceptionFinal
+import meow.util.getFont
 import meow.widget.impl.TextViewImpl
 
 /**

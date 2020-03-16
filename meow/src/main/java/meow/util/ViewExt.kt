@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package meow.utils
+package meow.util
 
 import android.view.View
 import android.view.ViewTreeObserver

@@ -21,7 +21,7 @@ import androidx.lifecycle.MutableLiveData
 import meow.controller
 import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
-import meow.utils.logD
+import meow.util.logD
 import sample.App
 import sample.data.User
 

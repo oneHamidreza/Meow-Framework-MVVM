@@ -14,29 +14,19 @@
  * limitations under the License.
  */
 
-package meow.utils
+package meow.util
 
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+import meow.core.api.MeowEvent
 
 /**
- * Extensions of Coroutine.
+ * Extensions of [MeowEvent].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-02
+ * @since   2020-03-01
  */
 
-fun launchSilent(
-    context: CoroutineContext = Dispatchers.IO,
-    exceptionHandler: CoroutineExceptionHandler? = null,
-    job: Job = Job(),
-    start: CoroutineStart = CoroutineStart.DEFAULT,
-    block: suspend CoroutineScope.() -> Unit
-): Job {
-    val coroutineScope = if (exceptionHandler != null)
-        CoroutineScope(context + job + exceptionHandler)
-    else
-        CoroutineScope(context + job)
-    return coroutineScope.launch(context, start, block)
-}
+fun MeowEvent<*>?.isApiLoading() = this is MeowEvent.Api.Loading
+fun MeowEvent<*>?.isApiCancellation() = this is MeowEvent.Api.Cancellation
+fun MeowEvent<*>?.isApiSuccess() = this is MeowEvent.Api.Success
+fun MeowEvent<*>?.isApiError() = this is MeowEvent.Api.Error

@@ -60,7 +60,7 @@ class MeowOauthToken {
 
     val isLogin: Boolean
         get() {
-            return accessToken != null && accessToken!!.isNotEmpty()//todo string Ext need
+            return accessToken?.isNotEmpty() ?: false
         }
 
     override fun toString(): String {
@@ -75,11 +75,11 @@ class MeowOauthToken {
 
     class RequestRefreshToken(
         @Json(name = "refresh_token") var refreshToken: String,
-        override val session: MeowSession
+        override var session: MeowSession
     ) : RequestPrimary(session, "refresh_token")
 
     open class RequestPrimary(
-        open val session: MeowSession,
+        open var session: MeowSession,
         @property:Json(name = "grant_type") var grantType: String? = null
     ) {
 

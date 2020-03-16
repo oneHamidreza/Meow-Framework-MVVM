@@ -14,12 +14,31 @@
  * limitations under the License.
  */
 
-package meow.utils
+package meow.util
+
+import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import meow.widget.decoration.ItemOffsetBlock
+import meow.widget.decoration.SimpleDecoration
 
 /**
- * Extensions of [AppCompatActivity].
+ * Extensions of [RecyclerView] class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-02
+ * @since   2020-03-08
  */
+
+object RecyclerViewBindingAdapter {
+
+    @BindingAdapter("items")
+    @JvmStatic
+    fun <T : Any, VH : RecyclerView.ViewHolder> setItems(view: RecyclerView, items: List<T>?) {
+        (view.adapter as? ListAdapter<T, VH>)?.submitList(items)
+    }
+
+}
+
+fun RecyclerView.addItemDecoration(block: ItemOffsetBlock) =
+    addItemDecoration(SimpleDecoration(block))

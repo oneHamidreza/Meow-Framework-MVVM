@@ -19,8 +19,8 @@ package sample.ui.user.index
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import meow.core.arch.MeowFlow
-import meow.utils.addItemDecoration
-import meow.utils.dp
+import meow.util.addItemDecoration
+import meow.util.dp
 import meow.widget.decoration.MeowDividerDecoration
 import sample.R
 import sample.data.User

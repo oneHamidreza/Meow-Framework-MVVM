@@ -25,7 +25,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import meow.controller
-import meow.utils.getColorCompat
+import meow.util.getColorCompat
 import sample.R
 import sample.databinding.ActivityMainBinding
 import sample.ui.base.BaseActivity

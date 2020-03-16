@@ -20,7 +20,7 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import meow.controller
-import meow.utils.dp
+import meow.util.dp
 
 /**
  * The Material Card Recycler View Decoration class inherits from [RecyclerView.ItemDecoration].

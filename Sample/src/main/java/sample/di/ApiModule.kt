@@ -18,7 +18,6 @@ package sample.di
 
 import meow.controller
 import meow.core.api.*
-import okhttp3.OkHttpClient
 import org.kodein.di.Kodein.Module
 import org.kodein.di.erased.bind
 import org.kodein.di.erased.instance
@@ -39,7 +38,7 @@ import sample.data.DataSource
  */
 
 val apiModule = Module("Network Module", false) {
-    bind() from provider { AppApi(instance(), "refreshTokenValue") }
+    bind<MeowApi>() with provider { AppApi(instance(), "refreshTokenValue") }
 }
 
 fun createOkHttpClient(api: AppApi, options: MeowApi.Options, dataSource: DataSource) =
@@ -59,23 +58,21 @@ fun createOkHttpClient(api: AppApi, options: MeowApi.Options, dataSource: DataSo
     }.build()
 
 open class AppApi(
-    open var app: App,
+    open val app: App,
     open var refreshToken: String? = null,
-    override var options: Options = Options()
-) : MeowApi(options) {
+    override var options: Options = Options(),
+    override var baseUrl: String = BuildConfig.API_URL
+) : MeowApi(baseUrl = baseUrl, options = options) {
+
+    init {
+        @Suppress("LeakingThis")
+        okHttpClient = createOkHttpClient(this, options, app.dataSource)
+    }
 
     override fun getRefreshTokenResponse(): Response<MeowOauthToken>? {
         if (refreshToken == null) return null
         val request = MeowOauthToken.RequestRefreshToken(refreshToken!!, controller.meowSession)
         return Response.success(createServiceByAdapter<Oauth>().refreshToken(request))
-    }
-
-    override fun getOkHttpClient(): OkHttpClient {//todo varieble
-        return createOkHttpClient(this, options, DataSource(app))
-    }
-
-    override fun getBaseUrl(): String {//todo variable
-        return BuildConfig.Api_IP
     }
 
     interface Oauth {
@@ -89,9 +86,6 @@ open class AppApi(
 class TestAppApi(
     override var app: App,
     override var refreshToken: String? = null,
-    override var options: Options = Options()
-) : AppApi(app, refreshToken, options) {
-    override fun getBaseUrl(): String {
-        return "test-api.com"
-    }
-}
+    override var options: Options = Options(),
+    override var baseUrl: String = "test-api.com"
+) : AppApi(app, refreshToken, options)

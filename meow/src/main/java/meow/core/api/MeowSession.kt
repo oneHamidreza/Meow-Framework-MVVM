@@ -17,7 +17,7 @@
 package meow.core.api
 
 import android.os.Build
-import meow.utils.getDeviceModel
+import meow.util.getDeviceModel
 
 /**
  * The Meow Session Api class.

@@ -14,35 +14,26 @@
  * limitations under the License.
  */
 
-package meow.utils
+package meow.util
 
-import java.util.*
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 
 /**
- * Extensions of [String].
+ * Extensions of [LiveData].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-06
+ * @since   2/29/2020
  */
 
-fun generateUUID() = UUID.randomUUID().toString()
-
-/**
- * Capitalize first character in string.
- * If input is empty return empty string.
- * @return a string that capitalized first character.
- */
-fun String?.capitalizeFirst(): String {
-    if (isNullOrEmpty())
-        return ""
-
-    val first = this!![0]
-    return if (Character.isUpperCase(first)) {
-        this
-    } else {
-        Character.toUpperCase(first) + this.substring(1)
+fun <T> LiveData<T>.safeObserve(owner: LifecycleOwner? = null, observer: (T) -> Unit) {
+    val archObserver = Observer<T> { value ->
+        if (value is T) avoidException { observer(value) }
     }
+    if (owner != null)
+        observe(owner, archObserver)
+    else
+        observeForever(archObserver)
 }
-
-fun String?.isNotNullOrEmpty() = !isNullOrEmpty()

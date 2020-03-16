@@ -24,9 +24,9 @@ import android.util.AttributeSet
 import android.view.Gravity
 import com.etebarian.meowframework.R
 import meow.controller
-import meow.utils.avoidExceptionFinal
-import meow.utils.isEmptyTrim
-import meow.utils.toPersianNumber
+import meow.util.avoidExceptionFinal
+import meow.util.isEmptyTrim
+import meow.util.toPersianNumber
 
 /**
  * The TextView Implementation.

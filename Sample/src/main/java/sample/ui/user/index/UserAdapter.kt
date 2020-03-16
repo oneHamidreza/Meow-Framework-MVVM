@@ -20,7 +20,7 @@ import android.app.Application
 import android.view.ViewGroup
 import meow.core.ui.MeowAdapter
 import meow.core.ui.MeowViewHolder
-import meow.utils.getColorCompat
+import meow.util.getColorCompat
 import sample.BR
 import sample.R
 import sample.data.User
