@@ -28,5 +28,4 @@ import meow.core.ui.MeowActivity
  * @since   2020-03-06
  */
 
-abstract class BaseActivity<B : ViewDataBinding, VM : MeowViewModel> :
-    MeowActivity<B, VM, BaseActivity<B, VM>>()
+abstract class BaseActivity<B : ViewDataBinding, VM : MeowViewModel> : MeowActivity<B, VM>()

@@ -18,13 +18,12 @@ package meow.core.arch
 
 import android.app.Dialog
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import meow.core.api.MeowEvent
 import meow.core.api.MeowResponse
 import meow.core.arch.MeowFlow.GetDataFromApi
-import meow.core.ui.FragmentActivityFlow
+import meow.core.ui.MVVM
 import meow.util.*
 import meow.widget.impl.ErrorImpl
 import meow.widget.impl.ProgressBarImpl
@@ -37,9 +36,9 @@ import meow.widget.impl.ProgressBarImpl
  * @since   2020-03-10
  */
 
-sealed class MeowFlow(open val flowInterface: FragmentActivityFlow) {
+sealed class MeowFlow(open val mvvm: MVVM<*, *>) {
 
-    class GetDataFromApi(override val flowInterface: FragmentActivityFlow) : Api(flowInterface) {
+    class GetDataFromApi(override val mvvm: MVVM<*, *>) : Api(mvvm) {
         init {
             onBeforeAction = {
                 containerViews.forEach { it.visibility = visibilityWhenLoading }
@@ -54,8 +53,8 @@ sealed class MeowFlow(open val flowInterface: FragmentActivityFlow) {
     }
 
     open class Api(
-        override val flowInterface: FragmentActivityFlow
-    ) : MeowFlow(flowInterface) {
+        override val mvvm: MVVM<*, *>
+    ) : MeowFlow(mvvm) {
 
         var isErrorShowByToastEnabled: Boolean = true
 
@@ -81,18 +80,18 @@ sealed class MeowFlow(open val flowInterface: FragmentActivityFlow) {
 
         var onCancellationAction: () -> Unit = {
             if (isShowingErrorMassageEnabled) {
-                val message = MeowEvent.Api.Cancellation().message(flowInterface.resources())
+                val message = MeowEvent.Api.Cancellation().message(mvvm.resources())
                 onShowErrorMessage(message)
             }
         }
 
         var onErrorAction: (it: MeowEvent.Api.Error) -> Unit = {
-            onShowErrorMessage(it.data.createErrorMessage(flowInterface.resources()))
+            onShowErrorMessage(it.data.createErrorMessage(mvvm.resources()))
         }
 
         var onShowErrorMessage: (it: String) -> Unit = {
             if (isErrorShowByToastEnabled)
-                Toast.makeText(flowInterface.context(), it, Toast.LENGTH_LONG).show()
+                mvvm.toastL(it)
         }
 
         var onShowLoading: (text: String?) -> Unit = {

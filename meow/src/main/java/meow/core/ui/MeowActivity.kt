@@ -34,17 +34,17 @@ import org.kodein.di.android.closestKodein
  * @since   2020-02-28
  */
 
-abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel, T> : AppCompatActivity(),
-    FragmentActivityFlow,
+abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : AppCompatActivity(),
     MVVM<B, VM>,
-    KodeinAware
-        where T : MeowActivity<B, VM, T>, T : KodeinAware {
+    KodeinAware {
 
     open var isEnabledKeyboardUtils = true
 
     var isShowingKeyboard = false
 
     override val kodein by closestKodein()
+
+    override fun activity() = this
     override fun context() = this
 
     override lateinit var binding: B

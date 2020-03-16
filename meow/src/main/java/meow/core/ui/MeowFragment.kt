@@ -43,13 +43,14 @@ import org.kodein.di.erased.kcontext
 
 abstract class MeowFragment<B : ViewDataBinding, VM : MeowViewModel> : Fragment(),
     MVVM<B, VM>,
-    FragmentActivityFlow,
     KodeinAware {
 
     override val kodeinContext: KodeinContext<*> get() = kcontext(activity)
     private val _parentKodein by closestKodein()
     override val kodein by Kodein.lazy { extend(_parentKodein) }
+
     override fun context() = requireContext()
+    override fun activity() = requireActivity()
 
     val app: MeowApp by instance()
 
