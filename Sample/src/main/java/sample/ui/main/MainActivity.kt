@@ -38,7 +38,8 @@ import sample.ui.base.BaseActivity
  * @since   2020-03-10
  */
 
-class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
+class MainActivity :
+    BaseActivity<ActivityMainBinding, MainViewModel>() {//todo check with res/layout is better ?
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration

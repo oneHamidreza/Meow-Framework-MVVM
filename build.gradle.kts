@@ -21,5 +21,7 @@ allprojects {
     }
 }
 
-//todo
-//tasks.
+tasks.register("clean", Delete::class) {
+    delete(rootProject.buildDir)
+    delete(File("buildSrc\\build"))
+}
