@@ -58,7 +58,7 @@ class UserIndexActivity : BaseActivity<ActivityUserIndexBinding, UserIndexViewMo
             adapter = listAdapter
         }
 
-//        viewModel.apiCall()
+        viewModel.callApi()
     }
 
     private fun observeViewModel() {
@@ -81,10 +81,6 @@ class UserIndexActivity : BaseActivity<ActivityUserIndexBinding, UserIndexViewMo
                     hideLoading()
                 }
             }
-        }
-
-        viewModel.listLiveData.safeObserve(this) {
-            listAdapter.submitList(it)
         }
     }
 

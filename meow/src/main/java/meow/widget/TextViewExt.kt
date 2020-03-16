@@ -2,9 +2,13 @@ package meow.widget
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import meow.controller
+import meow.utils.logD
+import meow.utils.print
+import meow.utils.toPersianNumber
 
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
@@ -30,18 +34,23 @@ import meow.controller
  * @since   2020-03-15
  */
 
-@SuppressLint("SetTextI18n")
-@BindingAdapter("android:text", "isPersian", requireAll = false)
-fun setText(view: TextView, text: String, isPersian: Boolean) {
-    view.text = "$isPersian $text"
-}
+object TextViewBindingAdapter {
 
-@BindingAdapter("android:textColor")
-fun setTextColor(view: TextView, textColor: ColorStateList) {
-    view.setTextColor(controller.onColorStateListGet(textColor))
-}
+    @BindingAdapter("isPersianNumber")
+    @JvmStatic
+    fun setPersianNumber(view: TextView, isPersianNumber: Boolean) {
+        view.text = if (isPersianNumber) view.text.toString().toPersianNumber() else view.text
+    }
 
-@BindingAdapter("android:textColor")
-fun setTextColor(view: TextView, textColor: Int) {
-    view.setTextColor(controller.onColorGet(textColor))
+    @BindingAdapter("android:textColor")
+    @JvmStatic
+    fun setTextColor(view: TextView, textColor: ColorStateList) {
+        view.setTextColor(controller.onColorStateListGet(textColor))
+    }
+
+    @BindingAdapter("android:textColor")
+    @JvmStatic
+    fun setTextColor(view: TextView, textColor: Int) {
+        view.setTextColor(controller.onColorGet(textColor))
+    }
 }

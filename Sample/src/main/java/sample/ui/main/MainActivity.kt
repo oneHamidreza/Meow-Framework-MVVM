@@ -17,6 +17,7 @@
 package sample.ui.main
 
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -30,6 +31,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
 import meow.controller
+import meow.utils.getColorCompat
 import meow.utils.logD
 import meow.utils.safePost
 import meow.utils.setNavigateIconTint
@@ -106,12 +108,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-
         binding.apply {
-            drawerLayout.setStatusBarBackground(R.color.primary_variant)
+            drawerLayout.setStatusBarBackground(ColorDrawable(getColorCompat(R.color.primary_variant)))
             navigationView.setupWithNavController(navController)
         }
-        binding.toolbar.safePost(2000) { setNavigateIconTint(Color.RED) }
     }
 
     private fun observeViewModel() {

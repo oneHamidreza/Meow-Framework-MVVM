@@ -16,6 +16,8 @@
 
 package meow.utils
 
+import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import meow.widget.decoration.ItemOffsetBlock
 import meow.widget.decoration.SimpleDecoration
@@ -27,6 +29,17 @@ import meow.widget.decoration.SimpleDecoration
  * @version 1.0.0
  * @since   2020-03-08
  */
+
+object RecyclerViewBindingAdapter {
+
+    @BindingAdapter("items")
+    @JvmStatic
+    fun <T : Any, VH : RecyclerView.ViewHolder> setItems(view: RecyclerView, items: List<T>?) {
+        logD(m = "setItems ${items?.size}")
+        (view.adapter as? ListAdapter<T, VH>)?.submitList(items)
+    }
+
+}
 
 fun RecyclerView.addItemDecoration(block: ItemOffsetBlock) =
     addItemDecoration(SimpleDecoration(block))

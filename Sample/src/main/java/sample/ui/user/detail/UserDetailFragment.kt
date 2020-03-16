@@ -36,7 +36,7 @@ import sample.ui.base.BaseFragment
 class UserDetailFragment : BaseFragment<FragmentUserDetailBinding, UserDetailViewModel>() {
 
     override fun viewModelClass() = UserDetailViewModel::class.java
-    override fun layoutId() = R.layout.fragment_user_detail
+    override fun layoutId() = R.layout.fragment_user_detail//todo init
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -44,20 +44,21 @@ class UserDetailFragment : BaseFragment<FragmentUserDetailBinding, UserDetailVie
         initViewModel()
         observeViewModel()
 
-        viewModel.requestApi(User.RequestGet("1"))
+        callApi()
     }
 
-    private fun initViewModel() {
+    private fun callApi() {
+        viewModel.callApi(User.RequestGet("1"))
+    }
+
+    private fun initViewModel() {//todo Force complete
         binding.viewModel = viewModel
     }
 
-    private fun observeViewModel() {
+    private fun observeViewModel() {//todo Force complete
         MeowFlow.DetailApi(arrayOf(binding.tvModel, binding.tvStatus)).apply {
             onCancellationAction = {
                 showError("Canceling is Working")
-            }
-            onSuccessAction = {
-                binding.model = viewModel.model
             }
             onErrorAction = {
                 showError(it.data.createErrorMessage(resources))

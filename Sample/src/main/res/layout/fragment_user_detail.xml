@@ -6,10 +6,6 @@
         <variable
             name="viewModel"
             type="sample.ui.user.detail.UserDetailViewModel" />
-
-        <variable
-            name="model"
-            type="sample.data.User" />
     </data>
 
     <LinearLayout
@@ -17,17 +13,18 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvModel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAppearance="@style/textAppearance.Headline5"
-            android:textColor="@color/material_on_background_emphasis_high_type"
-            android:text="@{model.alias}"
+            isPersianNumber="@{true}"
+            android:textColor="@color/material_on_surface_emphasis_high_type"
+            android:text="@{viewModel.modelLiveData.alias}"
             android:layout_marginBottom="16dp" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

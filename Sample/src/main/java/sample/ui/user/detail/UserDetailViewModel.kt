@@ -34,20 +34,20 @@ import sample.data.User
 class UserDetailViewModel(app: App, val repository: User.Repository) : MeowViewModel(app) {
 
     var apiLiveData = MutableLiveData<MeowEvent<*>>()
-    var model: User? = null
+    var modelLiveData = MutableLiveData<User>()
 
     fun onClickedApiCall(@Suppress("UNUSED_PARAMETER") view: View) =
-        requestApi(User.RequestGet("2"))
+            callApi(User.RequestGet("2"))
 
     fun onClickedCancelJobs(@Suppress("UNUSED_PARAMETER") view: View) = cancelAllJobs()
 
-    fun requestApi(request: User.RequestGet) {
-        apiLiveData.safeApiCall(
+    fun callApi(request: User.RequestGet) {
+        apiLiveData.safeCallApi(
             request = request,
             isNetworkRequired = false,
             apiAction = { repository.getUserByIdApi(request) }
         ) { _, it ->
-            model = it
+            modelLiveData.postValue(it)
         }
     }
 

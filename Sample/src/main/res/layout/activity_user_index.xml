@@ -28,21 +28,22 @@
             android:text="@{viewModel.getTextByDayNightMode()}"
             android:visibility="gone" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/primary"
-            android:text="@{@string/app_name}"
-            app:isPersian="true"
-            android:textAppearance="@style/textAppearance.Body1"
-            android:textColor="@{@color/material_on_background_emphasis_high_type}" />
+        <!--        <com.google.android.material.textview.MaterialTextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:background="@color/primary"-->
+        <!--            android:text="@{@string/app_name}"-->
+        <!--            app:isPersian="true"-->
+        <!--            android:textAppearance="@style/textAppearance.Body1"-->
+        <!--            android:textColor="@{@color/material_on_background_emphasis_high_type}" />-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:items="@{viewModel.listLiveData}" />
 
     </LinearLayout>
 

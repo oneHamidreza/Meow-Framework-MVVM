@@ -6,22 +6,21 @@
     android:label="Main"
     app:startDestination="@id/fragmentMenu">
 
+    <action
+        android:id="@+id/actionToUserDetail"
+        app:destination="@id/fragmentUserDetail"
+        app:enterAnim="@anim/fragment_fade_enter" />
+
     <fragment
         android:id="@+id/fragmentMenu"
         android:name="sample.ui.menu.MenuFragment"
         android:label="Menu"
-        tools:layout="@layout/fragment_menu">
-        <action
-            android:id="@+id/actionToUserDetail"
-            app:destination="@id/fragmentUserDetail" />
-    </fragment>
+        tools:layout="@layout/fragment_menu" />
 
     <fragment
         android:id="@+id/fragmentUserDetail"
         android:name="sample.ui.user.detail.UserDetailFragment"
         android:label="User Detail"
-        tools:layout="@layout/fragment_user_detail">
-
-    </fragment>
+        tools:layout="@layout/fragment_user_detail" />
 
 </navigation>

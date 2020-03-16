@@ -16,6 +16,7 @@
 
 package sample.data
 
+import meow.core.api.enableCache
 import meow.core.arch.DataSourceImpl
 import meow.core.data.MeowSharedPreferences
 import org.kodein.di.KodeinAware
@@ -35,12 +36,12 @@ import sample.di.AppApi
 class DataSource(override var app: App) : DataSourceImpl, KodeinAware {
 
     override val kodein by closestKodein(app)
-    val api: AppApi by instance()
-    val spMain: MeowSharedPreferences by instance("spMain")
-    val spUpdate: MeowSharedPreferences by instance("spUpdate")
+    private val api: AppApi by instance()
+    private val spMain: MeowSharedPreferences by instance("spMain")
+    private val spUpdate: MeowSharedPreferences by instance("spUpdate")
 
     suspend fun getUserById(request: User.RequestGet) =
-        api.createServiceByAdapter<User.Api>().getUserById(request.id)
+            api.enableCache().createServiceByAdapter<User.Api>().getUserById(request.id)
 
     suspend fun getUsers() =
         api.createServiceByAdapter<User.Api>().getUsers()

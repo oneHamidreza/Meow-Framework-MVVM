@@ -70,11 +70,11 @@ open class AppApi(
         return Response.success(createServiceByAdapter<Oauth>().refreshToken(request))
     }
 
-    override fun getOkHttpClient(): OkHttpClient {
+    override fun getOkHttpClient(): OkHttpClient {//todo varieble
         return createOkHttpClient(this, options, DataSource(app))
     }
 
-    override fun getBaseUrl(): String {
+    override fun getBaseUrl(): String {//todo variable
         return BuildConfig.Api_IP
     }
 
@@ -83,7 +83,6 @@ open class AppApi(
         fun refreshToken(
             @Body request: MeowOauthToken.RequestRefreshToken
         ): MeowOauthToken
-
     }
 }
 

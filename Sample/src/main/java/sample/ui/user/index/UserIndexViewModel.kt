@@ -21,6 +21,7 @@ import androidx.lifecycle.MutableLiveData
 import meow.controller
 import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
+import meow.utils.logD
 import sample.App
 import sample.data.User
 
@@ -40,11 +41,12 @@ class UserIndexViewModel(
     var eventLiveData = MutableLiveData<MeowEvent<*>>()
     val listLiveData = MutableLiveData<List<User>>()
 
-    fun apiCall() {
+    fun callApi() {
         eventLiveData.safeCallApi(
             isNetworkRequired = true,
             apiAction = { repository.getUsersApi() }
         ) { _, it ->
+            logD(m = "zzzz : ${it?.size}")
             listLiveData.postValue(it)
         }
     }
