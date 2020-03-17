@@ -16,8 +16,11 @@
 
 package meow.util
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.view.View
 import android.view.ViewTreeObserver
+import androidx.core.view.ViewCompat
 import androidx.databinding.ViewDataBinding
 
 /**
@@ -63,3 +66,38 @@ inline fun <T : ViewDataBinding?> T.safePost(
     delay: Long = 0L,
     crossinline block: View?.() -> Unit
 ) = this?.root.safePost(delay, block)
+
+fun View?.setElevationCompat(elevation: Float) {
+    if (this == null)
+        return
+    ViewCompat.setElevation(this, elevation)
+}
+
+fun View?.screenshot(onReadyBitmap: (Bitmap?) -> Unit) {
+    if (this == null) {
+        onReadyBitmap(null)
+        return
+    }
+    avoidException(
+        tryBlock = {
+            val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565)
+            val canvas = Canvas(bitmap)
+            draw(canvas)
+            onReadyBitmap(bitmap)
+        },
+        exceptionBlock = {
+            onReadyBitmap(null)
+        }
+    )
+}
+
+fun <T> View?.updateLayoutParams(onLayoutChange: (params: T) -> Unit) {
+    if (this == null)
+        return
+    avoidException {
+        @Suppress("UNCHECKED_CAST")
+        onLayoutChange(layoutParams as T)
+        layoutParams = layoutParams
+    }
+}
+

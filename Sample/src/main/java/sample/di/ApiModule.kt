@@ -38,7 +38,12 @@ import sample.data.DataSource
  */
 
 val apiModule = Module("Network Module", false) {
-    bind<MeowApi>() with provider { AppApi(instance(), "refreshTokenValue") }
+    bind() from provider {
+        AppApi(
+            app = instance(),
+            refreshToken = "refreshTokenValue"
+        )
+    }
 }
 
 fun createOkHttpClient(api: AppApi, options: MeowApi.Options, dataSource: DataSource) =
