@@ -51,6 +51,7 @@ abstract class MeowFragment<B : ViewDataBinding, VM : MeowViewModel> : Fragment(
 
     override fun context() = requireContext()
     override fun activity() = requireActivity()
+    override fun contentView() = view!!
 
     val app: MeowApp by instance()
 

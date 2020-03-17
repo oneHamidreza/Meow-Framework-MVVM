@@ -17,6 +17,7 @@
 package meow.core.ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -46,6 +47,7 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : AppCompat
 
     override fun activity() = this
     override fun context() = this
+    override fun contentView() = findViewById<View>(android.R.id.content)
 
     override lateinit var binding: B
 

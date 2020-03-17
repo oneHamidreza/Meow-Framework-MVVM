@@ -17,6 +17,7 @@
 package meow.core.ui
 
 import android.content.Context
+import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.FragmentActivity
@@ -38,6 +39,8 @@ interface MVVM<B : ViewDataBinding, VM : MeowViewModel> {
     fun layoutId(): Int
 
     fun viewModelClass(): Class<VM>
+
+    fun contentView(): View
 
     fun context(): Context
 
