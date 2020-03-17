@@ -23,6 +23,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import meow.core.arch.MeowViewModel
 import meow.util.KeyboardUtils
+import meow.util.PermissionUtils
 import meow.util.viewModel
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
@@ -45,6 +46,7 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : AppCompat
 
     override val kodein by closestKodein()
 
+    override var permissionUtils: PermissionUtils? = null
     override fun activity() = this
     override fun context() = this
     override fun contentView() = findViewById<View>(android.R.id.content)
@@ -82,6 +84,15 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : AppCompat
     private fun bindContentView(layoutId: Int) {
         binding = DataBindingUtil.setContentView(this, layoutId)
         binding.lifecycleOwner = this
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        onRequestPermission(requestCode, grantResults)
     }
 
     override fun onDestroy() {

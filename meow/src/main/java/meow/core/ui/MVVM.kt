@@ -19,9 +19,12 @@ package meow.core.ui
 import android.content.Context
 import android.view.View
 import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import meow.core.arch.MeowViewModel
+import meow.util.PermissionUtils
 
 /**
  * MVVM interface.
@@ -34,6 +37,8 @@ import meow.core.arch.MeowViewModel
 interface MVVM<B : ViewDataBinding, VM : MeowViewModel> {
 
     var binding: B
+
+    var permissionUtils: PermissionUtils?
 
     @LayoutRes
     fun layoutId(): Int
@@ -51,4 +56,16 @@ interface MVVM<B : ViewDataBinding, VM : MeowViewModel> {
     fun initViewModel()
 
     fun observeViewModel()
+
+    fun needPermission(permissions: ArrayList<String>, onResult: (isSuccess: Boolean) -> Unit) {
+        permissionUtils = PermissionUtils(this)
+        permissionUtils?.check(permissions, onResult)
+    }
+
+    fun onRequestPermission(requestCode: Int, grantResults: IntArray) {
+        permissionUtils?.onRequest(requestCode, grantResults)
+    }
 }
+
+fun MVVM<*, *>.isActivity() = this is AppCompatActivity
+fun MVVM<*, *>.isFragment() = this is Fragment

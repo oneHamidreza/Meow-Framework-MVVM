@@ -16,10 +16,12 @@
 
 package sample.ui.user.detail
 
+import android.Manifest
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
+import meow.core.arch.SingleLiveData
 import sample.App
 import sample.data.User
 
@@ -35,11 +37,8 @@ class UserDetailViewModel(app: App, val repository: User.Repository) : MeowViewM
 
     var apiLiveData = MutableLiveData<MeowEvent<*>>()
     var modelLiveData = MutableLiveData<User>()
-
-    fun onClickedApiCall(@Suppress("UNUSED_PARAMETER") view: View) =
-            callApi(User.RequestGet("2"))
-
-    fun onClickedCancelJobs(@Suppress("UNUSED_PARAMETER") view: View) = cancelAllJobs()
+    var snackMessageLiveData = MutableLiveData<String>()
+    var permissionLiveData = SingleLiveData<ArrayList<String>>()
 
     fun callApi(request: User.RequestGet) {
         apiLiveData.safeCallApi(
@@ -50,6 +49,22 @@ class UserDetailViewModel(app: App, val repository: User.Repository) : MeowViewM
             modelLiveData.postValue(it)
         }
     }
+
+    fun onClickedApiCall(@Suppress("UNUSED_PARAMETER") view: View) =
+        callApi(User.RequestGet("2"))
+
+    fun onClickedSnack(@Suppress("UNUSED_PARAMETER") view: View) =
+        snackMessageLiveData.postValue("salam test")
+
+    fun onClickedPermission(@Suppress("UNUSED_PARAMETER") view: View) =
+        permissionLiveData.postValue(
+            arrayListOf(
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+        )
+
+    fun onClickedCancelJobs(@Suppress("UNUSED_PARAMETER") view: View) = cancelAllJobs()
 
 //    fun fetchUserOffline() {
 //        model = repository.getSavedUser()

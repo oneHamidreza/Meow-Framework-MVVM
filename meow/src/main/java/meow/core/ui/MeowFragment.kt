@@ -25,6 +25,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import meow.MeowApp
 import meow.core.arch.MeowViewModel
+import meow.util.PermissionUtils
 import meow.util.viewModel
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -49,6 +50,7 @@ abstract class MeowFragment<B : ViewDataBinding, VM : MeowViewModel> : Fragment(
     private val _parentKodein by closestKodein()
     override val kodein by Kodein.lazy { extend(_parentKodein) }
 
+    override var permissionUtils: PermissionUtils? = null
     override fun context() = requireContext()
     override fun activity() = requireActivity()
     override fun contentView() = view!!
@@ -72,5 +74,14 @@ abstract class MeowFragment<B : ViewDataBinding, VM : MeowViewModel> : Fragment(
         binding.lifecycleOwner = viewLifecycleOwner
         initViewModel()
         observeViewModel()
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        onRequestPermission(requestCode, grantResults)
     }
 }

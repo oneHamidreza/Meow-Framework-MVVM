@@ -18,6 +18,9 @@ package sample.ui.user.detail
 
 import android.os.Bundle
 import meow.core.arch.MeowFlow
+import meow.util.safeObserve
+import meow.util.snackL
+import meow.util.toastL
 import sample.R
 import sample.data.User
 import sample.databinding.FragmentUserDetailBinding
@@ -57,6 +60,18 @@ class UserDetailFragment : BaseFragment<FragmentUserDetailBinding, UserDetailVie
         MeowFlow.GetDataFromApi(this).apply {
             containerViews = arrayOf(binding.tvModel, binding.tvStatus)
         }.observe(binding.lifecycleOwner, viewModel.apiLiveData)
+
+        viewModel.snackMessageLiveData.safeObserve(this) {
+            snackL(it, "OK") {
+                toastL(R.string.app_name)
+            }
+        }
+
+        viewModel.permissionLiveData.safeObserve(this) {
+            needPermission(it) { isSuccess ->
+                snackL("permission is Granted : $isSuccess")
+            }
+        }
     }
 
 }
