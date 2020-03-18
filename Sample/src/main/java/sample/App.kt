@@ -72,6 +72,18 @@ class App : MeowApp(), KodeinAware {
                     else -> it
                 }
             }
-        ).init()
+        ).apply {
+//            glide = AppGlide
+        }.init()
     }
+
+//    @GlideModule
+//    class AppGlide : AppGlideModule() {
+//
+//        override fun applyOptions(context: Context, builder: GlideBuilder) {
+//            if (controller.isDebugMode)
+//                builder.setLogLevel(Log.ERROR)
+//        }
+//
+//    }
 }

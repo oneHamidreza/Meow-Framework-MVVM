@@ -67,7 +67,9 @@ object AppConfig {
             "in.co.ophio:secure-preferences:0.1.3",
             // Navigation
             "androidx.navigation:navigation-fragment-ktx:2.2.1",
-            "androidx.navigation:navigation-ui-ktx:2.2.1"
+            "androidx.navigation:navigation-ui-ktx:2.2.1",
+            // Glide
+            "com.github.bumptech.glide:glide:4.11.0"
         )
 
         val sampleDependencies = emptyArray<String>()
@@ -90,6 +92,7 @@ object AppConfig {
         const val SDK_MIN = 19
         const val SDK_TARGET = 29
         const val KOTLIN = "1.3.70"
+        const val GLIDE = "4.11.0"
     }
 
     fun generateVersionCode(): Int {

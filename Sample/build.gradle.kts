@@ -78,11 +78,8 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    // KOTLIN
-    implementation(kotlin("stdlib-jdk8", org.jetbrains.kotlin.config.KotlinCompilerVersion.VERSION))
 
     implementation(project(":meow"))
-
     // MAIN DEPENDENCIES
     Library.mainDependencies.forEach {
         implementation(it)

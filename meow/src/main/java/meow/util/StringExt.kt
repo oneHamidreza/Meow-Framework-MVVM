@@ -16,6 +16,7 @@
 
 package meow.util
 
+import android.webkit.URLUtil
 import java.util.*
 
 /**
@@ -46,3 +47,8 @@ fun String?.capitalizeFirst(): String {
 }
 
 fun String?.isNotNullOrEmpty() = !isNullOrEmpty()
+
+fun String?.isValidUrl() =
+    avoidException {
+        URLUtil.isValidUrl(this)
+    } ?: false

@@ -30,7 +30,11 @@ import meow.controller
  * @since   2020-03-15
  */
 
-@BindingAdapter("backgroundTint")
-fun setBackgroundTint(view: Toolbar, color: ColorStateList) {
-    ViewCompat.setBackgroundTintList(view, controller.onColorStateListGet(color))
+object ToolbarBindingAdapter {
+
+    @BindingAdapter("backgroundTint")
+    @JvmStatic
+    fun setBackgroundTint(view: Toolbar, color: ColorStateList) {
+        ViewCompat.setBackgroundTintList(view, controller.onColorStateListGet(color))
+    }
 }
