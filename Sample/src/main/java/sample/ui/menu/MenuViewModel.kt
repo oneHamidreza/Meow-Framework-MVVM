@@ -33,6 +33,7 @@ import sample.R
 class MenuViewModel(app: Application) : MeowViewModel(app) {
 
     val navigationLiveData = SingleLiveData<Int>()
+    val languageLiveData = SingleLiveData<String>()
 
     fun onClickedUserDetailApi(@Suppress("UNUSED_PARAMETER") view: View) {
         navigationLiveData.postValue(R.id.actionToUserDetail)
@@ -40,6 +41,10 @@ class MenuViewModel(app: Application) : MeowViewModel(app) {
 
     fun onClickedUserIndexApi(@Suppress("UNUSED_PARAMETER") view: View) {
         navigationLiveData.postValue(R.id.actionToUserIndex)
+    }
+
+    fun onClickedToPersianLanguage(@Suppress("UNUSED_PARAMETER") view: View) {
+        languageLiveData.postValue("fa")
     }
 
 }

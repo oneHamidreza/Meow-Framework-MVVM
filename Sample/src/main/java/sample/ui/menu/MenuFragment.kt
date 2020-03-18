@@ -1,6 +1,7 @@
 package sample.ui.menu
 
 import androidx.navigation.fragment.findNavController
+import meow.controller
 import meow.util.safeObserve
 import sample.R
 import sample.core.actionToUserDetail
@@ -42,10 +43,16 @@ class MenuFragment : BaseFragment<FragmentMenuBinding, MenuViewModel>() {
     }
 
     override fun observeViewModel() {
-        binding.viewModel!!.navigationLiveData.safeObserve(binding.lifecycleOwner) {
-            when (it) {
-                R.id.actionToUserDetail -> findNavController().actionToUserDetail()
-                R.id.actionToUserIndex -> findNavController().actionToUserIndex()
+        binding.viewModel!!.apply {
+            navigationLiveData.safeObserve(binding.lifecycleOwner) {
+                when (it) {
+                    R.id.actionToUserDetail -> findNavController().actionToUserDetail()
+                    R.id.actionToUserIndex -> findNavController().actionToUserIndex()
+                }
+            }
+
+            languageLiveData.safeObserve(binding.lifecycleOwner) {
+                controller.updateLanguage(requireActivity(), it)
             }
         }
     }

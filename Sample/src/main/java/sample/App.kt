@@ -62,6 +62,7 @@ class App : MeowApp(), KodeinAware {
 
         MeowController(
             this,
+            language = "en",
             isDebugMode = isDebug,
             isLogTagNative = false,
             onColorGet = {

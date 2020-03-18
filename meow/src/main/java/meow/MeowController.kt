@@ -26,6 +26,7 @@ import android.content.res.Configuration
 import android.os.Build
 import android.util.LayoutDirection
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.FragmentActivity
 import meow.core.api.MeowSession
 import meow.util.getPrivateField
 import meow.util.isNightModeFromSettings
@@ -93,6 +94,11 @@ class MeowController(
 
     fun swapTheme() {
         theme = if (isNightMode) Theme.DAY else Theme.NIGHT
+    }
+
+    fun updateLanguage(activity: FragmentActivity, language: String) {
+        this.language = language
+        activity.recreate()
     }
 
     enum class Theme {
