@@ -28,7 +28,7 @@ import com.etebarian.meowframework.R
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import meow.controller
-import meow.util.avoidExceptionFinal
+import meow.util.avoidException
 import meow.util.getFont
 import meow.widget.impl.TextViewImpl
 
@@ -123,24 +123,30 @@ class MeowTextField : TextInputLayout, TextViewImpl {
         super.setAttributeFromXml(context, attrs)
 
         val a = context.theme.obtainStyledAttributes(attrs, R.styleable.MeowTextField, 0, 0)
-        avoidExceptionFinal({
-            a.apply {
-                inputType = a.getInt(R.styleable.MeowTextField_meow_inputType, inputType)
-                validateType = a.getInt(R.styleable.MeowTextField_meow_validateType, validateType)
+        avoidException(
+            tryBlock = {
+                a.apply {
+                    inputType = a.getInt(R.styleable.MeowTextField_meow_inputType, inputType)
+                    validateType =
+                        a.getInt(R.styleable.MeowTextField_meow_validateType, validateType)
 
-                errorEmpty = getString(R.styleable.MeowTextField_errorEmpty)
-                if (errorEmpty.isNullOrEmpty())
-                    errorEmpty = context.getString(R.string.error_required_value)
+                    errorEmpty = getString(R.styleable.MeowTextField_errorEmpty)
+                    if (errorEmpty.isNullOrEmpty())
+                        errorEmpty = context.getString(R.string.error_required_value)
 
-                errorMobile = getString(R.styleable.MeowTextField_errorEmpty)
-                if (errorMobile.isNullOrEmpty())
-                    errorMobile = context.getString(R.string.error_mobile_not_valid)
+                    errorMobile = getString(R.styleable.MeowTextField_errorEmpty)
+                    if (errorMobile.isNullOrEmpty())
+                        errorMobile = context.getString(R.string.error_mobile_not_valid)
 
-                errorEmail = getString(R.styleable.MeowTextField_errorEmail)
-                if (errorEmail.isNullOrEmpty())
-                    errorEmail = context.getString(R.string.error_email_not_valid)
+                    errorEmail = getString(R.styleable.MeowTextField_errorEmail)
+                    if (errorEmail.isNullOrEmpty())
+                        errorEmail = context.getString(R.string.error_email_not_valid)
+                }
+            },
+            finallyBlock = {
+                a.recycle()
             }
-        }) { a.recycle() }
+        )
     }
 
     private fun initializeView() {

@@ -37,7 +37,7 @@ object DisplayHelper {
     }
 
     fun getDisplaySize(context: Context?): Point {
-        return avoidExceptionReturn({
+        return avoidException {
             val wm = context?.getSystemService(Context.WINDOW_SERVICE) as WindowManager
             val display = wm.defaultDisplay
             val p = Point()
@@ -48,7 +48,7 @@ object DisplayHelper {
             p.y = realMetrics.heightPixels
 
             p
-        }, { Point() })
+        } ?: Point()
     }
 
 }

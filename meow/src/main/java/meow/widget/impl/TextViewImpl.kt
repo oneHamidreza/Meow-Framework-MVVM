@@ -24,7 +24,7 @@ import android.util.AttributeSet
 import android.view.Gravity
 import com.etebarian.meowframework.R
 import meow.controller
-import meow.util.avoidExceptionFinal
+import meow.util.avoidException
 import meow.util.isEmptyTrim
 import meow.util.toPersianNumber
 
@@ -48,35 +48,45 @@ interface TextViewImpl {
 
     fun setAttributeFromXml(context: Context, attrs: AttributeSet) {
         var a: TypedArray? = null
-        avoidExceptionFinal({
-            val fontFamilyAttr = intArrayOf(R.attr.font)
-            a = context.obtainStyledAttributes(
-                attrs.getAttributeResourceValue(
-                    "http://schemas.android.com/apk/res/android",
-                    "textAppearance",
-                    0
-                ), fontFamilyAttr
-            )
-            fontPath = a?.getString(0)
-        }) { a?.recycle() }
+        avoidException(
+            tryBlock = {
+                val fontFamilyAttr = intArrayOf(R.attr.font)
+                a = context.obtainStyledAttributes(
+                    attrs.getAttributeResourceValue(
+                        "http://schemas.android.com/apk/res/android",
+                        "textAppearance",
+                        0
+                    ), fontFamilyAttr
+                )
+                fontPath = a?.getString(0)
+            },
+            finallyBlock = {
+                a?.recycle()
+            }
+        )
 
         a = context.theme.obtainStyledAttributes(attrs, R.styleable.MeowTextView, 0, 0)
-        avoidExceptionFinal({
-            a?.apply {
-                val attrFontFamily = getString(R.styleable.MeowTextView_fontPath)
-                if (!attrFontFamily.isEmptyTrim())
-                    fontPath = attrFontFamily
+        avoidException(
+            tryBlock = {
+                a?.apply {
+                    val attrFontFamily = getString(R.styleable.MeowTextView_fontPath)
+                    if (!attrFontFamily.isEmptyTrim())
+                        fontPath = attrFontFamily
 
-                beforeText = getString(R.styleable.MeowTextView_beforeText)
-                afterText = getString(R.styleable.MeowTextView_afterText)
+                    beforeText = getString(R.styleable.MeowTextView_beforeText)
+                    afterText = getString(R.styleable.MeowTextView_afterText)
 
-                isPersian = getBoolean(R.styleable.MeowTextView_isPersian, isPersian)
-                hasSpan = getBoolean(R.styleable.MeowTextView_hasSpan, hasSpan)
-                forcePaddingFont =
-                    getBoolean(R.styleable.MeowTextView_forcePaddingFont, forcePaddingFont)
-                forceGravity = getBoolean(R.styleable.MeowTextView_forceGravity, forceGravity)
+                    isPersian = getBoolean(R.styleable.MeowTextView_isPersian, isPersian)
+                    hasSpan = getBoolean(R.styleable.MeowTextView_hasSpan, hasSpan)
+                    forcePaddingFont =
+                        getBoolean(R.styleable.MeowTextView_forcePaddingFont, forcePaddingFont)
+                    forceGravity = getBoolean(R.styleable.MeowTextView_forceGravity, forceGravity)
+                }
+            },
+            finallyBlock = {
+                a?.recycle()
             }
-        }) { a?.recycle() }
+        )
     }
 
     fun getTextByAttrs(t: String): String {

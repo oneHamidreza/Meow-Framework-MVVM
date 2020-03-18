@@ -107,10 +107,9 @@ open class MeowViewModel(open val app: Application) : AndroidViewModel(app), Kod
         response.processAndPush(this@safeCallApi)
         val data = avoidException { response.data as? T? }
         resultBlock(response, data)
-        cancelAllJobs()
     }
 
-    private fun cancelAndRemoveJob(job: Job) {
+    fun cancelAndRemoveJob(job: Job) {
         avoidException {
             job.cancel()
         }
@@ -123,7 +122,5 @@ open class MeowViewModel(open val app: Application) : AndroidViewModel(app), Kod
         jobWithIds.forEach { avoidException { it.second.cancel() } }
         jobWithIds.clear()
     }
-
-    fun s(s: String) = s
 
 }

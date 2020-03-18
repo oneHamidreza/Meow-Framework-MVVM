@@ -26,7 +26,7 @@ open class MeowStringHelper {
     }
 
     private fun decrypt(key: String, initVector: String, encrypted: String): String {
-        return avoidExceptionReturn({
+        return avoidException {
             val ivSpec = IvParameterSpec(initVector.toByteArray(charset("UTF-8")))
             val skeySpec = SecretKeySpec(key.toByteArray(charset("UTF-8")), "AES")
 
@@ -36,7 +36,7 @@ open class MeowStringHelper {
             val original = cipher.doFinal(Base64.decode(encrypted, 0))
 
             String(original)
-        }) { "" }
+        } ?: ""
     }
 }
 
@@ -129,7 +129,9 @@ fun String?.fetchAllDigit(): String {
 
 @Suppress("RegExpRedundantEscape")
 fun String?.isValidEmail() =
-    avoidExceptionReturn({
+    avoidException {
+        if (this == null)
+            return@avoidException false
         Pattern.compile("^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$", Pattern.CASE_INSENSITIVE)
             .matcher(this).matches()
-    }) { false }
+    } ?: false

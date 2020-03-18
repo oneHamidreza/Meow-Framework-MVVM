@@ -18,7 +18,6 @@ package sample.ui.user.detail
 
 import android.Manifest
 import android.view.View
-import androidx.lifecycle.MutableLiveData
 import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
 import meow.core.arch.SingleLiveData
@@ -35,9 +34,9 @@ import sample.data.User
 
 class UserDetailViewModel(app: App, val repository: User.Repository) : MeowViewModel(app) {
 
-    var apiLiveData = MutableLiveData<MeowEvent<*>>()
-    var modelLiveData = MutableLiveData<User>()
-    var snackMessageLiveData = MutableLiveData<String>()
+    var apiLiveData = SingleLiveData<MeowEvent<*>>()
+    var modelLiveData = SingleLiveData<User>()
+    var snackMessageLiveData = SingleLiveData<String>()
     var permissionLiveData = SingleLiveData<ArrayList<String>>()
 
     fun callApi(request: User.RequestGet) {

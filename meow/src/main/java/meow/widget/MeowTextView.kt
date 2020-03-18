@@ -24,7 +24,7 @@ import com.etebarian.meowframework.R
 import meow.controller
 import meow.util.MeowDrawableHelper
 import meow.util.MeowShapeDrawable
-import meow.util.avoidExceptionFinal
+import meow.util.avoidException
 import meow.util.getFont
 import meow.widget.impl.MeowShapeDrawableImpl
 import meow.widget.impl.TextViewImpl
@@ -82,13 +82,19 @@ open class MeowTextView : AppCompatTextView, TextViewImpl, MeowShapeDrawableImpl
 
         setAttributeFromXmlShapeDrawable(context, attrs)
         val a = context.theme.obtainStyledAttributes(attrs, R.styleable.MeowTextView, 0, 0)
-        avoidExceptionFinal({
-            a.apply {
-                hasCustomBackground =
-                    getBoolean(R.styleable.MeowTextView_hasCustomBackground, hasCustomBackground)
-                reverseGravity = getBoolean(R.styleable.MeowTextView_reverseGravity, reverseGravity)
-            }
-        }) { a.recycle() }
+        avoidException(
+            tryBlock = {
+                a.apply {
+                    hasCustomBackground =
+                        getBoolean(
+                            R.styleable.MeowTextView_hasCustomBackground,
+                            hasCustomBackground
+                        )
+                    reverseGravity =
+                        getBoolean(R.styleable.MeowTextView_reverseGravity, reverseGravity)
+                }
+            },
+            finallyBlock = { a.recycle() })
     }
 
     private fun initializeView() {

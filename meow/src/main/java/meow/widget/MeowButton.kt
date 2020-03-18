@@ -23,7 +23,7 @@ import com.etebarian.meowframework.R
 import com.google.android.material.button.MaterialButton
 import meow.controller
 import meow.util.ColorHelper
-import meow.util.avoidExceptionFinal
+import meow.util.avoidException
 import meow.util.getFont
 import meow.widget.impl.TextViewImpl
 
@@ -76,14 +76,18 @@ open class MeowButton : MaterialButton, TextViewImpl {
         super.setAttributeFromXml(context, attrs)
 
         val a = context.theme.obtainStyledAttributes(attrs, R.styleable.MeowButton, 0, 0)
-        avoidExceptionFinal({
+        avoidException(
+            tryBlock = {
             a.apply {
                 calculateRipple =
                     getBoolean(R.styleable.MeowButton_calculateRipple, calculateRipple)
                 rippleValue = getFloat(R.styleable.MeowButton_rippleValue, rippleValue)
                 isAttachToForm = getBoolean(R.styleable.MeowButton_attachToForm, isAttachToForm)
             }
-        }) { a.recycle() }
+            },
+            finallyBlock = {
+                a.recycle()
+            })
     }
 
     private fun initializeView() {

@@ -16,15 +16,25 @@
 
 package meow.util
 
+import android.annotation.SuppressLint
 import android.app.UiModeManager
 import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Point
 import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.telephony.SubscriptionManager
+import android.telephony.TelephonyManager
 import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.etebarian.meowframework.R
 import meow.controller
+import meow.core.ui.MVVM
 
 /**
  * Extensions of OS & Build.
@@ -42,7 +52,83 @@ fun getDeviceModel(): String {
     } else {
         manufacturer.capitalizeFirst() + " " + model
     }
+}
 
+fun Context?.isPackageInstalled(packageName: String): Boolean {
+    if (this == null)
+        return false
+
+    return avoidException {
+        packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
+        true
+    } ?: false
+}
+
+fun MVVM<*, *>?.isPackageInstalled(packageName: String) =
+    this?.context().isPackageInstalled(packageName)
+
+@Suppress("DEPRECATION")
+@SuppressLint("HardwareIds", "MissingPermission")
+fun Context?.getIMEI(): String {
+    if (this == null)
+        return "0"
+
+    return avoidException {
+        (getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager).deviceId
+    } ?: "0"
+}
+
+fun MVVM<*, *>?.getIMEI() = this?.context().getIMEI()
+
+fun getModel(): String {
+    val manufacturer = Build.MANUFACTURER
+    val model = Build.MODEL ?: return "Unknown Device"
+    return if (model.startsWith(manufacturer)) {
+        model.capitalizeFirst()
+    } else {
+        manufacturer.capitalizeFirst() + " " + model
+    }
+}
+
+@SuppressLint("HardwareIds", "MissingPermission")
+fun Context?.getPhoneNumber(): String? {
+    if (this == null)
+        return null
+    return avoidException {
+        if (Build.VERSION.SDK_INT >= 23) {
+            val subscription =
+                getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE) as SubscriptionManager
+            val list = subscription.activeSubscriptionInfoList
+            list.forEach {
+                if (!it.number.isEmptyCheckNull())
+                    return it.number
+            }
+            return null
+        }
+        (getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager).line1Number
+    }
+}
+
+@SuppressLint("DefaultLocale")
+fun Context?.getCountryCode(): String {
+    if (this == null)
+        return ""
+
+    var countryID: String
+    var countryZipCode = ""
+    avoidException {
+        val manager = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+        countryID = manager.simCountryIso.toUpperCase()
+        val rl = resources.getStringArray(R.array.countryCodes)
+        for (aRl in rl) {
+            val g = aRl.split(",".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+            if (g[1].trim { it <= ' ' } == countryID.trim { it <= ' ' }) {
+                countryZipCode = g[0]
+                break
+            }
+        }
+    }
+    return countryZipCode
 }
 
 /**
@@ -109,4 +195,32 @@ fun Context?.isNightModeFromSettings(): Boolean {
     if (this == null) return false
     val uiModeManager = ContextCompat.getSystemService(this, UiModeManager::class.java)
     return uiModeManager?.nightMode != UiModeManager.MODE_NIGHT_NO
+}
+
+fun Context?.showOrHideKeyboard(show: Boolean) {
+    if (this == null)
+        return
+
+    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    if (show)
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
+    else
+        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
+}
+
+@Suppress("DEPRECATION")
+@SuppressLint("MissingPermission")
+fun Context.vibrate(duration: Long = 150) {
+    avoidException {
+        val vibrator = getSystemService(AppCompatActivity.VIBRATOR_SERVICE) as Vibrator
+        if (Build.VERSION.SDK_INT >= 26)
+            vibrator.vibrate(
+                VibrationEffect.createOneShot(
+                    duration,
+                    VibrationEffect.DEFAULT_AMPLITUDE
+                )
+            )
+        else
+            vibrator.vibrate(longArrayOf(0, duration), -1)
+    }
 }

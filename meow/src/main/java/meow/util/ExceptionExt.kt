@@ -33,8 +33,7 @@ fun allowReport(exp: Exception): Boolean {
     }
 }
 
-
-inline fun <T> avoidException(
+inline fun <T> avoidException(//todo change all block to onXXXYYYZZZ
     allowPrint: Boolean = controller.isDebugMode,
     exceptionBlock: () -> T? = { null },
     finallyBlock: () -> T? = { null },
@@ -51,21 +50,3 @@ inline fun <T> avoidException(
     } finally {
         finallyBlock()
     }
-
-inline fun avoidExceptionFinal(t: () -> Unit, f: () -> Unit) =
-    try {
-        t()
-    } finally {
-        f()
-    }
-
-inline fun <T> avoidExceptionReturn(t: () -> T, e: () -> T): T {
-    return try {
-        t()
-    } catch (e: Exception) {
-        e.printStackTrace()
-        if (allowReport(e))
-            controller.onException(e)
-        e()
-    }
-}

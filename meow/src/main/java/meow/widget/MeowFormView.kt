@@ -24,7 +24,10 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.etebarian.meowframework.R
 import com.google.i18n.phonenumbers.PhoneNumberUtil
-import meow.util.*
+import meow.util.avoidException
+import meow.util.fetchAllDigit
+import meow.util.isEmptyCheckNull
+import meow.util.isValidEmail
 
 
 /**
@@ -75,11 +78,15 @@ open class MeowFormView : LinearLayout {
     private fun setAttributeFromXml(context: Context, attrs: AttributeSet) {
 
         val a = context.theme.obtainStyledAttributes(attrs, R.styleable.MeowFormView, 0, 0)
-        avoidExceptionFinal({
-            a.apply {
-                isResetForm = getBoolean(R.styleable.MeowFormView_resetForm, isResetForm)
+        avoidException(
+            tryBlock = {
+                a.apply {
+                    isResetForm = getBoolean(R.styleable.MeowFormView_resetForm, isResetForm)
+                }
+            }, finallyBlock = {
+                a.recycle()
             }
-        }) { a.recycle() }
+        )
     }
 
 
@@ -185,13 +192,13 @@ open class MeowFormView : LinearLayout {
 
         val countryIso = getCountryISOFromPhone(s)
         val util = PhoneNumberUtil.getInstance()
-        return avoidExceptionReturn({
+        return avoidException {
             if (s.startsWith("+98") || s.startsWith("98")) {
                 val m = s.fetchAllDigit()
                 return !m.isEmptyCheckNull() && m.startsWith("98") && m.length == 12
             }
             util.isValidNumber(util.parse(s, countryIso))
-        }) { false }
+        } ?: false
     }
 
     private fun getAllEditTexts(): List<MeowTextField> {

@@ -93,7 +93,8 @@ open class MeowImageView : AppCompatImageView, MeowShapeDrawableImpl {
     open fun setAttributeFromXml(context: Context, attrs: AttributeSet) {
         super.setAttributeFromXmlShapeDrawable(context, attrs)
         val a = context.theme.obtainStyledAttributes(attrs, R.styleable.MeowImageView, 0, 0)
-        avoidExceptionFinal({
+        avoidException(
+            tryBlock = {
             a?.apply {
                 isBitmap = getBoolean(R.styleable.MeowImageView_meow_isBitmap, isBitmap)
                 useColor = getBoolean(R.styleable.MeowImageView_meow_useColor, useColor)
@@ -111,7 +112,8 @@ open class MeowImageView : AppCompatImageView, MeowShapeDrawableImpl {
                     first = ratio.replace(":$second", "")
                 }
             }
-        }) { a?.recycle() }
+            }
+            , finallyBlock = { a?.recycle() })
     }
 
     private fun initializeView() {

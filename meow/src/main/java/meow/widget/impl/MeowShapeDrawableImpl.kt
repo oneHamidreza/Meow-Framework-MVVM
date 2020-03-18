@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import com.etebarian.meowframework.R
 import meow.util.MeowShapeDrawable
-import meow.util.avoidExceptionFinal
+import meow.util.avoidException
 
 /**
  * Created by 1HE on 9/30/2018.
@@ -16,8 +16,13 @@ interface MeowShapeDrawableImpl {
 
     fun setAttributeFromXmlShapeDrawable(context: Context, attrs: AttributeSet) {
         val a = context.theme.obtainStyledAttributes(attrs, R.styleable.MeowShapeDrawable, 0, 0)
-        avoidExceptionFinal({
-            shapeDrawable = MeowShapeDrawable.createFromTypedArray(context, a)
-        }) { a.recycle() }
+        avoidException(
+            tryBlock = {
+                shapeDrawable = MeowShapeDrawable.createFromTypedArray(context, a)
+            },
+            finallyBlock = {
+                a.recycle()
+            }
+        )
     }
 }

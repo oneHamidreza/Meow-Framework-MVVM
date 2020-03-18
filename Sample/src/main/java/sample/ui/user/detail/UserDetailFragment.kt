@@ -41,10 +41,6 @@ class UserDetailFragment : BaseFragment<FragmentUserDetailBinding, UserDetailVie
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        initViewModel()
-        observeViewModel()
-
         callApi()
     }
 
