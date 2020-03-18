@@ -16,11 +16,13 @@
 
 package meow.core.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import meow.controller
 import meow.core.arch.MeowViewModel
 import meow.util.KeyboardUtils
 import meow.util.PermissionUtils
@@ -41,6 +43,7 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : AppCompat
     KodeinAware {
 
     open var isEnabledKeyboardUtils = true
+    open var isEnabledContextWrapper = true
 
     var isShowingKeyboard = false
 
@@ -84,6 +87,19 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : AppCompat
     private fun bindContentView(layoutId: Int) {
         binding = DataBindingUtil.setContentView(this, layoutId)
         binding.lifecycleOwner = this
+    }
+
+    protected fun getContextWrapper(context: Context?): Context? {
+        return controller.wrap(context)
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (!isEnabledContextWrapper) {
+            super.attachBaseContext(newBase)
+            return
+        }
+        val wrapper = getContextWrapper(newBase)
+        super.attachBaseContext(wrapper ?: newBase)
     }
 
     override fun onRequestPermissionsResult(
