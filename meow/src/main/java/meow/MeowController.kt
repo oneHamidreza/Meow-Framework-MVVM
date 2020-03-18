@@ -53,6 +53,7 @@ class MeowController(
     var dpi: Float = app.resources.displayMetrics.density,
     var layoutDirection: Int = LayoutDirection.INHERIT,
     var language: String = "en",
+    var rootFolderName: String = "meow",
     var onColorGet: (color: Int) -> Int = { color -> color },
     internal var onColorStateListGet: (colorStateList: ColorStateList) -> ColorStateList = { color ->
         color.apply {
