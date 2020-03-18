@@ -40,7 +40,7 @@ import meow.controller
  * @since   2020-03-07
  */
 
-object ColorUtils {
+object MeowColorUtils {
 
     /**
      * Mix two colors and create new color by specified amount.
@@ -103,15 +103,15 @@ object ColorUtils {
         return darkness >= 0.5
     }
 
+    /**
+     * Change alpha from color.
+     * @param color is the color in integer type.
+     * @param alpha is a float that describes value of transparency of color. Choose value between 0 and 1.
+     */
+    fun setAlpha(@ColorInt color: Int, @FloatRange(from = 0.0, to = 1.0) alpha: Float) =
+        ColorUtils.setAlphaComponent(color, (alpha * 255).toInt())
 }
 
-/**
- * Change alpha from color.
- * @param color is the color in integer type.
- * @param alpha is a float that describes value of transparency of color. Choose value between 0 and 1.
- */
-fun setAlpha(@ColorInt color: Int, @FloatRange(from = 0.0, to = 1.0) alpha: Float) =
-    ColorUtils.setAlphaComponent(color, (alpha * 255).toInt())
 
 fun Context?.getColorCompat(@ColorRes resId: Int, useController: Boolean = true) =
     if (this == null) 0 else if (useController) controller.onColorGet(

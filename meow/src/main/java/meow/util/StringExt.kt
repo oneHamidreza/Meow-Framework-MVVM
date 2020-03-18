@@ -48,7 +48,32 @@ fun String?.capitalizeFirst(): String {
 
 fun String?.isNotNullOrEmpty() = !isNullOrEmpty()
 
-fun String?.isValidUrl() =
-    avoidException {
-        URLUtil.isValidUrl(this)
-    } ?: false
+
+/**
+ * Remove extra spaces in a string.
+ * If input is empty return empty string.
+ * @return a string without extra spaces.
+ */
+fun String?.removeExtraSpaces(): String {
+    if (isNullOrEmpty())
+        return ""
+    return this!!.trim().replace(" +".toRegex(), " ")
+}
+
+/**
+ * Add http to first of url if it has been not exist.
+ * If input is empty return empty string.
+ * @return a string that start with http.
+ *///todo test
+fun String?.addHttpIfNeed(): String {
+    if (isNullOrEmpty())
+        return ""
+    if (this!!.startsWith("http", false) || this.startsWith("https", false))
+        return this
+
+    return "http://$this"
+}
+
+fun String?.isValidUrl() = avoidException {
+    URLUtil.isValidUrl(this)
+} ?: false

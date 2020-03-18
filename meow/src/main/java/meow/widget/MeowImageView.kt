@@ -60,7 +60,7 @@ open class MeowImageView : AppCompatImageView, MeowShapeDrawableImpl {
         get() {
             return controller.onColorGet(field)
         }
-    var size = dip(24)
+    var size = 24.dp()
         set(value) {
             field = value
             requestLayout()
@@ -170,7 +170,7 @@ open class MeowImageView : AppCompatImageView, MeowShapeDrawableImpl {
             interpolator = FastOutSlowInInterpolator()
             addUpdateListener { animation ->
                 val f = animation.animatedFraction
-                color = ColorHelper.mixTwoColors(newColor, lastColor, f)
+                color = MeowColorUtils.mixTwoColors(newColor, lastColor, f)
             }
             start()
         }

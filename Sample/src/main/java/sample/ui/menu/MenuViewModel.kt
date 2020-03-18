@@ -47,4 +47,6 @@ class MenuViewModel(app: Application) : MeowViewModel(app) {
         languageLiveData.postValue("fa")
     }
 
+    fun getImageUrl() = "http://etebarian.com/my_files/Food_Sample_001.jpg"
+
 }

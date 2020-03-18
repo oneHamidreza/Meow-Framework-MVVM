@@ -22,7 +22,7 @@ import android.util.AttributeSet
 import com.etebarian.meowframework.R
 import com.google.android.material.button.MaterialButton
 import meow.controller
-import meow.util.ColorHelper
+import meow.util.MeowColorUtils
 import meow.util.avoidException
 import meow.util.getFont
 import meow.widget.impl.TextViewImpl
@@ -117,7 +117,7 @@ open class MeowButton : MaterialButton, TextViewImpl {
 
         super.setRippleColor(
             ColorStateList.valueOf(
-                ColorHelper.setAlpha(
+                MeowColorUtils.setAlpha(
                     newRippleColor?.defaultColor
                         ?: 0, rippleValue
                 )

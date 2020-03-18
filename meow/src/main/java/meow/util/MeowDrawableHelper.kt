@@ -95,11 +95,11 @@ open class MeowDrawableHelper {
             return null
 
         if (d.rippleColorAlpha == 0f)
-            d.rippleColorAlpha = context.getFloat(R.dimen.ripple_default)
+            d.rippleColorAlpha = context.getFloatCompat(R.dimen.ripple_default)
 
         if (d.mainColorAlpha != 1f)
-            d.mainColor = ColorHelper.setAlpha(d.mainColor, d.mainColorAlpha)
-        val pressedColor = ColorHelper.getLighterOrDarkerColor(d.mainColor, 0.8f)
+            d.mainColor = MeowColorUtils.setAlpha(d.mainColor, d.mainColorAlpha)
+        val pressedColor = MeowColorUtils.getLighterOrDarkerColor(d.mainColor, 0.8f)
         val allRadius = floatArrayOf(d.topLeftRadius, d.topLeftRadius, d.topRightRadius, d.topRightRadius, d.bottomRightRadius, d.bottomRightRadius, d.bottomLeftRadius, d.bottomLeftRadius)
 
         if (d.isGradient) {
@@ -146,7 +146,7 @@ open class MeowDrawableHelper {
             pressedDrawable.setColor(pressedColor)
         }
 
-        d.rippleColor = ColorHelper.setAlpha(d.rippleColor, d.rippleColorAlpha)
+        d.rippleColor = MeowColorUtils.setAlpha(d.rippleColor, d.rippleColorAlpha)
 
         return if (Build.VERSION.SDK_INT < 21) {
             val drawable = StateListDrawable()
@@ -217,7 +217,10 @@ class MeowShapeDrawable {
                     context.getColorCompat(R.color.ripple_default)
                 )
             )
-            shapeDrawable.rippleColorAlpha = a.getFloat(R.styleable.MeowShapeDrawable_msd_rippleColorAlpha, context.getFloat(R.dimen.ripple_default))
+            shapeDrawable.rippleColorAlpha = a.getFloat(
+                R.styleable.MeowShapeDrawable_msd_rippleColorAlpha,
+                context.getFloatCompat(R.dimen.ripple_default)
+            )
             shapeDrawable.hasStroke = a.getBoolean(R.styleable.MeowShapeDrawable_msd_hasStroke, false)
             shapeDrawable.strokeWidth = a.getDimension(R.styleable.MeowShapeDrawable_msd_strokeWidth, 0f)
             shapeDrawable.transparent = a.getBoolean(R.styleable.MeowShapeDrawable_msd_isTransparent, false)

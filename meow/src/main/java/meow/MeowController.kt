@@ -28,6 +28,7 @@ import android.util.LayoutDirection
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.FragmentActivity
 import meow.core.api.MeowSession
+import meow.util.MeowCurrency
 import meow.util.getPrivateField
 import meow.util.isNightModeFromSettings
 import meow.util.setPrivateField
@@ -53,6 +54,7 @@ class MeowController(
     var dpi: Float = app.resources.displayMetrics.density,
     var layoutDirection: Int = LayoutDirection.INHERIT,
     var language: String = "en",
+    var currency: MeowCurrency = MeowCurrency.USD,
     var rootFolderName: String = "meow",
     var onColorGet: (color: Int) -> Int = { color -> color },
     internal var onColorStateListGet: (colorStateList: ColorStateList) -> ColorStateList = { color ->
