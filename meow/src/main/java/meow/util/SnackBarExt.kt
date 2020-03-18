@@ -33,7 +33,6 @@ import meow.core.ui.MeowFragment
  * @since   2020-03-17
  */
 
-
 fun MVVM<*, *>?.snackL(
     message: String,
     actionText: String? = null,
@@ -42,6 +41,51 @@ fun MVVM<*, *>?.snackL(
     if (this == null)
         return
     snack(message, Snackbar.LENGTH_LONG, actionText = actionText, onActionClicked = onActionClicked)
+}
+
+fun MVVM<*, *>?.snackS(
+    message: String,
+    actionText: String? = null,
+    onActionClicked: () -> Unit = { }
+) {
+    if (this == null)
+        return
+    snack(
+        message,
+        Snackbar.LENGTH_SHORT,
+        actionText = actionText,
+        onActionClicked = onActionClicked
+    )
+}
+
+fun MVVM<*, *>?.snackL(
+    resMessage: Int,
+    resActionText: Int? = null,
+    onActionClicked: () -> Unit = { }
+) {
+    if (this == null)
+        return
+    snack(
+        getString(resMessage),
+        Snackbar.LENGTH_LONG,
+        actionText = if (resActionText != null) getString(resMessage) else null,
+        onActionClicked = onActionClicked
+    )
+}
+
+fun MVVM<*, *>?.snackS(
+    resMessage: Int,
+    resActionText: Int? = null,
+    onActionClicked: () -> Unit = { }
+) {
+    if (this == null)
+        return
+    snack(
+        getString(resMessage),
+        Snackbar.LENGTH_SHORT,
+        actionText = if (resActionText != null) getString(resMessage) else null,
+        onActionClicked = onActionClicked
+    )
 }
 
 fun MVVM<*, *>?.snack(

@@ -52,6 +52,7 @@ interface MVVM<B : ViewDataBinding, VM : MeowViewModel> {
     fun activity(): FragmentActivity
 
     fun resources() = context().resources
+    fun getString(id: Int) = resources().getString(id)
 
     fun initViewModel()
 
