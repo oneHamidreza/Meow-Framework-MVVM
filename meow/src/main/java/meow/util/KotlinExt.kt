@@ -28,32 +28,23 @@ inline fun <reified T> javaClass() = T::class.java
 inline fun <reified T> createClass() = Class.forName(T::class.java.name) as Class<T>
 inline fun <reified T> newInstance() = T::class.java.newInstance()
 
-fun <T> T.print(m: String = "") = apply {
-    kotlin.io.print("$m ")
-    print(this)
-}
-
-fun <T> T.println(m: String = "") = apply {
-    kotlin.io.print("$m ")
-    println(this)
-}
-
-fun Any.setPrivateField(name: String, value: Any) {
+fun Any.setField(name: String, value: Any) {
     avoidException {
         this.javaClass.getDeclaredField(name).apply {
             isAccessible = true
-            set(this@setPrivateField, value)
+            set(this@setField, value)
         }
     }
 }
 
-fun <T> Any.getPrivateField(name: String): IntArray? =
+fun <T> Any.getField(name: String, useSuperClass: Boolean = false): T? =
     avoidException(
         tryBlock = {
-            val filed = this.javaClass.getDeclaredField(name).apply {
+            val clazz = if (useSuperClass) javaClass.superclass else javaClass
+            val filed = clazz?.getDeclaredField(name)?.apply {
                 isAccessible = true
             }
-            (filed.get(this@getPrivateField) as IntArray)
+            (filed?.get(this@getField) as? T)
         },
         exceptionBlock = { null }
     )

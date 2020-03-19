@@ -40,3 +40,8 @@ sealed class MeowEvent<T> {
         }
     }
 }
+
+fun MeowEvent<*>?.isApiLoading() = this is MeowEvent.Api.Loading
+fun MeowEvent<*>?.isApiCancellation() = this is MeowEvent.Api.Cancellation
+fun MeowEvent<*>?.isApiSuccess() = this is MeowEvent.Api.Success
+fun MeowEvent<*>?.isApiError() = this is MeowEvent.Api.Error

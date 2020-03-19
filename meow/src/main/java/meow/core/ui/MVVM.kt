@@ -21,8 +21,10 @@ import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import meow.core.arch.MeowViewModel
 import meow.util.PermissionUtils
 
@@ -70,3 +72,5 @@ interface MVVM<B : ViewDataBinding, VM : MeowViewModel> {
 
 fun MVVM<*, *>.isActivity() = this is AppCompatActivity
 fun MVVM<*, *>.isFragment() = this is Fragment
+fun MVVM<*, *>.isDialogFragment() = this is DialogFragment
+fun MVVM<*, *>.isBottomSheet() = this is BottomSheetDialogFragment

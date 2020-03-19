@@ -81,7 +81,6 @@ abstract class MeowFragment<B : ViewDataBinding, VM : MeowViewModel> : Fragment(
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         onRequestPermission(requestCode, grantResults)
     }
 }

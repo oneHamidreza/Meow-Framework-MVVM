@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ir.onehe.meow.utils
+package meow.util
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -24,9 +24,6 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.etebarian.meowframework.R
 import meow.core.ui.MVVM
-import meow.util.avoidException
-import meow.util.getColorCompat
-import meow.util.isNotNullOrEmpty
 
 /**
  * Notification Utils.

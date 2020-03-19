@@ -135,7 +135,7 @@ fun Context?.getBooleanCompat(@BoolRes resId: Int) = this?.resources.getBooleanC
 
 fun Drawable?.setTintCompat(@ColorInt color: Int): Drawable {
     if (this == null) return ColorDrawable(Color.TRANSPARENT)
-    return this!!.apply { DrawableCompat.setTint(this, color) }
+    return this.apply { DrawableCompat.setTint(this, color) }
 }
 
 fun Drawable.flip(): Drawable {

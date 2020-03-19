@@ -29,9 +29,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.FragmentActivity
 import meow.core.api.MeowSession
 import meow.util.MeowCurrency
-import meow.util.getPrivateField
+import meow.util.getField
 import meow.util.isNightModeFromSettings
-import meow.util.setPrivateField
+import meow.util.setField
 import java.util.*
 
 /**
@@ -60,16 +60,16 @@ class MeowController(
     var onColorGet: (color: Int) -> Int = { color -> color },//TODO ID
     internal var onColorStateListGet: (colorStateList: ColorStateList) -> ColorStateList = { color ->
         color.apply {
-            val colors: IntArray = getPrivateField<Array<Int>>("mColors")!!
+            val colors: IntArray = getField<Array<Int>>("mColors")!!
             colors.forEachIndexed { index, it ->
                 colors[index] = onColorGet(it)
             }
-            setPrivateField("mDefaultColor", onColorGet(defaultColor))
-            setPrivateField("mColors", colors)
+            setField("mDefaultColor", onColorGet(defaultColor))
+            setField("mColors", colors)
         }
         ColorStateList.valueOf(onColorGet(color.defaultColor))
     },
-    var defaultFontName: String = "",
+    var defaultFontName: String = "",//todo typeface
     var isForceFontPadding: Boolean = false,
     var isPersian: Boolean = false,
     var changeColor: Boolean = false,

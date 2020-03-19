@@ -29,7 +29,9 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import meow.controller
 import meow.util.avoidException
+import meow.util.getField
 import meow.util.getFont
+import meow.util.logD
 import meow.widget.impl.TextViewImpl
 
 
@@ -70,7 +72,6 @@ class MeowTextField : TextInputLayout, TextViewImpl {
     var errorEmpty: String? = ""
     var errorMobile: String? = ""
     var errorEmail: String? = ""
-
 
     companion object {
         const val INPUT_TYPE_DEFAULT = 0
@@ -156,7 +157,7 @@ class MeowTextField : TextInputLayout, TextViewImpl {
         editText.inputType = createInputType(this.inputType)
         editText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                setFontToCounter()
+                setCounterTypeface()
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -175,16 +176,16 @@ class MeowTextField : TextInputLayout, TextViewImpl {
         super.setError(setFontToError(errorText.toString()))
     }
 
-    private fun setFontToCounter() {
-        val field = TextInputLayout::class.java.getDeclaredField("counterView")
-        field.isAccessible = true
-        val counterView = field.get(this) as TextView
+    private fun setCounterTypeface() {
+        val counterView = getField<TextView>("counterView") ?: return
+        logD(m = "counterView: ${counterView != null}")//todo test
         counterView.typeface = context.getFont(fontPath)
     }
 
     private fun setFontToError(string: String): SpannableString {
 
         class TypefaceSpan(private val mTypeface: Typeface) : MetricAffectingSpan() {
+
             override fun updateMeasureState(p: TextPaint) {
                 p.typeface = mTypeface
                 p.flags = p.flags or Paint.SUBPIXEL_TEXT_FLAG

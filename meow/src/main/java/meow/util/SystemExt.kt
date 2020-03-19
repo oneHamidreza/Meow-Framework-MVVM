@@ -21,6 +21,7 @@ import android.app.UiModeManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Point
+import android.graphics.Typeface
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
@@ -224,3 +225,5 @@ fun Context.vibrate(duration: Long = 150) {
             vibrator.vibrate(longArrayOf(0, duration), -1)
     }
 }
+
+fun Context.getFont(path: String?) = Typeface.DEFAULT
