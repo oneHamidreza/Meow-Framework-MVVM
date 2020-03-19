@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="sample.ui.menu.MenuViewModel" />
@@ -12,12 +14,22 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <ImageView
+        <meow.widget.MeowDashView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
+            android:layout_margin="24dp"
+            app:dash_color="@color/primary"
+            app:dash_gap="4dp"
+            app:dash_length="4dp"
+            app:dash_orientation="horizontal"
+            app:dash_thickness="2dp" />
+
+        <ImageView
+            data="@{viewModel.getImageUrl()}"
             placeHolder="@{@drawable/ic_android}"
-            data="@{viewModel.getImageUrl()}" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true" />
 
         <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button"

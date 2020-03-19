@@ -37,12 +37,7 @@ import meow.util.setAttributesFromXml
 @Suppress("unused")
 open class MeowDashView(context: Context, var attrs: AttributeSet? = null) : View(context, attrs) {
 
-    companion object {
-        var ORIENTATION_HORIZONTAL = 0
-        var ORIENTATION_VERTICAL = 1
-    }
-
-    private var orientation = ORIENTATION_HORIZONTAL
+    private var orientation = Orientation.HORIZONTAL
     private var gap = 0f
     private var length = 0f
     private var thickness = 0f
@@ -52,7 +47,10 @@ open class MeowDashView(context: Context, var attrs: AttributeSet? = null) : Vie
 
     init {
         setAttributesFromXml(attrs, R.styleable.MeowDashView) {
-            orientation = it.getInt(R.styleable.MeowDashView_dash_orientation, orientation)
+            orientation = Orientation.values()[it.getInt(
+                R.styleable.MeowDashView_dash_orientation,
+                orientation.ordinal
+            )]
             gap = it.getDimension(R.styleable.MeowDashView_dash_gap, gap)
             length = it.getDimension(R.styleable.MeowDashView_dash_length, length)
             thickness = it.getDimension(R.styleable.MeowDashView_dash_thickness, thickness)
@@ -73,7 +71,7 @@ open class MeowDashView(context: Context, var attrs: AttributeSet? = null) : Vie
     }
 
     override fun onDraw(canvas: Canvas) {
-        if (orientation == ORIENTATION_HORIZONTAL) {
+        if (orientation == Orientation.HORIZONTAL) {
             val center = height * .5f
             canvas.drawLine(0f, center, width.toFloat(), center, paint)
         } else {
@@ -83,7 +81,7 @@ open class MeowDashView(context: Context, var attrs: AttributeSet? = null) : Vie
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        if (orientation == ORIENTATION_HORIZONTAL)
+        if (orientation == Orientation.HORIZONTAL)
             super.onMeasure(
                 widthMeasureSpec,
                 MeasureSpec.makeMeasureSpec(thickness.toInt(), MeasureSpec.EXACTLY)
@@ -94,5 +92,9 @@ open class MeowDashView(context: Context, var attrs: AttributeSet? = null) : Vie
                 heightMeasureSpec
             )
 
+    }
+
+    enum class Orientation {
+        HORIZONTAL, VERTICAL
     }
 }
