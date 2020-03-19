@@ -55,8 +55,9 @@ class MeowController(
     var layoutDirection: Int = LayoutDirection.INHERIT,
     var language: String = "en",
     var currency: MeowCurrency = MeowCurrency.USD,
+    var calendar: Calendar = Calendar.GEORGIAN,
     var rootFolderName: String = "meow",
-    var onColorGet: (color: Int) -> Int = { color -> color },
+    var onColorGet: (color: Int) -> Int = { color -> color },//TODO ID
     internal var onColorStateListGet: (colorStateList: ColorStateList) -> ColorStateList = { color ->
         color.apply {
             val colors: IntArray = getPrivateField<Array<Int>>("mColors")!!
@@ -106,6 +107,10 @@ class MeowController(
 
     enum class Theme {
         DAY, NIGHT
+    }
+
+    enum class Calendar {
+        GEORGIAN, JALALI
     }
 
     @SuppressLint("ObsoleteSdkInt")

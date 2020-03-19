@@ -53,7 +53,7 @@ class UserDetailFragment : BaseFragment<FragmentUserDetailBinding, UserDetailVie
     }
 
     override fun observeViewModel() {
-        MeowFlow.GetDataFromApi(this).apply {
+        MeowFlow.GetDataApi(this).apply {
             containerViews = arrayOf(binding.tvModel, binding.tvStatus)
         }.observe(binding.lifecycleOwner, viewModel.apiLiveData)
 

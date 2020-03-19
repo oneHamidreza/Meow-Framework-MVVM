@@ -2,7 +2,37 @@
 <resources>
 
     <string name="app_name">Meow</string>
+
     <string name="currency_rial" translatable="false">ریال</string>
     <string name="currency_toman" translatable="false">تومان</string>
+
+    <string name="georgian_today" translatable="false">Today</string>
+    <string name="georgian_moreDays" translatable="false">More Days</string>
+    <string name="georgian_yesterday" translatable="false">Yesterday</string>
+    <string name="georgian_amDate" translatable="false">a.m</string>
+    <string name="georgian_pmDate" translatable="false">p.m</string>
+    <string name="georgian_ago" translatable="false">Ago</string>
+    <string name="georgian_nowTime" translatable="false">Moments Ago</string>
+    <string name="georgian_minute" translatable="false">Minute</string>
+    <string name="georgian_hour" translatable="false">Hour</string>
+    <string name="georgian_day" translatable="false">Day</string>
+    <string name="georgian_week" translatable="false">Week</string>
+    <string name="georgian_month" translatable="false">Month</string>
+    <string name="georgian_year" translatable="false">Year</string>
+
+    <string name="jalali_today" translatable="false">امروز</string>
+    <string name="jalali_moreDays" translatable="false">روز دیگر</string>
+    <string name="jalali_yesterday" translatable="false">دیروز</string>
+    <string name="jalali_amDate" translatable="false">ق.ظ</string>
+    <string name="jalali_pmDate" translatable="false">ب.ظ</string>
+    <string name="jalali_ago" translatable="false">پیش</string>
+    <string name="jalali_nowTime" translatable="false">چند لحظه پیش</string>
+    <string name="jalali_minute" translatable="false">دقیقه</string>
+    <string name="jalali_hour" translatable="false">ساعت</string>
+    <string name="jalali_day" translatable="false">روز</string>
+    <string name="jalali_week" translatable="false">هفته</string>
+    <string name="jalali_month" translatable="false">ماه</string>
+    <string name="jalali_year" translatable="false">سال</string>
+
 
 </resources>

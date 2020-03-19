@@ -64,7 +64,7 @@ class UserIndexFragment : BaseFragment<FragmentUserIndexBinding, UserIndexViewMo
     }
 
     override fun observeViewModel() {
-        MeowFlow.GetDataFromApi(this).apply {
+        MeowFlow.GetDataApi(this).apply {
             onShowLoading = { (requireActivity()).title = "Loading" }//todo getString()
             onHideLoading = { requireActivity().title = "User Index" }
             containerViews = arrayOf()

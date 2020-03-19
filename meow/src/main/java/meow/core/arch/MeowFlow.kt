@@ -22,14 +22,14 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import meow.core.api.MeowEvent
 import meow.core.api.MeowResponse
-import meow.core.arch.MeowFlow.GetDataFromApi
+import meow.core.arch.MeowFlow.GetDataApi
 import meow.core.ui.MVVM
 import meow.util.*
 import meow.widget.impl.ErrorImpl
 import meow.widget.impl.ProgressBarImpl
 
 /**
- * Meow Flow class containing [GetDataFromApi].
+ * Meow Flow class containing [GetDataApi].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -38,7 +38,7 @@ import meow.widget.impl.ProgressBarImpl
 
 sealed class MeowFlow(open val mvvm: MVVM<*, *>) {
 
-    class GetDataFromApi(override val mvvm: MVVM<*, *>) : Api(mvvm) {
+    class GetDataApi(override val mvvm: MVVM<*, *>) : Api(mvvm) {
         init {
             onBeforeAction = {
                 containerViews.forEach { it.visibility = visibilityWhenLoading }

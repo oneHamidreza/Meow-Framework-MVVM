@@ -35,7 +35,7 @@ fun allowReport(exp: Exception): Boolean {
 
 inline fun <T> avoidException(//todo change all block to onXXXYYYZZZ
     allowPrint: Boolean = controller.isDebugMode,
-    exceptionBlock: () -> T? = { null },
+    exceptionBlock: () -> T? = { null },//todo e parameter
     finallyBlock: () -> T? = { null },
     tryBlock: () -> T? = { null }
 ) =
@@ -50,3 +50,38 @@ inline fun <T> avoidException(//todo change all block to onXXXYYYZZZ
     } finally {
         finallyBlock()
     }
+//
+//fun x(){
+//
+//    val x1 =  try{
+//        23
+//    }catch (e:Exception){
+//        e.printStackTrace()
+//        -1
+//    }
+//
+//    try{
+//        print("x")
+//    }catch (e:Exception){
+//        e.printStackTrace()
+//        print("y")
+//    } finally {
+//        print("z")
+//    }
+//
+//    avoidException (
+//        tryBlock = {
+//            print("x")
+//        },
+//        exceptionBlock = {
+//            print("y")
+//        },
+//        finallyBlock = {
+//            print("z")
+//        }
+//    )
+//
+//    val x = avoidException {
+//        23
+//    } ?: -1
+//}

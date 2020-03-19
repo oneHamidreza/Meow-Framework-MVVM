@@ -51,7 +51,7 @@ class UserIndexViewModel(
         }
     }
 
-    fun onClickedChangeMode(view: View) {
+    fun onClickedChangeMode(@Suppress("UNUSED_PARAMETER") view: View) {
         controller.swapTheme()
     }
 
