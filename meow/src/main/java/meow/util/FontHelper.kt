@@ -19,7 +19,7 @@ fun Context?.getFont(name: String?): Typeface? {
     if (FontHelper.map == null)
         FontHelper.map = HashMap()
 
-    if (fontName.isEmptyTrim()) {
+    if (fontName.isEmptyTrimAllSpaces()) {
         fontName = controller.defaultFontName
     }
 

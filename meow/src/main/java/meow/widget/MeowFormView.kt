@@ -26,7 +26,6 @@ import com.etebarian.meowframework.R
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import meow.util.avoidException
 import meow.util.fetchAllDigit
-import meow.util.isEmptyCheckNull
 import meow.util.isValidEmail
 
 
@@ -195,7 +194,7 @@ open class MeowFormView : LinearLayout {
         return avoidException {
             if (s.startsWith("+98") || s.startsWith("98")) {
                 val m = s.fetchAllDigit()
-                return !m.isEmptyCheckNull() && m.startsWith("98") && m.length == 12
+                return m.isNotEmpty() && m.startsWith("98") && m.length == 12
             }
             util.isValidNumber(util.parse(s, countryIso))
         } ?: false

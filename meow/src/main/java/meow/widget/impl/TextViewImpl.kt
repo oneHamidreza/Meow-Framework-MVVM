@@ -25,7 +25,7 @@ import android.view.Gravity
 import com.etebarian.meowframework.R
 import meow.controller
 import meow.util.avoidException
-import meow.util.isEmptyTrim
+import meow.util.isEmptyTrimAllSpaces
 import meow.util.toPersianNumber
 
 /**
@@ -70,7 +70,7 @@ interface TextViewImpl {
             tryBlock = {
                 a?.apply {
                     val attrFontFamily = getString(R.styleable.MeowTextView_fontPath)
-                    if (!attrFontFamily.isEmptyTrim())
+                    if (!attrFontFamily.isEmptyTrimAllSpaces())
                         fontPath = attrFontFamily
 
                     beforeText = getString(R.styleable.MeowTextView_beforeText)

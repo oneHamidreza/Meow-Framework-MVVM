@@ -100,7 +100,7 @@ fun Context?.getPhoneNumber(): String? {
                 getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE) as SubscriptionManager
             val list = subscription.activeSubscriptionInfoList
             list.forEach {
-                if (!it.number.isEmptyCheckNull())
+                if (it.number.isNotEmpty())
                     return it.number
             }
             return null

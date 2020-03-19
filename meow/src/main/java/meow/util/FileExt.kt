@@ -23,7 +23,6 @@ import meow.controller
 import meow.core.ui.MVVM
 import java.io.File
 import java.io.FileOutputStream
-import java.util.*
 
 /**
  * Meow File Utils.
@@ -176,9 +175,8 @@ fun Context?.saveBitmapInFile(
     bitmap: Bitmap,
     folderPath: String,
     name: String? = null
-): String? {
-    return avoidException {
-        val fileName = name ?: UUID.randomUUID().toString() + ".jpeg"
+) = avoidException {
+    val fileName = name ?: generateUUID() + ".jpeg"
         val path = folderPath + fileName
         val fos = FileOutputStream(path)
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
@@ -186,7 +184,6 @@ fun Context?.saveBitmapInFile(
         fos.close()
         path
     }
-}
 
 fun Context?.loadStringFromAssets(fileName: String): String? {
     if (this == null)
