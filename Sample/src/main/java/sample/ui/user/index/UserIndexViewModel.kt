@@ -21,7 +21,6 @@ import androidx.lifecycle.MutableLiveData
 import meow.controller
 import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
-import meow.util.logD
 import sample.App
 import sample.data.User
 
@@ -46,7 +45,6 @@ class UserIndexViewModel(
             isNetworkRequired = true,
             apiAction = { repository.getUsersApi() }
         ) { _, it ->
-            logD(m = "zzzz : ${it?.size}")
             listLiveData.postValue(it)
         }
     }

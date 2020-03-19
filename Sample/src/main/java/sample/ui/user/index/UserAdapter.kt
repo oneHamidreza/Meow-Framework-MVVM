@@ -17,6 +17,7 @@
 package sample.ui.user.index
 
 import android.app.Application
+import android.view.View
 import android.view.ViewGroup
 import meow.core.ui.MeowAdapter
 import meow.core.ui.MeowViewHolder
@@ -40,23 +41,36 @@ typealias ViewModel = UserIndexViewModel
 typealias DiffCallback = User.DiffCallback
 
 class UserAdapter(
-    app: Application,
+    var app: Application,
     override var viewModel: ViewModel
 ) : MeowAdapter<Model, ViewHolder, ViewModel>(
     app, viewModel,
     DiffCallback()
 ) {
 
+    override fun getItemViewType(position: Int): Int {
+        return getItem(position).type.ordinal
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemUserBinding.inflate(inflater, parent, false)
-        return MeowViewHolder(binding.root) { _, model, viewModel ->
-            binding.let {
-                it.tvX.setTextColor(parent.context.getColorCompat(R.color.material_on_surface_emphasis_high_type))// bug fix for realtime day/night mode
-                it.viewModel = viewModel
-                it.setVariable(BR.model, model)
-                it.executePendingBindings()
+        return when (Types.values()[viewType]) {
+            Types.A -> {
+                val binding = ItemUserBinding.inflate(inflater, parent, false)
+                MeowViewHolder(binding.root) { _, model, viewModel ->
+                    binding.let {
+                        it.tvX.setTextColor(parent.context.getColorCompat(R.color.material_on_surface_emphasis_high_type))// bug fix for realtime day/night mode
+                        it.viewModel = viewModel
+                        it.setVariable(BR.model, model)
+                        it.executePendingBindings()
+                    }
+                }
             }
+            else -> MeowViewHolder(View(app))
         }
+    }
+
+    enum class Types {
+        A, B
     }
 
 }

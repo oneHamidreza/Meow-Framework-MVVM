@@ -37,7 +37,6 @@ import sample.ui.base.BaseFragment
 
 class UserIndexFragment : BaseFragment<FragmentUserIndexBinding, UserIndexViewModel>() {
 
-    private lateinit var listAdapter: UserAdapter
 
     override fun layoutId() = R.layout.fragment_user_index
     override fun viewModelClass() = UserIndexViewModel::class.java
@@ -52,8 +51,7 @@ class UserIndexFragment : BaseFragment<FragmentUserIndexBinding, UserIndexViewMo
                     outRect.top = 24.dp()
             }
             addItemDecoration(MeowDividerDecoration(context))
-            listAdapter = UserAdapter(app, viewModel)
-            adapter = listAdapter
+            adapter = UserAdapter(app, viewModel)
         }
 
         viewModel.callApi()

@@ -31,7 +31,7 @@ import meow.core.arch.MeowViewModel
 
 class MeowViewHolder<T, VM : MeowViewModel>(
     itemView: View?,
-    var onBindBlock: (position: Int, model: T, viewModel: VM) -> Unit
+    var onBindBlock: (position: Int, model: T, viewModel: VM) -> Unit = { _, _, _ -> }
 ) : RecyclerView.ViewHolder(itemView!!) {
 
     fun onBind(position: Int, model: T, viewModel: VM) {
