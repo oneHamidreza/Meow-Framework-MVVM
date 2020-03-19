@@ -16,7 +16,7 @@
 
 package sample.data
 
-import meow.core.api.ModelFactory
+import meow.core.api.ModelJsonFactory
 import meow.core.arch.DataSourceImpl
 import meow.core.data.MeowSharedPreferences
 import meow.util.ofMoshi
@@ -43,7 +43,7 @@ class DataSource(override var app: App) : DataSourceImpl, KodeinAware {
     private val spUpdate: MeowSharedPreferences by instance("spUpdate")
 
     suspend fun getUserById(request: User.RequestGet) =
-        api.createServiceByAdapter<User.Api>(ofMoshi(ModelFactory().get<User, UserDetailJsonAdapter>()))
+        api.createServiceByAdapter<User.Api>(ofMoshi(ModelJsonFactory().get<User, UserDetailJsonAdapter>()))
             .getUserById(request.id)
 
     suspend fun getUsers() =

@@ -23,7 +23,7 @@ import meow.util.createClass
 import java.lang.reflect.Type
 import kotlin.reflect.full.primaryConstructor
 
-class ModelFactory {
+class ModelJsonFactory {
     inline fun <reified T, reified JA : JsonAdapter<T>> get() = object : JsonAdapter.Factory {
         override fun create(
             type: Type,
