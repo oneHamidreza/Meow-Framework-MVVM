@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <declare-styleable name="MeowDashView">
+        <attr name="dash_orientation" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+        <attr name="dash_gap" format="dimension" />
+        <attr name="dash_length" format="dimension" />
+        <attr name="dash_thickness" format="dimension" />
+        <attr name="dash_color" format="color" />
+    </declare-styleable>
+
     <attr name="msd_shape" format="enum">
         <enum name="rectangle" value="0" />
         <enum name="oval" value="1" />

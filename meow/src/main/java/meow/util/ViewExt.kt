@@ -16,12 +16,15 @@
 
 package meow.util
 
+import android.content.res.TypedArray
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.util.AttributeSet
 import android.view.View
 import android.view.ViewTreeObserver
 import androidx.core.view.ViewCompat
 import androidx.databinding.ViewDataBinding
+import meow.controller
 
 /**
  * [View] Extensions.
@@ -101,3 +104,24 @@ fun <T> View?.updateLayoutParams(onLayoutChange: (params: T) -> Unit) {
     }
 }
 
+fun View?.setAttributesFromXml(
+    set: AttributeSet?,
+    attrs: IntArray,
+    block: (it: TypedArray) -> Unit
+) {
+    if (set == null)
+        return
+
+    val a = this?.context?.theme?.obtainStyledAttributes(set, attrs, 0, 0) ?: return
+    avoidException(
+        tryBlock = {
+            block(a)
+        },
+        finallyBlock = {
+            a.recycle()
+        }
+    )
+}
+
+fun TypedArray.getColorCompat(index: Int, defValue: Int) =
+    controller.onColorGet(getColor(index, defValue))
