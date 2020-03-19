@@ -85,13 +85,12 @@ abstract class MeowApi(
     }
 
     @Suppress("UNCHECKED_CAST")
-    inline fun <reified T> createServiceByAdapter(adapter: Any? = null): T {
+    inline fun <reified T> createServiceByAdapter(moshi: Moshi? = null): T {
         val moshiBuilder = Moshi.Builder()
-        val moshi = adapter?.let {
-            moshiBuilder.add(KotlinJsonAdapterFactory()).add(it).build()
-        } ?: moshiBuilder.add(KotlinJsonAdapterFactory()).build()
+        val moshiFinal = moshi ?: moshiBuilder.add(KotlinJsonAdapterFactory()).build()
         return createDefaultService().newBuilder()
-            .addConverterFactory(MoshiConverterFactory.create(moshi)).build().create(T::class.java)
+            .addConverterFactory(MoshiConverterFactory.create(moshiFinal)).build()
+            .create(T::class.java)
     }
 
     open fun onUnauthorizedAfterAuthenticate() {

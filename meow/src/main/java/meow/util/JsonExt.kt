@@ -16,6 +16,8 @@
 
 package meow.util
 
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.JsonReader
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okio.BufferedSource
@@ -46,13 +48,11 @@ inline fun <reified T> String?.toClass(): T? {
 
 inline fun <reified T : Any> T?.toJsonString(): String {
     if (this == null) return "{}"
-    return avoidException(
-        tryBlock = {
-            moshiBuilder
-                .add(KotlinJsonAdapterFactory())
-                .build().adapter(createClass<T>()).toJson(this)
-        },
-        exceptionBlock = { "{}" }) ?: ""
+    return avoidException {
+        moshiBuilder
+            .add(KotlinJsonAdapterFactory())
+            .build().adapter(createClass<T>()).toJson(this)
+    } ?: "{}"
 }
 
 inline fun <reified T : Any> List<T>?.toJsonString(): String {
@@ -66,3 +66,41 @@ inline fun <reified T : Any> List<T>?.toJsonString(): String {
         "[]"
     }
 }
+
+fun JsonReader.skipNameAndValue() {
+    skipName()
+    skipValue()
+}
+
+inline fun JsonReader.readObject(block: JsonReader.() -> Unit) {
+    beginObject()
+    while (hasNext()) {
+        block()
+    }
+    endObject()
+}
+
+
+inline fun JsonReader.readArray(block: JsonReader.() -> Unit) {
+    beginArray()
+    while (hasNext()) {
+        block()
+    }
+    endArray()
+}
+
+inline fun <reified T> JsonReader.safeNext() = avoidException {
+    when (createClass<T>().javaClass.name) {
+        "String" -> nextString() as? T
+        else -> newInstance()
+    }
+}
+
+fun JsonReader.selectName(vararg strings: String) = selectName(JsonReader.Options.of(*strings))
+
+fun ofMoshi(factory: JsonAdapter.Factory? = null) =
+    Moshi.Builder().apply {
+        if (factory != null)
+            add(factory)
+        add(KotlinJsonAdapterFactory())
+    }.build()

@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.DiffUtil
 import com.squareup.moshi.Json
 import kotlinx.serialization.Serializable
 import meow.core.api.MeowRequest
+import meow.util.removeExtraSpaces
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -32,16 +33,14 @@ import retrofit2.http.Path
  */
 
 @Serializable
+//@JsonClass(generateAdapter = true)
 data class User(
     @Json(name = "id") var id: String? = null,
     @Json(name = "first_name") var firstName: String? = null,
     @Json(name = "last_name") var lastName: String? = null
 ) {
 
-    val alias: String
-        get() {
-            return firstName.orEmpty() + " " + lastName.orEmpty() + " (" + id + ")"
-        }//todo remove extra
+    val alias get() = (firstName.orEmpty() + " " + lastName.orEmpty() + " (" + id + ")").removeExtraSpaces()
 
     override fun toString(): String {
         return "User(id=$id, firstName=$firstName, lastName=$lastName)"

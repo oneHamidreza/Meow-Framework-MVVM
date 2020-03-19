@@ -16,13 +16,16 @@
 
 package sample.data
 
+import meow.core.api.ModelFactory
 import meow.core.arch.DataSourceImpl
 import meow.core.data.MeowSharedPreferences
+import meow.util.ofMoshi
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 import org.kodein.di.erased.instance
 import sample.App
 import sample.di.AppApi
+
 
 /**
  * The Data Source class.
@@ -40,7 +43,8 @@ class DataSource(override var app: App) : DataSourceImpl, KodeinAware {
     private val spUpdate: MeowSharedPreferences by instance("spUpdate")
 
     suspend fun getUserById(request: User.RequestGet) =
-        api.createServiceByAdapter<User.Api>().getUserById(request.id)
+        api.createServiceByAdapter<User.Api>(ofMoshi(ModelFactory().get<User, UserDetailJsonAdapter>()))
+            .getUserById(request.id)
 
     suspend fun getUsers() =
         api.createServiceByAdapter<User.Api>().getUsers()

@@ -16,9 +16,11 @@
 
 package sample.data
 
-import com.squareup.moshi.FromJson
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.JsonReader
+import com.squareup.moshi.*
+import meow.util.createClass
+import meow.util.ofMoshi
+import meow.util.readObject
+import meow.util.selectName
 
 /**
  * User Json Adapter class.
@@ -28,11 +30,26 @@ import com.squareup.moshi.JsonReader
  * @since   2020-03-01
  */
 
-class UserJsonAdapter {
+typealias Model = User
+
+class UserDetailJsonAdapter(private val delegate: JsonAdapter<Model>) : JsonAdapter<Model>() {
 
     @FromJson
-    fun fromJson(jsonReader: JsonReader, delegate: JsonAdapter<User>): User? {
-        val value = jsonReader.nextString()
-        return User()
+    override fun fromJson(reader: JsonReader): Model? {
+        var it = Model()
+
+        reader.readObject {
+            when (selectName("data")) {
+                0 -> it = ofMoshi().adapter(createClass<Model>()).fromJson(reader)!!
+            }
+        }
+
+        return it
     }
+
+    @ToJson
+    override fun toJson(writer: JsonWriter, value: Model?) {
+        delegate.toJson(writer, value)
+    }
+
 }
