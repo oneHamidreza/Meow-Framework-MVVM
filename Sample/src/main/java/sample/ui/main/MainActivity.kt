@@ -25,6 +25,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import meow.util.getColorCompat
+import meow.util.setStatusBarDarkIcon
 import sample.R
 import sample.databinding.ActivityMainBinding
 import sample.ui.base.BaseActivity
@@ -38,7 +39,7 @@ import sample.ui.base.BaseActivity
  */
 
 class MainActivity :
-    BaseActivity<ActivityMainBinding, MainViewModel>() {//todo check with res/layout is better ?
+    BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -50,6 +51,7 @@ class MainActivity :
         super.onCreate(savedInstanceState)
         setSupportActionBar(binding.toolbar)
         setupNavigation()
+        setStatusBarDarkIcon()
 
 //        fv.setOnSubmitClickListener {
 //            Log.d("testText", "Text is : ${et.text.toString()}")
@@ -82,7 +84,7 @@ class MainActivity :
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         binding.apply {
-            drawerLayout.setStatusBarBackground(ColorDrawable(getColorCompat(R.color.primary_variant)))
+            drawerLayout.setStatusBarBackground(ColorDrawable(getColorCompat(R.color.status_bar)))
             navigationView.setupWithNavController(navController)
         }
     }
