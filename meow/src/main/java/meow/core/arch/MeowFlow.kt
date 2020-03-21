@@ -26,7 +26,7 @@ import meow.core.ui.MVVM
 import meow.util.createErrorMessage
 import meow.util.safeObserve
 import meow.util.toastL
-import meow.widget.impl.ErrorImpl
+import meow.widget.impl.MeowErrorView
 import meow.widget.impl.ProgressBarImpl
 
 /**
@@ -69,7 +69,7 @@ sealed class MeowFlow(open val mvvm: MVVM<*, *>) {
 
         var progressBarImpl: ProgressBarImpl? = null
 
-        var errorImpl: ErrorImpl? = null//todo impl ???
+        var meowErrorView: MeowErrorView? = null
 
         var dialog: Dialog? = null
 
@@ -98,7 +98,7 @@ sealed class MeowFlow(open val mvvm: MVVM<*, *>) {
         var onShowLoading: (text: String?) -> Unit = {
             progressBarImpl?.show()
             dialog?.show()
-            errorImpl?.hide()
+            meowErrorView?.hide()
         }
 
         var onHideLoading: () -> Unit = {

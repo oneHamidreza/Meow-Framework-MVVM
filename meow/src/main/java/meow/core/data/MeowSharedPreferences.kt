@@ -34,7 +34,7 @@ import meow.util.toJsonString
 
 //todo farsi devices
 @Suppress("unused", "MemberVisibilityCanBePrivate")
-open class MeowSharedPreferences(
+class MeowSharedPreferences(
     application: Application,
     settingName: String? = null,
     isEnabledObfuscated: Boolean = true,

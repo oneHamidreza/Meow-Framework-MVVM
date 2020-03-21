@@ -43,13 +43,13 @@ object ToastUtil {
 fun MVVM<*, *>?.toastL(res: Int, gravity: Int = 0, xOffset: Int = 0, yOffset: Int = 0) {
     if (this == null)
         return
-    context().toast(resources().getString(res), Toast.LENGTH_LONG, gravity, xOffset, yOffset)
+    context().toast(getStringCompat(res), Toast.LENGTH_LONG, gravity, xOffset, yOffset)
 }
 
 fun MVVM<*, *>?.toastS(res: Int, gravity: Int = 0, xOffset: Int = 0, yOffset: Int = 0) {
     if (this == null)
         return
-    context().toast(resources().getString(res), Toast.LENGTH_SHORT, gravity, xOffset, yOffset)
+    context().toast(getStringCompat(res), Toast.LENGTH_SHORT, gravity, xOffset, yOffset)
 }
 
 fun MVVM<*, *>?.toastL(message: String?, gravity: Int = 0, xOffset: Int = 0, yOffset: Int = 0) {
