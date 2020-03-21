@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="textAppearance.Headline1" parent="@style/TextAppearance.MaterialComponents.Headline1">
+    <style name="Meow.TextAppearance.Headline1" parent="@style/TextAppearance.MaterialComponents.Headline1">
         <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
-    <style name="textAppearance.Headline2" parent="@style/TextAppearance.MaterialComponents.Headline2">
+    <style name="Meow.TextAppearance.Headline2" parent="@style/TextAppearance.MaterialComponents.Headline2">
         <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
-    <style name="textAppearance.Headline3" parent="@style/TextAppearance.MaterialComponents.Headline3">
+    <style name="Meow.TextAppearance.Headline3" parent="@style/TextAppearance.MaterialComponents.Headline3">
         <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
-    <style name="textAppearance.Headline4" parent="@style/TextAppearance.MaterialComponents.Headline4">
+    <style name="Meow.TextAppearance.Headline4" parent="@style/TextAppearance.MaterialComponents.Headline4">
         <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
-    <style name="textAppearance.Headline5" parent="@style/TextAppearance.MaterialComponents.Headline5">
+    <style name="Meow.TextAppearance.Headline5" parent="@style/TextAppearance.MaterialComponents.Headline5">
         <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
-    <style name="textAppearance.Headline6" parent="@style/TextAppearance.MaterialComponents.Headline6">
+    <style name="Meow.TextAppearance.Headline6" parent="@style/TextAppearance.MaterialComponents.Headline6">
         <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
-    <style name="textAppearance.Body1" parent="@style/TextAppearance.MaterialComponents.Body1">
+    <style name="Meow.TextAppearance.Body1" parent="@style/TextAppearance.MaterialComponents.Body1">
         <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
-    <style name="textAppearance.Body2" parent="@style/TextAppearance.MaterialComponents.Body2">
+    <style name="Meow.TextAppearance.Body2" parent="@style/TextAppearance.MaterialComponents.Body2">
         <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
-    <style name="textAppearance.Subtitle1" parent="@style/TextAppearance.MaterialComponents.Subtitle1">
+    <style name="Meow.TextAppearance.Subtitle1" parent="@style/TextAppearance.MaterialComponents.Subtitle1">
         <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
-    <style name="textAppearance.Subtitle2" parent="@style/TextAppearance.MaterialComponents.Subtitle2">
+    <style name="Meow.TextAppearance.Subtitle2" parent="@style/TextAppearance.MaterialComponents.Subtitle2">
         <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
-    <style name="textAppearance.Caption" parent="@style/TextAppearance.MaterialComponents.Caption">
+    <style name="Meow.TextAppearance.Caption" parent="@style/TextAppearance.MaterialComponents.Caption">
         <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
-    <style name="textAppearance.Overline" parent="@style/TextAppearance.MaterialComponents.Overline">
+    <style name="Meow.TextAppearance.Overline" parent="@style/TextAppearance.MaterialComponents.Overline">
         <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
-    <style name="textAppearance.Button" parent="@style/TextAppearance.MaterialComponents.Button">
+    <style name="Meow.TextAppearance.Button" parent="@style/TextAppearance.MaterialComponents.Button">
         <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 

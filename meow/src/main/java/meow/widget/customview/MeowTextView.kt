@@ -25,7 +25,6 @@ import meow.controller
 import meow.util.MeowDrawableHelper
 import meow.util.MeowShapeDrawable
 import meow.util.avoidException
-import meow.util.getFont
 import meow.widget.impl.MeowShapeDrawableImpl
 import meow.widget.impl.TextViewImpl
 
@@ -43,7 +42,7 @@ open class MeowTextView : AppCompatTextView, TextViewImpl, MeowShapeDrawableImpl
     override var fontPath: String? = ""
         set(value) {
             field = value
-            typeface = context.getFont(fontPath)
+//            typeface = context.getFont(fontPath)
         }
     override var isPersian = controller.isPersian
     override var beforeText: String? = ""

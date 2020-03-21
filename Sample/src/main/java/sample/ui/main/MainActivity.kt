@@ -24,7 +24,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import meow.controller
 import meow.util.getColorCompat
 import sample.R
 import sample.databinding.ActivityMainBinding
@@ -48,7 +47,6 @@ class MainActivity :
     override fun layoutId() = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        controller.defaultFontName = getString(R.string.font_mainRegular)
         super.onCreate(savedInstanceState)
         setSupportActionBar(binding.toolbar)
         setupNavigation()

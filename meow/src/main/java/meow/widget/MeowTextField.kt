@@ -45,8 +45,8 @@ class MeowTextField(context: Context, var attrs: AttributeSet? = null) : TextInp
     override var fontPath: String? = ""
         set(value) {
             field = value
-            editText.typeface = context.getFont(fontPath)
-            typeface = context.getFont(fontPath)
+//            editText.typeface = context.getFont(fontPath)
+//            typeface = context.getFont(fontPath)
         }
     override var isPersian = controller.isPersian
     override var beforeText: String? = ""
@@ -170,7 +170,7 @@ class MeowTextField(context: Context, var attrs: AttributeSet? = null) : TextInp
     private fun setCounterTypeface() {
         val counterView = getField<TextView>("counterView") ?: return
         logD(m = "counterView: ${counterView != null}")//todo test
-        counterView.typeface = context.getFont(fontPath)
+//        counterView.typeface = context.getFont(fontPath)
     }
 
     private fun setFontToError(string: String): SpannableString {
@@ -189,7 +189,7 @@ class MeowTextField(context: Context, var attrs: AttributeSet? = null) : TextInp
 
         val s = SpannableString(string)
         s.setSpan(
-            TypefaceSpan(context.getFont(fontPath)!!),
+            TypefaceSpan(context.getFont(0)!!),
             0,
             s.length,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE

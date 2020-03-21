@@ -33,6 +33,7 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import com.etebarian.meowframework.R
 import meow.controller
 import meow.core.ui.MVVM
@@ -226,4 +227,8 @@ fun Context.vibrate(duration: Long = 150) {
     }
 }
 
-fun Context.getFont(path: String?) = Typeface.DEFAULT
+fun Context?.getFont(resId: Int) = if (this == null) Typeface.DEFAULT else avoidException {
+    ResourcesCompat.getFont(this, resId)
+} ?: Typeface.DEFAULT
+
+fun MVVM<*, *>?.getFont(resId: Int) = this?.context().getFont(resId)

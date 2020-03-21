@@ -12,7 +12,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="24dp"
         android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="سلام"
+            android:textColor="@color/material_on_surface_emphasis_high_type"
+            android:textAppearance="@style/textAppearance.Headline1" />
 
         <meow.widget.MeowDashView
             android:layout_width="match_parent"
@@ -25,11 +33,11 @@
             app:dash_thickness="2dp" />
 
         <ImageView
-            data="@{viewModel.getImageUrl()}"
-            placeHolder="@{@drawable/ic_android}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true" />
+            android:adjustViewBounds="true"
+            app:data="@{viewModel.getImageUrl()}"
+            app:placeHolder="@{@drawable/ic_android}" />
 
         <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button"

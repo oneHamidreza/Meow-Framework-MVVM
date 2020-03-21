@@ -65,5 +65,10 @@ val mvvmModule = Module("MVVM Module", false) {
             kodein.direct.instance()
         )
     }
+    bindAutoTag<TitleIndexViewModel>() with singleton {
+        TitleIndexViewModel(
+            kodein.direct.instance()
+        )
+    }
     bind() from singleton { User.Repository(instance()) }
 }
