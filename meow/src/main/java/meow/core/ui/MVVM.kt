@@ -45,7 +45,7 @@ interface MVVM<B : ViewDataBinding, VM : MeowViewModel> {
     @LayoutRes
     fun layoutId(): Int
 
-    fun viewModelClass(): Class<VM>//todo delete maybe
+    fun viewModelClass(): Class<VM>
 
     fun contentView(): View
 
