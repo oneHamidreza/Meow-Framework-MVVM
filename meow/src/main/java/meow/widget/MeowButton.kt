@@ -24,7 +24,6 @@ import com.google.android.material.button.MaterialButton
 import meow.controller
 import meow.util.MeowColorUtils
 import meow.util.avoidException
-import meow.util.getFont
 import meow.widget.impl.TextViewImpl
 
 /**
@@ -91,7 +90,7 @@ open class MeowButton : MaterialButton, TextViewImpl {
     }
 
     private fun initializeView() {
-        typeface = context.getFont(fontPath)
+//        typeface = context.getFont(fontPath)
         includeFontPadding = forcePaddingFont
         text = text.toString()
         rippleColor = rippleColor

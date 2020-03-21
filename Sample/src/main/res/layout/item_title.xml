@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="sample.ui.title.index.TitleIndexViewModel" />
+
+        <variable
+            name="model"
+            type="sample.data.Title" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@{@color/black}"
+            android:textAppearance="@style/textAppearance.Headline1"
+            android:text='@{model.getName("Headline1")}' />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@{@color/black}"
+            android:textAppearance="@style/textAppearance.Headline2"
+            android:text='@{model.getName("Headline2")}' />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@{@color/black}"
+            android:textAppearance="@style/textAppearance.Headline3"
+            android:text='@{model.getName("Headline3")}' />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@{@color/black}"
+            android:textAppearance="@style/textAppearance.Headline4"
+            android:text='@{model.getName("Headline4")}' />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@{@color/black}"
+            android:textAppearance="@style/textAppearance.Headline5"
+            android:text='@{model.getName("Headline5")}' />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@{@color/black}"
+            android:textAppearance="@style/textAppearance.Headline6"
+            android:text='@{model.getName("Headline6")}' />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@{@color/black}"
+            android:textAppearance="@style/textAppearance.Body1"
+            android:text='@{model.getName("Body1")}' />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@{@color/black}"
+            android:textAppearance="@style/textAppearance.Body2"
+            android:text='@{model.getName("Body2")}' />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@{@color/black}"
+            android:textAppearance="@style/textAppearance.Subtitle1"
+            android:text='@{model.getName("Subtitle1")}' />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@{@color/black}"
+            android:textAppearance="@style/textAppearance.Subtitle2"
+            android:text='@{model.getName("Subtitle2")}' />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@{@color/black}"
+            android:textAppearance="@style/textAppearance.Caption"
+            android:text='@{model.getName("Caption")}' />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@{@color/black}"
+            android:textAppearance="@style/textAppearance.Overline"
+            android:text='@{model.getName("Overline")}' />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@{@color/black}"
+            android:textAppearance="@style/textAppearance.Button"
+            android:text='@{model.getName("Button")}' />
+
+    </LinearLayout>
+
+</layout>

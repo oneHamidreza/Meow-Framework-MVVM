@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     android:label="Main"
-    app:startDestination="@id/fragmentMenu">
+    app:startDestination="@id/fragmentTitleIndex">
 
     <action
         android:id="@+id/actionToUserDetail"
@@ -19,6 +19,12 @@
         android:name="sample.ui.menu.MenuFragment"
         android:label="Menu"
         tools:layout="@layout/fragment_menu" />
+
+    <fragment
+        android:id="@+id/fragmentTitleIndex"
+        android:name="sample.ui.title.index.TitleIndexFragment"
+        android:label="Titles"
+        tools:layout="@layout/fragment_title_index" />
 
     <fragment
         android:id="@+id/fragmentUserDetail"
