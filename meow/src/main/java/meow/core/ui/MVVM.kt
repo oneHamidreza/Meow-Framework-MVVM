@@ -45,7 +45,7 @@ interface MVVM<B : ViewDataBinding, VM : MeowViewModel> {
     @LayoutRes
     fun layoutId(): Int
 
-    fun viewModelClass(): Class<VM>//todo delete maybe
+    fun viewModelClass(): Class<VM>
 
     fun contentView(): View
 
@@ -54,6 +54,7 @@ interface MVVM<B : ViewDataBinding, VM : MeowViewModel> {
     fun activity(): FragmentActivity
 
     fun resources() = context().resources
+
     fun getStringCompat(id: Int) = resources().getString(id)//todo all
 
     fun initViewModel()

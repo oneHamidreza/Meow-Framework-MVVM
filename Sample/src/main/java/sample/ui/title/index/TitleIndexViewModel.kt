@@ -14,39 +14,35 @@
  * limitations under the License.
  */
 
-package meow.util
+package sample.ui.title.index
 
-import meow.controller
+import android.app.Application
+import androidx.lifecycle.MutableLiveData
+import meow.core.arch.MeowViewModel
+import sample.R
+import sample.data.Title
 
 /**
- * Extensions of [Exception].
+ * Title View Model class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-04
+ * @since   2020-03-21
  */
 
-fun allowReport(exp: Exception): Boolean {
-    return when (exp) {
-//        is NumberParseException -> false
-        else -> true
-    }
-}
+class TitleIndexViewModel(app: Application) : MeowViewModel(app) {
 
-inline fun <T> avoidException(
-    allowPrint: Boolean = controller.isDebugMode,
-    exceptionBlock: (e: Exception) -> T? = { null },
-    finallyBlock: () -> T? = { null },
-    tryBlock: () -> T? = { null }
-) =
-    try {
-        tryBlock()
-    } catch (e: Exception) {
-        if (allowPrint)
-            e.printStackTrace()
-        if (allowReport(e))
-            controller.onException(e)
-        exceptionBlock(e)
-    } finally {
-        finallyBlock()
+    val listLiveData = MutableLiveData<List<Title>>()
+
+    fun fillData() {
+        val list = arrayListOf<Title>()
+        (1..100).forEach {
+            list.add(
+                Title(R.drawable.ic_android, "سلام این یک متن نمونه است.")
+            )
+        }
+
+        listLiveData.postValue(list)
     }
+
+}

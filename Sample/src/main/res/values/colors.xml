@@ -12,4 +12,6 @@
     <color name="on_secondary">#ffffff</color>
     <color name="drawer_item_enabled">@color/secondary</color>
     <color name="drawer_item_disabled">#757575</color>
+    <color name="status_bar">@color/white</color>
+
 </resources>

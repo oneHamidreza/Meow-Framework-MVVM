@@ -24,7 +24,7 @@ package meow.widget.impl
  * @since   2020-03-10
  */
 
-interface ErrorImpl {
+interface MeowErrorView {
 
     fun hide()
 
