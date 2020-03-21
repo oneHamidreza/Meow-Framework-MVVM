@@ -23,6 +23,7 @@ import meow.meowModule
 import meow.util.getColorCompat
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.BuildConfig
 import org.kodein.di.android.x.androidXModule
 import org.kodein.di.direct
 import org.kodein.di.erased.bind

@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name=".ui.test.TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

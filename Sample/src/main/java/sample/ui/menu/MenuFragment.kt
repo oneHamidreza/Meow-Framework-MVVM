@@ -38,9 +38,9 @@ class MenuFragment : BaseFragment<FragmentMenuBinding, MenuViewModel>() {
     override fun layoutId() = R.layout.fragment_menu
     override fun viewModelClass() = MenuViewModel::class.java
 
-    override fun initViewModel() {
-        binding.viewModel = viewModel
-    }
+//    override fun initViewModel() {
+//        binding.viewModel = viewModel
+//    }
 
     override fun observeViewModel() {
         binding.viewModel!!.apply {
@@ -55,6 +55,10 @@ class MenuFragment : BaseFragment<FragmentMenuBinding, MenuViewModel>() {
                 controller.updateLanguage(requireActivity(), it)
             }
         }
+    }
+
+    override fun initViewModel() {
+        binding.viewModel = viewModel
     }
 
 }

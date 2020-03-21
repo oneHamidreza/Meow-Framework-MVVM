@@ -18,91 +18,46 @@ package meow.widget
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.etebarian.meowframework.R
 import com.google.i18n.phonenumbers.PhoneNumberUtil
-import meow.util.avoidException
-import meow.util.fetchAllDigit
-import meow.util.isValidEmail
+import meow.util.*
 
 
 /**
- * The TextField Widget.
+ * Meow Form View class.
  *
  * @author  Ali Modares
  * @version 1.0.0
  * @since   2020-03-08
  */
 
-open class MeowFormView : LinearLayout {
+open class MeowFormView(context: Context, var attrs: AttributeSet? = null) :
+    LinearLayout(context, attrs) {
 
-    private val TAG = "FormViewLogs"
     private var etList = listOf<MeowTextField>()
-    private var btList = listOf<MeowButton>()
     private var isResetForm: Boolean = false
     private var isError = false
 
 
-    constructor(context: Context) : super(context) {
-        initializeView()
-    }
-
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        setAttributeFromXml(context, attrs)
-        initializeView()
-    }
-
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-        setAttributeFromXml(context, attrs)
-        initializeView()
-    }
-
-
-    private fun initializeView() {
+    init {
+        setAttributesFromXml(attrs, R.styleable.MeowFormView) {
+            isResetForm = it.getBoolean(R.styleable.MeowFormView_resetForm, isResetForm)
+        }
     }
 
     override fun onFinishInflate() {
         super.onFinishInflate()
         etList = getAllEditTexts()
-        btList = getAllButtons()
     }
 
-    private fun setAttributeFromXml(context: Context, attrs: AttributeSet) {
-
-        val a = context.theme.obtainStyledAttributes(attrs, R.styleable.MeowFormView, 0, 0)
-        avoidException(
-            tryBlock = {
-                a.apply {
-                    isResetForm = getBoolean(R.styleable.MeowFormView_resetForm, isResetForm)
-                }
-            }, finallyBlock = {
-                a.recycle()
-            }
-        )
-    }
-
-
-    fun setOnSubmitClickListener(listener: () -> Unit) {
-        btList.forEach {
-            if (it.isAttachToForm) {
-                it.setOnClickListener {
-                    etList.forEach { childE ->
-                        checkWithTextFieldType(childE)
-                    }
-                    if (!isError) {
-                        listener()
-                        if (isResetForm) resetForm()
-                    }
-                }
-            }
+    fun validate() {
+        etList.forEach { childE ->
+            checkWithTextFieldType(childE)
         }
+        if (!isError && isResetForm) resetForm()
     }
 
     fun resetForm() {
@@ -176,7 +131,6 @@ open class MeowFormView : LinearLayout {
             var region = ""
             if (s != null) {
                 avoidException {
-                    Log.d(TAG, "phone : $s")
                     var phone = s
                     if (!phone.contains("+"))
                         phone = "+$phone"
@@ -194,7 +148,7 @@ open class MeowFormView : LinearLayout {
         return avoidException {
             if (s.startsWith("+98") || s.startsWith("98")) {
                 val m = s.fetchAllDigit()
-                return m.isNotEmpty() && m.startsWith("98") && m.length == 12
+                return !m.isNullOrEmpty() && m.startsWith("98") && m.length == 12
             }
             util.isValidNumber(util.parse(s, countryIso))
         } ?: false
@@ -205,24 +159,6 @@ open class MeowFormView : LinearLayout {
 
         fun find(v: View, list: ArrayList<MeowTextField>) {
             if (v is MeowTextField)
-                list.add(v)
-            else if (v is ViewGroup) {
-                for (i in 0 until v.childCount) {
-                    find(v.getChildAt(i), list)
-                }
-            }
-        }
-
-        find(this, list)
-
-        return list
-    }
-
-    private fun getAllButtons(): List<MeowButton> {
-        val list = arrayListOf<MeowButton>()
-
-        fun find(v: View, list: ArrayList<MeowButton>) {
-            if (v is MeowButton)
                 list.add(v)
             else if (v is ViewGroup) {
                 for (i in 0 until v.childCount) {

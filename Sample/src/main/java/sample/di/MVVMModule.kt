@@ -25,6 +25,7 @@ import org.kodein.di.erased.singleton
 import sample.data.User
 import sample.ui.main.MainViewModel
 import sample.ui.menu.MenuViewModel
+import sample.ui.test.TestViewModel
 import sample.ui.user.detail.UserDetailViewModel
 import sample.ui.user.index.UserIndexViewModel
 
@@ -57,6 +58,11 @@ val mvvmModule = Module("MVVM Module", false) {
         UserIndexViewModel(
             kodein.direct.instance(),
             instance()
+        )
+    }
+    bindAutoTag<TestViewModel>() with singleton {
+        TestViewModel(
+            kodein.direct.instance()
         )
     }
     bind() from singleton { User.Repository(instance()) }

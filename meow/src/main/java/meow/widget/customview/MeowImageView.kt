@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package meow.widget
+package meow.widget.customview
 
 import android.animation.ValueAnimator
 import android.content.Context

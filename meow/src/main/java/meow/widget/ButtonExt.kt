@@ -18,84 +18,98 @@ package meow.widget
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
-import android.view.Gravity
-import android.widget.TextView
+import android.widget.Button
+import androidx.core.view.ViewCompat
 import androidx.databinding.BindingAdapter
+import com.google.android.material.button.MaterialButton
 import meow.controller
+import meow.util.MeowColorUtils
 import meow.util.toPersianNumber
 
 /**
- * [android.widget.TextView] Extensions.
+ * [android.widget.Button] Extensions.
  *
- * @author  Hamidreza Etebarian
+ * @author  Ali Modares
  * @version 1.0.0
- * @since   2020-03-15
+ * @since   2020-03-19
  */
 
-object TextViewBindingAdapter {
-
+object ButtonBindingAdapter {
     @BindingAdapter("forceFontPadding")
-    fun setFontPadding(view: TextView, forceFontPadding: Boolean) {
+    fun setFontPadding(view: Button, forceFontPadding: Boolean) {
         view.includeFontPadding = controller.isForceFontPadding
     }
 
     @BindingAdapter("android:gravity", "reverseGravity", "forceGravity", requireAll = false)
     @JvmStatic
-    fun setGravity(view: TextView, gravity: Int, reverseGravity: Boolean, forceGravity: Boolean) {
+    fun setGravity(view: Button, gravity: Int, reverseGravity: Boolean, forceGravity: Boolean) {
         view.gravity = calculateGravityIfNeed(gravity, reverseGravity, forceGravity)
     }
 
     @SuppressLint("SetTextI18n")
     @BindingAdapter("android:text,", "prefixText", requireAll = true)
     @JvmStatic
-    fun setPrefix(view: TextView, text: String, prefixText: String) {
+    fun setPrefix(view: Button, text: String, prefixText: String) {
         view.text = "$prefixText$text"
     }
 
     @SuppressLint("SetTextI18n")
     @BindingAdapter("android:text,", "suffixText", requireAll = true)
     @JvmStatic
-    fun setSuffix(view: TextView, text: String, suffixText: String) {
+    fun setSuffix(view: Button, text: String, suffixText: String) {
         view.text = "$suffixText$text"
     }
 
     @BindingAdapter("isPersianNumber")
     @JvmStatic
-    fun setPersianNumber(view: TextView, isPersianNumber: Boolean) {
+    fun setPersianNumber(view: Button, isPersianNumber: Boolean) {
         view.text = if (isPersianNumber) view.text.toString().toPersianNumber() else view.text
+    }
+
+    @BindingAdapter("backgroundTint")
+    @JvmStatic
+    fun setBackgroundTint(view: Button, color: ColorStateList) {
+        ViewCompat.setBackgroundTintList(view, controller.onColorStateListGet(color))
     }
 
     @BindingAdapter("android:textColor")
     @JvmStatic
-    fun setTextColor(view: TextView, textColor: ColorStateList) {
+    fun setTextColor(view: Button, textColor: ColorStateList) {
         view.setTextColor(controller.onColorStateListGet(textColor))
     }
 
     @BindingAdapter("android:textColor")
     @JvmStatic
-    fun setTextColor(view: TextView, textColor: Int) {
+    fun setTextColor(view: Button, textColor: Int) {
         view.setTextColor(controller.onColorGet(textColor))
     }
-}
 
-@SuppressLint("RtlHardcoded")
-fun calculateGravityIfNeed(gravity: Int, isReverse: Boolean = false, forceGravity: Boolean): Int {
-    var newGravity = gravity
-    if (gravity != Gravity.CENTER && gravity != Gravity.CENTER_HORIZONTAL && forceGravity) {
-        val localGravity = if (controller.isRtl) Gravity.RIGHT else Gravity.LEFT
-        val inverseLocalGravity = if (controller.isRtl) Gravity.LEFT else Gravity.RIGHT
-
-        val local = if (!isReverse) localGravity else inverseLocalGravity
-        val inverse = if (!isReverse) inverseLocalGravity else localGravity
-
-        if (gravity / Gravity.START != 0) {
-            val defG = gravity - Gravity.START
-            newGravity = local or defG
-        } else if (gravity / Gravity.END != 0) {
-            val defG = gravity - Gravity.END
-            newGravity = inverse or defG
+    @BindingAdapter("app:rippleColor", "calculateRipple")
+    @JvmStatic
+    fun setRippleColor(
+        view: MaterialButton,
+        rippleColor: ColorStateList?,
+        calculateRipple: Boolean
+    ) {
+        val rippleValue = 0.64f
+        var newRippleColor = rippleColor
+        if (controller.changeColor) {
+            newRippleColor = ColorStateList.valueOf(
+                controller.onColorGet(rippleColor?.defaultColor ?: 0)
+            )
         }
-    }
-    return newGravity
-}
 
+        if (!calculateRipple && newRippleColor != null) {
+            view.rippleColor = rippleColor
+            return
+        }
+
+        view.rippleColor = ColorStateList.valueOf(
+            MeowColorUtils.setAlpha(
+                newRippleColor?.defaultColor ?: 0,
+                rippleValue
+            )
+        )
+    }
+
+}

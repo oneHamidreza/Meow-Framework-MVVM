@@ -22,6 +22,7 @@ import android.graphics.Point
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.Base64
+import android.view.View
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
@@ -72,6 +73,21 @@ object ImageViewBindingAdapter {
             view.loadBase64(data, config)
         else
             view.loadGlide(data, config)
+    }
+
+    @BindingAdapter("aspectRatio", "aspectRatioEnable", requireAll = false)
+    @JvmStatic
+    fun setRatio(view: ImageView, aspectRatio: String, aspectRatioEnable: Boolean) {
+        if (aspectRatioEnable) {
+            var second = aspectRatio.substring(aspectRatio.lastIndexOf(":") + 1)
+            var first = aspectRatio.replace(":$second", "")
+            val widthSize = View.MeasureSpec.getSize(view.measuredWidth)
+            val heightSize = (second.toFloat() / first.toFloat() * widthSize).toInt()
+            val newHeightSpec =
+                View.MeasureSpec.makeMeasureSpec(heightSize, View.MeasureSpec.EXACTLY)
+            view.measure(view.measuredWidth, newHeightSpec)
+        }
+
     }
 }
 

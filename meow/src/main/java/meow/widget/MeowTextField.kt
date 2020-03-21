@@ -28,22 +28,19 @@ import com.etebarian.meowframework.R
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import meow.controller
-import meow.util.avoidException
-import meow.util.getField
-import meow.util.getFont
-import meow.util.logD
+import meow.util.*
 import meow.widget.impl.TextViewImpl
 
 
 /**
- * The TextField Widget.
+ * Meow TextField class.
  *
  * @author  Ali Modares
  * @version 1.0.0
  * @since   2020-03-07
  */
 
-class MeowTextField : TextInputLayout, TextViewImpl {
+class MeowTextField(context: Context, var attrs: AttributeSet? = null) : TextInputLayout(context, attrs), TextViewImpl {
 
     override var fontPath: String? = ""
         set(value) {
@@ -73,7 +70,8 @@ class MeowTextField : TextInputLayout, TextViewImpl {
     var errorMobile: String? = ""
     var errorEmail: String? = ""
 
-    companion object {
+
+    companion object {//todo check and delete
         const val INPUT_TYPE_DEFAULT = 0
         const val INPUT_TYPE_EMAIL = 1
         const val INPUT_TYPE_PASSWORD = 2
@@ -105,49 +103,42 @@ class MeowTextField : TextInputLayout, TextViewImpl {
         }
     }
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        setAttributeFromXml(context, attrs)
+//    @SuppressLint("ResourceType")
+//    override fun setAttributeFromXml(context: Context, attrs: AttributeSet) {
+//        super.setAttributeFromXml(context, attrs)
+//
+//        val a = context.theme.obtainStyledAttributes(attrs, R.styleable.MeowTextField, 0, 0)
+//        avoidException(
+//            tryBlock = {
+//                a.apply {
+//
+//                }
+//            },
+//            finallyBlock = {
+//                a.recycle()
+//            }
+//        )
+//    }
+
+    init {
+        setAttributesFromXml(attrs, R.styleable.MeowTextField) {
+            inputType = it.getInt(R.styleable.MeowTextField_meow_inputType, inputType)
+            validateType =
+                it.getInt(R.styleable.MeowTextField_meow_validateType, validateType)
+
+            errorEmpty = it.getString(R.styleable.MeowTextField_errorEmpty)
+            if (errorEmpty.isNullOrEmpty())
+                errorEmpty = context.getString(R.string.error_required_value)
+
+            errorMobile = it.getString(R.styleable.MeowTextField_errorEmpty)
+            if (errorMobile.isNullOrEmpty())
+                errorMobile = context.getString(R.string.error_mobile_not_valid)
+
+            errorEmail = it.getString(R.styleable.MeowTextField_errorEmail)
+            if (errorEmail.isNullOrEmpty())
+                errorEmail = context.getString(R.string.error_email_not_valid)
+        }
         initializeView()
-    }
-
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-        setAttributeFromXml(context, attrs)
-        initializeView()
-    }
-
-    @SuppressLint("ResourceType")
-    override fun setAttributeFromXml(context: Context, attrs: AttributeSet) {
-        super.setAttributeFromXml(context, attrs)
-
-        val a = context.theme.obtainStyledAttributes(attrs, R.styleable.MeowTextField, 0, 0)
-        avoidException(
-            tryBlock = {
-                a.apply {
-                    inputType = a.getInt(R.styleable.MeowTextField_meow_inputType, inputType)
-                    validateType =
-                        a.getInt(R.styleable.MeowTextField_meow_validateType, validateType)
-
-                    errorEmpty = getString(R.styleable.MeowTextField_errorEmpty)
-                    if (errorEmpty.isNullOrEmpty())
-                        errorEmpty = context.getString(R.string.error_required_value)
-
-                    errorMobile = getString(R.styleable.MeowTextField_errorEmpty)
-                    if (errorMobile.isNullOrEmpty())
-                        errorMobile = context.getString(R.string.error_mobile_not_valid)
-
-                    errorEmail = getString(R.styleable.MeowTextField_errorEmail)
-                    if (errorEmail.isNullOrEmpty())
-                        errorEmail = context.getString(R.string.error_email_not_valid)
-                }
-            },
-            finallyBlock = {
-                a.recycle()
-            }
-        )
     }
 
     private fun initializeView() {
@@ -185,7 +176,6 @@ class MeowTextField : TextInputLayout, TextViewImpl {
     private fun setFontToError(string: String): SpannableString {
 
         class TypefaceSpan(private val mTypeface: Typeface) : MetricAffectingSpan() {
-
             override fun updateMeasureState(p: TextPaint) {
                 p.typeface = mTypeface
                 p.flags = p.flags or Paint.SUBPIXEL_TEXT_FLAG

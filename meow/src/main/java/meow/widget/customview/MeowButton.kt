@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package meow.widget
+package meow.widget.customview
 
 import android.content.Context
 import android.content.res.ColorStateList
