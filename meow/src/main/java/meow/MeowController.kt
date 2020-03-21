@@ -57,7 +57,8 @@ class MeowController(
     var currency: MeowCurrency = MeowCurrency.USD,
     var calendar: Calendar = Calendar.GEORGIAN,
     var rootFolderName: String = "meow",
-    var onColorGet: (color: Int) -> Int = { color -> color },//TODO ID
+    var onColorGet: (color: Int) -> Int = { color -> color },
+    var onColorGetWithId: (color: Int, id: Int) -> Int = { color, _ -> color },//TODO ID
     internal var onColorStateListGet: (colorStateList: ColorStateList) -> ColorStateList = { color ->
         color.apply {
             val colors = getField<IntArray>("mColors")!!
