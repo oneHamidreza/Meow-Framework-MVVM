@@ -11,12 +11,10 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.*
 import android.os.Build
-import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.etebarian.meowframework.R
-import com.google.android.material.shape.MaterialShapeDrawable
 import meow.controller
 
 
@@ -306,13 +304,3 @@ fun View?.changeBackgroundColor(color: Int) {
     d.mutate()
     d.setColorFilter(color, PorterDuff.Mode.SRC_IN)
 }
-
-//todo test material docs
-
-class MeowShape(//todo delete
-    context: Context,
-    set: AttributeSet? = null,
-    defStyleAttrs: Int = 0,
-    defStyleResource: Int = 0,
-    var colorx: Int
-) : MaterialShapeDrawable(context, set, defStyleAttrs, defStyleResource)

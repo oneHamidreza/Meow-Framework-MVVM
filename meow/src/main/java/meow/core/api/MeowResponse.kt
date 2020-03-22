@@ -62,9 +62,9 @@ sealed class MeowResponse<T>(
      */
     class HttpError(
         override var code: Int = 0,
-        override var data: SimpleModel? = null,
+        override var data: SimpleResponse? = null,
         override var exception: Throwable? = null
-    ) : Error<SimpleModel>()
+    ) : Error<SimpleResponse>()
 
     /**
      * Unexpected Error response model in restful api with http code UNKNOWN.
@@ -115,7 +115,7 @@ sealed class MeowResponse<T>(
 }
 
 @Serializable
-data class SimpleModel(
+data class SimpleResponse(
     @Json(name = "status") var status: Int = 0,
     @Json(name = "message") var message: String? = null,
     @Json(name = "body") var body: String? = null,

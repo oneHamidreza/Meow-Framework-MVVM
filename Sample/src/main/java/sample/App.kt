@@ -21,6 +21,8 @@ import meow.MeowApp
 import meow.MeowController
 import meow.meowModule
 import meow.util.getColorCompat
+import meow.util.getFontCompat
+import meow.util.logD
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -60,21 +62,21 @@ class App : MeowApp(), KodeinAware {
     override fun onCreate() {
         super.onCreate()
 
-        MeowController(
-            this,
-            language = "en",
-            isDebugMode = isDebug,
-            isLogTagNative = false,
+        MeowController(this).apply {
             onColorGet = {
+                logD(m = "zzzz")
                 when (it) {
                     getColorCompat(R.color.primary, false) -> Color.RED
                     getColorCompat(R.color.primary_dark, false) -> Color.BLACK
                     else -> it
                 }
             }
-        ).apply {
-//            glide = AppGlide
-        }.init()
+            language = "en"
+            isDebugMode = isDebug
+            isLogTagNative = false
+            defaultTypeface = getFontCompat(R.font.iransans_mobile_regular)
+            toastTypeface = getFontCompat(R.font.iransans_mobile_regular)
+        }
     }
 
 //    @GlideModule

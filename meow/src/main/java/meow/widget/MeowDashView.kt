@@ -35,7 +35,11 @@ import meow.util.setAttributesFromXml
  */
 
 @Suppress("unused")
-open class MeowDashView(context: Context, var attrs: AttributeSet? = null) : View(context, attrs) {
+class MeowDashView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttrs: Int = 0
+) : View(context, attrs, defStyleAttrs) {
 
     private var orientation = Orientation.HORIZONTAL
     private var gap = 0f
@@ -91,7 +95,6 @@ open class MeowDashView(context: Context, var attrs: AttributeSet? = null) : Vie
                 MeasureSpec.makeMeasureSpec(thickness.toInt(), MeasureSpec.EXACTLY),
                 heightMeasureSpec
             )
-
     }
 
     enum class Orientation {

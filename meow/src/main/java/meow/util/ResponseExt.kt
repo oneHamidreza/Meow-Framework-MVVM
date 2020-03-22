@@ -23,7 +23,7 @@ import meow.controller
 import meow.core.api.HttpCodes
 import meow.core.api.MeowEvent
 import meow.core.api.MeowResponse
-import meow.core.api.SimpleModel
+import meow.core.api.SimpleResponse
 import retrofit2.HttpException
 
 /**
@@ -102,7 +102,7 @@ fun MeowResponse<*>?.createErrorMessage(resources: Resources): String {
                 HttpCodes.TOO_MANY_REQUESTS.code -> resources.getString(R.string.error_response_http_suggest_too_request)
                 else -> ""
             }
-            val modelIfExists = this.data as? SimpleModel?
+            val modelIfExists = this.data as? SimpleResponse?
             modelIfExists?.messageIfExist
                 ?: resources.getString(R.string.error_response_http_with_suggest)
                     .format(suggest, code)
