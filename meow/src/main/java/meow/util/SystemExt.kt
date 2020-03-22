@@ -21,7 +21,6 @@ import android.app.UiModeManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Point
-import android.graphics.Typeface
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
@@ -33,7 +32,6 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import com.etebarian.meowframework.R
 import meow.controller
 import meow.core.ui.MVVM
@@ -226,9 +224,3 @@ fun Context.vibrate(duration: Long = 150) {
             vibrator.vibrate(longArrayOf(0, duration), -1)
     }
 }
-
-fun Context?.getFont(resId: Int) = if (this == null) Typeface.DEFAULT else avoidException {
-    ResourcesCompat.getFont(this, resId)
-} ?: Typeface.DEFAULT
-
-fun MVVM<*, *>?.getFont(resId: Int) = this?.context().getFont(resId)

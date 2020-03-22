@@ -23,6 +23,7 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.content.res.ColorStateList
 import android.content.res.Configuration
+import android.graphics.Typeface
 import android.os.Build
 import android.util.LayoutDirection
 import androidx.appcompat.app.AppCompatDelegate
@@ -58,7 +59,7 @@ class MeowController(
     var calendar: Calendar = Calendar.GEORGIAN,
     var rootFolderName: String = "meow",
     var onColorGet: (color: Int) -> Int = { color -> color },
-    var onColorGetWithId: (color: Int, id: Int) -> Int = { color, _ -> color },//TODO ID
+    var onColorGetWithId: (color: Int, id: Int) -> Int = { color, _ -> color },
     internal var onColorStateListGet: (colorStateList: ColorStateList) -> ColorStateList = { color ->
         color.apply {
             val colors = getField<IntArray>("mColors")!!
@@ -70,7 +71,8 @@ class MeowController(
         }
         ColorStateList.valueOf(onColorGet(color.defaultColor))
     },
-    var defaultFontName: String = "",//todo typeface
+    var defaultTypeface: Typeface = Typeface.DEFAULT,
+    var toastTypeface: Typeface = Typeface.DEFAULT,
     var isForceFontPadding: Boolean = false,
     var isPersian: Boolean = false,
     var changeColor: Boolean = false,

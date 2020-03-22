@@ -21,6 +21,7 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.Typeface
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
@@ -152,6 +153,16 @@ fun Resources?.getColorCompat(
     else -> ResourcesCompat.getColor(this, resId, theme)
 }
 
+fun Context?.getFontCompat(@FontRes resId: Int = 0) =
+    if (this == null || resId == 0) Typeface.DEFAULT else avoidException {
+        ResourcesCompat.getFont(
+            this,
+            resId
+        )
+    } ?: Typeface.DEFAULT
+
+fun MeowFragment<*, *>?.getFontCompat(@FontRes resId: Int = 0) =
+    this?.context().getFontCompat(resId)
 
 fun Context?.getColorCompat(
     @ColorRes resId: Int,

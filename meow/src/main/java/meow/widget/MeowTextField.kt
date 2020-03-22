@@ -30,7 +30,7 @@ import com.google.android.material.textfield.TextInputLayout
 import meow.controller
 import meow.util.avoidException
 import meow.util.getField
-import meow.util.getFont
+import meow.util.getFontCompat
 import meow.util.logD
 import meow.widget.impl.TextViewImpl
 
@@ -199,7 +199,7 @@ class MeowTextField : TextInputLayout, TextViewImpl {
 
         val s = SpannableString(string)
         s.setSpan(
-            TypefaceSpan(context.getFont(0)!!),
+            TypefaceSpan(context.getFontCompat(0)!!),
             0,
             s.length,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE

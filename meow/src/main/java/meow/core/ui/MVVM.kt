@@ -55,8 +55,6 @@ interface MVVM<B : ViewDataBinding, VM : MeowViewModel> {
 
     fun resources() = context().resources
 
-    fun getStringCompat(id: Int) = resources().getString(id)//todo all
-
     fun initViewModel()
 
     fun observeViewModel()
