@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Material Alert -->
+    <string-array name="alert_contents_list_title">
+        <item>ساده بدون Listener</item>
+        <item>ساده با Listener</item>
+    </string-array>
+    <string-array name="alert_contents_list_desc">
+        <item>یک دیالوگ خیلی ساده</item>
+        <item>یک دیالوگ ساده با دکمه‌های باشه و بی‌خیال</item>
+    </string-array>
+
+    <!-- Material Alert Simple -->
+    <string name="alert_simple_title">سلام! 👋 یک عنوان ساده</string>
+    <string name="alert_simple_message">محتوا برای یک دیالوگ هشدار متریال ساده بدون Listener هست.</string>
+    <string name="alert_simple_with_listener_title">سلام! 👋 یک عنوان ساده</string>
+    <string name="alert_simple_with_listener_message">محتوا برای یک دیالوگ هشدار متریال ساده با Listener هست.</string>
+
+</resources>

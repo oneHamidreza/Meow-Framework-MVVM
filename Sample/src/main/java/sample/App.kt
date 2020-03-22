@@ -21,8 +21,6 @@ import meow.MeowApp
 import meow.MeowController
 import meow.meowModule
 import meow.util.getColorCompat
-import meow.util.getFontCompat
-import meow.util.logD
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -46,10 +44,26 @@ import sample.di.mvvmModule
 class App : MeowApp(), KodeinAware {
 
     val dataSource: DataSource by instance()
+    override var controller = MeowController(this).apply {
+        onColorGet = {
+            when (it) {
+                getColorCompat(R.color.primary, false) -> Color.RED
+                getColorCompat(R.color.primary_dark, false) -> Color.BLACK
+                getColorCompat(R.color.text_on_surface_high, false) -> Color.GREEN
+                else -> it
+            }
+        }
+        language = "fa"
+        isDebugMode = isDebug
+        isLogTagNative = false
+        defaultTypefaceResId = R.font.iransans_mobile_regular
+        toastTypefaceResId = R.font.iransans_mobile_regular
+    }
 
     override val kodein = Kodein.lazy {
         bind() from singleton { kodein.direct }
         bind() from singleton { this@App }
+        bind() from singleton { this@App.controller }
         import(androidXModule(this@App))
         import(meowModule)
         import(appModule)
@@ -61,31 +75,7 @@ class App : MeowApp(), KodeinAware {
 
     override fun onCreate() {
         super.onCreate()
-
-        MeowController(this).apply {
-            onColorGet = {
-                logD(m = "zzzz")
-                when (it) {
-                    getColorCompat(R.color.primary, false) -> Color.RED
-                    getColorCompat(R.color.primary_dark, false) -> Color.BLACK
-                    else -> it
-                }
-            }
-            language = "en"
-            isDebugMode = isDebug
-            isLogTagNative = false
-            defaultTypeface = getFontCompat(R.font.iransans_mobile_regular)
-            toastTypeface = getFontCompat(R.font.iransans_mobile_regular)
-        }
+        controller.bindApp(this)
     }
 
-//    @GlideModule
-//    class AppGlide : AppGlideModule() {
-//
-//        override fun applyOptions(context: Context, builder: GlideBuilder) {
-//            if (controller.isDebugMode)
-//                builder.setLogLevel(Log.ERROR)
-//        }
-//
-//    }
 }

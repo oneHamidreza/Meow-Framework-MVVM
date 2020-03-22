@@ -1,3 +1,8 @@
+package sample.ui.content
+
+import android.app.Application
+import meow.core.arch.MeowViewModel
+
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -14,21 +19,12 @@
  * limitations under the License.
  */
 
-package sample.core
-
-import androidx.navigation.ActionOnlyNavDirections
-import androidx.navigation.NavController
-import sample.R
-
 /**
- * Navigation Extensions.
+ * [Content] View Model class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-13
+ * @since   2020-03-22
  */
-fun NavController.actionToAlerts() = navigate(ActionOnlyNavDirections(R.id.actionToAlerts))
-fun NavController.actionToUserDetail() = navigate(ActionOnlyNavDirections(R.id.actionToUserDetail))
-fun NavController.actionToUserIndex() = navigate(ActionOnlyNavDirections(R.id.actionToUserIndex))
-fun NavController.actionToCustomDialog() =
-    navigate(ActionOnlyNavDirections(R.id.actionToCustomDialog))
+
+class ContentViewModel(app: Application) : MeowViewModel(app)

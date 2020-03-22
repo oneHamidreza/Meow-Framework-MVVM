@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     android:label="Main"
-    app:startDestination="@id/fragmentTitleIndex">
+    app:startDestination="@id/fragmentAlerts">
+
+    <action
+        android:id="@+id/actionToAlerts"
+        app:destination="@id/fragmentAlerts" />
 
     <action
         android:id="@+id/actionToUserDetail"
@@ -14,17 +18,21 @@
         android:id="@+id/actionToUserIndex"
         app:destination="@id/fragmentUserIndex" />
 
-    <fragment
-        android:id="@+id/fragmentMenu"
-        android:name="sample.ui.menu.MenuFragment"
-        android:label="Menu"
-        tools:layout="@layout/fragment_menu" />
+    <action
+        android:id="@+id/actionToCustomDialog"
+        app:destination="@id/dialogCustom" />
 
     <fragment
-        android:id="@+id/fragmentTitleIndex"
-        android:name="sample.ui.title.index.TitleIndexFragment"
-        android:label="Titles"
-        tools:layout="@layout/fragment_title_index" />
+        android:id="@+id/fragmentAlerts"
+        android:name="sample.ui.material.alert.AlertFragment"
+        android:label="@string/fragment_alerts"
+        tools:layout="@layout/fragment_alerts" />
+
+    <!--    <fragment-->
+    <!--        android:id="@+id/fragmentMenu"-->
+    <!--        android:name="sample.ui.material"-->
+    <!--        android:label="Menu"-->
+    <!--        tools:layout="@layout/fragment_menu" />-->
 
     <fragment
         android:id="@+id/fragmentUserDetail"
@@ -36,6 +44,11 @@
         android:id="@+id/fragmentUserIndex"
         android:name="sample.ui.user.index.UserIndexFragment"
         android:label="User Index"
+        tools:layout="@layout/fragment_user_index" />
+
+    <dialog
+        android:id="@+id/dialogCustom"
+        android:name="sample.ui.dialog.CustomDialog"
         tools:layout="@layout/fragment_user_index" />
 
 </navigation>

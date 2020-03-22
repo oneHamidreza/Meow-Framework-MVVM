@@ -83,4 +83,5 @@ abstract class MeowFragment<B : ViewDataBinding, VM : MeowViewModel> : Fragment(
     ) {
         onRequestPermission(requestCode, grantResults)
     }
+
 }

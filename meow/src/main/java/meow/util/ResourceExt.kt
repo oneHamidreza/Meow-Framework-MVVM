@@ -167,7 +167,7 @@ fun MeowFragment<*, *>?.getFontCompat(@FontRes resId: Int = 0) =
 fun Context?.getColorCompat(
     @ColorRes resId: Int,
     useController: Boolean = true,
-    theme: Resources.Theme? = null
+    theme: Resources.Theme? = this?.theme
 ) = this?.resources().getColorCompat(resId, useController, theme)
 
 fun MeowFragment<*, *>?.getColorCompat(

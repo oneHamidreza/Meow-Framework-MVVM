@@ -16,15 +16,7 @@
 
 package meow
 
-import android.annotation.SuppressLint
-import android.annotation.TargetApi
-import android.app.Application
-import android.content.Context
-import android.content.ContextWrapper
 import android.content.res.ColorStateList
-import android.content.res.Configuration
-import android.graphics.Typeface
-import android.os.Build
 import android.util.LayoutDirection
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.FragmentActivity
@@ -33,7 +25,6 @@ import meow.util.MeowCurrency
 import meow.util.getField
 import meow.util.isNightModeFromSettings
 import meow.util.setField
-import java.util.*
 
 /**
  * 🐈 This CAT can control configurations and UI properties in one Application. Just trust it.
@@ -46,7 +37,7 @@ import java.util.*
 lateinit var controller: MeowController
 
 class MeowController(
-    val app: Application,
+    var app: MeowApp,
     val meowSession: MeowSession = MeowSession()
 ) {
 
@@ -58,14 +49,13 @@ class MeowController(
     var isLogTagNative: Boolean = true
     var apiSuccessRange: IntRange = 200..200
     var onException: (exception: Exception) -> Unit = {}
-    var dpi: Float = app.resources.displayMetrics.density
+    var dpi: Float = 1f
     var layoutDirection: Int = LayoutDirection.INHERIT
-    var language: String = "en"
+    var language: String = ""
     var currency: MeowCurrency = MeowCurrency.USD
     var calendar: Calendar = Calendar.GEORGIAN
     var rootFolderName: String = "meow"
     var onColorGet: (color: Int) -> Int = { color -> color }
-    var onColorGetWithId: (color: Int, id: Int) -> Int = { color, _ -> color }
     internal var onColorStateListGet: (colorStateList: ColorStateList) -> ColorStateList =
         { color ->
             color.apply {
@@ -78,8 +68,8 @@ class MeowController(
             }
             ColorStateList.valueOf(onColorGet(color.defaultColor))
         }
-    var defaultTypeface: Typeface = Typeface.DEFAULT
-    var toastTypeface: Typeface = Typeface.DEFAULT
+    var defaultTypefaceResId: Int = 0
+    var toastTypefaceResId: Int = 0
     var isForceFontPadding: Boolean = false
     var isPersian: Boolean = false
     var changeColor: Boolean = false
@@ -113,6 +103,11 @@ class MeowController(
         activity.recreate()
     }
 
+    fun bindApp(app: MeowApp) {
+        controller.app = app
+        dpi = app.resources.displayMetrics.density
+    }
+
     enum class Theme {
         UNDEFINED, DAY, NIGHT
     }
@@ -121,37 +116,5 @@ class MeowController(
         GEORGIAN, JALALI
     }
 
-    @SuppressLint("ObsoleteSdkInt")
-    fun wrap(contextParam: Context?): ContextWrapper? {
-        if (contextParam == null)
-            return null
 
-        var context: Context = contextParam
-        val config = contextParam.resources.configuration
-        if (language.isNotEmpty()) {
-            val locale = Locale(language)
-            Locale.setDefault(locale)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                setSystemLocale(config, locale)
-            } else {
-                setSystemLocaleLegacy(config, locale)
-            }
-            config.setLayoutDirection(locale)
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            context = context.createConfigurationContext(config)
-        } else {
-            context.resources.updateConfiguration(config, app.resources.displayMetrics)
-        }
-        return ContextWrapper(context)
-    }
-
-    private fun setSystemLocaleLegacy(config: Configuration, locale: Locale) {
-        config.locale = locale
-    }
-
-    @TargetApi(Build.VERSION_CODES.N)
-    private fun setSystemLocale(config: Configuration, locale: Locale) {
-        config.setLocale(locale)
-    }
 }

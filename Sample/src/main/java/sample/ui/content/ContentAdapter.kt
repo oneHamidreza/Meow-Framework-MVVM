@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-package sample.ui.title.index
+package sample.ui.content
 
-import android.app.Application
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import meow.core.ui.MeowAdapter
 import meow.core.ui.MeowViewHolder
-import sample.BR
-import sample.data.Title
-import sample.databinding.ItemTitleBinding
+import sample.data.Content
+import sample.databinding.ItemContentBinding
 
 /**
  * [Title] Adapter class.
@@ -32,27 +31,30 @@ import sample.databinding.ItemTitleBinding
  * @since   2020-03-21
  */
 
-typealias Model = Title
+typealias Model = Content
 typealias ViewHolder = MeowViewHolder<Model, ViewModel>
-typealias ViewModel = TitleIndexViewModel
-typealias DiffCallback = Title.DiffCallback
+typealias ViewModel = ContentViewModel
+typealias DiffCallback = Content.DiffCallback
 
-class TitleAdapter(
-    var app: Application,
-    override var viewModel: ViewModel
+class ContentAdapter(
+    override var viewModel: ViewModel,
+    var onClickedItem: (item: Model) -> Unit
 ) : MeowAdapter<Model, ViewHolder, ViewModel>(
-    app, viewModel,
+    viewModel,
     DiffCallback()
 ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemTitleBinding.inflate(inflater, parent, false)
+        val binding = ItemContentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MeowViewHolder(binding.root) { _, model, viewModel ->
             binding.let {
-//                        it.tvX.setTextColor(parent.context.getColorCompat(R.color.material_on_surface_emphasis_high_type))// bug fix for realtime day/night mode
                 it.viewModel = viewModel
-                it.setVariable(BR.model, model)
+                it.model = model
                 it.executePendingBindings()
+
+                it.root.setOnClickListener {
+                    onClickedItem(model)
+                }
             }
         }
     }

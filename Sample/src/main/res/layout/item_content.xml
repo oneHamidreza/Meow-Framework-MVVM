@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="sample.ui.content.ContentViewModel" />
+
+        <variable
+            name="model"
+            type="sample.data.Content" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{model.title}"
+            android:textAppearance="?textAppearanceSubtitle1"
+            android:textColor="@color/text_on_surface_high" />
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{model.desc}"
+            android:layout_marginTop="8dp"
+            android:textAppearance="?textAppearanceBody2"
+            android:textColor="@color/text_on_surface_medium"
+            android:visibility="@{model.canShowDesc ? View.VISIBLE : View.GONE}" />
+
+    </LinearLayout>
+
+</layout>

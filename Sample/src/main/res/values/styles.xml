@@ -1,9 +1,7 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">false</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowTranslucentStatus">true</item>
@@ -25,37 +23,36 @@
         <item name="colorOnError">@color/on_error_primary</item>
         <item name="colorOnSurface">@color/on_surface</item>
         <item name="scrimBackground">@color/mtrl_scrim_color</item>
-        <item name="textAppearanceHeadline1">@style/TextAppearance.MaterialComponents.Headline1
-        </item>
-        <item name="textAppearanceHeadline2">@style/TextAppearance.MaterialComponents.Headline2
-        </item>
-        <item name="textAppearanceHeadline3">@style/TextAppearance.MaterialComponents.Headline3
-        </item>
-        <item name="textAppearanceHeadline4">@style/TextAppearance.MaterialComponents.Headline4
-        </item>
-        <item name="textAppearanceHeadline5">@style/TextAppearance.MaterialComponents.Headline5
-        </item>
-        <item name="textAppearanceHeadline6">@style/TextAppearance.MaterialComponents.Headline6
-        </item>
-        <item name="textAppearanceSubtitle1">@style/TextAppearance.MaterialComponents.Subtitle1
-        </item>
-        <item name="textAppearanceSubtitle2">@style/TextAppearance.MaterialComponents.Subtitle2
-        </item>
-        <item name="textAppearanceBody1">@style/TextAppearance.MaterialComponents.Body1</item>
-        <item name="textAppearanceBody2">@style/TextAppearance.MaterialComponents.Body2</item>
-        <item name="textAppearanceCaption">@style/TextAppearance.MaterialComponents.Caption</item>
-        <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Button</item>
-        <item name="textAppearanceOverline">@style/TextAppearance.MaterialComponents.Overline</item>
+        <item name="textAppearanceHeadline1">@style/textAppearance.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/textAppearance.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/textAppearance.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/textAppearance.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/textAppearance.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/textAppearance.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/textAppearance.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/textAppearance.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/textAppearance.Body1</item>
+        <item name="textAppearanceBody2">@style/textAppearance.Body2</item>
+        <item name="textAppearanceCaption">@style/textAppearance.Caption</item>
+        <item name="textAppearanceButton">@style/textAppearance.Button</item>
+        <item name="textAppearanceOverline">@style/textAppearance.Overline</item>
 
-        <!--        <item name="actionOverflowButtonStyle">@style/ActionButtonOverflowStyle</item>-->
-        <!--        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>-->
+        <!--        &lt;!&ndash; Shape attributes &ndash;&gt;-->
+        <!--        <item name="shapeAppearanceSmallComponent">-->
+        <!--            @style/ShapeAppearance.MyApp.SmallComponent-->
+        <!--        </item>-->
+        <!--        <item name="shapeAppearanceMediumComponent">-->
+        <!--            @style/ShapeAppearance.MyApp.MediumComponent-->
+        <!--        </item>-->
+        <!--        <item name="shapeAppearanceLargeComponent">-->
+        <!--            @style/ShapeAppearance.MyApp.LargeComponent-->
+        <!--        </item>-->
     </style>
 
     <style name="Toolbar" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
-
 
     <style name="MyToolbarStyle" parent="Theme.AppCompat"></style>
 

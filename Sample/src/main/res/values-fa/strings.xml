@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="fragment_alerts">دیالوگ (Alrerts)</string>
+
+    <string name="ok">باشه</string>
+    <string name="cancel">بی‌خیال</string>
+
+</resources>

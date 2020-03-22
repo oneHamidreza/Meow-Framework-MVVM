@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Meow Framework MVVM</string>
+    <string name="app_name" translatable="false">Meow Framework MVVM</string>
+
+    <string name="fragment_alerts">Alerts</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+
 </resources>

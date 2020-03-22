@@ -18,7 +18,6 @@ package sample.ui.main
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -54,7 +53,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         setupNavigation()
         setStatusBarDarkIcon()
 
-        AlertDialog.Builder(this).setTitle("سلام").setView(R.layout.dialog_custom).show()
+//        AlertDialog.Builder(this).setTitle("سلام").setView(R.layout.dialog_custom).show()
 
 //        fv.setOnSubmitClickListener {
 //            Log.d("testText", "Text is : ${et.text.toString()}")

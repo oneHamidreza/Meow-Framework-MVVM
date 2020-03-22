@@ -23,9 +23,11 @@ import org.kodein.di.erased.bind
 import org.kodein.di.erased.instance
 import org.kodein.di.erased.singleton
 import sample.data.User
+import sample.ui.content.ContentViewModel
+import sample.ui.dialog.CustomDialogViewModel
 import sample.ui.main.MainViewModel
+import sample.ui.material.alert.AlertsViewModel
 import sample.ui.menu.MenuViewModel
-import sample.ui.title.index.TitleIndexViewModel
 import sample.ui.user.detail.UserDetailViewModel
 import sample.ui.user.index.UserIndexViewModel
 
@@ -60,8 +62,18 @@ val mvvmModule = Module("MVVM Module", false) {
             instance()
         )
     }
-    bindAutoTag<TitleIndexViewModel>() with singleton {
-        TitleIndexViewModel(
+    bindAutoTag<AlertsViewModel>() with singleton {
+        AlertsViewModel(
+            kodein.direct.instance()
+        )
+    }
+    bindAutoTag<ContentViewModel>() with singleton {
+        ContentViewModel(
+            kodein.direct.instance()
+        )
+    }
+    bindAutoTag<CustomDialogViewModel>() with singleton {
+        CustomDialogViewModel(
             kodein.direct.instance()
         )
     }

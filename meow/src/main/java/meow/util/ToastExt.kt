@@ -72,7 +72,7 @@ fun Context?.toast(message: String?, duration: Int, gravity: Int, xOffset: Int, 
     avoidException {
         ToastUtil.toast?.cancel()
 
-        val font = controller.toastTypeface
+        val font = getFontCompat(controller.toastTypefaceResId)
         val span = SpannableString(message)
         span.setSpan(
             ToastTypefaceSpan(font),

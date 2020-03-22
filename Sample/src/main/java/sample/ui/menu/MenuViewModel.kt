@@ -35,6 +35,10 @@ class MenuViewModel(app: Application) : MeowViewModel(app) {
     val navigationLiveData = SingleLiveData<Int>()
     val languageLiveData = SingleLiveData<String>()
 
+    fun onClickedShowCustomDialog(@Suppress("UNUSED_PARAMETER") view: View) {
+        navigationLiveData.postValue(R.id.actionToCustomDialog)
+    }
+
     fun onClickedUserDetailApi(@Suppress("UNUSED_PARAMETER") view: View) {
         navigationLiveData.postValue(R.id.actionToUserDetail)
     }

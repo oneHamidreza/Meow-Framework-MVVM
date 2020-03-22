@@ -14,35 +14,22 @@
  * limitations under the License.
  */
 
-package sample.ui.title.index
+package meow.util
 
-import android.app.Application
-import androidx.lifecycle.MutableLiveData
-import meow.core.arch.MeowViewModel
-import sample.R
-import sample.data.Title
+import android.content.Context
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import meow.core.ui.MVVM
 
 /**
- * Title View Model class.
+ * Material Components Extesions.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-21
+ * @since   2020-03-22
  */
 
-class TitleIndexViewModel(app: Application) : MeowViewModel(app) {
+fun Context.alert(overrideThemeResId: Int = 0) =
+    MaterialAlertDialogBuilder(this, overrideThemeResId)
 
-    val listLiveData = MutableLiveData<List<Title>>()
-
-    fun fillData() {
-        val list = arrayListOf<Title>()
-        (1..100).forEach {
-            list.add(
-                Title(R.drawable.ic_android, "سلام این یک متن نمونه است.")
-            )
-        }
-
-        listLiveData.postValue(list)
-    }
-
-}
+fun MVVM<*, *>.alert(overrideThemeResId: Int = 0) =
+    MaterialAlertDialogBuilder(context(), overrideThemeResId)
