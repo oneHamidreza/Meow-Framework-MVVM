@@ -73,6 +73,7 @@ android {
     lintOptions {
         isAbortOnError = false
         isIgnoreWarnings = true
+        disable("MissingDefaultResource")
     }
 }
 

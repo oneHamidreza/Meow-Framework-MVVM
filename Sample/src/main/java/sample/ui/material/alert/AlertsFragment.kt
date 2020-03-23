@@ -44,7 +44,6 @@ class AlertFragment : BaseFragment<FragmentAlertsBinding, AlertsViewModel>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setupRecyclerView()
-        viewModel.activity = activity()
         viewModel.fillList()
     }
 
@@ -74,8 +73,7 @@ class AlertFragment : BaseFragment<FragmentAlertsBinding, AlertsViewModel>() {
                             .show()
                     }
                     Content.Action.ALERT_LOADING -> {
-                        val title = getString(R.string.alert_loading_title).logD("before")
-                        loadingAlert(title){
+                        loadingAlert(getString(R.string.alert_loading_title)){
                             toastL(R.string.toast_alert_on_canceled)
                         }.show()
                     }

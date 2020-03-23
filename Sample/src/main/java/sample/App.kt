@@ -49,7 +49,6 @@ class App : MeowApp(), KodeinAware {
             when (it) {
                 getColorCompat(R.color.primary, false) -> Color.RED
                 getColorCompat(R.color.primary_dark, false) -> Color.BLACK
-                getColorCompat(R.color.text_on_surface_high, false) -> Color.GREEN
                 else -> it
             }
         }

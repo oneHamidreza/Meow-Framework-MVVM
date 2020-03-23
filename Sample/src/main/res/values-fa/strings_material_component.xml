@@ -21,4 +21,6 @@
     <string name="toast_alert_ok_clicked">دکمه اوکی کلیک شد!</string>
     <string name="toast_alert_cancel_clicked">دکمه کنسل کلیک شد!</string>
     <string name="toast_alert_on_canceled">دیالوگ Alert کنسل شد!</string>
+    <string name="tab_title">تب %d</string>
+
 </resources>

@@ -12,7 +12,7 @@
         <item>a loading material dialog with progress bar</item>
     </string-array>
 
-    <!-- Material Alert Simple -->
+    <!-- Material Alert -->
     <string name="alert_simple_title">Hi! 👋 the simple title</string>
     <string name="alert_simple_message">Here is the contents for testing Material Alert Dialog without listeners.</string>
     <string name="alert_simple_with_listener_title">Hi! 👋 the simple title</string>
@@ -21,5 +21,6 @@
     <string name="toast_alert_ok_clicked">Ok Button Clicked!</string>
     <string name="toast_alert_cancel_clicked">Cancel Button Clicked!</string>
     <string name="toast_alert_on_canceled">Alert Canceled!</string>
+    <string name="tab_title">Tab %d</string>
 
 </resources>

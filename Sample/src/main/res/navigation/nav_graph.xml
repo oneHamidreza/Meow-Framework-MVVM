@@ -4,11 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     android:label="Main"
-    app:startDestination="@id/fragmentAlerts">
+    app:startDestination="@id/fragmentTabLayout">
 
     <action
         android:id="@+id/actionToAlerts"
         app:destination="@id/fragmentAlerts" />
+
+    <action
+        android:id="@+id/actionToTabLayout"
+        app:destination="@id/fragmentTabLayout" />
 
     <action
         android:id="@+id/actionToUserDetail"
@@ -27,6 +31,12 @@
         android:name="sample.ui.material.alert.AlertFragment"
         android:label="@string/fragment_alerts"
         tools:layout="@layout/fragment_alerts" />
+
+    <fragment
+        android:id="@+id/fragmentTabLayout"
+        android:name="sample.ui.material.tablayout.TabLayoutFragment"
+        android:label="@string/fragment_tablayout"
+        tools:layout="@layout/fragment_tablayout" />
 
     <!--    <fragment-->
     <!--        android:id="@+id/fragmentMenu"-->

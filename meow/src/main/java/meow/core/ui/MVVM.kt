@@ -24,6 +24,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import meow.core.arch.MeowViewModel
 import meow.util.PermissionUtils
@@ -73,3 +75,8 @@ fun MVVM<*, *>.isActivity() = this is AppCompatActivity
 fun MVVM<*, *>.isFragment() = this is Fragment
 fun MVVM<*, *>.isDialogFragment() = this is DialogFragment
 fun MVVM<*, *>.isBottomSheet() = this is BottomSheetDialogFragment
+fun MVVM<*,*>.findNavControllerIfExists(): NavController? =
+    if(isFragment())
+    NavHostFragment.findNavController(this as Fragment)
+else
+        null

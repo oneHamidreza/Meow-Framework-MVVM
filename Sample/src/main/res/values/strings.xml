@@ -2,6 +2,7 @@
     <string name="app_name" translatable="false">Meow Framework MVVM</string>
 
     <string name="fragment_alerts">Alerts</string>
+    <string name="fragment_tablayout">Tab Layout</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
 

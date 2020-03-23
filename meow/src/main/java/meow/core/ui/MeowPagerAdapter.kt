@@ -14,22 +14,30 @@
  * limitations under the License.
  */
 
-package sample.core
+package meow.core.ui
 
-import androidx.navigation.ActionOnlyNavDirections
-import androidx.navigation.NavController
-import sample.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
+import androidx.viewpager2.adapter.FragmentStateAdapter
 
 /**
- * Navigation Extensions.
+ * Meow View Pager Adapter class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-13
+ * @since   2020-03-23
  */
-fun NavController.actionToAlerts() = navigate(ActionOnlyNavDirections(R.id.actionToAlerts))
-fun NavController.actionToTabLayout() = navigate(ActionOnlyNavDirections(R.id.actionToTabLayout))
-fun NavController.actionToUserDetail() = navigate(ActionOnlyNavDirections(R.id.actionToUserDetail))
-fun NavController.actionToUserIndex() = navigate(ActionOnlyNavDirections(R.id.actionToUserIndex))
-fun NavController.actionToCustomDialog() =
-    navigate(ActionOnlyNavDirections(R.id.actionToCustomDialog))
+
+abstract class MeowPagerAdapter(
+    fragmentManager: FragmentManager,
+    lifecycle: Lifecycle
+) : FragmentStateAdapter(fragmentManager, lifecycle) {
+
+    override fun getItemCount() = getFragments().size
+
+    override fun createFragment(position: Int) = getFragments()[position]
+
+    abstract fun getFragments(): Array<Fragment>
+
+}

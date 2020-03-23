@@ -14,22 +14,22 @@
  * limitations under the License.
  */
 
-package sample.core
+package sample.ui.material.tablayout
 
-import androidx.navigation.ActionOnlyNavDirections
-import androidx.navigation.NavController
+import android.app.Application
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.MutableLiveData
+import meow.core.arch.MeowViewModel
+import meow.util.getStringArray
 import sample.R
+import sample.data.Content
 
 /**
- * Navigation Extensions.
+ * Material Tab Layout View Model class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-13
+ * @since   2020-03-23
  */
-fun NavController.actionToAlerts() = navigate(ActionOnlyNavDirections(R.id.actionToAlerts))
-fun NavController.actionToTabLayout() = navigate(ActionOnlyNavDirections(R.id.actionToTabLayout))
-fun NavController.actionToUserDetail() = navigate(ActionOnlyNavDirections(R.id.actionToUserDetail))
-fun NavController.actionToUserIndex() = navigate(ActionOnlyNavDirections(R.id.actionToUserIndex))
-fun NavController.actionToCustomDialog() =
-    navigate(ActionOnlyNavDirections(R.id.actionToCustomDialog))
+
+class TabLayoutViewModel(app: Application) : MeowViewModel(app)
