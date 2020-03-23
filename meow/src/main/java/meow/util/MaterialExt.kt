@@ -17,8 +17,11 @@
 package meow.util
 
 import android.content.Context
+import android.view.LayoutInflater
+import com.etebarian.meowframework.R
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import meow.core.ui.MVVM
+import meow.widget.MeowLoadingView
 
 /**
  * Material Components Extesions.
@@ -33,3 +36,22 @@ fun Context.alert(overrideThemeResId: Int = 0) =
 
 fun MVVM<*, *>.alert(overrideThemeResId: Int = 0) =
     MaterialAlertDialogBuilder(context(), overrideThemeResId)
+
+fun MVVM<*, *>.loadingAlert(
+    titleResId: Int,
+    overrideThemeResId: Int = 0,
+    onCanceledBlock: () -> Unit = {}
+) =
+    loadingAlert(resources().getString(titleResId), overrideThemeResId, onCanceledBlock)
+
+fun MVVM<*, *>.loadingAlert(
+    title: String,
+    overrideThemeResId: Int = 0,
+    onCanceledBlock: () -> Unit = {}
+) =
+    MaterialAlertDialogBuilder(context(), overrideThemeResId)
+        .setView(
+            MeowLoadingView(context())
+                .setTitle(title)
+        )
+        .setOnCancelListener { onCanceledBlock() }

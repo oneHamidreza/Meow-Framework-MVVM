@@ -40,8 +40,11 @@ class AlertsViewModel(app: Application) :
     lateinit var activity: FragmentActivity
 
     fun fillList() {
-        val actions =
-            arrayOf(Content.Action.ALERT_SIMPLE, Content.Action.ALERT_SIMPLE_WITH_LISTENER)
+        val actions = arrayOf(
+                Content.Action.ALERT_SIMPLE,
+                Content.Action.ALERT_SIMPLE_WITH_LISTENER,
+                Content.Action.ALERT_LOADING
+            )
         val titles = app.getStringArray(R.array.alert_contents_list_title)
         val descs = app.getStringArray(R.array.alert_contents_list_desc)
         val list = arrayListOf<Content>()

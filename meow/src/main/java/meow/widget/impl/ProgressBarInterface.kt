@@ -24,7 +24,7 @@ package meow.widget.impl
  * @since   2020-03-09
  */
 
-interface ProgressBarImpl {
+interface ProgressBarInterface {
 
     fun hide()
 

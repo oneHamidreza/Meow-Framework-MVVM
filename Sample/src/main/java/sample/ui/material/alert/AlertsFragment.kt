@@ -17,10 +17,7 @@
 package sample.ui.material.alert
 
 import android.os.Bundle
-import meow.util.alert
-import meow.util.createClass
-import meow.util.toastL
-import meow.util.viewModel
+import meow.util.*
 import meow.widget.decoration.MeowDividerDecoration
 import sample.R
 import sample.data.Content
@@ -67,14 +64,20 @@ class AlertFragment : BaseFragment<FragmentAlertsBinding, AlertsViewModel>() {
                             .setTitle(R.string.alert_simple_with_listener_title)
                             .setMessage(R.string.alert_simple_with_listener_message)
                             .setPositiveButton(R.string.ok) { d, _ ->
-                                toastL(R.string.alert_listener_ok_message)
+                                toastL(R.string.toast_alert_ok_clicked)
                                 d.dismiss()
                             }
                             .setNegativeButton(R.string.cancel) { d, _ ->
-                                toastL(R.string.alert_listener_cancel_message)
+                                toastL(R.string.toast_alert_cancel_clicked)
                                 d.dismiss()
                             }
                             .show()
+                    }
+                    Content.Action.ALERT_LOADING -> {
+                        val title = getString(R.string.alert_loading_title).logD("before")
+                        loadingAlert(title){
+                            toastL(R.string.toast_alert_on_canceled)
+                        }.show()
                     }
                 }
             }
