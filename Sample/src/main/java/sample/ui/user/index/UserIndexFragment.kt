@@ -20,6 +20,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import meow.core.arch.MeowFlow
 import meow.util.addItemDecoration
+import meow.util.createClass
 import meow.util.dp
 import meow.widget.decoration.MeowDividerDecoration
 import sample.R
@@ -37,9 +38,8 @@ import sample.ui.base.BaseFragment
 
 class UserIndexFragment : BaseFragment<FragmentUserIndexBinding, UserIndexViewModel>() {
 
-
     override fun layoutId() = R.layout.fragment_user_index
-    override fun viewModelClass() = UserIndexViewModel::class.java
+    override fun viewModelClass() = createClass<UserIndexViewModel>()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -51,7 +51,7 @@ class UserIndexFragment : BaseFragment<FragmentUserIndexBinding, UserIndexViewMo
                     outRect.top = 24.dp()
             }
             addItemDecoration(MeowDividerDecoration(context))
-            adapter = UserAdapter(app, viewModel)
+            adapter = UserAdapter(viewModel)
         }
 
         viewModel.callApi()

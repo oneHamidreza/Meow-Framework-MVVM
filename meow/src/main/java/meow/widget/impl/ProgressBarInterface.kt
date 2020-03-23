@@ -14,21 +14,22 @@
  * limitations under the License.
  */
 
-package sample.core
-
-import androidx.navigation.ActionOnlyNavDirections
-import androidx.navigation.NavController
-import sample.R
+package meow.widget.impl
 
 /**
- * Navigation Extensions.
+ * The ProgressBar interface.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-13
+ * @since   2020-03-09
  */
-fun NavController.actionToAlerts() = navigate(ActionOnlyNavDirections(R.id.actionToAlerts))
-fun NavController.actionToUserDetail() = navigate(ActionOnlyNavDirections(R.id.actionToUserDetail))
-fun NavController.actionToUserIndex() = navigate(ActionOnlyNavDirections(R.id.actionToUserIndex))
-fun NavController.actionToCustomDialog() =
-    navigate(ActionOnlyNavDirections(R.id.actionToCustomDialog))
+
+interface ProgressBarInterface {
+
+    fun hide()
+
+    fun show()
+
+    fun setIndeterminateProgress(indeterminate: Boolean)
+
+}

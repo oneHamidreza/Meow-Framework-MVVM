@@ -66,9 +66,9 @@ fun MVVM<*, *>?.snackL(
     if (this == null)
         return
     snack(
-        getStringCompat(resMessage),
+        resources().getString(resMessage),
         Snackbar.LENGTH_LONG,
-        actionText = if (resActionText != null) getStringCompat(resMessage) else null,
+        actionText = if (resActionText != null) resources().getString(resMessage) else null,
         onActionClicked = onActionClicked
     )
 }
@@ -81,9 +81,9 @@ fun MVVM<*, *>?.snackS(
     if (this == null)
         return
     snack(
-        getStringCompat(resMessage),
+        resources().getString(resMessage),
         Snackbar.LENGTH_SHORT,
-        actionText = if (resActionText != null) getStringCompat(resMessage) else null,
+        actionText = if (resActionText != null) resources().getString(resMessage) else null,
         onActionClicked = onActionClicked
     )
 }

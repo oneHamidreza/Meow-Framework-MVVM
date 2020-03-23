@@ -22,7 +22,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.DialogFragment
 import meow.MeowApp
 import meow.core.arch.MeowViewModel
 import meow.util.PermissionUtils
@@ -35,14 +35,14 @@ import org.kodein.di.erased.instance
 import org.kodein.di.erased.kcontext
 
 /**
- * Meow Fragment class inherits from [Fragment] , [MVVM] , [KodeinAware].
+ * Meow Dialog Fragment class inherits from [DialogFragment] , [MVVM] , [KodeinAware].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-02-28
  */
 
-abstract class MeowFragment<B : ViewDataBinding, VM : MeowViewModel> : Fragment(),
+abstract class MeowDialogFragment<B : ViewDataBinding, VM : MeowViewModel> : DialogFragment(),
     MVVM<B, VM>,
     KodeinAware {
 
@@ -83,5 +83,4 @@ abstract class MeowFragment<B : ViewDataBinding, VM : MeowViewModel> : Fragment(
     ) {
         onRequestPermission(requestCode, grantResults)
     }
-
 }

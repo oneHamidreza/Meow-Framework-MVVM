@@ -45,10 +45,26 @@ import sample.di.mvvmModule
 class App : MeowApp(), KodeinAware {
 
     val dataSource: DataSource by instance()
+    override var controller = MeowController(this).apply {
+        onColorGet = {
+            when (it) {
+                getColorCompat(R.color.primary, false) -> Color.RED
+                getColorCompat(R.color.primary_dark, false) -> Color.BLACK
+                getColorCompat(R.color.text_on_surface_high, false) -> Color.GREEN
+                else -> it
+            }
+        }
+        language = "fa"
+        isDebugMode = isDebug
+        isLogTagNative = false
+        defaultTypefaceResId = R.font.iransans_mobile_regular
+        toastTypefaceResId = R.font.iransans_mobile_regular
+    }
 
     override val kodein = Kodein.lazy {
         bind() from singleton { kodein.direct }
         bind() from singleton { this@App }
+        bind() from singleton { this@App.controller }
         import(androidXModule(this@App))
         import(meowModule)
         import(appModule)
@@ -60,31 +76,7 @@ class App : MeowApp(), KodeinAware {
 
     override fun onCreate() {
         super.onCreate()
-
-        MeowController(
-            this,
-            language = "en",
-            isDebugMode = isDebug,
-            isLogTagNative = false,
-            onColorGet = {
-                when (it) {
-                    getColorCompat(R.color.primary, false) -> Color.RED
-                    getColorCompat(R.color.primary_dark, false) -> Color.BLACK
-                    else -> it
-                }
-            }
-        ).apply {
-//            glide = AppGlide
-        }.init()
+        controller.bindApp(this)
     }
 
-//    @GlideModule
-//    class AppGlide : AppGlideModule() {
-//
-//        override fun applyOptions(context: Context, builder: GlideBuilder) {
-//            if (controller.isDebugMode)
-//                builder.setLogLevel(Log.ERROR)
-//        }
-//
-//    }
 }

@@ -16,16 +16,10 @@
 
 package meow.core.ui
 
-import android.app.Application
-import android.view.LayoutInflater
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import meow.core.arch.MeowViewModel
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.closestKodein
-import org.kodein.di.erased.instance
-import org.kodein.di.erased.on
 
 /**
  * Meow Adapter class inherits from [RecyclerView.Adapter].
@@ -36,14 +30,9 @@ import org.kodein.di.erased.on
  */
 
 abstract class MeowAdapter<T, VH : MeowViewHolder<T, VM>, VM : MeowViewModel>(
-    app: Application,
     open var viewModel: VM,
     diffCallback: DiffUtil.ItemCallback<T>
-) : ListAdapter<T, VH>(diffCallback), KodeinAware {
-
-    override val kodein by closestKodein(app)
-    val inflater: LayoutInflater by kodein.on(app).instance()
-
+) : ListAdapter<T, VH>(diffCallback) {
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.onBind(position, getItem(position), viewModel)
     }

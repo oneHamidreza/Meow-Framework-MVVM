@@ -24,6 +24,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import meow.util.createClass
 import meow.util.getColorCompat
 import meow.util.setStatusBarDarkIcon
 import sample.R
@@ -43,7 +44,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
-    override fun viewModelClass() = MainViewModel::class.java
+    override fun viewModelClass() = createClass<MainViewModel>()
     override fun layoutId() = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,6 +52,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         setSupportActionBar(binding.toolbar)
         setupNavigation()
         setStatusBarDarkIcon()
+
+//        AlertDialog.Builder(this).setTitle("سلام").setView(R.layout.dialog_custom).show()
 
 //        fv.setOnSubmitClickListener {
 //            Log.d("testText", "Text is : ${et.text.toString()}")

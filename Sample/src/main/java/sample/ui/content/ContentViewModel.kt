@@ -1,3 +1,8 @@
+package sample.ui.content
+
+import android.app.Application
+import meow.core.arch.MeowViewModel
+
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -14,22 +19,12 @@
  * limitations under the License.
  */
 
-package meow.widget.impl
-
 /**
- * The ProgressBar interface.
+ * [Content] View Model class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-09
+ * @since   2020-03-22
  */
 
-interface ProgressBarImpl {
-
-    fun hide()
-
-    fun show()
-
-    fun setIndeterminateProgress(indeterminate: Boolean)
-
-}
+class ContentViewModel(app: Application) : MeowViewModel(app)

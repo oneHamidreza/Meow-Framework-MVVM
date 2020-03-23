@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- Material Alert -->
+    <string-array name="alert_contents_list_title">
+        <item>Simple Alert without listeners</item>
+        <item>Simple Alert with listeners</item>
+        <item>Loading Alert with listeners</item>
+    </string-array>
+    <string-array name="alert_contents_list_desc">
+        <item>a very simple material dialog</item>
+        <item>a simple material dialog with ok and cancel buttons</item>
+        <item>a loading material dialog with progress bar</item>
+    </string-array>
+
+    <!-- Material Alert Simple -->
+    <string name="alert_simple_title">Hi! 👋 the simple title</string>
+    <string name="alert_simple_message">Here is the contents for testing Material Alert Dialog without listeners.</string>
+    <string name="alert_simple_with_listener_title">Hi! 👋 the simple title</string>
+    <string name="alert_simple_with_listener_message">Here is the contents for testing Material Alert Dialog with listeners. the buttons hide dialog and toast some message</string>
+    <string name="alert_loading_title">Loading …</string>
+    <string name="toast_alert_ok_clicked">Ok Button Clicked!</string>
+    <string name="toast_alert_cancel_clicked">Cancel Button Clicked!</string>
+    <string name="toast_alert_on_canceled">Alert Canceled!</string>
+
+</resources>

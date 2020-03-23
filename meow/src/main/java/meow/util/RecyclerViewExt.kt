@@ -32,7 +32,7 @@ import meow.widget.decoration.SimpleDecoration
 
 object RecyclerViewBindingAdapter {
 
-    @BindingAdapter("items")
+    @BindingAdapter("meow_items")
     @JvmStatic
     fun <T : Any, VH : RecyclerView.ViewHolder> setItems(view: RecyclerView, items: List<T>?) {
         (view.adapter as? ListAdapter<T, VH>)?.submitList(items)

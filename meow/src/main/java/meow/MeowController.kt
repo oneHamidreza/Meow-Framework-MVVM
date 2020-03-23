@@ -16,14 +16,7 @@
 
 package meow
 
-import android.annotation.SuppressLint
-import android.annotation.TargetApi
-import android.app.Application
-import android.content.Context
-import android.content.ContextWrapper
 import android.content.res.ColorStateList
-import android.content.res.Configuration
-import android.os.Build
 import android.util.LayoutDirection
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.FragmentActivity
@@ -32,7 +25,6 @@ import meow.util.MeowCurrency
 import meow.util.getField
 import meow.util.isNightModeFromSettings
 import meow.util.setField
-import java.util.*
 
 /**
  * 🐈 This CAT can control configurations and UI properties in one Application. Just trust it.
@@ -45,45 +37,55 @@ import java.util.*
 lateinit var controller: MeowController
 
 class MeowController(
-    val app: Application,
-    val meowSession: MeowSession = MeowSession(),
-    var isDebugMode: Boolean = true,
-    var isLogTagNative: Boolean = true,
-    var apiSuccessRange: IntRange = 200..200,
-    var onException: (exception: Exception) -> Unit = {},
-    var dpi: Float = app.resources.displayMetrics.density,
-    var layoutDirection: Int = LayoutDirection.INHERIT,
-    var language: String = "en",
-    var currency: MeowCurrency = MeowCurrency.USD,
-    var calendar: Calendar = Calendar.GEORGIAN,
-    var rootFolderName: String = "meow",
-    var onColorGet: (color: Int) -> Int = { color -> color },//TODO ID
-    internal var onColorStateListGet: (colorStateList: ColorStateList) -> ColorStateList = { color ->
-        color.apply {
-            val colors = getField<IntArray>("mColors")!!
-            colors.forEachIndexed { index, it ->
-                colors[index] = onColorGet(it)
-            }
-            setField("mDefaultColor", onColorGet(defaultColor))
-            setField("mColors", colors)
-        }
-        ColorStateList.valueOf(onColorGet(color.defaultColor))
-    },
-    var defaultFontName: String = "",//todo typeface
-    var isForceFontPadding: Boolean = false,
-    var isPersian: Boolean = false,
-    var changeColor: Boolean = false,
-    forceNightMode: Boolean = false
+    var app: MeowApp,
+    val meowSession: MeowSession = MeowSession()
 ) {
 
-    var theme = if (app.isNightModeFromSettings() || forceNightMode) Theme.NIGHT else Theme.DAY
+    init {
+        controller = this
+    }
+
+    var isDebugMode: Boolean = true
+    var isLogTagNative: Boolean = true
+    var apiSuccessRange: IntRange = 200..200
+    var onException: (exception: Exception) -> Unit = {}
+    var dpi: Float = 1f
+    var layoutDirection: Int = LayoutDirection.INHERIT
+    var language: String = ""
+    var currency: MeowCurrency = MeowCurrency.USD
+    var calendar: Calendar = Calendar.GEORGIAN
+    var rootFolderName: String = "meow"
+    var onColorGet: (color: Int) -> Int = { color -> color }
+    internal var onColorStateListGet: (colorStateList: ColorStateList) -> ColorStateList =
+        { color ->
+            color.apply {
+                val colors = getField<IntArray>("mColors")!!
+                colors.forEachIndexed { index, it ->
+                    colors[index] = onColorGet(it)
+                }
+                setField("mDefaultColor", onColorGet(defaultColor))
+                setField("mColors", colors)
+            }
+            ColorStateList.valueOf(onColorGet(color.defaultColor))
+        }
+    var defaultTypefaceResId: Int = 0
+    var toastTypefaceResId: Int = 0
+    var isForceFontPadding: Boolean = false
+    var isPersian: Boolean = false
+    var changeColor: Boolean = false
+    var forceNightMode: Boolean = false
+
+    var theme = Theme.UNDEFINED
+        get() = if (app.isNightModeFromSettings() || forceNightMode) Theme.NIGHT else Theme.DAY
         set(value) {
             field = value
             val nightMode = when (value) {
                 Theme.DAY -> AppCompatDelegate.MODE_NIGHT_NO
                 Theme.NIGHT -> AppCompatDelegate.MODE_NIGHT_YES
+                Theme.UNDEFINED -> null
             }
-            AppCompatDelegate.setDefaultNightMode(nightMode)
+            if (nightMode != null)
+                AppCompatDelegate.setDefaultNightMode(nightMode)
         }
 
     val isNightMode
@@ -91,10 +93,6 @@ class MeowController(
 
     val isRtl
         get() = layoutDirection == LayoutDirection.RTL
-
-    fun init() {
-        controller = this
-    }
 
     fun swapTheme() {
         theme = if (isNightMode) Theme.DAY else Theme.NIGHT
@@ -105,45 +103,18 @@ class MeowController(
         activity.recreate()
     }
 
+    fun bindApp(app: MeowApp) {
+        controller.app = app
+        dpi = app.resources.displayMetrics.density
+    }
+
     enum class Theme {
-        DAY, NIGHT
+        UNDEFINED, DAY, NIGHT
     }
 
     enum class Calendar {
         GEORGIAN, JALALI
     }
 
-    @SuppressLint("ObsoleteSdkInt")
-    fun wrap(contextParam: Context?): ContextWrapper? {
-        if (contextParam == null)
-            return null
 
-        var context: Context = contextParam
-        val config = contextParam.resources.configuration
-        if (language.isNotEmpty()) {
-            val locale = Locale(language)
-            Locale.setDefault(locale)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                setSystemLocale(config, locale)
-            } else {
-                setSystemLocaleLegacy(config, locale)
-            }
-            config.setLayoutDirection(locale)
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            context = context.createConfigurationContext(config)
-        } else {
-            context.resources.updateConfiguration(config, app.resources.displayMetrics)
-        }
-        return ContextWrapper(context)
-    }
-
-    private fun setSystemLocaleLegacy(config: Configuration, locale: Locale) {
-        config.locale = locale
-    }
-
-    @TargetApi(Build.VERSION_CODES.N)
-    private fun setSystemLocale(config: Configuration, locale: Locale) {
-        config.setLocale(locale)
-    }
 }

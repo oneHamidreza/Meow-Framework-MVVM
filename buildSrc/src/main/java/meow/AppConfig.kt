@@ -45,6 +45,7 @@ object AppConfig {
             kotlinx("coroutines-core", "1.3.0-gradle"),
             // Material
             "com.google.android.material:material:1.1.0",
+            "androidx.recyclerview:recyclerview:1.2.0-alpha01",
             // Lifecycle
             "androidx.lifecycle:lifecycle-common-java8:2.2.0",
             "androidx.lifecycle:lifecycle-extensions:2.2.0",

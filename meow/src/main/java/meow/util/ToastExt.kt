@@ -24,6 +24,7 @@ import android.text.SpannableString
 import android.text.TextPaint
 import android.text.style.MetricAffectingSpan
 import android.widget.Toast
+import meow.controller
 import meow.core.ui.MVVM
 import meow.core.ui.MeowActivity
 import meow.core.ui.MeowFragment
@@ -43,13 +44,13 @@ object ToastUtil {
 fun MVVM<*, *>?.toastL(res: Int, gravity: Int = 0, xOffset: Int = 0, yOffset: Int = 0) {
     if (this == null)
         return
-    context().toast(getStringCompat(res), Toast.LENGTH_LONG, gravity, xOffset, yOffset)
+    context().toast(resources().getString(res), Toast.LENGTH_LONG, gravity, xOffset, yOffset)
 }
 
 fun MVVM<*, *>?.toastS(res: Int, gravity: Int = 0, xOffset: Int = 0, yOffset: Int = 0) {
     if (this == null)
         return
-    context().toast(getStringCompat(res), Toast.LENGTH_SHORT, gravity, xOffset, yOffset)
+    context().toast(resources().getString(res), Toast.LENGTH_SHORT, gravity, xOffset, yOffset)
 }
 
 fun MVVM<*, *>?.toastL(message: String?, gravity: Int = 0, xOffset: Int = 0, yOffset: Int = 0) {
@@ -71,10 +72,10 @@ fun Context?.toast(message: String?, duration: Int, gravity: Int, xOffset: Int, 
     avoidException {
         ToastUtil.toast?.cancel()
 
-//        val font = getFont(MeowControllerHelper.getToastFontName())//todo get font
+        val font = getFontCompat(controller.toastTypefaceResId)
         val span = SpannableString(message)
         span.setSpan(
-            ToastTypefaceSpan(Typeface.DEFAULT),
+            ToastTypefaceSpan(font),
             0,
             span.length,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE

@@ -14,4 +14,19 @@
     <color name="drawer_item_disabled">#757575</color>
     <color name="status_bar">@color/white</color>
 
+    <!-- TextView -->
+    <color name="text_on_background_high">@color/material_on_background_emphasis_high_type</color>
+    <color name="text_on_background_medium">@color/material_on_background_emphasis_medium</color>
+    <color name="text_on_background_disabled">@color/material_on_background_disabled</color>
+    <color name="text_on_surface_high">@color/material_on_surface_emphasis_high_type</color>
+    <color name="text_on_surface_medium">@color/material_on_surface_emphasis_medium</color>
+    <color name="text_on_surface_disabled">@color/material_on_surface_disabled</color>
+    <color name="text_on_primary_high">@color/material_on_primary_emphasis_high_type</color>
+    <color name="text_on_primary_medium">@color/material_on_primary_emphasis_medium</color>
+    <color name="text_on_primary_disabled">@color/material_on_primary_disabled</color>
+
+    <!-- ProgressBar -->
+    <color name="progress_primary">@color/primary</color>
+    <color name="progress_secondary">@color/secondary</color>
+
 </resources>

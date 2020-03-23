@@ -14,35 +14,19 @@
  * limitations under the License.
  */
 
-package sample.ui.title.index
+package sample.ui.base
 
-import android.app.Application
-import androidx.lifecycle.MutableLiveData
+import androidx.databinding.ViewDataBinding
 import meow.core.arch.MeowViewModel
-import sample.R
-import sample.data.Title
+import meow.core.ui.MeowDialogFragment
 
 /**
- * Title View Model class.
+ * Base Fragment class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-21
+ * @since   2020-03-22
  */
 
-class TitleIndexViewModel(app: Application) : MeowViewModel(app) {
-
-    val listLiveData = MutableLiveData<List<Title>>()
-
-    fun fillData() {
-        val list = arrayListOf<Title>()
-        (1..100).forEach {
-            list.add(
-                Title(R.drawable.ic_android, "سلام این یک متن نمونه است.")
-            )
-        }
-
-        listLiveData.postValue(list)
-    }
-
-}
+abstract class BaseDialogFragment<B : ViewDataBinding, VM : MeowViewModel> :
+    MeowDialogFragment<B, VM>()

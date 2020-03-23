@@ -1,15 +1,3 @@
-package sample.ui.menu
-
-import androidx.navigation.fragment.findNavController
-import meow.util.createClass
-import meow.util.safeObserve
-import sample.R
-import sample.core.actionToCustomDialog
-import sample.core.actionToUserDetail
-import sample.core.actionToUserIndex
-import sample.databinding.FragmentMenuBinding
-import sample.ui.base.BaseFragment
-
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -26,41 +14,54 @@ import sample.ui.base.BaseFragment
  * limitations under the License.
  */
 
+package sample.ui.dialog
+
+import android.os.Bundle
+import androidx.navigation.fragment.findNavController
+import meow.util.createClass
+import meow.util.safeObserve
+import sample.R
+import sample.core.actionToUserDetail
+import sample.core.actionToUserIndex
+import sample.databinding.DialogCustomBinding
+import sample.ui.base.BaseDialogFragment
+
 /**
  * Menu Fragment class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-11
+ * @since   2020-03-22
  */
 
-class MenuFragment : BaseFragment<FragmentMenuBinding, MenuViewModel>() {
+class CustomDialog : BaseDialogFragment<DialogCustomBinding, CustomDialogViewModel>() {
 
-    override fun layoutId() = R.layout.fragment_menu
-    override fun viewModelClass() = createClass<MenuViewModel>()
+    override fun layoutId() = R.layout.dialog_custom
+    override fun viewModelClass() = createClass<CustomDialogViewModel>()
 
-//    override fun initViewModel() {
-//        binding.viewModel = viewModel
-//    }
-
-    override fun observeViewModel() {
-        binding.viewModel?.apply {
-            navigationLiveData.safeObserve(binding.lifecycleOwner) {
-                when (it) {
-                    R.id.actionToUserDetail -> findNavController().actionToUserDetail()
-                    R.id.actionToUserIndex -> findNavController().actionToUserIndex()
-                    R.id.actionToCustomDialog -> findNavController().actionToCustomDialog()
-                }
-            }
-
-            languageLiveData.safeObserve(binding.lifecycleOwner) {
-//                controller.updateLanguage(activity(), it)
-            }
-        }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+//        isCancelable  = true
     }
 
     override fun initViewModel() {
         binding.viewModel = viewModel
+    }
+
+    override fun observeViewModel() {
+        binding.viewModel!!.apply {
+            navigationLiveData.safeObserve(binding.lifecycleOwner) {
+                when (it) {
+                    R.id.actionToUserDetail -> findNavController().actionToUserDetail()
+                    R.id.actionToUserIndex -> findNavController().actionToUserIndex()
+                }
+            }
+
+            navigationLiveData.safeObserve(binding.lifecycleOwner) {
+                dismiss()
+//                controller.updateLanguage(activity(), it)
+            }
+        }
     }
 
 }

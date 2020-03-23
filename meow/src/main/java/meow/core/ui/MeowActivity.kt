@@ -24,6 +24,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import meow.controller
 import meow.core.arch.MeowViewModel
+import meow.util.ContextWrapperUtils
 import meow.util.KeyboardUtils
 import meow.util.PermissionUtils
 import meow.util.viewModel
@@ -89,17 +90,12 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : AppCompat
         binding.lifecycleOwner = this
     }
 
-    protected fun getContextWrapper(context: Context?): Context? {
-        return controller.wrap(context)
+    open fun getContextWrapper(context: Context?): Context? {
+        return ContextWrapperUtils.wrap(context, controller.language)
     }
 
     override fun attachBaseContext(newBase: Context?) {
-        if (!isEnabledContextWrapper) {
-            super.attachBaseContext(newBase)
-            return
-        }
-        val wrapper = getContextWrapper(newBase)
-        super.attachBaseContext(wrapper ?: newBase)
+        super.attachBaseContext(getContextWrapper(newBase) ?: newBase)
     }
 
     override fun onRequestPermissionsResult(

@@ -17,28 +17,37 @@
 package sample.data
 
 import androidx.recyclerview.widget.DiffUtil
+import kotlinx.serialization.Serializable
+import meow.util.isNotNullOrEmpty
 
 /**
- * Title class.
+ * Content Data class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-21
+ * @since   2020-03-22
  */
 
-data class Title(
-    var resIcon: Int? = 0,
-    var name: String? = null,
+@Serializable
+data class Content(
+    var action: Action? = null,
+    var title: String,
     var desc: String? = null
 ) {
+    val canShowDesc get() = desc.isNotNullOrEmpty()
 
-    fun getName(text: String) = text + name
+    enum class Action {
+        ALERT_SIMPLE,
+        ALERT_SIMPLE_WITH_LISTENER,
+        ALERT_LOADING
+    }
 
-    class DiffCallback : DiffUtil.ItemCallback<Title>() {
+    class DiffCallback : DiffUtil.ItemCallback<Content>() {
 
-        override fun areItemsTheSame(oldItem: Title, newItem: Title) = oldItem.name == newItem.name
+        override fun areItemsTheSame(oldItem: Content, newItem: Content) =
+            oldItem.title == newItem.title
 
-        override fun areContentsTheSame(oldItem: Title, newItem: Title) = oldItem == newItem
+        override fun areContentsTheSame(oldItem: Content, newItem: Content) = oldItem == newItem
 
     }
 }

@@ -35,8 +35,8 @@ import meow.controller
  */
 
 inline fun <T : View?> T.afterMeasured(
-    crossinline block: T.() -> Unit,
-    observeForEver: Boolean = false
+    observeForEver: Boolean = false,
+    crossinline block: T.() -> Unit
 ) =
     this?.viewTreeObserver?.addOnGlobalLayoutListener(object :
         ViewTreeObserver.OnGlobalLayoutListener {
@@ -63,7 +63,7 @@ inline fun <T : View?> T.safePost(
 inline fun <T : ViewDataBinding?> T.afterMeasured(
     delay: Long = 0L,
     crossinline block: View?.() -> Unit
-) = this?.root.afterMeasured(block)
+) = this?.root.afterMeasured(block = block)
 
 inline fun <T : ViewDataBinding?> T.safePost(
     delay: Long = 0L,
@@ -125,3 +125,6 @@ fun View?.setAttributesFromXml(
 
 fun TypedArray.getColorCompat(index: Int, defValue: Int) =
     controller.onColorGet(getColor(index, defValue))
+
+fun View.setPaddingRelativeAll(padding: Int) =
+    setPaddingRelative(padding, padding, padding, padding)

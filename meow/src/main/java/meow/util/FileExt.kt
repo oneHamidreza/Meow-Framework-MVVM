@@ -74,12 +74,6 @@ object MeowFileUtils {
         } ?: false
     }
 
-    fun deleteFileOnly(pathFile: String) {
-        avoidException {
-            val file = File(pathFile)
-            file.delete()
-        }
-    }
 
     fun existFileInPath(path: String): Boolean {
         return avoidException {
@@ -100,6 +94,9 @@ object MeowFileUtils {
         deleteAllFiles(f.path ?: "")
     }
 }
+
+fun File?.safeListFiles() = avoidException { this?.listFiles() } ?: arrayOf()
+fun File?.safeDelete() = avoidException { this?.delete() }
 
 fun Context?.getAppRootPath(
     folderName: String,

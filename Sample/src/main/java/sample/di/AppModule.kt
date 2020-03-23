@@ -33,7 +33,6 @@ import sample.data.DataSource
  */
 
 val appModule = Module("App Module", false) {
-    bind("apiUrl") from singleton { "BuildConfig" }
     bind() from singleton { DataSource(instance()) }
     bind("spMain") from singleton {
         MeowSharedPreferences(

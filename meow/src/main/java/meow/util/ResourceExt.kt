@@ -21,16 +21,17 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.Typeface
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
 import androidx.annotation.*
-import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.drawable.DrawableCompat
 import meow.controller
+import meow.core.ui.MeowFragment
 
 /**
  * Extensions of [Resources] class.
@@ -112,26 +113,89 @@ object MeowColorUtils {
         ColorUtils.setAlphaComponent(color, (alpha * 255).toInt())
 }
 
+fun Context.resources() = resources
 
-fun Context?.getColorCompat(@ColorRes resId: Int, useController: Boolean = true) =
-    if (this == null) 0 else if (useController) controller.onColorGet(
-        ContextCompat.getColor(
+fun Resources?.getDrawableCompat(
+    @DrawableRes resId: Int,
+    theme: Resources.Theme? = null
+) =
+    if (this == null) ColorDrawable(Color.TRANSPARENT) else ResourcesCompat.getDrawable(
+        this,
+        resId,
+        theme
+    )
+
+fun Context?.getDrawableCompat(
+    @DrawableRes resId: Int,
+    theme: Resources.Theme? = null
+) =
+    this?.resources().getDrawableCompat(resId, theme)
+
+fun MeowFragment<*, *>?.getDrawableCompat(
+    @DrawableRes resId: Int,
+    theme: Resources.Theme? = null
+) =
+    this?.resources().getDrawableCompat(resId, theme)
+
+fun Resources?.getColorCompat(
+    @ColorRes resId: Int,
+    useController: Boolean = true,
+    theme: Resources.Theme? = null
+) = when {
+    this == null -> 0
+    useController -> controller.onColorGet(
+        ResourcesCompat.getColor(
+            this,
+            resId,
+            theme
+        )
+    )
+    else -> ResourcesCompat.getColor(this, resId, theme)
+}
+
+fun Context?.getFontCompat(@FontRes resId: Int = 0) =
+    if (this == null || resId == 0) Typeface.DEFAULT else avoidException {
+        ResourcesCompat.getFont(
             this,
             resId
         )
-    ) else ContextCompat.getColor(this, resId)
+    } ?: Typeface.DEFAULT
+
+fun MeowFragment<*, *>?.getFontCompat(@FontRes resId: Int = 0) =
+    this?.context().getFontCompat(resId)
+
+fun Context?.getColorCompat(
+    @ColorRes resId: Int,
+    useController: Boolean = true,
+    theme: Resources.Theme? = this?.theme
+) = this?.resources().getColorCompat(resId, useController, theme)
+
+fun MeowFragment<*, *>?.getColorCompat(
+    @ColorRes resId: Int,
+    useController: Boolean = true,
+    theme: Resources.Theme? = null
+) = this?.resources().getColorCompat(resId, useController, theme)
 
 fun Resources?.getDimensionToPx(@DimenRes resId: Int) = this?.getDimension(resId)?.toInt() ?: 0
+fun Context?.getDimensionToPx(@DimenRes resId: Int) = this?.resources().getDimensionToPx(resId)
+fun MeowFragment<*, *>?.getDimensionToPx(@DimenRes resId: Int) =
+    this?.resources().getDimensionToPx(resId)
+
 fun Resources?.getFloatCompat(@DimenRes resId: Int) =
     if (this == null) 0f else ResourcesCompat.getFloat(this, resId)
 
-fun Resources?.getIntCompat(@IntegerRes resId: Int) = this?.getInteger(resId) ?: 0
-fun Resources?.getBooleanCompat(@BoolRes resId: Int) = this?.getBoolean(resId) ?: false
+fun Context?.getFloatCompat(@DimenRes resId: Int) = this?.resources().getFloatCompat(resId)
+fun MeowFragment<*, *>?.getFloatCompat(@DimenRes resId: Int) =
+    this?.resources().getFloatCompat(resId)
 
-fun Context?.getDimensionToPx(@DimenRes resId: Int) = this?.resources.getDimensionToPx(resId)
-fun Context?.getFloatCompat(@DimenRes resId: Int) = this?.resources.getFloatCompat(resId)
-fun Context?.getIntCompat(@IntegerRes resId: Int) = this?.resources.getIntCompat(resId)
-fun Context?.getBooleanCompat(@BoolRes resId: Int) = this?.resources.getBooleanCompat(resId)
+fun Resources?.getIntCompat(@IntegerRes resId: Int) = this?.getInteger(resId) ?: 0
+fun Context?.getIntCompat(@IntegerRes resId: Int) = this?.resources().getIntCompat(resId)
+fun MeowFragment<*, *>?.getIntCompat(@IntegerRes resId: Int) = this?.resources().getIntCompat(resId)
+
+fun Resources?.getBooleanCompat(@BoolRes resId: Int) = this?.getBoolean(resId) ?: false
+fun Context?.getBooleanCompat(@BoolRes resId: Int) = this?.resources().getBooleanCompat(resId)
+fun MeowFragment<*, *>?.getBooleanCompat(@BoolRes resId: Int) =
+    this?.resources().getBooleanCompat(resId)
 
 fun Drawable?.setTintCompat(@ColorInt color: Int): Drawable {
     if (this == null) return ColorDrawable(Color.TRANSPARENT)
