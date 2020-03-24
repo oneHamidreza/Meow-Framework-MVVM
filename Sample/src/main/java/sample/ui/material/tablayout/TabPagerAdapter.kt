@@ -14,22 +14,32 @@
  * limitations under the License.
  */
 
-package sample.core
+package sample.ui.material.tablayout
 
-import androidx.navigation.ActionOnlyNavDirections
-import androidx.navigation.NavController
+import android.content.Context
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
+import meow.core.ui.MeowPagerAdapter
+import meow.util.getStringArray
 import sample.R
+import sample.ui.material.tablayout.child.TabLayoutChildFragment
+import sample.ui.menu.MenuFragment
 
 /**
- * Navigation Extensions.
+ * Tab Layout View Pager Adapter class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-13
+ * @since   2020-03-23
  */
-fun NavController.actionToAlerts() = navigate(ActionOnlyNavDirections(R.id.actionToAlerts))
-fun NavController.actionToTabLayout() = navigate(ActionOnlyNavDirections(R.id.actionToTabLayout))
-fun NavController.actionToUserDetail() = navigate(ActionOnlyNavDirections(R.id.actionToUserDetail))
-fun NavController.actionToUserIndex() = navigate(ActionOnlyNavDirections(R.id.actionToUserIndex))
-fun NavController.actionToCustomDialog() =
-    navigate(ActionOnlyNavDirections(R.id.actionToCustomDialog))
+
+class TabPagerAdapter(
+    fragmentManager: FragmentManager,
+    lifecycle: Lifecycle
+) : MeowPagerAdapter(fragmentManager, lifecycle) {
+
+    val fragmentArray = Array<Fragment>(3) { TabLayoutChildFragment.newInstance(it) }
+
+    override fun getFragments() = fragmentArray
+}

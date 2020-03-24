@@ -37,8 +37,6 @@ class AlertsViewModel(app: Application) :
 
     val listLiveData = MutableLiveData<List<Content>>() //todo @Hamid search single vs normal
 
-    lateinit var activity: FragmentActivity
-
     fun fillList() {
         val actions = arrayOf(
                 Content.Action.ALERT_SIMPLE,

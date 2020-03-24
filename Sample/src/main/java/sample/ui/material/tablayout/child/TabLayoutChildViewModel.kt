@@ -14,22 +14,22 @@
  * limitations under the License.
  */
 
-package sample.core
+package sample.ui.material.tablayout.child
 
-import androidx.navigation.ActionOnlyNavDirections
-import androidx.navigation.NavController
+import android.app.Application
+import meow.core.arch.MeowViewModel
 import sample.R
 
 /**
- * Navigation Extensions.
+ * Material Tab Layout Child View Model class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-13
+ * @since   2020-03-23
  */
-fun NavController.actionToAlerts() = navigate(ActionOnlyNavDirections(R.id.actionToAlerts))
-fun NavController.actionToTabLayout() = navigate(ActionOnlyNavDirections(R.id.actionToTabLayout))
-fun NavController.actionToUserDetail() = navigate(ActionOnlyNavDirections(R.id.actionToUserDetail))
-fun NavController.actionToUserIndex() = navigate(ActionOnlyNavDirections(R.id.actionToUserIndex))
-fun NavController.actionToCustomDialog() =
-    navigate(ActionOnlyNavDirections(R.id.actionToCustomDialog))
+
+class TabLayoutChildViewModel(app: Application) : MeowViewModel(app) {
+
+    fun getTextByPosition(pos: Int) = app.getString(R.string.tab_title).format(pos + 1)
+
+}

@@ -1,3 +1,9 @@
+package meow.widget
+
+import androidx.databinding.BindingAdapter
+import com.google.android.material.tabs.TabLayout
+import meow.controller
+
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -14,22 +20,20 @@
  * limitations under the License.
  */
 
-package sample.core
-
-import androidx.navigation.ActionOnlyNavDirections
-import androidx.navigation.NavController
-import sample.R
-
 /**
- * Navigation Extensions.
+ * [com.google.android.material.tabs.TabLayout] Extensions.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-13
+ * @since   2020-03-15
  */
-fun NavController.actionToAlerts() = navigate(ActionOnlyNavDirections(R.id.actionToAlerts))
-fun NavController.actionToTabLayout() = navigate(ActionOnlyNavDirections(R.id.actionToTabLayout))
-fun NavController.actionToUserDetail() = navigate(ActionOnlyNavDirections(R.id.actionToUserDetail))
-fun NavController.actionToUserIndex() = navigate(ActionOnlyNavDirections(R.id.actionToUserIndex))
-fun NavController.actionToCustomDialog() =
-    navigate(ActionOnlyNavDirections(R.id.actionToCustomDialog))
+
+object TabLayoutBindingAdapter {
+
+    @BindingAdapter("tabBackground")
+    @JvmStatic
+    fun setTabBackgroundColor(view: TabLayout, tabBackgroundColor: Int) {
+        view.setBackgroundColor(controller.onColorGet(tabBackgroundColor))
+    }
+
+}

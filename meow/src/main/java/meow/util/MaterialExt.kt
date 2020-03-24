@@ -17,8 +17,6 @@
 package meow.util
 
 import android.content.Context
-import android.view.LayoutInflater
-import com.etebarian.meowframework.R
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import meow.core.ui.MVVM
 import meow.widget.MeowLoadingView

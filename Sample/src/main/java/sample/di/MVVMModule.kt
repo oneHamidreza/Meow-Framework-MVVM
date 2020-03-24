@@ -27,6 +27,8 @@ import sample.ui.content.ContentViewModel
 import sample.ui.dialog.CustomDialogViewModel
 import sample.ui.main.MainViewModel
 import sample.ui.material.alert.AlertsViewModel
+import sample.ui.material.tablayout.TabLayoutViewModel
+import sample.ui.material.tablayout.child.TabLayoutChildViewModel
 import sample.ui.menu.MenuViewModel
 import sample.ui.test.TestViewModel
 import sample.ui.user.detail.UserDetailViewModel
@@ -41,11 +43,31 @@ import sample.ui.user.index.UserIndexViewModel
  */
 
 val mvvmModule = Module("MVVM Module", false) {
+
     bindAutoTag<MainViewModel>() with singleton {
         MainViewModel(
             kodein.direct.instance()
         )
     }
+
+    bindAutoTag<AlertsViewModel>() with singleton {
+        AlertsViewModel(
+            kodein.direct.instance()
+        )
+    }
+
+    bindAutoTag<TabLayoutViewModel>() with singleton {
+        TabLayoutViewModel(
+            kodein.direct.instance()
+        )
+    }
+
+    bindAutoTag<TabLayoutChildViewModel>() with singleton {
+        TabLayoutChildViewModel(
+            kodein.direct.instance()
+        )
+    }
+
     bindAutoTag<MenuViewModel>() with singleton {
         MenuViewModel(
             kodein.direct.instance()
@@ -61,11 +83,6 @@ val mvvmModule = Module("MVVM Module", false) {
         UserIndexViewModel(
             kodein.direct.instance(),
             instance()
-        )
-    }
-    bindAutoTag<AlertsViewModel>() with singleton {
-        AlertsViewModel(
-            kodein.direct.instance()
         )
     }
     bindAutoTag<ContentViewModel>() with singleton {
