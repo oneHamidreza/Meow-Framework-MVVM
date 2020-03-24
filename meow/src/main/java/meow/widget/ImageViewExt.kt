@@ -92,7 +92,6 @@ object ImageViewBindingAdapter {
         }
 
         //todo add isBitmap and change it color
-
         //todo add isCircleImageView
     }
 }
