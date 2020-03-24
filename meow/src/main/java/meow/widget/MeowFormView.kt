@@ -23,7 +23,10 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.etebarian.meowframework.R
 import com.google.i18n.phonenumbers.PhoneNumberUtil
-import meow.util.*
+import meow.util.avoidException
+import meow.util.fetchAllDigit
+import meow.util.isValidEmail
+import meow.util.setAttributesFromXml
 
 
 /**
@@ -53,11 +56,15 @@ open class MeowFormView(context: Context, var attrs: AttributeSet? = null) :
         etList = getAllEditTexts()
     }
 
-    fun validate() {
+    fun validate(listener: () -> Unit) {
         etList.forEach { childE ->
             checkWithTextFieldType(childE)
         }
-        if (!isError && isResetForm) resetForm()
+        if (!isError) {
+            listener()
+            if (isResetForm)
+                resetForm()
+        }
     }
 
     fun resetForm() {

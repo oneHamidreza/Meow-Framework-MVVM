@@ -16,6 +16,7 @@
 
 package meow.widget
 
+
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Point
@@ -40,6 +41,7 @@ import meow.util.isValidUrl
 import meow.util.logD
 import java.io.File
 import kotlin.math.abs
+
 
 /**
  * [ImageView] Extensions.
@@ -75,21 +77,26 @@ object ImageViewBindingAdapter {
             view.loadGlide(data, config)
     }
 
-    @BindingAdapter("aspectRatio", "aspectRatioEnable", requireAll = false)
+    //todo is not working
+    @BindingAdapter("aspectRatio", "aspectRatioEnable", requireAll = true)
     @JvmStatic
     fun setRatio(view: ImageView, aspectRatio: String, aspectRatioEnable: Boolean) {
         if (aspectRatioEnable) {
-            var second = aspectRatio.substring(aspectRatio.lastIndexOf(":") + 1)
-            var first = aspectRatio.replace(":$second", "")
-            val widthSize = View.MeasureSpec.getSize(view.measuredWidth)
+            val second = aspectRatio.substring(aspectRatio.lastIndexOf(":") + 1)
+            val first = aspectRatio.replace(":$second", "")
+            val widthSize = View.MeasureSpec.getSize(view.width)
             val heightSize = (second.toFloat() / first.toFloat() * widthSize).toInt()
             val newHeightSpec =
                 View.MeasureSpec.makeMeasureSpec(heightSize, View.MeasureSpec.EXACTLY)
-            view.measure(view.measuredWidth, newHeightSpec)
+            view.measure(view.width, newHeightSpec)
         }
 
+        //todo add isBitmap and change it color
+
+        //todo add isCircleImageView
     }
 }
+
 
 class GlideConfig(
     var placeHolderDrawable: Drawable? = null,

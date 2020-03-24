@@ -28,6 +28,7 @@ import sample.ui.dialog.CustomDialogViewModel
 import sample.ui.main.MainViewModel
 import sample.ui.material.alert.AlertsViewModel
 import sample.ui.menu.MenuViewModel
+import sample.ui.test.TestViewModel
 import sample.ui.user.detail.UserDetailViewModel
 import sample.ui.user.index.UserIndexViewModel
 
@@ -74,6 +75,11 @@ val mvvmModule = Module("MVVM Module", false) {
     }
     bindAutoTag<CustomDialogViewModel>() with singleton {
         CustomDialogViewModel(
+            kodein.direct.instance()
+        )
+    }
+    bindAutoTag<TestViewModel>() with singleton {
+        TestViewModel(
             kodein.direct.instance()
         )
     }

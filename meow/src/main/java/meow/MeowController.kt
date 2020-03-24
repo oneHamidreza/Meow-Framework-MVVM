@@ -59,7 +59,7 @@ class MeowController(
     internal var onColorStateListGet: (colorStateList: ColorStateList) -> ColorStateList =
         { color ->
             color.apply {
-                val colors = getField<IntArray>("mColors")!!
+                val colors = getField<ColorStateList, IntArray>("mColors")!!
                 colors.forEachIndexed { index, it ->
                     colors[index] = onColorGet(it)
                 }

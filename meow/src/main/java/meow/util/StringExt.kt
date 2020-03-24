@@ -17,8 +17,10 @@
 package meow.util
 
 import android.content.Context
+import android.text.Editable
 import android.text.Spannable
 import android.text.SpannableString
+import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import java.net.MalformedURLException
 import java.net.URL
@@ -209,6 +211,27 @@ fun String?.toPersianNumber(): String {
 }
 
 /**
+ * Convert numbers in Editable to persian format.
+ * If input is empty return false.
+ * @return a Editable with persian numbers.
+ */
+@Suppress("UnnecessaryVariable")
+fun Editable?.toPersianNumber(): Editable {
+    val persianNumbers = arrayOf("۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹")
+    if (isNullOrEmpty())
+        return SpannableStringBuilder("")
+    val out = StringBuilder()
+    for (element in this!!) {
+        when (val c = element) {
+            in '0'..'9' -> out.append(persianNumbers[Integer.parseInt(c.toString())])
+            '٫' -> out.append('،')
+            else -> out.append(c)
+        }
+    }
+    return SpannableStringBuilder(out)
+}
+
+/**
  * Convert numbers in string to english format.
  * If input is empty return false.
  * @return a string with english numbers.
@@ -227,6 +250,27 @@ fun String?.toEnglishNumber(): String {
         }
     }
     return out.toString()
+}
+
+/**
+ * Convert numbers in Editable to english format.
+ * If input is empty return false.
+ * @return a Editable with english numbers.
+ */
+@Suppress("UnnecessaryVariable")
+fun Editable?.toEnglishNumber(): Editable {
+    val englishNumbers = arrayOf("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
+    if (isNullOrEmpty())
+        return SpannableStringBuilder("")
+    val out = StringBuilder()
+    for (element in this!!) {
+        when (val c = element) {
+            in '۰'..'۹' -> out.append(englishNumbers[Integer.parseInt(c.toString())])
+            '،' -> out.append('٫')
+            else -> out.append(c)
+        }
+    }
+    return SpannableStringBuilder(out)
 }
 
 /**

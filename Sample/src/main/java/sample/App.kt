@@ -59,6 +59,7 @@ class App : MeowApp(), KodeinAware {
         isLogTagNative = false
         defaultTypefaceResId = R.font.iransans_mobile_regular
         toastTypefaceResId = R.font.iransans_mobile_regular
+        isPersian = true
     }
 
     override val kodein = Kodein.lazy {

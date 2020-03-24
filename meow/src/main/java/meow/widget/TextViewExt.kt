@@ -27,7 +27,7 @@ import meow.util.toPersianNumber
 /**
  * [android.widget.TextView] Extensions.
  *
- * @author  Hamidreza Etebarian
+ * @author  Ali Modares
  * @version 1.0.0
  * @since   2020-03-15
  */
@@ -45,18 +45,19 @@ object TextViewBindingAdapter {
         view.gravity = calculateGravityIfNeed(gravity, reverseGravity, forceGravity)
     }
 
+
     @SuppressLint("SetTextI18n")
-    @BindingAdapter("android:text,", "prefixText", requireAll = true)
+    @BindingAdapter("prefixText")
     @JvmStatic
-    fun setPrefix(view: TextView, text: String, prefixText: String) {
-        view.text = "$prefixText$text"
+    fun setPrefix(view: TextView, prefixText: String) {
+        view.text = "$prefixText${view.text}"
     }
 
     @SuppressLint("SetTextI18n")
-    @BindingAdapter("android:text,", "suffixText", requireAll = true)
+    @BindingAdapter("suffixText")
     @JvmStatic
-    fun setSuffix(view: TextView, text: String, suffixText: String) {
-        view.text = "$suffixText$text"
+    fun setSuffix(view: TextView, suffixText: String) {
+        view.text = "${view.text}$suffixText"
     }
 
     @BindingAdapter("isPersianNumber")

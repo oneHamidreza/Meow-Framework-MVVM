@@ -6,7 +6,6 @@ import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_test.*
-import meow.controller
 import sample.R
 import sample.databinding.ActivityTestBinding
 import sample.ui.base.BaseActivity
@@ -18,16 +17,15 @@ class TestActivity :
     override fun layoutId() = R.layout.activity_test
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        controller.defaultFontName = getString(R.string.font_mainRegular)
         super.onCreate(savedInstanceState)
-
-        bt.setOnClickListener {
-            fv.validate()
-            Log.d("testText", "Text is : ${et.text.toString()}")
-            Toast.makeText(this, et.text.toString(), Toast.LENGTH_LONG).show()
+        binding.bt.setOnClickListener {
+            binding.fv.validate {
+                Log.d("testText", "Text is : ${binding.et.text.toString()}")
+                Toast.makeText(this, binding.et.text.toString(), Toast.LENGTH_LONG).show()
+            }
         }
 
-        et.addTextChangedListener(object : TextWatcher {
+        binding.et.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
             }
 
@@ -35,10 +33,10 @@ class TestActivity :
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (et.text!!.length > et.counterMaxLength)
-                    et.error = "Text is longer than allowed limit"
+                if (binding.et.text!!.length > et.counterMaxLength)
+                    binding.et.error = "Text is longer than allowed limit"
                 else
-                    et.isErrorEnabled = false
+                    binding.et.isErrorEnabled = false
             }
         })
 

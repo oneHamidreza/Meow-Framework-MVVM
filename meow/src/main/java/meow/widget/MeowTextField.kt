@@ -16,20 +16,23 @@
 
 package meow.widget
 
-import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.text.*
 import android.text.style.MetricAffectingSpan
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.widget.TextView
 import com.etebarian.meowframework.R
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import meow.controller
-import meow.util.*
-import meow.widget.impl.TextViewImpl
+import meow.util.getField
+import meow.util.getFontCompat
+import meow.util.setAttributesFromXml
+import meow.util.toPersianNumber
 
 
 /**
@@ -40,25 +43,15 @@ import meow.widget.impl.TextViewImpl
  * @since   2020-03-07
  */
 
-class MeowTextField(context: Context, var attrs: AttributeSet? = null) : TextInputLayout(context, attrs), TextViewImpl {
+class MeowTextField : TextInputLayout {
 
-    override var fontPath: String? = ""
-        set(value) {
-            field = value
-//            editText.typeface = context.getFont(fontPath)
-//            typeface = context.getFont(fontPath)
-        }
-    override var isPersian = controller.isPersian
-    override var beforeText: String? = ""
-    override var afterText: String? = ""
-    override var hasSpan = false
-    override var forcePaddingFont = controller.isForceFontPadding
-    override var forceGravity = false
+    var fontFamily: Int = 0
+    var isPersianNumber = controller.isPersian
 
     val editText = TextInputEditText(context)
 
     var validateType = VALIDATE_TYPE_DEFAULT
-    private var inputType = INPUT_TYPE_DEFAULT
+    private var inputType = InputType.TYPE_CLASS_TEXT
 
     var text: Editable?
         set(value) {
@@ -70,82 +63,66 @@ class MeowTextField(context: Context, var attrs: AttributeSet? = null) : TextInp
     var errorMobile: String? = ""
     var errorEmail: String? = ""
 
+    var textSize = resources.getDimension(R.dimen.text_field_text_size)
 
-    companion object {//todo check and delete
-        const val INPUT_TYPE_DEFAULT = 0
-        const val INPUT_TYPE_EMAIL = 1
-        const val INPUT_TYPE_PASSWORD = 2
-        const val INPUT_TYPE_PHONE = 3
-        const val INPUT_TYPE_NUMBER_DECIMAL = 4
-        const val INPUT_TYPE_MULTI_LINE = 5
-        const val INPUT_TYPE_NUMBER_FLOAT = 6
-        const val INPUT_TYPE_WEBSITE = 7
-        const val INPUT_TYPE_PERSON_NAME = 8
-
+    companion object {
         const val VALIDATE_TYPE_DEFAULT = 0
         const val VALIDATE_TYPE_EMPTY = 1
         const val VALIDATE_TYPE_MOBILE = 2
         const val VALIDATE_TYPE_EMAIL = 3
-
-        private fun createInputType(inputType: Int): Int {
-            return when (inputType) {
-                INPUT_TYPE_DEFAULT -> InputType.TYPE_CLASS_TEXT
-                INPUT_TYPE_EMAIL -> InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
-                INPUT_TYPE_PASSWORD -> InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-                INPUT_TYPE_PHONE -> InputType.TYPE_CLASS_PHONE
-                INPUT_TYPE_NUMBER_DECIMAL -> InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_SIGNED
-                INPUT_TYPE_MULTI_LINE -> InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
-                INPUT_TYPE_NUMBER_FLOAT -> InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
-                INPUT_TYPE_WEBSITE -> InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_WEB_EMAIL_ADDRESS
-                INPUT_TYPE_PERSON_NAME -> InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PERSON_NAME
-                else -> InputType.TYPE_CLASS_TEXT
-            }
-        }
     }
 
-//    @SuppressLint("ResourceType")
-//    override fun setAttributeFromXml(context: Context, attrs: AttributeSet) {
-//        super.setAttributeFromXml(context, attrs)
-//
-//        val a = context.theme.obtainStyledAttributes(attrs, R.styleable.MeowTextField, 0, 0)
-//        avoidException(
-//            tryBlock = {
-//                a.apply {
-//
-//                }
-//            },
-//            finallyBlock = {
-//                a.recycle()
-//            }
-//        )
-//    }
-
-    init {
+    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(
+            context,
+            attrs,
+            defStyle
+    ) {
         setAttributesFromXml(attrs, R.styleable.MeowTextField) {
-            inputType = it.getInt(R.styleable.MeowTextField_meow_inputType, inputType)
-            validateType =
-                it.getInt(R.styleable.MeowTextField_meow_validateType, validateType)
-
-            errorEmpty = it.getString(R.styleable.MeowTextField_errorEmpty)
-            if (errorEmpty.isNullOrEmpty())
-                errorEmpty = context.getString(R.string.error_required_value)
-
-            errorMobile = it.getString(R.styleable.MeowTextField_errorEmpty)
-            if (errorMobile.isNullOrEmpty())
-                errorMobile = context.getString(R.string.error_mobile_not_valid)
-
-            errorEmail = it.getString(R.styleable.MeowTextField_errorEmail)
-            if (errorEmail.isNullOrEmpty())
-                errorEmail = context.getString(R.string.error_email_not_valid)
+            initializeAttributes(it)
         }
         initializeView()
     }
 
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+        setAttributesFromXml(attrs, R.styleable.MeowTextField) {
+            initializeAttributes(it)
+        }
+        initializeView()
+    }
+
+    private fun initializeAttributes(it: TypedArray) {
+        fontFamily = it.getResourceId(
+                R.styleable.MeowTextField_meow_fontFamily,
+                controller.defaultTypefaceResId
+        )
+
+        inputType = it.getInt(R.styleable.MeowTextField_inputType, inputType)
+
+        validateType = it.getInt(R.styleable.MeowTextField_validateType, validateType)
+
+        textSize = it.getDimension(R.styleable.MeowTextField_textSize, textSize)
+
+        errorEmpty = it.getString(R.styleable.MeowTextField_errorEmpty)
+        if (errorEmpty.isNullOrEmpty())
+            errorEmpty = context.getString(R.string.error_required_value)
+
+        errorMobile = it.getString(R.styleable.MeowTextField_errorEmpty)
+        if (errorMobile.isNullOrEmpty())
+            errorMobile = context.getString(R.string.error_mobile_not_valid)
+
+        errorEmail = it.getString(R.styleable.MeowTextField_errorEmail)
+        if (errorEmail.isNullOrEmpty())
+            errorEmail = context.getString(R.string.error_email_not_valid)
+
+        isPersianNumber = it.getBoolean(R.styleable.MeowTextField_isPersianNumber, isPersianNumber)
+    }
+
     private fun initializeView() {
-        fontPath = fontPath
         addView(editText)
-        editText.textSize = 14f
-        editText.inputType = createInputType(this.inputType)
+        editText.typeface = context.getFontCompat(fontFamily)
+        typeface = context.getFontCompat(fontFamily)
+        editText.setTextSize(TypedValue.COMPLEX_UNIT_PX, this.textSize)
+        editText.inputType = this.inputType
         editText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 setCounterTypeface()
@@ -157,6 +134,8 @@ class MeowTextField(context: Context, var attrs: AttributeSet? = null) : TextInp
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
         })
+        if (isPersianNumber)
+            text = text.toPersianNumber()
     }
 
     fun addTextChangedListener(textWatcher: TextWatcher) {
@@ -164,32 +143,32 @@ class MeowTextField(context: Context, var attrs: AttributeSet? = null) : TextInp
     }
 
     override fun setError(errorText: CharSequence?) {
-        super.setError(setFontToError(errorText.toString()))
+        if (!errorText.isNullOrEmpty())
+            super.setError(setErrorTypeface(errorText.toString()))
     }
 
     private fun setCounterTypeface() {
-        val counterView = getField<TextView>("counterView") ?: return
-        logD(m = "counterView: ${counterView != null}")//todo test
-//        counterView.typeface = context.getFont(fontPath)
+        val counterView = getField<TextInputLayout, TextView>("counterView")
+        counterView?.typeface = context.getFontCompat(fontFamily)
     }
 
-    private fun setFontToError(string: String): SpannableString {
+    private fun setErrorTypeface(string: String): SpannableString {
 
-        class TypefaceSpan(private val mTypeface: Typeface) : MetricAffectingSpan() {
+        class TypefaceSpan(private val typeface: Typeface) : MetricAffectingSpan() {
             override fun updateMeasureState(p: TextPaint) {
-                p.typeface = mTypeface
+                p.typeface = typeface
                 p.flags = p.flags or Paint.SUBPIXEL_TEXT_FLAG
             }
 
             override fun updateDrawState(tp: TextPaint) {
-                tp.typeface = mTypeface
+                tp.typeface = typeface
                 tp.flags = tp.flags or Paint.SUBPIXEL_TEXT_FLAG
             }
         }
 
         val s = SpannableString(string)
         s.setSpan(
-            TypefaceSpan(context.getFont(0)!!),
+                TypefaceSpan(context.getFontCompat(fontFamily)),
             0,
             s.length,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE

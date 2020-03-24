@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="sample.ui.test.TestViewModel" />
@@ -13,16 +14,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv"
-            suffixText='@{":1656"}'
-            prefixText='@{"*"}'
-            android:layout_width="wrap_content"
+        <TextView
+            isPersianNumber="@{true}"
+            prefixText="@{`8`}"
+            suffixText="@{`:`}"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="متن نمونه"
             android:fontFamily="@font/iran_sans_bold"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+            android:gravity="center"
+            android:text="Hello World1"
+            android:textColor="@{@color/black}" />
 
         <meow.widget.MeowFormView
             android:id="@+id/fv"
@@ -46,36 +47,40 @@
                 app:counterMaxLength="12"
                 app:errorEnabled="true"
                 app:errorIconDrawable="@drawable/ic_error"
-                app:isPersian="true"
-                app:meow_validateType="email"
+                app:errorTextAppearance="@style/textAppearance.Caption"
+                app:inputType="textEmailAddress"
+                app:isPersianNumber="true"
+                app:meow_fontFamily="@font/iransans_mobile_bold"
                 app:startIconDrawable="@drawable/ic_call"
-                app:startIconTint="@color/primary" />
+                app:startIconTint="@color/primary"
+                app:validateType="email" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/bt"
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ثبت"
-                app:shapeAppearance="@style/ShapeAppearance.MaterialComponents.MediumComponent" />
+                android:fontFamily="@font/iran_sans_regular"
+                android:text="ثبت" />
 
-            <View
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@color/primary"
-                app:shapeAppearanceOverlay="@style/MyShape" />
+            <!--            <View-->
+            <!--                android:layout_width="100dp"-->
+            <!--                android:layout_height="100dp"-->
+            <!--                android:background="@color/primary"-->
+            <!--                app:shapeAppearanceOverlay="@style/MyShape" />-->
 
         </meow.widget.MeowFormView>
 
         <ImageView
-            aspectRatio='@{"1:1"}'
-            aspectRatioEnable="true"
-            data='@{"https://i.stack.imgur.com/EYzpL.jpg"}'
+            aspectRatio="@{`16:9`}"
+            aspectRatioEnable="@{true}"
+            data="@{`https://i.stack.imgur.com/EYzpL.jpg`}"
             placeHolder="@{@drawable/ic_android}"
-            android:layout_width="86dp"
-            android:layout_height="56dp"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:background="@color/black"
+            android:scaleType="centerCrop" />
 
     </LinearLayout>
 

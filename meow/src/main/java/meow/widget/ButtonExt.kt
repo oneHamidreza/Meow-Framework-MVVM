@@ -47,17 +47,17 @@ object ButtonBindingAdapter {
     }
 
     @SuppressLint("SetTextI18n")
-    @BindingAdapter("android:text,", "prefixText", requireAll = true)
+    @BindingAdapter("prefixText")
     @JvmStatic
-    fun setPrefix(view: Button, text: String, prefixText: String) {
-        view.text = "$prefixText$text"
+    fun setPrefix(view: Button, prefixText: String) {
+        view.text = "$prefixText${view.text}"
     }
 
     @SuppressLint("SetTextI18n")
-    @BindingAdapter("android:text,", "suffixText", requireAll = true)
+    @BindingAdapter("suffixText")
     @JvmStatic
-    fun setSuffix(view: Button, text: String, suffixText: String) {
-        view.text = "$suffixText$text"
+    fun setSuffix(view: Button, suffixText: String) {
+        view.text = "${view.text}$suffixText"
     }
 
     @BindingAdapter("isPersianNumber")

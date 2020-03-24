@@ -47,10 +47,10 @@ fun Any.setField(name: String, value: Any) {
     }
 }
 
-fun <T> Any.getField(name: String, useSuperClass: Boolean = false): T? =
+inline fun <reified B, T> Any.getField(name: String, useSuperClass: Boolean = false): T? =
     avoidException(
         tryBlock = {
-            val clazz = if (useSuperClass) javaClass.superclass else javaClass
+            val clazz = if (useSuperClass) B::class.javaClass.superclass else B::class.java
             val filed = clazz?.getDeclaredField(name)?.apply {
                 isAccessible = true
             }
