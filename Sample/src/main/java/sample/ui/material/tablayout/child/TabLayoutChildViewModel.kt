@@ -14,20 +14,22 @@
  * limitations under the License.
  */
 
-package sample.ui.material.tablayout
+package sample.ui.material.tablayout.child
 
 import android.app.Application
 import meow.core.arch.MeowViewModel
+import sample.R
 
 /**
- * Material Tab Layout View Model class.
+ * Material Tab Layout Child View Model class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-23
  */
 
-class TabLayoutViewModel(app: Application) : MeowViewModel(app) {
+class TabLayoutChildViewModel(app: Application) : MeowViewModel(app) {
 
-    fun getBadgeNumber() = 10
+    fun getTextByPosition(pos: Int) = app.getString(R.string.tab_title).format(pos + 1)
+
 }

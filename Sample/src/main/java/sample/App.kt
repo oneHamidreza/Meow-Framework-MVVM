@@ -16,11 +16,9 @@
 
 package sample
 
-import android.graphics.Color
 import meow.MeowApp
 import meow.MeowController
 import meow.meowModule
-import meow.util.getColorCompat
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -47,8 +45,8 @@ class App : MeowApp(), KodeinAware {
     override var controller = MeowController(this).apply {
         onColorGet = {
             when (it) {
-                getColorCompat(R.color.primary, false) -> Color.RED
-                getColorCompat(R.color.primary_dark, false) -> Color.BLACK
+//                getColorCompat(R.color.primary, false) -> Color.RED
+//                getColorCompat(R.color.primary_dark, false) -> Color.BLACK
                 else -> it
             }
         }
