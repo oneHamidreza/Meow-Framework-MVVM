@@ -76,9 +76,9 @@ object AppConfig {
             "com.googlecode.libphonenumber:libphonenumber:8.10.5"
         )
 
-        val kaptItems = arrayOf(
+        val kaptItems = emptyArray<String>(
             // MOSHI SERIALIZE
-            "com.squareup.moshi:moshi-kotlin-codegen:1.9.2"
+//            "com.squareup.moshi:moshi-kotlin-codegen:1.9.2"
         )
 
     }

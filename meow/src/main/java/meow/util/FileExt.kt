@@ -94,13 +94,11 @@ fun File?.safeListFiles() = avoidException { this?.listFiles() } ?: arrayOf()
 
 fun File?.safeDelete() = avoidException { this?.delete() }
 
-fun MVVM<*, *>?.getAppRootPath(
+fun MVVM<*, *>.getAppRootPath(
     folderName: String,
     fileName: String? = null,
     forceInternal: Boolean = false
 ): String {
-    if (this == null)
-        return ""
     return avoidException {
         val root = if (MeowFileUtils.isExternalStorageAvailable() && !forceInternal) {
             @Suppress("DEPRECATION")
@@ -127,13 +125,11 @@ fun MVVM<*, *>?.getAppRootPath(
     } ?: "sdcard/"
 }
 
-fun MVVM<*, *>?.getAppCachePath(
+fun MVVM<*, *>.getAppCachePath(
     folderName: String,
     fileName: String? = null,
     forceInternal: Boolean = false
 ): String {
-    if (this == null)
-        return ""
     return avoidException {
         val cachePath = if (Environment.MEDIA_MOUNTED == Environment.getExternalStorageState() ||
             !MeowFileUtils.isExternalStorageAvailable() && !forceInternal

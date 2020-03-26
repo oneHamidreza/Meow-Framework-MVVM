@@ -23,4 +23,8 @@
     <string name="toast_alert_on_canceled">Alert Canceled!</string>
     <string name="tab_title">Tab %d</string>
 
+    <!-- Material Card -->
+    <string name="card_simple_title">Hi! 👋 the simple title</string>
+    <string name="card_simple_desc">Here is the contents for testing Material Card.</string>
+
 </resources>

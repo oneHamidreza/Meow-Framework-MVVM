@@ -41,7 +41,8 @@ class UserDetailViewModel(app: App, val repository: User.Repository) : MeowViewM
     var permissionLiveData = SingleLiveData<ArrayList<String>>()
 
     fun callApi(request: User.RequestGet) {
-        apiLiveData.safeCallApi(
+        safeCallApi(
+            liveData = apiLiveData,
             request = request,
             isNetworkRequired = false,
             apiAction = { repository.getUserByIdApi(request) }

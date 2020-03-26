@@ -27,6 +27,7 @@ import sample.ui.content.ContentViewModel
 import sample.ui.dialog.CustomDialogViewModel
 import sample.ui.main.MainViewModel
 import sample.ui.material.alert.AlertsViewModel
+import sample.ui.material.card.CardViewModel
 import sample.ui.material.tablayout.TabLayoutViewModel
 import sample.ui.material.tablayout.child.TabLayoutChildViewModel
 import sample.ui.menu.MenuViewModel
@@ -52,6 +53,12 @@ val mvvmModule = Module("MVVM Module", false) {
 
     bindAutoTag<AlertsViewModel>() with singleton {
         AlertsViewModel(
+            kodein.direct.instance()
+        )
+    }
+
+    bindAutoTag<CardViewModel>() with singleton {
+        CardViewModel(
             kodein.direct.instance()
         )
     }

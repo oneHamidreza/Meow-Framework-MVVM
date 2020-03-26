@@ -14,28 +14,34 @@
  * limitations under the License.
  */
 
-package sample.ui.material.tablayout
+package sample.ui.material.card
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
-import meow.core.ui.MeowPagerAdapter
-import sample.ui.material.tablayout.child.TabLayoutChildFragment
+import meow.util.createClass
+import sample.R
+import sample.databinding.FragmentCardBinding
+import sample.ui.base.BaseFragment
 
 /**
- * Tab Layout View Pager Adapter class.
+ * Card Fragment class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-23
+ * @since   2020-03-11
  */
 
-class TabPagerAdapter(
-    fragmentManager: FragmentManager,
-    lifecycle: Lifecycle
-) : MeowPagerAdapter(fragmentManager, lifecycle) {
+class CardFragment : BaseFragment<FragmentCardBinding, CardViewModel>() {
 
-    val fragmentArray = Array<Fragment>(3) { TabLayoutChildFragment.newInstance(it) }
+    override fun layoutId() = R.layout.fragment_card
+    override fun viewModelClass() = createClass<CardViewModel>()
 
-    override fun getFragments() = fragmentArray
+    override fun initViewModel() {
+        binding.viewModel = viewModel
+    }
+
+    override fun observeViewModel() {
+        binding.viewModel?.apply {
+
+        }
+    }
+
 }

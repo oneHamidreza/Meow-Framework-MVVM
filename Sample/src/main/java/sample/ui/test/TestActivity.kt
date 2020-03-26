@@ -5,7 +5,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_test.*
 import sample.R
 import sample.databinding.ActivityTestBinding
 import sample.ui.base.BaseActivity
@@ -33,7 +32,7 @@ class TestActivity :
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (binding.et.text!!.length > et.counterMaxLength)
+                if (binding.et.text!!.length > binding.et.counterMaxLength)
                     binding.et.error = "Text is longer than allowed limit"
                 else
                     binding.et.isErrorEnabled = false

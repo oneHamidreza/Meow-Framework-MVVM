@@ -3,6 +3,7 @@
 
     <string name="fragment_alerts">Alerts</string>
     <string name="fragment_tablayout">Tab Layout</string>
+    <string name="fragment_card">Card</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
 

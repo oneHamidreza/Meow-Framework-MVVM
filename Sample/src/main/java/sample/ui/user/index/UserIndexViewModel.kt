@@ -41,7 +41,8 @@ class UserIndexViewModel(
     val listLiveData = MutableLiveData<List<User>>()
 
     fun callApi() {
-        eventLiveData.safeCallApi(
+        safeCallApi(
+            liveData = eventLiveData,
             isNetworkRequired = true,
             apiAction = { repository.getUsersApi() }
         ) { _, it ->

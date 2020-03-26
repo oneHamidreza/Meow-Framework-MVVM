@@ -1,6 +1,8 @@
 <resources>
 
     <string name="fragment_alerts">دیالوگ (Alrerts)</string>
+    <string name="fragment_tablayout">تب (Tab Layout)</string>
+    <string name="fragment_card">کارت (Card)</string>
 
     <string name="ok">باشه</string>
     <string name="cancel">بی‌خیال</string>
