@@ -27,7 +27,7 @@ package meow.core.api.exceptions
 /**
  * UnexpectedException class.
  *
- * @property message containing the string of message exception.
+ * @property message is the string of message exception.
  */
 class UnexpectedException(message: String? = "Unexpected error has been happened.") :
     Exception(message)

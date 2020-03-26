@@ -1,3 +1,4 @@
+package sample.ui.main;
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -14,20 +15,18 @@
  * limitations under the License.
  */
 
-package meow.widget.impl
-
 /**
- * The Error interface.
+ * Describe class.
  *
- * @author  Hamidreza Etebarian
+ * @author Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-10
+ * @since 2020-03-25
  */
 
-interface MeowErrorView {
+public class A {
+    private int w = 1;
 
-    fun hide()
-
-    fun show()
-
+    public void prinz() {
+        System.out.println("zzzzzzz" + w);
+    }
 }

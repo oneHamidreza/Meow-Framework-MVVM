@@ -48,7 +48,7 @@
                 app:errorEnabled="true"
                 app:errorIconDrawable="@drawable/ic_error"
                 app:errorTextAppearance="@style/textAppearance.Caption"
-                app:inputType="textEmailAddress"
+                app:inputType="phone"
                 app:isPersianNumber="true"
                 app:meow_fontFamily="@font/iransans_mobile_bold"
                 app:startIconDrawable="@drawable/ic_call"

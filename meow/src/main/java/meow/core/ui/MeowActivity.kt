@@ -95,7 +95,8 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : AppCompat
     }
 
     override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(getContextWrapper(newBase) ?: newBase)
+        val wrapContext = getContextWrapper(newBase) ?: newBase
+        super.attachBaseContext(wrapContext)
     }
 
     override fun onRequestPermissionsResult(

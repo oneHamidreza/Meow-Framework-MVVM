@@ -16,10 +16,9 @@
 
 package sample.data
 
-import meow.core.api.ModelJsonFactory
-import meow.core.arch.DataSourceImpl
+import meow.core.arch.DataSourceInterface
 import meow.core.data.MeowSharedPreferences
-import meow.util.ofMoshi
+import meow.util.ofMoshiUseAdapter
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 import org.kodein.di.erased.instance
@@ -35,7 +34,7 @@ import sample.di.AppApi
  * @since   2020-03-06
  */
 
-class DataSource(override var app: App) : DataSourceImpl, KodeinAware {
+class DataSource(override var app: App) : DataSourceInterface, KodeinAware {
 
     override val kodein by closestKodein(app)
     private val api: AppApi by instance()
@@ -43,7 +42,7 @@ class DataSource(override var app: App) : DataSourceImpl, KodeinAware {
     private val spUpdate: MeowSharedPreferences by instance("spUpdate")
 
     suspend fun getUserById(request: User.RequestGet) =
-        api.createServiceByAdapter<User.Api>(ofMoshi(ModelJsonFactory().get<User, UserDetailJsonAdapter>()))
+        api.createServiceByAdapter<User.Api>(ofMoshiUseAdapter<User, UserDetailJsonAdapter>())
             .getUserById(request.id)
 
     suspend fun getUsers() =

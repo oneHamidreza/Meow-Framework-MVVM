@@ -18,9 +18,11 @@ package meow.core.api
 
 import android.content.res.Resources
 import com.etebarian.meowframework.R
+import meow.core.api.MeowEvent.Api
 
 /**
- * The event of MVVM class containing [Loading], [Success], [Error], [Cancellation].
+ * Meow Event class containing [Api] , [Api.Loading] , [Api.Success] , [Error] , [Api.Cancellation] .
+ * Use for event handling in view models.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

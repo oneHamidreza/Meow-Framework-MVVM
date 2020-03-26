@@ -33,10 +33,9 @@ import java.util.regex.Pattern
  * If input is empty return false.
  * @return a boolean describes validation of URL.
  */
-fun String?.isValidUrl() =
-    avoidException {
-        URLUtil.isValidUrl(this)
-    } ?: false
+fun String?.isValidUrl() = avoidException {
+    URLUtil.isValidUrl(this)
+} ?: false
 
 /**
  * Check validation of Email.
@@ -44,8 +43,7 @@ fun String?.isValidUrl() =
  * @return a boolean describes validation of Email.
  */
 @Suppress("RegExpRedundantEscape")
-fun String?.isValidEmail() =
-    avoidException {
+fun String?.isValidEmail() = avoidException {
         if (isNullOrEmpty())
             return false
         Pattern.compile("^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$", Pattern.CASE_INSENSITIVE)
@@ -58,8 +56,7 @@ fun String?.isValidEmail() =
  * @param minimum is a integer that describes minimum character count in a string.
  * @return a boolean describes validation of Password.
  */
-fun String?.isValidPassword(minimum: Int = 6) =
-    avoidException {
+fun String?.isValidPassword(minimum: Int = 6) = avoidException {
         !isEmptyTrimAllSpaces() && this?.length ?: 0 >= minimum
     } ?: false
 
@@ -68,8 +65,7 @@ fun String?.isValidPassword(minimum: Int = 6) =
  * If input is empty return false.
  * @return a boolean describes validation of website.
  */
-fun String?.isValidWebsite() =
-    avoidException {
+fun String?.isValidWebsite() = avoidException {
         if (isNullOrEmpty())
             return false
         Pattern.compile(
@@ -83,8 +79,7 @@ fun String?.isValidWebsite() =
  * If input is empty return false.
  * @return a boolean describes validation of Username.
  */
-fun String?.isValidUsername() =
-    avoidException {
+fun String?.isValidUsername() = avoidException {
         if (isNullOrEmpty())
             return false
         Pattern.compile("[a-z][a-z0-9_]{3,}", Pattern.CASE_INSENSITIVE).matcher(this!!).matches()
@@ -95,8 +90,7 @@ fun String?.isValidUsername() =
  * If input is empty return false.
  * @return a boolean describes validation of Color.
  */
-fun String?.isValidColor() =
-    avoidException {
+fun String?.isValidColor() = avoidException {
         if (isNullOrEmpty())
             return false
         val pattern = Pattern.compile("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$")
@@ -108,8 +102,7 @@ fun String?.isValidColor() =
  * If input is empty return false.
  * @return a boolean describes validation of Legacy Mobile.
  */
-fun String?.isValidMobileLegacy() =
-    avoidException {
+fun String?.isValidMobileLegacy() = avoidException {
         if (isNullOrEmpty())
             return false
         val s = toEnglishNumber()
@@ -127,8 +120,7 @@ fun String?.isValidMobileLegacy() =
  * If input is empty return false.
  * @return a boolean describes validation of Identity Code.
  */
-fun String?.isValidIdentityCodeIran() =
-    avoidException {
+fun String?.isValidIdentityCodeIran() = avoidException {
         if (isNullOrEmpty())
             return false
 

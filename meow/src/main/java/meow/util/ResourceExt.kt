@@ -30,7 +30,6 @@ import androidx.annotation.*
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.drawable.DrawableCompat
-import meow.controller
 import meow.core.ui.MeowFragment
 
 /**
@@ -111,7 +110,10 @@ object MeowColorUtils {
      */
     fun setAlpha(@ColorInt color: Int, @FloatRange(from = 0.0, to = 1.0) alpha: Float) =
         ColorUtils.setAlphaComponent(color, (alpha * 255).toInt())
+
 }
+
+fun Int.toHexString() = String.format("#%06X", (0xFFFFFF and this))
 
 fun Context.resources() = resources
 
@@ -137,22 +139,6 @@ fun MeowFragment<*, *>?.getDrawableCompat(
 ) =
     this?.resources().getDrawableCompat(resId, theme)
 
-fun Resources?.getColorCompat(
-    @ColorRes resId: Int,
-    useController: Boolean = true,
-    theme: Resources.Theme? = null
-) = when {
-    this == null -> 0
-    useController -> controller.onColorGet(
-        ResourcesCompat.getColor(
-            this,
-            resId,
-            theme
-        )
-    )
-    else -> ResourcesCompat.getColor(this, resId, theme)
-}
-
 fun Context?.getFontCompat(@FontRes resId: Int = 0) =
     if (this == null || resId == 0) Typeface.DEFAULT else avoidException {
         ResourcesCompat.getFont(
@@ -164,17 +150,23 @@ fun Context?.getFontCompat(@FontRes resId: Int = 0) =
 fun MeowFragment<*, *>?.getFontCompat(@FontRes resId: Int = 0) =
     this?.context().getFontCompat(resId)
 
+fun Resources?.getColorCompat(
+    @ColorRes resId: Int,
+    theme: Resources.Theme? = null
+) = when {
+    this == null -> 0
+    else -> ResourcesCompat.getColor(this, resId, theme)
+}
+
 fun Context?.getColorCompat(
     @ColorRes resId: Int,
-    useController: Boolean = true,
     theme: Resources.Theme? = this?.theme
-) = this?.resources().getColorCompat(resId, useController, theme)
+) = this?.resources().getColorCompat(resId, theme)
 
 fun MeowFragment<*, *>?.getColorCompat(
     @ColorRes resId: Int,
-    useController: Boolean = true,
     theme: Resources.Theme? = null
-) = this?.resources().getColorCompat(resId, useController, theme)
+) = this?.resources().getColorCompat(resId, theme)
 
 fun Resources?.getDimensionToPx(@DimenRes resId: Int) = this?.getDimension(resId)?.toInt() ?: 0
 fun Context?.getDimensionToPx(@DimenRes resId: Int) = this?.resources().getDimensionToPx(resId)

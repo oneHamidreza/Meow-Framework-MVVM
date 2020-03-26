@@ -26,6 +26,7 @@ import androidx.core.view.ViewCompat
 import androidx.databinding.ViewDataBinding
 import meow.controller
 
+
 /**
  * [View] Extensions.
  *
@@ -81,17 +82,13 @@ fun View?.screenshot(onReadyBitmap: (Bitmap?) -> Unit) {
         onReadyBitmap(null)
         return
     }
-    avoidException(
-        tryBlock = {
-            val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565)
-            val canvas = Canvas(bitmap)
-            draw(canvas)
-            onReadyBitmap(bitmap)
-        },
-        exceptionBlock = {
-            onReadyBitmap(null)
-        }
-    )
+    val bitmap = avoidException {
+        val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565)
+        val canvas = Canvas(bitmap)
+        draw(canvas)
+        bitmap
+    }
+    onReadyBitmap(bitmap)
 }
 
 fun <T> View?.updateLayoutParams(onLayoutChange: (params: T) -> Unit) {

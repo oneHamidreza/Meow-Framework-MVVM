@@ -15,12 +15,6 @@ object MeowLog {
 
 }
 
-fun <T> T.logD(tag: String = "", tr: Throwable? = null) = apply { logD(tag, this, tr) }
-fun <T> T.logE(tag: String = "", tr: Throwable? = null) = apply { logE(tag, this, tr) }
-fun <T> T.logV(tag: String = "", tr: Throwable? = null) = apply { logV(tag, this, tr) }
-fun <T> T.logI(tag: String = "", tr: Throwable? = null) = apply { logI(tag, this, tr) }
-fun <T> T.logW(tag: String = "", tr: Throwable? = null) = apply { logW(tag, this, tr) }
-
 fun logD(tag: String = "", m: Any?, tr: Throwable? = null): Int {
     return if (controller.isDebugMode) {
         val t = createTag(tag)
@@ -65,13 +59,12 @@ private fun createTag(tag: String): String {
     if (controller.isLogTagNative)
         return if (tag.isEmpty()) "meow" else tag
 
-    val t = avoidException(
-        tryBlock = {
-            val stackThread = Thread.currentThread().stackTrace
-            stackThread[5].fileName.substringBefore(".")
-        },
-        exceptionBlock = { "UNKNOWN" }
-    )
+    //todo not working !!!
+    val t = avoidException {
+        val stackThread = Thread.currentThread().stackTrace
+        stackThread[5].fileName.substringBefore(".")
+
+    } ?: "UNKNOWN"
 
     val s = StringBuilder()
     s.append(t)

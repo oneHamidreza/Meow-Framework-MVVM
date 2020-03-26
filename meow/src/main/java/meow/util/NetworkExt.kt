@@ -31,13 +31,13 @@ import androidx.fragment.app.Fragment
 
 @Suppress("DEPRECATION")
 @SuppressLint("MissingPermission")
-fun Context?.hasNetwork() = avoidException(tryBlock = {
+fun Context?.hasNetwork() = avoidException {
     if (this == null)
-        return@avoidException false
+        return false
     val cm = (getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)
     val netInfo = cm.activeNetworkInfo
     netInfo != null && netInfo.isConnected
-}, exceptionBlock = { false })!!
+} ?: false
 
 fun Context?.hasNotNetwork() = !hasNetwork()
 

@@ -17,22 +17,14 @@
 package meow.widget
 
 import android.content.Context
-import android.util.AttributeSet
 import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.LinearLayout
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import com.etebarian.meowframework.R
 import com.etebarian.meowframework.databinding.MeowDialogLoadingBinding
-import kotlinx.android.synthetic.main.meow_dialog_loading.view.*
-import meow.util.afterMeasured
 import meow.util.dp
-import meow.util.logD
 import meow.util.setPaddingRelativeAll
-import meow.widget.impl.ProgressBarInterface
 
 /**
  * Meow Progress Bar class.

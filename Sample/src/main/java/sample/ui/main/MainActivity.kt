@@ -18,6 +18,7 @@ package sample.ui.main
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.Menu
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -75,6 +76,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 //            }
 //        })
 
+//        binding.viewTest.setBackgroundColor(getColorCompat(R.color.primary))
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.drawer_actions, menu)
+        return true
     }
 
     private fun setupNavigation() {

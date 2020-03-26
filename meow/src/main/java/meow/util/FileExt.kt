@@ -74,31 +74,27 @@ object MeowFileUtils {
         } ?: false
     }
 
-
-    fun existFileInPath(path: String): Boolean {
-        return avoidException {
+    fun existFileInPath(path: String) = avoidException {
             val f = File(path)
             f.exists()
         } ?: false
-    }
 
-    fun getFileLength(path: String): Long {
-        return avoidException {
+    fun getFileLength(path: String) = avoidException {
             val f = File(path)
             f.length()
         } ?: 0
-    }
+}
 
-    fun clearCache(c: Context) {
-        val f = c.cacheDir
-        deleteAllFiles(f.path ?: "")
-    }
+fun Context.clearCache() {
+    val f = cacheDir
+    MeowFileUtils.deleteAllFiles(f.path ?: "")
 }
 
 fun File?.safeListFiles() = avoidException { this?.listFiles() } ?: arrayOf()
+
 fun File?.safeDelete() = avoidException { this?.delete() }
 
-fun Context?.getAppRootPath(
+fun MVVM<*, *>?.getAppRootPath(
     folderName: String,
     fileName: String? = null,
     forceInternal: Boolean = false
@@ -110,7 +106,7 @@ fun Context?.getAppRootPath(
             @Suppress("DEPRECATION")
             Environment.getExternalStorageDirectory().toString()
         } else {
-            filesDir.path
+            context().filesDir.path
         }
 
         val rootFolderName = controller.rootFolderName
@@ -131,15 +127,9 @@ fun Context?.getAppRootPath(
     } ?: "sdcard/"
 }
 
-fun MVVM<*, *>?.getAppRootPath(
+fun MVVM<*, *>?.getAppCachePath(
     folderName: String,
     fileName: String? = null,
-    forceInternal: Boolean = false
-) = this?.context().getAppRootPath(folderName, fileName, forceInternal)
-
-fun Context?.getAppCachePath(
-    folderName: String,
-    fileName: String = "",
     forceInternal: Boolean = false
 ): String {
     if (this == null)
@@ -148,9 +138,9 @@ fun Context?.getAppCachePath(
         val cachePath = if (Environment.MEDIA_MOUNTED == Environment.getExternalStorageState() ||
             !MeowFileUtils.isExternalStorageAvailable() && !forceInternal
         )
-            externalCacheDir?.path
+            context().externalCacheDir?.path
         else
-            cacheDir.path
+            context().cacheDir.path
 
         val folder = File(cachePath, folderName)
 
@@ -161,12 +151,6 @@ fun Context?.getAppCachePath(
         "$cachePath/$folderName/$fileName"
     } ?: "sdcard/"
 }
-
-fun MVVM<*, *>?.getAppCachePath(
-    folderName: String,
-    fileName: String = "",
-    forceInternal: Boolean = false
-) = this?.context().getAppCachePath(folderName, fileName, forceInternal)
 
 fun Context?.saveBitmapInFile(
     bitmap: Bitmap,

@@ -5,7 +5,6 @@ import meow.AppConfig.Versions
 plugins {
     id("com.android.library")
     kotlin("android")
-    kotlin("android.extensions")
     id("kotlinx-serialization")
     kotlin("kapt")
 }
@@ -57,16 +56,14 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    // KOTLIN
-    implementation(kotlin("stdlib-jdk8", Versions.KOTLIN))
 
-    // MOSHI SERIALIZE
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.9.2")
+    // MAIN DEPENDENCIES
+    Library.implementationItems.forEach {
+        implementation(it)
+    }
 
-    // GOOGLE PHONE NUMBER
-    implementation("com.googlecode.libphonenumber:libphonenumber:8.10.5")
-
-    Library.mainDependencies.forEach {
+    // EXCLUSIVE DEPENDENCIES
+    Library.kaptItems.forEach {
         implementation(it)
     }
 }

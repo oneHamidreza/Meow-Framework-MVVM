@@ -27,7 +27,10 @@ import sample.R
  * @version 1.0.0
  * @since   2020-03-13
  */
-fun NavController.actionToAlerts() = navigate(ActionOnlyNavDirections(R.id.actionToAlerts))
+fun NavController.actionToAlerts(message: String) =
+    navigate(ActionOnlyNavDirections(R.id.actionToAlerts).apply {
+        arguments.putString("message", message)
+    })
 fun NavController.actionToTabLayout() = navigate(ActionOnlyNavDirections(R.id.actionToTabLayout))
 fun NavController.actionToUserDetail() = navigate(ActionOnlyNavDirections(R.id.actionToUserDetail))
 fun NavController.actionToUserIndex() = navigate(ActionOnlyNavDirections(R.id.actionToUserIndex))
