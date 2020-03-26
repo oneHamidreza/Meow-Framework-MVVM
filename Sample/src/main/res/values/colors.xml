@@ -29,4 +29,6 @@
     <color name="progress_primary">@color/primary</color>
     <color name="progress_secondary">@color/secondary</color>
 
+    <color name="test">#111ccc</color>
+
 </resources>
