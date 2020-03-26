@@ -110,6 +110,7 @@ object ImageViewBindingAdapter {
     }
 }
 
+
 class GlideConfig(
     var placeHolderDrawable: Drawable? = null,
     var animator: ViewPropertyTransition.Animator? = null,
