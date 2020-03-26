@@ -14,17 +14,18 @@
  * limitations under the License.
  */
 
-package meow.widget
+package meow.core.arch
 
-import androidx.appcompat.widget.Toolbar
+import android.app.Application
 
 /**
- * [Toolbar] Extensions.
+ * Data Source interface.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-15
+ * @since   2020-03-08
  */
 
-object ToolbarBindingAdapter {
+interface DataSourceInterface {
+    val app: Application
 }

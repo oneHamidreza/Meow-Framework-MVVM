@@ -17,7 +17,7 @@
 package meow.core.api
 
 /**
- * Http Codes in one enum class.
+ * Http Codes in an enum class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

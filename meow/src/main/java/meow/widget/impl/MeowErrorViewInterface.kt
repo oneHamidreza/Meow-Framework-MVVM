@@ -14,18 +14,20 @@
  * limitations under the License.
  */
 
-package meow.core.arch
-
-import android.app.Application
+package meow.widget.impl
 
 /**
- * Data Source interface.
+ * The Error interface.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-08
+ * @since   2020-03-10
  */
 
-interface DataSourceImpl {
-    val app: Application
+interface MeowErrorViewInterface {
+
+    fun hide()
+
+    fun show()
+
 }

@@ -52,6 +52,7 @@
     <style name="Toolbar" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="backgroundTint">@color/primary</item>
     </style>
 
     <style name="MyToolbarStyle" parent="Theme.AppCompat"></style>
@@ -68,5 +69,9 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
     </style>
+
+    <!--    <style name="TabLayout" parent="Widget.MaterialComponents.TabLayout.PrimarySurface">-->
+    <!--        <item name="tabBackground">@{@color/primary}</item>-->
+    <!--    </style>-->
 
 </resources>

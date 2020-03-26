@@ -54,7 +54,8 @@ open class MeowViewModel(open val app: Application) : AndroidViewModel(app), Kod
         }
     }
 
-    fun <T> MutableLiveData<MeowEvent<*>>.safeCallApi(
+    protected fun <T> safeCallApi(
+        liveData: MutableLiveData<MeowEvent<*>>,
         request: MeowRequest? = null,
         isNetworkRequired: Boolean = true,
         job: Job = Job(),
@@ -71,10 +72,10 @@ open class MeowViewModel(open val app: Application) : AndroidViewModel(app), Kod
         }
 
         if (isNetworkRequired && app.hasNotNetwork()) {
-            postValue(MeowEvent.Api.Error(MeowResponse.NetworkError()))
+            liveData.postValue(MeowEvent.Api.Error(MeowResponse.NetworkError()))
             return@launchSilent
         } else
-            postValue(MeowEvent.Api.Loading())
+            liveData.postValue(MeowEvent.Api.Loading())
 
         var lastId = jobWithIds.lastOrNull()?.first ?: 0
         lastId++
@@ -101,12 +102,12 @@ open class MeowViewModel(open val app: Application) : AndroidViewModel(app), Kod
             }
         }
 
-        response.processAndPush(this@safeCallApi)
+        response.processAndPush(liveData)
         val data = avoidException { response.data as? T? }
         resultBlock(response, data)
     }
 
-    fun cancelAndRemoveJob(job: Job) {
+    protected fun cancelAndRemoveJob(job: Job) {
         avoidException {
             job.cancel()
         }
@@ -115,7 +116,7 @@ open class MeowViewModel(open val app: Application) : AndroidViewModel(app), Kod
             jobWithIds.remove(found)
     }
 
-    fun cancelAllJobs() {
+    protected fun cancelAllJobs() {
         jobWithIds.forEach { avoidException { it.second.cancel() } }
         jobWithIds.clear()
     }

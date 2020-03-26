@@ -22,7 +22,6 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
-import java.net.MalformedURLException
 import java.net.URL
 import java.util.*
 
@@ -103,28 +102,31 @@ fun String?.normalizeUrl(): String {
 
     pieces?.let {
         for (piece in pieces) {
-            try {
-                val isURL = URL(piece)
-                val protocol = isURL.protocol
-                val host = isURL.host
-                var query: String? = isURL.query
-                var path = isURL.path
-                var questionMark = "?"
+            avoidException(
+                tryBlock = {
+                    val isURL = URL(piece)
+                    val protocol = isURL.protocol
+                    val host = isURL.host
+                    var query: String? = isURL.query
+                    var path = isURL.path
+                    var questionMark = "?"
 
-                if (path == "") {
-                    path = "/"
+                    if (path == "") {
+                        path = "/"
+                    }
+
+                    if (query == null) {
+                        query = ""
+                        questionMark = ""
+                    }
+
+                    val url = "$protocol://$host$path$questionMark$query"
+                    textParts.add(url)
+                },
+                exceptionBlock = {
+                    textParts.add(piece)
                 }
-
-                if (query == null) {
-                    query = ""
-                    questionMark = ""
-                }
-
-                val url = "$protocol://$host$path$questionMark$query"
-                textParts.add(url)
-            } catch (exception: MalformedURLException) {
-                textParts.add(piece)
-            }
+            )
         }
     }
 

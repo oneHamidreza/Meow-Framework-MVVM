@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/fragmentAlerts"
-        android:name="sample.ui.material.alert.AlertFragment"
+        android:name="sample.ui.material.alert.AlertsFragment"
         android:label="@string/fragment_alerts"
         tools:layout="@layout/fragment_alerts" />
 

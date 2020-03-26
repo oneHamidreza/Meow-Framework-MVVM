@@ -34,9 +34,9 @@ fun launchSilent(
     start: CoroutineStart = CoroutineStart.DEFAULT,
     block: suspend CoroutineScope.() -> Unit
 ): Job {
-    val coroutineScope = if (exceptionHandler != null)
+    val scope = if (exceptionHandler != null)
         CoroutineScope(context + job + exceptionHandler)
     else
         CoroutineScope(context + job)
-    return coroutineScope.launch(context, start, block)
+    return scope.launch(context, start, block)
 }

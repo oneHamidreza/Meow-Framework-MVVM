@@ -34,7 +34,7 @@ import sample.ui.content.ContentViewModel
  * @since   2020-03-22
  */
 
-class AlertFragment : BaseFragment<FragmentAlertsBinding, AlertsViewModel>() {
+class AlertsFragment : BaseFragment<FragmentAlertsBinding, AlertsViewModel>() {
 
     override fun layoutId() = R.layout.fragment_alerts
     override fun viewModelClass() = createClass<AlertsViewModel>()

@@ -39,13 +39,14 @@ object AppConfig {
     }
 
     object Library {
-        val mainDependencies = arrayOf(
+        val implementationItems = arrayOf(
+            // KOTLIN
+            kotlin("stdlib-jdk8", Versions.KOTLIN),
             // Core
             kotlinx("serialization-runtime", "0.14.0"),
             kotlinx("coroutines-core", "1.3.0-gradle"),
             // Material
             "com.google.android.material:material:1.1.0",
-            "androidx.recyclerview:recyclerview:1.2.0-alpha01",
             // Lifecycle
             "androidx.lifecycle:lifecycle-common-java8:2.2.0",
             "androidx.lifecycle:lifecycle-extensions:2.2.0",
@@ -70,10 +71,15 @@ object AppConfig {
             "androidx.navigation:navigation-fragment-ktx:2.2.1",
             "androidx.navigation:navigation-ui-ktx:2.2.1",
             // Glide
-            "com.github.bumptech.glide:glide:4.11.0"
+            "com.github.bumptech.glide:glide:4.11.0",
+            // GOOGLE PHONE NUMBER
+            "com.googlecode.libphonenumber:libphonenumber:8.10.5"
         )
 
-        val sampleDependencies = emptyArray<String>()
+        val kaptItems = arrayOf(
+            // MOSHI SERIALIZE
+            "com.squareup.moshi:moshi-kotlin-codegen:1.9.2"
+        )
 
     }
 
@@ -92,8 +98,7 @@ object AppConfig {
         const val SDK_COMPILE = 29
         const val SDK_MIN = 19
         const val SDK_TARGET = 29
-        const val KOTLIN = "1.3.70"
-        const val GLIDE = "4.11.0"
+        const val KOTLIN = "1.3.71"
     }
 
     fun generateVersionCode(): Int {
@@ -108,3 +113,6 @@ object AppConfig {
 
 fun kotlinx(module: String, version: String? = null): Any =
     "org.jetbrains.kotlinx:kotlinx-$module${version?.let { ":$version" } ?: ""}"
+
+fun kotlin(module: String, version: String? = null): Any =
+    "org.jetbrains.kotlin:kotlin-$module${version?.let { ":$version" } ?: ""}"

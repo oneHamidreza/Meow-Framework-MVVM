@@ -24,37 +24,26 @@ package meow.util
  * @since   2020-03-01
  */
 
-fun <T> T.print(m: String = "") = apply {
-    kotlin.io.print("$m ")
-    print(this)
-}
-
-fun <T> T.println(m: String = "") = apply {
-    kotlin.io.print("$m ")
-    println(this)
-}
-
 inline fun <reified T> javaClass() = T::class.java
 inline fun <reified T> createClass() = Class.forName(T::class.java.name) as Class<T>
 inline fun <reified T> newInstance() = T::class.java.newInstance()
 
-fun Any.setField(name: String, value: Any) {
+//todo @Modares
+inline fun <reified B, T> B.setField(name: String, value: T, useSuperClass: Boolean = false) =
     avoidException {
-        this.javaClass.getDeclaredField(name).apply {
+        val clazz = if (useSuperClass) B::class.javaClass.superclass else B::class.java
+        val field = clazz?.getDeclaredField(name)?.apply {
             isAccessible = true
-            set(this@setField, value)
         }
+        field?.set(this@setField, value)
+        value
     }
-}
 
-inline fun <reified B, T> Any.getField(name: String, useSuperClass: Boolean = false): T? =
-    avoidException(
-        tryBlock = {
-            val clazz = if (useSuperClass) B::class.javaClass.superclass else B::class.java
-            val filed = clazz?.getDeclaredField(name)?.apply {
-                isAccessible = true
-            }
-            (filed?.get(this@getField) as? T)
-        },
-        exceptionBlock = { null }
-    )
+inline fun <reified B, T> B.getField(name: String, useSuperClass: Boolean = false) =
+    avoidException {
+        val clazz = if (useSuperClass) B::class.javaClass.superclass else B::class.java
+        val filed = clazz?.getDeclaredField(name)?.apply {
+            isAccessible = true
+        }
+        (filed?.get(this@getField) as? T)
+    }

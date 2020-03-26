@@ -11,7 +11,6 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.*
 import android.os.Build
-import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.etebarian.meowframework.R
@@ -295,12 +294,3 @@ class MeowShapeDrawable {
 }
 
 fun Context.getDrawableCompat(res: Int) = ContextCompat.getDrawable(this, res)
-
-fun View?.changeBackgroundColor(color: Int) {
-    if (this == null)
-        return
-
-    val d = background ?: return
-    d.mutate()
-    d.setColorFilter(color, PorterDuff.Mode.SRC_IN)
-}

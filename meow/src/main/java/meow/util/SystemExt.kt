@@ -80,16 +80,6 @@ fun Context?.getIMEI(): String {
 
 fun MVVM<*, *>?.getIMEI() = this?.context().getIMEI()
 
-fun getModel(): String {
-    val manufacturer = Build.MANUFACTURER
-    val model = Build.MODEL ?: return "Unknown Device"
-    return if (model.startsWith(manufacturer)) {
-        model.capitalizeFirst()
-    } else {
-        manufacturer.capitalizeFirst() + " " + model
-    }
-}
-
 @SuppressLint("HardwareIds", "MissingPermission")
 fun Context?.getPhoneNumber(): String? {
     if (this == null)
@@ -140,8 +130,7 @@ fun Context?.getDisplaySize(): Point {
     if (this == null)
         return Point(0, 0)
 
-    return avoidException(
-        tryBlock = {
+    return avoidException {
             val wm = this.getSystemService(Context.WINDOW_SERVICE) as WindowManager
             val display = wm.defaultDisplay
             val p = Point()
@@ -152,8 +141,7 @@ fun Context?.getDisplaySize(): Point {
             p.y = realMetrics.heightPixels
 
             p
-        },
-        exceptionBlock = { Point() })!!
+    } ?: Point()
 }
 
 /**

@@ -148,26 +148,22 @@ fun Context?.createCurrency(d: Double?, dec: Int = 0): String {
     return createCurrency(BigDecimal(d ?: 0.0).toString(), dec)
 }
 
-fun BigDecimal.createPrice(): BigDecimal {
-    return setScale(2, BigDecimal.ROUND_HALF_EVEN)
-}
+fun BigDecimal.createPrice() = setScale(2, BigDecimal.ROUND_HALF_EVEN)
 
 fun String?.numToWord(): String {
     if (this == null)
         return ""
-    avoidException {
-        return toDoubleCurrency().numToWord().removeExtraSpaces()
-    }
-    return ""
+    return avoidException {
+        toDoubleCurrency().numToWord().removeExtraSpaces()
+    } ?: ""
 }
 
 fun Double?.numToWord(): String {
     if (this == null)
         return ""
-    avoidException {
+    return avoidException {
         return convert(BigDecimal(this).toDouble()).removeExtraSpaces()
-    }
-    return ""
+    } ?: ""
 }
 
 const val strAnd = " و "

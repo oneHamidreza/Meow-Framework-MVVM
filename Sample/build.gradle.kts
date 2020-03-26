@@ -8,7 +8,6 @@ import java.util.*
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("android.extensions")
     kotlin("kapt")
     id("kotlinx-serialization")
     id("androidx.navigation.safeargs.kotlin")
@@ -83,12 +82,12 @@ dependencies {
     implementation(project(":meow"))
 
     // MAIN DEPENDENCIES
-    Library.mainDependencies.forEach {
+    Library.implementationItems.forEach {
         implementation(it)
     }
 
     // EXCLUSIVE DEPENDENCIES
-    Library.sampleDependencies.forEach {
+    Library.kaptItems.forEach {
         implementation(it)
     }
 

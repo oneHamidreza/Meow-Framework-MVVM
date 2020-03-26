@@ -17,17 +17,10 @@
 package sample.ui.material.tablayout.child
 
 import android.os.Bundle
-import com.google.android.material.tabs.TabLayoutMediator
-import meow.util.*
-import meow.widget.decoration.MeowDividerDecoration
+import meow.util.createClass
 import sample.R
-import sample.data.Content
-import sample.databinding.FragmentAlertsBinding
-import sample.databinding.FragmentTablayoutBinding
 import sample.databinding.FragmentTablayoutChildBinding
 import sample.ui.base.BaseFragment
-import sample.ui.content.ContentAdapter
-import sample.ui.content.ContentViewModel
 
 /**
  * Material Tab Layout Child Fragment class.
@@ -41,7 +34,7 @@ class TabLayoutChildFragment :
     BaseFragment<FragmentTablayoutChildBinding, TabLayoutChildViewModel>() {
 
     companion object {
-        private val KEY_POS = "pos"
+        private const val KEY_POS = "pos"
 
         fun newInstance(pos: Int) = TabLayoutChildFragment().apply {
             arguments = Bundle().apply {

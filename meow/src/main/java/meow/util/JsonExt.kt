@@ -19,8 +19,11 @@ package meow.util
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okio.BufferedSource
+import java.lang.reflect.Type
+import kotlin.reflect.full.primaryConstructor
 
 /**
  * Extensions of Json Data.
@@ -57,14 +60,11 @@ inline fun <reified T : Any> T?.toJsonString(): String {
 
 inline fun <reified T : Any> List<T>?.toJsonString(): String {
     if (this == null) return "[]"
-    return try {
+    return avoidException {
         moshiBuilder
             .add(KotlinJsonAdapterFactory())
             .build().adapter(createClass<List<T>>()).toJson(this)
-    } catch (e: Exception) {
-        e.printStackTrace()
-        "[]"
-    }
+    } ?: "[]"
 }
 
 fun JsonReader.skipNameAndValue() {
@@ -80,20 +80,12 @@ inline fun JsonReader.readObject(block: JsonReader.() -> Unit) {
     endObject()
 }
 
-
 inline fun JsonReader.readArray(block: JsonReader.() -> Unit) {
     beginArray()
     while (hasNext()) {
         block()
     }
     endArray()
-}
-
-inline fun <reified T> JsonReader.safeNext() = avoidException {
-    when (createClass<T>().javaClass.name) {
-        "String" -> nextString() as? T
-        else -> newInstance()
-    }
 }
 
 fun JsonReader.selectName(vararg strings: String) = selectName(JsonReader.Options.of(*strings))
@@ -104,3 +96,23 @@ fun ofMoshi(factory: JsonAdapter.Factory? = null) =
             add(factory)
         add(KotlinJsonAdapterFactory())
     }.build()
+
+inline fun <reified T, reified JA : JsonAdapter<T>> ofMoshiUseAdapter() =
+    ofMoshi(ModelJsonFactory().get<T, JA>())
+
+class ModelJsonFactory {
+    inline fun <reified T, reified JA : JsonAdapter<T>> get() = object : JsonAdapter.Factory {
+        override fun create(
+            type: Type,
+            annotations: MutableSet<out Annotation>,
+            moshi: Moshi
+        ): JsonAdapter<*>? {
+            if (annotations.isNotEmpty()) return null
+            if (Types.getRawType(type) == createClass<T>()) {
+                val delegate = moshi.nextAdapter<T>(this, type, annotations)
+                return JA::class.primaryConstructor?.call(delegate)
+            }
+            return null
+        }
+    }
+}
