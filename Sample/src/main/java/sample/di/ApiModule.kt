@@ -17,7 +17,11 @@
 package sample.di
 
 import meow.controller
-import meow.core.api.*
+import meow.core.api.InterceptorBlock
+import meow.core.api.MeowApi
+import meow.core.api.MeowOauthToken
+import meow.core.api.addInterceptorBlocks
+import okhttp3.OkHttpClient
 import org.kodein.di.Kodein.Module
 import org.kodein.di.erased.bind
 import org.kodein.di.erased.instance
@@ -37,47 +41,45 @@ import sample.data.DataSource
  * @since   2020-03-06
  */
 
-val apiModule = Module("Network Module", false) {
+val apiModule = Module("Api Module", false) {
     bind() from provider {
         AppApi(
             app = instance(),
-            refreshToken = "refreshTokenValue"
+            dataSource = instance()
         )
     }
 }
 
-fun createOkHttpClient(api: AppApi, options: MeowApi.Options, dataSource: DataSource) =
-    api.app.getMeowClientBuilder().apply {
-        val isLogin = dataSource.isLogin()
-        val authorization = MeowApi.Authorization.SimpleToken(isLogin, "xxx")
-
-        val interceptorBlocks: List<InterceptorBlock> = listOf(
-            api.app.getCacheInterceptorBlock(options),
-            authorization.interceptorBlock,
-            { it.header("User-Agent", api.app.getUserAgent()) }
-        )
-        addInterceptorBlocks(interceptorBlocks)
-
-        authenticator(MeowApi.RefreshToken(api, authorization))
-
-    }.build()
-
 open class AppApi(
     open val app: App,
-    open var refreshToken: String? = null,
+    open val dataSource: DataSource,
     override var options: Options = Options(),
     override var baseUrl: String = BuildConfig.API_URL
 ) : MeowApi(baseUrl = baseUrl, options = options) {
 
-    init {
-        @Suppress("LeakingThis")
-        okHttpClient = createOkHttpClient(this, options, app.dataSource)
+    override fun getRefreshTokenResponse(): Response<MeowOauthToken>? {
+        val refreshToken = dataSource.fetchApiRefreshToken()
+        if (refreshToken.isEmpty()) return null
+
+        val request = MeowOauthToken.RequestRefreshToken(refreshToken, controller.meowSession)
+        return Response.success(createServiceByAdapter<Oauth>().refreshToken(request))
     }
 
-    override fun getRefreshTokenResponse(): Response<MeowOauthToken>? {
-        if (refreshToken == null) return null
-        val request = MeowOauthToken.RequestRefreshToken(refreshToken!!, controller.meowSession)
-        return Response.success(createServiceByAdapter<Oauth>().refreshToken(request))
+    override fun getOKHttpClientBuilder(): OkHttpClient.Builder {
+        return super.getOKHttpClientBuilder().apply {
+            val isLogin = dataSource.isLogin()
+            val authorization =
+                MeowApi.Authorization.SimpleToken(isLogin, dataSource.fetchApiToken())
+
+            val interceptorBlocks: List<InterceptorBlock> = listOf(
+                getCacheInterceptorBlock(app, options),
+                authorization.interceptorBlock,
+                { it.header("User-Agent", getDefaultUserAgent(app)) }
+            )
+            addInterceptorBlocks(interceptorBlocks)
+
+            authenticator(RefreshToken(this@AppApi, authorization))
+        }
     }
 
     interface Oauth {
@@ -90,7 +92,7 @@ open class AppApi(
 
 class TestAppApi(
     override var app: App,
-    override var refreshToken: String? = null,
+    override var dataSource: DataSource,
     override var options: Options = Options(),
-    override var baseUrl: String = "test-api.com"
-) : AppApi(app, refreshToken, options)
+    override var baseUrl: String = "test-api.yoururl.com"
+) : AppApi(app, dataSource, options)

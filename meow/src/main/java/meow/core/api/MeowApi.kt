@@ -16,10 +16,10 @@
 
 package meow.core.api
 
+import android.content.Context
 import android.webkit.WebSettings
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import meow.MeowApp
 import meow.controller
 import meow.util.avoidException
 import meow.util.hasNetwork
@@ -27,6 +27,7 @@ import meow.util.logD
 import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.io.File
 import java.util.concurrent.TimeUnit
 
 /**
@@ -42,40 +43,51 @@ typealias InterceptorBlock = (builder: Request.Builder) -> Unit
 
 val TAG = "MeowApi"
 
-fun MeowApp.getMeowClientBuilder() = OkHttpClient.Builder().apply {
-    connectTimeout(30, TimeUnit.SECONDS)
-    readTimeout(60, TimeUnit.SECONDS)
-    writeTimeout(60, TimeUnit.SECONDS)
-    cache(Cache(cacheDir, 10 * 1024 * 1024))
-    if (controller.isDebugMode)
-        addNetworkInterceptor(MeowLoggingInterceptor())
-}
-
-fun MeowApp.getUserAgent() =
-    WebSettings.getDefaultUserAgent(this).replace(Regex("[^A-Za-z0-9 ().,_/]"), "")
-
-fun MeowApp.getCacheInterceptorBlock(options: MeowApi.Options): InterceptorBlock = {
-    if (hasNetwork())
-        it.header("Cache-Control", "no-cache")
-    else if (options.isEnabledCache)
-        it.header(
-            "Cache-Control",
-            "public, only-if-cached, max-stale=$options.maxStateSecond"
-        )
-}
 
 abstract class MeowApi(
     open var baseUrl: String,
     open var options: Options = Options()
 ) {
-    lateinit var okHttpClient: OkHttpClient
 
-    fun createDefaultService(): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .client(okHttpClient)
-            .build()
+    open fun getConnectTimeout() = 30L
+    open fun getReadTimeout() = 60L
+    open fun getWriteTimeout() = 60L
+
+    open fun getOKHttpClientBuilder() = OkHttpClient.Builder().apply {
+        val cacheDir = options.cacheDir
+
+        connectTimeout(getConnectTimeout(), TimeUnit.SECONDS)
+        readTimeout(getReadTimeout(), TimeUnit.SECONDS)
+        writeTimeout(getWriteTimeout(), TimeUnit.SECONDS)
+
+        if (cacheDir != null)
+            cache(Cache(cacheDir, 10 * 1024 * 1024))
+
+        if (controller.isDebugMode)
+            addNetworkInterceptor(MeowLoggingInterceptor())
     }
+
+    open fun getDefaultUserAgent(context: Context) =
+        WebSettings.getDefaultUserAgent(context).replace(Regex("[^A-Za-z0-9 ().,_/]"), "")
+
+    open fun getCacheInterceptorBlock(
+        context: Context,
+        options: MeowApi.Options
+    ): InterceptorBlock =
+        {
+            if (context.hasNetwork())
+                it.header("Cache-Control", "no-cache")
+            else if (options.isEnabledCache)
+                it.header(
+                    "Cache-Control",
+                    "public, only-if-cached, max-stale=$options.maxStateSecond"
+                )
+        }
+
+    open fun createDefaultService() = Retrofit.Builder()
+        .baseUrl(baseUrl)
+        .client(getOKHttpClientBuilder().build())
+        .build()
 
     open fun getRefreshTokenResponse(): retrofit2.Response<MeowOauthToken>? {
         return null
@@ -159,6 +171,7 @@ abstract class MeowApi(
 
     class Options(
         var isEnabledCache: Boolean = false,
+        var cacheDir: File? = null,
         var cacheMaxStaleSecond: Long = 30 * 60L
     )
 

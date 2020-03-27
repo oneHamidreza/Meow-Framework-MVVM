@@ -22,8 +22,6 @@ import androidx.lifecycle.ViewModelProvider
 import meow.core.arch.MeowViewModelFactory
 import meow.util.ContextWrapperUtils
 import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.closestKodein
 import org.kodein.di.direct
 import org.kodein.di.erased.bind
 import org.kodein.di.erased.singleton
@@ -44,16 +42,13 @@ val meowModule = Kodein.Module("Base Module", false) {
     }
 }
 
-abstract class MeowApp : Application(), KodeinAware {
+abstract class MeowApp : Application() {
 
-    override val kodein by closestKodein()
-
-    open lateinit var controller: MeowController
-
-    open fun getLanguage(context: Context? = null) = controller.language
+    open fun getLanguage(context: Context?) = ""
 
     open fun getContextWrapper(context: Context?): Context? {
-        return ContextWrapperUtils.wrap(context, getLanguage(context))
+        val language = getLanguage(context)
+        return if (language.isEmpty()) context else ContextWrapperUtils.wrap(context, language)
     }
 
     override fun attachBaseContext(newBase: Context?) {

@@ -36,17 +36,10 @@
         <item name="textAppearanceCaption">@style/textAppearance.Caption</item>
         <item name="textAppearanceButton">@style/textAppearance.Button</item>
         <item name="textAppearanceOverline">@style/textAppearance.Overline</item>
-
-        <!--        &lt;!&ndash; Shape attributes &ndash;&gt;-->
-        <!--        <item name="shapeAppearanceSmallComponent">-->
-        <!--            @style/ShapeAppearance.MyApp.SmallComponent-->
-        <!--        </item>-->
-        <!--        <item name="shapeAppearanceMediumComponent">-->
-        <!--            @style/ShapeAppearance.MyApp.MediumComponent-->
-        <!--        </item>-->
-        <!--        <item name="shapeAppearanceLargeComponent">-->
-        <!--            @style/ShapeAppearance.MyApp.LargeComponent-->
-        <!--        </item>-->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
+        </item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.App.LargeComponent</item>
     </style>
 
     <style name="Toolbar" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
@@ -69,9 +62,5 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
     </style>
-
-    <!--    <style name="TabLayout" parent="Widget.MaterialComponents.TabLayout.PrimarySurface">-->
-    <!--        <item name="tabBackground">@{@color/primary}</item>-->
-    <!--    </style>-->
 
 </resources>

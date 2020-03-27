@@ -17,9 +17,6 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
 
-    <color name="error_primary">#b00020</color>
-    <color name="on_error_primary">#ffffff</color>
-
     <color name="ripple_default">#000</color>
     <color name="ripple_inverse">#fff</color>
     <color name="ripple_dim">#000</color>

@@ -16,11 +16,14 @@
 
 package meow
 
+import android.app.Application
 import android.content.res.ColorStateList
 import android.util.LayoutDirection
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.FragmentActivity
 import meow.core.api.MeowSession
+import meow.core.ui.MeowActivity
+import meow.core.ui.setStatusBarByTheme
 import meow.util.MeowCurrency
 import meow.util.getField
 import meow.util.isNightModeFromSettings
@@ -37,13 +40,9 @@ import meow.util.setField
 lateinit var controller: MeowController
 
 class MeowController(
-    var app: MeowApp,
     val meowSession: MeowSession = MeowSession()
 ) {
-
-    init {
-        controller = this
-    }
+    lateinit var app: Application
 
     var isDebugMode: Boolean = true
     var isLogTagNative: Boolean = true
@@ -103,7 +102,13 @@ class MeowController(
         activity.recreate()
     }
 
-    fun bindApp(app: MeowApp) {
+    fun updateTheme(activity: MeowActivity<*, *>, theme: Theme) {
+        this.theme = theme
+        activity.setStatusBarByTheme()
+    }
+
+    fun bindApp(app: Application) {
+        controller = this
         controller.app = app
         dpi = app.resources.displayMetrics.density
     }

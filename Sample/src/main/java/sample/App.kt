@@ -16,21 +16,18 @@
 
 package sample
 
+import android.content.Context
 import android.graphics.Color
 import meow.MeowApp
 import meow.MeowController
 import meow.meowModule
-import meow.util.logD
 import meow.util.toHexString
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.BuildConfig
 import org.kodein.di.android.x.androidXModule
 import org.kodein.di.direct
 import org.kodein.di.erased.bind
-import org.kodein.di.erased.instance
 import org.kodein.di.erased.singleton
-import sample.data.DataSource
 import sample.di.apiModule
 import sample.di.appModule
 import sample.di.mvvmModule
@@ -45,27 +42,9 @@ import sample.di.mvvmModule
 
 class App : MeowApp(), KodeinAware {
 
-    val dataSource: DataSource by instance()
-    override var controller = MeowController(this).apply {
-        onColorGet = {
-            logD(m = "zzz " + it.toHexString() + " : " + it.toHexString().toLowerCase())
-            when (it.toHexString().toLowerCase()) {//todo
-                "#1cb3c8" -> Color.RED
-                else -> it
-            }
-        }
-        language = "fa"
-        isDebugMode = BuildConfig.DEBUG
-        isLogTagNative = true
-        defaultTypefaceResId = R.font.iransans_mobile_regular
-        toastTypefaceResId = R.font.iransans_mobile_regular
-        isPersian = true
-    }
-
     override val kodein = Kodein.lazy {
         bind() from singleton { kodein.direct }
         bind() from singleton { this@App }
-        bind() from singleton { this@App.controller }
         import(androidXModule(this@App))
         import(meowModule)
         import(appModule)
@@ -73,9 +52,25 @@ class App : MeowApp(), KodeinAware {
         import(mvvmModule)
     }
 
+    override fun getLanguage(context: Context?) = "fa"
+
     override fun onCreate() {
         super.onCreate()
-        controller.bindApp(this)
+        MeowController().apply {
+            onColorGet = {
+                when (it.toHexString().toLowerCase()) {//todo
+                    "#1cb3c8" -> Color.RED
+                    else -> it
+                }
+            }
+            language = getLanguage(this@App)
+            isDebugMode = BuildConfig.DEBUG
+            isLogTagNative = true
+            defaultTypefaceResId = R.font.iransans_mobile_regular
+            toastTypefaceResId = R.font.iransans_mobile_regular
+            isPersian = true
+            theme = MeowController.Theme.DAY
+        }.bindApp(this)
     }
 
 }

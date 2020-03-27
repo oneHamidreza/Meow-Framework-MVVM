@@ -23,7 +23,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
-import meow.MeowApp
 import meow.core.arch.MeowViewModel
 import meow.util.PermissionUtils
 import meow.util.viewModel
@@ -31,7 +30,6 @@ import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.KodeinContext
 import org.kodein.di.android.x.closestKodein
-import org.kodein.di.erased.instance
 import org.kodein.di.erased.kcontext
 
 /**
@@ -54,8 +52,6 @@ abstract class MeowDialogFragment<B : ViewDataBinding, VM : MeowViewModel> : Dia
     override fun context() = requireContext()
     override fun activity() = requireActivity()
     override fun contentView() = view!!
-
-    val app: MeowApp by instance()
 
     override lateinit var binding: B
     val viewModel: VM by viewModel(viewModelClass())

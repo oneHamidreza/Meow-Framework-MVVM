@@ -34,13 +34,6 @@
 
             </com.google.android.material.appbar.AppBarLayout>
 
-            <View
-                android:id="@+id/view_test"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_margin="24dp"
-                android:background="@color/primary" />
-
             <fragment
                 android:id="@+id/navHost"
                 android:name="androidx.navigation.fragment.NavHostFragment"
@@ -56,7 +49,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            app:headerLayout="@layout/nav_header"
             app:itemIconTint="@drawable/drawer_item_color"
             app:itemTextColor="@drawable/drawer_item_color"
             app:menu="@menu/drawer_actions" />

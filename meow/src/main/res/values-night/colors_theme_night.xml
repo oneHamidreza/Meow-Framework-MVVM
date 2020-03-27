@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="error_primary">#CF6679</color>
+    <color name="on_error_primary">#ffffff</color>
+
+    <color name="status_bar">@color/background</color>
+
     <color name="background">#121212</color>
     <color name="on_background">#ffffff</color>
     <color name="surface">#121212</color>

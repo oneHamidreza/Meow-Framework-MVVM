@@ -12,7 +12,6 @@
     <color name="on_secondary">#ffffff</color>
     <color name="drawer_item_enabled">@color/secondary</color>
     <color name="drawer_item_disabled">#757575</color>
-    <color name="status_bar">@color/white</color>
 
     <!-- TextView -->
     <color name="text_on_background_high">@color/material_on_background_emphasis_high_type</color>

@@ -17,17 +17,16 @@
 package meow.core.ui
 
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import meow.controller
 import meow.core.arch.MeowViewModel
-import meow.util.ContextWrapperUtils
-import meow.util.KeyboardUtils
-import meow.util.PermissionUtils
-import meow.util.viewModel
+import meow.util.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 
@@ -63,6 +62,7 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : AppCompat
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setStatusBarByTheme()
         bindContentView(layoutId())
         initViewModel()
         observeViewModel()
@@ -99,6 +99,15 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : AppCompat
         super.attachBaseContext(wrapContext)
     }
 
+    override fun applyOverrideConfiguration(overrideConfiguration: Configuration?) {
+        overrideConfiguration?.let {
+            val uiMode = it.uiMode
+            it.setTo(baseContext.resources.configuration)
+            it.uiMode = uiMode
+        }
+        super.applyOverrideConfiguration(overrideConfiguration)
+    }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -113,4 +122,12 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : AppCompat
             keyboardUtils.disable()
         super.onDestroy()
     }
+}
+
+fun MeowActivity<*, *>.setStatusBarByTheme() {
+    Log.d("meow", "" + controller.isNightMode)
+    if (controller.isNightMode)
+        setStatusBarDarkIcon()
+    else
+        setStatusBarLightIcon()
 }

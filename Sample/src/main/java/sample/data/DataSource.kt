@@ -48,7 +48,13 @@ class DataSource(override var app: App) : DataSourceInterface, KodeinAware {
     suspend fun getUsers() =
         api.createServiceByAdapter<User.Api>().getUsers()
 
-    fun isLogin() = false
+    fun isLogin() = fetchApiToken().isNotEmpty()
     fun fetchUser() = spMain.get("user", User())
     fun saveUser(it: User) = spMain.put("user", it)
+
+    fun fetchApiToken() = spMain.get("apiToken", "")
+    fun saveApiToken(it: String) = spMain.put("apiToken", it)
+
+    fun fetchApiRefreshToken() = spMain.get("apiRefreshToken", "")
+    fun saveApiRefreshToken(it: String) = spMain.put("apiRefreshToken", it)
 }

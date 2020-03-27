@@ -27,10 +27,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import meow.util.createClass
 import meow.util.getColorCompat
-import meow.util.setStatusBarDarkIcon
 import sample.R
 import sample.databinding.ActivityMainBinding
 import sample.ui.base.BaseActivity
+import sample.widget.NavHeaderView
 
 /**
  * [Main] Activity class.
@@ -52,7 +52,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         super.onCreate(savedInstanceState)
         setSupportActionBar(binding.toolbar)
         setupNavigation()
-        setStatusBarDarkIcon()
 
 //        AlertDialog.Builder(this).setTitle("سلام").setView(R.layout.dialog_custom).show()
 
@@ -94,6 +93,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
         binding.apply {
             drawerLayout.setStatusBarBackground(ColorDrawable(getColorCompat(R.color.status_bar)))
+            navigationView.addHeaderView(NavHeaderView(context()))
             navigationView.setupWithNavController(navController)
         }
     }
