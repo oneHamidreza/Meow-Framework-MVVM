@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="primary_variant">#000</color>
+
     <!-- TextView -->
     <color name="text_on_background_high">@color/material_on_background_emphasis_high_type</color>
     <color name="text_on_background_medium">@color/material_on_background_emphasis_medium</color>

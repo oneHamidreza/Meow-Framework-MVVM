@@ -33,7 +33,13 @@ import meow.core.ui.MeowActivity
  */
 
 @TargetApi(Build.VERSION_CODES.M)
-fun MeowActivity<*, *>.updateStatusBarByTheme(isDarkIcon: Boolean) = avoidException {
+fun MeowActivity<*, *>.updateStatusBarByTheme(
+    isDarkIcon: Boolean,
+    checkIsEnabled: Boolean = false
+) = avoidException {
+    if (!isEnabledAutoStatusBarColorChange && checkIsEnabled)
+        return@avoidException
+
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         window.statusBarColor = getColorCompat(R.color.status_bar)
         var flags = window.decorView.systemUiVisibility
@@ -65,20 +71,20 @@ private fun MeowActivity<*, *>.setMIUIStatusBarDarkIcon(darkIcon: Boolean) = avo
 
 private fun MeowActivity<*, *>.setMeizuStatusBarDarkIcon(darkIcon: Boolean) =
     avoidException(false) {
-    val lp = window.attributes
-    val darkFlag =
-        WindowManager.LayoutParams::class.java.getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON")
-    val meizuFlags =
-        WindowManager.LayoutParams::class.java.getDeclaredField("meizuFlags")
-    darkFlag.isAccessible = true
-    meizuFlags.isAccessible = true
-    val bit = darkFlag.getInt(null)
-    var value = meizuFlags.getInt(lp)
-    value = if (darkIcon) {
-        value or bit
-    } else {
-        value and bit.inv()
+        val lp = window.attributes
+        val darkFlag =
+            WindowManager.LayoutParams::class.java.getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON")
+        val meizuFlags =
+            WindowManager.LayoutParams::class.java.getDeclaredField("meizuFlags")
+        darkFlag.isAccessible = true
+        meizuFlags.isAccessible = true
+        val bit = darkFlag.getInt(null)
+        var value = meizuFlags.getInt(lp)
+        value = if (darkIcon) {
+            value or bit
+        } else {
+            value and bit.inv()
+        }
+        meizuFlags.setInt(lp, value)
+        window.attributes = lp
     }
-    meizuFlags.setInt(lp, value)
-    window.attributes = lp
-}

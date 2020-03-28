@@ -22,7 +22,6 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.akexorcist.localizationactivity.ui.LocalizationActivity
-import meow.MeowController
 import meow.controller
 import meow.core.arch.MeowViewModel
 import meow.util.KeyboardUtils
@@ -43,8 +42,9 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : Localizat
     MVVM<B, VM>,
     KodeinAware {
 
-    open var isEnabledKeyboardUtils = true
-    open var isEnabledContextWrapper = true
+    var isEnabledKeyboardUtils = true
+    var isEnabledContextWrapper = true
+    var isEnabledAutoStatusBarColorChange = false
 
     var isShowingKeyboard = false
 
@@ -91,14 +91,13 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : Localizat
         binding.lifecycleOwner = this
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        val theme = when (newConfig.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
-            Configuration.UI_MODE_NIGHT_YES -> MeowController.Theme.NIGHT
-            Configuration.UI_MODE_NIGHT_NO -> MeowController.Theme.DAY
-            else -> null
+    override fun applyOverrideConfiguration(overrideConfiguration: Configuration?) {
+        overrideConfiguration?.let {
+            val uiMode = it.uiMode
+            it.setTo(baseContext.resources.configuration)
+            it.uiMode = uiMode
         }
-        controller.updateTheme(this, theme, true)
+        super.applyOverrideConfiguration(overrideConfiguration)
     }
 
     override fun onRequestPermissionsResult(

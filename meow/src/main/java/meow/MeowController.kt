@@ -23,7 +23,10 @@ import android.util.LayoutDirection
 import androidx.appcompat.app.AppCompatDelegate
 import meow.core.api.MeowSession
 import meow.core.ui.MeowActivity
-import meow.util.*
+import meow.util.MeowCurrency
+import meow.util.getField
+import meow.util.setField
+import meow.util.updateStatusBarByTheme
 
 /**
  * 🐈 This CAT can control configurations and UI properties in one Application. Just trust it.
@@ -68,7 +71,6 @@ class MeowController(
     var isForceFontPadding: Boolean = false
     var isPersian: Boolean = false
     var changeColor: Boolean = false
-    var forceNightMode: Boolean = false
 
     var theme = Theme.DAY
 
@@ -111,8 +113,7 @@ class MeowController(
             activity.resources.configuration.uiMode = uiMode
             activity.recreate()
         }
-        logD(m = "isNightMode : $isNightMode")
-        activity.updateStatusBarByTheme(!isNightMode)
+        activity.updateStatusBarByTheme(!isNightMode, checkIsEnabled = true)
     }
 
     fun bindApp(app: Application) {
