@@ -49,7 +49,7 @@ fun MeowActivity<*, *>.updateStatusBarByTheme(isDarkIcon: Boolean) = avoidExcept
     setMeizuStatusBarDarkIcon(isDarkIcon)
 }
 
-private fun MeowActivity<*, *>.setMIUIStatusBarDarkIcon(darkIcon: Boolean) = avoidException {
+private fun MeowActivity<*, *>.setMIUIStatusBarDarkIcon(darkIcon: Boolean) = avoidException(false) {
     val clazz: Class<out Window?> = window.javaClass
     val layoutParams = Class.forName("android.view.MiuiWindowManager\$LayoutParams")
     val field =
@@ -63,7 +63,8 @@ private fun MeowActivity<*, *>.setMIUIStatusBarDarkIcon(darkIcon: Boolean) = avo
     extraFlagField.invoke(window, if (darkIcon) darkModeFlag else 0, darkModeFlag)
 }
 
-private fun MeowActivity<*, *>.setMeizuStatusBarDarkIcon(darkIcon: Boolean) = avoidException {
+private fun MeowActivity<*, *>.setMeizuStatusBarDarkIcon(darkIcon: Boolean) =
+    avoidException(false) {
     val lp = window.attributes
     val darkFlag =
         WindowManager.LayoutParams::class.java.getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON")

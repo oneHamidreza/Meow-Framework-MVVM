@@ -23,10 +23,7 @@ import android.util.LayoutDirection
 import androidx.appcompat.app.AppCompatDelegate
 import meow.core.api.MeowSession
 import meow.core.ui.MeowActivity
-import meow.util.MeowCurrency
-import meow.util.getField
-import meow.util.setField
-import meow.util.updateStatusBarByTheme
+import meow.util.*
 
 /**
  * 🐈 This CAT can control configurations and UI properties in one Application. Just trust it.
@@ -74,15 +71,6 @@ class MeowController(
     var forceNightMode: Boolean = false
 
     var theme = Theme.DAY
-        set(value) {
-            field = value
-            val nightMode = when (value) {
-                Theme.DAY -> AppCompatDelegate.MODE_NIGHT_NO
-                Theme.NIGHT -> AppCompatDelegate.MODE_NIGHT_YES
-            }
-            if (nightMode != null)
-                AppCompatDelegate.setDefaultNightMode(nightMode)
-        }
 
     val isNightMode
         get() = theme == Theme.NIGHT
@@ -97,20 +85,34 @@ class MeowController(
     fun updateLanguage(activity: MeowActivity<*, *>, language: String) {
         this.language = language
         activity.setLanguage(language)
-//        Locale.setDefault(Locale(language))
-//        activity.intent.putExtra("activity_locale_changed", true)
-//        activity.recreate()
     }
 
-    fun updateTheme(activity: MeowActivity<*, *>, theme: Theme) {
-        this.theme = theme
-        val uiMode = when (theme) {
-            Theme.DAY -> Configuration.UI_MODE_NIGHT_NO
-            Theme.NIGHT -> Configuration.UI_MODE_NIGHT_YES
+    fun updateTheme(
+        activity: MeowActivity<*, *>,
+        theme: Theme? = null,
+        updateConfig: Boolean = true
+    ) {
+        if (this.theme == theme)
+            return
+
+        this.theme = theme ?: controller.theme
+
+        val nightMode = when (this.theme) {
+            Theme.DAY -> AppCompatDelegate.MODE_NIGHT_NO
+            Theme.NIGHT -> AppCompatDelegate.MODE_NIGHT_YES
         }
-        activity.resources().configuration.uiMode = uiMode
-        activity.recreate()
-        activity.updateStatusBarByTheme(!controller.isNightMode)
+        AppCompatDelegate.setDefaultNightMode(nightMode)
+
+        if (updateConfig) {
+            val uiMode = when (this.theme) {
+                Theme.DAY -> Configuration.UI_MODE_NIGHT_NO
+                Theme.NIGHT -> Configuration.UI_MODE_NIGHT_YES
+            }
+            activity.resources.configuration.uiMode = uiMode
+            activity.recreate()
+        }
+        logD(m = "isNightMode : $isNightMode")
+        activity.updateStatusBarByTheme(!isNightMode)
     }
 
     fun bindApp(app: Application) {

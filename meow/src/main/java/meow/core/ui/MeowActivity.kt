@@ -22,6 +22,7 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.akexorcist.localizationactivity.ui.LocalizationActivity
+import meow.MeowController
 import meow.controller
 import meow.core.arch.MeowViewModel
 import meow.util.KeyboardUtils
@@ -62,12 +63,7 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : Localizat
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        if (savedInstanceState == null){
-//            controller.updateLanguage(this, controller.language)
-//        }
-//        controller.updateTheme(this, controller.theme)\
-        controller.theme = controller.theme
-
+        controller.updateTheme(this, updateConfig = false)
         bindContentView(layoutId())
         initViewModel()
         observeViewModel()
@@ -95,22 +91,14 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : Localizat
         binding.lifecycleOwner = this
     }
 
-    override fun applyOverrideConfiguration(overrideConfiguration: Configuration?) {
-        overrideConfiguration?.let {
-            val uiMode = it.uiMode
-            it.setTo(baseContext.resources.configuration)
-            it.uiMode = uiMode
-        }
-        super.applyOverrideConfiguration(overrideConfiguration)
-    }
-
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-//        window.decorView.safePost(5000) {          controller.theme = when (newConfig.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
-//            Configuration.UI_MODE_NIGHT_YES->MeowController.Theme.NIGHT
-//            else ->MeowController.Theme.DAY
-//        }}
-
+        val theme = when (newConfig.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+            Configuration.UI_MODE_NIGHT_YES -> MeowController.Theme.NIGHT
+            Configuration.UI_MODE_NIGHT_NO -> MeowController.Theme.DAY
+            else -> null
+        }
+        controller.updateTheme(this, theme, true)
     }
 
     override fun onRequestPermissionsResult(

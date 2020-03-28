@@ -30,14 +30,13 @@ import sample.R
 import sample.databinding.NavHeaderViewBinding
 
 /**
- * Meow Progress Bar class.
+ * Navigation Header View class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-23
+ * @since   2020-03-28
  */
 
-@Suppress("unused")
 class NavHeaderView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -59,13 +58,14 @@ class NavHeaderView @JvmOverloads constructor(
         binding.swNavTheme.apply {
             isChecked = controller.isNightMode
             setOnCheckedChangeListener { _, isChecked ->
-                controller.theme =
+                controller.updateTheme(
+                    context as MeowActivity<*, *>,
                     if (isChecked) MeowController.Theme.NIGHT else MeowController.Theme.DAY
+                )
             }
         }
 
         binding.btChangeLanguage.setOnClickListener {
-            //todo in recyclerviews not work with resources bug in material component
             controller.updateLanguage(
                 context as MeowActivity<*, *>,
                 if (controller.language == "en") "fa" else "en"
