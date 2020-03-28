@@ -19,13 +19,10 @@ package sample.ui.main
 import android.os.Bundle
 import android.view.Menu
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import meow.util.createClass
-import meow.util.getColorCompat
 import sample.R
 import sample.databinding.ActivityMainBinding
 import sample.ui.base.BaseActivity
@@ -57,26 +54,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         setupNavigation()
 
 //        AlertDialog.Builder(this).setTitle("سلام").setView(R.layout.dialog_custom).show()
-
-//        fv.setOnSubmitClickListener {
-//            Log.d("testText", "Text is : ${et.text.toString()}")
-//            Toast.makeText(this, et.text.toString(), Toast.LENGTH_LONG).show()
-//        }
-//
-//        et.addTextChangedListener(object : TextWatcher {
-//            override fun afterTextChanged(s: Editable?) {
-//            }
-//
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//            }
-//
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//                if (et.text!!.length > et.counterMaxLength)
-//                    et.error = "Text is longer than allowed limit"
-//                else
-//                    et.isErrorEnabled = false
-//            }
-//        })
 
 //        binding.viewTest.setBackgroundColor(getColorCompat(R.color.primary))
     }

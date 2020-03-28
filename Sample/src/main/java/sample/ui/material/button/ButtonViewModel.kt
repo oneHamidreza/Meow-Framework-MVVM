@@ -14,19 +14,17 @@
  * limitations under the License.
  */
 
-package sample.ui.test
+package sample.ui.material.button
 
+import android.app.Application
 import meow.core.arch.MeowViewModel
-import sample.App
 
 /**
- * [Test] View Model class.
+ * Material Alert View Model class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-10
+ * @since   2020-03-22
  */
 
-class TestViewModel(
-    override val app: App
-) : MeowViewModel(app)
+class ButtonViewModel(app: Application) : MeowViewModel(app)

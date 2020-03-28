@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="sample.ui.material.form.FormViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    isPersianNumber="@{true}"
+                    prefixText="@{`*`}"
+                    suffixText="@{`:`}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/iran_sans_bold"
+                    android:gravity="center"
+                    android:text="Hello World"
+                    android:textColor="@{@color/black}" />
+
+                <meow.widget.MeowFormView
+                    android:id="@+id/fv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:resetForm="true">
+
+                    <meow.widget.MeowTextField
+                        android:id="@+id/et"
+                        style="@style/Meow.TextField.Form.Filled.Dense"
+                        android:hint="شماره موبایل"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="10"
+                        app:errorEnabled="true"
+                        app:inputType="phone"
+                        app:startIconDrawable="@drawable/ic_call"
+                        app:validateType="mobile" />
+
+                    <meow.widget.MeowTextField
+                        android:id="@+id/et2"
+                        style="@style/Meow.TextField.Form.Filled"
+                        android:hint="ایمیل"
+                        app:errorEnabled="true"
+                        app:inputType="textEmailAddress"
+                        app:startIconDrawable="@drawable/ic_android"
+                        app:validateType="email" />
+
+                    <meow.widget.MeowTextField
+                        android:id="@+id/et3"
+                        style="@style/Meow.TextField.Form.Outlined"
+                        android:hint="نام و نام‌‌‌‌خانوادگی"
+                        app:errorEnabled="true"
+                        app:inputType="text"
+                        app:startIconDrawable="@drawable/ic_android"
+                        app:validateType="empty" />
+
+                    <meow.widget.MeowTextField
+                        android:id="@+id/et4"
+                        style="@style/Meow.TextField.Form.Outlined.Dense"
+                        android:hint="آدرس"
+                        app:errorEnabled="true"
+                        app:inputType="textMultiLine"
+                        app:startIconDrawable="@drawable/ic_call"
+                        app:validateType="optional" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/bt"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ثبت" />
+
+                </meow.widget.MeowFormView>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

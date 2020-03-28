@@ -103,6 +103,7 @@ class MeowController(
             Theme.DAY -> AppCompatDelegate.MODE_NIGHT_NO
             Theme.NIGHT -> AppCompatDelegate.MODE_NIGHT_YES
         }
+
         AppCompatDelegate.setDefaultNightMode(nightMode)
 
         if (updateConfig) {

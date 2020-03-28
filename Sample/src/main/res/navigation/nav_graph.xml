@@ -7,6 +7,18 @@
     app:startDestination="@id/fragmentCard">
 
     <action
+        android:id="@+id/actionToForm"
+        app:destination="@id/fragmentForm" />
+
+    <action
+        android:id="@+id/actionToButton"
+        app:destination="@id/fragmentButton" />
+
+    <action
+        android:id="@+id/actionToImageview"
+        app:destination="@id/fragmentImageview" />
+
+    <action
         android:id="@+id/actionToAlerts"
         app:destination="@id/fragmentAlerts" />
 
@@ -47,6 +59,24 @@
         android:name="sample.ui.material.tablayout.TabLayoutFragment"
         android:label="@string/fragment_tablayout"
         tools:layout="@layout/fragment_tablayout" />
+
+    <fragment
+        android:id="@+id/fragmentForm"
+        android:name="sample.ui.material.form.FormFragment"
+        android:label="@string/fragment_form"
+        tools:layout="@layout/fragment_form" />
+
+    <fragment
+        android:id="@+id/fragmentButton"
+        android:name="sample.ui.material.button.ButtonFragment"
+        android:label="@string/fragment_button"
+        tools:layout="@layout/fragment_button" />
+
+    <fragment
+        android:id="@+id/fragmentImageview"
+        android:name="sample.ui.material.imageview.ImageviewFragment"
+        android:label="@string/fragment_imageview"
+        tools:layout="@layout/fragment_imageview" />
 
     <!--    <fragment-->
     <!--        android:id="@+id/fragmentMenu"-->

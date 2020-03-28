@@ -37,13 +37,12 @@ import meow.util.setAttributesFromXml
  * @since   2020-03-08
  */
 
-open class MeowFormView(context: Context, var attrs: AttributeSet? = null) :
+open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
     LinearLayout(context, attrs) {
 
     private var etList = listOf<MeowTextField>()
     private var isResetForm: Boolean = false
-    private var isError = false
-
+    private var checkList = ArrayList<MeowTextField>()
 
     init {
         setAttributesFromXml(attrs, R.styleable.MeowFormView) {
@@ -60,14 +59,15 @@ open class MeowFormView(context: Context, var attrs: AttributeSet? = null) :
         etList.forEach { childE ->
             checkWithTextFieldType(childE)
         }
-        if (!isError) {
+        if (checkList.distinct().size == etList.size) {
             listener()
+            checkList.clear()
             if (isResetForm)
                 resetForm()
         }
     }
 
-    fun resetForm() {
+    private fun resetForm() {
         etList.forEach {
             it.text?.clear()
             it.isErrorEnabled = false
@@ -76,8 +76,7 @@ open class MeowFormView(context: Context, var attrs: AttributeSet? = null) :
 
     private fun checkWithTextFieldType(textField: MeowTextField) {
         when (textField.validateType) {
-            MeowTextField.VALIDATE_TYPE_DEFAULT -> {
-            }
+            MeowTextField.VALIDATE_TYPE_DEFAULT -> checkList.add(textField)
             MeowTextField.VALIDATE_TYPE_EMPTY -> emptyValidator(textField)
             MeowTextField.VALIDATE_TYPE_MOBILE -> mobileValidator(textField)
             MeowTextField.VALIDATE_TYPE_EMAIL -> emailValidator(textField)
@@ -88,10 +87,9 @@ open class MeowFormView(context: Context, var attrs: AttributeSet? = null) :
         val text = textField.text?.trim()
         if (text.isNullOrEmpty()) {
             textField.error = textField.errorEmpty
-            isError = true
         } else {
-            isError = false
             textField.isErrorEnabled = false
+            checkList.add(textField)
         }
     }
 
@@ -99,15 +97,13 @@ open class MeowFormView(context: Context, var attrs: AttributeSet? = null) :
         val text = textField.text?.trim()
         if (text.isNullOrEmpty()) {
             textField.error = textField.errorEmpty
-            isError = true
         } else {
             avoidException {
                 if (!isValidPhoneCustom(text.toString())) {
                     textField.error = textField.errorMobile
-                    isError = true
                 } else {
-                    isError = false
                     textField.isErrorEnabled = false
+                    checkList.add(textField)
                 }
             }
         }
@@ -117,15 +113,13 @@ open class MeowFormView(context: Context, var attrs: AttributeSet? = null) :
         val text = textField.text?.trim()
         if (text.isNullOrEmpty()) {
             textField.error = textField.errorEmpty
-            isError = true
         } else {
             avoidException {
                 if (!text.toString().isValidEmail()) {
                     textField.error = textField.errorEmail
-                    isError = true
                 } else {
-                    isError = false
                     textField.isErrorEnabled = false
+                    checkList.add(textField)
                 }
             }
         }

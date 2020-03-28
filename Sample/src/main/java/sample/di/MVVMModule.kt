@@ -27,11 +27,13 @@ import sample.ui.content.ContentViewModel
 import sample.ui.dialog.CustomDialogViewModel
 import sample.ui.main.MainViewModel
 import sample.ui.material.alert.AlertsViewModel
+import sample.ui.material.button.ButtonViewModel
 import sample.ui.material.card.CardViewModel
+import sample.ui.material.form.FormViewModel
+import sample.ui.material.imageview.ImageviewViewModel
 import sample.ui.material.tablayout.TabLayoutViewModel
 import sample.ui.material.tablayout.child.TabLayoutChildViewModel
 import sample.ui.menu.MenuViewModel
-import sample.ui.test.TestViewModel
 import sample.ui.user.detail.UserDetailViewModel
 import sample.ui.user.index.UserIndexViewModel
 
@@ -102,8 +104,18 @@ val mvvmModule = Module("MVVM Module", false) {
             kodein.direct.instance()
         )
     }
-    bindAutoTag<TestViewModel>() with singleton {
-        TestViewModel(
+    bindAutoTag<FormViewModel>() with singleton {
+        FormViewModel(
+            kodein.direct.instance()
+        )
+    }
+    bindAutoTag<ButtonViewModel>() with singleton {
+        ButtonViewModel(
+            kodein.direct.instance()
+        )
+    }
+    bindAutoTag<ImageviewViewModel>() with singleton {
+        ImageviewViewModel(
             kodein.direct.instance()
         )
     }

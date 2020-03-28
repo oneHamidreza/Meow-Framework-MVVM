@@ -8,4 +8,22 @@
         app:showAsAction="always"
         android:title="@string/fragment_alerts" />
 
+    <item
+        android:id="@id/fragmentForm"
+        android:icon="@drawable/ic_android"
+        app:showAsAction="always"
+        android:title="@string/fragment_form" />
+
+    <item
+        android:id="@id/fragmentButton"
+        android:icon="@drawable/ic_android"
+        app:showAsAction="always"
+        android:title="@string/fragment_button" />
+
+    <item
+        android:id="@id/fragmentImageview"
+        android:icon="@drawable/ic_android"
+        android:title="@string/fragment_imageview"
+        app:showAsAction="always" />
+
 </menu>
