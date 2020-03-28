@@ -17,9 +17,8 @@
 package sample.ui.material.alert
 
 import android.app.Application
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.MutableLiveData
 import meow.core.arch.MeowViewModel
+import meow.core.arch.SingleLiveData
 import meow.util.getStringArray
 import sample.R
 import sample.data.Content
@@ -35,7 +34,7 @@ import sample.data.Content
 class AlertsViewModel(app: Application) :
     MeowViewModel(app) { //todo @Ali find way for create this class automatically
 
-    val listLiveData = MutableLiveData<List<Content>>() //todo @Hamid search single vs normal
+    val listLiveData = SingleLiveData<List<Content>>() //todo @Hamid search single vs normal
 
     fun fillList() {
         val actions = arrayOf(

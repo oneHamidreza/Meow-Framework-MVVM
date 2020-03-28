@@ -21,8 +21,8 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:contentPadding="16dp"
-                android:layout_margin="24dp">
+                android:layout_margin="16dp"
+                app:contentPadding="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -30,19 +30,81 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="8dp"
                         android:text="@string/card_simple_title"
                         android:textAppearance="@style/textAppearance.Subtitle1"
                         android:textColor="@color/text_on_surface_high" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="8dp"
                         android:text="@string/card_simple_desc"
                         android:textAppearance="@style/textAppearance.Body2"
                         android:textColor="@color/text_on_surface_medium" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contentPadding="8dp"
+                android:layout_margin="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/card_with_action_title"
+                        android:textAppearance="@style/textAppearance.Subtitle1"
+                        android:textColor="@color/text_on_surface_high" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/card_with_action_desc"
+                        android:textAppearance="@style/textAppearance.Body2"
+                        android:textColor="@color/text_on_surface_medium" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/card_with_action_dismiss"
+                            android:textColor="@color/text_on_surface_medium" />
+
+                        <Button
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/card_with_action_save"
+                            android:textColor="@color/primary" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 

@@ -17,6 +17,7 @@
 package sample.ui.material.alert
 
 import android.os.Bundle
+import android.view.View
 import meow.util.*
 import meow.widget.decoration.MeowDividerDecoration
 import sample.R
@@ -41,8 +42,8 @@ class AlertsFragment : BaseFragment<FragmentAlertsBinding, AlertsViewModel>() {
 
     private val contentViewModel by viewModel(createClass<ContentViewModel>())
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         viewModel.fillList()
     }

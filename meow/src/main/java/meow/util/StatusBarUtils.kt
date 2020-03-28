@@ -17,12 +17,11 @@
 package meow.util
 
 import android.annotation.TargetApi
-import android.app.Activity
-import android.graphics.Color
 import android.os.Build
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import com.etebarian.meowframework.R
 import meow.core.ui.MeowActivity
 
 /**
@@ -34,35 +33,23 @@ import meow.core.ui.MeowActivity
  */
 
 @TargetApi(Build.VERSION_CODES.M)
-fun MeowActivity<*, *>.setStatusBarDarkIcon() = avoidException {
-    setMIUIStatusBarDarkIcon(true)
-    setMeizuStatusBarDarkIcon(true)
+fun MeowActivity<*, *>.updateStatusBarByTheme(isDarkIcon: Boolean) = avoidException {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        window.decorView.systemUiVisibility =
-            View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-    }
-    if (Build.VERSION.SDK_INT >= 19) {
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        if (Build.VERSION.SDK_INT >= 21) {
-            if (Build.VERSION.SDK_INT > 22) {
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            }
-            window.statusBarColor = Color.TRANSPARENT
+        window.statusBarColor = getColorCompat(R.color.status_bar)
+        var flags = window.decorView.systemUiVisibility
+        flags = if (isDarkIcon) {
+            flags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        } else {
+            flags and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
+        window.decorView.systemUiVisibility = flags
     }
+
+    setMIUIStatusBarDarkIcon(isDarkIcon)
+    setMeizuStatusBarDarkIcon(isDarkIcon)
 }
 
-@TargetApi(Build.VERSION_CODES.M)
-fun MeowActivity<*, *>.setStatusBarLightIcon() = avoidException {
-    setMIUIStatusBarDarkIcon(false)
-    setMeizuStatusBarDarkIcon(false)
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-    }
-}
-
-private fun Activity.setMIUIStatusBarDarkIcon(darkIcon: Boolean) = avoidException {
+private fun MeowActivity<*, *>.setMIUIStatusBarDarkIcon(darkIcon: Boolean) = avoidException {
     val clazz: Class<out Window?> = window.javaClass
     val layoutParams = Class.forName("android.view.MiuiWindowManager\$LayoutParams")
     val field =
@@ -76,7 +63,7 @@ private fun Activity.setMIUIStatusBarDarkIcon(darkIcon: Boolean) = avoidExceptio
     extraFlagField.invoke(window, if (darkIcon) darkModeFlag else 0, darkModeFlag)
 }
 
-private fun Activity.setMeizuStatusBarDarkIcon(darkIcon: Boolean) = avoidException {
+private fun MeowActivity<*, *>.setMeizuStatusBarDarkIcon(darkIcon: Boolean) = avoidException {
     val lp = window.attributes
     val darkFlag =
         WindowManager.LayoutParams::class.java.getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON")

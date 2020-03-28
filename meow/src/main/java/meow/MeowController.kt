@@ -20,14 +20,12 @@ import android.app.Application
 import android.content.res.ColorStateList
 import android.util.LayoutDirection
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.fragment.app.FragmentActivity
 import meow.core.api.MeowSession
 import meow.core.ui.MeowActivity
-import meow.core.ui.setStatusBarByTheme
 import meow.util.MeowCurrency
 import meow.util.getField
-import meow.util.isNightModeFromSettings
 import meow.util.setField
+import meow.util.updateStatusBarByTheme
 
 /**
  * 🐈 This CAT can control configurations and UI properties in one Application. Just trust it.
@@ -75,7 +73,6 @@ class MeowController(
     var forceNightMode: Boolean = false
 
     var theme = Theme.UNDEFINED
-        get() = if (app.isNightModeFromSettings() || forceNightMode) Theme.NIGHT else Theme.DAY
         set(value) {
             field = value
             val nightMode = when (value) {
@@ -91,20 +88,20 @@ class MeowController(
         get() = theme == Theme.NIGHT
 
     val isRtl
-        get() = layoutDirection == LayoutDirection.RTL
+        get() = language == "fa"
 
     fun swapTheme() {
         theme = if (isNightMode) Theme.DAY else Theme.NIGHT
     }
 
-    fun updateLanguage(activity: FragmentActivity, language: String) {
+    fun updateLanguage(activity: MeowActivity<*, *>, language: String) {
         this.language = language
-        activity.recreate()
+        activity.setLanguage(language)
     }
 
     fun updateTheme(activity: MeowActivity<*, *>, theme: Theme) {
         this.theme = theme
-        activity.setStatusBarByTheme()
+        activity.updateStatusBarByTheme(!controller.isNightMode)
     }
 
     fun bindApp(app: Application) {

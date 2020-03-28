@@ -18,13 +18,15 @@ package meow
 
 import android.app.Application
 import android.content.Context
+import android.content.res.Configuration
 import androidx.lifecycle.ViewModelProvider
+import com.akexorcist.localizationactivity.core.LocalizationApplicationDelegate
 import meow.core.arch.MeowViewModelFactory
-import meow.util.ContextWrapperUtils
 import org.kodein.di.Kodein
 import org.kodein.di.direct
 import org.kodein.di.erased.bind
 import org.kodein.di.erased.singleton
+import java.util.*
 
 /**
  * The Base of Application class.
@@ -44,15 +46,23 @@ val meowModule = Kodein.Module("Base Module", false) {
 
 abstract class MeowApp : Application() {
 
+    private var localizationDelegate = LocalizationApplicationDelegate()
+
     open fun getLanguage(context: Context?) = ""
 
-    open fun getContextWrapper(context: Context?): Context? {
-        val language = getLanguage(context)
-        return if (language.isEmpty()) context else ContextWrapperUtils.wrap(context, language)
+    override fun attachBaseContext(newBase: Context?) {
+        val language = getLanguage(newBase)
+        if (language.isEmpty())
+            return
+
+        localizationDelegate.setDefaultLanguage(newBase!!, Locale(language))
+        val context = localizationDelegate.attachBaseContext(newBase)
+        super.attachBaseContext(context)
     }
 
-    override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(getContextWrapper(newBase) ?: newBase)
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        localizationDelegate.onConfigurationChanged(this)
     }
 
 }

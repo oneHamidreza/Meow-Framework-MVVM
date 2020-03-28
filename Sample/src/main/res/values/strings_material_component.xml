@@ -26,5 +26,9 @@
     <!-- Material Card -->
     <string name="card_simple_title">Hi! 👋 the simple title</string>
     <string name="card_simple_desc">Here is the contents for testing Material Card.</string>
+    <string name="card_with_action_title">Card with actions</string>
+    <string name="card_with_action_desc">Here is the contents for testing Material Card with actions. Tap the buttons.</string>
+    <string name="card_with_action_save">save</string>
+    <string name="card_with_action_dismiss">dimiss</string>
 
 </resources>

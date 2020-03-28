@@ -14,6 +14,13 @@
             android:textAppearance="@style/textAppearance.Body2"
             android:textColor="@color/text_on_surface_high" />
 
+        <Button
+            android:id="@+id/btChangeLanguage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:text="@string/changeLanguage" />
+
     </merge>
 
 </layout>

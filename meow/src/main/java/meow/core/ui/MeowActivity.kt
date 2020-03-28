@@ -16,17 +16,17 @@
 
 package meow.core.ui
 
-import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.akexorcist.localizationactivity.ui.LocalizationActivity
 import meow.controller
 import meow.core.arch.MeowViewModel
-import meow.util.*
+import meow.util.KeyboardUtils
+import meow.util.PermissionUtils
+import meow.util.viewModel
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 
@@ -38,7 +38,7 @@ import org.kodein.di.android.closestKodein
  * @since   2020-02-28
  */
 
-abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : AppCompatActivity(),
+abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : LocalizationActivity(),
     MVVM<B, VM>,
     KodeinAware {
 
@@ -62,7 +62,11 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : AppCompat
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStatusBarByTheme()
+        if (savedInstanceState == null)
+            controller.updateLanguage(this, controller.language)
+
+        controller.updateTheme(this, controller.theme)
+
         bindContentView(layoutId())
         initViewModel()
         observeViewModel()
@@ -90,15 +94,6 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : AppCompat
         binding.lifecycleOwner = this
     }
 
-    open fun getContextWrapper(context: Context?): Context? {
-        return ContextWrapperUtils.wrap(context, controller.language)
-    }
-
-    override fun attachBaseContext(newBase: Context?) {
-        val wrapContext = getContextWrapper(newBase) ?: newBase
-        super.attachBaseContext(wrapContext)
-    }
-
     override fun applyOverrideConfiguration(overrideConfiguration: Configuration?) {
         overrideConfiguration?.let {
             val uiMode = it.uiMode
@@ -122,12 +117,4 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : AppCompat
             keyboardUtils.disable()
         super.onDestroy()
     }
-}
-
-fun MeowActivity<*, *>.setStatusBarByTheme() {
-    Log.d("meow", "" + controller.isNightMode)
-    if (controller.isNightMode)
-        setStatusBarDarkIcon()
-    else
-        setStatusBarLightIcon()
 }

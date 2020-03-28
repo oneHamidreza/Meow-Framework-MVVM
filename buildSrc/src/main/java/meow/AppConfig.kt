@@ -72,8 +72,10 @@ object AppConfig {
             "androidx.navigation:navigation-ui-ktx:2.2.1",
             // Glide
             "com.github.bumptech.glide:glide:4.11.0",
-            // GOOGLE PHONE NUMBER
-            "com.googlecode.libphonenumber:libphonenumber:8.10.5"
+            // Google Phone Number
+            "com.googlecode.libphonenumber:libphonenumber:8.10.5",
+            // Localization
+            "com.akexorcist:localization:1.2.4"
         )
 
         val kaptItems = emptyArray<String>(

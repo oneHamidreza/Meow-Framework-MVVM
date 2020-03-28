@@ -52,16 +52,26 @@ class NavHeaderView @JvmOverloads constructor(
     )
 
     init {
-        orientation = HORIZONTAL
+        orientation = VERTICAL
         gravity = Gravity.CENTER
         minimumHeight = 144.dp()
 
-        binding.swNavTheme.setOnCheckedChangeListener { _, isChecked ->
-            controller.updateTheme(
+        binding.swNavTheme.apply {
+            isChecked = controller.isNightMode
+            setOnCheckedChangeListener { _, isChecked ->
+                controller.theme =
+                    if (isChecked) MeowController.Theme.NIGHT else MeowController.Theme.DAY
+            }
+        }
+
+        binding.btChangeLanguage.setOnClickListener {
+            //todo in recyclerviews not work with resources bug in material component
+            controller.updateLanguage(
                 context as MeowActivity<*, *>,
-                if (isChecked) MeowController.Theme.NIGHT else MeowController.Theme.DAY
+                if (controller.language == "en") "fa" else "en"
             )
         }
+
     }
 
 }

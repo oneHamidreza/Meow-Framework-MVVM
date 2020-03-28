@@ -16,7 +16,6 @@
 
 package sample.ui.main
 
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import androidx.navigation.NavController
@@ -92,7 +91,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         binding.apply {
-            drawerLayout.setStatusBarBackground(ColorDrawable(getColorCompat(R.color.status_bar)))
+            drawerLayout.setStatusBarBackgroundColor(getColorCompat(R.color.status_bar))
             navigationView.addHeaderView(NavHeaderView(context()))
             navigationView.setupWithNavController(navController)
         }
