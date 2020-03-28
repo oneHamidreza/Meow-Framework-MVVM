@@ -41,6 +41,10 @@ import sample.widget.NavHeaderView
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
+    init {
+        isEnabledAutoStatusBarColorChange = false
+    }
+
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
