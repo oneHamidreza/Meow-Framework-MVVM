@@ -49,6 +49,7 @@ abstract class MeowApp : Application() {
     private var localizationDelegate = LocalizationApplicationDelegate()
 
     open fun getLanguage(context: Context?) = ""
+    open fun getTheme(context: Context?) = MeowController.Theme.DAY
 
     override fun attachBaseContext(newBase: Context?) {
         val language = getLanguage(newBase)
@@ -65,4 +66,7 @@ abstract class MeowApp : Application() {
         localizationDelegate.onConfigurationChanged(this)
     }
 
+    override fun getApplicationContext(): Context {
+        return localizationDelegate.getApplicationContext(super.getApplicationContext())
+    }
 }

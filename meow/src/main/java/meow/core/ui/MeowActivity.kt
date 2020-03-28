@@ -62,10 +62,11 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : Localizat
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (savedInstanceState == null)
-            controller.updateLanguage(this, controller.language)
-
-        controller.updateTheme(this, controller.theme)
+//        if (savedInstanceState == null){
+//            controller.updateLanguage(this, controller.language)
+//        }
+//        controller.updateTheme(this, controller.theme)\
+        controller.theme = controller.theme
 
         bindContentView(layoutId())
         initViewModel()
@@ -101,6 +102,15 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : Localizat
             it.uiMode = uiMode
         }
         super.applyOverrideConfiguration(overrideConfiguration)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+//        window.decorView.safePost(5000) {          controller.theme = when (newConfig.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+//            Configuration.UI_MODE_NIGHT_YES->MeowController.Theme.NIGHT
+//            else ->MeowController.Theme.DAY
+//        }}
+
     }
 
     override fun onRequestPermissionsResult(

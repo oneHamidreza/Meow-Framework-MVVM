@@ -26,5 +26,10 @@
     <!-- Material Card -->
     <string name="card_simple_title">سلام! 👋 یک عنوان ساده</string>
     <string name="card_simple_desc">محتوا برای یک کارت متریال ساده هست.</string>
+    <string name="card_with_action_title">کارت با اکشن</string>
+    <string name="card_with_action_desc">محتوا برای یک کارت متریال ساده با اکشن هست. روی دکمه ضربه بزنید.</string>
+    <string name="card_with_action_save">ذخیره</string>
+    <string name="card_with_action_dismiss">رد</string>
+
 
 </resources>

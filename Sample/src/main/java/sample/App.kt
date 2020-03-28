@@ -21,6 +21,7 @@ import android.graphics.Color
 import meow.MeowApp
 import meow.MeowController
 import meow.meowModule
+import meow.util.isNightModeFromSettings
 import meow.util.toHexString
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -53,6 +54,8 @@ class App : MeowApp(), KodeinAware {
     }
 
     override fun getLanguage(context: Context?) = "fa"
+    override fun getTheme(context: Context?) =
+        if (context.isNightModeFromSettings()) MeowController.Theme.NIGHT else MeowController.Theme.DAY
 
     override fun onCreate() {
         super.onCreate()
@@ -69,7 +72,7 @@ class App : MeowApp(), KodeinAware {
             defaultTypefaceResId = R.font.iransans_mobile_regular
             toastTypefaceResId = R.font.iransans_mobile_regular
             isPersian = true
-            theme = MeowController.Theme.DAY
+            theme = getTheme(this@App)
         }.bindApp(this)
     }
 

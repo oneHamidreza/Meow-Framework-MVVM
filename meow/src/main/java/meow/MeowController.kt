@@ -18,6 +18,7 @@ package meow
 
 import android.app.Application
 import android.content.res.ColorStateList
+import android.content.res.Configuration
 import android.util.LayoutDirection
 import androidx.appcompat.app.AppCompatDelegate
 import meow.core.api.MeowSession
@@ -72,13 +73,12 @@ class MeowController(
     var changeColor: Boolean = false
     var forceNightMode: Boolean = false
 
-    var theme = Theme.UNDEFINED
+    var theme = Theme.DAY
         set(value) {
             field = value
             val nightMode = when (value) {
                 Theme.DAY -> AppCompatDelegate.MODE_NIGHT_NO
                 Theme.NIGHT -> AppCompatDelegate.MODE_NIGHT_YES
-                Theme.UNDEFINED -> null
             }
             if (nightMode != null)
                 AppCompatDelegate.setDefaultNightMode(nightMode)
@@ -97,10 +97,19 @@ class MeowController(
     fun updateLanguage(activity: MeowActivity<*, *>, language: String) {
         this.language = language
         activity.setLanguage(language)
+//        Locale.setDefault(Locale(language))
+//        activity.intent.putExtra("activity_locale_changed", true)
+//        activity.recreate()
     }
 
     fun updateTheme(activity: MeowActivity<*, *>, theme: Theme) {
         this.theme = theme
+        val uiMode = when (theme) {
+            Theme.DAY -> Configuration.UI_MODE_NIGHT_NO
+            Theme.NIGHT -> Configuration.UI_MODE_NIGHT_YES
+        }
+        activity.resources().configuration.uiMode = uiMode
+        activity.recreate()
         activity.updateStatusBarByTheme(!controller.isNightMode)
     }
 
@@ -111,7 +120,7 @@ class MeowController(
     }
 
     enum class Theme {
-        UNDEFINED, DAY, NIGHT
+        DAY, NIGHT
     }
 
     enum class Calendar {
