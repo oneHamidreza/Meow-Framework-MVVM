@@ -2,8 +2,6 @@
 
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
-        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:fitsSystemWindows">true</item>
 
@@ -36,11 +34,15 @@
         <item name="textAppearanceCaption">@style/textAppearance.Caption</item>
         <item name="textAppearanceButton">@style/textAppearance.Button</item>
         <item name="textAppearanceOverline">@style/textAppearance.Overline</item>
-        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
-        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
+
+        <item name="shapeAppearanceSmallComponent">@style/App.ShapeAppearance.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/App.ShapeAppearance.MediumComponent
         </item>
-        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.App.LargeComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/App.ShapeAppearance.LargeComponent</item>
+
+
     </style>
+
 
     <style name="Toolbar" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
         <item name="android:layout_width">match_parent</item>

@@ -46,7 +46,7 @@ object AppConfig {
             kotlinx("serialization-runtime", "0.14.0"),
             kotlinx("coroutines-core", "1.3.0-gradle"),
             // Material
-            "com.google.android.material:material:1.1.0",
+            "com.google.android.material:material:1.2.0-alpha05",
             // Lifecycle
             "androidx.lifecycle:lifecycle-common-java8:2.2.0",
             "androidx.lifecycle:lifecycle-extensions:2.2.0",

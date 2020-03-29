@@ -19,10 +19,13 @@ package sample.ui.main
 import android.os.Bundle
 import android.view.Menu
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import meow.util.createClass
+import meow.util.getColorCompat
 import sample.R
 import sample.databinding.ActivityMainBinding
 import sample.ui.base.BaseActivity
@@ -37,10 +40,6 @@ import sample.widget.NavHeaderView
  */
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
-
-    init {
-        isEnabledAutoStatusBarColorChange = false
-    }
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration

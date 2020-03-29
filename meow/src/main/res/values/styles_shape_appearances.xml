@@ -8,7 +8,7 @@
 
     <style name="App.ShapeAppearance.Card" parent="App.ShapeAppearance.MediumComponent" />
 
-    <style name="App.ShapeAppearance.CardView" parent="">
+    <style name="App.ShapeAppearance.Card.Media" parent="">
         <item name="cornerSizeBottomRight">0dp</item>
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>

@@ -30,6 +30,13 @@
     <string name="card_with_action_desc">محتوا برای یک کارت متریال ساده با اکشن هست. روی دکمه ضربه بزنید.</string>
     <string name="card_with_action_save">ذخیره</string>
     <string name="card_with_action_dismiss">رد</string>
-
+    <string name="card_stroke_title">کارت با حاشیه خطی</string>
+    <string name="card_stroke_desc">محتوا برای یک کارت متریال با پس‌زمینه حاشیه خطی می‌باشد.</string>
+    <string name="card_high_elevation_title">کارت با سایه زیاد</string>
+    <string name="card_high_elevation_desc">محتوا برای یک کارت متریال با سایه زیاد می‌باشد.</string>
+    <string name="card_with_image_title">کارت با تصویر</string>
+    <string name="card_with_image_desc">محتوا برای یک کارت متریال با تصویر می‌باشد. این محتوا شامل چند خط می‌باشد. تصویر توسط Glide بارگذاری می‌شود.</string>
+    <string name="card_checkable_title">کارت با قابلیت برچسب‌گذاری</string>
+    <string name="card_checkable_desc">محتوا برای یک کارت متریال با قابلیت برچسب‌گذاری می‌باشد.</string>
 
 </resources>

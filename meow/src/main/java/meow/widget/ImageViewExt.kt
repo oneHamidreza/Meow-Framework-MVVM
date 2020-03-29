@@ -61,7 +61,13 @@ val glideAlphaAnimator = ViewPropertyTransition.Animator {
 }
 
 object ImageViewBindingAdapter {
-    @BindingAdapter("data", "placeHolder", "loadAnimator", "base64Data", requireAll = false)
+    @BindingAdapter(
+        "meow_data",
+        "meow_placeHolder",
+        "meow_loadAnimator",
+        "meow_base64Data",
+        requireAll = false
+    )
     @JvmStatic
     fun setUrl(
         view: ImageView,

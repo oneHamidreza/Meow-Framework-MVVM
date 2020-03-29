@@ -17,8 +17,11 @@
 package meow.util
 
 import android.content.Context
+import android.view.View
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import meow.core.ui.MVVM
+import meow.widget.MeowDraggableLinearLayout
 import meow.widget.MeowLoadingView
 
 /**
@@ -53,3 +56,18 @@ fun MVVM<*, *>.loadingAlert(
                 .setTitle(title)
         )
         .setOnCancelListener { onCanceledBlock() }
+
+fun MeowDraggableLinearLayout.setViewDragListener(vararg cards: MaterialCardView) {
+    cards.forEach {
+        setViewDragListener(object : MeowDraggableLinearLayout.ViewDragListener {
+            override fun onViewCaptured(view: View, i: Int) {
+                it.isDragged = true
+            }
+
+            override fun onViewReleased(view: View, v: Float, v1: Float) {
+                it.isDragged = false
+            }
+        })
+
+    }
+}

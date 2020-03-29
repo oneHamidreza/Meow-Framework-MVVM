@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="primary">#1cb3c8</color>
     <color name="primary_variant">#000</color>
 
     <!-- TextView -->

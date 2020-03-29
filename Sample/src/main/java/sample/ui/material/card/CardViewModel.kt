@@ -27,4 +27,9 @@ import sample.App
  * @since   2020-03-26
  */
 
-class CardViewModel(app: App) : MeowViewModel(app)
+class CardViewModel(app: App) : MeowViewModel(app) {
+
+    fun getImageUrl() =
+        "https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/black_cat_lying_on_cat_tree_other/1800x1200_black_cat_lying_on_cat_tree_other.jpg?resize=600px:*"
+
+}

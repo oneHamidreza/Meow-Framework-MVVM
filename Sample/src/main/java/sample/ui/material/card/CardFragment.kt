@@ -16,6 +16,8 @@
 
 package sample.ui.material.card
 
+import android.os.Bundle
+import android.view.View
 import meow.util.createClass
 import sample.R
 import sample.databinding.FragmentCardBinding
@@ -33,6 +35,16 @@ class CardFragment : BaseFragment<FragmentCardBinding, CardViewModel>() {
 
     override fun layoutId() = R.layout.fragment_card
     override fun viewModelClass() = createClass<CardViewModel>()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.cardCheckable.apply {
+            setOnLongClickListener {
+                isChecked = !isChecked
+                true
+            }
+        }
+    }
 
     override fun initViewModel() {
         binding.viewModel = viewModel

@@ -17,8 +17,8 @@
         <ImageView
             aspectRatio="@{`16:9`}"
             aspectRatioEnable="@{true}"
-            data="@{`https://i.stack.imgur.com/EYzpL.jpg`}"
-            placeHolder="@{@drawable/ic_android}"
+            app:meow_data="@{`https://i.stack.imgur.com/EYzpL.jpg`}"
+            app:meow_placeHolder="@{@drawable/ic_android}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
