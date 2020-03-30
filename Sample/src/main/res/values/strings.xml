@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">Meow Framework MVVM</string>
 
-    <string name="activity_collapsing_toolbar">Collapsing Toolbar</string>
+    <string name="fragment_collapsing_toolbar">Collapsing Toolbar</string>
 
     <string name="fragment_alerts">Alerts</string>
     <string name="fragment_tablayout">Tab Layout</string>

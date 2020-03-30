@@ -19,27 +19,26 @@ package sample.ui.material.collapsing.toolbar
 import android.os.Bundle
 import meow.util.javaClass
 import sample.R
-import sample.databinding.ActivityCollapsingToolbarBinding
-import sample.ui.base.BaseActivity
+import sample.databinding.FragmentCollapsingToolbarBinding
+import sample.ui.base.BaseFragment
 
 /**
- * Collapsing Toolbar Activity class.
+ * Collapsing Toolbar Fragment class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-30
  */
 
-class CollapsingToolbarActivity :
-    BaseActivity<ActivityCollapsingToolbarBinding, CollapsingToolbarViewModel>() {
+class CollapsingToolbarFragment :
+    BaseFragment<FragmentCollapsingToolbarBinding, CollapsingToolbarViewModel>() {
 
     override fun viewModelClass() = javaClass<CollapsingToolbarViewModel>()
-    override fun layoutId() = R.layout.activity_collapsing_toolbar
+    override fun layoutId() = R.layout.fragment_collapsing_toolbar
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setSupportActionBar(binding.toolbar)
-        title = getString(R.string.activity_collapsing_toolbar)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        activity().setSupportActionBar(binding.toolbarCollapsing)
     }
 
     override fun initViewModel() {

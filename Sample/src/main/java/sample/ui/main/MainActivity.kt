@@ -16,9 +16,9 @@
 
 package sample.ui.main
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -27,10 +27,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import meow.util.getColorCompat
 import meow.util.javaClass
+import meow.util.logD
 import sample.R
 import sample.databinding.ActivityMainBinding
 import sample.ui.base.BaseActivity
-import sample.ui.material.collapsing.toolbar.CollapsingToolbarActivity
 import sample.widget.NavHeaderView
 
 /**
@@ -52,10 +52,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (true) {
-            startActivity(Intent(this, javaClass<CollapsingToolbarActivity>()))
-        }
-
         setSupportActionBar(binding.toolbar)
         setupNavigation()
 
@@ -72,6 +68,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private fun setupNavigation() {
         navController = findNavController(R.id.navHost).apply {
             addOnDestinationChangedListener { _, destination, _ ->
+                logD(m = "destination -> ${destination.id}")
+                when (destination.id) {
+                    R.id.fragmentCollapsingToolbar -> binding.toolbar.visibility = View.GONE
+                    else -> {
+                        binding.toolbar.visibility = View.VISIBLE
+                        setSupportActionBar(binding.toolbar)
+                    }
+                }
             }
         }
         appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)

@@ -40,7 +40,7 @@
                     app:meow_data="@{viewModel.getImageUrl()}" />
 
                 <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbar"
+                    android:id="@+id/toolbar_collapsing"
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
                     app:layout_collapseMode="pin" />
