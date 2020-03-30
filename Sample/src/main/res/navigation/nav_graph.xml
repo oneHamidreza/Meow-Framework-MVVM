@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     android:label="Main"
-    app:startDestination="@id/fragmentCheckbox">
+    app:startDestination="@id/fragmentCard">
 
     <action
         android:id="@+id/actionToForm"

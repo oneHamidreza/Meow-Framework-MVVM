@@ -105,4 +105,12 @@
         <item name="android:textSize" tools:ignore="SpUsage">14dp</item>
     </style>
 
+    <style name="textAppearance.CollapsingToolbar.Expanded" parent="@style/TextAppearance.Design.CollapsingToolbar.Expanded">
+        <item name="fontFamily">@font/iransans_mobile_medium</item>
+    </style>
+
+    <style name="textAppearance.CollapsingToolbar.Collapsed" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="fontFamily">@font/iransans_mobile_medium</item>
+    </style>
+
 </resources>

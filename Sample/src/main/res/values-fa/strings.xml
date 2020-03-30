@@ -1,4 +1,5 @@
 <resources>
+    <string name="activity_collapsing_toolbar">تولبار با سایز متغیر(Collapsing Toolbar)</string>
 
     <string name="fragment_alerts">دیالوگ (Alrerts)</string>
     <string name="fragment_tablayout">تب (Tab Layout)</string>
