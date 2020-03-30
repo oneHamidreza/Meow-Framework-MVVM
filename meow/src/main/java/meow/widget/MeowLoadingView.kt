@@ -24,7 +24,6 @@ import androidx.databinding.DataBindingUtil
 import com.etebarian.meowframework.R
 import com.etebarian.meowframework.databinding.MeowDialogLoadingBinding
 import meow.util.dp
-import meow.util.setPaddingRelativeAll
 
 /**
  * Meow Progress Bar class.

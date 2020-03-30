@@ -26,7 +26,6 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil
 import meow.util.avoidException
 import meow.util.fetchAllDigit
 import meow.util.isValidEmail
-import meow.util.setAttributesFromXml
 
 
 /**

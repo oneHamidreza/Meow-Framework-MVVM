@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package meow.util
+package meow.widget
 
 import android.content.res.TypedArray
 import android.graphics.Bitmap
@@ -25,7 +25,7 @@ import android.view.ViewTreeObserver
 import androidx.core.view.ViewCompat
 import androidx.databinding.ViewDataBinding
 import com.google.android.material.card.MaterialCardView
-import meow.widget.MeowDraggableLinearLayout
+import meow.util.avoidException
 
 
 /**

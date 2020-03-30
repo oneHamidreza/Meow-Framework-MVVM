@@ -31,7 +31,6 @@ import com.google.android.material.textfield.TextInputLayout
 import meow.controller
 import meow.util.getField
 import meow.util.getFontCompat
-import meow.util.setAttributesFromXml
 import meow.util.toPersianNumber
 
 

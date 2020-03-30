@@ -24,7 +24,6 @@ import android.util.AttributeSet
 import android.view.View
 import com.etebarian.meowframework.R
 import meow.util.getColorCompat
-import meow.util.setAttributesFromXml
 
 /**
  * Meow Dash View class.
