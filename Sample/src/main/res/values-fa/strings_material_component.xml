@@ -39,4 +39,8 @@
     <string name="card_checkable_title">کارت با قابلیت برچسب‌گذاری</string>
     <string name="card_checkable_desc">محتوا برای یک کارت متریال با قابلیت برچسب‌گذاری می‌باشد.</string>
 
+    <!-- Material Checkbox -->
+    <string name="checkbox_simple">چک‌باکس ساده</string>
+    <string name="checkbox_tint">چک‌باکس با رنگ متفاوت</string>
+
 </resources>

@@ -29,6 +29,7 @@ import sample.ui.main.MainViewModel
 import sample.ui.material.alert.AlertsViewModel
 import sample.ui.material.button.ButtonViewModel
 import sample.ui.material.card.CardViewModel
+import sample.ui.material.checkbox.CheckboxViewModel
 import sample.ui.material.form.FormViewModel
 import sample.ui.material.imageview.ImageviewViewModel
 import sample.ui.material.tablayout.TabLayoutViewModel
@@ -61,6 +62,12 @@ val mvvmModule = Module("MVVM Module", false) {
 
     bindAutoTag<CardViewModel>() with singleton {
         CardViewModel(
+            kodein.direct.instance()
+        )
+    }
+
+    bindAutoTag<CheckboxViewModel>() with singleton {
+        CheckboxViewModel(
             kodein.direct.instance()
         )
     }

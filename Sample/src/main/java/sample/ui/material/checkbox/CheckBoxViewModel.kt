@@ -14,23 +14,17 @@
  * limitations under the License.
  */
 
-package sample.ui.material.card
+package sample.ui.material.checkbox
 
 import meow.core.arch.MeowViewModel
 import sample.App
 
-
 /**
- * Material Card View Model class.
+ * Material Checkbox View Model class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-26
+ * @since   2020-03-30
  */
 
-class CardViewModel(app: App) : MeowViewModel(app) {
-
-    fun getImageUrl() =
-        "https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/black_cat_lying_on_cat_tree_other/1800x1200_black_cat_lying_on_cat_tree_other.jpg?resize=600px:*"
-
-}
+class CheckboxViewModel(app: App) : MeowViewModel(app)

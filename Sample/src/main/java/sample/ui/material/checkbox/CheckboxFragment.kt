@@ -14,23 +14,32 @@
  * limitations under the License.
  */
 
-package sample.ui.material.card
+package sample.ui.material.checkbox
 
-import meow.core.arch.MeowViewModel
-import sample.App
-
+import meow.util.javaClass
+import sample.R
+import sample.databinding.FragmentCheckboxBinding
+import sample.ui.base.BaseFragment
 
 /**
- * Material Card View Model class.
+ * Checkbox Fragment class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-26
+ * @since   2020-03-11
  */
 
-class CardViewModel(app: App) : MeowViewModel(app) {
+class CheckboxFragment : BaseFragment<FragmentCheckboxBinding, CheckboxViewModel>() {
 
-    fun getImageUrl() =
-        "https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/black_cat_lying_on_cat_tree_other/1800x1200_black_cat_lying_on_cat_tree_other.jpg?resize=600px:*"
+    override fun layoutId() = R.layout.fragment_checkbox
+    override fun viewModelClass() = javaClass<CheckboxViewModel>()
+
+    override fun initViewModel() {
+        binding.viewModel = viewModel
+    }
+
+    override fun observeViewModel() {
+
+    }
 
 }

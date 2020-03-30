@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     android:label="Main"
-    app:startDestination="@id/fragmentCard">
+    app:startDestination="@id/fragmentCheckbox">
 
     <action
         android:id="@+id/actionToForm"
@@ -25,6 +25,10 @@
     <action
         android:id="@+id/actionToCard"
         app:destination="@id/fragmentCard" />
+
+    <action
+        android:id="@+id/actionToCheckbox"
+        app:destination="@id/fragmentCheckbox" />
 
     <action
         android:id="@+id/actionToTabLayout"
@@ -53,6 +57,12 @@
         android:name="sample.ui.material.card.CardFragment"
         android:label="@string/fragment_card"
         tools:layout="@layout/fragment_card" />
+
+    <fragment
+        android:id="@+id/fragmentCheckbox"
+        android:name="sample.ui.material.checkbox.CheckboxFragment"
+        android:label="@string/fragment_checkbox"
+        tools:layout="@layout/fragment_checkbox" />
 
     <fragment
         android:id="@+id/fragmentTabLayout"
