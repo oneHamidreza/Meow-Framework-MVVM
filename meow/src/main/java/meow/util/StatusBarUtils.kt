@@ -96,3 +96,8 @@ private fun MeowActivity<*, *>.setMeizuStatusBarDarkIcon(darkIcon: Boolean) =
         meizuFlags.setInt(lp, value)
         window.attributes = lp
     }
+
+fun Window.setStatusBackgroundColor(color: Int) {
+    if (Build.VERSION.SDK_INT >= 21)
+        statusBarColor = color
+}

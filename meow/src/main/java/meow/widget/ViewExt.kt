@@ -27,7 +27,6 @@ import androidx.databinding.ViewDataBinding
 import com.google.android.material.card.MaterialCardView
 import meow.util.avoidException
 
-
 /**
  * [View] Extensions.
  *
@@ -122,7 +121,6 @@ fun View?.setAttributesFromXml(
 
 fun View.setPaddingRelativeAll(padding: Int) =
     setPaddingRelative(padding, padding, padding, padding)
-
 
 fun MeowDraggableLinearLayout.setViewDragListener(vararg cards: MaterialCardView) {
     cards.forEach {

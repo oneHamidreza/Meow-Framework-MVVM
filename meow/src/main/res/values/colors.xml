@@ -20,11 +20,7 @@
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-
-    <color name="ripple_default">#000</color>
-    <color name="ripple_inverse">#fff</color>
-    <color name="ripple_dim">#000</color>
-    <color name="ripple_bright">#fff</color>
+    <color name="transparent">#00000000</color>
 
     <color name="progress_primary">#000</color>
     <color name="progress_secondary">#000</color>

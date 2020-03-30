@@ -3,7 +3,6 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:fitsSystemWindows">true</item>
 
         <!-- Original AppCompat attributes. -->
         <item name="colorPrimary">@color/primary</item>
@@ -39,15 +38,16 @@
         <item name="shapeAppearanceMediumComponent">@style/App.ShapeAppearance.MediumComponent
         </item>
         <item name="shapeAppearanceLargeComponent">@style/App.ShapeAppearance.LargeComponent</item>
-
-
     </style>
-
 
     <style name="Toolbar" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="backgroundTint">@color/primary</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+    </style>
+
+    <style name="AppBarLayout.ThemeOverlay" parent="">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="colorControlNormal">?attr/colorOnPrimarySurface</item>
     </style>
 
     <style name="MyToolbarStyle" parent="Theme.AppCompat"></style>
