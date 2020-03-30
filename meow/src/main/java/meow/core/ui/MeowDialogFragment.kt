@@ -50,7 +50,7 @@ abstract class MeowDialogFragment<B : ViewDataBinding, VM : MeowViewModel> : Dia
 
     override var permissionUtils: PermissionUtils? = null
     override fun context() = requireContext()
-    override fun activity() = requireActivity()
+    override fun activity() = requireActivity() as MeowActivity<*, *>
     override fun contentView() = view!!
 
     override lateinit var binding: B

@@ -18,7 +18,7 @@ package sample.ui.material.card
 
 import android.os.Bundle
 import android.view.View
-import meow.util.createClass
+import meow.util.javaClass
 import sample.R
 import sample.databinding.FragmentCardBinding
 import sample.ui.base.BaseFragment
@@ -34,7 +34,7 @@ import sample.ui.base.BaseFragment
 class CardFragment : BaseFragment<FragmentCardBinding, CardViewModel>() {
 
     override fun layoutId() = R.layout.fragment_card
-    override fun viewModelClass() = createClass<CardViewModel>()
+    override fun viewModelClass() = javaClass<CardViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

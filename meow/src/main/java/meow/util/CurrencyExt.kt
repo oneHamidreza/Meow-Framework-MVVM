@@ -5,6 +5,7 @@ package meow.util
 import android.content.Context
 import com.etebarian.meowframework.R
 import meow.controller
+import meow.core.ui.MeowFragment
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -142,11 +143,17 @@ fun Context?.createCurrency(s: String?, dec: Int = 0): String {
     }
 }
 
+fun MeowFragment<*, *>?.createCurrency(s: String?, dec: Int = 0) =
+    this?.context().createCurrency(s, dec)
+
 fun Context?.createCurrency(d: Double?, dec: Int = 0): String {
     if (this == null)
         return ""
     return createCurrency(BigDecimal(d ?: 0.0).toString(), dec)
 }
+
+fun MeowFragment<*, *>?.createCurrency(d: Double?, dec: Int = 0) =
+    this?.context().createCurrency(d, dec)
 
 fun BigDecimal.createPrice() = setScale(2, BigDecimal.ROUND_HALF_EVEN)
 

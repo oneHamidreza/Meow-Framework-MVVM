@@ -16,8 +16,8 @@
 
 package sample.ui.material.tablayout.child
 
-import android.app.Application
 import meow.core.arch.MeowViewModel
+import sample.App
 import sample.R
 
 /**
@@ -28,7 +28,7 @@ import sample.R
  * @since   2020-03-23
  */
 
-class TabLayoutChildViewModel(app: Application) : MeowViewModel(app) {
+class TabLayoutChildViewModel(app: App) : MeowViewModel(app) {
 
     fun getTextByPosition(pos: Int) = app.getString(R.string.tab_title).format(pos + 1)
 

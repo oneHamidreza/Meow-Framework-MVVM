@@ -17,11 +17,8 @@
 package meow.util
 
 import android.content.Context
-import android.view.View
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import meow.core.ui.MVVM
-import meow.widget.MeowDraggableLinearLayout
+import meow.core.ui.MeowFragment
 import meow.widget.MeowLoadingView
 
 /**
@@ -35,39 +32,31 @@ import meow.widget.MeowLoadingView
 fun Context.alert(overrideThemeResId: Int = 0) =
     MaterialAlertDialogBuilder(this, overrideThemeResId)
 
-fun MVVM<*, *>.alert(overrideThemeResId: Int = 0) =
+fun MeowFragment<*, *>.alert(overrideThemeResId: Int = 0) =
     MaterialAlertDialogBuilder(context(), overrideThemeResId)
 
-fun MVVM<*, *>.loadingAlert(
+fun MeowFragment<*, *>.loadingAlert(
     titleResId: Int,
     overrideThemeResId: Int = 0,
     onCanceledBlock: () -> Unit = {}
 ) =
-    loadingAlert(resources().getString(titleResId), overrideThemeResId, onCanceledBlock)
+    context().loadingAlert(resources().getString(titleResId), overrideThemeResId, onCanceledBlock)
 
-fun MVVM<*, *>.loadingAlert(
+fun MeowFragment<*, *>.loadingAlert(
     title: String,
     overrideThemeResId: Int = 0,
     onCanceledBlock: () -> Unit = {}
 ) =
-    MaterialAlertDialogBuilder(context(), overrideThemeResId)
+    context().loadingAlert(title, overrideThemeResId, onCanceledBlock)
+
+fun Context.loadingAlert(
+    title: String,
+    overrideThemeResId: Int = 0,
+    onCanceledBlock: () -> Unit = {}
+) =
+    MaterialAlertDialogBuilder(this, overrideThemeResId)
         .setView(
-            MeowLoadingView(context())
+            MeowLoadingView(this)
                 .setTitle(title)
         )
         .setOnCancelListener { onCanceledBlock() }
-
-fun MeowDraggableLinearLayout.setViewDragListener(vararg cards: MaterialCardView) {
-    cards.forEach {
-        setViewDragListener(object : MeowDraggableLinearLayout.ViewDragListener {
-            override fun onViewCaptured(view: View, i: Int) {
-                it.isDragged = true
-            }
-
-            override fun onViewReleased(view: View, v: Float, v1: Float) {
-                it.isDragged = false
-            }
-        })
-
-    }
-}

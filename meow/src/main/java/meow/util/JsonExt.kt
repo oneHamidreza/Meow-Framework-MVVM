@@ -38,14 +38,14 @@ val moshiBuilder = Moshi.Builder().add(KotlinJsonAdapterFactory())
 inline fun <reified T> BufferedSource?.toClass(): T? {
     if (this == null) return null
     return avoidException {
-        moshiBuilder.build().adapter(createClass<T>()).fromJson(this)
+        moshiBuilder.build().adapter(javaClass<T>()).fromJson(this)
     }
 }
 
 inline fun <reified T> String?.toClass(): T? {
     if (this == null) return null
     return avoidException {
-        moshiBuilder.build().adapter(createClass<T>()).fromJson(this)
+        moshiBuilder.build().adapter(javaClass<T>()).fromJson(this)
     }
 }
 
@@ -54,7 +54,7 @@ inline fun <reified T : Any> T?.toJsonString(): String {
     return avoidException {
         moshiBuilder
             .add(KotlinJsonAdapterFactory())
-            .build().adapter(createClass<T>()).toJson(this)
+            .build().adapter(javaClass<T>()).toJson(this)
     } ?: "{}"
 }
 
@@ -63,7 +63,7 @@ inline fun <reified T : Any> List<T>?.toJsonString(): String {
     return avoidException {
         moshiBuilder
             .add(KotlinJsonAdapterFactory())
-            .build().adapter(createClass<List<T>>()).toJson(this)
+            .build().adapter(javaClass<List<T>>()).toJson(this)
     } ?: "[]"
 }
 
@@ -108,7 +108,7 @@ class ModelJsonFactory {
             moshi: Moshi
         ): JsonAdapter<*>? {
             if (annotations.isNotEmpty()) return null
-            if (Types.getRawType(type) == createClass<T>()) {
+            if (Types.getRawType(type) == javaClass<T>()) {
                 val delegate = moshi.nextAdapter<T>(this, type, annotations)
                 return JA::class.primaryConstructor?.call(delegate)
             }

@@ -18,7 +18,7 @@ package sample.ui.user.detail
 
 import android.os.Bundle
 import meow.core.arch.MeowFlow
-import meow.util.createClass
+import meow.util.javaClass
 import meow.util.safeObserve
 import meow.util.snackL
 import meow.util.toastL
@@ -37,7 +37,7 @@ import sample.ui.base.BaseFragment
 
 class UserDetailFragment : BaseFragment<FragmentUserDetailBinding, UserDetailViewModel>() {
 
-    override fun viewModelClass() = createClass<UserDetailViewModel>()
+    override fun viewModelClass() = javaClass<UserDetailViewModel>()
     override fun layoutId() = R.layout.fragment_user_detail
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

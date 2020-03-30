@@ -16,18 +16,18 @@
 
 package meow.core.arch
 
-import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Job
 import kotlinx.io.IOException
+import meow.MeowApp
 import meow.controller
-import meow.core.api.MeowEvent
-import meow.core.api.MeowRequest
-import meow.core.api.MeowResponse
-import meow.util.*
+import meow.core.api.*
+import meow.util.avoidException
+import meow.util.hasNotNetwork
+import meow.util.launchSilent
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
@@ -42,7 +42,7 @@ import java.net.SocketTimeoutException
  * @since   2020-02-24
  */
 
-open class MeowViewModel(open val app: Application) : AndroidViewModel(app), KodeinAware {
+open class MeowViewModel(open val app: MeowApp) : AndroidViewModel(app), KodeinAware {
 
     override val kodein: Kodein by closestKodein()
 

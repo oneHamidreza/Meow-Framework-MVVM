@@ -24,7 +24,8 @@ import android.view.View
 import android.view.ViewTreeObserver
 import androidx.core.view.ViewCompat
 import androidx.databinding.ViewDataBinding
-import meow.controller
+import com.google.android.material.card.MaterialCardView
+import meow.widget.MeowDraggableLinearLayout
 
 
 /**
@@ -62,7 +63,6 @@ inline fun <T : View?> T.safePost(
         }, delay)
 
 inline fun <T : ViewDataBinding?> T.afterMeasured(
-    delay: Long = 0L,
     crossinline block: View?.() -> Unit
 ) = this?.root.afterMeasured(block = block)
 
@@ -120,8 +120,21 @@ fun View?.setAttributesFromXml(
     )
 }
 
-fun TypedArray.getColorCompat(index: Int, defValue: Int) =
-    controller.onColorGet(getColor(index, defValue))
-
 fun View.setPaddingRelativeAll(padding: Int) =
     setPaddingRelative(padding, padding, padding, padding)
+
+
+fun MeowDraggableLinearLayout.setViewDragListener(vararg cards: MaterialCardView) {
+    cards.forEach {
+        setViewDragListener(object : MeowDraggableLinearLayout.ViewDragListener {
+            override fun onViewCaptured(view: View, i: Int) {
+                it.isDragged = true
+            }
+
+            override fun onViewReleased(view: View, v: Float, v1: Float) {
+                it.isDragged = false
+            }
+        })
+
+    }
+}

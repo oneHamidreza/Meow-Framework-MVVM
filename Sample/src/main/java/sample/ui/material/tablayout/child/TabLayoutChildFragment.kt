@@ -17,7 +17,7 @@
 package sample.ui.material.tablayout.child
 
 import android.os.Bundle
-import meow.util.createClass
+import meow.util.javaClass
 import sample.R
 import sample.databinding.FragmentTablayoutChildBinding
 import sample.ui.base.BaseFragment
@@ -47,7 +47,7 @@ class TabLayoutChildFragment :
     private var pos = 0
 
     override fun layoutId() = R.layout.fragment_tablayout_child
-    override fun viewModelClass() = createClass<TabLayoutChildViewModel>()
+    override fun viewModelClass() = javaClass<TabLayoutChildViewModel>()
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putInt(KEY_POS, pos)

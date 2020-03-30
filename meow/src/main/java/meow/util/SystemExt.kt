@@ -34,7 +34,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.etebarian.meowframework.R
 import meow.controller
-import meow.core.ui.MVVM
+import meow.core.ui.MeowFragment
 
 /**
  * Extensions of OS & Build.
@@ -64,7 +64,7 @@ fun Context?.isPackageInstalled(packageName: String): Boolean {
     } ?: false
 }
 
-fun MVVM<*, *>?.isPackageInstalled(packageName: String) =
+fun MeowFragment<*, *>?.isPackageInstalled(packageName: String) =
     this?.context().isPackageInstalled(packageName)
 
 @Suppress("DEPRECATION")
@@ -78,7 +78,7 @@ fun Context?.getIMEI(): String {
     } ?: "0"
 }
 
-fun MVVM<*, *>?.getIMEI() = this?.context().getIMEI()
+fun MeowFragment<*, *>?.getIMEI() = this?.context().getIMEI()
 
 @SuppressLint("HardwareIds", "MissingPermission")
 fun Context?.getPhoneNumber(): String? {

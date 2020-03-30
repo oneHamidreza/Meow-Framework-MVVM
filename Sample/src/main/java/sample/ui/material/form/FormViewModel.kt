@@ -16,9 +16,9 @@
 
 package sample.ui.material.form
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import meow.core.arch.MeowViewModel
+import sample.App
 import sample.data.Content
 
 /**
@@ -29,7 +29,7 @@ import sample.data.Content
  * @since   2020-03-22
  */
 
-class FormViewModel(app: Application) :
+class FormViewModel(app: App) :
     MeowViewModel(app) { //todo @Ali find way for create this class automatically
 
     val listLiveData = MutableLiveData<List<Content>>() //todo @Hamid search single vs normal

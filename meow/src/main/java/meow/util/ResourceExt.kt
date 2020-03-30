@@ -18,6 +18,7 @@ package meow.util
 
 import android.content.Context
 import android.content.res.Resources
+import android.content.res.TypedArray
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
@@ -27,10 +28,10 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
 import androidx.annotation.*
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.drawable.DrawableCompat
+import meow.controller
 import meow.core.ui.MeowFragment
 
 /**
@@ -151,6 +152,9 @@ fun Context?.getFontCompat(@FontRes resId: Int = 0) =
 fun MeowFragment<*, *>?.getFontCompat(@FontRes resId: Int = 0) =
     this?.context().getFontCompat(resId)
 
+fun TypedArray.getColorCompat(index: Int, defValue: Int) =
+    controller.onColorGet(getColor(index, defValue))
+
 fun Resources?.getColorCompat(
     @ColorRes resId: Int,
     theme: Resources.Theme? = null
@@ -176,7 +180,6 @@ fun MeowFragment<*, *>?.getDimensionToPx(@DimenRes resId: Int) =
 
 fun Resources?.getFloatCompat(@DimenRes resId: Int) =
     if (this == null) 0f else ResourcesCompat.getFloat(this, resId)
-
 fun Context?.getFloatCompat(@DimenRes resId: Int) = this?.resources().getFloatCompat(resId)
 fun MeowFragment<*, *>?.getFloatCompat(@DimenRes resId: Int) =
     this?.resources().getFloatCompat(resId)
@@ -225,16 +228,4 @@ fun Drawable.toBitmap(): Bitmap {
     setBounds(0, 0, canvas.width, canvas.height)
     draw(canvas)
     return bitmap
-}
-
-fun Drawable.changeColorDrawable(color: Int): Drawable {
-    DrawableCompat.setTint(this, color)
-    return this
-}
-
-fun changeColorDrawableRes(context: Context, resDrawable: Int, color: Int): Drawable? {
-    val drawable = AppCompatResources.getDrawable(context, resDrawable)
-    if (drawable != null)
-        DrawableCompat.setTint(drawable, color)
-    return drawable
 }

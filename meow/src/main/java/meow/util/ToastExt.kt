@@ -90,6 +90,15 @@ fun Context?.toast(message: String?, duration: Int, gravity: Int, xOffset: Int, 
     }
 }
 
+fun MeowFragment<*, *>?.toast(
+    message: String?,
+    duration: Int,
+    gravity: Int,
+    xOffset: Int,
+    yOffset: Int
+) =
+    this?.context().toast(message, duration, gravity, xOffset, yOffset)
+
 class ToastTypefaceSpan(private val typeface: Typeface?) : MetricAffectingSpan() {
 
     override fun updateMeasureState(p: TextPaint) {

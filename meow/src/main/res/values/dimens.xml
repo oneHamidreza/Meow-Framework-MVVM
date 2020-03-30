@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="shape_corner_size_default">4dp</dimen>
+
     <dimen name="button_radius">4dp</dimen>
     <dimen name="button_stroke">1.5dp</dimen>
 

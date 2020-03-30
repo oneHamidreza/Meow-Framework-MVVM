@@ -18,7 +18,7 @@ package sample.ui.material.tablayout
 
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayoutMediator
-import meow.util.createClass
+import meow.util.javaClass
 import sample.R
 import sample.databinding.FragmentTablayoutBinding
 import sample.ui.base.BaseFragment
@@ -34,7 +34,7 @@ import sample.ui.base.BaseFragment
 class TabLayoutFragment : BaseFragment<FragmentTablayoutBinding, TabLayoutViewModel>() {
 
     override fun layoutId() = R.layout.fragment_tablayout
-    override fun viewModelClass() = createClass<TabLayoutViewModel>()
+    override fun viewModelClass() = javaClass<TabLayoutViewModel>()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

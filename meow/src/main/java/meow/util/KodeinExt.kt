@@ -16,14 +16,8 @@
 
 package meow.util
 
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import meow.core.arch.MeowViewModel
-import meow.core.arch.MeowViewModelFactory
 import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
-import org.kodein.di.direct
 import org.kodein.di.erased.bind
 
 /**
@@ -34,20 +28,6 @@ import org.kodein.di.erased.bind
  * @since   2020-03-06
  */
 
-
-/*
-    Android ViewModel dependency injection with Kodein by Kirill Rozhenkov
-    https://proandroiddev.com/android-viewmodel-dependency-injection-with-kodein-249f80f083c9
-*/
-
-fun <VM : MeowViewModel, T> T.viewModel(clazz: Class<VM>): Lazy<VM> where T : KodeinAware, T : AppCompatActivity {
-    return lazy { MeowViewModelFactory(kodein.direct).create(clazz) }
-}
-
-fun <VM : MeowViewModel, T> T.viewModel(clazz: Class<VM>): Lazy<VM> where T : KodeinAware, T : Fragment {
-    return lazy { MeowViewModelFactory(kodein.direct).create(clazz) }
-}
-
 inline fun <reified T : ViewModel> Kodein.Builder.bindAutoTag(overrides: Boolean? = null): Kodein.Builder.TypeBinder<T> {
-    return bind<T>(T::class.java.simpleName, overrides)
+    return bind<T>(javaClass<T>().simpleName, overrides)
 }

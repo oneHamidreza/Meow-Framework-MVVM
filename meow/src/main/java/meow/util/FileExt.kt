@@ -75,13 +75,11 @@ object MeowFileUtils {
     }
 
     fun existFileInPath(path: String) = avoidException {
-            val f = File(path)
-            f.exists()
+        File(path).exists()
         } ?: false
 
     fun getFileLength(path: String) = avoidException {
-            val f = File(path)
-            f.length()
+        File(path).length()
         } ?: 0
 }
 
@@ -90,9 +88,12 @@ fun Context.clearCache() {
     MeowFileUtils.deleteAllFiles(f.path ?: "")
 }
 
-fun File?.safeListFiles() = avoidException { this?.listFiles() } ?: arrayOf()
+fun File?.safeListFiles() =
+    avoidException { if (safeExist()) this?.listFiles() else null } ?: arrayOf()
 
-fun File?.safeDelete() = avoidException { this?.delete() }
+fun File?.safeDelete() = avoidException { this?.delete() } ?: false
+fun File?.safeExist() = avoidException { this?.exists() } ?: false
+fun File?.safeLength() = avoidException { this?.length() } ?: 0L
 
 fun MVVM<*, *>.getAppRootPath(
     folderName: String,

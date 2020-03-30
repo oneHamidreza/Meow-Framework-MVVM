@@ -1,7 +1,7 @@
 package sample.ui.content
 
-import android.app.Application
 import meow.core.arch.MeowViewModel
+import sample.App
 
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
@@ -27,4 +27,4 @@ import meow.core.arch.MeowViewModel
  * @since   2020-03-22
  */
 
-class ContentViewModel(app: Application) : MeowViewModel(app)
+class ContentViewModel(app: App) : MeowViewModel(app)

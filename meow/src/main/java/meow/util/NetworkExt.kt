@@ -19,7 +19,7 @@ package meow.util
 import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
-import androidx.fragment.app.Fragment
+import meow.core.ui.MeowFragment
 
 /**
  * Extensions of Network.
@@ -41,5 +41,6 @@ fun Context?.hasNetwork() = avoidException {
 
 fun Context?.hasNotNetwork() = !hasNetwork()
 
-fun Fragment?.hasNetwork() = this?.context?.hasNetwork() ?: false
-fun Fragment?.hasNotNetwork() = !hasNetwork()
+fun MeowFragment<*, *>?.hasNetwork() = this?.context().hasNetwork()
+
+fun MeowFragment<*, *>?.hasNotNetwork() = !hasNetwork()

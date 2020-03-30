@@ -59,11 +59,9 @@ private fun createTag(tag: String): String {
     if (controller.isLogTagNative)
         return if (tag.isEmpty()) "meow" else tag
 
-    //todo not working !!!
     val t = avoidException {
         val stackThread = Thread.currentThread().stackTrace
         stackThread[5].fileName.substringBefore(".")
-
     } ?: "UNKNOWN"
 
     val s = StringBuilder()

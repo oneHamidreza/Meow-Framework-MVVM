@@ -1,14 +1,3 @@
-package meow.util
-
-import android.content.Context
-import android.content.pm.PackageManager
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import meow.core.ui.MVVM
-import meow.core.ui.isActivity
-import meow.core.ui.isFragment
-
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -24,6 +13,18 @@ import meow.core.ui.isFragment
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+package meow.util
+
+import android.content.Context
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import meow.core.ui.MVVM
+import meow.core.ui.MeowFragment
+import meow.core.ui.isActivity
+import meow.core.ui.isFragment
 
 /**
  * Permission Extensions.
@@ -48,7 +49,7 @@ fun Context?.shouldShowPermissionDialog(permissions: List<String>): Boolean {
     return false
 }
 
-fun MVVM<*, *>?.shouldShowPermissionDialog(permissions: List<String>) =
+fun MeowFragment<*, *>?.shouldShowPermissionDialog(permissions: List<String>) =
     this?.context().shouldShowPermissionDialog(permissions)
 
 class PermissionUtils(

@@ -16,10 +16,10 @@
 
 package sample.ui.material.alert
 
-import android.app.Application
 import meow.core.arch.MeowViewModel
 import meow.core.arch.SingleLiveData
 import meow.util.getStringArray
+import sample.App
 import sample.R
 import sample.data.Content
 
@@ -31,7 +31,7 @@ import sample.data.Content
  * @since   2020-03-22
  */
 
-class AlertsViewModel(app: Application) :
+class AlertsViewModel(app: App) :
     MeowViewModel(app) { //todo @Ali find way for create this class automatically
 
     val listLiveData = SingleLiveData<List<Content>>() //todo @Hamid search single vs normal

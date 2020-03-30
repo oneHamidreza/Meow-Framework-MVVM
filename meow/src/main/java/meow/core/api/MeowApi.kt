@@ -20,6 +20,7 @@ import android.content.Context
 import android.webkit.WebSettings
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import meow.MeowApp
 import meow.controller
 import meow.util.avoidException
 import meow.util.hasNetwork
@@ -71,11 +72,11 @@ abstract class MeowApi(
         WebSettings.getDefaultUserAgent(context).replace(Regex("[^A-Za-z0-9 ().,_/]"), "")
 
     open fun getCacheInterceptorBlock(
-        context: Context,
-        options: MeowApi.Options
+        app: MeowApp,
+        options: Options
     ): InterceptorBlock =
         {
-            if (context.hasNetwork())
+            if (app.hasNetwork())
                 it.header("Cache-Control", "no-cache")
             else if (options.isEnabledCache)
                 it.header(

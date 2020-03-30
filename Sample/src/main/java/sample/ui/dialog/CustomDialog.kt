@@ -18,7 +18,7 @@ package sample.ui.dialog
 
 import android.os.Bundle
 import androidx.navigation.fragment.findNavController
-import meow.util.createClass
+import meow.util.javaClass
 import meow.util.safeObserve
 import sample.R
 import sample.core.actionToUserDetail
@@ -37,7 +37,7 @@ import sample.ui.base.BaseDialogFragment
 class CustomDialog : BaseDialogFragment<DialogCustomBinding, CustomDialogViewModel>() {
 
     override fun layoutId() = R.layout.dialog_custom
-    override fun viewModelClass() = createClass<CustomDialogViewModel>()
+    override fun viewModelClass() = javaClass<CustomDialogViewModel>()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

@@ -16,8 +16,8 @@
 
 package sample.ui.material.button
 
-import android.app.Application
 import meow.core.arch.MeowViewModel
+import sample.App
 
 /**
  * Material Alert View Model class.
@@ -27,4 +27,4 @@ import meow.core.arch.MeowViewModel
  * @since   2020-03-22
  */
 
-class ButtonViewModel(app: Application) : MeowViewModel(app)
+class ButtonViewModel(app: App) : MeowViewModel(app)

@@ -23,10 +23,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import meow.MeowApp
 import meow.core.arch.MeowViewModel
 import meow.util.PermissionUtils
 
@@ -53,7 +53,9 @@ interface MVVM<B : ViewDataBinding, VM : MeowViewModel> {
 
     fun context(): Context
 
-    fun activity(): FragmentActivity
+    fun app() = activity().application as MeowApp
+
+    fun activity(): MeowActivity<*, *>
 
     fun resources() = context().resources
 

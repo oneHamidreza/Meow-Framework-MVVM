@@ -1,7 +1,7 @@
 package sample.ui.menu
 
 import androidx.navigation.fragment.findNavController
-import meow.util.createClass
+import meow.util.javaClass
 import meow.util.safeObserve
 import sample.R
 import sample.core.actionToCustomDialog
@@ -37,7 +37,7 @@ import sample.ui.base.BaseFragment
 class MenuFragment : BaseFragment<FragmentMenuBinding, MenuViewModel>() {
 
     override fun layoutId() = R.layout.fragment_menu
-    override fun viewModelClass() = createClass<MenuViewModel>()
+    override fun viewModelClass() = javaClass<MenuViewModel>()
 
 //    override fun initViewModel() {
 //        binding.viewModel = viewModel

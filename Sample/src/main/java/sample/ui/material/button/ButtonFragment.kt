@@ -17,7 +17,7 @@
 package sample.ui.material.button
 
 import android.os.Bundle
-import meow.util.createClass
+import meow.util.javaClass
 import sample.R
 import sample.databinding.FragmentButtonBinding
 import sample.ui.base.BaseFragment
@@ -33,7 +33,7 @@ import sample.ui.base.BaseFragment
 class ButtonFragment : BaseFragment<FragmentButtonBinding, ButtonViewModel>() {
 
     override fun layoutId() = R.layout.fragment_button
-    override fun viewModelClass() = createClass<ButtonViewModel>()
+    override fun viewModelClass() = javaClass<ButtonViewModel>()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

@@ -38,9 +38,9 @@ import sample.ui.content.ContentViewModel
 class AlertsFragment : BaseFragment<FragmentAlertsBinding, AlertsViewModel>() {
 
     override fun layoutId() = R.layout.fragment_alerts
-    override fun viewModelClass() = createClass<AlertsViewModel>()
+    override fun viewModelClass() = javaClass<AlertsViewModel>()
 
-    private val contentViewModel by viewModel(createClass<ContentViewModel>())
+    private val contentViewModel by viewModel(javaClass<ContentViewModel>())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

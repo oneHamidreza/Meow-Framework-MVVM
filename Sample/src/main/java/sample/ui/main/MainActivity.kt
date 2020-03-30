@@ -24,15 +24,15 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import meow.util.createClass
 import meow.util.getColorCompat
+import meow.util.javaClass
 import sample.R
 import sample.databinding.ActivityMainBinding
 import sample.ui.base.BaseActivity
 import sample.widget.NavHeaderView
 
 /**
- * [Main] Activity class.
+ * Main Activity class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -44,7 +44,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
-    override fun viewModelClass() = createClass<MainViewModel>()
+    override fun viewModelClass() = javaClass<MainViewModel>()
     override fun layoutId() = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {

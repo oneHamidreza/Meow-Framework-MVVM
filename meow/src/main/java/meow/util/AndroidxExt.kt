@@ -1,3 +1,15 @@
+package meow.util
+
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import meow.core.arch.MeowViewModel
+import meow.core.arch.MeowViewModelFactory
+import org.kodein.di.KodeinAware
+import org.kodein.di.direct
+
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -14,18 +26,12 @@
  * limitations under the License.
  */
 
-package meow.util
-
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
-
 /**
- * Extensions of [LiveData].
+ * Androidx Extensions.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2/29/2020
+ * @since   2020-03-30
  */
 
 fun <T> LiveData<T>.safeObserve(owner: LifecycleOwner? = null, observer: (T) -> Unit) {
@@ -36,4 +42,17 @@ fun <T> LiveData<T>.safeObserve(owner: LifecycleOwner? = null, observer: (T) -> 
         observe(owner, archObserver)
     else
         observeForever(archObserver)
+}
+
+/*
+    Android ViewModel dependency injection with Kodein by Kirill Rozhenkov
+    https://proandroiddev.com/android-viewmodel-dependency-injection-with-kodein-249f80f083c9
+*/
+
+fun <VM : MeowViewModel, T> T.viewModel(clazz: Class<VM>): Lazy<VM> where T : KodeinAware, T : AppCompatActivity {
+    return lazy { MeowViewModelFactory(kodein.direct).create(clazz) }
+}
+
+fun <VM : MeowViewModel, T> T.viewModel(clazz: Class<VM>): Lazy<VM> where T : KodeinAware, T : Fragment {
+    return lazy { MeowViewModelFactory(kodein.direct).create(clazz) }
 }

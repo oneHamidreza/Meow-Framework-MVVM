@@ -23,7 +23,7 @@ import android.content.Context
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.etebarian.meowframework.R
-import meow.core.ui.MVVM
+import meow.core.ui.MeowFragment
 
 /**
  * Notification Utils.
@@ -33,12 +33,10 @@ import meow.core.ui.MVVM
  * @since   2020-03-19
  */
 
-class MeowNotificationUtils {
+//todo improve by documents and support all features @Modares
+object MeowNotificationUtils {
 
-    companion object {
-
-        private const val CHANNEL_ID_DEFAULT = "default"
-    }
+    private const val CHANNEL_ID_DEFAULT = "default"
 
     fun createBuilder(
         context: Context,
@@ -81,12 +79,17 @@ class MeowNotificationUtils {
                 context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val importance = NotificationManager.IMPORTANCE_HIGH
             val channel =
-                NotificationChannel(channelName, context.getString(R.string.app_name), importance)
-            channel.description = context.getString(R.string.app_name)
-            channel.enableVibration(true)
-            channel.enableLights(true)
-            channel.lightColor = context.getColorCompat(R.color.notification)
-            channel.enableVibration(true)
+                NotificationChannel(
+                    channelName,
+                    context.getString(R.string.app_name),
+                    importance
+                ).apply {
+                    description = context.getString(R.string.app_name)
+                    enableVibration(true)
+                    enableLights(true)
+                    lightColor = context.getColorCompat(R.color.notification)
+                    enableVibration(true)
+                }
             manager.createNotificationChannel(channel)
         }
     }
@@ -110,7 +113,7 @@ fun Context?.cancelNotification(id: Int) {
     }
 }
 
-fun MVVM<*, *>?.cancelNotification(id: Int) {
+fun MeowFragment<*, *>?.cancelNotification(id: Int) {
     if (this == null)
         return
     avoidException {
@@ -128,7 +131,7 @@ fun Context?.cancelAllNotifications() {
     }
 }
 
-fun MVVM<*, *>?.cancelAllNotifications() {
+fun MeowFragment<*, *>?.cancelAllNotifications() {
     if (this == null)
         return
     avoidException {

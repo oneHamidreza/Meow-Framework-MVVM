@@ -50,7 +50,7 @@ abstract class MeowFragment<B : ViewDataBinding, VM : MeowViewModel> : Fragment(
 
     override var permissionUtils: PermissionUtils? = null
     override fun context() = requireContext()
-    override fun activity() = requireActivity()
+    override fun activity() = requireActivity() as MeowActivity<*, *>
     override fun contentView() = view!!
 
     override lateinit var binding: B

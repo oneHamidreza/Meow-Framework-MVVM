@@ -29,6 +29,7 @@ import java.util.*
  * @since   2018-03-14
  */
 
+@Suppress("unused")
 object BitmapUtils {
 
     private fun calculateInSampleSize(

@@ -111,7 +111,7 @@ object ImageViewBindingAdapter {
     fun setBitmapColor(view: ImageView, isBitmap: Boolean, bitmapColor: Int) {
         if (isBitmap) {
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-            view.drawable.changeColorDrawable(bitmapColor)
+            view.drawable.setTintCompat(bitmapColor)
         }
     }
 }

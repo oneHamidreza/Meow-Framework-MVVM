@@ -17,7 +17,7 @@
 package sample.ui.material.imageview
 
 import android.os.Bundle
-import meow.util.createClass
+import meow.util.javaClass
 import sample.R
 import sample.databinding.FragmentImageviewBinding
 import sample.ui.base.BaseFragment
@@ -33,7 +33,7 @@ import sample.ui.base.BaseFragment
 class ImageviewFragment : BaseFragment<FragmentImageviewBinding, ImageviewViewModel>() {
 
     override fun layoutId() = R.layout.fragment_imageview
-    override fun viewModelClass() = createClass<ImageviewViewModel>()
+    override fun viewModelClass() = javaClass<ImageviewViewModel>()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

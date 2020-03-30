@@ -20,7 +20,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import meow.util.createClass
+import meow.util.javaClass
 import meow.util.toastL
 import sample.R
 import sample.databinding.FragmentFormBinding
@@ -37,7 +37,7 @@ import sample.ui.base.BaseFragment
 class FormFragment : BaseFragment<FragmentFormBinding, FormViewModel>() {
 
     override fun layoutId() = R.layout.fragment_form
-    override fun viewModelClass() = createClass<FormViewModel>()
+    override fun viewModelClass() = javaClass<FormViewModel>()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

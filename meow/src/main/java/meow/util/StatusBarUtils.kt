@@ -23,6 +23,7 @@ import android.view.Window
 import android.view.WindowManager
 import com.etebarian.meowframework.R
 import meow.core.ui.MeowActivity
+import meow.core.ui.MeowFragment
 
 /**
  * Status Bar Extensions.
@@ -54,6 +55,13 @@ fun MeowActivity<*, *>.updateStatusBarByTheme(
     setMIUIStatusBarDarkIcon(isDarkIcon)
     setMeizuStatusBarDarkIcon(isDarkIcon)
 }
+
+
+@TargetApi(Build.VERSION_CODES.M)
+fun MeowFragment<*, *>.updateStatusBarByTheme(
+    isDarkIcon: Boolean,
+    checkIsEnabled: Boolean = false
+) = activity().updateStatusBarByTheme(isDarkIcon, checkIsEnabled)
 
 private fun MeowActivity<*, *>.setMIUIStatusBarDarkIcon(darkIcon: Boolean) = avoidException(false) {
     val clazz: Class<out Window?> = window.javaClass

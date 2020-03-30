@@ -48,7 +48,7 @@
     <attr name="hasCustomBackground" format="boolean" />
     <attr name="hasCustomForeground" format="boolean" />
 
-    <declare-styleable name="MeowShapeDrawable">
+    <declare-styleable name="MeowShapeDrawableLegacy">
         <attr name="msd_shape" />
         <attr name="msd_mainColor" />
         <attr name="msd_mainColorAlpha" />

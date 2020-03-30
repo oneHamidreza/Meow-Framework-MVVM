@@ -16,10 +16,10 @@
 
 package sample.ui.menu
 
-import android.app.Application
 import android.view.View
 import meow.core.arch.MeowViewModel
 import meow.core.arch.SingleLiveData
+import sample.App
 import sample.R
 
 /**
@@ -30,7 +30,7 @@ import sample.R
  * @since   2020-03-11
  */
 
-class MenuViewModel(app: Application) : MeowViewModel(app) {
+class MenuViewModel(app: App) : MeowViewModel(app) {
 
     val navigationLiveData = SingleLiveData<Int>()
     val languageLiveData = SingleLiveData<String>()

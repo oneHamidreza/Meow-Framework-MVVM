@@ -17,7 +17,7 @@
 package sample.data
 
 import com.squareup.moshi.*
-import meow.util.createClass
+import meow.util.javaClass
 import meow.util.ofMoshi
 import meow.util.readObject
 import meow.util.selectName
@@ -40,7 +40,7 @@ class UserDetailJsonAdapter(private val delegate: JsonAdapter<Model>) : JsonAdap
 
         reader.readObject {
             when (selectName("data")) {
-                0 -> it = ofMoshi().adapter(createClass<Model>()).fromJson(reader)!!
+                0 -> it = ofMoshi().adapter(javaClass<Model>()).fromJson(reader)!!
             }
         }
 

@@ -19,9 +19,9 @@ package sample.ui.user.index
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import meow.core.arch.MeowFlow
-import meow.util.addItemDecoration
-import meow.util.createClass
 import meow.util.dp
+import meow.util.javaClass
+import meow.widget.addItemDecoration
 import meow.widget.decoration.MeowDividerDecoration
 import sample.R
 import sample.data.User
@@ -39,7 +39,7 @@ import sample.ui.base.BaseFragment
 class UserIndexFragment : BaseFragment<FragmentUserIndexBinding, UserIndexViewModel>() {
 
     override fun layoutId() = R.layout.fragment_user_index
-    override fun viewModelClass() = createClass<UserIndexViewModel>()
+    override fun viewModelClass() = javaClass<UserIndexViewModel>()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

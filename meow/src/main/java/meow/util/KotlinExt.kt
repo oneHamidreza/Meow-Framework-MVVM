@@ -16,6 +16,9 @@
 
 package meow.util
 
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
+
 /**
  * Extensions of Kotlin.
  *
@@ -25,13 +28,12 @@ package meow.util
  */
 
 inline fun <reified T> javaClass() = T::class.java
-inline fun <reified T> createClass() = Class.forName(T::class.java.name) as Class<T>
 inline fun <reified T> newInstance() = T::class.java.newInstance()
 
 //todo @Modares
 inline fun <reified B, T> B.setField(name: String, value: T, useSuperClass: Boolean = false) =
     avoidException {
-        val clazz = if (useSuperClass) B::class.javaClass.superclass else B::class.java
+        val clazz = if (useSuperClass) javaClass<B>().superclass else javaClass<B>()
         val field = clazz?.getDeclaredField(name)?.apply {
             isAccessible = true
         }
@@ -41,9 +43,23 @@ inline fun <reified B, T> B.setField(name: String, value: T, useSuperClass: Bool
 
 inline fun <reified B, T> B.getField(name: String, useSuperClass: Boolean = false) =
     avoidException {
-        val clazz = if (useSuperClass) B::class.javaClass.superclass else B::class.java
+        val clazz = if (useSuperClass) javaClass<B>().superclass else javaClass<B>()
         val filed = clazz?.getDeclaredField(name)?.apply {
             isAccessible = true
         }
         (filed?.get(this@getField) as? T)
     }
+
+fun launchSilent(
+    context: CoroutineContext = Dispatchers.IO,
+    exceptionHandler: CoroutineExceptionHandler? = null,
+    job: Job = Job(),
+    start: CoroutineStart = CoroutineStart.DEFAULT,
+    block: suspend CoroutineScope.() -> Unit
+): Job {
+    val scope = if (exceptionHandler != null)
+        CoroutineScope(context + job + exceptionHandler)
+    else
+        CoroutineScope(context + job)
+    return scope.launch(context, start, block)
+}

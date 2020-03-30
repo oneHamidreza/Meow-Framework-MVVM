@@ -16,8 +16,8 @@
 
 package sample.ui.material.imageview
 
-import android.app.Application
 import meow.core.arch.MeowViewModel
+import sample.App
 
 /**
  * Material Alert View Model class.
@@ -27,4 +27,4 @@ import meow.core.arch.MeowViewModel
  * @since   2020-03-22
  */
 
-class ImageviewViewModel(app: Application) : MeowViewModel(app)
+class ImageviewViewModel(app: App) : MeowViewModel(app)

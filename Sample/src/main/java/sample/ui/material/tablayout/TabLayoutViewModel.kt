@@ -16,8 +16,8 @@
 
 package sample.ui.material.tablayout
 
-import android.app.Application
 import meow.core.arch.MeowViewModel
+import sample.App
 
 /**
  * Material Tab Layout View Model class.
@@ -27,7 +27,7 @@ import meow.core.arch.MeowViewModel
  * @since   2020-03-23
  */
 
-class TabLayoutViewModel(app: Application) : MeowViewModel(app) {
+class TabLayoutViewModel(app: App) : MeowViewModel(app) {
 
     fun getBadgeNumber() = 10
 }

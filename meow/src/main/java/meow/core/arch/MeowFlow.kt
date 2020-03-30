@@ -23,7 +23,6 @@ import androidx.lifecycle.LiveData
 import meow.core.api.*
 import meow.core.arch.MeowFlow.GetDataApi
 import meow.core.ui.MVVM
-import meow.util.createErrorMessage
 import meow.util.safeObserve
 import meow.util.toastL
 import meow.widget.impl.MeowErrorViewInterface

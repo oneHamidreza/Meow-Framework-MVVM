@@ -16,10 +16,10 @@
 
 package sample.ui.dialog
 
-import android.app.Application
 import android.view.View
 import meow.core.arch.MeowViewModel
 import meow.core.arch.SingleLiveData
+import sample.App
 import sample.R
 
 /**
@@ -30,7 +30,7 @@ import sample.R
  * @since   2020-03-22
  */
 
-class CustomDialogViewModel(app: Application) : MeowViewModel(app) {
+class CustomDialogViewModel(app: App) : MeowViewModel(app) {
 
     val navigationLiveData = SingleLiveData<Int>()
 
