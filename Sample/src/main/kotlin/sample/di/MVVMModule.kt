@@ -37,6 +37,7 @@ import sample.ui.material.form.FormViewModel
 import sample.ui.material.imageview.ImageviewViewModel
 import sample.ui.material.tablayout.TabLayoutViewModel
 import sample.ui.material.tablayout.child.TabLayoutChildViewModel
+import sample.ui.material.textview.TextViewViewModel
 import sample.ui.menu.MenuViewModel
 import sample.ui.user.detail.UserDetailViewModel
 import sample.ui.user.index.UserIndexViewModel
@@ -92,8 +93,15 @@ val mvvmModule = Module("MVVM Module", false) {
             kodein.direct.instance()
         )
     }
+
     bindAutoTag<TabLayoutViewModel>() with singleton {
         TabLayoutViewModel(
+            kodein.direct.instance()
+        )
+    }
+
+    bindAutoTag<TextViewViewModel>() with singleton {
+        TextViewViewModel(
             kodein.direct.instance()
         )
     }

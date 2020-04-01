@@ -1,0 +1,20 @@
+<resources>
+    <string name="fragment_textview">TextView</string>
+    <string name="textview_headline1">Headline 1</string>
+    <string name="textview_headline2">Headline 2</string>
+    <string name="textview_headline3">Headline 3</string>
+    <string name="textview_headline4">Headline 4</string>
+    <string name="textview_headline5">Headline 5</string>
+    <string name="textview_headline6">Headline 6</string>
+    <string name="textview_subtitle1">Subtitle 1</string>
+    <string name="textview_subtitle2">Subtitle 2</string>
+    <string name="textview_body1">Body 1</string>
+    <string name="textview_body2">Body 2</string>
+    <string name="textview_overline">Overline</string>
+    <string name="textview_caption">Caption</string>
+
+    <string name="textview_sample">Sample</string>
+    <string name="textview_color_high">High Emphasis</string>
+    <string name="textview_color_medium">Medium Emphasis</string>
+    <string name="textview_color_disabled">Disabled</string>
+</resources>

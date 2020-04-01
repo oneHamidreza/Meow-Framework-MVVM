@@ -29,7 +29,6 @@
                     suffixText="@{`:`}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/iran_sans_bold"
                     android:gravity="center"
                     android:text="Hello World"
                     android:textColor="@{@color/black}" />

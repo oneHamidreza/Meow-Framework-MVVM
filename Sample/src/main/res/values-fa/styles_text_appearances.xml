@@ -2,7 +2,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="textAppearance.Headline1" parent="@style/Meow.TextAppearance.Headline1">
-        <item name="fontFamily">@font/english_regular</item>
+        <item name="fontFamily">@font/farsi_light</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
     <style name="textAppearance.Headline1.dp" parent="@style/Meow.TextAppearance.Headline1">
@@ -10,7 +11,8 @@
     </style>
 
     <style name="textAppearance.Headline2" parent="@style/Meow.TextAppearance.Headline2">
-        <item name="fontFamily">@font/english_regular</item>
+        <item name="fontFamily">@font/farsi_light</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
     <style name="textAppearance.Headline2.dp" parent="@style/Meow.TextAppearance.Headline2">
@@ -18,7 +20,8 @@
     </style>
 
     <style name="textAppearance.Headline3" parent="@style/Meow.TextAppearance.Headline3">
-        <item name="fontFamily">@font/english_regular</item>
+        <item name="fontFamily">@font/farsi_regular</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
     <style name="textAppearance.Headline3.dp" parent="@style/Meow.TextAppearance.Headline2">
@@ -26,7 +29,8 @@
     </style>
 
     <style name="textAppearance.Headline4" parent="@style/Meow.TextAppearance.Headline4">
-        <item name="fontFamily">@font/english_regular</item>
+        <item name="fontFamily">@font/farsi_light</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
     <style name="textAppearance.Headline4.dp" parent="@style/Meow.TextAppearance.Headline2">
@@ -34,7 +38,8 @@
     </style>
 
     <style name="textAppearance.Headline5" parent="@style/Meow.TextAppearance.Headline5">
-        <item name="fontFamily">@font/english_regular</item>
+        <item name="fontFamily">@font/farsi_regular</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
     <style name="textAppearance.Headline5.dp" parent="@style/Meow.TextAppearance.Headline2">
@@ -42,7 +47,8 @@
     </style>
 
     <style name="textAppearance.Headline6" parent="@style/Meow.TextAppearance.Headline6">
-        <item name="fontFamily">@font/english_bold</item>
+        <item name="fontFamily">@font/farsi_medium</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
     <style name="textAppearance.Headline6.dp" parent="@style/Meow.TextAppearance.Headline2">
@@ -50,7 +56,8 @@
     </style>
 
     <style name="textAppearance.Body1" parent="@style/Meow.TextAppearance.Body1">
-        <item name="fontFamily">@font/english_regular</item>
+        <item name="fontFamily">@font/farsi_regular</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
     <style name="textAppearance.Body1.dp" parent="@style/Meow.TextAppearance.Headline2">
@@ -58,7 +65,8 @@
     </style>
 
     <style name="textAppearance.Body2" parent="@style/Meow.TextAppearance.Body2">
-        <item name="fontFamily">@font/english_regular</item>
+        <item name="fontFamily">@font/farsi_regular</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
     <style name="textAppearance.Body2.dp" parent="@style/Meow.TextAppearance.Headline2">
@@ -66,7 +74,8 @@
     </style>
 
     <style name="textAppearance.Subtitle1" parent="@style/Meow.TextAppearance.Subtitle1">
-        <item name="fontFamily">@font/english_bold</item>
+        <item name="fontFamily">@font/farsi_medium</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
     <style name="textAppearance.Subtitle1.dp" parent="@style/Meow.TextAppearance.Headline2">
@@ -74,7 +83,8 @@
     </style>
 
     <style name="textAppearance.Subtitle2" parent="@style/Meow.TextAppearance.Subtitle2">
-        <item name="fontFamily">@font/english_bold</item>
+        <item name="fontFamily">@font/farsi_medium</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
     <style name="textAppearance.Subtitle2.dp" parent="@style/Meow.TextAppearance.Headline2">
@@ -82,7 +92,8 @@
     </style>
 
     <style name="textAppearance.Caption" parent="@style/Meow.TextAppearance.Caption">
-        <item name="fontFamily">@font/english_regular</item>
+        <item name="fontFamily">@font/farsi_light</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
     <style name="textAppearance.Caption.dp" parent="@style/Meow.TextAppearance.Headline2">
@@ -90,7 +101,8 @@
     </style>
 
     <style name="textAppearance.Overline" parent="@style/Meow.TextAppearance.Overline">
-        <item name="fontFamily">@font/english_regular</item>
+        <item name="fontFamily">@font/farsi_regular</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
     <style name="textAppearance.Overline.dp" parent="@style/Meow.TextAppearance.Headline2">
@@ -98,7 +110,8 @@
     </style>
 
     <style name="textAppearance.Button" parent="@style/Meow.TextAppearance.Button">
-        <item name="fontFamily">@font/english_bold</item>
+        <item name="fontFamily">@font/farsi_medium</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
     <style name="textAppearance.Button.dp" parent="@style/Meow.TextAppearance.Headline2">
@@ -106,11 +119,13 @@
     </style>
 
     <style name="textAppearance.CollapsingToolbar.Expanded" parent="@style/TextAppearance.Design.CollapsingToolbar.Expanded">
-        <item name="fontFamily">@font/english_bold</item>
+        <item name="fontFamily">@font/farsi_medium</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
     <style name="textAppearance.CollapsingToolbar.Collapsed" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="fontFamily">@font/english_bold</item>
+        <item name="fontFamily">@font/farsi_medium</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
 </resources>

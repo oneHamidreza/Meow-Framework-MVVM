@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     android:label="Main"
-    app:startDestination="@id/fragmentFABSimple">
+    app:startDestination="@id/fragmentTextview">
 
     <action
         android:id="@+id/actionToForm"
@@ -113,6 +113,12 @@
         android:name="sample.ui.material.imageview.ImageviewFragment"
         android:label="@string/fragment_imageview"
         tools:layout="@layout/fragment_imageview" />
+
+    <fragment
+        android:id="@+id/fragmentTextview"
+        android:name="sample.ui.material.textview.TextViewFragment"
+        android:label="@string/fragment_textview"
+        tools:layout="@layout/fragment_textview" />
 
     <fragment
         android:id="@+id/fragmentUserDetail"

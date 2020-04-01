@@ -28,6 +28,7 @@ import meow.core.api.*
 import meow.util.avoidException
 import meow.util.hasNotNetwork
 import meow.util.launchSilent
+import meow.util.resources
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
@@ -120,5 +121,7 @@ open class MeowViewModel(open val app: MeowApp) : AndroidViewModel(app), KodeinA
         jobWithIds.forEach { avoidException { it.second.cancel() } }
         jobWithIds.clear()
     }
+
+    fun getString(id: Int, vararg formatArgs: Any) = app.resources().getString(id, formatArgs)
 
 }
