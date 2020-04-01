@@ -39,7 +39,7 @@ typealias DiffCallback = Content.DiffCallback
 
 class ContentAdapter(
     override var viewModel: ViewModel,
-    var onClickedItem: (item: Model) -> Unit
+    var onClickedItem: (item: Model) -> Unit = {}
 ) : MeowAdapter<Model, ViewHolder, ViewModel>(
     viewModel,
     DiffCallback()

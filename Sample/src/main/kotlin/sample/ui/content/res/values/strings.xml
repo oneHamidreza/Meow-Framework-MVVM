@@ -1,0 +1,6 @@
+<resources>
+    <string name="content_item_title">Simple title item #%d</string>
+    <string name="content_item_desc">Simple description item #%d</string>
+    <string name="content_item_custom_title">Custom title item</string>
+    <string name="content_item_custom_desc">Custom description item</string>
+</resources>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="fragment_fab_extended">FAB Extended</string>
+    <string name="fab_extended_text">Add item</string>
+</resources>

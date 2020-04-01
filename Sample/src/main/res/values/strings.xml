@@ -4,5 +4,6 @@
     <string name="theme_dark">Dark Mode</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
-    <string name="changeLanguage">Change Language</string>
+    <string name="change_language">Change Language</string>
+
 </resources>

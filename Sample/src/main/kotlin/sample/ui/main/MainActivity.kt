@@ -17,7 +17,6 @@
 package sample.ui.main
 
 import android.os.Bundle
-import android.view.Menu
 import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -51,19 +50,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setSupportActionBar(binding.toolbar)
         setupNavigation()
-
-//        AlertDialog.Builder(this).setTitle("سلام").setView(R.layout.dialog_custom).show()
-
-//        binding.viewTest.setBackgroundColor(getColorCompat(R.color.primary))
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.drawer_actions, menu)
-        return true
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.drawer_actions, menu)
+//        return true
+//    }
 
     private fun setupNavigation() {
         navController = findNavController(R.id.navHost).apply {

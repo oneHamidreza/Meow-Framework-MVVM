@@ -47,6 +47,7 @@ inline fun <reified B, T> B.getField(name: String, useSuperClass: Boolean = fals
         val filed = clazz?.getDeclaredField(name)?.apply {
             isAccessible = true
         }
+        @Suppress("UNCHECKED_CAST")
         (filed?.get(this@getField) as? T)
     }
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     android:label="Main"
-    app:startDestination="@id/fragmentCard">
+    app:startDestination="@id/fragmentFABExtended">
 
     <action
         android:id="@+id/actionToForm"
@@ -21,6 +21,10 @@
     <action
         android:id="@+id/actionToAlerts"
         app:destination="@id/fragmentAlerts" />
+
+    <action
+        android:id="@+id/actionToFABExtended"
+        app:destination="@id/fragmentFABExtended" />
 
     <action
         android:id="@+id/actionToCard"
@@ -73,6 +77,12 @@
         android:name="sample.ui.material.collapsing.toolbar.CollapsingToolbarFragment"
         android:label="@string/fragment_collapsing_toolbar"
         tools:layout="@layout/fragment_collapsing_toolbar" />
+
+    <fragment
+        android:id="@+id/fragmentFABExtended"
+        android:name="sample.ui.material.fab.extended.FABExtendedFragment"
+        android:label="@string/fragment_fab_extended"
+        tools:layout="@layout/fragment_fab_extended" />
 
     <fragment
         android:id="@+id/fragmentTabLayout"

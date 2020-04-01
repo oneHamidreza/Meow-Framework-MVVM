@@ -31,6 +31,7 @@ import sample.ui.material.button.ButtonViewModel
 import sample.ui.material.card.CardViewModel
 import sample.ui.material.checkbox.CheckboxViewModel
 import sample.ui.material.collapsing.toolbar.CollapsingToolbarViewModel
+import sample.ui.material.fab.extended.FABExtendedViewModel
 import sample.ui.material.form.FormViewModel
 import sample.ui.material.imageview.ImageviewViewModel
 import sample.ui.material.tablayout.TabLayoutViewModel
@@ -75,6 +76,12 @@ val mvvmModule = Module("MVVM Module", false) {
 
     bindAutoTag<CollapsingToolbarViewModel>() with singleton {
         CollapsingToolbarViewModel(
+            kodein.direct.instance()
+        )
+    }
+
+    bindAutoTag<FABExtendedViewModel>() with singleton {
+        FABExtendedViewModel(
             kodein.direct.instance()
         )
     }
