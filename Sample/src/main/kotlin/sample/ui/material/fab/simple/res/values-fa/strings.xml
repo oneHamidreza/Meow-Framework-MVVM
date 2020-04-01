@@ -1,0 +1,4 @@
+<resources>
+    <string name="fragment_fab_simple">دکمه‌ی شناور ساده (FAB Simple)</string>
+    <string name="fab_simple_snack_success">آیتم با موفقیت اضافه شد.</string>
+</resources>

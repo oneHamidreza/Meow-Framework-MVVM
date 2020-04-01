@@ -32,6 +32,7 @@ import sample.ui.material.card.CardViewModel
 import sample.ui.material.checkbox.CheckboxViewModel
 import sample.ui.material.collapsing.toolbar.CollapsingToolbarViewModel
 import sample.ui.material.fab.extended.FABExtendedViewModel
+import sample.ui.material.fab.simple.FABSimpleViewModel
 import sample.ui.material.form.FormViewModel
 import sample.ui.material.imageview.ImageviewViewModel
 import sample.ui.material.tablayout.TabLayoutViewModel
@@ -86,6 +87,11 @@ val mvvmModule = Module("MVVM Module", false) {
         )
     }
 
+    bindAutoTag<FABSimpleViewModel>() with singleton {
+        FABSimpleViewModel(
+            kodein.direct.instance()
+        )
+    }
     bindAutoTag<TabLayoutViewModel>() with singleton {
         TabLayoutViewModel(
             kodein.direct.instance()

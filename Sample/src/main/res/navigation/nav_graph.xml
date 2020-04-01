@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     android:label="Main"
-    app:startDestination="@id/fragmentFABExtended">
+    app:startDestination="@id/fragmentFABSimple">
 
     <action
         android:id="@+id/actionToForm"
@@ -83,6 +83,12 @@
         android:name="sample.ui.material.fab.extended.FABExtendedFragment"
         android:label="@string/fragment_fab_extended"
         tools:layout="@layout/fragment_fab_extended" />
+
+    <fragment
+        android:id="@+id/fragmentFABSimple"
+        android:name="sample.ui.material.fab.simple.FABSimpleFragment"
+        android:label="@string/fragment_fab_simple"
+        tools:layout="@layout/fragment_fab_simple" />
 
     <fragment
         android:id="@+id/fragmentTabLayout"

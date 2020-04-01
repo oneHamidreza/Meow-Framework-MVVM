@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Meow.FloatingActionButton" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="layout_anchorGravity">bottom|end</item>
+    </style>
+
+    <style name="Meow.FloatingActionButton.Extended" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="layout_anchorGravity">bottom|center_horizontal</item>
+    </style>
+
+</resources>

@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="sample.ui.material.fab.extended.FABExtendedViewModel" />
+            type="sample.ui.material.fab.simple.FABSimpleViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -21,12 +21,10 @@
             app:meow_items="@{viewModel.listLiveData}" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            style="@style/Meow.FloatingActionButton.Extended"
+            style="@style/Meow.FloatingActionButton"
             android:onClick="@{viewModel::onClickedAddItem}"
-            android:text="@string/fab_extended_text"
             app:icon="@drawable/ic_add"
-            app:layout_anchor="@id/recyclerView"
-            app:layout_anchorGravity="bottom|center_horizontal" />
+            app:layout_anchor="@id/recyclerView" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

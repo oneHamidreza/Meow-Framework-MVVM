@@ -1,0 +1,4 @@
+<resources>
+    <string name="fragment_fab_simple">FAB Simple</string>
+    <string name="fab_simple_snack_success">Item was added successfully.</string>
+</resources>
