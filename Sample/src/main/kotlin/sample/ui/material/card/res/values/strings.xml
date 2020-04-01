@@ -1,0 +1,18 @@
+<resources>
+    <string name="fragment_card">Card</string>
+
+    <string name="card_simple_title">Hi! 👋 the simple title</string>
+    <string name="card_simple_desc">Here is the contents for testing Material Card.</string>
+    <string name="card_with_action_title">Card with actions</string>
+    <string name="card_with_action_desc">Here is the contents for testing Material Card with actions. Tap the buttons.</string>
+    <string name="card_with_action_save">save</string>
+    <string name="card_with_action_dismiss">dimiss</string>
+    <string name="card_stroke_title">Stroked Card</string>
+    <string name="card_stroke_desc">Here is the contents for testing Material Card with stroke background.</string>
+    <string name="card_high_elevation_title">High elevation card</string>
+    <string name="card_high_elevation_desc">Here is the contents for testing Material Card with high elevation.</string>
+    <string name="card_with_image_title">Card with image at top</string>
+    <string name="card_with_image_desc">Here is the contents for testing Material Card with image container.</string>
+    <string name="card_checkable_title">A Checkable Card</string>
+    <string name="card_checkable_desc">Here is the contents for testing Material Card with checkable feature.</string>
+</resources>

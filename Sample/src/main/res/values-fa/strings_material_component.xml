@@ -1,46 +1,0 @@
-<resources>
-
-    <!-- Material Alert -->
-    <string-array name="alert_contents_list_title">
-        <item>ساده بدون Listener</item>
-        <item>ساده با Listener</item>
-        <item>لودینگ</item>
-    </string-array>
-    <string-array name="alert_contents_list_desc">
-        <item>یک دیالوگ خیلی ساده</item>
-        <item>یک دیالوگ ساده با دکمه‌های باشه و بی‌خیال</item>
-        <item>یک دیالوگ ساده با Progress Bar</item>
-    </string-array>
-
-    <!-- Material Alert -->
-    <string name="alert_simple_title">سلام! 👋 یک عنوان ساده</string>
-    <string name="alert_simple_message">محتوا برای یک دیالوگ هشدار متریال ساده بدون Listener هست.</string>
-    <string name="alert_simple_with_listener_title">سلام! 👋 یک عنوان ساده</string>
-    <string name="alert_simple_with_listener_message">محتوا برای یک دیالوگ هشدار متریال ساده با Listener هست.</string>
-    <string name="alert_loading_title">در حال بارگذاری …</string>
-    <string name="toast_alert_ok_clicked">دکمه اوکی کلیک شد!</string>
-    <string name="toast_alert_cancel_clicked">دکمه کنسل کلیک شد!</string>
-    <string name="toast_alert_on_canceled">دیالوگ Alert کنسل شد!</string>
-    <string name="tab_title">تب %d</string>
-
-    <!-- Material Card -->
-    <string name="card_simple_title">سلام! 👋 یک عنوان ساده</string>
-    <string name="card_simple_desc">محتوا برای یک کارت متریال ساده هست.</string>
-    <string name="card_with_action_title">کارت با اکشن</string>
-    <string name="card_with_action_desc">محتوا برای یک کارت متریال ساده با اکشن هست. روی دکمه ضربه بزنید.</string>
-    <string name="card_with_action_save">ذخیره</string>
-    <string name="card_with_action_dismiss">رد</string>
-    <string name="card_stroke_title">کارت با حاشیه خطی</string>
-    <string name="card_stroke_desc">محتوا برای یک کارت متریال با پس‌زمینه حاشیه خطی می‌باشد.</string>
-    <string name="card_high_elevation_title">کارت با سایه زیاد</string>
-    <string name="card_high_elevation_desc">محتوا برای یک کارت متریال با سایه زیاد می‌باشد.</string>
-    <string name="card_with_image_title">کارت با تصویر</string>
-    <string name="card_with_image_desc">محتوا برای یک کارت متریال با تصویر می‌باشد. این محتوا شامل چند خط می‌باشد. تصویر توسط Glide بارگذاری می‌شود.</string>
-    <string name="card_checkable_title">کارت با قابلیت برچسب‌گذاری</string>
-    <string name="card_checkable_desc">محتوا برای یک کارت متریال با قابلیت برچسب‌گذاری می‌باشد.</string>
-
-    <!-- Material Checkbox -->
-    <string name="checkbox_simple">چک‌باکس ساده</string>
-    <string name="checkbox_tint">چک‌باکس با رنگ متفاوت</string>
-
-</resources>

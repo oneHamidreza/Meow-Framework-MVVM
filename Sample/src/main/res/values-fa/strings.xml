@@ -1,18 +1,6 @@
 <resources>
-    <string name="fragment_collapsing_toolbar">تولبار با سایز متغیر(Collapsing Toolbar)</string>
-
-    <string name="fragment_alerts">دیالوگ (Alrerts)</string>
-    <string name="fragment_tablayout">تب (Tab Layout)</string>
-    <string name="fragment_card">کارت (Card)</string>
-    <string name="fragment_checkbox">چک‌باکس (Checkbox)</string>
-    <string name="fragment_form">فرم و تکست فیلد (Form)</string>
-    <string name="fragment_button">(Button) دکمه ها</string>
-    <string name="fragment_imageview">Image View</string>
-
     <string name="theme_dark">مود تاریک</string>
-
     <string name="ok">باشه</string>
     <string name="cancel">بی‌خیال</string>
     <string name="changeLanguage">تغییر زبان</string>
-
 </resources>

@@ -1,21 +1,8 @@
 <resources>
     <string name="app_name" translatable="false">Meow Framework MVVM</string>
 
-    <string name="fragment_collapsing_toolbar">Collapsing Toolbar</string>
-
-    <string name="fragment_alerts">Alerts</string>
-    <string name="fragment_tablayout">Tab Layout</string>
-    <string name="fragment_card">Card</string>
-    <string name="fragment_checkbox">Checkbox</string>
-    <string name="fragment_form">Form</string>
-    <string name="fragment_button">Button</string>
-    <string name="fragment_imageview">Image View</string>
-
     <string name="theme_dark">Dark Mode</string>
-
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
-
     <string name="changeLanguage">Change Language</string>
-
 </resources>

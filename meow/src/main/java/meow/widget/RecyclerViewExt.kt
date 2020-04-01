@@ -35,6 +35,7 @@ object RecyclerViewBindingAdapter {
     @BindingAdapter("meow_items")
     @JvmStatic
     fun <T : Any, VH : RecyclerView.ViewHolder> setItems(view: RecyclerView, items: List<T>?) {
+        @Suppress("UNCHECKED_CAST")
         (view.adapter as? ListAdapter<T, VH>)?.submitList(items)
     }
 

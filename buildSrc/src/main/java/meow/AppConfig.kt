@@ -27,7 +27,10 @@ package meow
 object AppConfig {
 
     object Build {
-        const val PACKAGE_NAME = "com.etebarian.meowframework"
+        const val APPLICATION_ID = "com.etebarian.meowframework"
+        const val APP_MODULE = "sample"
+        const val APP_PACKAGE = "sample"
+        const val SRC_MAIN = "src/main/"
 
         enum class PHASE(var alias: String) {
             ALPHA("alpha"),

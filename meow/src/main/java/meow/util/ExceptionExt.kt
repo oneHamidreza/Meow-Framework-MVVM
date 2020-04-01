@@ -26,7 +26,10 @@ import meow.controller
  * @since   2020-03-04
  */
 
-fun allowReport(exp: Exception): Boolean {
+fun allowReport(
+    @Suppress("UNUSED")
+    exp: Exception
+): Boolean {
     return when (exp) {
 //        is NumberParseException -> false
         else -> true

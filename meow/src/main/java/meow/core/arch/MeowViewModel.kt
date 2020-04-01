@@ -103,7 +103,7 @@ open class MeowViewModel(open val app: MeowApp) : AndroidViewModel(app), KodeinA
         }
 
         response.processAndPush(liveData)
-        val data = avoidException { response.data as? T? }
+        @Suppress("UNCHECKED_CAST") val data = avoidException { response.data as? T? }
         resultBlock(response, data)
     }
 
