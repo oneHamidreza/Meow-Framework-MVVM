@@ -16,6 +16,8 @@
 
 package meow
 
+import org.gradle.api.Project
+
 /**
  * Build Application Configure object containing build info, dependencies, versioning.
  *
@@ -104,6 +106,7 @@ object AppConfig {
         const val SDK_MIN = 19
         const val SDK_TARGET = 29
         const val KOTLIN = "1.3.71"
+
     }
 
     fun generateVersionCode(): Int {
@@ -113,6 +116,25 @@ object AppConfig {
     fun generateVersionName(): String {
         val type = if (Versions.BUILD_PHASE.alias == "") "" else "-${Versions.BUILD_PHASE.alias}"
         return "${Versions.MAJOR}.${Versions.MINOR}.${Versions.PATCH}$type"
+    }
+
+    fun <T> Project.getProperty(key: String): T {
+        val properties = java.util.Properties().apply {
+            load(rootProject.file("local.properties").inputStream())
+        }
+        return properties.getProperty(key) as T
+    }
+
+    object Publishing {
+        const val name = "Meow framework MVVM"
+        const val bintrayUsername = "infinitydesign"
+        const val bintrayRepoName = "meow"
+        const val groupId = "com.etebarian.meow"
+        const val artifactId = "framework"
+        const val gitUrl = "https://github.com/oneHamidreza/meow-framework-mvvm.git"
+        const val siteUrl = "https://github.com/oneHamidreza/meow-framework-mvvm"
+        const val libraryDesc =
+            "A framework for android developers with most useful tools and written in Kotlin."
     }
 }
 

@@ -11,10 +11,15 @@ buildscript {
         classpath(kotlin("gradle-plugin", kotlinVersion))
         classpath(kotlin("serialization", kotlinVersion))
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.2.1")
+        classpath("com.novoda:bintray-release:0.9.2")
     }
 }
 
 allprojects {
+
+    tasks.withType(Javadoc::class) {
+        isEnabled = false
+    }
     repositories {
         google()
         jcenter()
