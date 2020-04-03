@@ -72,11 +72,6 @@ abstract class MeowFragment<B : ViewDataBinding, VM : MeowViewModel> : Fragment(
         observeViewModel()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding.lifecycleOwner = null //todo mayber need delete
-    }
-
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
