@@ -22,11 +22,9 @@ import android.content.res.Configuration
 import android.util.LayoutDirection
 import androidx.appcompat.app.AppCompatDelegate
 import meow.core.api.MeowSession
+import meow.core.data.MeowSharedPreferences
 import meow.core.ui.MeowActivity
-import meow.util.MeowCurrency
-import meow.util.getField
-import meow.util.setField
-import meow.util.updateStatusBarByTheme
+import meow.util.*
 
 /**
  * 🐈 This CAT can control configurations and UI properties in one Application. Just trust it.
@@ -121,6 +119,10 @@ class MeowController(
         controller = this
         controller.app = app
         dpi = app.resources.displayMetrics.density
+
+        MeowContextWrapper.wrap(app, "en")
+        MeowSharedPreferences(app, "meow_shared").put("test_key", "test_value")
+        MeowContextWrapper.wrap(app, controller.language)
     }
 
     enum class Theme {

@@ -43,7 +43,7 @@ class SharedPreferencesFragment :
 
     override fun observeViewModel() {
         binding.viewModel?.apply {
-            userStateLiveData.safeObserve {
+            userStateLiveData.safeObserve(binding.lifecycleOwner) {
                 val text = it.second.toString()
                 when (it.first) {
                     State.PUT -> {
