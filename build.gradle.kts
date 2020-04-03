@@ -18,7 +18,10 @@ buildscript {
 allprojects {
 
     tasks.withType(Javadoc::class) {
-        isEnabled = false
+        (options as CoreJavadocOptions).addStringOption("Xdoclint:none", "-quiet")
+//        isEnabled = false
+//        isFailOnError = false
+        options.encoding = "UTF-8"
     }
     repositories {
         google()
