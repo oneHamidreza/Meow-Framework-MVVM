@@ -4,26 +4,22 @@
     <style name="Meow.Button" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">8dp</item>
     </style>
 
     <style name="Meow.Button.OutLined" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">8dp</item>
         <item name="strokeColor">?attr/colorPrimary</item>
     </style>
 
     <style name="Meow.Button.Flat" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">8dp</item>
     </style>
 
     <style name="Meow.Button.Unelevated" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">8dp</item>
     </style>
 
     <style name="Meow.Button.insetBottom" parent="Meow.Button">

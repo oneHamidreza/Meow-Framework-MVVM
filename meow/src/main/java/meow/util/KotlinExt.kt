@@ -64,3 +64,5 @@ fun launchSilent(
         CoroutineScope(context + job)
     return scope.launch(context, start, block)
 }
+
+fun <A, B> ofPair(first: A, second: B) = Pair(first, second)

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     android:label="Main"
-    app:startDestination="@id/fragmentTextview">
+    app:startDestination="@id/fragmentSharedPreferences">
 
     <action
         android:id="@+id/actionToForm"
@@ -113,6 +113,12 @@
         android:name="sample.ui.material.imageview.ImageviewFragment"
         android:label="@string/fragment_imageview"
         tools:layout="@layout/fragment_imageview" />
+
+    <fragment
+        android:id="@+id/fragmentSharedPreferences"
+        android:name="sample.ui.sharedprefrences.SharedPreferencesFragment"
+        android:label="@string/fragment_shared_preferences"
+        tools:layout="@layout/fragment_shared_preferences" />
 
     <fragment
         android:id="@+id/fragmentTextview"

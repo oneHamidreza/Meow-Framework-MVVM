@@ -68,8 +68,7 @@ open class AppApi(
     override fun getOKHttpClientBuilder(): OkHttpClient.Builder {
         return super.getOKHttpClientBuilder().apply {
             val isLogin = dataSource.isLogin()
-            val authorization =
-                MeowApi.Authorization.SimpleToken(isLogin, dataSource.fetchApiToken())
+            val authorization = Authorization.Bearer(isLogin, dataSource.fetchApiToken())
 
             val interceptorBlocks: List<InterceptorBlock> = listOf(
                 getCacheInterceptorBlock(app, options),
@@ -78,7 +77,7 @@ open class AppApi(
             )
             addInterceptorBlocks(interceptorBlocks)
 
-            authenticator(RefreshToken(this@AppApi, authorization))
+            authenticator(OauthRefreshToken(this@AppApi, authorization))
         }
     }
 

@@ -1,0 +1,7 @@
+<resources>
+    <string name="fragment_shared_preferences">تنظیمات اشتراکی (Shared Preferences)</string>
+    <string name="shared_preferences_put_user">ذخیره کاربر</string>
+    <string name="shared_preferences_get_user">دریافت کاربر</string>
+    <string name="shared_preferences_warn_get">کاربر مورد نظر از دیتاسورس دریافت شد.</string>
+    <string name="shared_preferences_warn_put">کاربر مورد نظر در دیتاسورس ذخیره شد.</string>
+</resources>

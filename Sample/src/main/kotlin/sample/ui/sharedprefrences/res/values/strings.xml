@@ -1,0 +1,7 @@
+<resources>
+    <string name="fragment_shared_preferences">Shared Preferences</string>
+    <string name="shared_preferences_put_user">Put user model</string>
+    <string name="shared_preferences_get_user">Get user model</string>
+    <string name="shared_preferences_warn_get">The user was fetched from Data Source.</string>
+    <string name="shared_preferences_warn_put">Sample user was pushed to Data Source.</string>
+</resources>

@@ -28,7 +28,9 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
 import org.kodein.di.direct
 import org.kodein.di.erased.bind
+import org.kodein.di.erased.instance
 import org.kodein.di.erased.singleton
+import sample.data.DataSource
 import sample.di.apiModule
 import sample.di.appModule
 import sample.di.mvvmModule
@@ -52,6 +54,8 @@ class App : MeowApp(), KodeinAware {
         import(apiModule)
         import(mvvmModule)
     }
+
+    val dataSource by instance<DataSource>()
 
     override fun getLanguage(context: Context?) = "fa"
     override fun getTheme(context: Context?) =
