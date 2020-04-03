@@ -28,9 +28,7 @@ import kotlin.coroutines.CoroutineContext
  */
 
 inline fun <reified T> javaClass() = T::class.java
-inline fun <reified T> newInstance() = T::class.java.newInstance()
 
-//todo @Modares
 inline fun <reified B, T> B.setField(name: String, value: T, useSuperClass: Boolean = false) =
     avoidException {
         val clazz = if (useSuperClass) javaClass<B>().superclass else javaClass<B>()

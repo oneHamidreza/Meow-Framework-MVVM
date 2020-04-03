@@ -20,6 +20,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.widget.TextViewCompat
 import com.google.android.material.snackbar.Snackbar
 import meow.core.ui.MVVM
 import meow.core.ui.MeowActivity
@@ -36,16 +37,27 @@ import meow.core.ui.MeowFragment
 fun MVVM<*, *>?.snackL(
     message: String,
     actionText: String? = null,
+    messageTextAppearanceId: Int = 0,
+    actionTextAppearanceId: Int = 0,
     onActionClicked: () -> Unit = { }
 ) {
     if (this == null)
         return
-    snack(message, Snackbar.LENGTH_LONG, actionText = actionText, onActionClicked = onActionClicked)
+    snack(
+        message,
+        Snackbar.LENGTH_LONG,
+        actionText = actionText,
+        messageTextAppearanceId = messageTextAppearanceId,
+        actionTextAppearanceId = actionTextAppearanceId,
+        onActionClicked = onActionClicked
+    )
 }
 
 fun MVVM<*, *>?.snackS(
     message: String,
     actionText: String? = null,
+    messageTextAppearanceId: Int = 0,
+    actionTextAppearanceId: Int = 0,
     onActionClicked: () -> Unit = { }
 ) {
     if (this == null)
@@ -54,6 +66,8 @@ fun MVVM<*, *>?.snackS(
         message,
         Snackbar.LENGTH_SHORT,
         actionText = actionText,
+        messageTextAppearanceId = messageTextAppearanceId,
+        actionTextAppearanceId = actionTextAppearanceId,
         onActionClicked = onActionClicked
     )
 }
@@ -61,6 +75,8 @@ fun MVVM<*, *>?.snackS(
 fun MVVM<*, *>?.snackL(
     resMessage: Int,
     resActionText: Int? = null,
+    messageTextAppearanceId: Int = 0,
+    actionTextAppearanceId: Int = 0,
     onActionClicked: () -> Unit = { }
 ) {
     if (this == null)
@@ -69,6 +85,8 @@ fun MVVM<*, *>?.snackL(
         resources().getString(resMessage),
         Snackbar.LENGTH_LONG,
         actionText = if (resActionText != null) resources().getString(resMessage) else null,
+        messageTextAppearanceId = messageTextAppearanceId,
+        actionTextAppearanceId = actionTextAppearanceId,
         onActionClicked = onActionClicked
     )
 }
@@ -76,6 +94,8 @@ fun MVVM<*, *>?.snackL(
 fun MVVM<*, *>?.snackS(
     resMessage: Int,
     resActionText: Int? = null,
+    messageTextAppearanceId: Int = 0,
+    actionTextAppearanceId: Int = 0,
     onActionClicked: () -> Unit = { }
 ) {
     if (this == null)
@@ -84,6 +104,8 @@ fun MVVM<*, *>?.snackS(
         resources().getString(resMessage),
         Snackbar.LENGTH_SHORT,
         actionText = if (resActionText != null) resources().getString(resMessage) else null,
+        messageTextAppearanceId = messageTextAppearanceId,
+        actionTextAppearanceId = actionTextAppearanceId,
         onActionClicked = onActionClicked
     )
 }
@@ -93,6 +115,8 @@ fun MVVM<*, *>?.snack(
     duration: Int,
     contentView: View = this?.contentView()!!,
     actionText: String? = null,
+    messageTextAppearanceId: Int = 0,
+    actionTextAppearanceId: Int = 0,
     onActionClicked: () -> Unit = { }
 ) {
     if (message == null)
@@ -107,11 +131,12 @@ fun MVVM<*, *>?.snack(
 
             val tv = view.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
             val bt = view.findViewById(com.google.android.material.R.id.snackbar_action) as Button
-            //todo support textcolor & background & font
 
-//            val typeface = Typeface.DEFAULT
-//            tv.typeface = typeface
-//            bt.typeface = typeface
+            if (messageTextAppearanceId != 0)
+                TextViewCompat.setTextAppearance(tv, messageTextAppearanceId)
+            if (actionTextAppearanceId != 0)
+                TextViewCompat.setTextAppearance(bt, actionTextAppearanceId)
+
             show()
         }
     }
