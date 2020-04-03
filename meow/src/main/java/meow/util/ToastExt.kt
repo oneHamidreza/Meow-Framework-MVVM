@@ -75,7 +75,7 @@ fun Context?.toast(message: String?, duration: Int, gravity: Int, xOffset: Int, 
         val font = getFontCompat(controller.toastTypefaceResId)
         val span = SpannableString(message)
         span.setSpan(
-            ToastTypefaceSpan(font),
+            CustomTypefaceSpan(font),
             0,
             span.length,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
@@ -99,7 +99,7 @@ fun MeowFragment<*, *>?.toast(
 ) =
     this?.context().toast(message, duration, gravity, xOffset, yOffset)
 
-class ToastTypefaceSpan(private val typeface: Typeface?) : MetricAffectingSpan() {
+class CustomTypefaceSpan(private val typeface: Typeface?) : MetricAffectingSpan() {
 
     override fun updateMeasureState(p: TextPaint) {
         p.typeface = typeface

@@ -113,4 +113,12 @@
         <item name="fontFamily">@font/english_bold</item>
     </style>
 
+    <style name="textAppearance.Snack.Message" parent="@style/textAppearance.Body1">
+        <item name="android:textColor">#ffff00</item>
+    </style>
+
+    <style name="textAppearance.Snack.Button" parent="@style/textAppearance.Button">
+        <item name="android:textColor">#ff0000</item>
+    </style>
+
 </resources>

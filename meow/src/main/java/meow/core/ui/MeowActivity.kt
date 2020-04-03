@@ -26,7 +26,7 @@ import meow.controller
 import meow.core.arch.MeowViewModel
 import meow.util.KeyboardUtils
 import meow.util.PermissionUtils
-import meow.util.viewModel
+import meow.util.viewModelInstance
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 
@@ -57,7 +57,7 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : Localizat
 
     override lateinit var binding: B
 
-    val viewModel: VM by viewModel(viewModelClass())
+    val viewModel: VM by viewModelInstance(viewModelClass())
 
     private lateinit var keyboardUtils: KeyboardUtils
 

@@ -1,0 +1,8 @@
+<resources>
+    <string name="fragment_menu">منو‌ (Menu)</string>
+    <string name="menu_action_first">اکشن اول</string>
+    <string name="menu_action_second">اکشن دوم</string>
+    <string name="menu_action_third">اکشن سوم</string>
+    <string name="menu_action_delete">حذف</string>
+    <string name="menu_hint_search">جستجو</string>
+</resources>

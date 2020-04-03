@@ -25,7 +25,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import meow.core.arch.MeowViewModel
 import meow.util.PermissionUtils
-import meow.util.viewModel
+import meow.util.viewModelInstance
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.KodeinContext
@@ -54,7 +54,7 @@ abstract class MeowFragment<B : ViewDataBinding, VM : MeowViewModel> : Fragment(
     override fun contentView() = view!!
 
     override lateinit var binding: B
-    val viewModel: VM by viewModel(viewModelClass())
+    val viewModel: VM by viewModelInstance(viewModelClass())
 
     override fun onCreateView(
         inflater: LayoutInflater,

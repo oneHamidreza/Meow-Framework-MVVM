@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package sample.ui.sharedprefrences
+package sample.ui.sharedpreferences
 
 import meow.util.javaClass
 import meow.util.safeObserve

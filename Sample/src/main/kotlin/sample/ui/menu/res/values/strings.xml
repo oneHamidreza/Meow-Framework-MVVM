@@ -1,0 +1,8 @@
+<resources>
+    <string name="fragment_menu">Menu</string>
+    <string name="menu_action_first">First Action</string>
+    <string name="menu_action_second">Second Action</string>
+    <string name="menu_action_third">Third Action</string>
+    <string name="menu_action_delete">Delete</string>
+    <string name="menu_hint_search">Search</string>
+</resources>

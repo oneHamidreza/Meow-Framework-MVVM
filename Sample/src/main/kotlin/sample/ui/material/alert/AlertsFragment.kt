@@ -40,7 +40,7 @@ class AlertsFragment : BaseFragment<FragmentAlertsBinding, AlertsViewModel>() {
     override fun layoutId() = R.layout.fragment_alerts
     override fun viewModelClass() = javaClass<AlertsViewModel>()
 
-    private val contentViewModel by viewModel(javaClass<ContentViewModel>())
+    private val contentViewModel by viewModelInstance(javaClass<ContentViewModel>())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,7 +51,7 @@ class AlertsFragment : BaseFragment<FragmentAlertsBinding, AlertsViewModel>() {
     private fun setupRecyclerView() {
         binding.recyclerView.apply {
             addItemDecoration(MeowDividerDecoration(context()))
-            adapter = ContentAdapter(contentViewModel) {
+            adapter = ContentAdapter(contentViewModel) { _, it, _ ->
                 when (it.action) {
                     Content.Action.ALERT_SIMPLE -> {
                         alert()

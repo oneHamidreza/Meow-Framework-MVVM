@@ -72,7 +72,7 @@ class App : MeowApp(), KodeinAware {
             }
             language = getLanguage(this@App)
             isDebugMode = BuildConfig.DEBUG
-            isLogTagNative = true
+            isLogTagNative = false
             defaultTypefaceResId = R.font.english_regular//todo replace with textAppearances
             toastTypefaceResId = R.font.english_regular
             isPersian = true

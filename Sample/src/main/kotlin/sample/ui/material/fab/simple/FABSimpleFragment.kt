@@ -21,7 +21,7 @@ import android.view.View
 import meow.util.javaClass
 import meow.util.safeObserve
 import meow.util.snackL
-import meow.util.viewModel
+import meow.util.viewModelInstance
 import meow.widget.decoration.MeowDividerDecoration
 import meow.widget.safePost
 import sample.R
@@ -43,7 +43,7 @@ class FABSimpleFragment : BaseFragment<FragmentFabSimpleBinding, FABSimpleViewMo
     override fun layoutId() = R.layout.fragment_fab_simple
     override fun viewModelClass() = javaClass<FABSimpleViewModel>()
 
-    private val contentViewModel by viewModel(javaClass<ContentViewModel>())
+    private val contentViewModel by viewModelInstance(javaClass<ContentViewModel>())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

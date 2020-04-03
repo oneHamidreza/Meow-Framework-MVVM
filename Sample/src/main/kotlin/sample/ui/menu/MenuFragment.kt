@@ -1,15 +1,3 @@
-package sample.ui.menu
-
-import androidx.navigation.fragment.findNavController
-import meow.util.javaClass
-import meow.util.safeObserve
-import sample.R
-import sample.core.actionToCustomDialog
-import sample.core.actionToUserDetail
-import sample.core.actionToUserIndex
-import sample.databinding.FragmentMenuBinding
-import sample.ui.base.BaseFragment
-
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -26,6 +14,24 @@ import sample.ui.base.BaseFragment
  * limitations under the License.
  */
 
+package sample.ui.menu
+
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.View
+import android.widget.ArrayAdapter
+import androidx.core.widget.addTextChangedListener
+import meow.util.*
+import meow.widget.addItemDecoration
+import meow.widget.decoration.MeowDividerDecoration
+import sample.R
+import sample.data.Content
+import sample.databinding.FragmentMenuBinding
+import sample.ui.base.BaseFragment
+import sample.ui.content.ContentAdapter
+import sample.ui.content.ContentViewModel
+
 /**
  * Menu Fragment class.
  *
@@ -39,22 +45,57 @@ class MenuFragment : BaseFragment<FragmentMenuBinding, MenuViewModel>() {
     override fun layoutId() = R.layout.fragment_menu
     override fun viewModelClass() = javaClass<MenuViewModel>()
 
-//    override fun initViewModel() {
-//        binding.viewModel = viewModel
-//    }
+    private val contentViewModel by viewModelInstance(javaClass<ContentViewModel>())
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
+        setupRecyclerView()
+        viewModel.fillList()
+
+        binding.completeTextView.addTextChangedListener {
+            viewModel.search(it.toString())
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_sample, menu)
+    }
+
+    private fun setupRecyclerView() {
+        binding.recyclerView.apply {
+            addItemDecoration(MeowDividerDecoration(context()))
+            addItemDecoration { position, outRect ->
+                if (position == 0)
+                    outRect.top = binding.textInput.measuredHeight + 24.dp()
+            }
+            adapter = ContentAdapter(contentViewModel) { _, it, view ->
+                showPopup(it, view)
+            }
+        }
+    }
+
+    private fun showPopup(content: Content, view: View) {
+        popup(view, R.menu.menu_content) {
+            viewModel.delete(content)
+        }.show()
+    }
 
     override fun observeViewModel() {
         binding.viewModel?.apply {
-            navigationLiveData.safeObserve(binding.lifecycleOwner) {
-                when (it) {
-                    R.id.actionToUserDetail -> findNavController().actionToUserDetail()
-                    R.id.actionToUserIndex -> findNavController().actionToUserIndex()
-                    R.id.actionToCustomDialog -> findNavController().actionToCustomDialog()
+            listLiveData.safeObserve(binding.lifecycleOwner) {
+                if (binding.completeTextView.adapter == null) {
+                    val suggesteds =
+                        it.filterIndexed { i, _ -> i % 10 == 0 }.map { content -> content.title }
+                    binding.completeTextView.setAdapter(
+                        ArrayAdapter(
+                            context(),
+                            R.layout.dropdown_menu_popup_item,
+                            suggesteds
+                        )
+                    )
                 }
-            }
-
-            languageLiveData.safeObserve(binding.lifecycleOwner) {
-                //                controller.updateLanguage(activity(), it)
             }
         }
     }

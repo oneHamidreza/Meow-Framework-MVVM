@@ -9,62 +9,34 @@
             type="sample.ui.menu.MenuViewModel" />
     </data>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="24dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:onClick="@{viewModel::onClickedShowCustomDialog}"
-            android:text="Show Custom Dialog" />
-
-        <com.google.android.material.textview.MaterialTextView
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="سلام"
-            android:textColor="@color/material_on_surface_emphasis_high_type"
-            android:textAppearance="@style/textAppearance.Headline1" />
+            android:background="@color/surface"
+            android:padding="16dp"
+            android:elevation="4dp"
+            android:hint="@string/menu_hint_search">
 
-        <meow.widget.MeowDashView
+            <AutoCompleteTextView
+                android:id="@+id/completeTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="24dp"
-            app:dash_color="@color/primary"
-            app:dash_gap="4dp"
-            app:dash_length="4dp"
-            app:dash_orientation="horizontal"
-            app:dash_thickness="2dp" />
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:meow_items="@{viewModel.listLiveData}" />
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:onClick="@{viewModel::onClickedUserDetailApi}"
-            android:text="User Detail Api Sample" />
-
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:onClick="@{viewModel::onClickedUserIndexApi}"
-            android:text="User Index Api Sample" />
-
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:onClick="@{viewModel::onClickedToPersianLanguage}"
-            android:text="To Persian Language" />
-
-
-    </LinearLayout>
+    </FrameLayout>
 
 </layout>

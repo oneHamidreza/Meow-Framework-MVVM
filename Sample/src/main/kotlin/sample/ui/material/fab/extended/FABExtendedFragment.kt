@@ -20,7 +20,7 @@ import android.os.Bundle
 import android.view.View
 import meow.util.javaClass
 import meow.util.safeObserve
-import meow.util.viewModel
+import meow.util.viewModelInstance
 import meow.widget.decoration.MeowDividerDecoration
 import meow.widget.safePost
 import sample.R
@@ -42,7 +42,7 @@ class FABExtendedFragment : BaseFragment<FragmentFabExtendedBinding, FABExtended
     override fun layoutId() = R.layout.fragment_fab_extended
     override fun viewModelClass() = javaClass<FABExtendedViewModel>()
 
-    private val contentViewModel by viewModel(javaClass<ContentViewModel>())
+    private val contentViewModel by viewModelInstance(javaClass<ContentViewModel>())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

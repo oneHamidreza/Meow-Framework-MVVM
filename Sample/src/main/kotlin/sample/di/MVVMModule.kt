@@ -39,7 +39,7 @@ import sample.ui.material.tablayout.TabLayoutViewModel
 import sample.ui.material.tablayout.child.TabLayoutChildViewModel
 import sample.ui.material.textview.TextViewViewModel
 import sample.ui.menu.MenuViewModel
-import sample.ui.sharedprefrences.SharedPreferencesViewModel
+import sample.ui.sharedpreferences.SharedPreferencesViewModel
 import sample.ui.user.detail.UserDetailViewModel
 import sample.ui.user.index.UserIndexViewModel
 

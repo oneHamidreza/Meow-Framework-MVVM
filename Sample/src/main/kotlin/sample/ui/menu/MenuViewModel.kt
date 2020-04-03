@@ -16,11 +16,11 @@
 
 package sample.ui.menu
 
-import android.view.View
+import androidx.lifecycle.MutableLiveData
 import meow.core.arch.MeowViewModel
-import meow.core.arch.SingleLiveData
 import sample.App
 import sample.R
+import sample.data.Content
 
 /**
  * Menu View Model class.
@@ -32,25 +32,27 @@ import sample.R
 
 class MenuViewModel(app: App) : MeowViewModel(app) {
 
-    val navigationLiveData = SingleLiveData<Int>()
-    val languageLiveData = SingleLiveData<String>()
+    val listLiveData = MutableLiveData<List<Content>>()
+    val list = arrayListOf<Content>()
 
-    fun onClickedShowCustomDialog(@Suppress("UNUSED_PARAMETER") view: View) {
-        navigationLiveData.postValue(R.id.actionToCustomDialog)
+    fun fillList() {
+        (1..200).forEach {
+            list.add(
+                Content(
+                    title = app.getString(R.string.content_item_title, it),
+                    desc = app.getString(R.string.content_item_desc, it)
+                )
+            )
+        }
+        listLiveData.postValue(list)
     }
 
-    fun onClickedUserDetailApi(@Suppress("UNUSED_PARAMETER") view: View) {
-        navigationLiveData.postValue(R.id.actionToUserDetail)
+    fun search(text: String) {
+        listLiveData.postValue(list.filter { it.title.contains(text, ignoreCase = false) })
     }
 
-    fun onClickedUserIndexApi(@Suppress("UNUSED_PARAMETER") view: View) {
-        navigationLiveData.postValue(R.id.actionToUserIndex)
+    fun delete(it: Content) {
+        listLiveData.postValue(list.apply { remove(it) })
     }
-
-    fun onClickedToPersianLanguage(@Suppress("UNUSED_PARAMETER") view: View) {
-        languageLiveData.postValue("fa")
-    }
-
-    fun getImageUrl() = "http://etebarian.com/my_files/Food_Sample_001.jpg"
 
 }

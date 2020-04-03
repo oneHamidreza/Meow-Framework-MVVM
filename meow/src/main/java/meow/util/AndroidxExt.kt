@@ -1,5 +1,9 @@
 package meow.util
 
+import android.content.Context
+import android.text.Spannable
+import android.text.SpannableString
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
@@ -9,6 +13,7 @@ import meow.core.arch.MeowViewModel
 import meow.core.arch.MeowViewModelFactory
 import org.kodein.di.KodeinAware
 import org.kodein.di.direct
+
 
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
@@ -49,10 +54,22 @@ fun <T> LiveData<T>.safeObserve(owner: LifecycleOwner? = null, observer: (T) -> 
     https://proandroiddev.com/android-viewmodel-dependency-injection-with-kodein-249f80f083c9
 */
 
-fun <VM : MeowViewModel, T> T.viewModel(clazz: Class<VM>): Lazy<VM> where T : KodeinAware, T : AppCompatActivity {
+fun <VM : MeowViewModel, T> T.viewModelInstance(clazz: Class<VM>): Lazy<VM> where T : KodeinAware, T : AppCompatActivity {
     return lazy { MeowViewModelFactory(kodein.direct).create(clazz) }
 }
 
-fun <VM : MeowViewModel, T> T.viewModel(clazz: Class<VM>): Lazy<VM> where T : KodeinAware, T : Fragment {
+fun <VM : MeowViewModel, T> T.viewModelInstance(clazz: Class<VM>): Lazy<VM> where T : KodeinAware, T : Fragment {
     return lazy { MeowViewModelFactory(kodein.direct).create(clazz) }
 }
+
+fun MenuItem.setTypefaceId(context: Context, id: Int) {
+    val span = SpannableString(title)
+    span.setSpan(
+        PopupTypeFaceSpan(context.getFontCompat(id)),
+        0,
+        span.length,
+        Spannable.SPAN_INCLUSIVE_INCLUSIVE
+    )
+    title = span
+}
+

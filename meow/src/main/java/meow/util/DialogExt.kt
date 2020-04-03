@@ -17,7 +17,12 @@
 package meow.util
 
 import android.content.Context
+import android.view.MenuItem
+import android.view.View
+import android.widget.PopupMenu
+import androidx.core.view.forEach
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import meow.controller
 import meow.core.ui.MeowFragment
 import meow.widget.MeowLoadingView
 
@@ -60,3 +65,25 @@ fun Context.loadingAlert(
                 .setTitle(title)
         )
         .setOnCancelListener { onCanceledBlock() }
+
+
+fun MeowFragment<*, *>.popup(
+    view: View,
+    menuResId: Int,
+    onClickedItem: (item: MenuItem) -> Unit
+) = context().popup(view, menuResId, onClickedItem)
+
+fun Context.popup(
+    view: View,
+    menuResId: Int,
+    onClickedItem: (item: MenuItem) -> Unit
+) = PopupMenu(this, view).apply {//todo support font
+    menuInflater.inflate(menuResId, menu)
+    setOnMenuItemClickListener { m ->
+        onClickedItem(m)
+        true
+    }
+    menu.forEach {
+        it.setTypefaceId(this@popup, controller.defaultTypefaceResId)
+    }
+}

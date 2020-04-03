@@ -17,6 +17,7 @@
 package sample.ui.content
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import meow.core.ui.MeowAdapter
 import meow.core.ui.MeowViewHolder
@@ -39,7 +40,7 @@ typealias DiffCallback = Content.DiffCallback
 
 class ContentAdapter(
     override var viewModel: ViewModel,
-    var onClickedItem: (item: Model) -> Unit = {}
+    var onClickedItem: (pos: Int, item: Model, view: View) -> Unit = { _, _, _ -> }
 ) : MeowAdapter<Model, ViewHolder, ViewModel>(
     viewModel,
     DiffCallback()
@@ -47,14 +48,14 @@ class ContentAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemContentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MeowViewHolder(binding.root) { _, model, viewModel ->
+        return MeowViewHolder(binding.root) { pos, model, viewModel ->
             binding.let {
                 it.viewModel = viewModel
                 it.model = model
                 it.executePendingBindings()
 
-                it.root.setOnClickListener {
-                    onClickedItem(model)
+                it.root.setOnClickListener { view ->
+                    onClickedItem(pos, model, view)
                 }
             }
         }

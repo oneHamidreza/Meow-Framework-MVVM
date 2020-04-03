@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package sample.ui.sharedprefrences
+package sample.ui.sharedpreferences
 
 import android.view.View
 import meow.core.arch.MeowViewModel

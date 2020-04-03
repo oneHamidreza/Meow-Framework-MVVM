@@ -69,4 +69,5 @@ abstract class MeowApp : Application() {
     override fun getApplicationContext(): Context {
         return localizationDelegate.getApplicationContext(super.getApplicationContext())
     }
+
 }
