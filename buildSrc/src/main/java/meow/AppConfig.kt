@@ -99,7 +99,7 @@ object AppConfig {
         const val API = 1
         const val MAJOR = 0
         const val MINOR = 0
-        const val PATCH = 2
+        const val PATCH = 3
         val BUILD_PHASE = Build.PHASE.ALPHA
 
         const val SDK_COMPILE = 29
