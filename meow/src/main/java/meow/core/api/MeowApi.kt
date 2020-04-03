@@ -110,17 +110,41 @@ abstract class MeowApi(
     }
 
     sealed class Authorization(val interceptorBlock: InterceptorBlock) {
-        //todo add other types
-        class SimpleToken(
+
+/*
+        https://blog.restcase.com/4-most-used-rest-api-authentication-methods/
+        Most-used rest api authentication methods.
+ */
+
+        class Basic(
+            isLogin: Boolean,
+            token: String,
+            preFix: String = "Basic"
+        ) : SimpleToken(isLogin, token, preFix)
+
+        class Bearer(
+            isLogin: Boolean,
+            token: String,
+            preFix: String = "Bearer"
+        ) : SimpleToken(isLogin, token, preFix)
+
+        class Custom(
+            isLogin: Boolean,
+            token: String,
+            preFix: String
+        ) : SimpleToken(isLogin, token, preFix)
+
+        open class SimpleToken(
             var isLogin: Boolean,
-            var token: String
+            var token: String,
+            var preFix: String
         ) : Authorization({
             if (isLogin)
-                it.header("Authorization", "Bearer $token")
+                it.header("Authorization", "$preFix $token")
         })
     }
 
-    class RefreshToken(
+    class OauthRefreshToken(
         val meowApi: MeowApi,
         val token: Authorization.SimpleToken
     ) : Authenticator {
@@ -129,11 +153,9 @@ abstract class MeowApi(
             return if (token.isLogin) {
                 logD(
                     TAG,
-                    "response code in authenticator : " + response.code + " , response count : " + responseCount(
-                        response
-                    )
+                    "response code in authenticator : " + response.code + " , response count : " + response.responseCount()
                 )
-                if (responseCount(response) >= 2) {
+                if (response.responseCount() >= 2) {
                     logD(TAG, "response count is full")
                     // If both the original callApi and the callApi with refreshed token failed,
                     // it will probably keep failing, so don't try again.
@@ -195,8 +217,8 @@ fun OkHttpClient.Builder.addInterceptorBlocks(interceptorBlocks: List<Intercepto
     }
 }
 
-fun responseCount(response: Response?): Int {
-    var rs = response?.priorResponse
+fun Response.responseCount(): Int {
+    var rs = priorResponse
     var result = 1
     while (rs != null) {
         result++
