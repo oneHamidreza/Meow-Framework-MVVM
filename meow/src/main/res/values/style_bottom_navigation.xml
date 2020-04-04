@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--todo all styles add colors -->
+
+    <style name="Meow.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">bottom</item>
+    </style>
+
+    <style name="Meow.BottomNavigation.Colored" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">bottom</item>
+    </style>
+
+    <style name="Meow.BottomNavigation.Colored.Secondary">
+        <item name="android:background">?attr/colorSecondary</item>
+    </style>
+
+    <style name="Meow.BottomNavigation.PrimarySurface" parent="Widget.MaterialComponents.BottomNavigationView.PrimarySurface">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">bottom</item>
+    </style>
+
+</resources>

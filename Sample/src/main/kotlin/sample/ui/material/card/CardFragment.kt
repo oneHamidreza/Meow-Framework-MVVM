@@ -19,6 +19,7 @@ package sample.ui.material.card
 import android.os.Bundle
 import android.view.View
 import meow.util.javaClass
+import meow.widget.setCheckableWithLongClick
 import sample.R
 import sample.databinding.FragmentCardBinding
 import sample.ui.base.BaseFragment
@@ -38,12 +39,7 @@ class CardFragment : BaseFragment<FragmentCardBinding, CardViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.cardCheckable.apply {
-            setOnLongClickListener {
-                isChecked = !isChecked
-                true
-            }
-        }
+        binding.cardCheckable.setCheckableWithLongClick(true)
     }
 
     override fun initViewModel() {

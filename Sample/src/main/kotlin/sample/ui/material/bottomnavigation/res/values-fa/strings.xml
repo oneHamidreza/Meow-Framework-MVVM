@@ -1,0 +1,6 @@
+<resources>
+    <string name="activity_bottom_navigation">هدایت‌کننده پایینی (Bottom Navigation)</string>
+    <string name="bottom_navigation_menu_recents">موارد اخیر</string>
+    <string name="bottom_navigation_menu_favorites">علاقه‌مند‌ها</string>
+    <string name="bottom_navigation_menu_explore">کنکاش</string>
+</resources>

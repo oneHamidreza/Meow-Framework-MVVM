@@ -136,3 +136,10 @@ fun MeowDraggableLinearLayout.setViewDragListener(vararg cards: MaterialCardView
 
     }
 }
+
+fun MaterialCardView.setCheckableWithLongClick(isCheckable: Boolean) {
+    setOnLongClickListener(if (isCheckable) View.OnLongClickListener {
+        isChecked = !isChecked
+        true
+    } else null)
+}
