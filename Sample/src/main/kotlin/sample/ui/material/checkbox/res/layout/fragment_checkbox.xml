@@ -20,14 +20,12 @@
             android:text="@string/checkbox_simple" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
-            style="@style/Meow.Checkbox"
-            android:text="@string/checkbox_tint"
-            app:buttonTint="@color/checkbox_primary" />
+            style="@style/Meow.Checkbox.Primary"
+            android:text="@string/checkbox_tint" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
-            style="@style/Meow.Checkbox"
-            android:text="@string/checkbox_tint"
-            app:buttonTint="@color/checkbox_secondary" />
+            style="@style/Meow.Checkbox.Secondary"
+            android:text="@string/checkbox_tint" />
 
     </LinearLayout>
 

@@ -8,19 +8,35 @@
     </style>
 
     <style name="Meow.Checkbox.Primary">
-        <item name="buttonTint">@color/checkbox_primary</item>
+        <item name="android:theme">@style/Meow.Theme.Checkbox.Primary</item>
     </style>
 
     <style name="Meow.Checkbox.Secondary">
-        <item name="buttonTint">@color/checkbox_secondary</item>
+        <item name="android:theme">@style/Meow.Theme.Checkbox.Secondary</item>
     </style>
 
     <style name="Meow.Checkbox.OnPrimary">
-        <item name="buttonTint">@color/checkbox_on_primary</item>
+        <item name="android:theme">@style/Meow.Theme.Checkbox.OnPrimary</item>
     </style>
 
     <style name="Meow.Checkbox.OnSecondary">
-        <item name="buttonTint">@color/checkbox_on_secondary</item>
+        <item name="android:theme">@style/Meow.Theme.Checkbox.OnSecondary</item>
+    </style>
+
+    <style name="Meow.Theme.Checkbox.Primary" parent="">
+        <item name="colorControlActivated">?colorPrimary</item>
+    </style>
+
+    <style name="Meow.Theme.Checkbox.Secondary" parent="">
+        <item name="colorControlActivated">?colorSecondary</item>
+    </style>
+
+    <style name="Meow.Theme.Checkbox.OnPrimary" parent="">
+        <item name="colorControlActivated">?colorOnPrimary</item>
+    </style>
+
+    <style name="Meow.Theme.Checkbox.OnSecondary" parent="">
+        <item name="colorControlActivated">?colorOnSecondary</item>
     </style>
 
 </resources>
