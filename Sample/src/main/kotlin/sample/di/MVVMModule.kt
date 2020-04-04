@@ -29,12 +29,12 @@ import sample.ui.main.MainViewModel
 import sample.ui.material.alert.AlertsViewModel
 import sample.ui.material.button.ButtonViewModel
 import sample.ui.material.card.CardViewModel
-import sample.ui.material.checkbox.CheckboxViewModel
 import sample.ui.material.collapsing.toolbar.CollapsingToolbarViewModel
 import sample.ui.material.fab.extended.FABExtendedViewModel
 import sample.ui.material.fab.simple.FABSimpleViewModel
 import sample.ui.material.form.FormViewModel
 import sample.ui.material.imageview.ImageviewViewModel
+import sample.ui.material.radiobutton.RadioButtonViewModel
 import sample.ui.material.tablayout.TabLayoutViewModel
 import sample.ui.material.tablayout.child.TabLayoutChildViewModel
 import sample.ui.material.textview.TextViewViewModel
@@ -71,8 +71,8 @@ val mvvmModule = Module("MVVM Module", false) {
         )
     }
 
-    bindAutoTag<CheckboxViewModel>() with singleton {
-        CheckboxViewModel(
+    bindAutoTag<RadioButtonViewModel>() with singleton {
+        RadioButtonViewModel(
             kodein.direct.instance()
         )
     }

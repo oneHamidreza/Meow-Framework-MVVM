@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Meow.RadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody2</item>
+    </style>
+
+    <style name="Meow.RadioButton.Horizontal">
+        <item name="android:layout_marginStart">16dp</item>
+    </style>
+
+    <style name="Meow.RadioButton.Vertical" tools:ignore="UnusedResources">
+        <item name="android:layout_marginBottom">12dp</item>
+    </style>
+
+</resources>

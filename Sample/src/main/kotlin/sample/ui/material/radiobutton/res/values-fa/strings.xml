@@ -1,0 +1,5 @@
+<resources>
+    <string name="fragment_radio_button">دکمه رادیویی (Radio Button)</string>
+    <string name="radio_button_option_a">گزینه الف</string>
+    <string name="radio_button_option_b">گزینه ب</string>
+</resources>

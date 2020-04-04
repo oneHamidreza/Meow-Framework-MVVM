@@ -14,25 +14,24 @@
  * limitations under the License.
  */
 
-package sample.ui.material.checkbox
+package sample.ui.material.radiobutton
 
 import meow.util.javaClass
 import sample.R
-import sample.databinding.FragmentCheckboxBinding
+import sample.databinding.FragmentRadioButtonBinding
 import sample.ui.base.BaseFragment
-import sample.ui.material.radiobutton.RadioButtonViewModel
 
 /**
- * Checkbox Fragment class.
+ * Radio Button Fragment.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-11
  */
 
-class CheckboxFragment : BaseFragment<FragmentCheckboxBinding, RadioButtonViewModel>() {
+class RadioButtonFragment : BaseFragment<FragmentRadioButtonBinding, RadioButtonViewModel>() {
 
-    override fun layoutId() = R.layout.fragment_checkbox
+    override fun layoutId() = R.layout.fragment_radio_button
     override fun viewModelClass() = javaClass<RadioButtonViewModel>()
 
     override fun initViewModel() {
