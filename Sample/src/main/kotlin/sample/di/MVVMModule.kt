@@ -35,6 +35,7 @@ import sample.ui.material.fab.simple.FABSimpleViewModel
 import sample.ui.material.form.FormViewModel
 import sample.ui.material.imageview.ImageviewViewModel
 import sample.ui.material.radiobutton.RadioButtonViewModel
+import sample.ui.material.snack.SnacksViewModel
 import sample.ui.material.tablayout.TabLayoutViewModel
 import sample.ui.material.tablayout.child.TabLayoutChildViewModel
 import sample.ui.material.textview.TextViewViewModel
@@ -71,12 +72,6 @@ val mvvmModule = Module("MVVM Module", false) {
         )
     }
 
-    bindAutoTag<RadioButtonViewModel>() with singleton {
-        RadioButtonViewModel(
-            kodein.direct.instance()
-        )
-    }
-
     bindAutoTag<CollapsingToolbarViewModel>() with singleton {
         CollapsingToolbarViewModel(
             kodein.direct.instance()
@@ -95,8 +90,31 @@ val mvvmModule = Module("MVVM Module", false) {
         )
     }
 
+    bindAutoTag<MenuViewModel>() with singleton {
+        MenuViewModel(
+            kodein.direct.instance()
+        )
+    }
+
+    bindAutoTag<RadioButtonViewModel>() with singleton {
+        RadioButtonViewModel(
+            kodein.direct.instance()
+        )
+    }
+
+    bindAutoTag<SnacksViewModel>() with singleton {
+        SnacksViewModel(
+            kodein.direct.instance()
+        )
+    }
+
     bindAutoTag<TabLayoutViewModel>() with singleton {
         TabLayoutViewModel(
+            kodein.direct.instance()
+        )
+    }
+    bindAutoTag<TabLayoutChildViewModel>() with singleton {
+        TabLayoutChildViewModel(
             kodein.direct.instance()
         )
     }
@@ -107,17 +125,6 @@ val mvvmModule = Module("MVVM Module", false) {
         )
     }
 
-    bindAutoTag<TabLayoutChildViewModel>() with singleton {
-        TabLayoutChildViewModel(
-            kodein.direct.instance()
-        )
-    }
-
-    bindAutoTag<MenuViewModel>() with singleton {
-        MenuViewModel(
-            kodein.direct.instance()
-        )
-    }
     bindAutoTag<UserDetailViewModel>() with singleton {
         UserDetailViewModel(
             kodein.direct.instance(),

@@ -39,7 +39,11 @@ data class Content(
     enum class Action {
         ALERT_SIMPLE,
         ALERT_SIMPLE_WITH_LISTENER,
-        ALERT_LOADING
+        ALERT_LOADING,
+        SNACK_SIMPLE,
+        SNACK_SIMPLE_WITH_ACTION,
+        SNACK_CUSTOMIZED_COLOR,
+        SNACK_INDEFINITE,
     }
 
     class DiffCallback : DiffUtil.ItemCallback<Content>() {

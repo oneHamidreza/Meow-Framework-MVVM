@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     android:label="Main"
-    app:startDestination="@id/fragmentRadioButton">
+    app:startDestination="@id/fragmentSnacks">
 
     <action
         android:id="@+id/actionToForm"
@@ -101,6 +101,12 @@
         android:name="sample.ui.material.radiobutton.RadioButtonFragment"
         android:label="@string/fragment_radio_button"
         tools:layout="@layout/fragment_radio_button" />
+
+    <fragment
+        android:id="@+id/fragmentSnacks"
+        android:name="sample.ui.material.snack.SnacksFragment"
+        android:label="@string/fragment_snacks"
+        tools:layout="@layout/fragment_snacks" />
 
     <fragment
         android:id="@+id/fragmentTabLayout"

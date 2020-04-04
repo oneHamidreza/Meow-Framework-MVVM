@@ -1,0 +1,21 @@
+<resources>
+    <string name="fragment_snacks">اسنک‌ها (Snacks)</string>
+
+    <string-array name="snacks_contents_list_title">
+        <item>ساده بدون اکشن</item>
+        <item>ساده با اکشن</item>
+        <item>سفارش‌سازی ‌شده</item>
+        <item>زمان نامحدود</item>
+    </string-array>
+
+    <string-array name="snacks_contents_list_desc">
+        <item>یک اسنک خیلی ساده</item>
+        <item>یک اسنک ساده با اکشن</item>
+        <item>یک اسنک سفارش‌سازی شده از لحاظ رنگ متن‌ها</item>
+        <item>یک اسنک نمایش برای همیشه</item>
+    </string-array>
+
+    <string name="snacks_message">پیام به کاربر داده شد.</string>
+    <string name="snacks_action">باشه!</string>
+    <string name="snacks_action_clicked">دکمه باشه زده شد</string>
+</resources>

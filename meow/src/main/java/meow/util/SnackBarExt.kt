@@ -40,10 +40,10 @@ fun MVVM<*, *>?.snackL(
     messageTextAppearanceId: Int = 0,
     actionTextAppearanceId: Int = 0,
     onActionClicked: () -> Unit = { }
-) {
+): Snackbar? {
     if (this == null)
-        return
-    snack(
+        return null
+    return snack(
         message,
         Snackbar.LENGTH_LONG,
         actionText = actionText,
@@ -59,10 +59,10 @@ fun MVVM<*, *>?.snackS(
     messageTextAppearanceId: Int = 0,
     actionTextAppearanceId: Int = 0,
     onActionClicked: () -> Unit = { }
-) {
+): Snackbar? {
     if (this == null)
-        return
-    snack(
+        return null
+    return snack(
         message,
         Snackbar.LENGTH_SHORT,
         actionText = actionText,
@@ -78,13 +78,13 @@ fun MVVM<*, *>?.snackL(
     messageTextAppearanceId: Int = 0,
     actionTextAppearanceId: Int = 0,
     onActionClicked: () -> Unit = { }
-) {
+): Snackbar? {
     if (this == null)
-        return
-    snack(
+        return null
+    return snack(
         resources().getString(resMessage),
         Snackbar.LENGTH_LONG,
-        actionText = if (resActionText != null) resources().getString(resMessage) else null,
+        actionText = if (resActionText != null) resources().getString(resActionText) else null,
         messageTextAppearanceId = messageTextAppearanceId,
         actionTextAppearanceId = actionTextAppearanceId,
         onActionClicked = onActionClicked
@@ -97,13 +97,51 @@ fun MVVM<*, *>?.snackS(
     messageTextAppearanceId: Int = 0,
     actionTextAppearanceId: Int = 0,
     onActionClicked: () -> Unit = { }
-) {
+): Snackbar? {
     if (this == null)
-        return
-    snack(
+        return null
+    return snack(
         resources().getString(resMessage),
         Snackbar.LENGTH_SHORT,
-        actionText = if (resActionText != null) resources().getString(resMessage) else null,
+        actionText = if (resActionText != null) resources().getString(resActionText) else null,
+        messageTextAppearanceId = messageTextAppearanceId,
+        actionTextAppearanceId = actionTextAppearanceId,
+        onActionClicked = onActionClicked
+    )
+}
+
+fun MVVM<*, *>?.snackI(
+    resMessage: Int,
+    resActionText: Int? = null,
+    messageTextAppearanceId: Int = 0,
+    actionTextAppearanceId: Int = 0,
+    onActionClicked: () -> Unit = { }
+): Snackbar? {
+    if (this == null)
+        return null
+    return snack(
+        resources().getString(resMessage),
+        Snackbar.LENGTH_INDEFINITE,
+        actionText = if (resActionText != null) resources().getString(resActionText) else null,
+        messageTextAppearanceId = messageTextAppearanceId,
+        actionTextAppearanceId = actionTextAppearanceId,
+        onActionClicked = onActionClicked
+    )
+}
+
+fun MVVM<*, *>?.snackI(
+    message: String,
+    actionText: String? = null,
+    messageTextAppearanceId: Int = 0,
+    actionTextAppearanceId: Int = 0,
+    onActionClicked: () -> Unit = { }
+): Snackbar? {
+    if (this == null)
+        return null
+    return snack(
+        message,
+        Snackbar.LENGTH_INDEFINITE,
+        actionText = actionText,
         messageTextAppearanceId = messageTextAppearanceId,
         actionTextAppearanceId = actionTextAppearanceId,
         onActionClicked = onActionClicked
@@ -118,11 +156,11 @@ fun MVVM<*, *>?.snack(
     messageTextAppearanceId: Int = 0,
     actionTextAppearanceId: Int = 0,
     onActionClicked: () -> Unit = { }
-) {
+): Snackbar? {
     if (message == null)
-        return
+        return null
 
-    avoidException {
+    return avoidException {
         Snackbar.make(contentView, message, duration).apply {
             if (actionText != null)
                 setAction(actionText) {
