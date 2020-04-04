@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     android:label="Main"
-    app:startDestination="@id/fragmentSnacks">
+    app:startDestination="@id/fragmentSwitches">
 
     <action
         android:id="@+id/actionToForm"
@@ -107,6 +107,12 @@
         android:name="sample.ui.material.snack.SnacksFragment"
         android:label="@string/fragment_snacks"
         tools:layout="@layout/fragment_snacks" />
+
+    <fragment
+        android:id="@+id/fragmentSwitches"
+        android:name="sample.ui.material.switches.SwitchesFragment"
+        android:label="@string/fragment_switches"
+        tools:layout="@layout/fragment_switches" />
 
     <fragment
         android:id="@+id/fragmentTabLayout"

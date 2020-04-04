@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Meow.Switch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody2</item>
+    </style>
+
+    <style name="Meow.Switch.Primary">
+        <item name="android:theme">@style/Meow.Theme.Switch.Primary</item>
+    </style>
+
+    <style name="Meow.Switch.Secondary">
+        <item name="android:theme">@style/Meow.Theme.Switch.Secondary</item>
+    </style>
+
+    <style name="Meow.Switch.OnPrimary">
+        <item name="android:theme">@style/Meow.Theme.Switch.OnPrimary</item>
+    </style>
+
+    <style name="Meow.Switch.OnSecondary">
+        <item name="android:theme">@style/Meow.Theme.Switch.OnSecondary</item>
+    </style>
+
+    <style name="Meow.Theme.Switch.Primary" parent="">
+        <item name="colorControlActivated">?colorPrimary</item>
+    </style>
+
+    <style name="Meow.Theme.Switch.Secondary" parent="">
+        <item name="colorControlActivated">?colorSecondary</item>
+    </style>
+
+    <style name="Meow.Theme.Switch.OnPrimary" parent="">
+        <item name="colorControlActivated">?colorOnPrimary</item>
+    </style>
+
+    <style name="Meow.Theme.Switch.OnSecondary" parent="">
+        <item name="colorControlActivated">?colorOnSecondary</item>
+    </style>
+
+</resources>

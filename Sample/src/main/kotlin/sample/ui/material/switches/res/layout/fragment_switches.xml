@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="sample.ui.material.switches.SwitchesViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            style="@style/Meow.Switch"
+            android:text="@string/switches_simple" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            style="@style/Meow.Switch.Primary"
+            android:text="@string/switches_tint" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            style="@style/Meow.Switch.Secondary"
+            android:text="@string/switches_tint" />
+
+    </LinearLayout>
+
+</layout>

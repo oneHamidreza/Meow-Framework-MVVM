@@ -1,0 +1,5 @@
+<resources>
+    <string name="fragment_switches">Switches</string>
+    <string name="switches_simple">Simple Switch</string>
+    <string name="switches_tint">Switch with tint</string>
+</resources>

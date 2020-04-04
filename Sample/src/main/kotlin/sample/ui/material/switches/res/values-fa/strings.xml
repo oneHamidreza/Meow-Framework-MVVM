@@ -1,0 +1,5 @@
+<resources>
+    <string name="fragment_switches">سوییچ‌ها (Switches)</string>
+    <string name="switches_simple">سوییچ ساده</string>
+    <string name="switches_tint">سوییچ با رنگ متفاوت</string>
+</resources>

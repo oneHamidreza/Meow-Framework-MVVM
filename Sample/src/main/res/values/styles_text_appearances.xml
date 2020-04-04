@@ -117,7 +117,7 @@
         <item name="android:textColor">#ffff00</item>
     </style>
 
-    <style name="textAppearance.Snack.Button" parent="@style/textAppearance.Button">
+    <style name="textAppearance.Snack.Action" parent="@style/textAppearance.Button">
         <item name="android:textColor">#ff0000</item>
     </style>
 

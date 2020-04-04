@@ -7,4 +7,20 @@
         <item name="android:textAppearance">?attr/textAppearanceBody2</item>
     </style>
 
+    <style name="Meow.Checkbox.Primary">
+        <item name="buttonTint">@color/checkbox_primary</item>
+    </style>
+
+    <style name="Meow.Checkbox.Secondary">
+        <item name="buttonTint">@color/checkbox_secondary</item>
+    </style>
+
+    <style name="Meow.Checkbox.OnPrimary">
+        <item name="buttonTint">@color/checkbox_on_primary</item>
+    </style>
+
+    <style name="Meow.Checkbox.OnSecondary">
+        <item name="buttonTint">@color/checkbox_on_secondary</item>
+    </style>
+
 </resources>

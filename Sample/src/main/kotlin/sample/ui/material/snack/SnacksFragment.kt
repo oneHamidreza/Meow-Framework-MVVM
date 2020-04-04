@@ -67,7 +67,7 @@ class SnacksFragment : BaseFragment<FragmentSnacksBinding, SnacksViewModel>() {
                             R.string.snacks_message,
                             R.string.snacks_action,
                             messageTextAppearanceId = R.style.textAppearance_Snack_Message,
-                            actionTextAppearanceId = R.style.textAppearance_Snack_Button
+                            actionTextAppearanceId = R.style.textAppearance_Snack_Action
                         )
                     }
                     Content.Action.SNACK_INDEFINITE -> {
