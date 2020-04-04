@@ -23,7 +23,7 @@
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             style="@style/Meow.FloatingActionButton"
             android:onClick="@{viewModel::onClickedAddItem}"
-            app:icon="@drawable/ic_add"
+            app:srcCompat="@drawable/ic_add"
             app:layout_anchor="@id/recyclerView" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

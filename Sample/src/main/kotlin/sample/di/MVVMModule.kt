@@ -27,6 +27,7 @@ import sample.ui.content.ContentViewModel
 import sample.ui.dialog.CustomDialogViewModel
 import sample.ui.main.MainViewModel
 import sample.ui.material.alert.AlertsViewModel
+import sample.ui.material.bottomappbar.BottomAppBarViewModel
 import sample.ui.material.button.ButtonViewModel
 import sample.ui.material.card.CardViewModel
 import sample.ui.material.collapsing.toolbar.CollapsingToolbarViewModel
@@ -64,6 +65,12 @@ val mvvmModule = Module("MVVM Module", false) {
 
     bindAutoTag<AlertsViewModel>() with singleton {
         AlertsViewModel(
+            kodein.direct.instance()
+        )
+    }
+
+    bindAutoTag<BottomAppBarViewModel>() with singleton {
+        BottomAppBarViewModel(
             kodein.direct.instance()
         )
     }

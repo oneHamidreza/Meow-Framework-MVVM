@@ -8,6 +8,11 @@
         <item name="layout_anchorGravity">bottom|end</item>
     </style>
 
+    <style name="Meow.FloatingActionButton.BottomAppBar">
+        <item name="android:layout_margin">0dp</item>
+        <item name="layout_anchorGravity">center</item>
+    </style>
+
     <style name="Meow.FloatingActionButton.Extended" parent="">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
