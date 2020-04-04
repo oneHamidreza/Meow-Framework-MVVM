@@ -38,7 +38,7 @@ fun MeowActivity<*, *>.updateStatusBarByTheme(
     isDarkIcon: Boolean,
     checkIsEnabled: Boolean = false
 ) = avoidException {
-    if (!isEnabledAutoStatusBarColorChange && checkIsEnabled)
+    if (!isEnabledAutoUpdateStatusBarTheme && checkIsEnabled)
         return@avoidException
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

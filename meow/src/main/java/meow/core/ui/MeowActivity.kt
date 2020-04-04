@@ -44,7 +44,7 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : Localizat
 
     var isEnabledKeyboardUtils = true
     var isEnabledContextWrapper = true
-    var isEnabledAutoStatusBarColorChange = false
+    var isEnabledAutoUpdateStatusBarTheme = false
 
     var isShowingKeyboard = false
 

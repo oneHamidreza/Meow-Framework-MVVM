@@ -14,17 +14,35 @@
  * limitations under the License.
  */
 
-package sample.ui.main
+package sample.ui.material.topappbar
 
+import androidx.lifecycle.MutableLiveData
 import meow.core.arch.MeowViewModel
 import sample.App
+import sample.R
+import sample.data.Content
 
 /**
- * Main View Model.
+ * Top App Bar View Model.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-10
  */
 
-class MainViewModel(override val app: App) : MeowViewModel(app)
+class TopAppBarViewModel(app: App) : MeowViewModel(app) {
+    val listLiveData = MutableLiveData<List<Content>>()
+
+    fun fillList() {
+        val list = arrayListOf<Content>()
+        (1..200).forEach {
+            list.add(
+                Content(
+                    title = app.getString(R.string.content_item_title, it),
+                    desc = app.getString(R.string.content_item_desc, it)
+                )
+            )
+        }
+        listLiveData.postValue(list)
+    }
+}

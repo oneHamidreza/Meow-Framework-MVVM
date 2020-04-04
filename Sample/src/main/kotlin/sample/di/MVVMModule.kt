@@ -40,6 +40,7 @@ import sample.ui.material.switches.SwitchesViewModel
 import sample.ui.material.tablayout.TabLayoutViewModel
 import sample.ui.material.tablayout.child.TabLayoutChildViewModel
 import sample.ui.material.textview.TextViewViewModel
+import sample.ui.material.topappbar.TopAppBarViewModel
 import sample.ui.menu.MenuViewModel
 import sample.ui.sharedpreferences.SharedPreferencesViewModel
 import sample.ui.user.detail.UserDetailViewModel
@@ -128,6 +129,12 @@ val mvvmModule = Module("MVVM Module", false) {
 
     bindAutoTag<TextViewViewModel>() with singleton {
         TextViewViewModel(
+            kodein.direct.instance()
+        )
+    }
+
+    bindAutoTag<TopAppBarViewModel>() with singleton {
+        TopAppBarViewModel(
             kodein.direct.instance()
         )
     }

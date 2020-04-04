@@ -57,11 +57,6 @@
         <item name="color">@color/on_toolbar</item>
     </style>
 
-    <style name="Toolbar" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">?attr/actionBarSize</item>
-    </style>
-
     <style name="AppBarLayout.ThemeOverlay" parent="">
         <item name="android:textColorPrimary">@color/white</item>
         <item name="colorControlNormal">?attr/colorOnPrimarySurface</item>

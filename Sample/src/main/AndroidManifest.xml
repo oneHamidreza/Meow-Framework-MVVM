@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name=".ui.material.topappbar.TopAppBarActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
