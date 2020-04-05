@@ -4,7 +4,7 @@
 
         <item name="android:fontFamily">@font/farsi_regular</item>
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <!--        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>-->
 
         <!-- Original AppCompat attributes. -->
         <item name="colorPrimary">@color/primary</item>
@@ -52,10 +52,10 @@
 
     </style>
 
-    <style name="DrawerArrowStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
-        <item name="spinBars">true</item>
-        <item name="color">@color/on_toolbar</item>
-    </style>
+    <!--    <style name="DrawerArrowStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">-->
+    <!--        <item name="spinBars">true</item>-->
+    <!--        <item name="color">@color/</item>-->
+    <!--    </style>-->
 
     <style name="AppBarLayout.ThemeOverlay" parent="">
         <item name="android:textColorPrimary">@color/white</item>

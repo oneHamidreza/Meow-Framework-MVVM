@@ -37,6 +37,7 @@ class MeowContextWrapper(base: Context) : ContextWrapper(base) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 context = context.createConfigurationContext(config)
             } else {
+                @Suppress("DEPRECATION")
                 context.resources.updateConfiguration(config, context.resources.displayMetrics)
             }
             return MeowContextWrapper(context)

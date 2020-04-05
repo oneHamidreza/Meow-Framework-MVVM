@@ -160,7 +160,7 @@ fun Resources?.getColorCompat(
     theme: Resources.Theme? = null
 ) = when {
     this == null -> 0
-    else -> ResourcesCompat.getColor(this, resId, theme)
+    else -> controller.onColorGet(ResourcesCompat.getColor(this, resId, theme))
 }
 
 fun Context?.getColorCompat(

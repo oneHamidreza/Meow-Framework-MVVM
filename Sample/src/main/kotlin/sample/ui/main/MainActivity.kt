@@ -17,6 +17,7 @@
 package sample.ui.main
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -54,10 +55,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         setupNavigation()
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.drawer_actions, menu)
-//        return true
-//    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_sample, menu)
+        return true
+    }
 
     private fun setupNavigation() {
         navController = findNavController(R.id.navHost).apply {
@@ -83,6 +84,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 )
             )
             navigationView.setupWithNavController(navController)
+//            toolbar.setBackgroundColor(getColorCompat(R.color.primary))
         }
     }
 

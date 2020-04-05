@@ -30,7 +30,7 @@
 
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
-                    style="@style/Meow.Toolbar.Primary" />
+                    style="@style/Meow.Toolbar.PrimarySurface" />
 
             </com.google.android.material.appbar.AppBarLayout>
 

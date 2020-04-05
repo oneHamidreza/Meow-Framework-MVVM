@@ -5,18 +5,21 @@
     <item
         android:id="@+id/actionFirst"
         android:icon="@drawable/ic_looks_one"
-        app:showAsAction="ifRoom"
-        android:title="@string/menu_action_first" />
+        android:title="@string/menu_action_first"
+        app:iconTint="?colorControlNormal"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/actionTwo"
         android:icon="@drawable/ic_looks_two"
-        app:showAsAction="ifRoom"
-        android:title="@string/menu_action_second" />
+        android:title="@string/menu_action_second"
+        app:iconTint="?colorControlNormal"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/actionThree"
         android:icon="@drawable/ic_looks_three"
-        android:title="@string/menu_action_third" />
+        android:title="@string/menu_action_third"
+        app:iconTint="?colorControlNormal" />
 
 </menu>

@@ -11,6 +11,11 @@
         <item name="android:layout_height">?actionBarSize</item>
     </style>
 
+    <style name="Meow.Toolbar.PrimarySurface" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?actionBarSize</item>
+    </style>
+
     <style name="Meow.Toolbar.Surface" parent="Widget.MaterialComponents.Toolbar.Surface">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">?actionBarSize</item>

@@ -114,4 +114,5 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : Localizat
             keyboardUtils.disable()
         super.onDestroy()
     }
+
 }

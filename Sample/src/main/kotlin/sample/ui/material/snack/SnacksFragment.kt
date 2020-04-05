@@ -76,6 +76,8 @@ class SnacksFragment : BaseFragment<FragmentSnacksBinding, SnacksViewModel>() {
                             snackbar?.dismiss()
                         }
                     }
+                    else -> {
+                    }
                 }
             }
         }

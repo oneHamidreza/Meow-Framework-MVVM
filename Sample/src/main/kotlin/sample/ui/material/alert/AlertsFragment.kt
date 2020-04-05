@@ -78,6 +78,8 @@ class AlertsFragment : BaseFragment<FragmentAlertsBinding, AlertsViewModel>() {
                             toastL(R.string.toast_alert_on_canceled)
                         }.show()
                     }
+                    else -> {
+                    }
                 }
             }
         }
