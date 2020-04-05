@@ -44,6 +44,7 @@ import sample.ui.material.tablayout.child.TabLayoutChildViewModel
 import sample.ui.material.textview.TextViewViewModel
 import sample.ui.material.topappbar.TopAppBarViewModel
 import sample.ui.menu.MenuViewModel
+import sample.ui.meowwidget.dash.DashViewModel
 import sample.ui.sharedpreferences.SharedPreferencesViewModel
 import sample.ui.user.detail.UserDetailViewModel
 import sample.ui.user.index.UserIndexViewModel
@@ -90,6 +91,12 @@ val mvvmModule = Module("MVVM Module", false) {
 
     bindAutoTag<CollapsingToolbarViewModel>() with singleton {
         CollapsingToolbarViewModel(
+            kodein.direct.instance()
+        )
+    }
+
+    bindAutoTag<DashViewModel>() with singleton {
+        DashViewModel(
             kodein.direct.instance()
         )
     }

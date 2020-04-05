@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Meow.Dash" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Meow.Dash.Horizontal">
+        <item name="dash_orientation">horizontal</item>
+    </style>
+
+    <style name="Meow.Dash.Horizontal.Primary">
+        <item name="dash_color">?colorPrimary</item>
+    </style>
+
+    <style name="Meow.Dash.Horizontal.PrimaryVariant">
+        <item name="dash_color">?colorPrimaryVariant</item>
+    </style>
+
+    <style name="Meow.Dash.Horizontal.PrimarySurface">
+        <item name="dash_color">?colorPrimarySurface</item>
+    </style>
+
+    <style name="Meow.Dash.Horizontal.Secondary">
+        <item name="dash_color">?colorSecondary</item>
+    </style>
+
+    <style name="Meow.Dash.Horizontal.SecondaryVariant">
+        <item name="dash_color">?colorSecondaryVariant</item>
+    </style>
+
+    <style name="Meow.Dash.Horizontal.OnPrimary">
+        <item name="dash_color">?colorOnPrimary</item>
+    </style>
+
+    <style name="Meow.Dash.Horizontal.OnSecondary">
+        <item name="dash_color">?colorOnSecondary</item>
+    </style>
+
+    <style name="Meow.Dash.Horizontal.OnSurface">
+        <item name="dash_color">?colorOnSurface</item>
+    </style>
+
+    <style name="Meow.Dash.Vertical">
+        <item name="dash_orientation">vertical</item>
+    </style>
+
+    <style name="Meow.Dash.Vertical.Primary">
+        <item name="dash_color">?colorPrimary</item>
+    </style>
+
+    <style name="Meow.Dash.Vertical.PrimaryVariant">
+        <item name="dash_color">?colorPrimaryVariant</item>
+    </style>
+
+    <style name="Meow.Dash.Vertical.PrimarySurface">
+        <item name="dash_color">?colorPrimarySurface</item>
+    </style>
+
+    <style name="Meow.Dash.Vertical.Secondary">
+        <item name="dash_color">?colorSecondary</item>
+    </style>
+
+    <style name="Meow.Dash.Vertical.SecondaryVariant">
+        <item name="dash_color">?colorSecondaryVariant</item>
+    </style>
+
+    <style name="Meow.Dash.Vertical.OnPrimary">
+        <item name="dash_color">?colorOnPrimary</item>
+    </style>
+
+    <style name="Meow.Dash.Vertical.OnSecondary">
+        <item name="dash_color">?colorOnSecondary</item>
+    </style>
+
+    <style name="Meow.Dash.Vertical.OnSurface">
+        <item name="dash_color">?colorOnSurface</item>
+    </style>
+
+</resources>

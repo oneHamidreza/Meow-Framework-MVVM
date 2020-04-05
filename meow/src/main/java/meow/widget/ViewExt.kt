@@ -32,6 +32,7 @@ import androidx.databinding.ViewDataBinding
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.card.MaterialCardView
 import meow.util.avoidException
+import meow.util.dp
 import meow.util.isNotNullOrEmpty
 import meow.util.logD
 
@@ -44,6 +45,20 @@ import meow.util.logD
  */
 
 object ViewBindingAdapter {
+
+    @BindingAdapter("meow_gap")
+    @JvmStatic
+    fun setGap(view: LinearLayout, gap: Int = 0) {
+        (0 until view.childCount).forEach { pos ->
+            val child = view.getChildAt(pos)
+            child.updateLayoutParams<LinearLayout.LayoutParams> {
+                if (view.orientation == LinearLayout.HORIZONTAL)
+                    it.marginEnd = if (pos != view.childCount - 1) gap.dp() else 0
+                if (view.orientation == LinearLayout.VERTICAL)
+                    it.bottomMargin = if (pos != view.childCount - 1) gap.dp() else 0
+            }
+        }
+    }
 
     @BindingAdapter("aspectRatio")
     @JvmStatic

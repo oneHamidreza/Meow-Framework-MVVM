@@ -18,11 +18,13 @@ package meow.widget
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.DashPathEffect
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import com.etebarian.meowframework.R
+import meow.util.dp
 import meow.util.getColorCompat
 
 /**
@@ -40,11 +42,40 @@ class MeowDashView @JvmOverloads constructor(
     defStyleAttrs: Int = 0
 ) : View(context, attrs, defStyleAttrs) {
 
-    private var orientation = Orientation.HORIZONTAL
-    private var gap = 0f
-    private var length = 0f
-    private var thickness = 0f
-    private var lineColor = 0
+    enum class Orientation {
+        HORIZONTAL, VERTICAL
+    }
+
+    var orientation = Orientation.HORIZONTAL
+        set(value) {
+            field = value
+            if (isAttachedToWindow)
+                invalidate()
+        }
+    var gap = 2f.dp()
+        set(value) {
+            field = value
+            if (isAttachedToWindow)
+                invalidate()
+        }
+    var length = 2f.dp()
+        set(value) {
+            field = value
+            if (isAttachedToWindow)
+                invalidate()
+        }
+    var thickness = 1f.dp()
+        set(value) {
+            field = value
+            if (isAttachedToWindow)
+                invalidate()
+        }
+    var lineColor = Color.BLACK
+        set(value) {
+            field = value
+            if (isAttachedToWindow)
+                invalidate()
+        }
 
     private lateinit var paint: Paint
 
@@ -94,9 +125,5 @@ class MeowDashView @JvmOverloads constructor(
                 MeasureSpec.makeMeasureSpec(thickness.toInt(), MeasureSpec.EXACTLY),
                 heightMeasureSpec
             )
-    }
-
-    enum class Orientation {
-        HORIZONTAL, VERTICAL
     }
 }

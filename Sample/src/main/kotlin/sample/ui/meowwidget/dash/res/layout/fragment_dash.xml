@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="sample.ui.meowwidget.dash.DashViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:meow_gap="@{16}">
+
+        <meow.widget.MeowDashView style="@style/Meow.Dash.Horizontal.Primary" />
+
+        <meow.widget.MeowDashView
+            style="@style/Meow.Dash.Horizontal.Secondary"
+            app:dash_gap="4dp" />
+
+        <meow.widget.MeowDashView
+            style="@style/Meow.Dash.Horizontal.PrimaryVariant"
+            app:dash_gap="4dp"
+            app:dash_length="8dp"
+            app:dash_thickness="2dp" />
+
+        <meow.widget.MeowDashView
+            style="@style/Meow.Dash.Horizontal.SecondaryVariant"
+            app:dash_gap="8dp"
+            app:dash_length="12dp"
+            app:dash_thickness="4dp" />
+
+        <meow.widget.MeowDashView
+            style="@style/Meow.Dash.Horizontal.OnSurface"
+            app:dash_gap="16dp"
+            app:dash_length="12dp"
+            app:dash_thickness="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="24dp"
+            app:meow_gap="@{16}">
+
+            <meow.widget.MeowDashView style="@style/Meow.Dash.Vertical.Primary" />
+
+            <meow.widget.MeowDashView
+                style="@style/Meow.Dash.Vertical.Secondary"
+                app:dash_gap="4dp" />
+
+            <meow.widget.MeowDashView
+                style="@style/Meow.Dash.Vertical.PrimaryVariant"
+                app:dash_gap="4dp"
+                app:dash_length="8dp"
+                app:dash_thickness="2dp" />
+
+            <meow.widget.MeowDashView
+                style="@style/Meow.Dash.Vertical.SecondaryVariant"
+                app:dash_gap="8dp"
+                app:dash_length="12dp"
+                app:dash_thickness="4dp" />
+
+            <meow.widget.MeowDashView
+                style="@style/Meow.Dash.Vertical.OnSurface"
+                app:dash_gap="16dp"
+                app:dash_length="12dp"
+                app:dash_thickness="8dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>
