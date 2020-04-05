@@ -19,7 +19,6 @@ package meow
 import android.app.Application
 import android.content.res.ColorStateList
 import android.content.res.Configuration
-import android.util.LayoutDirection
 import androidx.appcompat.app.AppCompatDelegate
 import meow.core.api.MeowSession
 import meow.core.data.MeowSharedPreferences
@@ -46,7 +45,6 @@ class MeowController(
     var apiSuccessRange: IntRange = 200..200
     var onException: (exception: Exception) -> Unit = {}
     var dpi: Float = 1f
-    var layoutDirection: Int = LayoutDirection.INHERIT
     var language: String = ""
     var currency: MeowCurrency = MeowCurrency.USD
     var calendar: Calendar = Calendar.GEORGIAN
@@ -66,9 +64,6 @@ class MeowController(
         }
     var defaultTypefaceResId: Int = 0
     var toastTypefaceResId: Int = 0
-    var isForceFontPadding: Boolean = false
-    var isPersian: Boolean = false
-    var changeColor: Boolean = false
 
     var theme = Theme.DAY
 
@@ -76,7 +71,10 @@ class MeowController(
         get() = theme == Theme.NIGHT
 
     val isRtl
-        get() = language == "fa"
+        get() = language == "fa" || language == "ar"
+
+    val isPersian
+        get() = isRtl
 
     fun swapTheme() {
         theme = if (isNightMode) Theme.DAY else Theme.NIGHT
