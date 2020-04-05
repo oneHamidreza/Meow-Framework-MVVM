@@ -15,35 +15,13 @@
         android:orientation="vertical">
 
         <ImageView
-            aspectRatio="@{`16:9`}"
-            aspectRatioEnable="@{true}"
-            app:meow_data="@{`https://i.stack.imgur.com/EYzpL.jpg`}"
-            app:meow_placeHolder="@{@drawable/ic_android}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:scaleType="fitXY" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                bitmapColor="@{@color/primary}"
-                isBitmap="@{true}"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                app:srcCompat="@drawable/ic_android" />
-
-            <ImageView
-                bitmapColor="@{@color/test}"
-                isBitmap="@{true}"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                app:srcCompat="@drawable/ic_call" />
-
-        </LinearLayout>
+            android:scaleType="fitXY"
+            app:aspectRatio="@{`16:9`}"
+            app:meow_data="@{`https://i.stack.imgur.com/EYzpL.jpg`}"
+            app:meow_placeHolder="@{@drawable/ic_android}" />
 
     </LinearLayout>
 

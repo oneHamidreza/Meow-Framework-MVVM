@@ -16,19 +16,14 @@
 
 package meow.widget
 
-
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Point
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.Base64
-import android.view.View
-import android.view.ViewTreeObserver
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
-import android.widget.LinearLayout
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.GenericTransitionOptions
 import com.bumptech.glide.Glide
@@ -38,10 +33,12 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.NotificationTarget
 import com.bumptech.glide.request.transition.ViewPropertyTransition
-import meow.util.*
+import meow.util.avoidException
+import meow.util.isNotNullOrEmpty
+import meow.util.isValidUrl
+import meow.util.logD
 import java.io.File
 import kotlin.math.abs
-
 
 /**
  * [ImageView] Extensions.
@@ -81,38 +78,6 @@ object ImageViewBindingAdapter {
             view.loadBase64(data, config)
         else
             view.loadGlide(data, config)
-    }
-
-
-    @BindingAdapter("aspectRatio", "aspectRatioEnable", requireAll = true)
-    @JvmStatic
-    fun setRatio(view: ImageView, aspectRatio: String, aspectRatioEnable: Boolean) {
-        if (aspectRatioEnable) {
-            val second = aspectRatio.substring(aspectRatio.lastIndexOf(":") + 1)
-            val first = aspectRatio.replace(":$second", "")
-            view.viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
-                override fun onPreDraw(): Boolean {
-                    view.viewTreeObserver.removeOnPreDrawListener(this)
-
-                    val widthSize = View.MeasureSpec.getSize(view.measuredWidth)
-                    val heightSize = (second.toFloat() / first.toFloat() * widthSize).toInt()
-                    val newHeightSpec =
-                        View.MeasureSpec.makeMeasureSpec(heightSize, View.MeasureSpec.EXACTLY)
-                    logD(m = "width: $widthSize, height : $newHeightSpec, $first:$second")
-                    view.layoutParams = LinearLayout.LayoutParams(view.measuredWidth, newHeightSpec)
-                    return true
-                }
-            })
-        }
-    }
-
-    @BindingAdapter("isBitmap", "bitmapColor", requireAll = true)
-    @JvmStatic
-    fun setBitmapColor(view: ImageView, isBitmap: Boolean, bitmapColor: Int) {
-        if (isBitmap) {
-            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-            view.drawable.setTintCompat(bitmapColor)
-        }
     }
 }
 

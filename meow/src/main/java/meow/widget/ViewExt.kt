@@ -22,10 +22,18 @@ import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewTreeObserver
+import android.widget.FrameLayout
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
+import androidx.databinding.BindingAdapter
 import androidx.databinding.ViewDataBinding
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.card.MaterialCardView
 import meow.util.avoidException
+import meow.util.isNotNullOrEmpty
+import meow.util.logD
 
 /**
  * [View] Extensions.
@@ -34,6 +42,45 @@ import meow.util.avoidException
  * @version 1.0.0
  * @since   2020-03-14
  */
+
+object ViewBindingAdapter {
+
+    @BindingAdapter("aspectRatio")
+    @JvmStatic
+    fun setAspectRatio(view: View, aspectRatio: String? = null) {
+        if (aspectRatio.isNotNullOrEmpty()) {
+            val second = aspectRatio!!.substring(aspectRatio.lastIndexOf(":") + 1)
+            val first = aspectRatio.replace(":$second", "")
+            view.viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
+                override fun onPreDraw(): Boolean {
+                    view.viewTreeObserver.removeOnPreDrawListener(this)
+
+                    val widthSize = View.MeasureSpec.getSize(view.measuredWidth)
+                    val heightSize = (second.toFloat() / first.toFloat() * widthSize).toInt()
+                    val newHeightSpec =
+                        View.MeasureSpec.makeMeasureSpec(heightSize, View.MeasureSpec.EXACTLY)
+                    logD(m = "width: $widthSize, height : $newHeightSpec, $first:$second")
+                    if (view.layoutParams is LinearLayout.LayoutParams)
+                        view.layoutParams =
+                            LinearLayout.LayoutParams(view.measuredWidth, newHeightSpec)
+                    if (view.layoutParams is FrameLayout.LayoutParams)
+                        view.layoutParams =
+                            FrameLayout.LayoutParams(view.measuredWidth, newHeightSpec)
+                    if (view.layoutParams is RelativeLayout.LayoutParams)
+                        view.layoutParams =
+                            RelativeLayout.LayoutParams(view.measuredWidth, newHeightSpec)
+                    if (view.layoutParams is CoordinatorLayout.LayoutParams)
+                        view.layoutParams =
+                            CoordinatorLayout.LayoutParams(view.measuredWidth, newHeightSpec)
+                    if (view.layoutParams is AppBarLayout.LayoutParams)
+                        view.layoutParams =
+                            AppBarLayout.LayoutParams(view.measuredWidth, newHeightSpec)
+                    return true
+                }
+            })
+        }
+    }
+}
 
 inline fun <T : View?> T.afterMeasured(
     observeForEver: Boolean = false,

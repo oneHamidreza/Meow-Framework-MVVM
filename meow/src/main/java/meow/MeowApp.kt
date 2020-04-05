@@ -36,7 +36,7 @@ import java.util.*
  * @since   2020-03-08
  */
 
-val meowModule = Kodein.Module("Base Module", false) {
+val meowModule = Kodein.Module("Meow Module", false) {
     bind<ViewModelProvider.Factory>() with singleton {
         MeowViewModelFactory(
             kodein.direct

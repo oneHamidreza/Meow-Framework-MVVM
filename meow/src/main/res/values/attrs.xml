@@ -43,7 +43,6 @@
 
     <attr name="isPersianNumber" format="boolean" />
 
-    <attr name="aspectRatio" format="string" />
     <attr name="calculateSizeReverse" format="boolean" />
     <attr name="hasCustomBackground" format="boolean" />
     <attr name="hasCustomForeground" format="boolean" />
