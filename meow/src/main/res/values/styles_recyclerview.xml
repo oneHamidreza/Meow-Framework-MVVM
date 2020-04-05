@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="NewApi">
+
+    <style name="Meow.RecyclerView" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="Meow.RecyclerView.Linear">
+        <item name="layoutManager">androidx.recyclerview.widget.LinearLayoutManager</item>
+    </style>
+
+    <style name="Meow.RecyclerView.Linear.Horizontal">
+        <item name="layoutManager">meow.widget.HorizontalLinearLayoutManager</item>
+    </style>
+
+    <style name="Meow.RecyclerView.Linear.Horizontal.Reverse">
+        <item name="layoutManager">meow.widget.ReverseHorizontalLinearLayoutManager</item>
+    </style>
+
+    <style name="Meow.RecyclerView.Linear.Reverse">
+        <item name="layoutManager">meow.widget.ReverseLinearLayoutManager</item>
+    </style>
+
+    <style name="Meow.RecyclerView.Grid">
+        <item name="layoutManager">meow.widget.DefaultGridLayoutManager</item>
+    </style>
+
+    <style name="Meow.RecyclerView.Grid.Horizontal">
+        <item name="layoutManager">meow.widget.HorizontalGridLayoutManager</item>
+    </style>
+
+    <style name="Meow.RecyclerView.Grid.Horizontal.Reverse">
+        <item name="layoutManager">meow.widget.ReverseHorizontalGridLayoutManager</item>
+    </style>
+
+    <style name="Meow.RecyclerView.Grid.Reverse">
+        <item name="layoutManager">meow.widget.ReverseGridLayoutManager</item>
+    </style>
+
+    <style name="Meow.RecyclerView.StaggeredGrid">
+        <item name="layoutManager">meow.widget.DefaultStaggeredGridLayoutManager</item>
+    </style>
+
+    <style name="Meow.RecyclerView.StaggeredGrid.Horizontal">
+        <item name="layoutManager">meow.widget.HorizontalStaggeredGridLayoutManager</item>
+    </style>
+
+    <style name="Meow.RecyclerView.StaggeredGrid.Horizontal.Reverse">
+        <item name="layoutManager">meow.widget.ReverseHorizontalStaggeredGridLayoutManager</item>
+    </style>
+
+    <style name="Meow.RecyclerView.StaggeredGrid.Reverse">
+        <item name="layoutManager">meow.widget.ReverseStaggeredGridLayoutManager</item>
+    </style>
+
+</resources>

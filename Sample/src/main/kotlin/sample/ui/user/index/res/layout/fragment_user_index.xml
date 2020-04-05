@@ -34,9 +34,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            style="@style/Meow.RecyclerView.Linear"
             app:meow_items="@{viewModel.listLiveData}" />
 
     </LinearLayout>

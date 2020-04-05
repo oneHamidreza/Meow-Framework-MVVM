@@ -57,23 +57,6 @@
             android:gravity="center"
             app:meow_gap="@{16}">
 
-            <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Medium.Primary" />
-
-            <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Medium.PrimaryVariant" />
-
-            <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Medium.Secondary" />
-
-            <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Medium.SecondaryVariant" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            app:meow_gap="@{16}">
-
             <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Large.Primary" />
 
             <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Large.PrimaryVariant" />

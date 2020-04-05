@@ -1,8 +1,9 @@
 package meow.widget
 
+import android.content.Context
+import android.util.AttributeSet
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.*
 import meow.widget.decoration.ItemOffsetBlock
 import meow.widget.decoration.SimpleDecoration
 
@@ -39,6 +40,127 @@ object RecyclerViewBindingAdapter {
         (view.adapter as? ListAdapter<T, VH>)?.submitList(items?.toMutableList())
     }
 
+}
+
+class ReverseLinearLayoutManager(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+    defStyleRes: Int = 0
+) : LinearLayoutManager(context, attrs, defStyleAttr, defStyleRes) {
+    init {
+        reverseLayout = true
+    }
+}
+
+open class HorizontalLinearLayoutManager(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+    defStyleRes: Int = 0
+) : LinearLayoutManager(context, attrs, defStyleAttr, defStyleRes) {
+    init {
+        orientation = HORIZONTAL
+    }
+}
+
+class ReverseHorizontalLinearLayoutManager(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+    defStyleRes: Int = 0
+) : HorizontalLinearLayoutManager(context, attrs, defStyleAttr, defStyleRes) {
+    init {
+        reverseLayout = true
+    }
+}
+
+open class DefaultGridLayoutManager(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+    defStyleRes: Int = 0
+) : GridLayoutManager(context, attrs, defStyleAttr, defStyleRes) {
+    init {
+        spanCount = 2
+    }
+}
+
+class ReverseGridLayoutManager(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+    defStyleRes: Int = 0
+) : DefaultGridLayoutManager(context, attrs, defStyleAttr, defStyleRes) {
+    init {
+        reverseLayout = true
+    }
+}
+
+open class HorizontalGridLayoutManager(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+    defStyleRes: Int = 0
+) : DefaultGridLayoutManager(context, attrs, defStyleAttr, defStyleRes) {
+    init {
+        orientation = LinearLayoutManager.HORIZONTAL
+    }
+}
+
+class ReverseHorizontalGridLayoutManager(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+    defStyleRes: Int = 0
+) : HorizontalGridLayoutManager(context, attrs, defStyleAttr, defStyleRes) {
+    init {
+        reverseLayout = true
+    }
+}
+
+open class DefaultStaggeredGridLayoutManager(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+    defStyleRes: Int = 0
+) : StaggeredGridLayoutManager(context, attrs, defStyleAttr, defStyleRes) {
+    init {
+        spanCount = 2
+    }
+}
+
+class ReverseStaggeredGridLayoutManager(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+    defStyleRes: Int = 0
+) : DefaultStaggeredGridLayoutManager(context, attrs, defStyleAttr, defStyleRes) {
+    init {
+        reverseLayout = true
+    }
+}
+
+open class HorizontalStaggeredGridLayoutManager(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+    defStyleRes: Int = 0
+) : DefaultStaggeredGridLayoutManager(context, attrs, defStyleAttr, defStyleRes) {
+    init {
+        orientation = LinearLayoutManager.HORIZONTAL
+    }
+}
+
+class ReverseHorizontalStaggeredGridLayoutManager(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+    defStyleRes: Int = 0
+) : HorizontalStaggeredGridLayoutManager(context, attrs, defStyleAttr, defStyleRes) {
+    init {
+        reverseLayout = true
+    }
 }
 
 fun RecyclerView.addItemDecoration(block: ItemOffsetBlock) =
