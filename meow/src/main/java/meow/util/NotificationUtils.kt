@@ -20,7 +20,6 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
-import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.etebarian.meowframework.R
 import meow.core.ui.MeowFragment
@@ -74,7 +73,7 @@ object MeowNotificationUtils {
     }
 
     fun createChannel(context: Context, channelName: String = CHANNEL_ID_DEFAULT) {
-        if (Build.VERSION.SDK_INT >= 26) {
+        sdkNeed(26) {
             val manager =
                 context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val importance = NotificationManager.IMPORTANCE_HIGH

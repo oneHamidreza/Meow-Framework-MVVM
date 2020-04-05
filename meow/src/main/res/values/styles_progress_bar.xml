@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="NewApi">
+
+    <style name="Meow.ProgressBar" parent="@style/Widget.AppCompat.ProgressBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Small">
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Small.Primary">
+        <item name="android:indeterminateTint">?colorPrimary</item>
+        <item name="android:progressTint">?colorPrimary</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Small.PrimaryVariant">
+        <item name="android:indeterminateTint">?colorPrimaryVariant</item>
+        <item name="android:progressTint">?colorPrimaryVariant</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Small.PrimarySurface">
+        <item name="android:indeterminateTint">?colorPrimarySurface</item>
+        <item name="android:progressTint">?colorPrimarySurface</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Small.Secondary">
+        <item name="android:indeterminateTint">?colorSecondary</item>
+        <item name="android:progressTint">?colorSecondary</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Small.SecondaryVariant">
+        <item name="android:indeterminateTint">?colorSecondaryVariant</item>
+        <item name="android:progressTint">?colorSecondaryVariant</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Small.OnPrimary">
+        <item name="android:indeterminateTint">?colorOnPrimary</item>
+        <item name="android:progressTint">?colorOnPrimary</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Small.OnSecondary">
+        <item name="android:indeterminateTint">?colorOnSecondary</item>
+        <item name="android:progressTint">?colorOnSecondary</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Small.OnSurface">
+        <item name="android:indeterminateTint">?colorOnSurface</item>
+        <item name="android:progressTint">?colorOnSurface</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Medium">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Medium.Primary">
+        <item name="android:indeterminateTint">?colorPrimary</item>
+        <item name="android:progressTint">?colorPrimary</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Medium.PrimaryVariant">
+        <item name="android:indeterminateTint">?colorPrimaryVariant</item>
+        <item name="android:progressTint">?colorPrimaryVariant</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Medium.PrimarySurface">
+        <item name="android:indeterminateTint">?colorPrimarySurface</item>
+        <item name="android:progressTint">?colorPrimarySurface</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Medium.Secondary">
+        <item name="android:indeterminateTint">?colorSecondary</item>
+        <item name="android:progressTint">?colorSecondary</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Medium.SecondaryVariant">
+        <item name="android:indeterminateTint">?colorSecondaryVariant</item>
+        <item name="android:progressTint">?colorSecondaryVariant</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Medium.OnPrimary">
+        <item name="android:indeterminateTint">?colorOnPrimary</item>
+        <item name="android:progressTint">?colorOnPrimary</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Medium.OnSecondary">
+        <item name="android:indeterminateTint">?colorOnSecondary</item>
+        <item name="android:progressTint">?colorOnSecondary</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Medium.OnSurface">
+        <item name="android:indeterminateTint">?colorOnSurface</item>
+        <item name="android:progressTint">?colorOnSurface</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Large">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">56dp</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Large.Primary">
+        <item name="android:indeterminateTint">?colorPrimary</item>
+        <item name="android:progressTint">?colorPrimary</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Large.PrimaryVariant">
+        <item name="android:indeterminateTint">?colorPrimaryVariant</item>
+        <item name="android:progressTint">?colorPrimaryVariant</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Large.PrimarySurface">
+        <item name="android:indeterminateTint">?colorPrimarySurface</item>
+        <item name="android:progressTint">?colorPrimarySurface</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Large.Secondary">
+        <item name="android:indeterminateTint">?colorSecondary</item>
+        <item name="android:progressTint">?colorSecondary</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Large.SecondaryVariant">
+        <item name="android:indeterminateTint">?colorSecondaryVariant</item>
+        <item name="android:progressTint">?colorSecondaryVariant</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Large.OnPrimary">
+        <item name="android:indeterminateTint">?colorOnPrimary</item>
+        <item name="android:progressTint">?colorOnPrimary</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Large.OnSecondary">
+        <item name="android:indeterminateTint">?colorOnSecondary</item>
+        <item name="android:progressTint">?colorOnSecondary</item>
+    </style>
+
+    <style name="Meow.ProgressBar.Large.OnSurface">
+        <item name="android:indeterminateTint">?colorOnSurface</item>
+        <item name="android:progressTint">?colorOnSurface</item>
+    </style>
+
+</resources>

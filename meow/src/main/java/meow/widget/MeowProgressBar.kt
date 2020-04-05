@@ -22,6 +22,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.ProgressBar
 import meow.controller
+import meow.util.sdkNeed
 import meow.widget.impl.ProgressBarInterface
 
 /**
@@ -39,6 +40,13 @@ class MeowProgressBar @JvmOverloads constructor(
     defStyleAttrs: Int = 0
 ) : ProgressBar(context, attrs, defStyleAttrs), ProgressBarInterface {
 
+    init {
+        sdkNeed(21) {
+            progressTintList = progressTintList
+            indeterminateTintList = indeterminateTintList
+        }
+    }
+
     override fun show() {
         visibility = View.VISIBLE
     }
@@ -51,13 +59,13 @@ class MeowProgressBar @JvmOverloads constructor(
         isIndeterminate = indeterminate
     }
 
+    override fun setProgressTintList(tint: ColorStateList?) {
+        if (tint != null)
+            super.setProgressTintList(controller.onColorStateListGet(tint))
+    }
+
     override fun setIndeterminateTintList(tint: ColorStateList?) {
         if (tint != null)
             super.setIndeterminateTintList(controller.onColorStateListGet(tint))
-    }
-
-    override fun setProgressBackgroundTintList(tint: ColorStateList?) {
-        if (tint != null)
-            super.setProgressBackgroundTintList(controller.onColorStateListGet(tint))
     }
 }

@@ -1,6 +1,7 @@
 package meow.util
 
 import android.content.Context
+import android.os.Build
 import android.text.Spannable
 import android.text.SpannableString
 import android.view.MenuItem
@@ -60,6 +61,25 @@ fun <VM : MeowViewModel, T> T.viewModelInstance(clazz: Class<VM>): Lazy<VM> wher
 
 fun <VM : MeowViewModel, T> T.viewModelInstance(clazz: Class<VM>): Lazy<VM> where T : KodeinAware, T : Fragment {
     return lazy { MeowViewModelFactory(kodein.direct).create(clazz) }
+}
+
+fun sdkNeed(buildSdk: Int, block: () -> Unit) {
+    if (Build.VERSION.SDK_INT >= buildSdk)
+        block()
+}
+
+inline fun <reified T> sdkNeedRType(buildSdk: Int, block: () -> T) {
+    if (Build.VERSION.SDK_INT >= buildSdk)
+        block()
+}
+
+fun sdkNeedReturn(buildSdk: Int, block: () -> Unit): Boolean {
+    return if (Build.VERSION.SDK_INT >= buildSdk) {
+        block()
+        true
+    } else {
+        false
+    }
 }
 
 fun MenuItem.setTypefaceId(context: Context, id: Int) {

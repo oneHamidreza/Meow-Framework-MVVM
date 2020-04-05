@@ -22,9 +22,6 @@
     <color name="black">#000000</color>
     <color name="transparent">#00000000</color>
 
-    <color name="progress_primary">#000</color>
-    <color name="progress_secondary">#000</color>
-
     <color name="badge_backgroud">#B71C1C</color>
     <color name="on_badge_backgroud">#fff</color>
 

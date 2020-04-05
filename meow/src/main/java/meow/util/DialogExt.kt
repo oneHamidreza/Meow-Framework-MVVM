@@ -77,7 +77,7 @@ fun Context.popup(
     view: View,
     menuResId: Int,
     onClickedItem: (item: MenuItem) -> Unit
-) = PopupMenu(this, view).apply {//todo support font
+) = PopupMenu(this, view).apply {
     menuInflater.inflate(menuResId, menu)
     setOnMenuItemClickListener { m ->
         onClickedItem(m)

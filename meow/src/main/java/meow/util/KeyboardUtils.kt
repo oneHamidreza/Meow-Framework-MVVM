@@ -19,7 +19,6 @@ package meow.util
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.graphics.Rect
-import android.os.Build
 import android.view.View
 import android.view.ViewTreeObserver
 
@@ -79,14 +78,14 @@ class KeyboardUtils(
 
     @SuppressLint("ObsoleteSdkInt")
     fun enable() {
-        if (Build.VERSION.SDK_INT >= 19) {
+        sdkNeed(19) {
             decorView?.viewTreeObserver?.addOnGlobalLayoutListener(onGlobalLayoutListener)
         }
     }
 
     @SuppressLint("ObsoleteSdkInt")
     fun disable() {
-        if (Build.VERSION.SDK_INT >= 19) {
+        sdkNeed(19) {
             decorView?.viewTreeObserver?.removeOnGlobalLayoutListener(onGlobalLayoutListener)
         }
     }

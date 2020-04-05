@@ -45,6 +45,7 @@ import sample.ui.material.textview.TextViewViewModel
 import sample.ui.material.topappbar.TopAppBarViewModel
 import sample.ui.menu.MenuViewModel
 import sample.ui.meowwidget.dash.DashViewModel
+import sample.ui.meowwidget.progressbars.ProgressBarViewModel
 import sample.ui.sharedpreferences.SharedPreferencesViewModel
 import sample.ui.user.detail.UserDetailViewModel
 import sample.ui.user.index.UserIndexViewModel
@@ -115,6 +116,12 @@ val mvvmModule = Module("MVVM Module", false) {
 
     bindAutoTag<MenuViewModel>() with singleton {
         MenuViewModel(
+            kodein.direct.instance()
+        )
+    }
+
+    bindAutoTag<ProgressBarViewModel>() with singleton {
+        ProgressBarViewModel(
             kodein.direct.instance()
         )
     }

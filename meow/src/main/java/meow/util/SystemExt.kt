@@ -80,12 +80,12 @@ fun Context?.getIMEI(): String {
 
 fun MeowFragment<*, *>?.getIMEI() = this?.context().getIMEI()
 
-@SuppressLint("HardwareIds", "MissingPermission")
+@SuppressLint("HardwareIds", "MissingPermission", "NewApi")
 fun Context?.getPhoneNumber(): String? {
     if (this == null)
         return null
     return avoidException {
-        if (Build.VERSION.SDK_INT >= 23) {
+        sdkNeedRType<String>(23) {
             val subscription =
                 getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE) as SubscriptionManager
             val list = subscription.activeSubscriptionInfoList
@@ -201,13 +201,14 @@ fun Context?.showOrHideKeyboard(show: Boolean) {
 fun Context.vibrate(duration: Long = 150) {
     avoidException {
         val vibrator = getSystemService(AppCompatActivity.VIBRATOR_SERVICE) as Vibrator
-        if (Build.VERSION.SDK_INT >= 26)
-            vibrator.vibrate(
-                VibrationEffect.createOneShot(
-                    duration,
-                    VibrationEffect.DEFAULT_AMPLITUDE
+        if (sdkNeedReturn(26) {
+                vibrator.vibrate(
+                    VibrationEffect.createOneShot(
+                        duration,
+                        VibrationEffect.DEFAULT_AMPLITUDE
+                    )
                 )
-            )
+            })
         else
             vibrator.vibrate(longArrayOf(0, duration), -1)
     }

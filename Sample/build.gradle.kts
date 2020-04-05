@@ -116,7 +116,7 @@ fun File.listDirectoriesWithChild(): List<File> {
     return list
 }
 
-fun File.isRes() = name.contains("res")
+fun File.isRes() = name == "res"
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))

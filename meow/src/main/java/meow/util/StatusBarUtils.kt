@@ -41,7 +41,7 @@ fun MeowActivity<*, *>.updateStatusBarByTheme(
     if (!isEnabledAutoUpdateStatusBarTheme && checkIsEnabled)
         return@avoidException
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+    sdkNeed(Build.VERSION_CODES.M) {
         window.statusBarColor = getColorCompat(R.color.status_bar)
         var flags = window.decorView.systemUiVisibility
         flags = if (isDarkIcon) {
@@ -98,6 +98,7 @@ private fun MeowActivity<*, *>.setMeizuStatusBarDarkIcon(darkIcon: Boolean) =
     }
 
 fun Window.setStatusBackgroundColor(color: Int) {
-    if (Build.VERSION.SDK_INT >= 21)
+    sdkNeed(21) {
         statusBarColor = color
+    }
 }

@@ -124,7 +124,7 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
         }
     }
 
-    private fun isValidPhoneCustom(s: String): Boolean {
+    private fun isValidPhoneCustom(s: String): Boolean {//todo @Ali use two methods
 
         fun getCountryISOFromPhone(s: String?): String {
             val mPhoneNumberUtil = PhoneNumberUtil.getInstance()
