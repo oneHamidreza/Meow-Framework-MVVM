@@ -46,40 +46,46 @@ class MeowDashView @JvmOverloads constructor(
         HORIZONTAL, VERTICAL
     }
 
-    var orientation = Orientation.HORIZONTAL
-        set(value) {
-            field = value
-            if (isAttachedToWindow)
-                invalidate()
-        }
+    private var orientation = Orientation.HORIZONTAL
     var gap = 2f.dp()
         set(value) {
             field = value
+            paint.pathEffect = DashPathEffect(floatArrayOf(length, gap), 0f)
             if (isAttachedToWindow)
                 invalidate()
         }
     var length = 2f.dp()
         set(value) {
             field = value
+            paint.pathEffect = DashPathEffect(floatArrayOf(length, gap), 0f)
             if (isAttachedToWindow)
                 invalidate()
         }
     var thickness = 1f.dp()
         set(value) {
             field = value
-            if (isAttachedToWindow)
+            paint.strokeWidth = value
+            if (isAttachedToWindow) {
+                requestLayout()
                 invalidate()
+            }
         }
-    var lineColor = Color.BLACK
+    var dashColor = Color.BLACK
         set(value) {
             field = value
+            paint.color = value
             if (isAttachedToWindow)
                 invalidate()
         }
 
-    private lateinit var paint: Paint
+    private var paint: Paint = Paint().apply {
+        isAntiAlias = true
+        style = Paint.Style.STROKE
+    }
 
     init {
+        setLayerType(LAYER_TYPE_SOFTWARE, paint)
+
         setAttributesFromXml(attrs, R.styleable.MeowDashView) {
             orientation = Orientation.values()[it.getInt(
                 R.styleable.MeowDashView_dash_orientation,
@@ -88,29 +94,17 @@ class MeowDashView @JvmOverloads constructor(
             gap = it.getDimension(R.styleable.MeowDashView_dash_gap, gap)
             length = it.getDimension(R.styleable.MeowDashView_dash_length, length)
             thickness = it.getDimension(R.styleable.MeowDashView_dash_thickness, thickness)
-            lineColor = it.getColorCompat(R.styleable.MeowDashView_dash_color, lineColor)
+            dashColor = it.getColorCompat(R.styleable.MeowDashView_dash_color, dashColor)
         }
-        initializeView()
-    }
-
-    private fun initializeView() {
-        paint = Paint().apply {
-            isAntiAlias = true
-            color = lineColor
-            style = Paint.Style.STROKE
-            strokeWidth = thickness
-            pathEffect = DashPathEffect(floatArrayOf(length, gap), 0f)
-        }
-        setLayerType(LAYER_TYPE_SOFTWARE, paint)
     }
 
     override fun onDraw(canvas: Canvas) {
         if (orientation == Orientation.HORIZONTAL) {
-            val center = height * .5f
-            canvas.drawLine(0f, center, width.toFloat(), center, paint)
+            val center = measuredHeight * .5f
+            canvas.drawLine(0f, center, measuredWidth.toFloat(), center, paint)
         } else {
-            val center = width * .5f
-            canvas.drawLine(center, 0f, center, height.toFloat(), paint)
+            val center = measuredWidth * .5f
+            canvas.drawLine(center, 0f, center, measuredHeight.toFloat(), paint)
         }
     }
 

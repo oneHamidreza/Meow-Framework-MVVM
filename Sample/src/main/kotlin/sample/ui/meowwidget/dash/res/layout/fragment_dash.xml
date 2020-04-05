@@ -19,6 +19,7 @@
         <meow.widget.MeowDashView style="@style/Meow.Dash.Horizontal.Primary" />
 
         <meow.widget.MeowDashView
+            android:id="@+id/dashView"
             style="@style/Meow.Dash.Horizontal.Secondary"
             app:dash_gap="4dp" />
 

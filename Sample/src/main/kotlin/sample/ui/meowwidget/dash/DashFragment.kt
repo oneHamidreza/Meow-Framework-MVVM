@@ -16,6 +16,10 @@
 
 package sample.ui.meowwidget.dash
 
+import android.graphics.Color
+import android.os.Bundle
+import android.view.View
+import meow.util.dp
 import meow.util.javaClass
 import sample.R
 import sample.databinding.FragmentDashBinding
@@ -33,6 +37,16 @@ class DashFragment : BaseFragment<FragmentDashBinding, DashViewModel>() {
 
     override fun layoutId() = R.layout.fragment_dash
     override fun viewModelClass() = javaClass<DashViewModel>()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.dashView.apply {
+            length = 24f.dp()
+            gap = 16f.dp()
+            thickness = 24f.dp()
+            dashColor = Color.BLUE
+        }
+    }
 
     override fun initViewModel() {
         binding.viewModel = viewModel

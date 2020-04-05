@@ -25,7 +25,7 @@ import androidx.customview.widget.ViewDragHelper
 import java.util.*
 
 /**
- * Meow Draggable Coordinator Layout class.
+ * Meow Draggable Linear Layout.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
