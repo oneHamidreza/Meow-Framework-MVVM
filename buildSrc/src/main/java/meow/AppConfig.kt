@@ -135,7 +135,7 @@ object AppConfig {
         const val gitUrl = "https://github.com/oneHamidreza/meow-framework-mvvm.git"
         const val siteUrl = "https://github.com/oneHamidreza/meow-framework-mvvm"
         const val libraryDesc =
-            "A framework for android developers with most useful tools and written in Kotlin."
+            "A MVVVM framework for Android Developers in Kotlin."
     }
 }
 

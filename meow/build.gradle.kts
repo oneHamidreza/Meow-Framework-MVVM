@@ -70,13 +70,14 @@ dependencies {
         implementation(it)
     }
 }
+
 configure<PublishExtension> {
     userOrg = Publishing.bintrayUsername
     groupId = Publishing.groupId
     artifactId = Publishing.artifactId
     publishVersion = AppConfig.generateVersionName()
     repoName = Publishing.bintrayRepoName
-    desc = "A MVVVM framework for Android Developers in Kotlin."
-    website = "https://github.com/oneHamidreza/meow-framework-mvvm"
+    desc = Publishing.libraryDesc
+    website = Publishing.siteUrl
     autoPublish = true
 }

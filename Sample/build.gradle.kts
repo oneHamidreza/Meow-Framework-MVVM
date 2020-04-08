@@ -45,7 +45,8 @@ android {
 
         getByName("release") {
             setupApiUrl()
-            isMinifyEnabled = false
+            isUseProguard = false
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
