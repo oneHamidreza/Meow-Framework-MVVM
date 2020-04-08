@@ -28,7 +28,7 @@ import sample.data.user.User
 import sample.databinding.ItemUserBinding
 
 /**
- * [User] Adapter class.
+ * [User] Adapter.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

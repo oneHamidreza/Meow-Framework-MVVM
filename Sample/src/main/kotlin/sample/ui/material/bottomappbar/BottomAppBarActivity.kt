@@ -17,8 +17,7 @@
 package sample.ui.material.bottomappbar
 
 import android.os.Bundle
-import meow.util.javaClass
-import meow.util.viewModelInstance
+import meow.util.instanceViewModel
 import meow.widget.decoration.MeowDividerDecoration
 import sample.R
 import sample.databinding.ActivityBottomAppBarBinding
@@ -27,19 +26,19 @@ import sample.ui.content.ContentAdapter
 import sample.ui.content.ContentViewModel
 
 /**
- * Bottom App Bar Activity class.
+ * Material Bottom App Bar Activity.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-04-05
  */
 
-class BottomAppBarActivity : BaseActivity<ActivityBottomAppBarBinding, BottomAppBarViewModel>() {
+class BottomAppBarActivity : BaseActivity<ActivityBottomAppBarBinding>() {
 
-    override fun viewModelClass() = javaClass<BottomAppBarViewModel>()
+    private val viewModel: BottomAppBarViewModel by instanceViewModel()
+    private val contentViewModel: ContentViewModel by instanceViewModel()
+
     override fun layoutId() = R.layout.activity_bottom_app_bar
-
-    private val contentViewModel by viewModelInstance(javaClass<ContentViewModel>())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +48,10 @@ class BottomAppBarActivity : BaseActivity<ActivityBottomAppBarBinding, BottomApp
         viewModel.fillList()
     }
 
+    override fun initViewModel() {
+        binding.viewModel = viewModel
+    }
+
     private fun setupRecyclerView() {
         binding.recyclerView.apply {
             addItemDecoration(MeowDividerDecoration(context()))
@@ -56,10 +59,4 @@ class BottomAppBarActivity : BaseActivity<ActivityBottomAppBarBinding, BottomApp
         }
     }
 
-    override fun initViewModel() {
-        binding.viewModel = viewModel
-    }
-
-    override fun observeViewModel() {
-    }
 }

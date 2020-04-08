@@ -17,21 +17,20 @@
 package sample.ui.material.tablayout.child
 
 import android.os.Bundle
-import meow.util.javaClass
+import meow.util.instanceViewModel
 import sample.R
 import sample.databinding.FragmentTablayoutChildBinding
 import sample.ui.base.BaseFragment
 
 /**
- * Material Tab Layout Child Fragment class.
+ * Material Tab Layout Child Fragment.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-22
  */
 
-class TabLayoutChildFragment :
-    BaseFragment<FragmentTablayoutChildBinding, TabLayoutChildViewModel>() {
+class TabLayoutChildFragment : BaseFragment<FragmentTablayoutChildBinding>() {
 
     companion object {
         private const val KEY_POS = "pos"
@@ -46,8 +45,8 @@ class TabLayoutChildFragment :
 
     private var pos = 0
 
+    private val viewModel: TabLayoutChildViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_tablayout_child
-    override fun viewModelClass() = javaClass<TabLayoutChildViewModel>()
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putInt(KEY_POS, pos)
@@ -65,10 +64,6 @@ class TabLayoutChildFragment :
     override fun initViewModel() {
         binding.viewModel = viewModel
         binding.pos = pos
-    }
-
-    override fun observeViewModel() {
-
     }
 
 }

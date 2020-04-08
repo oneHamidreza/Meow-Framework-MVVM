@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@id/fragmentAlerts"
-        android:icon="@drawable/ic_android"
-        app:showAsAction="always"
-        android:title="@string/fragment_alerts" />
-
-    <item
-        android:id="@id/fragmentForm"
-        android:icon="@drawable/ic_android"
-        app:showAsAction="always"
-        android:title="@string/fragment_form" />
-
-    <item
-        android:id="@id/fragmentButton"
-        android:icon="@drawable/ic_android"
-        app:showAsAction="always"
-        android:title="@string/fragment_button" />
-
-    <item
-        android:id="@id/fragmentImageview"
-        android:icon="@drawable/ic_android"
-        android:title="@string/fragment_imageview"
-        app:showAsAction="always" />
+        android:id="@id/fragmentHome"
+        android:title="@string/fragment_home"
+        android:icon="@drawable/ic_home" />
 
 </menu>

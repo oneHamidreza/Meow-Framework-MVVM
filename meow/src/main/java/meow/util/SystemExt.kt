@@ -64,7 +64,7 @@ fun Context?.isPackageInstalled(packageName: String): Boolean {
     } ?: false
 }
 
-fun MeowFragment<*, *>?.isPackageInstalled(packageName: String) =
+fun MeowFragment<*>?.isPackageInstalled(packageName: String) =
     this?.context().isPackageInstalled(packageName)
 
 @Suppress("DEPRECATION")
@@ -78,7 +78,7 @@ fun Context?.getIMEI(): String {
     } ?: "0"
 }
 
-fun MeowFragment<*, *>?.getIMEI() = this?.context().getIMEI()
+fun MeowFragment<*>?.getIMEI() = this?.context().getIMEI()
 
 @SuppressLint("HardwareIds", "MissingPermission", "NewApi")
 fun Context?.getPhoneNumber(): String? {

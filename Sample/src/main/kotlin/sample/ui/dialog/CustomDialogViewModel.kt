@@ -20,7 +20,6 @@ import android.view.View
 import meow.core.arch.MeowViewModel
 import meow.core.arch.SingleLiveData
 import sample.App
-import sample.R
 
 /**
  * Menu View Model class.
@@ -35,7 +34,7 @@ class CustomDialogViewModel(app: App) : MeowViewModel(app) {
     val navigationLiveData = SingleLiveData<Int>()
 
     fun onClickedClose(@Suppress("UNUSED_PARAMETER") view: View) {
-        navigationLiveData.postValue(R.id.actionToUserDetail)
+//        navigationLiveData.postValue(R.id.actionToUserDetail)
     }
 
 }

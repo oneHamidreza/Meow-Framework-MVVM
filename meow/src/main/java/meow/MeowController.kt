@@ -76,26 +76,28 @@ class MeowController(
     val isPersian
         get() = isRtl
 
-    fun swapTheme() {
-        theme = if (isNightMode) Theme.DAY else Theme.NIGHT
-    }
+    fun swapTheme(
+        activity: MeowActivity<*>,
+        updateConfig: Boolean = true
+    ) =
+        updateTheme(activity, if (isNightMode) Theme.DAY else Theme.NIGHT, updateConfig)
 
-    fun updateLanguage(activity: MeowActivity<*, *>, language: String) {
+    fun updateLanguage(activity: MeowActivity<*>, language: String) {
         this.language = language
         activity.setLanguage(language)
     }
 
     fun updateTheme(
-        activity: MeowActivity<*, *>,
-        theme: Theme? = null,
+        activity: MeowActivity<*>,
+        newTheme: Theme? = null,
         updateConfig: Boolean = true
     ) {
-        if (this.theme == theme)
+        if (theme == newTheme)
             return
 
-        this.theme = theme ?: controller.theme
+        theme = newTheme ?: controller.theme
 
-        val nightMode = when (this.theme) {
+        val nightMode = when (theme) {
             Theme.DAY -> AppCompatDelegate.MODE_NIGHT_NO
             Theme.NIGHT -> AppCompatDelegate.MODE_NIGHT_YES
         }
@@ -103,11 +105,11 @@ class MeowController(
         AppCompatDelegate.setDefaultNightMode(nightMode)
 
         if (updateConfig) {
-            val uiMode = when (this.theme) {
+            val uiMode = when (theme) {
                 Theme.DAY -> Configuration.UI_MODE_NIGHT_NO
                 Theme.NIGHT -> Configuration.UI_MODE_NIGHT_YES
             }
-            activity.resources.configuration.uiMode = uiMode
+            activity.applicationContext.resources.configuration.uiMode = uiMode
             activity.recreate()
         }
         activity.updateStatusBarByTheme(!isNightMode, checkIsEnabled = true)

@@ -18,24 +18,23 @@ package sample.ui.material.bottomnavigation
 
 import android.os.Bundle
 import android.view.Gravity
-import meow.util.javaClass
+import meow.util.instanceViewModel
 import meow.util.toastL
 import sample.R
 import sample.databinding.ActivityBottomNavigationBinding
 import sample.ui.base.BaseActivity
 
 /**
- * Bottom Navigation Activity.
+ * Material Bottom Navigation Activity.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-04-05
  */
 
-class BottomNavigationActivity :
-    BaseActivity<ActivityBottomNavigationBinding, BottomNavigationViewModel>() {
+class BottomNavigationActivity : BaseActivity<ActivityBottomNavigationBinding>() {
 
-    override fun viewModelClass() = javaClass<BottomNavigationViewModel>()
+    private val viewModel: BottomNavigationViewModel by instanceViewModel()
     override fun layoutId() = R.layout.activity_bottom_navigation
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +42,10 @@ class BottomNavigationActivity :
         setSupportActionBar(binding.toolbar)
         title = getString(R.string.activity_bottom_navigation)
         setupBottomNavigation()
+    }
+
+    override fun initViewModel() {
+        binding.viewModel = viewModel
     }
 
     fun setupBottomNavigation() {
@@ -53,12 +56,5 @@ class BottomNavigationActivity :
                 true
             }
         }
-    }
-
-    override fun initViewModel() {
-        binding.viewModel = viewModel
-    }
-
-    override fun observeViewModel() {
     }
 }

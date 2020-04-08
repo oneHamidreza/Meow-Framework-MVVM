@@ -22,7 +22,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import meow.core.api.*
 import meow.core.arch.MeowFlow.GetDataApi
-import meow.core.ui.MVVM
+import meow.core.ui.FragmentActivityInterface
 import meow.util.safeObserve
 import meow.util.toastL
 import meow.widget.impl.MeowErrorViewInterface
@@ -36,9 +36,9 @@ import meow.widget.impl.ProgressBarInterface
  * @since   2020-03-10
  */
 
-sealed class MeowFlow(open val mvvm: MVVM<*, *>) {
+sealed class MeowFlow(open val mvvm: FragmentActivityInterface<*>) {
 
-    class GetDataApi(override val mvvm: MVVM<*, *>) : Api(mvvm) {
+    class GetDataApi(override val mvvm: FragmentActivityInterface<*>) : Api(mvvm) {
         init {
             onBeforeAction = {
                 containerViews.forEach { it.visibility = visibilityWhenLoading }
@@ -53,7 +53,7 @@ sealed class MeowFlow(open val mvvm: MVVM<*, *>) {
     }
 
     open class Api(
-        override val mvvm: MVVM<*, *>
+        override val mvvm: FragmentActivityInterface<*>
     ) : MeowFlow(mvvm) {
 
         var isErrorShowByToastEnabled: Boolean = true

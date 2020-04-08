@@ -22,7 +22,10 @@ import android.view.MenuInflater
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.core.widget.addTextChangedListener
-import meow.util.*
+import meow.util.dp
+import meow.util.instanceViewModel
+import meow.util.popup
+import meow.util.safeObserve
 import meow.widget.addItemDecoration
 import meow.widget.decoration.MeowDividerDecoration
 import sample.R
@@ -33,19 +36,19 @@ import sample.ui.content.ContentAdapter
 import sample.ui.content.ContentViewModel
 
 /**
- * Menu Fragment class.
+ * Menu Fragment.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-11
  */
 
-class MenuFragment : BaseFragment<FragmentMenuBinding, MenuViewModel>() {
+class MenuFragment : BaseFragment<FragmentMenuBinding>() {
+
+    private val viewModel: MenuViewModel by instanceViewModel()
+    private val contentViewModel: ContentViewModel by instanceViewModel()
 
     override fun layoutId() = R.layout.fragment_menu
-    override fun viewModelClass() = javaClass<MenuViewModel>()
-
-    private val contentViewModel by viewModelInstance(javaClass<ContentViewModel>())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,6 +58,25 @@ class MenuFragment : BaseFragment<FragmentMenuBinding, MenuViewModel>() {
 
         binding.completeTextView.addTextChangedListener {
             viewModel.search(it.toString())
+        }
+    }
+
+    override fun initViewModel() {
+        binding.viewModel = viewModel
+        binding.viewModel?.apply {
+            listLiveData.safeObserve(binding.lifecycleOwner) {
+                if (binding.completeTextView.adapter == null) {
+                    val suggesteds =
+                        it.filterIndexed { i, _ -> i % 10 == 0 }.map { content -> content.title }
+                    binding.completeTextView.setAdapter(
+                        ArrayAdapter(
+                            context(),
+                            R.layout.dropdown_menu_popup_item,
+                            suggesteds
+                        )
+                    )
+                }
+            }
         }
     }
 
@@ -80,28 +102,6 @@ class MenuFragment : BaseFragment<FragmentMenuBinding, MenuViewModel>() {
         popup(view, R.menu.menu_content) {
             viewModel.delete(content)
         }.show()
-    }
-
-    override fun observeViewModel() {
-        binding.viewModel?.apply {
-            listLiveData.safeObserve(binding.lifecycleOwner) {
-                if (binding.completeTextView.adapter == null) {
-                    val suggesteds =
-                        it.filterIndexed { i, _ -> i % 10 == 0 }.map { content -> content.title }
-                    binding.completeTextView.setAdapter(
-                        ArrayAdapter(
-                            context(),
-                            R.layout.dropdown_menu_popup_item,
-                            suggesteds
-                        )
-                    )
-                }
-            }
-        }
-    }
-
-    override fun initViewModel() {
-        binding.viewModel = viewModel
     }
 
 }

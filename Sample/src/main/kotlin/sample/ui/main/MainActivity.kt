@@ -18,6 +18,7 @@ package sample.ui.main
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -25,9 +26,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import meow.util.getColorCompat
-import meow.util.javaClass
-import meow.util.logD
+import meow.controller
+import meow.util.*
+import meow.widget.setElevationCompat
 import sample.R
 import sample.databinding.ActivityMainBinding
 import sample.ui.base.BaseActivity
@@ -41,36 +42,76 @@ import sample.widget.navheader.NavHeaderView
  * @since   2020-03-10
  */
 
-class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
-    override fun viewModelClass() = javaClass<MainViewModel>()
+    private val viewModel: MainViewModel by instanceViewModel()
     override fun layoutId() = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(binding.toolbar)
         setupNavigation()
+        updateStatusBarByTheme(!controller.isNightMode)
+        updateNavigationBarColor(getColorCompat(R.color.nav_bar))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_sample, menu)
+        menuInflater.inflate(R.menu.menu_main, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.actionDayNight -> {
+                controller.swapTheme(this, true)
+                false
+            }
+            R.id.actionLanguage -> {
+                controller.updateLanguage(this, if (controller.language == "en") "fa" else "en")
+                true
+            }
+            else -> false
+        }
     }
 
     private fun setupNavigation() {
         navController = findNavController(R.id.navHost).apply {
             addOnDestinationChangedListener { _, destination, _ ->
-                logD(m = "destination -> ${destination.id}")
-                when (destination.id) {
-                    R.id.fragmentCollapsingToolbar -> binding.toolbar.visibility = View.GONE
-                    else -> {
-                        binding.toolbar.visibility = View.VISIBLE
-                        setSupportActionBar(binding.toolbar)
+                fun setupToolbarByDestination(destinationId: Int) {
+                    when (destinationId) {
+                        R.id.fragmentHome -> {
+                            title = ""
+                            binding.toolbar.title = ""
+                            binding.toolbar.setElevationCompat(0f)
+                            binding.appBar.isLiftOnScroll = true
+                            binding.ivLogo.visibility = View.VISIBLE
+                        }
+                        else -> {
+                            binding.toolbar.setElevationCompat(getDimensionToPx(R.dimen.toolbar_elevation).toFloat())
+                            binding.appBar.isLiftOnScroll = false
+                            binding.ivLogo.visibility = View.GONE
+                        }
                     }
                 }
+
+                when (destination.id) {
+                    R.id.fragmentHome -> {
+                        setupToolbarByDestination(destination.id)
+                    }
+                    R.id.fragmentCollapsingToolbar -> {
+                        binding.toolbar.visibility = View.GONE
+                        setupToolbarByDestination(destination.id)
+                    }
+                    else -> {
+                        binding.toolbar.visibility = View.VISIBLE
+                        setupToolbarByDestination(destination.id)
+                    }
+                }
+
+
             }
         }
         appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
@@ -90,9 +131,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun initViewModel() {
         binding.viewModel = viewModel
-    }
-
-    override fun observeViewModel() {
     }
 
     override fun onSupportNavigateUp(): Boolean {

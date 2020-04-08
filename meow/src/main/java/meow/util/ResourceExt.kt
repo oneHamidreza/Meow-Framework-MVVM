@@ -135,7 +135,7 @@ fun Context?.getDrawableCompat(
 ) =
     this?.resources().getDrawableCompat(resId, theme)
 
-fun MeowFragment<*, *>?.getDrawableCompat(
+fun MeowFragment<*>?.getDrawableCompat(
     @DrawableRes resId: Int,
     theme: Resources.Theme? = null
 ) =
@@ -149,7 +149,7 @@ fun Context?.getFontCompat(@FontRes resId: Int = 0) =
         )
     } ?: Typeface.DEFAULT
 
-fun MeowFragment<*, *>?.getFontCompat(@FontRes resId: Int = 0) =
+fun MeowFragment<*>?.getFontCompat(@FontRes resId: Int = 0) =
     this?.context().getFontCompat(resId)
 
 fun TypedArray.getColorCompat(index: Int, defValue: Int) =
@@ -168,30 +168,39 @@ fun Context?.getColorCompat(
     theme: Resources.Theme? = this?.theme
 ) = this?.resources().getColorCompat(resId, theme)
 
-fun MeowFragment<*, *>?.getColorCompat(
+fun MeowFragment<*>?.getColorCompat(
     @ColorRes resId: Int,
     theme: Resources.Theme? = null
 ) = this?.resources().getColorCompat(resId, theme)
 
 fun Resources?.getDimensionToPx(@DimenRes resId: Int) = this?.getDimension(resId)?.toInt() ?: 0
 fun Context?.getDimensionToPx(@DimenRes resId: Int) = this?.resources().getDimensionToPx(resId)
-fun MeowFragment<*, *>?.getDimensionToPx(@DimenRes resId: Int) =
+fun MeowFragment<*>?.getDimensionToPx(@DimenRes resId: Int) =
     this?.resources().getDimensionToPx(resId)
 
 fun Resources?.getFloatCompat(@DimenRes resId: Int) =
     if (this == null) 0f else ResourcesCompat.getFloat(this, resId)
 fun Context?.getFloatCompat(@DimenRes resId: Int) = this?.resources().getFloatCompat(resId)
-fun MeowFragment<*, *>?.getFloatCompat(@DimenRes resId: Int) =
+fun MeowFragment<*>?.getFloatCompat(@DimenRes resId: Int) =
     this?.resources().getFloatCompat(resId)
 
 fun Resources?.getIntCompat(@IntegerRes resId: Int) = this?.getInteger(resId) ?: 0
 fun Context?.getIntCompat(@IntegerRes resId: Int) = this?.resources().getIntCompat(resId)
-fun MeowFragment<*, *>?.getIntCompat(@IntegerRes resId: Int) = this?.resources().getIntCompat(resId)
+fun MeowFragment<*>?.getIntCompat(@IntegerRes resId: Int) = this?.resources().getIntCompat(resId)
 
 fun Resources?.getBooleanCompat(@BoolRes resId: Int) = this?.getBoolean(resId) ?: false
 fun Context?.getBooleanCompat(@BoolRes resId: Int) = this?.resources().getBooleanCompat(resId)
-fun MeowFragment<*, *>?.getBooleanCompat(@BoolRes resId: Int) =
+fun MeowFragment<*>?.getBooleanCompat(@BoolRes resId: Int) =
     this?.resources().getBooleanCompat(resId)
+
+fun Resources?.getStringArrayCompat(@ArrayRes resId: Int) =
+    this?.getStringArray(resId) ?: emptyArray()
+
+fun Context?.getStringArrayCompat(@ArrayRes resId: Int) =
+    this?.resources().getStringArrayCompat(resId)
+
+fun MeowFragment<*>?.getStringArrayCompat(@ArrayRes resId: Int) =
+    this?.resources().getStringArrayCompat(resId)
 
 fun Drawable?.setTintCompat(@ColorInt color: Int): Drawable {
     if (this == null) return ColorDrawable(Color.TRANSPARENT)

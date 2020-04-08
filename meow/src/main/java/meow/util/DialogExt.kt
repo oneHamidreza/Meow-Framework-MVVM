@@ -37,17 +37,17 @@ import meow.widget.MeowLoadingView
 fun Context.alert(overrideThemeResId: Int = 0) =
     MaterialAlertDialogBuilder(this, overrideThemeResId)
 
-fun MeowFragment<*, *>.alert(overrideThemeResId: Int = 0) =
+fun MeowFragment<*>.alert(overrideThemeResId: Int = 0) =
     MaterialAlertDialogBuilder(context(), overrideThemeResId)
 
-fun MeowFragment<*, *>.loadingAlert(
+fun MeowFragment<*>.loadingAlert(
     titleResId: Int,
     overrideThemeResId: Int = 0,
     onCanceledBlock: () -> Unit = {}
 ) =
     context().loadingAlert(resources().getString(titleResId), overrideThemeResId, onCanceledBlock)
 
-fun MeowFragment<*, *>.loadingAlert(
+fun MeowFragment<*>.loadingAlert(
     title: String,
     overrideThemeResId: Int = 0,
     onCanceledBlock: () -> Unit = {}
@@ -67,7 +67,7 @@ fun Context.loadingAlert(
         .setOnCancelListener { onCanceledBlock() }
 
 
-fun MeowFragment<*, *>.popup(
+fun MeowFragment<*>.popup(
     view: View,
     menuResId: Int,
     onClickedItem: (item: MenuItem) -> Unit

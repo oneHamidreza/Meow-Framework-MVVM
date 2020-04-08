@@ -4,6 +4,7 @@ import meow.AppConfig.Build
 import meow.AppConfig.Library
 import meow.AppConfig.Versions
 import java.util.*
+import kotlin.collections.*
 
 plugins {
     id("com.android.application")
@@ -80,6 +81,16 @@ android {
             res.srcDirs(getAllResourcesSrcDirs())
         }
     }
+
+    // exclude annotation from all of markwon dependency
+    configurations {
+        implementation.exclude(
+            mapOf(
+                "group" to "org.jetbrains",
+                "module" to "annotations"
+            )
+        )
+    }
 }
 
 fun <T> getProperty(key: String): T {
@@ -123,14 +134,29 @@ dependencies {
 
     implementation(project(":meow"))
 
-    // MAIN DEPENDENCIES
+    // Implementation Dependencies
     Library.implementationItems.forEach {
         implementation(it)
     }
 
-    // EXCLUSIVE DEPENDENCIES
+    // Kapt Dependencies
     Library.kaptItems.forEach {
-        implementation(it)
+        kapt(it)
     }
 
+    // Markwon
+    val markwonVersion = "4.3.1"
+    implementation("io.noties.markwon:core:$markwonVersion")
+    implementation("io.noties.markwon:ext-tables:$markwonVersion")
+    implementation("io.noties.markwon:ext-tasklist:$markwonVersion")
+    implementation("io.noties.markwon:html:$markwonVersion")
+    implementation("io.noties.markwon:image:$markwonVersion")
+    implementation("io.noties.markwon:image-glide:$markwonVersion")
+    implementation("io.noties.markwon:linkify:$markwonVersion")
+    implementation("io.noties.markwon:recycler:$markwonVersion")
+    implementation("io.noties.markwon:recycler-table:$markwonVersion")
+    implementation("io.noties.markwon:syntax-highlight:$markwonVersion")
+
+    // Markwon Image Loader
+    implementation("ru.noties:markwon-image-loader:1.0.5")
 }

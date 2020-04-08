@@ -18,10 +18,9 @@ package sample.ui.material.fab.simple
 
 import android.os.Bundle
 import android.view.View
-import meow.util.javaClass
+import meow.util.instanceViewModel
 import meow.util.safeObserve
 import meow.util.snackL
-import meow.util.viewModelInstance
 import meow.widget.decoration.MeowDividerDecoration
 import meow.widget.safePost
 import sample.R
@@ -38,12 +37,11 @@ import sample.ui.content.ContentViewModel
  * @since   2020-03-22
  */
 
-class FABSimpleFragment : BaseFragment<FragmentFabSimpleBinding, FABSimpleViewModel>() {
+class FABSimpleFragment : BaseFragment<FragmentFabSimpleBinding>() {
 
+    private val viewModel: FABSimpleViewModel by instanceViewModel()
+    private val contentViewModel: ContentViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_fab_simple
-    override fun viewModelClass() = javaClass<FABSimpleViewModel>()
-
-    private val contentViewModel by viewModelInstance(javaClass<ContentViewModel>())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -60,9 +58,6 @@ class FABSimpleFragment : BaseFragment<FragmentFabSimpleBinding, FABSimpleViewMo
 
     override fun initViewModel() {
         binding.viewModel = viewModel
-    }
-
-    override fun observeViewModel() {
         viewModel.addItemLiveData.safeObserve {
             binding.recyclerView.safePost(50) {
                 scrollToPosition(0)

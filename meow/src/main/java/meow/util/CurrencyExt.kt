@@ -143,7 +143,7 @@ fun Context?.createCurrency(s: String?, dec: Int = 0): String {
     }
 }
 
-fun MeowFragment<*, *>?.createCurrency(s: String?, dec: Int = 0) =
+fun MeowFragment<*>?.createCurrency(s: String?, dec: Int = 0) =
     this?.context().createCurrency(s, dec)
 
 fun Context?.createCurrency(d: Double?, dec: Int = 0): String {
@@ -152,7 +152,7 @@ fun Context?.createCurrency(d: Double?, dec: Int = 0): String {
     return createCurrency(BigDecimal(d ?: 0.0).toString(), dec)
 }
 
-fun MeowFragment<*, *>?.createCurrency(d: Double?, dec: Int = 0) =
+fun MeowFragment<*>?.createCurrency(d: Double?, dec: Int = 0) =
     this?.context().createCurrency(d, dec)
 
 fun BigDecimal.createPrice() = setScale(2, BigDecimal.ROUND_HALF_EVEN)

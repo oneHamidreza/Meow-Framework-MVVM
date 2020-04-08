@@ -1,0 +1,5 @@
+<resources>
+    <string name="fragment_checkboxes">Checkbox</string>
+    <string name="checkboxes_simple">Simple Checkbox</string>
+    <string name="checkboxes_tint">Checkbox with tint</string>
+</resources>

@@ -20,7 +20,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.os.Environment
 import meow.controller
-import meow.core.ui.MVVM
+import meow.core.ui.FragmentActivityInterface
 import java.io.File
 import java.io.FileOutputStream
 
@@ -95,7 +95,7 @@ fun File?.safeDelete() = avoidException { this?.delete() } ?: false
 fun File?.safeExist() = avoidException { this?.exists() } ?: false
 fun File?.safeLength() = avoidException { this?.length() } ?: 0L
 
-fun MVVM<*, *>.getAppRootPath(
+fun FragmentActivityInterface<*>.getAppRootPath(
     folderName: String,
     fileName: String? = null,
     forceInternal: Boolean = false
@@ -126,7 +126,7 @@ fun MVVM<*, *>.getAppRootPath(
     } ?: "sdcard/"
 }
 
-fun MVVM<*, *>.getAppCachePath(
+fun FragmentActivityInterface<*>.getAppCachePath(
     folderName: String,
     fileName: String? = null,
     forceInternal: Boolean = false

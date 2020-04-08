@@ -22,9 +22,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
-import meow.MeowController
 import meow.controller
-import meow.core.ui.MeowActivity
 import meow.util.dp
 import sample.R
 import sample.databinding.NavHeaderViewBinding
@@ -58,18 +56,18 @@ class NavHeaderView @JvmOverloads constructor(
         binding.swNavTheme.apply {
             isChecked = controller.isNightMode
             setOnCheckedChangeListener { _, isChecked ->
-                controller.updateTheme(
-                    context as MeowActivity<*, *>,
-                    if (isChecked) MeowController.Theme.NIGHT else MeowController.Theme.DAY
-                )
+//                controller.updateTheme(
+//                    context as MeowActivity<*, *>,
+//                    if (isChecked) MeowController.Theme.NIGHT else MeowController.Theme.DAY
+//                )
             }
         }
 
         binding.btChangeLanguage.setOnClickListener {
-            controller.updateLanguage(
-                context as MeowActivity<*, *>,
-                if (controller.language == "en") "fa" else "en"
-            )
+//            controller.updateLanguage(
+//                context as MeowActivity<*, *>,
+//                if (controller.language == "en") "fa" else "en"
+//            )
         }
 
     }

@@ -17,7 +17,6 @@
 package sample.ui.base
 
 import androidx.databinding.ViewDataBinding
-import meow.core.arch.MeowViewModel
 import meow.core.ui.MeowActivity
 
 /**
@@ -28,4 +27,4 @@ import meow.core.ui.MeowActivity
  * @since   2020-03-06
  */
 
-abstract class BaseActivity<B : ViewDataBinding, VM : MeowViewModel> : MeowActivity<B, VM>()
+abstract class BaseActivity<B : ViewDataBinding> : MeowActivity<B>()

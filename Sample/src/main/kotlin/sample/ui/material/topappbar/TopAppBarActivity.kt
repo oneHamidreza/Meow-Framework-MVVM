@@ -18,7 +18,10 @@ package sample.ui.material.topappbar
 
 import android.os.Bundle
 import meow.controller
-import meow.util.*
+import meow.util.getColorCompat
+import meow.util.instanceViewModel
+import meow.util.setStatusBackgroundColor
+import meow.util.updateStatusBarByTheme
 import meow.widget.decoration.MeowDividerDecoration
 import sample.R
 import sample.databinding.ActivityTopAppBarBinding
@@ -27,19 +30,19 @@ import sample.ui.content.ContentAdapter
 import sample.ui.content.ContentViewModel
 
 /**
- * Top App Bar Activity class.
+ * Material Top App Bar Activity.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-10
  */
 
-class TopAppBarActivity : BaseActivity<ActivityTopAppBarBinding, TopAppBarViewModel>() {
+class TopAppBarActivity : BaseActivity<ActivityTopAppBarBinding>() {
 
-    override fun viewModelClass() = javaClass<TopAppBarViewModel>()
+    private val viewModel: TopAppBarViewModel by instanceViewModel()
+    private val contentViewModel: ContentViewModel by instanceViewModel()
+
     override fun layoutId() = R.layout.activity_top_app_bar
-
-    private val contentViewModel by viewModelInstance(javaClass<ContentViewModel>())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,17 +54,14 @@ class TopAppBarActivity : BaseActivity<ActivityTopAppBarBinding, TopAppBarViewMo
         viewModel.fillList()
     }
 
+    override fun initViewModel() {
+        binding.viewModel = viewModel
+    }
+
     private fun setupRecyclerView() {
         binding.recyclerView.apply {
             addItemDecoration(MeowDividerDecoration(context()))
             adapter = ContentAdapter(contentViewModel)
         }
-    }
-
-    override fun initViewModel() {
-        binding.viewModel = viewModel
-    }
-
-    override fun observeViewModel() {
     }
 }

@@ -10,6 +10,7 @@
     <color name="secondary_dark">#190023</color>
     <color name="secondary_variant">@color/secondary_dark</color>
     <color name="on_secondary">#ffffff</color>
+    <color name="status_bar">@color/surface</color>
 
     <color name="drawer_item_enabled">@color/secondary</color>
     <color name="drawer_item_disabled">#757575</color>

@@ -2,7 +2,6 @@
 
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
-        <item name="android:fontFamily">@font/farsi_regular</item>
         <item name="android:windowTranslucentStatus">true</item>
         <!--        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>-->
 

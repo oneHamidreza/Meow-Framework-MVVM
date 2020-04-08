@@ -23,9 +23,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
-import meow.core.arch.MeowViewModel
 import meow.util.PermissionUtils
-import meow.util.viewModelInstance
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.KodeinContext
@@ -33,15 +31,15 @@ import org.kodein.di.android.x.closestKodein
 import org.kodein.di.erased.kcontext
 
 /**
- * Meow Dialog Fragment class inherits from [DialogFragment] , [MVVM] , [KodeinAware].
+ * Meow Dialog Fragment class inherits from [DialogFragment] , [FragmentActivityInterface] , [KodeinAware].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-02-28
  */
 
-abstract class MeowDialogFragment<B : ViewDataBinding, VM : MeowViewModel> : DialogFragment(),
-    MVVM<B, VM>,
+abstract class MeowDialogFragment<B : ViewDataBinding> : DialogFragment(),
+    FragmentActivityInterface<B>,
     KodeinAware {
 
     override val kodeinContext: KodeinContext<*> get() = kcontext(activity)
@@ -50,11 +48,10 @@ abstract class MeowDialogFragment<B : ViewDataBinding, VM : MeowViewModel> : Dia
 
     override var permissionUtils: PermissionUtils? = null
     override fun context() = requireContext()
-    override fun activity() = requireActivity() as MeowActivity<*, *>
+    override fun activity() = requireActivity() as MeowActivity<*>
     override fun contentView() = view!!
 
     override lateinit var binding: B
-    val viewModel: VM by viewModelInstance(viewModelClass())
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,7 +66,6 @@ abstract class MeowDialogFragment<B : ViewDataBinding, VM : MeowViewModel> : Dia
         super.onActivityCreated(savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
         initViewModel()
-        observeViewModel()
     }
 
     override fun onRequestPermissionsResult(

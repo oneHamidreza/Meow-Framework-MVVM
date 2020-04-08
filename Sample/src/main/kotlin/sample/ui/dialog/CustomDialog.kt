@@ -16,16 +16,6 @@
 
 package sample.ui.dialog
 
-import android.os.Bundle
-import androidx.navigation.fragment.findNavController
-import meow.util.javaClass
-import meow.util.safeObserve
-import sample.R
-import sample.core.actionToUserDetail
-import sample.core.actionToUserIndex
-import sample.databinding.DialogCustomBinding
-import sample.ui.base.BaseDialogFragment
-
 /**
  * Menu Fragment class.
  *
@@ -34,34 +24,34 @@ import sample.ui.base.BaseDialogFragment
  * @since   2020-03-22
  */
 
-class CustomDialog : BaseDialogFragment<DialogCustomBinding, CustomDialogViewModel>() {
-
-    override fun layoutId() = R.layout.dialog_custom
-    override fun viewModelClass() = javaClass<CustomDialogViewModel>()
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-//        isCancelable  = true
-    }
-
-    override fun initViewModel() {
-        binding.viewModel = viewModel
-    }
-
-    override fun observeViewModel() {
-        binding.viewModel!!.apply {
-            navigationLiveData.safeObserve(binding.lifecycleOwner) {
-                when (it) {
-                    R.id.actionToUserDetail -> findNavController().actionToUserDetail()
-                    R.id.actionToUserIndex -> findNavController().actionToUserIndex()
-                }
-            }
-
-            navigationLiveData.safeObserve(binding.lifecycleOwner) {
-                dismiss()
-//                controller.updateLanguage(activity(), it)
-            }
-        }
-    }
-
-}
+//class CustomDialog : BaseDialogFragment<DialogCustomBinding, CustomDialogViewModel>() {
+//
+//    override fun layoutId() = R.layout.dialog_custom
+//    override fun viewModelClass() = javaClass<CustomDialogViewModel>()
+//
+//    override fun onActivityCreated(savedInstanceState: Bundle?) {
+//        super.onActivityCreated(savedInstanceState)
+////        isCancelable  = true
+//    }
+//
+//    override fun initViewModel() {
+//        binding.viewModel = viewModel
+//    }
+//
+//    override fun observeViewModel() {
+//        binding.viewModel!!.apply {
+//            navigationLiveData.safeObserve(binding.lifecycleOwner) {
+//                when (it) {
+//                    R.id.actionToUserDetail -> findNavController().actionToUserDetail()
+//                    R.id.actionToUserIndex -> findNavController().actionToUserIndex()
+//                }
+//            }
+//
+//            navigationLiveData.safeObserve(binding.lifecycleOwner) {
+//                dismiss()
+////                controller.updateLanguage(activity(), it)
+//            }
+//        }
+//    }
+//
+//}

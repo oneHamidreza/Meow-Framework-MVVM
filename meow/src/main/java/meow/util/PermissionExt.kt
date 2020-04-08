@@ -21,7 +21,7 @@ import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import meow.core.ui.MVVM
+import meow.core.ui.FragmentActivityInterface
 import meow.core.ui.MeowFragment
 import meow.core.ui.isActivity
 import meow.core.ui.isFragment
@@ -49,11 +49,11 @@ fun Context?.shouldShowPermissionDialog(permissions: List<String>): Boolean {
     return false
 }
 
-fun MeowFragment<*, *>?.shouldShowPermissionDialog(permissions: List<String>) =
+fun MeowFragment<*>?.shouldShowPermissionDialog(permissions: List<String>) =
     this?.context().shouldShowPermissionDialog(permissions)
 
 class PermissionUtils(
-    private var mvvm: MVVM<*, *>
+    private var mvvm: FragmentActivityInterface<*>
 ) {
     private var onResult: (isSuccess: Boolean) -> Unit = {}
 

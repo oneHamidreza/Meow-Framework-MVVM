@@ -16,31 +16,26 @@
 
 package sample.ui.material.switches
 
-import meow.util.javaClass
+import meow.util.instanceViewModel
 import sample.R
 import sample.databinding.FragmentSwitchesBinding
 import sample.ui.base.BaseFragment
-import sample.ui.material.radiobutton.RadioButtonViewModel
 
 /**
- * Switches Fragment.
+ * Material Switches Fragment.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-04-05
  */
 
-class SwitchesFragment : BaseFragment<FragmentSwitchesBinding, SwitchesViewModel>() {
+class SwitchesFragment : BaseFragment<FragmentSwitchesBinding>() {
 
+    private val viewModel: SwitchesViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_switches
-    override fun viewModelClass() = javaClass<SwitchesViewModel>()
 
     override fun initViewModel() {
         binding.viewModel = viewModel
-    }
-
-    override fun observeViewModel() {
-
     }
 
 }

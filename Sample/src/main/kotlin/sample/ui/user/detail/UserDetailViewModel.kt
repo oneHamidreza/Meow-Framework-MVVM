@@ -26,7 +26,7 @@ import sample.App
 import sample.data.user.User
 
 /**
- * User/Get View Model class.
+ * User/Get View Model.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

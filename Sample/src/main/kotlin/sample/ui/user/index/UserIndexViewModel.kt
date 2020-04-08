@@ -51,7 +51,7 @@ class UserIndexViewModel(
     }
 
     fun onClickedChangeMode(@Suppress("UNUSED_PARAMETER") view: View) {
-        controller.swapTheme()
+//        controller.swapTheme()
     }
 
     fun getTextByDayNightMode() = if (controller.isNightMode) "Day Mode" else "Night Mode"

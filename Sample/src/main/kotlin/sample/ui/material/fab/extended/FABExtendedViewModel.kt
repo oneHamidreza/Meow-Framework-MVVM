@@ -25,7 +25,7 @@ import sample.R
 import sample.data.Content
 
 /**
- * Material Flaoting Action Button View Model class.
+ * Material Floating Action Button Extended View Model.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

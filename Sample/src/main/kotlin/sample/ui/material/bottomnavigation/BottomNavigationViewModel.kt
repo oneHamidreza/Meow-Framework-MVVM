@@ -20,7 +20,7 @@ import meow.core.arch.MeowViewModel
 import sample.App
 
 /**
- * Bottom Navigation View Model.
+ * Material Bottom Navigation View Model.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

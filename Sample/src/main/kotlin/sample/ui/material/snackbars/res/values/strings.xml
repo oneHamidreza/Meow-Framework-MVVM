@@ -1,0 +1,20 @@
+<resources>
+    <string name="fragment_snackbars">Snackbars</string>
+
+    <string-array name="snackbars_contents_list_title">
+        <item>Simple Snack</item>
+        <item>Simple Snack with action</item>
+        <item>Custom Snack with action</item>
+        <item>Simple Snack with indefinite length</item>
+    </string-array>
+    <string-array name="snackbars_contents_list_desc">
+        <item>a simple material snack</item>
+        <item>a simple material snack with action button</item>
+        <item>a material snack with customized colors</item>
+        <item>a material snack with disabled auto hide</item>
+    </string-array>
+
+    <string name="snackbars_message">Some message is showing to user.</string>
+    <string name="snackbars_action">action</string>
+    <string name="snackbars_action_clicked">Clicked action button</string>
+</resources>

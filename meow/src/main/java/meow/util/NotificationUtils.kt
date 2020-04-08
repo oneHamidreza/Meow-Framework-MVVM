@@ -112,7 +112,7 @@ fun Context?.cancelNotification(id: Int) {
     }
 }
 
-fun MeowFragment<*, *>?.cancelNotification(id: Int) {
+fun MeowFragment<*>?.cancelNotification(id: Int) {
     if (this == null)
         return
     avoidException {
@@ -130,7 +130,7 @@ fun Context?.cancelAllNotifications() {
     }
 }
 
-fun MeowFragment<*, *>?.cancelAllNotifications() {
+fun MeowFragment<*>?.cancelAllNotifications() {
     if (this == null)
         return
     avoidException {

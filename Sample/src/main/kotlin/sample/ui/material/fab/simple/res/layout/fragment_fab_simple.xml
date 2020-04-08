@@ -18,7 +18,7 @@
             style="@style/Meow.RecyclerView.Linear"
             app:meow_items="@{viewModel.listLiveData}" />
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             style="@style/Meow.FloatingActionButton"
             android:onClick="@{viewModel::onClickedAddItem}"
             app:srcCompat="@drawable/ic_add"

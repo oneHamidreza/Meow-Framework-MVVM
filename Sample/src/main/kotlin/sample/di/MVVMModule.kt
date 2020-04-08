@@ -21,31 +21,35 @@ import org.kodein.di.Kodein.Module
 import org.kodein.di.direct
 import org.kodein.di.erased.bind
 import org.kodein.di.erased.instance
+import org.kodein.di.erased.provider
 import org.kodein.di.erased.singleton
 import sample.data.user.User
 import sample.ui.content.ContentViewModel
 import sample.ui.dialog.CustomDialogViewModel
+import sample.ui.home.HomeViewModel
+import sample.ui.home.child.contents.ContentsViewModel
+import sample.ui.home.child.readme.ReadmeViewModel
 import sample.ui.main.MainViewModel
-import sample.ui.material.alert.AlertsViewModel
+import sample.ui.material.alerts.AlertsViewModel
 import sample.ui.material.bottomappbar.BottomAppBarViewModel
 import sample.ui.material.bottomnavigation.BottomNavigationViewModel
-import sample.ui.material.button.ButtonViewModel
-import sample.ui.material.card.CardViewModel
+import sample.ui.material.buttons.ButtonsViewModel
+import sample.ui.material.cards.CardsViewModel
 import sample.ui.material.collapsing.toolbar.CollapsingToolbarViewModel
 import sample.ui.material.fab.extended.FABExtendedViewModel
 import sample.ui.material.fab.simple.FABSimpleViewModel
-import sample.ui.material.form.FormViewModel
-import sample.ui.material.imageview.ImageviewViewModel
-import sample.ui.material.radiobutton.RadioButtonViewModel
-import sample.ui.material.snack.SnacksViewModel
+import sample.ui.material.imageviewes.ImageviewsViewModel
+import sample.ui.material.radiobuttons.RadioButtonsViewModel
+import sample.ui.material.snackbars.SnackBarsViewModel
 import sample.ui.material.switches.SwitchesViewModel
 import sample.ui.material.tablayout.TabLayoutViewModel
 import sample.ui.material.tablayout.child.TabLayoutChildViewModel
-import sample.ui.material.textview.TextViewViewModel
+import sample.ui.material.textviews.TextViewsViewModel
 import sample.ui.material.topappbar.TopAppBarViewModel
 import sample.ui.menu.MenuViewModel
 import sample.ui.meowwidget.dash.DashViewModel
-import sample.ui.meowwidget.progressbars.ProgressBarViewModel
+import sample.ui.meowwidget.form.FormViewModel
+import sample.ui.meowwidget.progressbars.ProgressBarsViewModel
 import sample.ui.sharedpreferences.SharedPreferencesViewModel
 import sample.ui.user.detail.UserDetailViewModel
 import sample.ui.user.index.UserIndexViewModel
@@ -60,151 +64,169 @@ import sample.ui.user.index.UserIndexViewModel
 
 val mvvmModule = Module("MVVM Module", false) {
 
-    bindAutoTag<MainViewModel>() with singleton {
+    bindAutoTag<ContentsViewModel>() with provider {
+        ContentsViewModel(
+            kodein.direct.instance()
+        )
+    }
+
+    bindAutoTag<HomeViewModel>() with provider {
+        HomeViewModel(
+            kodein.direct.instance()
+        )
+    }
+
+    bindAutoTag<ReadmeViewModel>() with provider {
+        ReadmeViewModel(
+            kodein.direct.instance()
+        )
+    }
+
+    bindAutoTag<MainViewModel>() with provider {
         MainViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<AlertsViewModel>() with singleton {
+    bindAutoTag<AlertsViewModel>() with provider {
         AlertsViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<BottomAppBarViewModel>() with singleton {
+    bindAutoTag<BottomAppBarViewModel>() with provider {
         BottomAppBarViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<BottomNavigationViewModel>() with singleton {
+    bindAutoTag<BottomNavigationViewModel>() with provider {
         BottomNavigationViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<CardViewModel>() with singleton {
-        CardViewModel(
+    bindAutoTag<CardsViewModel>() with provider {
+        CardsViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<CollapsingToolbarViewModel>() with singleton {
+    bindAutoTag<CollapsingToolbarViewModel>() with provider {
         CollapsingToolbarViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<DashViewModel>() with singleton {
+    bindAutoTag<DashViewModel>() with provider {
         DashViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<FABExtendedViewModel>() with singleton {
+    bindAutoTag<FABExtendedViewModel>() with provider {
         FABExtendedViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<FABSimpleViewModel>() with singleton {
+    bindAutoTag<FABSimpleViewModel>() with provider {
         FABSimpleViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<MenuViewModel>() with singleton {
+    bindAutoTag<MenuViewModel>() with provider {
         MenuViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<ProgressBarViewModel>() with singleton {
-        ProgressBarViewModel(
+    bindAutoTag<ProgressBarsViewModel>() with provider {
+        ProgressBarsViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<RadioButtonViewModel>() with singleton {
-        RadioButtonViewModel(
+    bindAutoTag<RadioButtonsViewModel>() with provider {
+        RadioButtonsViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<SnacksViewModel>() with singleton {
-        SnacksViewModel(
+    bindAutoTag<SnackBarsViewModel>() with provider {
+        SnackBarsViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<SwitchesViewModel>() with singleton {
+    bindAutoTag<SwitchesViewModel>() with provider {
         SwitchesViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<TabLayoutViewModel>() with singleton {
+    bindAutoTag<TabLayoutViewModel>() with provider {
         TabLayoutViewModel(
             kodein.direct.instance()
         )
     }
-    bindAutoTag<TabLayoutChildViewModel>() with singleton {
+    bindAutoTag<TabLayoutChildViewModel>() with provider {
         TabLayoutChildViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<TextViewViewModel>() with singleton {
-        TextViewViewModel(
+    bindAutoTag<TextViewsViewModel>() with provider {
+        TextViewsViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<TopAppBarViewModel>() with singleton {
+    bindAutoTag<TopAppBarViewModel>() with provider {
         TopAppBarViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<UserDetailViewModel>() with singleton {
+    bindAutoTag<UserDetailViewModel>() with provider {
         UserDetailViewModel(
             kodein.direct.instance(),
             instance()
         )
     }
-    bindAutoTag<UserIndexViewModel>() with singleton {
+    bindAutoTag<UserIndexViewModel>() with provider {
         UserIndexViewModel(
             kodein.direct.instance(),
             instance()
         )
     }
-    bindAutoTag<ContentViewModel>() with singleton {
+    bindAutoTag<ContentViewModel>() with provider {
         ContentViewModel(
             kodein.direct.instance()
         )
     }
-    bindAutoTag<CustomDialogViewModel>() with singleton {
+    bindAutoTag<CustomDialogViewModel>() with provider {
         CustomDialogViewModel(
             kodein.direct.instance()
         )
     }
-    bindAutoTag<FormViewModel>() with singleton {
+    bindAutoTag<FormViewModel>() with provider {
         FormViewModel(
             kodein.direct.instance()
         )
     }
-    bindAutoTag<ButtonViewModel>() with singleton {
-        ButtonViewModel(
+    bindAutoTag<ButtonsViewModel>() with provider {
+        ButtonsViewModel(
             kodein.direct.instance()
         )
     }
-    bindAutoTag<ImageviewViewModel>() with singleton {
-        ImageviewViewModel(
+    bindAutoTag<ImageviewsViewModel>() with provider {
+        ImageviewsViewModel(
             kodein.direct.instance()
         )
     }
-    bindAutoTag<SharedPreferencesViewModel>() with singleton {
+    bindAutoTag<SharedPreferencesViewModel>() with provider {
         SharedPreferencesViewModel(
             kodein.direct.instance()
         )

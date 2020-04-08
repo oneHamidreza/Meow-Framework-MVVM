@@ -20,7 +20,7 @@ import meow.core.arch.MeowViewModel
 import sample.App
 
 /**
- * Material Checkbox View Model class.
+ * Material Switches View Model.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

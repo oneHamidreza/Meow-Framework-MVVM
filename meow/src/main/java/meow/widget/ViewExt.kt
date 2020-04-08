@@ -52,15 +52,19 @@ object ViewBindingAdapter {
         (0 until view.childCount).forEach { pos ->
             val child = view.getChildAt(pos)
             child.updateLayoutParams<LinearLayout.LayoutParams> {
-                if (view.orientation == LinearLayout.HORIZONTAL)
-                    it.marginEnd = if (pos != view.childCount - 1) gap.dp() else 0
-                if (view.orientation == LinearLayout.VERTICAL)
-                    it.bottomMargin = if (pos != view.childCount - 1) gap.dp() else 0
+                val margin = if (pos != view.childCount - 1) gap.dp() else 0
+                val nextView = if (pos != view.childCount - 1) view.getChildAt(pos + 1) else null
+                if (nextView?.visibility == View.VISIBLE) {
+                    if (view.orientation == LinearLayout.HORIZONTAL)
+                        it.marginEnd = margin
+                    if (view.orientation == LinearLayout.VERTICAL)
+                        it.bottomMargin = margin
+                }
             }
         }
     }
 
-    @BindingAdapter("aspectRatio")
+    @BindingAdapter("meow_aspectRatio")
     @JvmStatic
     fun setAspectRatio(view: View, aspectRatio: String? = null) {
         if (aspectRatio.isNotNullOrEmpty()) {

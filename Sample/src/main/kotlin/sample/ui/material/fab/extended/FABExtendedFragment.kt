@@ -18,9 +18,8 @@ package sample.ui.material.fab.extended
 
 import android.os.Bundle
 import android.view.View
-import meow.util.javaClass
+import meow.util.instanceViewModel
 import meow.util.safeObserve
-import meow.util.viewModelInstance
 import meow.widget.decoration.MeowDividerDecoration
 import meow.widget.safePost
 import sample.R
@@ -30,19 +29,19 @@ import sample.ui.content.ContentAdapter
 import sample.ui.content.ContentViewModel
 
 /**
- * Material Floating Action Button Fragment class.
+ * Material Floating Action Button Extended Fragment.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-22
  */
 
-class FABExtendedFragment : BaseFragment<FragmentFabExtendedBinding, FABExtendedViewModel>() {
+class FABExtendedFragment : BaseFragment<FragmentFabExtendedBinding>() {
+
+    private val viewModel: FABExtendedViewModel by instanceViewModel()
+    private val contentViewModel: ContentViewModel by instanceViewModel()
 
     override fun layoutId() = R.layout.fragment_fab_extended
-    override fun viewModelClass() = javaClass<FABExtendedViewModel>()
-
-    private val contentViewModel by viewModelInstance(javaClass<ContentViewModel>())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,10 +58,7 @@ class FABExtendedFragment : BaseFragment<FragmentFabExtendedBinding, FABExtended
 
     override fun initViewModel() {
         binding.viewModel = viewModel
-    }
-
-    override fun observeViewModel() {
-        viewModel.scrollToFirstLiveData.safeObserve {
+        viewModel.scrollToFirstLiveData.safeObserve(viewLifecycleOwner) {
             binding.recyclerView.safePost(50) {
                 scrollToPosition(0)
             }

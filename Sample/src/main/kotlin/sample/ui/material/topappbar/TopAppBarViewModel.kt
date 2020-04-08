@@ -23,7 +23,7 @@ import sample.R
 import sample.data.Content
 
 /**
- * Top App Bar View Model.
+ * Material Top App Bar View Model.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

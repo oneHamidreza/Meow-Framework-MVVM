@@ -23,10 +23,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.akexorcist.localizationactivity.ui.LocalizationActivity
 import meow.controller
-import meow.core.arch.MeowViewModel
 import meow.util.KeyboardUtils
 import meow.util.PermissionUtils
-import meow.util.viewModelInstance
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 
@@ -38,8 +36,8 @@ import org.kodein.di.android.closestKodein
  * @since   2020-02-28
  */
 
-abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : LocalizationActivity(),
-    MVVM<B, VM>,
+abstract class MeowActivity<B : ViewDataBinding> : LocalizationActivity(),
+    FragmentActivityInterface<B>,
     KodeinAware {
 
     var isEnabledKeyboardUtils = true
@@ -57,16 +55,14 @@ abstract class MeowActivity<B : ViewDataBinding, VM : MeowViewModel> : Localizat
 
     override lateinit var binding: B
 
-    val viewModel: VM by viewModelInstance(viewModelClass())
-
     private lateinit var keyboardUtils: KeyboardUtils
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        controller.updateLanguage(this, controller.language)
         controller.updateTheme(this, updateConfig = false)
         bindContentView(layoutId())
         initViewModel()
-        observeViewModel()
 
         if (isEnabledKeyboardUtils) {
             keyboardUtils = KeyboardUtils(this) {

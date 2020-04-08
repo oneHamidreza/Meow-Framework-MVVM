@@ -16,7 +16,7 @@
 
 package sample.ui.sharedpreferences
 
-import meow.util.javaClass
+import meow.util.instanceViewModel
 import meow.util.safeObserve
 import meow.util.snackL
 import sample.R
@@ -31,18 +31,13 @@ import sample.ui.base.BaseFragment
  * @since   2020-04-03
  */
 
-class SharedPreferencesFragment :
-    BaseFragment<FragmentSharedPreferencesBinding, SharedPreferencesViewModel>() {
+class SharedPreferencesFragment : BaseFragment<FragmentSharedPreferencesBinding>() {
 
+    private val viewModel: SharedPreferencesViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_shared_preferences
-    override fun viewModelClass() = javaClass<SharedPreferencesViewModel>()
 
     override fun initViewModel() {
-        binding.viewModel = viewModel
-    }
-
-    override fun observeViewModel() {
-        binding.viewModel?.apply {
+        binding.viewModel = viewModel.apply {//todo all
             userStateLiveData.safeObserve(binding.lifecycleOwner) {
                 val text = it.second.toString()
                 when (it.first) {

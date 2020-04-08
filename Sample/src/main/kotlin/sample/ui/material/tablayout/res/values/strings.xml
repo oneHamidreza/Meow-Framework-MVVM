@@ -1,3 +1,4 @@
 <resources>
     <string name="fragment_tablayout">Tab Layout</string>
+    <string name="tab_title">Tab %d</string>
 </resources>

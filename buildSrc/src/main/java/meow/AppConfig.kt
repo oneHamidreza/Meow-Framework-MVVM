@@ -73,8 +73,8 @@ object AppConfig {
             // Secure Shared Preferences
             "in.co.ophio:secure-preferences:0.1.3",
             // Navigation
-            "androidx.navigation:navigation-fragment-ktx:2.2.1",
-            "androidx.navigation:navigation-ui-ktx:2.2.1",
+            "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}",
+            "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}",
             // Glide
             "com.github.bumptech.glide:glide:4.11.0",
             // Google Phone Number
@@ -106,6 +106,7 @@ object AppConfig {
         const val SDK_MIN = 19
         const val SDK_TARGET = 29
         const val KOTLIN = "1.3.71"
+        const val NAVIGATION = "2.3.0-alpha04"
 
     }
 

@@ -1,0 +1,57 @@
+<resources>
+
+    <string-array name="contents_api_titles">
+        <item>Get list data from sample api</item>
+        <item>Get detail data from sample api</item>
+        <item>Send Form data to sample api</item>
+        <item>Sample Login Api with Oauth2</item>
+    </string-array>
+
+    <string-array name="contents_extensions_titles">
+        <item>Android</item>
+        <item>Currency</item>
+        <item>Date</item>
+        <item>Exception</item>
+        <item>File</item>
+        <item>Json</item>
+        <item>Kodein</item>
+        <item>Kotlin</item>
+        <item>Network</item>
+        <item>Permission</item>
+        <item>Snackbar</item>
+        <item>Status Bar</item>
+        <item>Shared Preferences</item>
+        <item>String</item>
+        <item>System</item>
+        <item>Toast</item>
+        <item>Validate</item>
+    </string-array>
+
+    <string-array name="contents_material_titles">
+        <item>@string/fragment_alerts</item>
+        <item>@string/activity_bottom_app_bar</item>
+        <item>@string/activity_bottom_navigation</item>
+        <item>@string/fragment_buttons</item>
+        <item>@string/fragment_cards</item>
+        <item>@string/fragment_checkboxes</item>
+        <item>@string/fragment_collapsing_toolbar</item>
+        <item>@string/fragment_fab_simple</item>
+        <item>@string/fragment_fab_extended</item>
+        <item>@string/fragment_imageviews</item>
+        <item>@string/fragment_radio_buttons</item>
+        <item>@string/fragment_snackbars</item>
+        <item>@string/fragment_switches</item>
+        <item>@string/fragment_tablayout</item>
+        <item>@string/fragment_textviews</item>
+        <item>@string/activity_top_app_bar</item>
+    </string-array>
+
+    <string-array name="contents_widget_titles">
+        <item>Android</item>
+        <item>Dash</item>
+        <item>Form</item>
+        <item>Progress Bar</item>
+        <item>Text Field</item>
+    </string-array>
+
+</resources>

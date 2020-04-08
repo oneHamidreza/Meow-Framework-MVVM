@@ -1,0 +1,10 @@
+<resources>
+    <string name="fragment_home">خانه (Home)</string>
+    <string-array name="home_tab_titles">
+        <item>آموزش</item>
+        <item>وب‌سرویس</item>
+        <item>متریال</item>
+        <item>ابزار</item>
+        <item>ویجت</item>
+    </string-array>
+</resources>

@@ -41,6 +41,6 @@ fun Context?.hasNetwork() = avoidException {
 
 fun Context?.hasNotNetwork() = !hasNetwork()
 
-fun MeowFragment<*, *>?.hasNetwork() = this?.context().hasNetwork()
+fun MeowFragment<*>?.hasNetwork() = this?.context().hasNetwork()
 
-fun MeowFragment<*, *>?.hasNotNetwork() = !hasNetwork()
+fun MeowFragment<*>?.hasNotNetwork() = !hasNetwork()

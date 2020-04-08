@@ -17,23 +17,22 @@
 package sample.ui.material.collapsing.toolbar
 
 import android.os.Bundle
-import meow.util.javaClass
+import meow.util.instanceViewModel
 import sample.R
 import sample.databinding.FragmentCollapsingToolbarBinding
 import sample.ui.base.BaseFragment
 
 /**
- * Collapsing Toolbar Fragment class.
+ * Material Collapsing Toolbar Fragment.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-30
  */
 
-class CollapsingToolbarFragment :
-    BaseFragment<FragmentCollapsingToolbarBinding, CollapsingToolbarViewModel>() {
+class CollapsingToolbarFragment : BaseFragment<FragmentCollapsingToolbarBinding>() {
 
-    override fun viewModelClass() = javaClass<CollapsingToolbarViewModel>()
+    private val viewModel: CollapsingToolbarViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_collapsing_toolbar
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -43,9 +42,6 @@ class CollapsingToolbarFragment :
 
     override fun initViewModel() {
         binding.viewModel = viewModel
-    }
-
-    override fun observeViewModel() {
     }
 
 }

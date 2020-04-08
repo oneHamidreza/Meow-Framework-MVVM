@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Meow</string>
+    <string name="app_name" translatable="false">Meow</string>
 
     <string name="currency_rial" translatable="false">ریال</string>
     <string name="currency_toman" translatable="false">تومان</string>

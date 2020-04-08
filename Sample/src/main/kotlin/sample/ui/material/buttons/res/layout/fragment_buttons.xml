@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- todo @Ali use strings.xml in en and fa -->
+    <!-- todo @Ali write sample and styles for this colors :
+     PRIMARY,PRIMARY_VARIANT,ON_PRIMARY,
+     SECONDARY,SECONDARY_VARIANT,ON_SECONDARY
+     SURFACE, ON_SURFACE,
+     BACKGROUND, ON_BACKGROUND,
+     ERROR, ON_ERROR,
+     -->
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="sample.ui.material.buttons.ButtonsViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Meow.Button.insetTop"
+                android:text="button inset Top" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Meow.Button.Unelevated.insetTop"
+                android:text="button unelevated inset Top" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Meow.Button"
+                android:text="button default" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Meow.Button.Flat"
+                android:text="button Flat" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Meow.Button.OutLined"
+                android:text="button outline" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Meow.Button.Unelevated"
+                android:text="button Unelevated" />
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Meow.Button.insetBottom"
+            android:layout_gravity="bottom"
+            android:text="button inset bottom" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Meow.Button.Unelevated.insetBottom"
+            android:layout_gravity="bottom"
+            android:text="button unelevated inset bottom" />
+
+    </LinearLayout>
+
+</layout>

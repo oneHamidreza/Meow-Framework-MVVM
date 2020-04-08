@@ -20,23 +20,23 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import meow.util.dp
-import meow.util.javaClass
+import meow.util.instanceViewModel
 import sample.R
 import sample.databinding.FragmentDashBinding
 import sample.ui.base.BaseFragment
 
 /**
- * Dash Fragment.
+ * Meow Dash Fragment.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-04-05
  */
 
-class DashFragment : BaseFragment<FragmentDashBinding, DashViewModel>() {
+class DashFragment : BaseFragment<FragmentDashBinding>() {
 
+    private val viewModel: DashViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_dash
-    override fun viewModelClass() = javaClass<DashViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,10 +50,6 @@ class DashFragment : BaseFragment<FragmentDashBinding, DashViewModel>() {
 
     override fun initViewModel() {
         binding.viewModel = viewModel
-    }
-
-    override fun observeViewModel() {
-
     }
 
 }

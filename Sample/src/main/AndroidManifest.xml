@@ -27,7 +27,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.material.collapsing.toolbar.CollapsingToolbarFragment" />
+        <activity android:name=".ui.material.bottomappbar.BottomAppBarActivity" />
+        <activity android:name=".ui.material.bottomnavigation.BottomNavigationActivity" />
     </application>
 
 </manifest>

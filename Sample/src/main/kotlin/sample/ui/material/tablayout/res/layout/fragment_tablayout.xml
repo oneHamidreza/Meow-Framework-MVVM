@@ -15,15 +15,11 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
-            style="@style/Widget.MaterialComponents.TabLayout.PrimarySurface"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            style="@style/Meow.TabLayout.PrimarySurface" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            style="@style/Meow.ViewPager" />
 
     </LinearLayout>
 

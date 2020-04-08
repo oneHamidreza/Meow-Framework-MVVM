@@ -16,11 +16,14 @@
 
 package sample
 
+import android.app.Application
 import android.content.Context
 import android.graphics.Color
 import meow.MeowApp
 import meow.MeowController
+import meow.controller
 import meow.meowModule
+import meow.util.getFontCompat
 import meow.util.isNightModeFromSettings
 import meow.util.toHexString
 import org.kodein.di.Kodein
@@ -57,8 +60,9 @@ class App : MeowApp(), KodeinAware {
 
     val dataSource by instance<DataSource>()
 
-    override fun getLanguage(context: Context?) = "fa"
+    override fun getLanguage(context: Context?) = "en"
     override fun getTheme(context: Context?) =
+//        MeowController.Theme.NIGHT
         if (context.isNightModeFromSettings()) MeowController.Theme.NIGHT else MeowController.Theme.DAY
 
     override fun onCreate() {
@@ -80,3 +84,6 @@ class App : MeowApp(), KodeinAware {
     }
 
 }
+
+fun Application.getDefaultTypeface() =
+    getFontCompat(if (controller.isPersian) R.font.farsi_regular else R.font.english_regular)

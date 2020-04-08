@@ -22,19 +22,19 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.TextViewCompat
 import com.google.android.material.snackbar.Snackbar
-import meow.core.ui.MVVM
+import meow.core.ui.FragmentActivityInterface
 import meow.core.ui.MeowActivity
 import meow.core.ui.MeowFragment
 
 /**
- * [Toast] Extensions for use in [MVVM] instances like [MeowActivity], [MeowFragment] .
+ * [Toast] Extensions for use in [FragmentActivityInterface] instances like [MeowActivity], [MeowFragment] .
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-17
  */
 
-fun MVVM<*, *>?.snackL(
+fun FragmentActivityInterface<*>?.snackL(
     message: String,
     actionText: String? = null,
     messageTextAppearanceId: Int = 0,
@@ -53,7 +53,7 @@ fun MVVM<*, *>?.snackL(
     )
 }
 
-fun MVVM<*, *>?.snackS(
+fun FragmentActivityInterface<*>?.snackS(
     message: String,
     actionText: String? = null,
     messageTextAppearanceId: Int = 0,
@@ -72,7 +72,7 @@ fun MVVM<*, *>?.snackS(
     )
 }
 
-fun MVVM<*, *>?.snackL(
+fun FragmentActivityInterface<*>?.snackL(
     resMessage: Int,
     resActionText: Int? = null,
     messageTextAppearanceId: Int = 0,
@@ -91,7 +91,7 @@ fun MVVM<*, *>?.snackL(
     )
 }
 
-fun MVVM<*, *>?.snackS(
+fun FragmentActivityInterface<*>?.snackS(
     resMessage: Int,
     resActionText: Int? = null,
     messageTextAppearanceId: Int = 0,
@@ -110,7 +110,7 @@ fun MVVM<*, *>?.snackS(
     )
 }
 
-fun MVVM<*, *>?.snackI(
+fun FragmentActivityInterface<*>?.snackI(
     resMessage: Int,
     resActionText: Int? = null,
     messageTextAppearanceId: Int = 0,
@@ -129,7 +129,7 @@ fun MVVM<*, *>?.snackI(
     )
 }
 
-fun MVVM<*, *>?.snackI(
+fun FragmentActivityInterface<*>?.snackI(
     message: String,
     actionText: String? = null,
     messageTextAppearanceId: Int = 0,
@@ -148,7 +148,7 @@ fun MVVM<*, *>?.snackI(
     )
 }
 
-fun MVVM<*, *>?.snack(
+fun FragmentActivityInterface<*>?.snack(
     message: String?,
     duration: Int,
     contentView: View = this?.contentView()!!,

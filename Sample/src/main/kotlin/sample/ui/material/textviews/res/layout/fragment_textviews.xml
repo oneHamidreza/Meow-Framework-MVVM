@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="sample.ui.material.textviews.TextViewsViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="8dp"
+                android:text="@string/textviews_caption"
+                android:textAppearance="?textAppearanceSubtitle1"
+                android:textColor="@color/text_on_background_high" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceCaption"
+                android:textColor="@color/text_on_background_disabled" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceCaption"
+                android:textColor="@color/text_on_background_medium" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceCaption"
+                android:textColor="@color/text_on_background_high" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/divider_on_background" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="8dp"
+                android:text="@string/textviews_overline"
+                android:textAppearance="?textAppearanceSubtitle1"
+                android:textColor="@color/text_on_background_high" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceOverline"
+                android:textColor="@color/text_on_background_disabled" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceOverline"
+                android:textColor="@color/text_on_background_medium" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceOverline"
+                android:textColor="@color/text_on_background_high" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/divider_on_background" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="8dp"
+                android:text="@string/textviews_body2"
+                android:textAppearance="?textAppearanceSubtitle1"
+                android:textColor="@color/text_on_background_high" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceBody2"
+                android:textColor="@color/text_on_background_disabled" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceBody2"
+                android:textColor="@color/text_on_background_medium" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceBody2"
+                android:textColor="@color/text_on_background_high" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/divider_on_background" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="8dp"
+                android:text="@string/textviews_body1"
+                android:textAppearance="?textAppearanceSubtitle1"
+                android:textColor="@color/text_on_background_high" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceBody1"
+                android:textColor="@color/text_on_background_disabled" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceBody1"
+                android:textColor="@color/text_on_background_medium" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceBody1"
+                android:textColor="@color/text_on_background_high" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/divider_on_background" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="8dp"
+                android:text="@string/textviews_subtitle2"
+                android:textAppearance="?textAppearanceSubtitle2"
+                android:textColor="@color/text_on_background_high" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceSubtitle2"
+                android:textColor="@color/text_on_background_disabled" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceSubtitle2"
+                android:textColor="@color/text_on_background_medium" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceSubtitle2"
+                android:textColor="@color/text_on_background_high" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/divider_on_background" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="8dp"
+                android:text="@string/textviews_subtitle1"
+                android:textAppearance="?textAppearanceSubtitle1"
+                android:textColor="@color/text_on_background_high" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceSubtitle1"
+                android:textColor="@color/text_on_background_disabled" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceSubtitle1"
+                android:textColor="@color/text_on_background_medium" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceSubtitle1"
+                android:textColor="@color/text_on_background_high" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/divider_on_background" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="8dp"
+                android:text="@string/textviews_headline6"
+                android:textAppearance="?textAppearanceSubtitle1"
+                android:textColor="@color/text_on_background_high" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline6"
+                android:textColor="@color/text_on_background_disabled" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline6"
+                android:textColor="@color/text_on_background_medium" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline6"
+                android:textColor="@color/text_on_background_high" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/divider_on_background" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="8dp"
+                android:text="@string/textviews_headline5"
+                android:textAppearance="?textAppearanceSubtitle1"
+                android:textColor="@color/text_on_background_high" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline5"
+                android:textColor="@color/text_on_background_disabled" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline5"
+                android:textColor="@color/text_on_background_medium" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline5"
+                android:textColor="@color/text_on_background_high" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/divider_on_background" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="8dp"
+                android:text="@string/textviews_headline4"
+                android:textAppearance="?textAppearanceSubtitle1"
+                android:textColor="@color/text_on_background_high" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline4"
+                android:textColor="@color/text_on_background_disabled" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline4"
+                android:textColor="@color/text_on_background_medium" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline4"
+                android:textColor="@color/text_on_background_high" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/divider_on_background" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="8dp"
+                android:text="@string/textviews_headline3"
+                android:textAppearance="?textAppearanceSubtitle1"
+                android:textColor="@color/text_on_background_high" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline3"
+                android:textColor="@color/text_on_background_disabled" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline3"
+                android:textColor="@color/text_on_background_medium" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline3"
+                android:textColor="@color/text_on_background_high" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/divider_on_background" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="8dp"
+                android:text="@string/textviews_headline2"
+                android:textAppearance="?textAppearanceSubtitle1"
+                android:textColor="@color/text_on_background_high" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline2"
+                android:textColor="@color/text_on_background_disabled" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline2"
+                android:textColor="@color/text_on_background_medium" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline2"
+                android:textColor="@color/text_on_background_high" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/divider_on_background" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="8dp"
+                android:text="@string/textviews_headline1"
+                android:textAppearance="?textAppearanceSubtitle1"
+                android:textColor="@color/text_on_background_high" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline1"
+                android:textColor="@color/text_on_background_disabled" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:layout_marginBottom="4dp"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline1"
+                android:textColor="@color/text_on_background_medium" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:text="@string/textviews_sample"
+                android:textAppearance="?textAppearanceHeadline1"
+                android:textColor="@color/text_on_background_high" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/divider_on_background" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>

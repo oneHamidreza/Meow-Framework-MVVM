@@ -1,0 +1,5 @@
+<resources>
+    <string name="fragment_checkboxes">چک‌باکس ‌ها (Checkboxes)</string>
+    <string name="checkboxes_simple">چک‌باکس ساده</string>
+    <string name="checkboxes_tint">چک‌باکس با رنگ متفاوت</string>
+</resources>

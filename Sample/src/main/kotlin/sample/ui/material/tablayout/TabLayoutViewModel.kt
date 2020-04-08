@@ -20,7 +20,7 @@ import meow.core.arch.MeowViewModel
 import sample.App
 
 /**
- * Material Tab Layout View Model class.
+ * Material Tab Layout View Model.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

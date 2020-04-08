@@ -17,7 +17,6 @@
 package sample.ui.base
 
 import androidx.databinding.ViewDataBinding
-import meow.core.arch.MeowViewModel
 import meow.core.ui.MeowFragment
 
 /**
@@ -28,4 +27,4 @@ import meow.core.ui.MeowFragment
  * @since   2020-03-11
  */
 
-abstract class BaseFragment<B : ViewDataBinding, VM : MeowViewModel> : MeowFragment<B, VM>()
+abstract class BaseFragment<B : ViewDataBinding> : MeowFragment<B>()

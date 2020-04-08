@@ -23,7 +23,7 @@ import sample.R
 import sample.data.Content
 
 /**
- * Menu View Model class.
+ * Menu View Model.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

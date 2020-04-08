@@ -1,3 +1,5 @@
 <resources>
     <string name="fragment_main">@string/app_name</string>
+    <string name="main_menu_day_night">Day Night Switch</string>
+    <string name="main_menu_language">Language Switch</string>
 </resources>

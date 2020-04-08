@@ -55,27 +55,35 @@ fun <T> LiveData<T>.safeObserve(owner: LifecycleOwner? = null, observer: (T) -> 
     https://proandroiddev.com/android-viewmodel-dependency-injection-with-kodein-249f80f083c9
 */
 
-fun <VM : MeowViewModel, T> T.viewModelInstance(clazz: Class<VM>): Lazy<VM> where T : KodeinAware, T : AppCompatActivity {
+inline fun <reified VM : MeowViewModel, T> T.instanceViewModel(): Lazy<VM> where T : KodeinAware, T : AppCompatActivity {
+    val clazz = javaClass<VM>()
     return lazy { MeowViewModelFactory(kodein.direct).create(clazz) }
 }
 
-fun <VM : MeowViewModel, T> T.viewModelInstance(clazz: Class<VM>): Lazy<VM> where T : KodeinAware, T : Fragment {
+inline fun <reified VM : MeowViewModel, T> T.instanceViewModel(): Lazy<VM> where T : KodeinAware, T : Fragment {
+    val clazz = javaClass<VM>()
     return lazy { MeowViewModelFactory(kodein.direct).create(clazz) }
 }
 
 fun sdkNeed(buildSdk: Int, block: () -> Unit) {
     if (Build.VERSION.SDK_INT >= buildSdk)
-        block()
+        avoidException {
+            block()
+        }
 }
 
 inline fun <reified T> sdkNeedRType(buildSdk: Int, block: () -> T) {
     if (Build.VERSION.SDK_INT >= buildSdk)
-        block()
+        avoidException {
+            block()
+        }
 }
 
 fun sdkNeedReturn(buildSdk: Int, block: () -> Unit): Boolean {
     return if (Build.VERSION.SDK_INT >= buildSdk) {
-        block()
+        avoidException {
+            block()
+        }
         true
     } else {
         false

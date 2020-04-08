@@ -3,180 +3,187 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    android:label="@string/app_name"
-    app:startDestination="@id/fragmentMenu">
-
-    <action
-        android:id="@+id/actionToForm"
-        app:destination="@id/fragmentForm" />
-
-    <action
-        android:id="@+id/actionToButton"
-        app:destination="@id/fragmentButton" />
-
-    <action
-        android:id="@+id/actionToImageview"
-        app:destination="@id/fragmentImageview" />
-
-    <action
-        android:id="@+id/actionToAlerts"
-        app:destination="@id/fragmentAlerts" />
-
-    <action
-        android:id="@+id/actionToFABExtended"
-        app:destination="@id/fragmentFABExtended" />
-
-    <action
-        android:id="@+id/actionToCard"
-        app:destination="@id/fragmentCard" />
-
-    <action
-        android:id="@+id/actionToCheckbox"
-        app:destination="@id/fragmentCheckbox" />
-
-    <action
-        android:id="@+id/actionToCollapsingToolbar"
-        app:destination="@id/fragmentCollapsingToolbar" />
-
-    <action
-        android:id="@+id/actionToTabLayout"
-        app:destination="@id/fragmentTabLayout" />
-
-    <action
-        android:id="@+id/actionToUserDetail"
-        app:destination="@id/fragmentUserDetail" />
-
-    <action
-        android:id="@+id/actionToUserIndex"
-        app:destination="@id/fragmentUserIndex" />
-
-    <action
-        android:id="@+id/actionToCustomDialog"
-        app:destination="@id/dialogCustom" />
+    app:startDestination="@id/fragmentHome">
 
     <fragment
-        android:id="@+id/fragmentAlerts"
-        android:name="sample.ui.material.alert.AlertsFragment"
-        android:label="@string/fragment_alerts"
-        tools:layout="@layout/fragment_alerts" />
+        android:id="@+id/fragmentHome"
+        android:name="sample.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home">
 
-    <fragment
-        android:id="@+id/fragmentCard"
-        android:name="sample.ui.material.card.CardFragment"
-        android:label="@string/fragment_card"
-        tools:layout="@layout/fragment_card" />
+        <!-- Material -->
+        <action
+            android:id="@+id/actionToAlerts"
+            app:destination="@id/fragmentAlerts" />
+        <action
+            android:id="@+id/actionToBottomAppBar"
+            app:destination="@id/activityBottomAppBar" />
+        <action
+            android:id="@+id/actionToBottomNavigation"
+            app:destination="@id/activityBottomNavigation" />
+        <action
+            android:id="@+id/actionToButtons"
+            app:destination="@id/fragmentButtons" />
+        <action
+            android:id="@+id/actionToCards"
+            app:destination="@id/fragmentCards" />
+        <action
+            android:id="@+id/actionToCheckboxes"
+            app:destination="@id/fragmentCheckboxes" />
+        <action
+            android:id="@+id/actionToCollapsingToolbar"
+            app:destination="@id/fragmentCollapsingToolbar" />
+        <action
+            android:id="@+id/actionToFabExtended"
+            app:destination="@id/fragmentFabExtended" />
+        <action
+            android:id="@+id/actionToFabSimple"
+            app:destination="@id/fragmentFabSimple" />
+        <action
+            android:id="@+id/actionToImageviews"
+            app:destination="@id/fragmentImageviews" />
+        <action
+            android:id="@+id/actionToRadioButtons"
+            app:destination="@id/fragmentRadioButtons" />
+        <action
+            android:id="@+id/actionToSnackBars"
+            app:destination="@id/fragmentSnackBars" />
+        <action
+            android:id="@+id/actionToSwitches"
+            app:destination="@id/fragmentSwitches" />
+        <action
+            android:id="@+id/actionToTabLayout"
+            app:destination="@id/fragmentTabLayout" />
+        <action
+            android:id="@+id/actionToTextviews"
+            app:destination="@id/fragmentTextviews" />
+        <action
+            android:id="@+id/actionToTopAppBar"
+            app:destination="@id/fragmentTextviews" />
 
-    <fragment
-        android:id="@+id/fragmentCheckbox"
-        android:name="sample.ui.material.checkbox.CheckboxFragment"
-        android:label="@string/fragment_checkbox"
-        tools:layout="@layout/fragment_checkbox" />
+        <!-- Meow Widgets-->
+        <action
+            android:id="@+id/actionToDash"
+            app:destination="@id/fragmentDash" />
+        <action
+            android:id="@+id/actionToForm"
+            app:destination="@id/fragmentForm" />
+        <action
+            android:id="@+id/actionToProgressBars"
+            app:destination="@id/fragmentProgressBars" />
 
-    <fragment
-        android:id="@+id/fragmentCollapsingToolbar"
-        android:name="sample.ui.material.collapsing.toolbar.CollapsingToolbarFragment"
-        android:label="@string/fragment_collapsing_toolbar"
-        tools:layout="@layout/fragment_collapsing_toolbar" />
+        <!-- Extensions -->
+        <action
+            android:id="@+id/actionToSharedPreferences"
+            app:destination="@id/fragmentSharedPreferences" />
 
-    <fragment
-        android:id="@+id/fragmentDash"
-        android:name="sample.ui.meowwidget.dash.DashFragment"
-        android:label="@string/fragment_dash"
-        tools:layout="@layout/fragment_dash" />
+    </fragment>
 
-    <fragment
-        android:id="@+id/fragmentFABExtended"
-        android:name="sample.ui.material.fab.extended.FABExtendedFragment"
-        android:label="@string/fragment_fab_extended"
-        tools:layout="@layout/fragment_fab_extended" />
+    <!-- Api -->
+    <!--    <fragment-->
+    <!--        android:id="@+id/fragmentUserIndex"-->
+    <!--        android:name="sample.ui.user.index.UserIndexFragment"-->
+    <!--        android:label="@string/fragment"-->
+    <!--        tools:layout="@layout/fragment_shared_preferences" />-->
 
-    <fragment
-        android:id="@+id/fragmentFABSimple"
-        android:name="sample.ui.material.fab.simple.FABSimpleFragment"
-        android:label="@string/fragment_fab_simple"
-        tools:layout="@layout/fragment_fab_simple" />
-
-    <fragment
-        android:id="@+id/fragmentMenu"
-        android:name="sample.ui.menu.MenuFragment"
-        android:label="@string/fragment_menu"
-        tools:layout="@layout/fragment_menu" />
-
-    <fragment
-        android:id="@+id/fragmentRadioButton"
-        android:name="sample.ui.material.radiobutton.RadioButtonFragment"
-        android:label="@string/fragment_radio_button"
-        tools:layout="@layout/fragment_radio_button" />
-
-    <fragment
-        android:id="@+id/fragmentProgressBar"
-        android:name="sample.ui.meowwidget.progressbars.ProgressBarFragment"
-        android:label="@string/fragment_progress_bar"
-        tools:layout="@layout/fragment_progress_bar" />
-
-    <fragment
-        android:id="@+id/fragmentSnacks"
-        android:name="sample.ui.material.snack.SnacksFragment"
-        android:label="@string/fragment_snacks"
-        tools:layout="@layout/fragment_snacks" />
-
-    <fragment
-        android:id="@+id/fragmentSwitches"
-        android:name="sample.ui.material.switches.SwitchesFragment"
-        android:label="@string/fragment_switches"
-        tools:layout="@layout/fragment_switches" />
-
-    <fragment
-        android:id="@+id/fragmentTabLayout"
-        android:name="sample.ui.material.tablayout.TabLayoutFragment"
-        android:label="@string/fragment_tablayout"
-        tools:layout="@layout/fragment_tablayout" />
-
-    <fragment
-        android:id="@+id/fragmentForm"
-        android:name="sample.ui.material.form.FormFragment"
-        android:label="@string/fragment_form"
-        tools:layout="@layout/fragment_form" />
-
-    <fragment
-        android:id="@+id/fragmentButton"
-        android:name="sample.ui.material.button.ButtonFragment"
-        android:label="@string/fragment_button"
-        tools:layout="@layout/fragment_button" />
-
-    <fragment
-        android:id="@+id/fragmentImageview"
-        android:name="sample.ui.material.imageview.ImageviewFragment"
-        android:label="@string/fragment_imageview"
-        tools:layout="@layout/fragment_imageview" />
-
+    <!-- Extensions -->
     <fragment
         android:id="@+id/fragmentSharedPreferences"
         android:name="sample.ui.sharedpreferences.SharedPreferencesFragment"
         android:label="@string/fragment_shared_preferences"
         tools:layout="@layout/fragment_shared_preferences" />
 
+    <!-- Material -->
     <fragment
-        android:id="@+id/fragmentTextview"
-        android:name="sample.ui.material.textview.TextViewFragment"
-        android:label="@string/fragment_textview"
-        tools:layout="@layout/fragment_textview" />
-
+        android:id="@+id/fragmentAlerts"
+        android:name="sample.ui.material.alerts.AlertsFragment"
+        android:label="@string/fragment_alerts"
+        tools:layout="@layout/fragment_alerts" />
+    <activity
+        android:id="@+id/activityBottomAppBar"
+        android:name="sample.ui.material.bottomappbar.BottomAppBarActivity"
+        android:label="@string/activity_bottom_app_bar"
+        tools:layout="@layout/activity_bottom_app_bar" />
+    <activity
+        android:id="@+id/activityBottomNavigation"
+        android:name="sample.ui.material.bottomnavigation.BottomNavigationActivity"
+        android:label="@string/activity_bottom_navigation"
+        tools:layout="@layout/activity_bottom_navigation" />
     <fragment
-        android:id="@+id/fragmentUserDetail"
-        android:name="sample.ui.user.detail.UserDetailFragment"
-        android:label="User Detail"
-        tools:layout="@layout/fragment_user_detail" />
-
+        android:id="@+id/fragmentButtons"
+        android:name="sample.ui.material.buttons.ButtonsFragment"
+        android:label="@string/fragment_buttons"
+        tools:layout="@layout/fragment_buttons" />
     <fragment
-        android:id="@+id/fragmentUserIndex"
-        android:name="sample.ui.user.index.UserIndexFragment"
-        android:label="User Index"
-        tools:layout="@layout/fragment_user_index" />
+        android:id="@+id/fragmentCards"
+        android:name="sample.ui.material.cards.CardsFragment"
+        android:label="@string/fragment_cards"
+        tools:layout="@layout/fragment_buttons" />
+    <fragment
+        android:id="@+id/fragmentCheckboxes"
+        android:name="sample.ui.material.checkboxes.CheckboxesFragment"
+        android:label="@string/fragment_checkboxes"
+        tools:layout="@layout/fragment_checkboxes" />
+    <fragment
+        android:id="@+id/fragmentCollapsingToolbar"
+        android:name="sample.ui.material.collapsing.toolbar.CollapsingToolbarFragment"
+        android:label="@string/fragment_collapsing_toolbar"
+        tools:layout="@layout/fragment_collapsing_toolbar" />
+    <fragment
+        android:id="@+id/fragmentFabExtended"
+        android:name="sample.ui.material.fab.extended.FABExtendedFragment"
+        android:label="@string/fragment_fab_extended"
+        tools:layout="@layout/fragment_fab_extended" />
+    <fragment
+        android:id="@+id/fragmentFabSimple"
+        android:name="sample.ui.material.fab.simple.FABSimpleFragment"
+        android:label="@string/fragment_fab_simple"
+        tools:layout="@layout/fragment_fab_simple" />
+    <fragment
+        android:id="@+id/fragmentImageviews"
+        android:name="sample.ui.material.imageviewes.ImageviewsFragment"
+        android:label="@string/fragment_imageviews"
+        tools:layout="@layout/fragment_imageviews" />
+    <fragment
+        android:id="@+id/fragmentRadioButtons"
+        android:name="sample.ui.material.radiobuttons.RadioButtonsFragment"
+        android:label="@string/fragment_radio_buttons"
+        tools:layout="@layout/fragment_radio_buttons" />
+    <fragment
+        android:id="@+id/fragmentSnackBars"
+        android:name="sample.ui.material.snackbars.SnackBarsFragment"
+        android:label="@string/fragment_snackbars"
+        tools:layout="@layout/fragment_snackbars" />
+    <fragment
+        android:id="@+id/fragmentSwitches"
+        android:name="sample.ui.material.switches.SwitchesFragment"
+        android:label="@string/fragment_switches"
+        tools:layout="@layout/fragment_switches" />
+    <fragment
+        android:id="@+id/fragmentTabLayout"
+        android:name="sample.ui.material.tablayout.TabLayoutFragment"
+        android:label="@string/fragment_tablayout"
+        tools:layout="@layout/fragment_tablayout" />
+    <fragment
+        android:id="@+id/fragmentTextviews"
+        android:name="sample.ui.material.textviews.TextViewsFragment"
+        android:label="@string/fragment_textviews"
+        tools:layout="@layout/fragment_textviews" />
 
-    <dialog
-        android:id="@+id/dialogCustom"
-        android:name="sample.ui.dialog.CustomDialog"
-        tools:layout="@layout/fragment_user_index" />
+    <!-- Meow Widgets -->
+    <fragment
+        android:id="@+id/fragmentDash"
+        android:name="sample.ui.meowwidget.dash.DashFragment"
+        android:label="@string/fragment_dash"
+        tools:layout="@layout/fragment_dash" />
+    <fragment
+        android:id="@+id/fragmentForm"
+        android:name="sample.ui.meowwidget.form.FormFragment"
+        android:label="@string/fragment_form"
+        tools:layout="@layout/fragment_form" />
+    <fragment
+        android:id="@+id/fragmentProgressBars"
+        android:name="sample.ui.meowwidget.progressbars.ProgressBarsFragment"
+        android:label="@string/fragment_progress_bars"
+        tools:layout="@layout/fragment_progress_bars" />
 
 </navigation>

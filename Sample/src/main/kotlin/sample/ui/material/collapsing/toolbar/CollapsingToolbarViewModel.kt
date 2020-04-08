@@ -1,8 +1,3 @@
-package sample.ui.material.collapsing.toolbar
-
-import meow.core.arch.MeowViewModel
-import sample.App
-
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -19,8 +14,13 @@ import sample.App
  * limitations under the License.
  */
 
+package sample.ui.material.collapsing.toolbar
+
+import meow.core.arch.MeowViewModel
+import sample.App
+
 /**
- * Collapsing Toolbar View Model class.
+ * Material Collapsing Toolbar View Model.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

@@ -60,7 +60,7 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_simple"
+                    android:id="@+id/cards_simple"
                     style="@style/Meow.CardView"
                     android:layout_margin="16dp"
                     app:contentPadding="16dp">
@@ -72,14 +72,14 @@
 
                         <com.google.android.material.textview.MaterialTextView
                             style="@style/Meow.TextView"
-                            android:text="@string/card_simple_title"
+                            android:text="@string/cards_simple_title"
                             android:textAppearance="@style/textAppearance.Subtitle1"
                             android:textColor="@color/text_on_surface_high" />
 
                         <com.google.android.material.textview.MaterialTextView
                             style="@style/Meow.TextView"
                             android:layout_marginTop="8dp"
-                            android:text="@string/card_simple_desc"
+                            android:text="@string/cards_simple_desc"
                             android:textAppearance="@style/textAppearance.Body2"
                             android:textColor="@color/text_on_surface_medium" />
 
@@ -88,7 +88,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_with_action"
+                    android:id="@+id/cards_with_action"
                     style="@style/Meow.CardView"
                     android:layout_margin="16dp"
                     app:contentPadding="8dp">
@@ -103,7 +103,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="8dp"
-                            android:text="@string/card_with_action_title"
+                            android:text="@string/cards_with_action_title"
                             android:textAppearance="@style/textAppearance.Subtitle1"
                             android:textColor="@color/text_on_surface_high" />
 
@@ -112,7 +112,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="8dp"
-                            android:text="@string/card_with_action_desc"
+                            android:text="@string/cards_with_action_desc"
                             android:textAppearance="@style/textAppearance.Body2"
                             android:textColor="@color/text_on_surface_medium" />
 
@@ -128,14 +128,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="8dp"
-                                android:text="@string/card_with_action_dismiss"
+                                android:text="@string/cards_with_action_dismiss"
                                 android:textColor="@color/text_on_surface_medium" />
 
                             <Button
                                 style="@style/Widget.MaterialComponents.Button.TextButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/card_with_action_save"
+                                android:text="@string/cards_with_action_save"
                                 android:textColor="@color/primary" />
 
                         </LinearLayout>
@@ -145,7 +145,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_stroke"
+                    android:id="@+id/cards_stroke"
                     style="@style/Meow.CardView.Outlined"
                     android:layout_margin="16dp"
                     app:contentPadding="16dp">
@@ -157,14 +157,14 @@
 
                         <com.google.android.material.textview.MaterialTextView
                             style="@style/Meow.TextView"
-                            android:text="@string/card_stroke_title"
+                            android:text="@string/cards_stroke_title"
                             android:textAppearance="@style/textAppearance.Subtitle1"
                             android:textColor="@color/text_on_surface_high" />
 
                         <com.google.android.material.textview.MaterialTextView
                             style="@style/Meow.TextView"
                             android:layout_marginTop="8dp"
-                            android:text="@string/card_stroke_desc"
+                            android:text="@string/cards_stroke_desc"
                             android:textAppearance="@style/textAppearance.Body2"
                             android:textColor="@color/text_on_surface_medium" />
 
@@ -173,7 +173,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_high_elevation"
+                    android:id="@+id/cards_high_elevation"
                     style="@style/Meow.CardView"
                     android:layout_margin="16dp"
                     app:cardElevation="4dp"
@@ -186,14 +186,14 @@
 
                         <com.google.android.material.textview.MaterialTextView
                             style="@style/Meow.TextView"
-                            android:text="@string/card_high_elevation_title"
+                            android:text="@string/cards_high_elevation_title"
                             android:textAppearance="@style/textAppearance.Subtitle1"
                             android:textColor="@color/text_on_surface_high" />
 
                         <com.google.android.material.textview.MaterialTextView
                             style="@style/Meow.TextView"
                             android:layout_marginTop="8dp"
-                            android:text="@string/card_high_elevation_desc"
+                            android:text="@string/cards_high_elevation_desc"
                             android:textAppearance="@style/textAppearance.Body2"
                             android:textColor="@color/text_on_surface_medium" />
 
@@ -202,7 +202,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_checkable"
+                    android:id="@+id/cards_checkable"
                     style="@style/Meow.CardView.Checkable"
                     android:layout_margin="16dp"
                     app:contentPadding="16dp">
@@ -214,14 +214,14 @@
 
                         <com.google.android.material.textview.MaterialTextView
                             style="@style/Meow.TextView"
-                            android:text="@string/card_checkable_title"
+                            android:text="@string/cards_checkable_title"
                             android:textAppearance="@style/textAppearance.Subtitle1"
                             android:textColor="@color/text_on_surface_high" />
 
                         <com.google.android.material.textview.MaterialTextView
                             style="@style/Meow.TextView"
                             android:layout_marginTop="8dp"
-                            android:text="@string/card_checkable_desc"
+                            android:text="@string/cards_checkable_desc"
                             android:textAppearance="@style/textAppearance.Body2"
                             android:textColor="@color/text_on_surface_medium" />
 

@@ -5,6 +5,7 @@
     <color name="on_error_primary">#ffffff</color>
 
     <color name="status_bar">@color/primary_variant</color>
+    <color name="nav_bar">#b0bec5</color>
 
     <color name="background">#ffffff</color>
     <color name="on_background">#000000</color>

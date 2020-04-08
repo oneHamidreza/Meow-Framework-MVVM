@@ -20,7 +20,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import meow.core.arch.MeowFlow
 import meow.util.dp
-import meow.util.javaClass
+import meow.util.instanceViewModel
 import meow.widget.addItemDecoration
 import meow.widget.decoration.MeowDividerDecoration
 import sample.R
@@ -29,17 +29,17 @@ import sample.databinding.FragmentUserIndexBinding
 import sample.ui.base.BaseFragment
 
 /**
- * [User]/Index Activity class.
+ * [User]/Index Fragment.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-02-29
  */
 
-class UserIndexFragment : BaseFragment<FragmentUserIndexBinding, UserIndexViewModel>() {
+class UserIndexFragment : BaseFragment<FragmentUserIndexBinding>() {
 
+    private val viewModel: UserIndexViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_user_index
-    override fun viewModelClass() = javaClass<UserIndexViewModel>()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -59,9 +59,7 @@ class UserIndexFragment : BaseFragment<FragmentUserIndexBinding, UserIndexViewMo
 
     override fun initViewModel() {
         binding.viewModel = viewModel
-    }
 
-    override fun observeViewModel() {
         MeowFlow.GetDataApi(this).apply {
             onShowLoading = { (requireActivity()).title = "Loading" }//todo getString()
             onHideLoading = { requireActivity().title = "User Index" }

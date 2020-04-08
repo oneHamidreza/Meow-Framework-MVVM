@@ -27,4 +27,4 @@ import sample.App
  * @since   2020-03-10
  */
 
-class MainViewModel(override val app: App) : MeowViewModel(app)
+class MainViewModel(app: App) : MeowViewModel(app)

@@ -10,7 +10,7 @@ buildscript {
         classpath("com.android.tools.build:gradle:3.6.2")
         classpath(kotlin("gradle-plugin", kotlinVersion))
         classpath(kotlin("serialization", kotlinVersion))
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.2.1")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${meow.AppConfig.Versions.NAVIGATION}")
         classpath("com.novoda:bintray-release:0.9.2")
     }
 }
@@ -19,8 +19,6 @@ allprojects {
 
     tasks.withType(Javadoc::class) {
         (options as CoreJavadocOptions).addStringOption("Xdoclint:none", "-quiet")
-//        isEnabled = false
-//        isFailOnError = false
         options.encoding = "UTF-8"
     }
     repositories {

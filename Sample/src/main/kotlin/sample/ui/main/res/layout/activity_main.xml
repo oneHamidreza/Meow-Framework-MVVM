@@ -25,12 +25,23 @@
             android:orientation="vertical">
 
             <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:liftOnScroll="true">
 
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
-                    style="@style/Meow.Toolbar.PrimarySurface" />
+                    style="@style/Meow.Toolbar.Surface">
+
+                    <ImageView
+                        android:id="@+id/ivLogo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:foregroundGravity="center_vertical"
+                        android:src="@drawable/img_logo_toolbar" />
+
+                </com.google.android.material.appbar.MaterialToolbar>
 
             </com.google.android.material.appbar.AppBarLayout>
 
