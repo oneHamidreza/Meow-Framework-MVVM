@@ -23,7 +23,10 @@ import androidx.appcompat.app.AppCompatDelegate
 import meow.core.api.MeowSession
 import meow.core.data.MeowSharedPreferences
 import meow.core.ui.MeowActivity
-import meow.util.*
+import meow.util.MeowContextWrapper
+import meow.util.MeowCurrency
+import meow.util.getField
+import meow.util.setField
 
 /**
  * 🐈 This CAT can control configurations and UI properties in one Application. Just trust it.
@@ -112,7 +115,6 @@ class MeowController(
             activity.applicationContext.resources.configuration.uiMode = uiMode
             activity.recreate()
         }
-        activity.updateStatusBarByTheme(!isNightMode, checkIsEnabled = true)
     }
 
     fun bindApp(app: Application) {

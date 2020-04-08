@@ -5,21 +5,10 @@
 
     <merge>
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/swNavTheme"
-            style="@style/Widget.MaterialComponents.CompoundButton.Switch"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/theme_dark"
-            android:textAppearance="@style/textAppearance.Body2"
-            android:textColor="@color/text_on_surface_high" />
-
-        <Button
-            android:id="@+id/btChangeLanguage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:text="@string/change_language" />
+            android:src="@drawable/img_logo_meow_framework" />
 
     </merge>
 

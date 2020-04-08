@@ -18,7 +18,6 @@ package sample
 
 import android.app.Application
 import android.content.Context
-import android.graphics.Color
 import meow.MeowApp
 import meow.MeowController
 import meow.controller
@@ -70,7 +69,7 @@ class App : MeowApp(), KodeinAware {
         MeowController().apply {
             onColorGet = {
                 when (it.toHexString().toLowerCase()) {//todo
-                    "#1cb3c8" -> Color.RED
+//                    "#1cb3c8" -> Color.RED
                     else -> it
                 }
             }

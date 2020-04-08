@@ -22,7 +22,6 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
-import meow.controller
 import meow.util.dp
 import sample.R
 import sample.databinding.NavHeaderViewBinding
@@ -52,24 +51,7 @@ class NavHeaderView @JvmOverloads constructor(
         orientation = VERTICAL
         gravity = Gravity.CENTER
         minimumHeight = 144.dp()
-
-        binding.swNavTheme.apply {
-            isChecked = controller.isNightMode
-            setOnCheckedChangeListener { _, isChecked ->
-//                controller.updateTheme(
-//                    context as MeowActivity<*, *>,
-//                    if (isChecked) MeowController.Theme.NIGHT else MeowController.Theme.DAY
-//                )
-            }
-        }
-
-        binding.btChangeLanguage.setOnClickListener {
-//            controller.updateLanguage(
-//                context as MeowActivity<*, *>,
-//                if (controller.language == "en") "fa" else "en"
-//            )
-        }
-
+        setPaddingRelative(16.dp(), 48.dp(), 16.dp(), 16.dp())
     }
 
 }

@@ -35,14 +35,9 @@ import meow.core.ui.MeowFragment
 
 @TargetApi(Build.VERSION_CODES.M)
 fun MeowActivity<*>.updateStatusBarByTheme(
-    isDarkIcon: Boolean,
-    checkIsEnabled: Boolean = false
+    isDarkIcon: Boolean
 ) = avoidException {
-    if (!isEnabledAutoUpdateStatusBarTheme && checkIsEnabled)
-        return@avoidException
-
     sdkNeed(Build.VERSION_CODES.M) {
-        window.statusBarColor = getColorCompat(R.color.status_bar)
         var flags = window.decorView.systemUiVisibility
         flags = if (isDarkIcon) {
             flags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
@@ -50,6 +45,7 @@ fun MeowActivity<*>.updateStatusBarByTheme(
             flags and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
         window.decorView.systemUiVisibility = flags
+        window.statusBarColor = getColorCompat(R.color.status_bar)
     }
 
     setMIUIStatusBarDarkIcon(isDarkIcon)
@@ -66,9 +62,8 @@ fun MeowActivity<*>.updateNavigationBarColor(
 
 @TargetApi(Build.VERSION_CODES.M)
 fun MeowFragment<*>.updateStatusBarByTheme(
-    isDarkIcon: Boolean,
-    checkIsEnabled: Boolean = false
-) = activity().updateStatusBarByTheme(isDarkIcon, checkIsEnabled)
+    isDarkIcon: Boolean
+) = activity().updateStatusBarByTheme(isDarkIcon)
 
 private fun MeowActivity<*>.setMIUIStatusBarDarkIcon(darkIcon: Boolean) = avoidException(false) {
     val clazz: Class<out Window?> = window.javaClass

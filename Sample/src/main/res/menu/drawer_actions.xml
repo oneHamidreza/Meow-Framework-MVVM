@@ -6,4 +6,9 @@
         android:title="@string/fragment_home"
         android:icon="@drawable/ic_home" />
 
+    <item
+        android:id="@id/fragmentAlerts"
+        android:title="@string/fragment_alerts"
+        android:icon="@drawable/ic_notification_important" />
+
 </menu>
