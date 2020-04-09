@@ -9,7 +9,6 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:3.6.2")
         classpath(kotlin("gradle-plugin", kotlinVersion))
-        classpath(kotlin("serialization", kotlinVersion))
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${meow.AppConfig.Versions.NAVIGATION}")
         classpath("com.novoda:bintray-release:0.9.2")
     }

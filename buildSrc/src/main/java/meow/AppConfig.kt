@@ -17,6 +17,7 @@
 package meow
 
 import org.gradle.api.Project
+import java.io.File
 
 /**
  * Build Application Configure object containing build info, dependencies, versioning.
@@ -43,59 +44,12 @@ object AppConfig {
         }
     }
 
-    object Library {
-        val implementationItems = arrayOf(
-            // KOTLIN
-            kotlin("stdlib-jdk8", Versions.KOTLIN),
-            // Core
-            kotlinx("serialization-runtime", "0.14.0"),
-            kotlinx("coroutines-core", "1.3.0-gradle"),
-            // Material
-            "com.google.android.material:material:1.2.0-alpha05",
-            // Lifecycle
-            "androidx.lifecycle:lifecycle-common-java8:2.2.0",
-            "androidx.lifecycle:lifecycle-extensions:2.2.0",
-            "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0",
-            "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0",
-            "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-alpha01",
-            // ExifInterface
-            "androidx.exifinterface:exifinterface:1.1.0",
-            // OkHttp & Retrofit & Moshi
-            "com.squareup.okhttp3:okhttp:4.4.0",
-            "com.squareup.retrofit2:retrofit:2.7.2",
-            "com.squareup.retrofit2:converter-moshi:2.7.2",
-            "com.squareup.moshi:moshi:1.9.2",
-            "com.squareup.moshi:moshi-kotlin:1.9.2",
-            // Kodein
-            "org.kodein.di:kodein-di-core:6.5.2",
-            "org.kodein.di:kodein-di-erased:6.5.2",
-            "org.kodein.di:kodein-di-framework-android-x:6.5.2",
-            // Secure Shared Preferences
-            "in.co.ophio:secure-preferences:0.1.3",
-            // Navigation
-            "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}",
-            "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}",
-            // Glide
-            "com.github.bumptech.glide:glide:4.11.0",
-            // Google Phone Number
-            "com.googlecode.libphonenumber:libphonenumber:8.10.5",
-            // Localization
-            "com.akexorcist:localization:1.2.4"
-        )
-
-        val kaptItems = emptyArray<String>(
-            // MOSHI SERIALIZE
-//            "com.squareup.moshi:moshi-kotlin-codegen:1.9.2"
-        )
-
-    }
-
-    /*
-         Semantic Versioning
-             by https://medium.com/@maxirosson/d6ec171cfd82
-         and customized for supporting build type.
-     */
     object Versions {
+        /*
+             Semantic Versioning
+                 by https://medium.com/@maxirosson/d6ec171cfd82
+             and customized for supporting build type.
+         */
         const val API = 1
         const val MAJOR = 0
         const val MINOR = 0
@@ -105,8 +59,65 @@ object AppConfig {
         const val SDK_COMPILE = 29
         const val SDK_MIN = 19
         const val SDK_TARGET = 29
+
         const val KOTLIN = "1.3.71"
         const val NAVIGATION = "2.3.0-alpha04"
+        const val COROUTINE = "1.3.5"
+        const val SERIALIZATION = "0.20.0"
+        const val MATERIAL = "1.2.0-alpha05"
+        const val LIFECYCLE = "2.2.0"
+        const val EXIF_INTERFACE = "1.1.0"
+        const val OKHTTP = "4.4.0"//TODO TEST ON API 19
+        const val RETROFIT = "2.7.2"
+        const val MOSHI = "1.9.2"
+        const val KODEIN = "6.5.2"
+        const val SECURE_PREFERENCES = "0.1.3"
+        const val GLIDE = "4.11.0"
+        const val GOOGLE_PHONE_NUMBER = "8.10.5"
+        const val LOCALIZATION = "1.2.4"
+    }
+
+    object Library {
+        val implementationItems = arrayOf(
+            // Kotlin
+            kotlin("stdlib-jdk8", Versions.KOTLIN),
+            // Kotlinx
+            kotlinx("coroutines-core", Versions.COROUTINE),
+            kotlinx("serialization-runtime", Versions.SERIALIZATION),
+            // Material
+            "com.google.android.material:material:${Versions.MATERIAL}",
+            // Lifecycle
+            "androidx.lifecycle:lifecycle-common-java8:${Versions.LIFECYCLE}",
+            "androidx.lifecycle:lifecycle-extensions:${Versions.LIFECYCLE}",
+            "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE}",
+            "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.LIFECYCLE}",
+            "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.LIFECYCLE}",
+            // ExifInterface
+            "androidx.exifinterface:exifinterface:${Versions.EXIF_INTERFACE}",
+            // OkHttp & Retrofit & Moshi
+            "com.squareup.okhttp3:okhttp:${Versions.OKHTTP}",
+            "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}",
+            "com.squareup.retrofit2:converter-moshi:${Versions.RETROFIT}",
+            "com.squareup.moshi:moshi:${Versions.MOSHI}",
+            "com.squareup.moshi:moshi-kotlin:${Versions.MOSHI}",
+            // Kodein
+            "org.kodein.di:kodein-di-core:${Versions.KODEIN}",
+            "org.kodein.di:kodein-di-erased:${Versions.KODEIN}",
+            "org.kodein.di:kodein-di-framework-android-x:${Versions.KODEIN}",
+            // Secure Shared Preferences
+            "in.co.ophio:secure-preferences:0.1.3",
+            // Navigation
+            "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}",
+            "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}",
+            // Glide
+            "com.github.bumptech.glide:glide:${Versions.GLIDE}",
+            // Google Phone Number
+            "com.googlecode.libphonenumber:libphonenumber:${Versions.GOOGLE_PHONE_NUMBER}",
+            // Localization
+            "com.akexorcist:localization:${Versions.LOCALIZATION}"
+        )
+
+        val kaptItems = emptyArray<String>()
 
     }
 
@@ -123,19 +134,17 @@ object AppConfig {
         val properties = java.util.Properties().apply {
             load(rootProject.file("local.properties").inputStream())
         }
+        @Suppress("UNCHECKED_CAST")
         return properties.getProperty(key) as T
     }
 
     object Publishing {
-        const val name = "Meow framework MVVM"
         const val bintrayUsername = "infinitydesign"
         const val bintrayRepoName = "meow"
         const val groupId = "com.etebarian.meow"
         const val artifactId = "framework"
-        const val gitUrl = "https://github.com/oneHamidreza/meow-framework-mvvm.git"
         const val siteUrl = "https://github.com/oneHamidreza/meow-framework-mvvm"
-        const val libraryDesc =
-            "A MVVVM framework for Android Developers in Kotlin."
+        const val libraryDesc = "A MVVVM framework for Android Developers in Kotlin."
     }
 }
 
@@ -144,3 +153,32 @@ fun kotlinx(module: String, version: String? = null): Any =
 
 fun kotlin(module: String, version: String? = null): Any =
     "org.jetbrains.kotlin:kotlin-$module${version?.let { ":$version" } ?: ""}"
+
+fun getAllResourcesSrcDirs(project: Project): ArrayList<String> {
+    val list = arrayListOf<String>()
+    val path =
+        project.rootDir.absolutePath + "\\" + AppConfig.Build.APP_MODULE + "\\src\\main\\kotlin\\" + AppConfig.Build.APP_PACKAGE
+    val root = File(path)
+    root.listDirectoriesWithChild().forEach { directory ->
+        if (directory.isRes())
+            list.add(directory.path)
+    }
+    return list
+}
+
+fun File.listDirectories() = listFiles()!!.filter { it.isDirectory }
+fun File.listDirectoriesWithChild(): List<File> {
+    val list = ArrayList<File>()
+
+    fun File.findAllDirectories(list: ArrayList<File>) {
+        listDirectories().forEach {
+            it.findAllDirectories(list)
+            list.add(it)
+        }
+    }
+
+    findAllDirectories(list)
+    return list
+}
+
+fun File.isRes() = name == "res"

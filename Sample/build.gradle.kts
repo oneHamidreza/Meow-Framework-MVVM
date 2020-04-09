@@ -3,14 +3,14 @@ import meow.AppConfig
 import meow.AppConfig.Build
 import meow.AppConfig.Library
 import meow.AppConfig.Versions
-import java.util.*
-import kotlin.collections.*
+import meow.AppConfig.getProperty
+import meow.getAllResourcesSrcDirs
 
 plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
-    id("kotlinx-serialization")
+    kotlin("plugin.serialization") version "1.3.70"
     id("androidx.navigation.safeargs.kotlin")
 }
 
@@ -79,11 +79,11 @@ android {
             java.includes.add("/${Build.SRC_MAIN}**")
             java.excludes.add("**/build/**")
 
-            res.srcDirs(getAllResourcesSrcDirs())
+            res.srcDirs(getAllResourcesSrcDirs(project))
         }
     }
 
-    // exclude annotation from all of markwon dependency
+    // Exclude annotation from all of markwon dependency
     configurations {
         implementation.exclude(
             mapOf(
@@ -93,42 +93,6 @@ android {
         )
     }
 }
-
-fun <T> getProperty(key: String): T {
-    val properties = Properties().apply {
-        load(project.rootProject.file("local.properties").inputStream())
-    }
-    return properties.getProperty(key) as T
-}
-
-fun getAllResourcesSrcDirs(): ArrayList<String> {
-    val list = arrayListOf<String>()
-    val path =
-        project.rootDir.absolutePath + "\\" + Build.APP_MODULE + "\\src\\main\\kotlin\\" + Build.APP_PACKAGE
-    val root = File(path)
-    root.listDirectoriesWithChild().forEach { directory ->
-        if (directory.isRes())
-            list.add(directory.path)
-    }
-    return list
-}
-
-fun File.listDirectories() = listFiles()!!.filter { it.isDirectory }
-fun File.listDirectoriesWithChild(): List<File> {
-    val list = ArrayList<File>()
-
-    fun File.findAllDirectories(list: ArrayList<File>) {
-        listDirectories().forEach {
-            it.findAllDirectories(list)
-            list.add(it)
-        }
-    }
-
-    findAllDirectories(list)
-    return list
-}
-
-fun File.isRes() = name == "res"
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))

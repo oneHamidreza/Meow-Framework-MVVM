@@ -21,7 +21,6 @@ import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Job
-import kotlinx.io.IOException
 import meow.MeowApp
 import meow.controller
 import meow.core.api.*
@@ -33,6 +32,7 @@ import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import retrofit2.HttpException
+import java.io.IOException
 import java.net.SocketTimeoutException
 
 /**

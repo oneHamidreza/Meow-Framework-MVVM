@@ -7,7 +7,7 @@ import meow.AppConfig.Versions
 plugins {
     id("com.android.library")
     kotlin("android")
-    id("kotlinx-serialization")
+    kotlin("plugin.serialization") version "1.3.70"
     kotlin("kapt")
     id("com.novoda.bintray-release")
 }
@@ -60,14 +60,14 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    // MAIN DEPENDENCIES
+    // Implementation Dependencies
     Library.implementationItems.forEach {
         implementation(it)
     }
 
-    // EXCLUSIVE DEPENDENCIES
+    // Kapt Dependencies
     Library.kaptItems.forEach {
-        implementation(it)
+        kapt(it)
     }
 }
 

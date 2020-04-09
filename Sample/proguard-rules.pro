@@ -1,6 +1,6 @@
 # Retrofit does reflection on generic parameters. InnerClasses is required to use Signature and
 # EnclosingMethod is required to use InnerClasses.
--keepattributes Signature, InnerClasses, EnclosingMethod
+-keepattributes Signature, InnerClasses, EnclosingMethod,*Annotation*
 
 # Retrofit does reflection on method and parameter annotations.
 -keepattributes RuntimeVisibleAnnotations, RuntimeVisibleParameterAnnotations
@@ -39,3 +39,18 @@
   **[] $VALUES;
   public *;
 }
+
+# Used for Kotlinx Serialization
+-dontwarn kotlinx.serialization.SerializationKT
+-keep,includedescriptorclasses class sample.**$$serializer { *; } # <-- change package name to your app's
+-keepclassmembers class sample.** { # <-- change package name to your app's
+    *** Companion;
+}
+-keepclasseswithmembers class sample.** { # <-- change package name to your app's
+    kotlinx.serialization.KSerializer serializer(...);
+}
+
+# Used for Navigation pass data
+-keepnames class sample.ParcelableArg
+-keepnames class sample.SerializableArg
+-keepnames class sample.EnumArg
