@@ -61,9 +61,10 @@ object AppConfig {
         const val SDK_TARGET = 29
 
         const val KOTLIN = "1.3.71"
+        const val KOTLINX_SERIALIZATION = "1.3.70"
         const val NAVIGATION = "2.3.0-alpha04"
         const val COROUTINE = "1.3.5"
-        const val SERIALIZATION = "0.20.0"
+        const val SERIALIZATION_RUNTIME = "0.20.0"
         const val MATERIAL = "1.2.0-alpha05"
         const val LIFECYCLE = "2.2.0"
         const val EXIF_INTERFACE = "1.1.0"
@@ -83,7 +84,7 @@ object AppConfig {
             kotlin("stdlib-jdk8", Versions.KOTLIN),
             // Kotlinx
             kotlinx("coroutines-core", Versions.COROUTINE),
-            kotlinx("serialization-runtime", Versions.SERIALIZATION),
+            kotlinx("serialization-runtime", Versions.SERIALIZATION_RUNTIME),
             // Material
             "com.google.android.material:material:${Versions.MATERIAL}",
             // Lifecycle

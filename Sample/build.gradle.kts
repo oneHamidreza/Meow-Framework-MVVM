@@ -10,7 +10,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
-    kotlin("plugin.serialization") version "1.3.70"
+    kotlin("plugin.serialization") version (meow.AppConfig.Versions.KOTLINX_SERIALIZATION)//need package
     id("androidx.navigation.safeargs.kotlin")
 }
 
@@ -45,7 +45,6 @@ android {
 
         getByName("release") {
             setupApiUrl()
-            isUseProguard = false
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }

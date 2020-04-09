@@ -7,7 +7,7 @@ import meow.AppConfig.Versions
 plugins {
     id("com.android.library")
     kotlin("android")
-    kotlin("plugin.serialization") version "1.3.70"
+    kotlin("plugin.serialization") version (meow.AppConfig.Versions.KOTLINX_SERIALIZATION)//need package
     kotlin("kapt")
     id("com.novoda.bintray-release")
 }
