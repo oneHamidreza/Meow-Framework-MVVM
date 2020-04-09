@@ -66,7 +66,7 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
         }
     }
 
-    private fun resetForm() {
+    fun resetForm() {
         etList.forEach {
             it.text?.clear()
             it.isErrorEnabled = false

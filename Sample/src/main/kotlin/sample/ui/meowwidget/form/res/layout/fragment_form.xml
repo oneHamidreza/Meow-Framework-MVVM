@@ -79,6 +79,20 @@
                         app:startIconDrawable="@drawable/ic_call"
                         app:validateType="optional" />
 
+                    <meow.widget.MeowSpinner
+                        android:id="@+id/sp1"
+                        style="@style/Meow.Spinner.Form.Outlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="select" />
+
+                    <meow.widget.MeowSpinner
+                        android:id="@+id/sp2"
+                        style="@style/Meow.Spinner.Form.Filled"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="انتخاب کنید" />
+
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/bt"
                         style="@style/Widget.MaterialComponents.Button"

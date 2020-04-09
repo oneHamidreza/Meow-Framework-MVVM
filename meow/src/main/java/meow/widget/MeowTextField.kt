@@ -44,7 +44,7 @@ import meow.util.toPersianNumber
 
 class MeowTextField : TextInputLayout {
 
-    var fontFamily: Int = 0
+    private var fontFamily: Int = 0
     var isPersianNumber = controller.isPersian
 
     val editText = TextInputEditText(context)

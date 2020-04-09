@@ -20,6 +20,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.widget.ArrayAdapter
 import meow.util.instanceViewModel
 import meow.util.toastL
 import sample.R
@@ -63,6 +64,34 @@ class FormFragment : BaseFragment<FragmentFormBinding>() {
                     binding.et.isErrorEnabled = false
             }
         })
+
+        val items = arrayOf("Item 1", "Item 2", "Item 3", "Item 4", "آیتم 1")
+        val adapter = ArrayAdapter(
+            context!!,
+            R.layout.dropdown_menu_popup_item,
+            items
+        )
+//        binding.filledExposedDropdown.setAdapter(adapter)
+
+
+        binding.sp1
+            .addItem("Item 1", "description 1", R.drawable.ic_error)
+            .addItem("Item 2", "description 2", R.drawable.ic_error)
+            .addItem("Item 3", "description 3", R.drawable.ic_error)
+            .addItem("Item 4", "description 4", R.drawable.ic_error)
+            .addItem("Item 5", imageViewResId = R.drawable.ic_error)
+            .addItem("Item 6", imageViewResId = R.drawable.ic_error)
+            .build()
+
+        binding.sp2
+            .addItem("آیتم 1", "توضیحات 1")
+            .addItem("آیتم 2", "توضیحات 2")
+            .addItem("آیتم 3", "توضیحات 3")
+            .addItem("آیتم 4", "توضیحات 4")
+            .addItem("آیتم 5")
+            .addItem("آیتم 6")
+            .build()
+
     }
 
     override fun initViewModel() {
