@@ -30,7 +30,7 @@
 
 
 # Used for Kodein bindAutoTag
--keepnames public class * extends meow.core.arch.MeowViewModel
+-keepnames public class * extends MeowViewModel
 
 # Used for Glide
 -keep public class * implements com.bumptech.glide.module.GlideModule
@@ -39,6 +39,9 @@
   **[] $VALUES;
   public *;
 }
+
+# Used for OKHttp
+-dontwarn okhttp3.internal.platform.ConscryptPlatform
 
 # Used for Kotlinx Serialization
 -dontwarn kotlinx.serialization.SerializationKT

@@ -52,8 +52,8 @@ object AppConfig {
          */
         const val API = 1
         const val MAJOR = 0
-        const val MINOR = 0
-        const val PATCH = 3
+        const val MINOR = 1
+        const val PATCH = 11
         val BUILD_PHASE = Build.PHASE.ALPHA
 
         const val SDK_COMPILE = 29
@@ -106,7 +106,7 @@ object AppConfig {
             "org.kodein.di:kodein-di-erased:${Versions.KODEIN}",
             "org.kodein.di:kodein-di-framework-android-x:${Versions.KODEIN}",
             // Secure Shared Preferences
-            "in.co.ophio:secure-preferences:0.1.3",
+            "in.co.ophio:secure-preferences:${Versions.SECURE_PREFERENCES}",
             // Navigation
             "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}",
             "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}",
@@ -131,22 +131,27 @@ object AppConfig {
         return "${Versions.MAJOR}.${Versions.MINOR}.${Versions.PATCH}$type"
     }
 
-    fun <T> Project.getProperty(key: String): T {
-        val properties = java.util.Properties().apply {
-            load(rootProject.file("local.properties").inputStream())
-        }
-        @Suppress("UNCHECKED_CAST")
-        return properties.getProperty(key) as T
-    }
-
     object Publishing {
-        const val bintrayUsername = "infinitydesign"
+        const val name = "Meow-Framework-MVVM"
+        const val repo = "meow"
         const val bintrayRepoName = "meow"
+        const val developerId = "oneHamidreza"
+        const val developerName = "Hamidreza Etebarian"
+        const val userOrg = "infinitydesign"
         const val groupId = "com.etebarian.meow"
         const val artifactId = "framework"
+        const val gitRepo = "oneHamidreza/meow-framework-mvvm"
         const val siteUrl = "https://github.com/oneHamidreza/meow-framework-mvvm"
         const val libraryDesc = "A MVVVM framework for Android Developers in Kotlin."
     }
+}
+
+fun <T> Project.getPropertyAny(key: String): T {
+    val properties = java.util.Properties().apply {
+        load(rootProject.file("local.properties").inputStream())
+    }
+    @Suppress("UNCHECKED_CAST")
+    return properties.getProperty(key) as T
 }
 
 fun kotlinx(module: String, version: String? = null): Any =

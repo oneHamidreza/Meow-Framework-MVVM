@@ -1,16 +1,22 @@
-import com.novoda.gradle.release.PublishExtension
+import com.jfrog.bintray.gradle.BintrayExtension
 import meow.AppConfig
 import meow.AppConfig.Library
 import meow.AppConfig.Publishing
 import meow.AppConfig.Versions
+import meow.getPropertyAny
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("plugin.serialization") version (meow.AppConfig.Versions.KOTLINX_SERIALIZATION)//need package
     kotlin("kapt")
-    id("com.novoda.bintray-release")
+    `maven-publish`
+    id("com.jfrog.bintray") version "1.8.5"
 }
+
+group = Publishing.groupId
+version = AppConfig.generateVersionName()
 
 android {
     compileSdkVersion(Versions.SDK_COMPILE)
@@ -31,15 +37,6 @@ android {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
     dataBinding {
@@ -65,19 +62,90 @@ dependencies {
         implementation(it)
     }
 
+    implementation("com.google.android.material:material:${Versions.MATERIAL}")
+
     // Kapt Dependencies
     Library.kaptItems.forEach {
         kapt(it)
     }
 }
 
-configure<PublishExtension> {
-    userOrg = Publishing.bintrayUsername
-    groupId = Publishing.groupId
-    artifactId = Publishing.artifactId
-    publishVersion = AppConfig.generateVersionName()
-    repoName = Publishing.bintrayRepoName
-    desc = Publishing.libraryDesc
-    website = Publishing.siteUrl
-    autoPublish = true
+tasks {
+    withType<KotlinCompile> {
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+val publicationName = "maven"
+
+/*
+Publishing a Kotlin library to your Bintray repo using Gradle Kotlin DSL
+https://medium.com/@sergio.igwt/publishing-a-kotlin-library-to-your-bintray-repo-using-gradle-kotlin-dsl-bdeaed54571a
+https://github.com/nwillc/kretry/blob/master/build.gradle.kts
+*/
+sourceSets.create("main") {
+    java.srcDirs("${meow.AppConfig.Build.SRC_MAIN}java")
+    java.includes.add("/${meow.AppConfig.Build.SRC_MAIN}**")
+    java.excludes.add("**/build/**")
+    resources.srcDirs("${meow.AppConfig.Build.SRC_MAIN}res")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>(publicationName) {
+            groupId = project.group.toString()
+            artifactId = Publishing.artifactId
+            version = project.version.toString()
+
+            pom.withXml {
+                val dependenciesNode = asNode().appendNode("dependencies")
+                val configurationNames = arrayOf("implementation", "api")
+                configurationNames.forEach { c ->
+                    configurations[c].allDependencies.forEach {
+                        if (it.group != null) {
+                            val dependencyNode = dependenciesNode.appendNode("dependency")
+                            dependencyNode.appendNode("groupId", it.group)
+                            dependencyNode.appendNode("artifactId", it.name)
+                            dependencyNode.appendNode("version", it.version)
+                        }
+                    }
+                }
+            }
+
+            val sourcesJar by tasks.registering(Jar::class) {
+                archiveClassifier.convention("sources")
+                from(project.sourceSets["main"].allSource)
+            }
+
+//val javadocJar by tasks.registering(Jar::class) {
+//    dependsOn("dokka")
+//    archiveClassifier.convention("javadoc")
+//    from("$buildDir/dokka")
+//}
+
+            artifact("$buildDir/outputs/aar/meow-release.aar")
+            artifact(sourcesJar.get())
+        }
+    }
+}
+
+bintray {
+    user = getPropertyAny("bintray.user")
+    key = getPropertyAny("bintray.key")
+    dryRun = false
+    publish = true
+    setPublications(publicationName)
+    pkg(delegateClosureOf<BintrayExtension.PackageConfig> {
+        name = Publishing.name
+        repo = Publishing.repo
+        userOrg = Publishing.userOrg
+        desc = Publishing.libraryDesc
+        websiteUrl = "https://github.com/${Publishing.developerId}/${Publishing.name}"
+        issueTrackerUrl = "https://github.com/${Publishing.developerId}/${Publishing.name}/issues"
+        vcsUrl = "https://github.com/${Publishing.developerId}/${Publishing.name}.git"
+        version.vcsTag = "v${project.version}"
+        setLicenses("Apache-2.0")
+        setLabels("kotlin", "meow-framework")//todo more
+        publicDownloadNumbers = true
+    })
 }

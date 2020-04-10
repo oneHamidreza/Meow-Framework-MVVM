@@ -75,11 +75,11 @@ class MeowOauthToken {
 
     class RequestRefreshToken(
         @Json(name = "refresh_token") var refreshToken: String,
-        override var session: MeowSession
+        session: MeowSession
     ) : RequestPrimary(session, "refresh_token")
 
     open class RequestPrimary(
-        open var session: MeowSession,
+        session: MeowSession,
         @property:Json(name = "grant_type") var grantType: String? = null
     ) {
 

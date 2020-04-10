@@ -3,8 +3,8 @@ import meow.AppConfig
 import meow.AppConfig.Build
 import meow.AppConfig.Library
 import meow.AppConfig.Versions
-import meow.AppConfig.getProperty
 import meow.getAllResourcesSrcDirs
+import meow.getPropertyAny
 
 plugins {
     id("com.android.application")
@@ -35,7 +35,7 @@ android {
     buildTypes {
 
         fun BuildType.setupApiUrl() {
-            val apiUrl = getProperty<String>("api.url")
+            val apiUrl = getPropertyAny<String>("api.url")
             buildConfigField("String", "API_URL", "\"$apiUrl\"")
         }
 
@@ -48,15 +48,6 @@ android {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
     dataBinding {
@@ -90,6 +81,12 @@ android {
                 "module" to "annotations"
             )
         )
+    }
+}
+
+tasks {
+    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 
