@@ -26,6 +26,7 @@ import meow.core.api.exceptions.NetworkConnectionException
 import meow.core.api.exceptions.UnexpectedException
 import meow.util.avoidException
 import meow.util.isNotNullOrEmpty
+import meow.util.logD
 import meow.util.toClass
 import retrofit2.HttpException
 
@@ -190,6 +191,7 @@ fun MeowResponse<*>.processAndPush(liveData: MutableLiveData<MeowEvent<*>>) {
             isCancellation() -> MeowEvent.Api.Cancellation()
             else -> MeowEvent.Api.Error(this)
         }
+        logD(m = eventWithRepository.javaClass.name)
         liveData.postValue(eventWithRepository)
     }
 }

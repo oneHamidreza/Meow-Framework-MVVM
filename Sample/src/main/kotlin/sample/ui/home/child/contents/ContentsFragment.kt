@@ -150,7 +150,7 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
             addItemDecoration(MeowDividerDecoration(context()))
             adapter = ContentAdapter(contentViewModel) { _, it, _ ->
                 when (it.action) {
-//                    API_INDEX -> findNavController().navigate(HomeFragmentDirections.actoap())
+                    API_INDEX -> findNavController().navigate(HomeFragmentDirections.actionToCatBreedIndex())
 
                     MATERIAL_ALERTS -> findNavController().navigate(HomeFragmentDirections.actionToAlerts())
                     MATERIAL_BOTTOM_APP_BAR -> findNavController().navigate(HomeFragmentDirections.actionToBottomAppBar())
@@ -169,7 +169,6 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                     MATERIAL_RADIO_BUTTONS -> findNavController().navigate(HomeFragmentDirections.actionToRadioButtons())
                     MATERIAL_SNACKBARS -> findNavController().navigate(HomeFragmentDirections.actionToSnackBars())
                     MATERIAL_TEXTVIEWS -> findNavController().navigate(HomeFragmentDirections.actionToTextviews())
-
 
                     WIDGET_DASH -> findNavController().navigate(HomeFragmentDirections.actionToDash())
                     WIDGET_FORM -> findNavController().navigate(HomeFragmentDirections.actionToForm())

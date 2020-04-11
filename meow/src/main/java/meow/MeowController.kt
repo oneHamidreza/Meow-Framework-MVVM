@@ -77,7 +77,7 @@ class MeowController(
         get() = language == "fa" || language == "ar"
 
     val isPersian
-        get() = isRtl
+        get() = language == "fa"
 
     fun swapTheme(
         activity: MeowActivity<*>,

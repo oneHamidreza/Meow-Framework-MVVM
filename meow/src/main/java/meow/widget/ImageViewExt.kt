@@ -28,15 +28,15 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.GenericTransitionOptions
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
+import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.Transformation
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.NotificationTarget
 import com.bumptech.glide.request.transition.ViewPropertyTransition
-import meow.util.avoidException
-import meow.util.isNotNullOrEmpty
-import meow.util.isValidUrl
-import meow.util.logD
+import ir.onehe.meow.utils.MeowCornersTransformation
+import meow.util.*
 import java.io.File
 import kotlin.math.abs
 
@@ -62,6 +62,7 @@ object ImageViewBindingAdapter {
         "meow_data",
         "meow_placeHolder",
         "meow_loadAnimator",
+        "meow_glideCornerSize",
         "meow_base64Data",
         requireAll = false
     )
@@ -71,9 +72,14 @@ object ImageViewBindingAdapter {
         data: String,
         placeHolderDrawable: Drawable? = null,
         loadAnimator: ViewPropertyTransition.Animator? = null,
+        glideCornerSize: Float = 0f,
         base64Data: String? = null
     ) {
-        val config = GlideConfig(placeHolderDrawable, loadAnimator)
+        val transformation = if (glideCornerSize == 0f) null else MultiTransformation(
+            CenterCrop(),
+            MeowCornersTransformation(glideCornerSize.dp().toInt(), 0)
+        )
+        val config = GlideConfig(placeHolderDrawable, loadAnimator, transformation)
         if (base64Data.isNotNullOrEmpty())
             view.loadBase64(data, config)
         else

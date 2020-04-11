@@ -24,6 +24,7 @@ import meow.MeowApp
 import meow.controller
 import meow.util.avoidException
 import meow.util.hasNetwork
+import meow.util.javaClass
 import meow.util.logD
 import okhttp3.*
 import retrofit2.Retrofit
@@ -86,8 +87,9 @@ abstract class MeowApi(
         }
 
     open fun createDefaultService() = Retrofit.Builder()
-        .baseUrl(baseUrl)
+        .baseUrl(baseUrl.apply { logD(m = this) })
         .client(getOKHttpClientBuilder().build())
+//        .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
 
     open fun getRefreshTokenResponse(): retrofit2.Response<MeowOauthToken>? {
@@ -103,7 +105,7 @@ abstract class MeowApi(
         val moshiFinal = moshi ?: moshiBuilder.add(KotlinJsonAdapterFactory()).build()
         return createDefaultService().newBuilder()
             .addConverterFactory(MoshiConverterFactory.create(moshiFinal)).build()
-            .create(T::class.java)
+            .create(javaClass<T>())
     }
 
     open fun onUnauthorizedAfterAuthenticate() {

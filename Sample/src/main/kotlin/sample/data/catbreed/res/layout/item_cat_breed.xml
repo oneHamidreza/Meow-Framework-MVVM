@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="sample.ui.api.catbreed.index.CatBreedIndexViewModel" />
+
+        <variable
+            name="model"
+            type="sample.data.catbreed.CatBreed" />
+
+        <variable
+            name="controller"
+            type="meow.MeowController" />
+    </data>
+
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Meow.CardView"
+        android:layout_margin="8dp"
+        app:contentPadding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!--todo placeholder-->
+            <!--todo @Ali CircleImageView-->
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                meow_glideCornerSize="@{4}"
+                meow_data="@{model.imageUrl}" />
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:text="@{controller.isPersian ? model.persianName : model.name}"
+                android:textAppearance="@style/textAppearance.Subtitle1"
+                android:textColor="@color/text_on_surface_high" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

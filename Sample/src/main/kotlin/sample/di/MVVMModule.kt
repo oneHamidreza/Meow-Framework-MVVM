@@ -23,7 +23,9 @@ import org.kodein.di.erased.bind
 import org.kodein.di.erased.instance
 import org.kodein.di.erased.provider
 import org.kodein.di.erased.singleton
+import sample.data.catbreed.CatBreed
 import sample.data.user.User
+import sample.ui.api.catbreed.index.CatBreedIndexViewModel
 import sample.ui.content.ContentViewModel
 import sample.ui.dialog.CustomDialogViewModel
 import sample.ui.home.HomeViewModel
@@ -53,7 +55,6 @@ import sample.ui.meowwidget.progressbars.ProgressBarsViewModel
 import sample.ui.meowwidget.rateview.RateViewModel
 import sample.ui.sharedpreferences.SharedPreferencesViewModel
 import sample.ui.user.detail.UserDetailViewModel
-import sample.ui.user.index.UserIndexViewModel
 
 /**
  * The Module of MVVM (ViewModels, Repositories).
@@ -86,6 +87,14 @@ val mvvmModule = Module("MVVM Module", false) {
     bindAutoTag<MainViewModel>() with provider {
         MainViewModel(
             kodein.direct.instance()
+        )
+    }
+
+    // Api Samples
+    bindAutoTag<CatBreedIndexViewModel>() with provider {
+        CatBreedIndexViewModel(
+            kodein.direct.instance(),
+            instance()
         )
     }
 
@@ -196,12 +205,6 @@ val mvvmModule = Module("MVVM Module", false) {
             instance()
         )
     }
-    bindAutoTag<UserIndexViewModel>() with provider {
-        UserIndexViewModel(
-            kodein.direct.instance(),
-            instance()
-        )
-    }
     bindAutoTag<ContentViewModel>() with provider {
         ContentViewModel(
             kodein.direct.instance()
@@ -238,4 +241,5 @@ val mvvmModule = Module("MVVM Module", false) {
         )
     }
     bind() from singleton { User.Repository(instance()) }
+    bind() from singleton { CatBreed.Repository(instance()) }
 }

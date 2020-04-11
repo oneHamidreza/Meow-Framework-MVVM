@@ -41,14 +41,14 @@ class UserDetailViewModel(app: App, val repository: User.Repository) : MeowViewM
     var permissionLiveData = SingleLiveData<ArrayList<String>>()
 
     fun callApi(request: User.RequestGet) {
-        safeCallApi(
-            liveData = apiLiveData,
-            request = request,
-            isNetworkRequired = false,
-            apiAction = { repository.getUserByIdApi(request) }
-        ) { _, it ->
-            modelLiveData.postValue(it)
-        }
+//        safeCallApi(
+//            liveData = apiLiveData,
+//            request = request,
+//            isNetworkRequired = false,
+//            apiAction = { repository.getUserByIdApi(request) }
+//        ) { _, it ->
+//            modelLiveData.postValue(it)
+//        }
     }
 
     fun onClickedApiCall(@Suppress("UNUSED_PARAMETER") view: View) =

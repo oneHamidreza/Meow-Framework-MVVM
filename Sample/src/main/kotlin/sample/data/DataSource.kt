@@ -23,6 +23,7 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 import org.kodein.di.erased.instance
 import sample.App
+import sample.data.catbreed.CatBreed
 import sample.data.user.User
 import sample.di.AppApi
 
@@ -48,6 +49,9 @@ class DataSource(override var app: App) : DataSourceInterface, KodeinAware {
 
     suspend fun getUsers() =
         api.createServiceByAdapter<User.Api>().getUsers()
+
+    suspend fun getCatBreedsApi() =
+        api.createServiceByAdapter<CatBreed.Api>().getCatBreedIndex()
 
     fun isLogin() = fetchApiToken().isNotEmpty()
     fun fetchUser() = spMain.get("user", User())

@@ -23,6 +23,7 @@ import androidx.lifecycle.LiveData
 import meow.core.api.*
 import meow.core.arch.MeowFlow.GetDataApi
 import meow.core.ui.FragmentActivityInterface
+import meow.util.logD
 import meow.util.safeObserve
 import meow.util.toastL
 import meow.widget.impl.MeowErrorViewInterface
@@ -101,6 +102,7 @@ sealed class MeowFlow(open val mvvm: FragmentActivityInterface<*>) {
         }
 
         var onHideLoading: () -> Unit = {
+            logD(m = "onHide")
             progressBarInterface?.hide()
             dialog?.hide()
         }

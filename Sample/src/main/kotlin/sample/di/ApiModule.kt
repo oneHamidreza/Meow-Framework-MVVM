@@ -30,7 +30,6 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
 import sample.App
-import sample.BuildConfig
 import sample.data.DataSource
 
 /**
@@ -54,7 +53,8 @@ open class AppApi(
     open val app: App,
     open val dataSource: DataSource,
     override var options: Options = Options(),
-    override var baseUrl: String = BuildConfig.API_URL
+//    override var baseUrl: String = "http://etebarian.com/meow/"
+    override var baseUrl: String = "http://192.168.1.4:9696/"
 ) : MeowApi(baseUrl = baseUrl, options = options) {
 
     override fun getRefreshTokenResponse(): Response<MeowOauthToken>? {

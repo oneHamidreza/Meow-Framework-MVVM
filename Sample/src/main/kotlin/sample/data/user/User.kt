@@ -24,7 +24,6 @@ import meow.util.removeExtraSpaces
 import retrofit2.http.GET
 import retrofit2.http.Path
 import sample.data.DataSource
-import sample.ui.user.index.UserAdapter
 
 /**
  * User Model class.
@@ -38,8 +37,7 @@ import sample.ui.user.index.UserAdapter
 data class User(
     @Json(name = "id") var id: String? = null,
     @Json(name = "first_name") var firstName: String? = null,
-    @Json(name = "last_name") var lastName: String? = null,
-    @Transient var type: UserAdapter.Types = UserAdapter.Types.A
+    @Json(name = "last_name") var lastName: String? = null
 ) {
 
     val alias get() = (firstName.orEmpty() + " " + lastName.orEmpty() + " (" + id + ")").removeExtraSpaces()

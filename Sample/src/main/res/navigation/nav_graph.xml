@@ -10,6 +10,11 @@
         android:name="sample.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home">
 
+        <!-- Api -->
+        <action
+            android:id="@+id/actionToCatBreedIndex"
+            app:destination="@id/fragmentCatBreedIndex" />
+
         <!-- Material -->
         <action
             android:id="@+id/actionToAlerts"
@@ -82,11 +87,11 @@
     </fragment>
 
     <!-- Api -->
-    <!--    <fragment-->
-    <!--        android:id="@+id/fragmentUserIndex"-->
-    <!--        android:name="sample.ui.user.index.UserIndexFragment"-->
-    <!--        android:label="@string/fragment"-->
-    <!--        tools:layout="@layout/fragment_shared_preferences" />-->
+    <fragment
+        android:id="@+id/fragmentCatBreedIndex"
+        android:name="sample.ui.api.catbreed.index.CatBreedIndexFragment"
+        android:label="@string/fragment_cat_breed_index"
+        tools:layout="@layout/fragment_cat_breed_index" />
 
     <!-- Extensions -->
     <fragment

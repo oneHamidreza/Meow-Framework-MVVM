@@ -121,8 +121,9 @@ object AppConfig {
             "com.github.ome450901:SimpleRatingBar:${Versions.RATINGBAR}"
         )
 
-        val kaptItems = emptyArray<String>()
-
+        val kaptItems = arrayListOf(
+            "com.github.bumptech.glide:compiler:${Versions.GLIDE}"
+        )
     }
 
     fun generateVersionCode(): Int {

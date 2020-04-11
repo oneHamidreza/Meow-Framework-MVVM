@@ -18,11 +18,13 @@ package meow.widget.decoration
 
 import android.graphics.Rect
 import android.view.View
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import meow.controller
 import meow.util.dp
 
 /**
+ * todo improve & write test
  * The Material Card Recycler View Decoration class inherits from [RecyclerView.ItemDecoration].
  *
  * @author  Hamidreza Etebarian
@@ -32,7 +34,6 @@ import meow.util.dp
 
 @Suppress("unused")
 class MaterialCardDecoration(
-    private var list: ArrayList<*>? = null,
     private var hasShadow: Boolean = true,
     private var spanCount: Int = 1,
     private var gapSize: Int = 8,
@@ -61,6 +62,10 @@ class MaterialCardDecoration(
             gapStartSize = 0
     }
 
+    fun getLastIndex(parent: RecyclerView) =
+        (parent.adapter as? ListAdapter<*, *>)?.itemCount ?: 1 - 1
+
+
     override fun getItemOffsets(
         outRect: Rect,
         view: View,
@@ -88,7 +93,7 @@ class MaterialCardDecoration(
                 }
             }
 
-            if (m == (list?.size ?: 0) - 1) {
+            if (m == getLastIndex(parent)) {
                 outRect.bottom = gapEndSize.dp()
             } else {
                 outRect.bottom = calculateGapSize()

@@ -14,47 +14,41 @@
  * limitations under the License.
  */
 
-package sample.ui.user.index
+package sample.ui.api.catbreed.index
 
-import android.view.View
 import androidx.lifecycle.MutableLiveData
-import meow.controller
 import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
+import org.kodein.di.erased.instance
 import sample.App
-import sample.data.user.User
+import sample.data.catbreed.CatBreed
+import sample.di.AppApi
 
 /**
- * [User]/Index View Model class.
+ * [CatBreed]/Index View Model class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-03-08
+ * @since   2020-04-11
  */
 
-class UserIndexViewModel(
+class CatBreedIndexViewModel(
     override val app: App,
-    private val repository: User.Repository
+    private val repository: CatBreed.Repository
 ) : MeowViewModel(app) {
 
     var eventLiveData = MutableLiveData<MeowEvent<*>>()
-    val listLiveData = MutableLiveData<List<User>>()
+    var listLiveData = MutableLiveData<List<CatBreed>>()
+
+    val api: AppApi by instance()
 
     fun callApi() {
         safeCallApi(
             liveData = eventLiveData,
             isNetworkRequired = true,
-            apiAction = { repository.getUsersApi() }
+            apiAction = { repository.getCatBreedIndex() }
         ) { _, it ->
             listLiveData.postValue(it)
         }
     }
-
-    fun onClickedChangeMode(@Suppress("UNUSED_PARAMETER") view: View) {
-//        controller.swapTheme()
-    }
-
-    fun getTextByDayNightMode() = if (controller.isNightMode) "Day Mode" else "Night Mode"
-
-    fun getPrefixText() = "AAA"
 }
