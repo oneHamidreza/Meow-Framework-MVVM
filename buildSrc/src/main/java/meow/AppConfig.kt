@@ -76,6 +76,7 @@ object AppConfig {
         const val GLIDE = "4.11.0"
         const val GOOGLE_PHONE_NUMBER = "8.10.5"
         const val LOCALIZATION = "1.2.4"
+        const val RATINGBAR = "1.5.0"
     }
 
     object Library {
@@ -115,7 +116,9 @@ object AppConfig {
             // Google Phone Number
             "com.googlecode.libphonenumber:libphonenumber:${Versions.GOOGLE_PHONE_NUMBER}",
             // Localization
-            "com.akexorcist:localization:${Versions.LOCALIZATION}"
+            "com.akexorcist:localization:${Versions.LOCALIZATION}",
+            // Rating Bar
+            "com.github.ome450901:SimpleRatingBar:${Versions.RATINGBAR}"
         )
 
         val kaptItems = emptyArray<String>()

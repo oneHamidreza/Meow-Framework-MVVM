@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="sample.ui.meowwidget.rateview.RateViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <meow.widget.MeowRateView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srb_numStars="5"
+            android:gravity="center"
+            app:srb_stepSize="0.5"
+            app:srb_drawableEmpty="@drawable/empty" />
+
+        <meow.widget.MeowRateView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srb_numStars="6"
+            android:gravity="center"
+            app:srb_stepSize="1"
+            android:layout_marginTop="16dp"
+            app:srb_drawableEmpty="@drawable/empty" />
+
+    </LinearLayout>
+
+</layout>

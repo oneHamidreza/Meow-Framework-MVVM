@@ -1,3 +1,16 @@
 <resources>
     <string name="fragment_buttons">Buttons</string>
+
+    <string name="button_inset_top">button inset Top</string>
+    <string name="button_unelevated_inset_top">button unelevated inset Top</string>
+    <string name="button_default">button default</string>
+    <string name="button_flat">button Flat</string>
+    <string name="button_outline">button outline</string>
+    <string name="button_unelevated">button Unelevated</string>
+    <string name="button1">button1</string>
+    <string name="button2">button2</string>
+    <string name="button3">button3</string>
+    <string name="button_inset_bottom">button inset bottom</string>
+    <string name="button_unelevated_inset_bottom">button unelevated inset bottom</string>
+
 </resources>

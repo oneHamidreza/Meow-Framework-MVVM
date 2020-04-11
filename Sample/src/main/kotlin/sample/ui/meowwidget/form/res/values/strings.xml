@@ -1,3 +1,28 @@
 <resources>
     <string name="fragment_form">Form</string>
+
+    <string name="hello_world">Hello World</string>
+    <string name="prefix">Prefix</string>
+    <string name="suffix">Suffix</string>
+
+    <string name="mobile">Mobile</string>
+    <string name="email">Email</string>
+    <string name="address">Address</string>
+    <string name="name">Name</string>
+    <string name="select">Select:</string>
+    <string name="submit">Submit</string>
+
+    <string name="item1">Item 1</string>
+    <string name="item2">Item 2</string>
+    <string name="item3">Item 3</string>
+    <string name="item4">Item 4</string>
+    <string name="item5">Item 5</string>
+    <string name="item6">Item 6</string>
+    <string name="item7">Item 7</string>
+    <string name="item8">Item 8</string>
+
+    <string name="description1">Description 1</string>
+    <string name="description2">Description 2</string>
+    <string name="description3">Description 3</string>
+    <string name="description4">Description 4</string>
 </resources>

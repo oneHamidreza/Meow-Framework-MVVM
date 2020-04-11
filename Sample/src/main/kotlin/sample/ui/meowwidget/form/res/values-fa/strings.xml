@@ -1,3 +1,30 @@
 <resources>
     <string name="fragment_form">فرم و تکست فیلد (Form)</string>
+
+    <string name="hello_world">سلام دنیا</string>
+
+    <string name="prefix">پیشوند</string>
+    <string name="suffix">پسوند</string>
+
+    <string name="mobile">شماره موبایل</string>
+    <string name="email">ایمیل</string>
+    <string name="address">آدرس</string>
+    <string name="name">نام و نام خانوادگی</string>
+    <string name="select">انتخاب کنید:</string>
+    <string name="submit">ثبت</string>
+
+    <string name="item1">آیتم 1</string>
+    <string name="item2">آیتم 2</string>
+    <string name="item3">آیتم 3</string>
+    <string name="item4">آیتم 4</string>
+    <string name="item5">آیتم 5</string>
+    <string name="item6">آیتم 6</string>
+    <string name="item7">آیتم 7</string>
+    <string name="item8">آیتم 8</string>
+
+    <string name="description1">توضیحات 1</string>
+    <string name="description2">توضیحات 2</string>
+    <string name="description3">توضیحات 3</string>
+    <string name="description4">توضیحات 4</string>
+
 </resources>

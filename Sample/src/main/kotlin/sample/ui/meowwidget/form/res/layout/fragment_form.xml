@@ -25,13 +25,14 @@
 
                 <TextView
                     isPersianNumber="@{true}"
-                    prefixText="@{`*`}"
-                    suffixText="@{`:`}"
+                    prefixText="@{@string/prefix}"
+                    suffixText="@{@string/suffix}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Hello World"
-                    android:textColor="@{@color/black}" />
+                    android:text="@string/hello_world"
+                    android:textColor="@{@color/black}"
+                    style="@style/textAppearance.Body2" />
 
                 <meow.widget.MeowFormView
                     android:id="@+id/fv"
@@ -44,61 +45,54 @@
                     <meow.widget.MeowTextField
                         android:id="@+id/et"
                         style="@style/Meow.TextField.Form.Filled.Dense"
-                        android:hint="شماره موبایل"
+                        android:hint="@string/mobile"
                         app:counterEnabled="true"
                         app:counterMaxLength="10"
                         app:errorEnabled="true"
-                        app:inputType="phone"
-                        app:startIconDrawable="@drawable/ic_call"
-                        app:validateType="mobile" />
+                        app:meow_inputType="phone"
+                        app:meow_validateType="mobile"
+                        app:startIconDrawable="@drawable/ic_call" />
 
                     <meow.widget.MeowTextField
                         android:id="@+id/et2"
                         style="@style/Meow.TextField.Form.Filled"
-                        android:hint="ایمیل"
+                        android:hint="@string/email"
                         app:errorEnabled="true"
-                        app:inputType="textEmailAddress"
+                        app:meow_inputType="textEmailAddress"
                         app:startIconDrawable="@drawable/ic_android"
-                        app:validateType="email" />
+                        app:meow_validateType="email" />
 
                     <meow.widget.MeowTextField
                         android:id="@+id/et3"
                         style="@style/Meow.TextField.Form.Outlined"
-                        android:hint="نام و نام‌‌‌‌خانوادگی"
+                        android:hint="@string/name"
                         app:errorEnabled="true"
-                        app:inputType="text"
+                        app:meow_inputType="text"
                         app:startIconDrawable="@drawable/ic_android"
-                        app:validateType="empty" />
+                        app:meow_validateType="empty" />
 
                     <meow.widget.MeowTextField
                         android:id="@+id/et4"
                         style="@style/Meow.TextField.Form.Outlined.Dense"
-                        android:hint="آدرس"
+                        android:hint="@string/address"
                         app:errorEnabled="true"
-                        app:inputType="textMultiLine"
+                        app:meow_inputType="textMultiLine"
                         app:startIconDrawable="@drawable/ic_call"
-                        app:validateType="optional" />
+                        app:meow_validateType="optional" />
 
                     <meow.widget.MeowSpinner
                         android:id="@+id/sp1"
                         style="@style/Meow.Spinner.Form.Outlined"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="select" />
-
-                    <meow.widget.MeowSpinner
-                        android:id="@+id/sp2"
-                        style="@style/Meow.Spinner.Form.Filled"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="انتخاب کنید" />
+                        android:hint="@string/select" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/bt"
                         style="@style/Widget.MaterialComponents.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ثبت" />
+                        android:text="@string/submit" />
 
                 </meow.widget.MeowFormView>
 

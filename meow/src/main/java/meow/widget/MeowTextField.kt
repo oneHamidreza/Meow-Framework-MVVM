@@ -18,19 +18,15 @@ package meow.widget
 
 import android.content.Context
 import android.content.res.TypedArray
-import android.graphics.Paint
-import android.graphics.Typeface
-import android.text.*
-import android.text.style.MetricAffectingSpan
+import android.text.Editable
+import android.text.InputType
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.TypedValue
-import android.widget.TextView
 import com.etebarian.meowframework.R
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import meow.controller
-import meow.util.getField
-import meow.util.getFontCompat
 import meow.util.toPersianNumber
 
 
@@ -72,9 +68,9 @@ class MeowTextField : TextInputLayout {
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(
-            context,
-            attrs,
-            defStyle
+        context,
+        attrs,
+        defStyle
     ) {
         setAttributesFromXml(attrs, R.styleable.MeowTextField) {
             initializeAttributes(it)
@@ -91,25 +87,25 @@ class MeowTextField : TextInputLayout {
 
     private fun initializeAttributes(it: TypedArray) {
         fontFamily = it.getResourceId(
-                R.styleable.MeowTextField_meow_fontFamily,
-                controller.defaultTypefaceResId
+            R.styleable.MeowTextField_meow_fontFamily,
+            controller.defaultTypefaceResId
         )
 
-        inputType = it.getInt(R.styleable.MeowTextField_inputType, inputType)
+        inputType = it.getInt(R.styleable.MeowTextField_meow_inputType, inputType)
 
-        validateType = it.getInt(R.styleable.MeowTextField_validateType, validateType)
+        validateType = it.getInt(R.styleable.MeowTextField_meow_validateType, validateType)
 
-        textSize = it.getDimension(R.styleable.MeowTextField_textSize, textSize)
+        textSize = it.getDimension(R.styleable.MeowTextField_meow_textSize, textSize)
 
-        errorEmpty = it.getString(R.styleable.MeowTextField_errorEmpty)
+        errorEmpty = it.getString(R.styleable.MeowTextField_meow_errorEmpty)
         if (errorEmpty.isNullOrEmpty())
             errorEmpty = context.getString(R.string.error_required_value)
 
-        errorMobile = it.getString(R.styleable.MeowTextField_errorEmpty)
+        errorMobile = it.getString(R.styleable.MeowTextField_meow_errorEmpty)
         if (errorMobile.isNullOrEmpty())
             errorMobile = context.getString(R.string.error_mobile_not_valid)
 
-        errorEmail = it.getString(R.styleable.MeowTextField_errorEmail)
+        errorEmail = it.getString(R.styleable.MeowTextField_meow_errorEmail)
         if (errorEmail.isNullOrEmpty())
             errorEmail = context.getString(R.string.error_email_not_valid)
 
@@ -118,60 +114,13 @@ class MeowTextField : TextInputLayout {
 
     private fun initializeView() {
         addView(editText)
-        editText.typeface = context.getFontCompat(fontFamily)
-        typeface = context.getFontCompat(fontFamily)
         editText.setTextSize(TypedValue.COMPLEX_UNIT_PX, this.textSize)
         editText.inputType = this.inputType
-        editText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                setCounterTypeface()
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-        })
         if (isPersianNumber)
             text = text.toPersianNumber()
     }
 
     fun addTextChangedListener(textWatcher: TextWatcher) {
         editText.addTextChangedListener(textWatcher)
-    }
-
-    override fun setError(errorText: CharSequence?) {
-        if (!errorText.isNullOrEmpty())
-            super.setError(setErrorTypeface(errorText.toString()))
-    }
-
-    private fun setCounterTypeface() {
-        val counterView = getField<TextInputLayout, TextView>("counterView")
-        counterView?.typeface = context.getFontCompat(fontFamily)
-    }
-
-    private fun setErrorTypeface(string: String): SpannableString {
-
-        class TypefaceSpan(private val typeface: Typeface) : MetricAffectingSpan() {
-            override fun updateMeasureState(p: TextPaint) {
-                p.typeface = typeface
-                p.flags = p.flags or Paint.SUBPIXEL_TEXT_FLAG
-            }
-
-            override fun updateDrawState(tp: TextPaint) {
-                tp.typeface = typeface
-                tp.flags = tp.flags or Paint.SUBPIXEL_TEXT_FLAG
-            }
-        }
-
-        val s = SpannableString(string)
-        s.setSpan(
-                TypefaceSpan(context.getFontCompat(fontFamily)),
-            0,
-            s.length,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        return s
     }
 }

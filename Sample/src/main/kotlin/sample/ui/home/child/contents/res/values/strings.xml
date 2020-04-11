@@ -51,6 +51,7 @@
         <item>Dash</item>
         <item>Form</item>
         <item>Progress Bar</item>
+        <item>Rate Bar</item>
         <item>Text Field</item>
     </string-array>
 

@@ -75,22 +75,19 @@ class FormFragment : BaseFragment<FragmentFormBinding>() {
 
 
         binding.sp1
-            .addItem("Item 1", "description 1", R.drawable.ic_error)
-            .addItem("Item 2", "description 2", R.drawable.ic_error)
-            .addItem("Item 3", "description 3", R.drawable.ic_error)
-            .addItem("Item 4", "description 4", R.drawable.ic_error)
-            .addItem("Item 5", imageViewResId = R.drawable.ic_error)
-            .addItem("Item 6", imageViewResId = R.drawable.ic_error)
+            .addItem(R.string.item1, R.string.description1, R.drawable.ic_error)
+            .addItem(R.string.item2, R.string.description2, R.drawable.ic_error)
+            .addItem(R.string.item3, imageViewResId = R.drawable.ic_error)
+            .addItem(R.string.item4, imageViewResId = R.drawable.ic_error)
+            .addItem(R.string.item5, R.string.description3)
+            .addItem(R.string.item6, R.string.description4)
+            .addItem(R.string.item7)
+            .addItem(R.string.item8)
             .build()
 
-        binding.sp2
-            .addItem("آیتم 1", "توضیحات 1")
-            .addItem("آیتم 2", "توضیحات 2")
-            .addItem("آیتم 3", "توضیحات 3")
-            .addItem("آیتم 4", "توضیحات 4")
-            .addItem("آیتم 5")
-            .addItem("آیتم 6")
-            .build()
+        binding.sp1.setOnItemCLickListener { parent, view, position, id ->
+            toastL(id.toString())
+        }
 
     }
 

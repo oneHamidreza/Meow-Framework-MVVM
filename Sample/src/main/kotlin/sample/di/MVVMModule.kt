@@ -50,6 +50,7 @@ import sample.ui.menu.MenuViewModel
 import sample.ui.meowwidget.dash.DashViewModel
 import sample.ui.meowwidget.form.FormViewModel
 import sample.ui.meowwidget.progressbars.ProgressBarsViewModel
+import sample.ui.meowwidget.rateview.RateViewModel
 import sample.ui.sharedpreferences.SharedPreferencesViewModel
 import sample.ui.user.detail.UserDetailViewModel
 import sample.ui.user.index.UserIndexViewModel
@@ -228,6 +229,11 @@ val mvvmModule = Module("MVVM Module", false) {
     }
     bindAutoTag<SharedPreferencesViewModel>() with provider {
         SharedPreferencesViewModel(
+            kodein.direct.instance()
+        )
+    }
+    bindAutoTag<RateViewModel>() with provider {
+        RateViewModel(
             kodein.direct.instance()
         )
     }

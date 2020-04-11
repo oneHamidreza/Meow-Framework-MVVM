@@ -1,3 +1,16 @@
 <resources>
     <string name="fragment_buttons">(Button) دکمه ها</string>
+
+    <string name="button_inset_top">دکمه بدون فاصله بالا</string>
+    <string name="button_unelevated_inset_top">دکمه بدون سایه بدون فاصله بالا</string>
+    <string name="button_default">دکمه معمولی</string>
+    <string name="button_flat">دکمه تخت</string>
+    <string name="button_outline">دکمه حاشیه دار</string>
+    <string name="button_unelevated">دکمه بدون سایه</string>
+    <string name="button1">دکمه1</string>
+    <string name="button2">دکمه2</string>
+    <string name="button3">دکمه3</string>
+    <string name="button_inset_bottom">دکمه بدون فاصله پایین</string>
+    <string name="button_unelevated_inset_bottom">دکمه بدون سایه بدون فاصله پایین</string>
+
 </resources>

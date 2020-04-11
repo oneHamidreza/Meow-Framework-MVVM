@@ -74,20 +74,20 @@
         <attr name="meow_fontFamily" format="reference" />
         <attr name="isPersianNumber" />
 
-        <attr name="validateType" format="enum">
+        <attr name="meow_validateType" format="enum">
             <enum name="optional" value="0" />
             <enum name="empty" value="1" />
             <enum name="mobile" value="2" />
             <enum name="email" value="3" />
         </attr>
 
-        <attr name="textSize" format="dimension" />
+        <attr name="meow_textSize" format="dimension" />
 
-        <attr name="errorEmpty" format="string" />
-        <attr name="errorMobile" format="string" />
-        <attr name="errorEmail" format="string" />
+        <attr name="meow_errorEmpty" format="string" />
+        <attr name="meow_errorMobile" format="string" />
+        <attr name="meow_errorEmail" format="string" />
 
-        <attr name="inputType">
+        <attr name="meow_inputType">
             <!-- There is no content type.  The text is not editable. -->
             <flag name="none" value="0x00000000" />
             <!-- Just plain old text.  Corresponds to

@@ -14,36 +14,33 @@
  * limitations under the License.
  */
 
-package sample.ui.material.buttons
+package sample.ui.meowwidget.rateview
 
 import android.os.Bundle
+import android.view.View
 import meow.util.instanceViewModel
 import sample.R
-import sample.databinding.FragmentButtonsBinding
+import sample.databinding.FragmentRateBinding
 import sample.ui.base.BaseFragment
 
 /**
- * Material Buttons Fragment.
+ * Meow Rate Fragment.
  *
  * @author  Ali Modares
  * @version 1.0.0
- * @since   2020-03-22
+ * @since   2020-04-10
  */
 
-class ButtonsFragment : BaseFragment<FragmentButtonsBinding>() {
+class RateFragment : BaseFragment<FragmentRateBinding>() {
 
-    private val viewModel: ButtonsViewModel by instanceViewModel()
-    override fun layoutId() = R.layout.fragment_buttons
+    private val viewModel: RateViewModel by instanceViewModel()
+    override fun layoutId() = R.layout.fragment_rate
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        binding.btg.addOnButtonCheckedListener { group, checkedId, isChecked ->
-            // do stuff
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun initViewModel() {
         binding.viewModel = viewModel
     }
-
 }

@@ -135,6 +135,7 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                 WIDGET_DASH,
                 WIDGET_FORM,
                 WIDGET_PROGRESS_BARS,
+                WIDGET_RATEBAR,
                 WIDGET_TEXT_FIELD
             )
         }).toList()
@@ -173,6 +174,7 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                     WIDGET_DASH -> findNavController().navigate(HomeFragmentDirections.actionToDash())
                     WIDGET_FORM -> findNavController().navigate(HomeFragmentDirections.actionToForm())
                     WIDGET_PROGRESS_BARS -> findNavController().navigate(HomeFragmentDirections.actionToProgressBars())
+                    WIDGET_RATEBAR -> findNavController().navigate(HomeFragmentDirections.actionToRateBar())
 
                     EXTENSIONS_SHARED_PREFERENCES -> findNavController().navigate(
                         HomeFragmentDirections.actionToSharedPreferences()

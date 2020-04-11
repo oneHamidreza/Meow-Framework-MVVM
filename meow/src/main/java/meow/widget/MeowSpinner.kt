@@ -22,6 +22,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
@@ -41,7 +42,7 @@ import meow.util.dp
 
 open class MeowSpinner : TextInputLayout {
 
-    private val autoCompleteTextView = MaterialAutoCompleteTextView(context)
+    val autoCompleteTextView = MaterialAutoCompleteTextView(context)
     private var items: ArrayList<AdapterItem> = ArrayList()
 
     val adapter = CustomArrayAdapter(
@@ -74,12 +75,31 @@ open class MeowSpinner : TextInputLayout {
         return this
     }
 
+    fun addItem(titleRes: Int, descriptionRes: Int = 0, imageViewResId: Int = 0): MeowSpinner {
+        items.add(
+            AdapterItem(
+                context.getString(titleRes),
+                if (descriptionRes == 0) "" else context.getString(descriptionRes),
+                imageViewResId
+            )
+        )
+        return this
+    }
+
     fun build() {
         adapter.notifyDataSetChanged()
         setAdapter(adapter)
         autoCompleteTextView.setOnItemClickListener { parent, view, position, id ->
             val title = adapter.getItem(position)?.title
             autoCompleteTextView.setText(title, false)
+        }
+    }
+
+    fun setOnItemCLickListener(listener: (parent: AdapterView<*>, view: View, position: Int, id: Long) -> Unit) {
+        autoCompleteTextView.setOnItemClickListener { parent, view, position, id ->
+            val title = adapter.getItem(position)?.title
+            autoCompleteTextView.setText(title, false)
+            listener(parent, view, position, id)
         }
     }
 

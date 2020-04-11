@@ -70,6 +70,9 @@
         <action
             android:id="@+id/actionToProgressBars"
             app:destination="@id/fragmentProgressBars" />
+        <action
+            android:id="@+id/actionToRateBar"
+            app:destination="@id/fragmentRate" />
 
         <!-- Extensions -->
         <action
@@ -185,5 +188,10 @@
         android:name="sample.ui.meowwidget.progressbars.ProgressBarsFragment"
         android:label="@string/fragment_progress_bars"
         tools:layout="@layout/fragment_progress_bars" />
+    <fragment
+        android:id="@+id/fragmentRate"
+        android:name="sample.ui.meowwidget.rateview.RateFragment"
+        android:label="@string/fragment_rate"
+        tools:layout="@layout/fragment_rate" />
 
 </navigation>

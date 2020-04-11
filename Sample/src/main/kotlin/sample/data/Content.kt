@@ -82,6 +82,7 @@ data class Content(
         WIDGET_DASH,
         WIDGET_FORM,
         WIDGET_PROGRESS_BARS,
+        WIDGET_RATEBAR,
         WIDGET_TEXT_FIELD,
 
         ALERT_SIMPLE,

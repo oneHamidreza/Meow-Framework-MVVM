@@ -29,7 +29,7 @@
         <item name="startIconTint">?attr/colorPrimary</item>
         <item name="endIconTint">?attr/colorPrimary</item>
         <item name="errorIconDrawable">@drawable/ic_error</item>
-        <item name="errorTextAppearance">@style/Meow.TextAppearance.Caption</item>
+        <item name="errorTextAppearance">?textAppearanceCaption</item>
     </style>
 
     <style name="Meow.TextField.Filled" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
@@ -104,6 +104,5 @@
         <item name="errorIconDrawable">@drawable/ic_error</item>
         <item name="errorTextAppearance">?textAppearanceCaption</item>
     </style>
-
 
 </resources>
