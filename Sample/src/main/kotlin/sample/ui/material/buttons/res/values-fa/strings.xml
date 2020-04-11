@@ -12,5 +12,14 @@
     <string name="button3">دکمه3</string>
     <string name="button_inset_bottom">دکمه بدون فاصله پایین</string>
     <string name="button_unelevated_inset_bottom">دکمه بدون سایه بدون فاصله پایین</string>
+    <string name="sample_color">نمونه رنگ های اپلیکیشن روی دکمه ها</string>
+
+    <string name="b_c_primary">Primary color</string>
+    <string name="b_c_primary_variant">Primary Variant color</string>
+    <string name="b_c_secondary">Secondary color</string>
+    <string name="b_c_secondary_variant">Secondary Variant color</string>
+    <string name="b_c_surface">Surface color</string>
+    <string name="b_c_background">Background color</string>
+    <string name="b_c_error">Error color</string>
 
 </resources>

@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <!-- todo @Ali write sample and styles for this colors :
-     PRIMARY,PRIMARY_VARIANT,ON_PRIMARY,
-     SECONDARY,SECONDARY_VARIANT,ON_SECONDARY
-     SURFACE, ON_SURFACE,
-     BACKGROUND, ON_BACKGROUND,
-     ERROR, ON_ERROR,
-     -->
 
     <data>
 
@@ -110,9 +103,78 @@
                 android:id="@+id/icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:button="@drawable/selector_favorite"
                 android:layout_marginStart="24dp"
+                android:button="@drawable/selector_favorite"
                 app:buttonTint="@color/on_surface" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_color"
+                android:layout_marginStart="16dp"
+                android:textAppearance="@style/textAppearance.Subtitle1" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Meow.Button"
+                        android:text="@string/b_c_primary"
+                        app:backgroundTint="@color/primary"
+                        android:textColor="@color/on_primary"
+                        app:cornerRadius="0dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Meow.Button"
+                        android:text="@string/b_c_primary_variant"
+                        app:backgroundTint="@color/primary_variant"
+                        android:textColor="@color/on_primary"
+                        app:cornerRadius="0dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Meow.Button"
+                        android:text="@string/b_c_secondary"
+                        app:backgroundTint="@color/secondary"
+                        android:textColor="@color/on_secondary"
+                        app:cornerRadius="0dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Meow.Button"
+                        android:text="@string/b_c_secondary_variant"
+                        app:backgroundTint="@color/secondary_variant"
+                        android:textColor="@color/on_secondary"
+                        app:cornerRadius="0dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Meow.Button"
+                        android:text="@string/b_c_surface"
+                        app:backgroundTint="@color/surface"
+                        android:textColor="@color/on_surface"
+                        app:cornerRadius="0dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Meow.Button"
+                        android:text="@string/b_c_background"
+                        app:backgroundTint="@color/background"
+                        android:textColor="@color/on_background"
+                        app:cornerRadius="0dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Meow.Button"
+                        android:text="@string/b_c_error"
+                        android:textColor="@color/on_error_primary"
+                        app:backgroundTint="@color/error_primary"
+                        app:cornerRadius="0dp" />
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
 
         </LinearLayout>
 
