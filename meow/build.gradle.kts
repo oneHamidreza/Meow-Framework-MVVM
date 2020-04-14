@@ -4,6 +4,7 @@ import meow.AppConfig.Library
 import meow.AppConfig.Publishing
 import meow.AppConfig.Versions
 import meow.getPropertyAny
+import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -13,6 +14,7 @@ plugins {
     kotlin("kapt")
     `maven-publish`
     id("com.jfrog.bintray") version "1.8.5"
+    id("org.jetbrains.dokka") version (meow.AppConfig.Versions.DOKKA)
 }
 
 group = Publishing.groupId
@@ -69,6 +71,11 @@ dependencies {
 }
 
 tasks {
+    val dokka by getting(DokkaTask::class) {
+        outputFormat = "html"
+        outputDirectory = "$buildDir/dokka"
+    }
+
     withType<KotlinCompile> {
         kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
@@ -115,14 +122,15 @@ publishing {
                 from(project.sourceSets["main"].allSource)
             }
 
-//val javadocJar by tasks.registering(Jar::class) {
-//    dependsOn("dokka")
-//    archiveClassifier.convention("javadoc")
-//    from("$buildDir/dokka")
-//}
+            val javadocJar by tasks.registering(Jar::class) {
+                dependsOn("dokka")
+                archiveClassifier.convention("javadoc")
+                from("$buildDir/dokka")
+            }
 
             artifact("$buildDir/outputs/aar/meow-release.aar")
             artifact(sourcesJar.get())
+            artifact(javadocJar.get())
         }
     }
 }

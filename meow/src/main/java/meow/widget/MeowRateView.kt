@@ -8,7 +8,11 @@ open class MeowRateView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttrs: Int = 0
-) : ScaleRatingBar(context, attrs, defStyleAttrs) {
+) : ScaleRatingBar(
+    context,
+    attrs,
+    defStyleAttrs
+) {//todo @Ali copy from repository in this project because jitPack
 
     init {
         initializeView()

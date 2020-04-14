@@ -27,7 +27,7 @@ import java.io.File
  * @since   2020-02-24
  */
 
-object AppConfig {
+object AppConfig {//todo find way for show sources
 
     object Build {
         const val APPLICATION_ID = "com.etebarian.meowframework"
@@ -52,17 +52,18 @@ object AppConfig {
          */
         const val API = 1
         const val MAJOR = 0
-        const val MINOR = 1
-        const val PATCH = 11
+        const val MINOR = 2
+        const val PATCH = 5
         val BUILD_PHASE = Build.PHASE.ALPHA
 
         const val SDK_COMPILE = 29
         const val SDK_MIN = 19
         const val SDK_TARGET = 29
 
-        const val KOTLIN = "1.3.71"
+        const val KOTLIN = "1.3.72"
         const val KOTLINX_SERIALIZATION = "1.3.70"
         const val NAVIGATION = "2.3.0-alpha04"
+        const val DOKKA = "0.10.1"
         const val COROUTINE = "1.3.5"
         const val SERIALIZATION_RUNTIME = "0.20.0"
         const val MATERIAL = "1.2.0-alpha05"
@@ -138,15 +139,11 @@ object AppConfig {
     object Publishing {
         const val name = "Meow-Framework-MVVM"
         const val repo = "meow"
-        const val bintrayRepoName = "meow"
         const val developerId = "oneHamidreza"
-        const val developerName = "Hamidreza Etebarian"
         const val userOrg = "infinitydesign"
-        const val groupId = "com.etebarian.meow"
-        const val artifactId = "framework"
-        const val gitRepo = "oneHamidreza/meow-framework-mvvm"
-        const val siteUrl = "https://github.com/oneHamidreza/meow-framework-mvvm"
-        const val libraryDesc = "A MVVVM framework for Android Developers in Kotlin."
+        const val groupId = "com.etebarian"
+        const val artifactId = "meow-framework-mvvm"
+        const val libraryDesc = "One MVVVM framework for Android Developers in Kotlin."
     }
 }
 
