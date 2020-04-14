@@ -1,1 +1,10 @@
-<resources></resources>
+<resources>
+
+    <string-array name="contents_api_titles">
+        <item>دریافت لیست داده از API</item>
+        <item>دریافت یک آبجکت از API</item>
+        <item>ارسال فرم به API</item>
+        <item>نمونه لاگین با Oauth2</item>
+    </string-array>
+
+</resources>
