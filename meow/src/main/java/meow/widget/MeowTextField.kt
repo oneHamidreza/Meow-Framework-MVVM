@@ -27,7 +27,9 @@ import com.etebarian.meowframework.R
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import meow.controller
+import meow.core.api.FormErrorModel
 import meow.util.toPersianNumber
+import meow.widget.impl.FormInterface
 
 
 /**
@@ -38,7 +40,7 @@ import meow.util.toPersianNumber
  * @since   2020-03-07
  */
 
-class MeowTextField : TextInputLayout {
+class MeowTextField : TextInputLayout, FormInterface {
 
     private var fontFamily: Int = 0
     var isPersianNumber = controller.isPersian
@@ -54,11 +56,15 @@ class MeowTextField : TextInputLayout {
         }
         get() = editText.text
 
+    val textString get() = text.toString()
+
     var errorEmpty: String? = ""
     var errorMobile: String? = ""
     var errorEmail: String? = ""
 
     var textSize = resources.getDimension(R.dimen.text_field_text_size)
+
+    override var apiField: String? = null
 
     companion object {
         const val VALIDATE_TYPE_DEFAULT = 0
@@ -122,5 +128,20 @@ class MeowTextField : TextInputLayout {
 
     fun addTextChangedListener(textWatcher: TextWatcher) {
         editText.addTextChangedListener(textWatcher)
+    }
+
+    override fun showErrorFromApi(items: List<FormErrorModel>) {
+        items.apply { print(size) }
+        if (apiField == null)
+            return
+        val messageSB = StringBuilder()
+        val filtered = items.filter { it.field == apiField }
+        filtered.forEachIndexed { i, it ->
+            messageSB.append(it.message)
+            if (i != filtered.lastIndex)
+                messageSB.append("\n")
+        }
+        if (messageSB.isNotEmpty())
+            error = messageSB.toString()
     }
 }

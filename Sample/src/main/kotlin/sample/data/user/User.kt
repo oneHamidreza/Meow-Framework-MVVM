@@ -23,7 +23,6 @@ import meow.core.api.MeowRequest
 import meow.util.removeExtraSpaces
 import retrofit2.http.GET
 import retrofit2.http.Path
-import sample.data.DataSource
 
 /**
  * User Model class.
@@ -54,15 +53,6 @@ data class User(
         override fun validate(): Boolean {
             return id != null
         }
-    }
-
-    class Repository(private val ds: DataSource) {
-
-        suspend fun getUserByIdApi(request: RequestGet) = ds.getUserById(request)
-        suspend fun getUsersApi() = ds.getUsers()
-
-        fun getSavedUser() = ds.fetchUser()
-        fun saveUser(it: User) = ds.saveUser(it)
     }
 
     interface Api {

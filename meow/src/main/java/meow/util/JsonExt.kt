@@ -49,6 +49,22 @@ inline fun <reified T> String?.toClass(): T? {
     }
 }
 
+inline fun <reified T> BufferedSource?.toListClass(): List<T>? {
+    if (this == null) return null
+    return avoidException {
+        val type = Types.newParameterizedType(javaClass<List<*>>(), javaClass<T>())
+        moshiBuilder.build().adapter<List<T>>(type).fromJson(this)
+    }
+}
+
+inline fun <reified T> String?.toListClass(): List<T>? {
+    if (this == null) return null
+    return avoidException {
+        val type = Types.newParameterizedType(javaClass<List<*>>(), javaClass<T>())
+        moshiBuilder.build().adapter<List<T>>(type).fromJson(this)
+    }
+}
+
 inline fun <reified T : Any> T?.toJsonString(): String {
     if (this == null) return "{}"
     return avoidException {
@@ -89,6 +105,12 @@ inline fun JsonReader.readArray(block: JsonReader.() -> Unit) {
 }
 
 fun JsonReader.selectName(vararg strings: String) = selectName(JsonReader.Options.of(*strings))
+
+inline fun <reified T> String?.fromJson(): T? {
+    if (this == null)
+        return null
+    return avoidException { ofMoshi().adapter(javaClass<T>()).fromJson(this) }
+}
 
 fun ofMoshi(factory: JsonAdapter.Factory? = null) =
     Moshi.Builder().apply {

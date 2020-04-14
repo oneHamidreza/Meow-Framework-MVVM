@@ -52,6 +52,7 @@ abstract class MeowActivity<B : ViewDataBinding> : LocalizationActivity(),
     override fun activity() = this
     override fun context() = this
     override fun contentView() = findViewById<View>(android.R.id.content)
+    override fun viewLifecycleOwner() = this
 
     override lateinit var binding: B
 

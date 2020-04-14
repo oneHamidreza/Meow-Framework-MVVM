@@ -48,14 +48,17 @@ class CatBreedIndexFragment : BaseFragment<FragmentCatBreedIndexBinding>() {
 
     override fun initViewModel() {
         binding.viewModel = viewModel
-        MeowFlow.GetDataApi(this) {
+        callApiAndObserve()
+    }
+
+    private fun callApiAndObserve() {
+        MeowFlow.GetDataApi<CatBreed>(this) {
             viewModel.callApi()
         }.apply {
-            containerViews = arrayOf()
             errorHandlerType = MeowFlow.ErrorHandlerType.EMPTY_STATE
             progressBarInterface = binding.progressbar
             emptyStateInterface = binding.emptyState
-        }.observeForIndex(viewLifecycleOwner, viewModel.eventLiveData, viewModel.listLiveData)
+        }.observeForIndex(viewModel.eventLiveData, viewModel.listLiveData)
     }
 
 }

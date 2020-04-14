@@ -23,6 +23,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.etebarian.meowframework.R
 import com.google.i18n.phonenumbers.PhoneNumberUtil
+import meow.core.api.FormErrorModel
 import meow.util.avoidException
 import meow.util.fetchAllDigit
 import meow.util.isValidEmail
@@ -55,7 +56,7 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
     }
 
     fun validate(listener: () -> Unit) {
-        etList.forEach { childE ->
+        etList.forEach { childE ->//todo @Ali support spinner why it is editTextOnly
             checkWithTextFieldType(childE)
         }
         if (checkList.distinct().size == etList.size) {
@@ -91,6 +92,7 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
             checkList.add(textField)
         }
     }
+
 
     private fun mobileValidator(textField: MeowTextField) {
         val text = textField.text?.trim()
@@ -170,5 +172,11 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
         find(this, list)
 
         return list
+    }
+
+    fun showErrorFromApi(items: List<FormErrorModel>) {
+        etList.forEach {
+            it.showErrorFromApi(items)
+        }
     }
 }

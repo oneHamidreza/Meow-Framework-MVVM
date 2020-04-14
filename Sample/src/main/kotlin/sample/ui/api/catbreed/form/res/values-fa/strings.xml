@@ -1,0 +1,4 @@
+<resources>
+    <string name="fragment_cat_breed_form">فرم نژاد</string>
+    <string name="dialog_cat_breed_form">درحال ثبت …</string>
+</resources>

@@ -18,11 +18,11 @@ package meow.core.arch
 
 import android.app.Dialog
 import android.view.View
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import com.etebarian.meowframework.R
 import meow.core.api.*
 import meow.core.arch.MeowFlow.GetDataApi
+import meow.core.arch.MeowFlow.PutDataApi
 import meow.core.ui.FragmentActivityInterface
 import meow.util.safeObserve
 import meow.util.snackL
@@ -31,7 +31,7 @@ import meow.widget.impl.MeowEmptyStateInterface
 import meow.widget.impl.ProgressBarInterface
 
 /**
- * Meow Flow class containing [GetDataApi].
+ * Meow Flow class containing [GetDataApi], [PutDataApi].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -40,8 +40,36 @@ import meow.widget.impl.ProgressBarInterface
 
 sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
 
-    class GetDataApi(fragmentActivity: FragmentActivityInterface<*>, action: () -> Unit) :
-        Api(fragmentActivity, action) {
+    class PutDataApi<T>(fragmentActivity: FragmentActivityInterface<*>, action: () -> Unit) :
+        Api<T>(fragmentActivity, action) {
+
+        var onRequestNotValidFromResponse: (errorItems: List<FormErrorModel>) -> Unit = {}
+
+        init {
+            onBeforeAction = {
+                containerViews.forEach { it.visibility = visibilityWhenLoading }
+                onShowLoading(null)
+            }
+            onAfterAction = {
+                onHideLoading()
+                if (!lastStateHasBeenError)
+                    containerViews.forEach { it.visibility = View.VISIBLE }
+            }
+            onErrorAction = {
+                containerViews.forEach { v -> v.visibility = View.VISIBLE }
+                val response = it.data
+                val errorItems =
+                    (if (response.code == HttpCodes.UNPROCESSABLE_ENTITY.code) response.data as? List<FormErrorModel> else null)
+                if (response.code == HttpCodes.UNPROCESSABLE_ENTITY.code && !errorItems.isNullOrEmpty())
+                    onRequestNotValidFromResponse(errorItems)
+                else
+                    onShowErrorMessage(it.data.createErrorModel(fragmentActivity.resources()))
+            }
+        }
+    }
+
+    class GetDataApi<T>(fragmentActivity: FragmentActivityInterface<*>, action: () -> Unit) :
+        Api<T>(fragmentActivity, action) {
         init {
             onBeforeAction = {
                 containerViews.forEach { it.visibility = visibilityWhenLoading }
@@ -55,7 +83,7 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
         }
     }
 
-    open class Api(
+    open class Api<T>(
         fragmentActivity: FragmentActivityInterface<*>,
         private var action: () -> Unit
     ) : MeowFlow(fragmentActivity) {
@@ -86,7 +114,7 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
 
         var onAfterAction: () -> Unit = { onHideLoading() }
 
-        var onSuccessAction: (it: MeowResponse<*>) -> Unit = {}
+        var onSuccessAction: (data: T) -> Unit = {}
 
         var onCancellationAction: () -> Unit = {
             val title = MeowEvent.Api.Cancellation().title(fragmentActivity.resources())
@@ -124,19 +152,21 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
             action()
         }
 
-        fun <T : Any> observeForIndex(
-            owner: LifecycleOwner?,
+        fun observeForIndex(
             eventLiveData: LiveData<*>,
             listLiveData: LiveData<List<T>>
-        ) = observe(owner, eventLiveData, listLiveData)
+        ) = observe(eventLiveData, listLiveData)
 
         fun observeForDetail(
-            owner: LifecycleOwner?,
             eventLiveData: LiveData<*>
-        ) = observe<Nothing>(owner, eventLiveData)
+        ) = observe(eventLiveData)
 
-        private fun <T : Any> observe(
-            owner: LifecycleOwner?,
+        fun observeForForm(
+            eventLiveData: LiveData<*>
+        ) =
+            observe(eventLiveData)
+
+        private fun observe(
             eventLiveData: LiveData<*>,
             listLiveData: LiveData<List<T>>? = null
         ) {
@@ -146,7 +176,7 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
 
             action()
 
-            eventLiveData.safeObserve(owner) {
+            eventLiveData.safeObserve(fragmentActivity.viewLifecycleOwner()) {
                 if (it is MeowEvent<*>) {
                     when {
                         it.isApiCancellation() -> {
@@ -159,8 +189,12 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
                             onBeforeAction()
                         }
                         it.isApiSuccess() -> {
+                            lastStateHasBeenError = false
                             onAfterAction()
-                            onSuccessAction((it as MeowEvent.Api.Success).data)
+                            val response = (it as MeowEvent.Api.Success).data
+                            @Suppress("UNCHECKED_CAST") val data = response.data as? T
+                            if (data != null)
+                                onSuccessAction(data!!)
                         }
                         it.isApiError() -> {
                             lastStateHasBeenError = true
@@ -170,7 +204,7 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
                     }
                 }
             }
-            listLiveData.safeObserve(owner) {
+            listLiveData.safeObserve(fragmentActivity.viewLifecycleOwner()) {
                 if (it.isEmpty())
                     emptyStateInterface?.show(emptyErrorModel)
                 else

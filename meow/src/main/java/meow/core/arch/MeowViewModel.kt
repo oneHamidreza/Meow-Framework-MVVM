@@ -105,7 +105,10 @@ open class MeowViewModel(open val app: MeowApp) : AndroidViewModel(app), KodeinA
 
         response.processAndPush(liveData)
         @Suppress("UNCHECKED_CAST") val data = avoidException { response.data as? T? }
-        resultBlock(response, data)
+        avoidException {
+//            if (data != null)
+//                resultBlock(response, data)
+        }
     }
 
     protected fun cancelAndRemoveJob(job: Job) {

@@ -18,7 +18,6 @@ package sample.data
 
 import meow.core.arch.DataSourceInterface
 import meow.core.data.MeowSharedPreferences
-import meow.util.ofMoshiUseAdapter
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 import org.kodein.di.erased.instance
@@ -43,18 +42,14 @@ class DataSource(override var app: App) : DataSourceInterface, KodeinAware {
     private val spMain: MeowSharedPreferences by instance("spMain")
     private val spUpdate: MeowSharedPreferences by instance("spUpdate")
 
-    suspend fun getUserById(request: User.RequestGet) =
-        api.createServiceByAdapter<User.Api>(ofMoshiUseAdapter<User, UserDetailJsonAdapter>())
-            .getUserById(request.id)
-
-    suspend fun getUsers() =
-        api.createServiceByAdapter<User.Api>().getUsers()
-
     suspend fun getCatBreedsFromApi() =
         api.createServiceByAdapter<CatBreed.Api>().getCatBreedIndex()
 
     suspend fun getCatBreedFromApi() =
         api.createServiceByAdapter<CatBreed.Api>().getCatBreedDetail()
+
+    suspend fun postCatBreedToApi(request: CatBreed.Api.RequestCreate) =
+        api.createServiceByAdapter<CatBreed.Api>().createCatBreed(request.name)
 
     fun isLogin() = fetchApiToken().isNotEmpty()
     fun fetchUser() = spMain.get("user", User())

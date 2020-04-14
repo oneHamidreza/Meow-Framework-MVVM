@@ -1,3 +1,5 @@
 <resources>
     <string name="fragment_cat_breed_detail">جزییات</string>
+    <string name="cat_breed_name">نام نژاد گربه</string>
+    <string name="cat_breed_send">ارسال</string>
 </resources>

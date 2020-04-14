@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="sample.ui.api.catbreed.form.CatBreedFormViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <meow.widget.MeowFormView
+            android:id="@+id/formView"
+            meow_gap="@{16}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!--todo @Ali remove margin form textFields Only -->
+            <meow.widget.MeowTextField
+                android:id="@+id/etName"
+                style="@style/Meow.TextField.Form.Outlined"
+                android:hint="@string/cat_breed_name"
+                app:errorEnabled="true"
+                app:meow_inputType="text"
+                app:meow_validateType="empty"
+                app:startIconDrawable="@drawable/ic_cat" />
+            <!--todo @Ali TextField can support email + empty validator ??? -->
+
+            <Button
+                android:id="@+id/btSend"
+                style="@style/Meow.Button"
+                android:layout_width="match_parent"
+                android:text="@string/cat_breed_send" />
+
+        </meow.widget.MeowFormView>
+
+        <meow.widget.MeowProgressBar
+            android:id="@+id/progressbar"
+            style="@style/Meow.ProgressBar.Medium.Primary" />
+
+    </FrameLayout>
+
+</layout>

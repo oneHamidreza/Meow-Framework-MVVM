@@ -152,6 +152,7 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                 when (it.action) {
                     API_INDEX -> findNavController().navigate(HomeFragmentDirections.actionToCatBreedIndex())
                     API_DETAIL -> findNavController().navigate(HomeFragmentDirections.actionToCatBreedDetail())
+                    API_FORM -> findNavController().navigate(HomeFragmentDirections.actionToCatBreedForm())
 
                     MATERIAL_ALERTS -> findNavController().navigate(HomeFragmentDirections.actionToAlerts())
                     MATERIAL_BOTTOM_APP_BAR -> findNavController().navigate(HomeFragmentDirections.actionToBottomAppBar())

@@ -24,10 +24,7 @@ import kotlinx.serialization.Serializable
 import meow.controller
 import meow.core.api.exceptions.NetworkConnectionException
 import meow.core.api.exceptions.UnexpectedException
-import meow.util.avoidException
-import meow.util.isNotNullOrEmpty
-import meow.util.logD
-import meow.util.toClass
+import meow.util.*
 import retrofit2.HttpException
 
 /**
@@ -63,6 +60,16 @@ sealed class MeowResponse<T>(
      * @property data is the received data from a restful api at success status
      */
     class Success<T>(override var data: T?) : MeowResponse<T>(HttpCodes.OK.code, data)
+
+    /**
+     * Unprocessable Entity Error response model in restful api with http code 422.
+     *
+     */
+    class UnprocessableEntityError(
+        override var code: Int = 0,
+        override var data: List<FormErrorModel>? = null,
+        override var exception: Throwable?
+    ) : Error<List<FormErrorModel>>()
 
     /**
      * Http Error response model in restful api.
@@ -138,16 +145,14 @@ data class UIErrorModel(
     var message: String? = null,
     var actionText: String? = null
 ) {
-    val titlePlusMessage get() = "${if (title.isNotEmpty()) "$title. " else ""}$message"
+    val titlePlusMessage get() = "${if (title.isNotEmpty()) "$title " else ""}$message"
 }
 
-//todo use
 @Serializable
 data class FormErrorModel(
     @Json(name = "field") var field: String? = null,
     @Json(name = "message") var message: String? = null
 )
-
 
 fun <T> MeowResponse<T>.isSuccess() =
     ((this as? MeowResponse.Success)?.code) in controller.apiSuccessRange
@@ -160,16 +165,22 @@ fun MeowResponse<*>?.isConnectionError() = this is MeowResponse.ConnectionError
 fun MeowResponse<*>?.isNetworkError() = this is MeowResponse.NetworkError
 fun MeowResponse<*>?.isUnexpectedError() = this is MeowResponse.UnExpectedError
 fun MeowResponse<*>?.isRequestNotValidError() = this is MeowResponse.RequestNotValid
+fun MeowResponse<*>?.isUnprocessableEntityError() = this is MeowResponse.UnprocessableEntityError
 
 fun createResponseFromHttpError(throwable: HttpException): MeowResponse.Error<*> {
     return avoidException(
         tryBlock = {
             throwable.response()?.errorBody()?.source()?.let {
-                MeowResponse.HttpError(
+                if (throwable.code() == HttpCodes.UNPROCESSABLE_ENTITY.code) MeowResponse.UnprocessableEntityError(
                     code = throwable.code(),
-                    data = it.toClass(),
+                    data = it.toListClass<FormErrorModel>().apply { logD(m = this?.size) },
                     exception = throwable
-                )
+                ) else
+                    MeowResponse.HttpError(
+                        code = throwable.code(),
+                        data = it.toClass(),
+                        exception = throwable
+                    )
             } ?: MeowResponse.UnExpectedError()
         },
         exceptionBlock = {

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentHome">
+    app:startDestination="@id/fragmentCatBreedForm">
 
     <fragment
         android:id="@+id/fragmentHome"
@@ -17,6 +17,9 @@
         <action
             android:id="@+id/actionToCatBreedDetail"
             app:destination="@id/fragmentCatBreedDetail" />
+        <action
+            android:id="@+id/actionToCatBreedForm"
+            app:destination="@id/fragmentCatBreedForm" />
 
         <!-- Material -->
         <action
@@ -100,6 +103,11 @@
         android:name="sample.ui.api.catbreed.detail.CatBreedDetailFragment"
         android:label="@string/fragment_cat_breed_detail"
         tools:layout="@layout/fragment_cat_breed_detail" />
+    <fragment
+        android:id="@+id/fragmentCatBreedForm"
+        android:name="sample.ui.api.catbreed.detail.CatBreedFormFragment"
+        android:label="@string/fragment_cat_breed_form"
+        tools:layout="@layout/fragment_cat_breed_form" />
 
     <!-- Extensions -->
     <fragment

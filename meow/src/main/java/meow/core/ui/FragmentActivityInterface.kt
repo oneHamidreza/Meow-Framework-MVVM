@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -55,6 +56,8 @@ interface FragmentActivityInterface<B : ViewDataBinding> {
     fun activity(): MeowActivity<*>
 
     fun resources() = context().resources
+
+    fun viewLifecycleOwner(): LifecycleOwner?
 
     fun initViewModel()
 
