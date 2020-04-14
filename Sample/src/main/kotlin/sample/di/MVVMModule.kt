@@ -25,6 +25,7 @@ import org.kodein.di.erased.provider
 import org.kodein.di.erased.singleton
 import sample.data.catbreed.CatBreed
 import sample.data.user.User
+import sample.ui.api.catbreed.detail.CatBreedDetailViewModel
 import sample.ui.api.catbreed.index.CatBreedIndexViewModel
 import sample.ui.content.ContentViewModel
 import sample.ui.dialog.CustomDialogViewModel
@@ -93,6 +94,12 @@ val mvvmModule = Module("MVVM Module", false) {
     // Api Samples
     bindAutoTag<CatBreedIndexViewModel>() with provider {
         CatBreedIndexViewModel(
+            kodein.direct.instance(),
+            instance()
+        )
+    }
+    bindAutoTag<CatBreedDetailViewModel>() with provider {
+        CatBreedDetailViewModel(
             kodein.direct.instance(),
             instance()
         )

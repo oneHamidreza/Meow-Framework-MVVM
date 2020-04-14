@@ -53,6 +53,9 @@ class DataSource(override var app: App) : DataSourceInterface, KodeinAware {
     suspend fun getCatBreedsFromApi() =
         api.createServiceByAdapter<CatBreed.Api>().getCatBreedIndex()
 
+    suspend fun getCatBreedFromApi() =
+        api.createServiceByAdapter<CatBreed.Api>().getCatBreedDetail()
+
     fun isLogin() = fetchApiToken().isNotEmpty()
     fun fetchUser() = spMain.get("user", User())
     fun saveUser(it: User) = spMain.put("user", it)

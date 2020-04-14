@@ -32,12 +32,17 @@ data class CatBreed(
 
     class Repository(private val ds: DataSource) {
 
-        suspend fun getCatBreedIndex() = ds.getCatBreedsFromApi()
+        suspend fun getCatBreedsFromApi() = ds.getCatBreedsFromApi()
+
+        suspend fun getCatBreedFromApi() = ds.getCatBreedFromApi()
     }
 
     interface Api {
         @GET("sample_cat_breed_index")
         suspend fun getCatBreedIndex(): List<CatBreed>
+
+        @GET("sample_cat_breed_detail")
+        suspend fun getCatBreedDetail(): CatBreed
     }
 
     class DiffCallback : DiffUtil.ItemCallback<CatBreed>() {

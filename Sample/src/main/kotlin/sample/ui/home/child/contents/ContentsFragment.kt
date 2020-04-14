@@ -151,6 +151,7 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
             adapter = ContentAdapter(contentViewModel) { _, it, _ ->
                 when (it.action) {
                     API_INDEX -> findNavController().navigate(HomeFragmentDirections.actionToCatBreedIndex())
+                    API_DETAIL -> findNavController().navigate(HomeFragmentDirections.actionToCatBreedDetail())
 
                     MATERIAL_ALERTS -> findNavController().navigate(HomeFragmentDirections.actionToAlerts())
                     MATERIAL_BOTTOM_APP_BAR -> findNavController().navigate(HomeFragmentDirections.actionToBottomAppBar())

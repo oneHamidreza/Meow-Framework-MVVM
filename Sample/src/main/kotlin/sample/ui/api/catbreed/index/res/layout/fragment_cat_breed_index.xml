@@ -19,7 +19,7 @@
             meow_items="@{viewModel.listLiveData}" />
 
         <meow.widget.MeowProgressBar
-            android:id="@+id/progress_bar"
+            android:id="@+id/progressbar"
             style="@style/Meow.ProgressBar.Medium.Primary" />
 
         <meow.widget.MeowEmptyState

@@ -69,12 +69,14 @@ object ImageViewBindingAdapter {
     @JvmStatic
     fun setUrl(
         view: ImageView,
-        data: String,
+        data: String? = null,
         placeHolderDrawable: Drawable? = null,
         loadAnimator: ViewPropertyTransition.Animator? = null,
         glideCornerSize: Float = 0f,
         base64Data: String? = null
     ) {
+        if (data == null)
+            return
         val transformation = if (glideCornerSize == 0f) null else MultiTransformation(
             CenterCrop(),
             MeowCornersTransformation(glideCornerSize.dp().toInt(), 0)

@@ -14,40 +14,32 @@
  * limitations under the License.
  */
 
-package sample.ui.api.catbreed.index
+package sample.ui.api.catbreed.detail
 
-import android.os.Bundle
-import android.view.View
+import meow.controller
 import meow.core.arch.MeowFlow
 import meow.util.instanceViewModel
 import sample.R
 import sample.data.catbreed.CatBreed
-import sample.databinding.FragmentCatBreedIndexBinding
+import sample.databinding.FragmentCatBreedDetailBinding
 import sample.ui.base.BaseFragment
 
 /**
- * [CatBreed]/Index Fragment.
+ * [CatBreed]/Detail Fragment.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-04-11
  */
 
-class CatBreedIndexFragment : BaseFragment<FragmentCatBreedIndexBinding>() {
+class CatBreedDetailFragment : BaseFragment<FragmentCatBreedDetailBinding>() {
 
-    private val viewModel: CatBreedIndexViewModel by instanceViewModel()
-    override fun layoutId() = R.layout.fragment_cat_breed_index
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.recyclerView.apply {
-            adapter = CatBreedAdapter(viewModel)
-        }
-    }
+    private val viewModel: CatBreedDetailViewModel by instanceViewModel()
+    override fun layoutId() = R.layout.fragment_cat_breed_detail
 
     override fun initViewModel() {
         binding.viewModel = viewModel
+        binding.controller = controller
         MeowFlow.GetDataApi(this) {
             viewModel.callApi()
         }.apply {
@@ -55,7 +47,7 @@ class CatBreedIndexFragment : BaseFragment<FragmentCatBreedIndexBinding>() {
             errorHandlerType = MeowFlow.ErrorHandlerType.EMPTY_STATE
             progressBarInterface = binding.progressbar
             emptyStateInterface = binding.emptyState
-        }.observeForIndex(viewLifecycleOwner, viewModel.eventLiveData, viewModel.listLiveData)
+        }.observeForDetail(viewLifecycleOwner, viewModel.eventLiveData)
     }
 
 }

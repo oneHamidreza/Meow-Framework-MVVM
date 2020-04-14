@@ -124,7 +124,18 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
             action()
         }
 
-        fun <T : Any> observe(
+        fun <T : Any> observeForIndex(
+            owner: LifecycleOwner?,
+            eventLiveData: LiveData<*>,
+            listLiveData: LiveData<List<T>>
+        ) = observe(owner, eventLiveData, listLiveData)
+
+        fun observeForDetail(
+            owner: LifecycleOwner?,
+            eventLiveData: LiveData<*>
+        ) = observe<Nothing>(owner, eventLiveData)
+
+        private fun <T : Any> observe(
             owner: LifecycleOwner?,
             eventLiveData: LiveData<*>,
             listLiveData: LiveData<List<T>>? = null

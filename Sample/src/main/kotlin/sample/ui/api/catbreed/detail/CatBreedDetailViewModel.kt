@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package sample.ui.api.catbreed.index
+package sample.ui.api.catbreed.detail
 
 import androidx.lifecycle.MutableLiveData
 import meow.core.api.MeowEvent
@@ -23,28 +23,28 @@ import sample.App
 import sample.data.catbreed.CatBreed
 
 /**
- * [CatBreed]/Index View Model class.
+ * [CatBreed]/Detail View Model class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-04-11
+ * @since   2020-04-14
  */
 
-class CatBreedIndexViewModel(
+class CatBreedDetailViewModel(
     override val app: App,
     private val repository: CatBreed.Repository
 ) : MeowViewModel(app) {
 
     var eventLiveData = MutableLiveData<MeowEvent<*>>()
-    var listLiveData = MutableLiveData<List<CatBreed>>()
+    var modelLiveData = MutableLiveData<CatBreed>()
 
     fun callApi() {
         safeCallApi(
             liveData = eventLiveData,
             isNetworkRequired = true,
-            apiAction = { repository.getCatBreedsFromApi() }
+            apiAction = { repository.getCatBreedFromApi() }
         ) { _, it ->
-            listLiveData.postValue(it)
+            modelLiveData.postValue(it)
         }
     }
 }
