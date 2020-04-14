@@ -89,7 +89,7 @@ open class MeowSpinner : TextInputLayout {
     fun build() {
         adapter.notifyDataSetChanged()
         setAdapter(adapter)
-        autoCompleteTextView.setOnItemClickListener { parent, view, position, id ->
+        autoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
             val title = adapter.getItem(position)?.title
             autoCompleteTextView.setText(title, false)
         }

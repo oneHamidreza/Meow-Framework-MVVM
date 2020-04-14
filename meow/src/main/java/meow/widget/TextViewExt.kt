@@ -19,6 +19,8 @@ package meow.widget
 import android.annotation.SuppressLint
 import android.view.Gravity
 import android.widget.TextView
+import androidx.annotation.StyleRes
+import androidx.core.widget.TextViewCompat
 import androidx.databinding.BindingAdapter
 import meow.controller
 import meow.util.toEnglishNumber
@@ -82,3 +84,5 @@ fun calculateGravityIfNeed(gravity: Int, isReverse: Boolean = false): Int {
     return newGravity
 }
 
+fun TextView.setTextAppearanceCompat(@StyleRes resId: Int) =
+    TextViewCompat.setTextAppearance(this, resId)

@@ -8,6 +8,7 @@
             type="sample.ui.api.catbreed.index.CatBreedIndexViewModel" />
     </data>
 
+    <!--todo swipe refresh layout -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -18,8 +19,12 @@
             meow_items="@{viewModel.listLiveData}" />
 
         <meow.widget.MeowProgressBar
-            android:id="@+id/pb"
+            android:id="@+id/progress_bar"
             style="@style/Meow.ProgressBar.Medium.Primary" />
+
+        <meow.widget.MeowEmptyState
+            android:id="@+id/emptyState"
+            style="@style/Meow.EmptyState.OnBackground" />
 
     </FrameLayout>
 

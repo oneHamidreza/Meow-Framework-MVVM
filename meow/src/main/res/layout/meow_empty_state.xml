@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.content.res.ColorStateList" />
+
+        <variable
+            name="iconTint"
+            type="ColorStateList" />
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="titleTextColor"
+            type="Integer" />
+
+        <variable
+            name="desc"
+            type="String" />
+
+        <variable
+            name="descTextColor"
+            type="Integer" />
+
+        <variable
+            name="showDesc"
+            type="Boolean" />
+
+        <variable
+            name="primaryActionText"
+            type="String" />
+
+        <variable
+            name="hasAction"
+            type="Boolean" />
+    </data>
+
+    <merge>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:tint="@{iconTint}" />
+        <!--todo test on android 19 -->
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/Meow.TextView"
+            android:layout_marginBottom="8dp"
+            android:text="@{title}"
+            android:textAppearance="?textAppearanceSubtitle1"
+            android:textColor="@{titleTextColor}" />
+
+        <TextView
+            android:id="@+id/tvDesc"
+            style="@style/Meow.TextView"
+            android:layout_marginBottom="8dp"
+            android:text="@{desc}"
+            android:textAppearance="?textAppearanceBody2"
+            android:textColor="@{descTextColor}"
+            android:visibility="@{showDesc ? View.VISIBLE : View.GONE}" />
+
+        <Button
+            android:id="@+id/bt"
+            style="@style/Meow.Button.EmptyState"
+            android:layout_marginTop="16dp"
+            android:text="@{primaryActionText}"
+            android:visibility="@{hasAction ? View.VISIBLE : View.GONE}" />
+
+    </merge>
+
+</layout>

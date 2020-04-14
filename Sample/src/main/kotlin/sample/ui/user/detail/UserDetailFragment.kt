@@ -17,7 +17,6 @@
 package sample.ui.user.detail
 
 import android.os.Bundle
-import meow.core.arch.MeowFlow
 import meow.util.instanceViewModel
 import meow.util.safeObserve
 import meow.util.snackL
@@ -52,9 +51,9 @@ class UserDetailFragment : BaseFragment<FragmentUserDetailBinding>() {
     override fun initViewModel() {
         binding.viewModel = viewModel
 
-        MeowFlow.GetDataApi(this).apply {
-            containerViews = arrayOf(binding.tvModel, binding.tvStatus)
-        }.observe(binding.lifecycleOwner, viewModel.apiLiveData)
+//        MeowFlow.GetDataApi(this).apply {
+//            containerViews = arrayOf(binding.tvModel, binding.tvStatus)
+//        }.observe(binding.lifecycleOwner, viewModel.apiLiveData)
 
         viewModel.snackMessageLiveData.safeObserve(this) {
             snackL(it, "OK") {

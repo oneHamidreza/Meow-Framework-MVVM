@@ -15,6 +15,9 @@
     <color name="text_on_primary_high">@color/material_on_primary_emphasis_high_type</color>
     <color name="text_on_primary_medium">@color/material_on_primary_emphasis_medium</color>
     <color name="text_on_primary_disabled">@color/material_on_primary_disabled</color>
+    <color name="text_on_secondary_high">@color/material_on_secondary_emphasis_high_type</color>
+    <color name="text_on_secondary_medium">@color/material_on_secondary_emphasis_medium</color>
+    <color name="text_on_secondary_disabled">@color/material_on_secondary_disabled</color>
 
     <color name="notification">#ffffff</color>
 

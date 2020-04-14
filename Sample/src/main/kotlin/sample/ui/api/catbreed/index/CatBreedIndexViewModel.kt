@@ -19,10 +19,8 @@ package sample.ui.api.catbreed.index
 import androidx.lifecycle.MutableLiveData
 import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
-import org.kodein.di.erased.instance
 import sample.App
 import sample.data.catbreed.CatBreed
-import sample.di.AppApi
 
 /**
  * [CatBreed]/Index View Model class.
@@ -39,8 +37,6 @@ class CatBreedIndexViewModel(
 
     var eventLiveData = MutableLiveData<MeowEvent<*>>()
     var listLiveData = MutableLiveData<List<CatBreed>>()
-
-    val api: AppApi by instance()
 
     fun callApi() {
         safeCallApi(

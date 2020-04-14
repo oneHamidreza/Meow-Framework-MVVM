@@ -40,7 +40,10 @@ import org.kodein.di.direct
  * @since   2020-03-30
  */
 
-fun <T> LiveData<T>.safeObserve(owner: LifecycleOwner? = null, observer: (T) -> Unit) {
+fun <T> LiveData<T>?.safeObserve(owner: LifecycleOwner? = null, observer: (T) -> Unit) {
+    if (this == null)
+        return
+
     val archObserver = Observer<T> { value ->
         if (value is T) avoidException { observer(value) }
     }

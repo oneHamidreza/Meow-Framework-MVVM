@@ -12,6 +12,17 @@
         <attr name="dash_color" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="MeowEmptyState">
+        <attr name="empty_iconRes" format="reference" />
+        <attr name="empty_iconSize" format="dimension" />
+        <attr name="empty_iconTint" format="color" />
+        <attr name="empty_title" format="string" />
+        <attr name="empty_titleTextColor" format="reference" />
+        <attr name="empty_desc" format="string" />
+        <attr name="empty_descTextColor" format="reference" />
+        <attr name="empty_primaryActionText" format="string" />
+    </declare-styleable>
+
     <attr name="msd_shape" format="enum">
         <enum name="rectangle" value="0" />
         <enum name="oval" value="1" />

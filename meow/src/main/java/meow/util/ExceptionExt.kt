@@ -16,6 +16,7 @@
 
 package meow.util
 
+import com.google.i18n.phonenumbers.NumberParseException
 import meow.controller
 
 /**
@@ -31,7 +32,7 @@ fun allowReport(
     exp: Exception
 ): Boolean {
     return when (exp) {
-//        is NumberParseException -> false
+        is NumberParseException -> false
         else -> true
     }
 }

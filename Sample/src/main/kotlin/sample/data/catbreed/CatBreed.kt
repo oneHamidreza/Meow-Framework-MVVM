@@ -32,7 +32,7 @@ data class CatBreed(
 
     class Repository(private val ds: DataSource) {
 
-        suspend fun getCatBreedIndex() = ds.getCatBreedsApi()
+        suspend fun getCatBreedIndex() = ds.getCatBreedsFromApi()
     }
 
     interface Api {

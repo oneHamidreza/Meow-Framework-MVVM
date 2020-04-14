@@ -50,7 +50,7 @@ class DataSource(override var app: App) : DataSourceInterface, KodeinAware {
     suspend fun getUsers() =
         api.createServiceByAdapter<User.Api>().getUsers()
 
-    suspend fun getCatBreedsApi() =
+    suspend fun getCatBreedsFromApi() =
         api.createServiceByAdapter<CatBreed.Api>().getCatBreedIndex()
 
     fun isLogin() = fetchApiToken().isNotEmpty()

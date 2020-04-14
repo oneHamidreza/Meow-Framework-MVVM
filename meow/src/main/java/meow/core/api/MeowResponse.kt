@@ -99,12 +99,6 @@ sealed class MeowResponse<T>(
     class ConnectionError : Error<Nothing>(exception = NetworkConnectionException())
 
     /**
-     * Network Error response model in restful api with http code UNKNOWN.
-     *
-     */
-    class GeneralError(override var exception: Throwable?) : Error<Nothing>()
-
-    /**
      * Request Not Valid Error response model in restful api with http code UNKNOWN.
      *
      */
@@ -138,6 +132,15 @@ data class SimpleResponse(
         }
 }
 
+data class UIErrorModel(
+    var icon: Int = R.drawable.ic_error_outline,
+    var title: String,
+    var message: String? = null,
+    var actionText: String? = null
+) {
+    val titlePlusMessage get() = "${if (title.isNotEmpty()) "$title. " else ""}$message"
+}
+
 //todo use
 @Serializable
 data class FormErrorModel(
@@ -149,18 +152,12 @@ data class FormErrorModel(
 fun <T> MeowResponse<T>.isSuccess() =
     ((this as? MeowResponse.Success)?.code) in controller.apiSuccessRange
 
-fun MeowResponse<*>?.isBadRequest() = this?.code == HttpCodes.BAD_REQUEST.code
-fun MeowResponse<*>?.isUnAuthorized() = this?.code == HttpCodes.UNAUTHORIZED.code
-fun MeowResponse<*>?.isForbidden() = this?.code == HttpCodes.FORBIDDEN.code
-fun MeowResponse<*>?.isNotFound() = this?.code == HttpCodes.NOT_FOUND.code
-fun MeowResponse<*>?.isUnprocessableEntity() = this?.code == HttpCodes.UNPROCESSABLE_ENTITY.code
 fun MeowResponse<*>?.isCancellation() = this is MeowResponse.Cancellation
 fun MeowResponse<*>?.isError() = this is MeowResponse.Error
 fun MeowResponse<*>?.isHttpError() = this is MeowResponse.HttpError
 fun MeowResponse<*>?.isParseError() = this is MeowResponse.ParseError
 fun MeowResponse<*>?.isConnectionError() = this is MeowResponse.ConnectionError
 fun MeowResponse<*>?.isNetworkError() = this is MeowResponse.NetworkError
-fun MeowResponse<*>?.isGeneralError() = this is MeowResponse.GeneralError
 fun MeowResponse<*>?.isUnexpectedError() = this is MeowResponse.UnExpectedError
 fun MeowResponse<*>?.isRequestNotValidError() = this is MeowResponse.RequestNotValid
 
@@ -200,35 +197,99 @@ fun <T> ofSuccessApiEvent(data: T) = MeowEvent.Api.Success(MeowResponse.Success(
 fun <T> ofErrorApiEvent(data: T, exception: Throwable? = null, code: Int = HttpCodes.UNKNOWN.code) =
     MeowEvent.Api.Error(MeowResponse.Error(data, exception, code))
 
-fun MeowResponse<*>?.createErrorMessage(resources: Resources): String {
+fun MeowResponse<*>?.createErrorModel(
+    resources: Resources,
+    forceFromApi: Boolean = false
+): UIErrorModel {
+
+    fun unexpected(code: Int) =
+        UIErrorModel(
+            icon = R.drawable.ic_error,
+            title = resources.getString(R.string.error_response_unexpected_title),
+            message = resources.getString(R.string.error_response_unexpected_message).format(code)
+        )
+
     if (this == null)
-        return resources.getString(R.string.error_response_unexpected).format(-100)
+        return unexpected(-100)
     if (!this.isError())
-        return resources.getString(R.string.error_response_unexpected).format(-200)
+        return unexpected(-200)
     if ((this as MeowResponse.Error<*>).exception == null)
-        return resources.getString(R.string.error_response_unexpected).format(-300)
+        return unexpected(-300)
 
     return when {
         isHttpError() -> {
-            val suggest = when (code) {
-                HttpCodes.UNAUTHORIZED.code -> resources.getString(R.string.error_response_http_suggest_unauthorized)
-                HttpCodes.BAD_REQUEST.code -> resources.getString(R.string.error_response_http_suggest_bad_request)
-                HttpCodes.UNPROCESSABLE_ENTITY.code -> resources.getString(R.string.error_response_http_suggest_unprocessable_entity)
-                HttpCodes.TOO_MANY_REQUESTS.code -> resources.getString(R.string.error_response_http_suggest_too_request)
-                else -> ""
+            val httpErrorUI = UIErrorModel(
+                title = resources.getString(R.string.error_http_title).format(code),
+                actionText = resources.getString(R.string.error_actionText_try_again)
+            )
+            when (code) {
+                HttpCodes.UNAUTHORIZED.code -> httpErrorUI.apply {
+                    icon = R.drawable.ic_error_unauthorized
+                    title = resources.getString(R.string.error_response_http_unauthorized_title)
+                    message = resources.getString(R.string.error_response_http_unauthorized_message)
+                    actionText = null
+                }
+                HttpCodes.BAD_REQUEST.code -> httpErrorUI.apply {
+                    title = resources.getString(R.string.error_response_http_bad_request_title)
+                    message = resources.getString(R.string.error_response_http_bad_request_message)
+                }
+                HttpCodes.UNPROCESSABLE_ENTITY.code -> httpErrorUI.apply {
+                    title =
+                        resources.getString(R.string.error_response_http_unprocessable_entity_title)
+                    message =
+                        resources.getString(R.string.error_response_http_unprocessable_entity_message)
+                }
+                HttpCodes.TOO_MANY_REQUESTS.code -> httpErrorUI.apply {
+                    title = resources.getString(R.string.error_response_http_too_many_request_title)
+                    message =
+                        resources.getString(R.string.error_response_http_too_many_request_message)
+                }
+                HttpCodes.INTERNAL_SERVER_ERROR.code -> httpErrorUI.apply {
+                    icon = R.drawable.ic_error_internal_server
+                    title = resources.getString(R.string.error_http_internal_server_title)
+                    message = resources.getString(R.string.error_http_internal_server_message)
+                }
             }
+
             val modelIfExists = this.data as? SimpleResponse?
-            modelIfExists?.messageIfExist
-                ?: resources.getString(R.string.error_response_http_with_suggest)
-                    .format(suggest, code)
+            val messageFromApi = modelIfExists?.messageIfExist
+            if (forceFromApi || messageFromApi.isNotNullOrEmpty())
+                httpErrorUI.apply { message = modelIfExists?.messageIfExist }
+            else
+                httpErrorUI
         }
-        isParseError() -> resources.getString(R.string.error_response_parse)
-        isNetworkError() -> resources.getString(R.string.error_network)
-        isConnectionError() -> resources.getString(R.string.error_connection)
-        isGeneralError() -> resources.getString(R.string.error_response_general)
-        isUnexpectedError() -> resources.getString(R.string.error_response_unexpected)
-            .format(-400)
-        isRequestNotValidError() -> resources.getString(R.string.error_response_request_not_valid)
-        else -> ""
+        isNetworkError() ->
+            UIErrorModel(
+                icon = R.drawable.ic_error_network,
+                title = resources.getString(R.string.error_network_title),
+                message = resources.getString(R.string.error_network_message),
+                actionText = resources.getString(R.string.error_actionText_try_again)
+            )
+        isConnectionError() ->
+            UIErrorModel(
+                icon = R.drawable.ic_error_connection,
+                title = resources.getString(R.string.error_connection_title),
+                message = resources.getString(R.string.error_connection_message),
+                actionText = resources.getString(R.string.error_actionText_try_again)
+            )
+        isParseError() ->
+            UIErrorModel(
+                title = resources.getString(R.string.error_response_parse_title),
+                message = resources.getString(R.string.error_response_parse_message),
+                actionText = resources.getString(R.string.error_actionText_try_again)
+            )
+        isUnexpectedError() ->
+            UIErrorModel(
+                title = resources.getString(R.string.error_response_unexpected_title),
+                message = resources.getString(R.string.error_response_unexpected_message),
+                actionText = resources.getString(R.string.error_actionText_try_again)
+            )
+        isRequestNotValidError() ->
+            UIErrorModel(
+                title = resources.getString(R.string.error_response_request_not_valid_title),
+                message = resources.getString(R.string.error_response_request_not_valid_message),
+                actionText = resources.getString(R.string.error_actionText_try_again)
+            )
+        else -> unexpected(-500)
     }
 }

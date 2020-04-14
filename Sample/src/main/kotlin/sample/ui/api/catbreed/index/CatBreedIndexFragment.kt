@@ -42,23 +42,20 @@ class CatBreedIndexFragment : BaseFragment<FragmentCatBreedIndexBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.recyclerView.apply {
-//            addItemDecoration(MaterialCardDecoration())
             adapter = CatBreedAdapter(viewModel)
         }
-
-        callApi()
     }
 
     override fun initViewModel() {
         binding.viewModel = viewModel
-        MeowFlow.GetDataApi(this).apply {
+        MeowFlow.GetDataApi(this) {
+            viewModel.callApi()
+        }.apply {
             containerViews = arrayOf()
-            progressBarInterface = binding.pb
-        }.observe(viewLifecycleOwner, viewModel.eventLiveData)
-    }
-
-    fun callApi() {
-        viewModel.callApi()
+            errorHandlerType = MeowFlow.ErrorHandlerType.EMPTY_STATE
+            progressBarInterface = binding.progressBar
+            emptyStateInterface = binding.emptyState
+        }.observe(viewLifecycleOwner, viewModel.eventLiveData, viewModel.listLiveData)
     }
 
 }

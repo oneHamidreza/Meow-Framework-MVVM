@@ -20,13 +20,14 @@ import android.app.Dialog
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
+import com.etebarian.meowframework.R
 import meow.core.api.*
 import meow.core.arch.MeowFlow.GetDataApi
 import meow.core.ui.FragmentActivityInterface
-import meow.util.logD
 import meow.util.safeObserve
+import meow.util.snackL
 import meow.util.toastL
-import meow.widget.impl.MeowErrorViewInterface
+import meow.widget.impl.MeowEmptyStateInterface
 import meow.widget.impl.ProgressBarInterface
 
 /**
@@ -37,9 +38,10 @@ import meow.widget.impl.ProgressBarInterface
  * @since   2020-03-10
  */
 
-sealed class MeowFlow(open val mvvm: FragmentActivityInterface<*>) {
+sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
 
-    class GetDataApi(override val mvvm: FragmentActivityInterface<*>) : Api(mvvm) {
+    class GetDataApi(fragmentActivity: FragmentActivityInterface<*>, action: () -> Unit) :
+        Api(fragmentActivity, action) {
         init {
             onBeforeAction = {
                 containerViews.forEach { it.visibility = visibilityWhenLoading }
@@ -54,12 +56,13 @@ sealed class MeowFlow(open val mvvm: FragmentActivityInterface<*>) {
     }
 
     open class Api(
-        override val mvvm: FragmentActivityInterface<*>
-    ) : MeowFlow(mvvm) {
-
-        var isErrorShowByToastEnabled: Boolean = true
+        fragmentActivity: FragmentActivityInterface<*>,
+        private var action: () -> Unit
+    ) : MeowFlow(fragmentActivity) {
 
         var isShowingErrorMassageEnabled: Boolean = true
+
+        var errorHandlerType: ErrorHandlerType = ErrorHandlerType.TOAST
 
         var lastStateHasBeenError: Boolean = false
 
@@ -69,7 +72,13 @@ sealed class MeowFlow(open val mvvm: FragmentActivityInterface<*>) {
 
         var progressBarInterface: ProgressBarInterface? = null
 
-        var errorViewInterface: MeowErrorViewInterface? = null
+        var emptyStateInterface: MeowEmptyStateInterface? = null
+
+        var emptyErrorModel: UIErrorModel = UIErrorModel(
+            icon = R.drawable.ic_sentiment_dissatisfied,
+            title = fragmentActivity.resources().getString(R.string.error_empty_title),
+            actionText = null
+        )
 
         var dialog: Dialog? = null
 
@@ -80,35 +89,53 @@ sealed class MeowFlow(open val mvvm: FragmentActivityInterface<*>) {
         var onSuccessAction: (it: MeowResponse<*>) -> Unit = {}
 
         var onCancellationAction: () -> Unit = {
-            if (isShowingErrorMassageEnabled) {
-                val message = MeowEvent.Api.Cancellation().message(mvvm.resources())
-                onShowErrorMessage(message)
-            }
+            val title = MeowEvent.Api.Cancellation().title(fragmentActivity.resources())
+            val message = MeowEvent.Api.Cancellation().message(fragmentActivity.resources())
+            onShowErrorMessage(UIErrorModel(title = title, message = message))
         }
 
         var onErrorAction: (it: MeowEvent.Api.Error) -> Unit = {
-            onShowErrorMessage(it.data.createErrorMessage(mvvm.resources()))
+            onShowErrorMessage(it.data.createErrorModel(fragmentActivity.resources()))
         }
 
-        var onShowErrorMessage: (it: String) -> Unit = {
-            if (isErrorShowByToastEnabled)
-                mvvm.toastL(it)
+        var onShowErrorMessage: (error: UIErrorModel) -> Unit = {
+            if (isShowingErrorMassageEnabled) {
+                if (errorHandlerType == ErrorHandlerType.TOAST)
+                    fragmentActivity.toastL(it.titlePlusMessage)
+                if (errorHandlerType == ErrorHandlerType.SNACK_BAR)
+                    fragmentActivity.snackL(it.titlePlusMessage)
+                if (errorHandlerType == ErrorHandlerType.EMPTY_STATE)
+                    emptyStateInterface?.show(it)
+            }
         }
 
         var onShowLoading: (text: String?) -> Unit = {
             progressBarInterface?.show()
             dialog?.show()
-            errorViewInterface?.hide()
+            emptyStateInterface?.hide()
         }
 
         var onHideLoading: () -> Unit = {
-            logD(m = "onHide")
             progressBarInterface?.hide()
             dialog?.hide()
         }
 
-        fun observe(owner: LifecycleOwner?, liveData: LiveData<*>) {
-            liveData.safeObserve(owner) {
+        var onClickedActionEmptyState: () -> Unit = {
+            action()
+        }
+
+        fun <T : Any> observe(
+            owner: LifecycleOwner?,
+            eventLiveData: LiveData<*>,
+            listLiveData: LiveData<List<T>>? = null
+        ) {
+            emptyStateInterface?.setOnActionClickListener {
+                onClickedActionEmptyState()
+            }
+
+            action()
+
+            eventLiveData.safeObserve(owner) {
                 if (it is MeowEvent<*>) {
                     when {
                         it.isApiCancellation() -> {
@@ -132,7 +159,19 @@ sealed class MeowFlow(open val mvvm: FragmentActivityInterface<*>) {
                     }
                 }
             }
+            listLiveData.safeObserve(owner) {
+                if (it.isEmpty())
+                    emptyStateInterface?.show(emptyErrorModel)
+                else
+                    emptyStateInterface?.hide()
+            }
         }
+    }
+
+    enum class ErrorHandlerType {
+        TOAST,
+        SNACK_BAR,
+        EMPTY_STATE,
     }
 
 }

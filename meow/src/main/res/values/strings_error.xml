@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="error_network">No internet!. Check your network.</string>
-    <string name="error_connection">Can\'t connect to server!. Check your network or try again later.</string>
-    <string name="error_response_unexpected">Unexpected Error! (code = %d). Try again later.</string>
-    <string name="error_response_parse">Parsing Data Error!. Try again later.</string>
-    <string name="error_response_general">Unknown Error!. Try again later.</string>
-    <string name="error_response_request_not_valid">Please check your request parameters.</string>
-    <string name="error_cancellation">The action canceled.</string>
+    <string name="error_empty_title">No Data!</string>
 
-    <string name="error_response_http_with_suggest">Http Error! %s (code = %d). Try again later.</string>
-    <string name="error_response_http_suggest_unauthorized">Please login again</string>
-    <string name="error_response_http_suggest_bad_request">Please check your request parameters</string>
-    <string name="error_response_http_suggest_unprocessable_entity">Please check your request parameters</string>
-    <string name="error_response_http_suggest_too_request">Please wait. There are too many requests now</string>
+    <string name="error_network_title">No Available Network!</string>
+    <string name="error_network_message">Check your network settings.</string>
+
+    <string name="error_connection_title">Server Connection Error!</string>
+    <string name="error_connection_message">No success connection to server. Check your network or try again later.</string>
+
+    <string name="error_response_unexpected_title">Unexpected Error!</string>
+    <string name="error_response_unexpected_message">An unexpected error occurred. (code = %d)</string>
+
+    <string name="error_response_parse_title">Parsing Data Error!</string>
+    <string name="error_response_parse_message">Response from server is not valid for parsing.</string>
+
+    <string name="error_response_request_not_valid_title">Not Valid Request Data!</string>
+    <string name="error_response_request_not_valid_message">Please check your request parameters.</string>
+
+    <string name="error_cancellation_title">Canceled!</string>
+    <string name="error_cancellation_message">The action canceled.</string>
+
+    <string name="error_http_title">Http Error #%d!</string>
+    <string name="error_http_message">Response from server is not OK.</string>
+
+    <string name="error_http_internal_server_title">Internal Server Error!</string>
+    <string name="error_http_internal_server_message">An internal server error occurred.</string>
+
+    <string name="error_response_http_unauthorized_title">Unauthorized!</string>
+    <string name="error_response_http_unauthorized_message">Please login again.</string>
+
+    <string name="error_response_http_bad_request_title">Bad Request!</string>
+    <string name="error_response_http_bad_request_message">Please check your request parameters</string>
+
+    <string name="error_response_http_unprocessable_entity_title">Not Valid Request!</string>
+    <string name="error_response_http_unprocessable_entity_message">Please check your request parameters.</string>
+
+    <string name="error_response_http_too_many_request_title">Too Many Requests!</string>
+    <string name="error_response_http_too_many_request_message">Please wait. There are too many requests now to server.</string>
+
+    <string name="error_actionText_try_again">Try Again</string>
 
     <string name="error_mobile_not_valid">Invalid Mobile Number</string>
     <string name="error_email_not_valid">Invalid Email Address</string>

@@ -16,18 +16,32 @@
 
 package meow.widget.impl
 
+import android.view.View
+import android.widget.Button
+import meow.core.api.UIErrorModel
+
 /**
- * The Error interface.
+ * Meow Empty State interface.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-10
  */
 
-interface MeowErrorViewInterface {
+interface MeowEmptyStateInterface {
+
+    fun getActionButton(): Button
+
+    fun setOnActionClickListener(listener: View.OnClickListener) {
+        getActionButton().setOnClickListener(listener)
+    }
+
+    fun setOnActionClickListener(listener: () -> Unit) {
+        getActionButton().setOnClickListener { listener() }
+    }
 
     fun hide()
 
-    fun show()
+    fun show(uiErrorModel: UIErrorModel)
 
 }
