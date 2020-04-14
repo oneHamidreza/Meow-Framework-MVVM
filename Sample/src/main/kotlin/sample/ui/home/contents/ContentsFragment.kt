@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-package sample.ui.home.child.contents
+package sample.ui.home.contents
 
 import android.os.Bundle
-import androidx.navigation.findNavController
 import meow.util.avoidException
 import meow.util.instanceViewModel
 import meow.widget.decoration.MeowDividerDecoration
@@ -78,7 +77,11 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         (arguments ?: savedInstanceState)?.apply {
-            type = avoidException { Type.values()[getInt(KEY_TYPE)] }
+            type = avoidException {
+                Type.values()[getInt(
+                    KEY_TYPE
+                )]
+            }
         }
         val titles = (when (type!!) {
             Type.API -> resources().getStringArray(R.array.contents_api_titles)

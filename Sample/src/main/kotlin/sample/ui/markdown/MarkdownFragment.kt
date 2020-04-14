@@ -14,39 +14,34 @@
  * limitations under the License.
  */
 
-package sample.ui.home.child.readme
+package sample.ui.markdown
 
 import android.os.Bundle
-import android.view.View
-import io.noties.markwon.Markwon
-import io.noties.markwon.image.ImagesPlugin
+import androidx.navigation.fragment.navArgs
 import meow.util.instanceViewModel
 import sample.R
-import sample.databinding.FragmentReadmeBinding
+import sample.databinding.FragmentMarkdownBinding
 import sample.ui.base.BaseFragment
+import sample.widget.TextViewBinding
 
 /**
- * Readme Fragment.
+ * Markdown Fragment.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-04-06
  */
 
-class ReadmeFragment : BaseFragment<FragmentReadmeBinding>() {
+class MarkdownFragment : BaseFragment<FragmentMarkdownBinding>() {
 
-    private val viewModel: ReadmeViewModel by instanceViewModel()
-    override fun layoutId() = R.layout.fragment_readme
+    val navArgs: MarkdownFragmentArgs by navArgs()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private val viewModel: MarkdownViewModel by instanceViewModel()
+    override fun layoutId() = R.layout.fragment_markdown
 
-        binding.tvReadme.apply {
-            val str = resources.assets.open("README.md").bufferedReader().use { it.readText() }
-            Markwon.builder(context()).apply {
-                usePlugin(ImagesPlugin.create())
-            }.build().setMarkdown(this, str)
-        }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        TextViewBinding.setMarkdownAssets(binding.tv, navArgs.fileName)
     }
 
     override fun initViewModel() {

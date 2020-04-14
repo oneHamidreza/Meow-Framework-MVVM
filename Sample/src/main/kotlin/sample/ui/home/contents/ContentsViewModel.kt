@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package sample.ui.home.child.contents
+package sample.ui.home.contents
 
 import meow.core.arch.MeowViewModel
 import meow.core.arch.SingleLiveData

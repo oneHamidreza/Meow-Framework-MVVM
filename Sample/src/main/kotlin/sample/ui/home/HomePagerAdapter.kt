@@ -20,8 +20,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import meow.core.ui.MeowPagerAdapter
-import sample.ui.home.child.contents.ContentsFragment
-import sample.ui.home.child.readme.ReadmeFragment
+import meow.util.bundleOf
+import sample.ui.home.contents.ContentsFragment
+import sample.ui.markdown.MarkdownFragment
 
 /**
  * Home View Pager Adapter.
@@ -38,11 +39,19 @@ class HomePagerAdapter(
 
     private val fragmentArray: Array<Fragment> =
         arrayOf(
-            ReadmeFragment(),
-            ContentsFragment.newInstance(ContentsFragment.Type.API),
-            ContentsFragment.newInstance(ContentsFragment.Type.MATERIAL),
-            ContentsFragment.newInstance(ContentsFragment.Type.EXTENSIONS),
-            ContentsFragment.newInstance(ContentsFragment.Type.WIDGET)
+            MarkdownFragment().bundleOf("fileName" to "README.md"),
+            ContentsFragment.newInstance(
+                ContentsFragment.Type.API
+            ),
+            ContentsFragment.newInstance(
+                ContentsFragment.Type.MATERIAL
+            ),
+            ContentsFragment.newInstance(
+                ContentsFragment.Type.EXTENSIONS
+            ),
+            ContentsFragment.newInstance(
+                ContentsFragment.Type.WIDGET
+            )
         )
 
     override fun getFragments() = fragmentArray

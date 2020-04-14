@@ -84,6 +84,6 @@ fun Context.popup(
         true
     }
     menu.forEach {
-        it.setTypefaceId(this@popup, controller.defaultTypefaceResId)
+        it.setTypefaceResId(this@popup, controller.defaultTypefaceResId)
     }
 }

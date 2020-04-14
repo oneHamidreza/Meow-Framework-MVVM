@@ -14,17 +14,30 @@
  * limitations under the License.
  */
 
-package sample.ui.home.child.readme
+package sample.widget
 
-import meow.core.arch.MeowViewModel
-import sample.App
+import android.widget.TextView
+import androidx.databinding.BindingAdapter
+import io.noties.markwon.Markwon
+import io.noties.markwon.image.ImagesPlugin
 
 /**
- * Readme View Model.
+ * TextView Extensions.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-04-06
+ * @since   2020-04-14
  */
 
-class ReadmeViewModel(app: App) : MeowViewModel(app)
+object TextViewBinding {
+
+    @BindingAdapter("markdown_assets")
+    fun setMarkdownAssets(textView: TextView, markdownAssets: String) =
+        textView.apply {
+            val str = resources.assets.open(markdownAssets).bufferedReader().use { it.readText() }
+            Markwon.builder(context).apply {
+                usePlugin(ImagesPlugin.create())
+            }.build().setMarkdown(this, str)
+        }
+
+}

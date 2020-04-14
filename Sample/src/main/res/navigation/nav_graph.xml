@@ -10,6 +10,11 @@
         android:name="sample.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home">
 
+        <!-- Markdown -->
+        <action
+            android:id="@+id/actionToMarkdown"
+            app:destination="@id/fragmentMarkdown" />
+
         <!-- Api -->
         <action
             android:id="@+id/actionToCatBreedIndex"
@@ -90,6 +95,19 @@
             android:id="@+id/actionToSharedPreferences"
             app:destination="@id/fragmentSharedPreferences" />
 
+    </fragment>
+
+    <!-- Markdown -->
+    <fragment
+        android:id="@+id/fragmentMarkdown"
+        android:name="sample.ui.markdown.MarkdownFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_markdown">
+
+        <argument
+            android:name="fileName"
+            app:argType="string"
+            app:nullable="false" />
     </fragment>
 
     <!-- Api -->

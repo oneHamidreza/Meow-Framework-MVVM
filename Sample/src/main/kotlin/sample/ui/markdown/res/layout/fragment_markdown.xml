@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="sample.ui.home.child.readme.ReadmeViewModel" />
+            type="sample.ui.markdown.MarkdownViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tvReadme"
+                android:id="@+id/tv"
                 style="@style/Meow.TextView"
                 android:padding="16dp"
                 android:textAppearance="@style/textAppearance.Body2" />

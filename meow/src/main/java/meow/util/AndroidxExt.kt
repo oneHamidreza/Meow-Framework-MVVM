@@ -12,6 +12,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import meow.core.arch.MeowViewModel
 import meow.core.arch.MeowViewModelFactory
+import meow.core.ui.MeowFragment
 import org.kodein.di.KodeinAware
 import org.kodein.di.direct
 
@@ -93,7 +94,7 @@ fun sdkNeedReturn(buildSdk: Int, block: () -> Unit): Boolean {
     }
 }
 
-fun MenuItem.setTypefaceId(context: Context, id: Int) {
+fun MenuItem.setTypefaceResId(context: Context, id: Int) {
     val span = SpannableString(title)
     span.setSpan(
         PopupTypeFaceSpan(context.getFontCompat(id)),
@@ -104,3 +105,6 @@ fun MenuItem.setTypefaceId(context: Context, id: Int) {
     title = span
 }
 
+fun MeowFragment<*>.bundleOf(vararg pairs: Pair<String, Any?>) = apply {
+    arguments = androidx.core.os.bundleOf(*pairs)
+}

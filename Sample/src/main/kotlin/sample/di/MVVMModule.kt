@@ -30,9 +30,9 @@ import sample.ui.api.catbreed.index.CatBreedIndexViewModel
 import sample.ui.content.ContentViewModel
 import sample.ui.dialog.CustomDialogViewModel
 import sample.ui.home.HomeViewModel
-import sample.ui.home.child.contents.ContentsViewModel
-import sample.ui.home.child.readme.ReadmeViewModel
+import sample.ui.home.contents.ContentsViewModel
 import sample.ui.main.MainViewModel
+import sample.ui.markdown.MarkdownViewModel
 import sample.ui.material.alerts.AlertsViewModel
 import sample.ui.material.bottomappbar.BottomAppBarViewModel
 import sample.ui.material.bottomnavigation.BottomNavigationViewModel
@@ -78,14 +78,15 @@ val mvvmModule = Module("MVVM Module", false) {
         )
     }
 
-    bindAutoTag<ReadmeViewModel>() with provider {
-        ReadmeViewModel(
+    bindAutoTag<MainViewModel>() with provider {
+        MainViewModel(
             kodein.direct.instance()
         )
     }
 
-    bindAutoTag<MainViewModel>() with provider {
-        MainViewModel(
+    // Markdown
+    bindAutoTag<MarkdownViewModel>() with provider {
+        MarkdownViewModel(
             kodein.direct.instance()
         )
     }
