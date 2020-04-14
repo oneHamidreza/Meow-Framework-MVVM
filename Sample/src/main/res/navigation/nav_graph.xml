@@ -25,6 +25,9 @@
         <action
             android:id="@+id/actionToCatBreedForm"
             app:destination="@id/fragmentCatBreedForm" />
+        <action
+            android:id="@+id/actionToLogin"
+            app:destination="@id/fragmentLogin" />
 
         <!-- Material -->
         <action
@@ -126,6 +129,11 @@
         android:name="sample.ui.api.catbreed.detail.CatBreedFormFragment"
         android:label="@string/fragment_cat_breed_form"
         tools:layout="@layout/fragment_cat_breed_form" />
+    <fragment
+        android:id="@+id/fragmentLogin"
+        android:name="sample.ui.api.login.LoginFragment"
+        android:label="@string/fragment_login"
+        tools:layout="@layout/fragment_login" />
 
     <!-- Extensions -->
     <fragment

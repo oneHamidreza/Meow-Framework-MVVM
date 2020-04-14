@@ -1,0 +1,8 @@
+<resources>
+    <string name="fragment_login">Sample Login</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="dialog_login">Submitting …</string>
+    <string name="warn_login_success">Login success!</string>
+    <string name="warn_login_failed">Login failed!</string>
+</resources>

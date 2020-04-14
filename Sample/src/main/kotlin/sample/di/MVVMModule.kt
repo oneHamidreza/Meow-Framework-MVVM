@@ -24,9 +24,11 @@ import org.kodein.di.erased.instance
 import org.kodein.di.erased.provider
 import org.kodein.di.erased.singleton
 import sample.data.catbreed.CatBreed
+import sample.data.user.User
 import sample.ui.api.catbreed.detail.CatBreedDetailViewModel
 import sample.ui.api.catbreed.form.CatBreedFormViewModel
 import sample.ui.api.catbreed.index.CatBreedIndexViewModel
+import sample.ui.api.login.LoginViewModel
 import sample.ui.content.ContentViewModel
 import sample.ui.dialog.CustomDialogViewModel
 import sample.ui.home.HomeViewModel
@@ -106,6 +108,12 @@ val mvvmModule = Module("MVVM Module", false) {
     }
     bindAutoTag<CatBreedFormViewModel>() with provider {
         CatBreedFormViewModel(
+            kodein.direct.instance(),
+            instance()
+        )
+    }
+    bindAutoTag<LoginViewModel>() with provider {
+        LoginViewModel(
             kodein.direct.instance(),
             instance()
         )
@@ -247,4 +255,5 @@ val mvvmModule = Module("MVVM Module", false) {
         )
     }
     bind() from singleton { CatBreed.Repository(instance()) }
+    bind() from singleton { User.Repository(instance()) }
 }

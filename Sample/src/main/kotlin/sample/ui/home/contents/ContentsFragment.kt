@@ -17,6 +17,7 @@
 package sample.ui.home.contents
 
 import android.os.Bundle
+import androidx.navigation.findNavController
 import meow.util.avoidException
 import meow.util.instanceViewModel
 import meow.widget.decoration.MeowDividerDecoration
@@ -156,6 +157,7 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                     API_INDEX -> findNavController().navigate(HomeFragmentDirections.actionToCatBreedIndex())
                     API_DETAIL -> findNavController().navigate(HomeFragmentDirections.actionToCatBreedDetail())
                     API_FORM -> findNavController().navigate(HomeFragmentDirections.actionToCatBreedForm())
+                    API_LOGIN -> findNavController().navigate(HomeFragmentDirections.actionToLogin())
 
                     MATERIAL_ALERTS -> findNavController().navigate(HomeFragmentDirections.actionToAlerts())
                     MATERIAL_BOTTOM_APP_BAR -> findNavController().navigate(HomeFragmentDirections.actionToBottomAppBar())

@@ -53,6 +53,7 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
     override fun onFinishInflate() {
         super.onFinishInflate()
         etList = getAllEditTexts()
+        resetForm()
     }
 
     fun validate(listener: () -> Unit) {
@@ -71,6 +72,7 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
         etList.forEach {
             it.text?.clear()
             it.isErrorEnabled = false
+            it.error = ""
         }
     }
 

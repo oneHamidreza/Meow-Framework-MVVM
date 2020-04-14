@@ -1,5 +1,5 @@
 <resources>
     <string name="fragment_cat_breed_detail">Cat Breed Detail</string>
     <string name="cat_breed_name">Cat Breed Name</string>
-    <string name="cat_breed_send">Send</string>
+    <string name="action_send">Send</string>
 </resources>

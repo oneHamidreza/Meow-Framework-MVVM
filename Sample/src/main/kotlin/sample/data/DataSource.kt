@@ -42,6 +42,9 @@ class DataSource(override var app: App) : DataSourceInterface, KodeinAware {
     private val spMain: MeowSharedPreferences by instance("spMain")
     private val spUpdate: MeowSharedPreferences by instance("spUpdate")
 
+    suspend fun postLoginToApi(request: User.Api.RequestLogin) =
+        api.createServiceByAdapter<User.Api>().login(request.username, request.password)
+
     suspend fun getCatBreedsFromApi() =
         api.createServiceByAdapter<CatBreed.Api>().getCatBreedIndex()
 

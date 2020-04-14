@@ -1,0 +1,8 @@
+<resources>
+    <string name="fragment_login">ورود به حساب‌کاربری</string>
+    <string name="login_username">نام کاربری</string>
+    <string name="login_password">رمز عبور</string>
+    <string name="dialog_login">در حال ورود به سیستم …</string>
+    <string name="warn_login_success">شما به حساب کاربری وارد شدید!</string>
+    <string name="warn_login_failed">لاگین به خطا خورد!</string>
+</resources>

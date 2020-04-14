@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="sample.ui.api.login.LoginViewModel" />
+    </data>
+
+    <meow.widget.MeowFormView
+        android:id="@+id/formView"
+        meow_gap="@{16}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <meow.widget.MeowTextField
+            android:id="@+id/etUsername"
+            style="@style/Meow.TextField.Form.Outlined"
+            android:hint="@string/login_username"
+            app:errorEnabled="true"
+            app:meow_inputType="text"
+            app:meow_validateType="empty" />
+
+        <meow.widget.MeowTextField
+            android:id="@+id/etPassword"
+            style="@style/Meow.TextField.Form.Outlined"
+            android:hint="@string/login_password"
+            app:errorEnabled="true"
+            app:meow_inputType="textPassword"
+            app:meow_validateType="empty" />
+
+        <Button
+            android:id="@+id/btSend"
+            style="@style/Meow.Button"
+            android:layout_width="match_parent"
+            android:text="@string/action_send" />
+
+    </meow.widget.MeowFormView>
+
+</layout>

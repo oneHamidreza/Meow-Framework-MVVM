@@ -19,10 +19,11 @@ package sample.data.user
 import androidx.recyclerview.widget.DiffUtil
 import com.squareup.moshi.Json
 import kotlinx.serialization.Serializable
-import meow.core.api.MeowRequest
+import meow.core.api.MeowOauthToken
 import meow.util.removeExtraSpaces
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Query
+import sample.data.DataSource
 
 /**
  * User Model class.
@@ -45,22 +46,24 @@ data class User(
         return "User(id=$id, firstName=$firstName, lastName=$lastName)"
     }
 
-    @Serializable
-    data class RequestGet(
-        @Json(name = "id") var id: String? = null
-    ) : MeowRequest {
+    class Repository(private val ds: DataSource) {
 
-        override fun validate(): Boolean {
-            return id != null
-        }
+        suspend fun postLoginToApi(request: Api.RequestLogin) = ds.postLoginToApi(request)
+
     }
 
     interface Api {
-        @GET("user/{id}")
-        suspend fun getUserById(@Path("id") id: String?): User
 
-        @GET("users")
-        suspend fun getUsers(): List<User>
+        class RequestLogin(
+            var username: String,
+            var password: String
+        )
+
+        @GET("login")
+        suspend fun login(
+            @Query("username") username: String,
+            @Query("password") password: String
+        ): MeowOauthToken
     }
 
 

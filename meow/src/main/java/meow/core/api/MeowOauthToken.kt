@@ -35,6 +35,9 @@ class MeowOauthToken {
     @Json(name = "access_token")
     var accessToken: String? = null
 
+    @Json(name = "token")
+    var token: String? = null
+
     @Json(name = "expires_in")
     var expiresIn: Long = 0L
 
@@ -58,7 +61,7 @@ class MeowOauthToken {
     @Json(name = "refresh_token")
     var refreshToken: String? = null
 
-    val isLogin: Boolean
+    val isLoginSuccess: Boolean
         get() {
             return accessToken?.isNotEmpty() ?: false
         }

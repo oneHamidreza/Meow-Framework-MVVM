@@ -130,8 +130,15 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
             if (isShowingErrorMassageEnabled) {
                 if (errorHandlerType == ErrorHandlerType.TOAST)
                     fragmentActivity.toastL(it.titlePlusMessage)
-                if (errorHandlerType == ErrorHandlerType.SNACK_BAR)
-                    fragmentActivity.snackL(it.titlePlusMessage)
+                if (errorHandlerType == ErrorHandlerType.SNACK_BAR) {
+                    if (it.actionText.isNullOrEmpty())
+                        fragmentActivity.snackL(it.titlePlusMessage)
+                    else {
+                        fragmentActivity.snackL(it.titlePlusMessage, it.actionText) {
+                            onClickedActionSnack()
+                        }
+                    }
+                }
                 if (errorHandlerType == ErrorHandlerType.EMPTY_STATE)
                     emptyStateInterface?.show(it)
             }
@@ -149,6 +156,10 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
         }
 
         var onClickedActionEmptyState: () -> Unit = {
+            action()
+        }
+
+        var onClickedActionSnack: () -> Unit = {
             action()
         }
 

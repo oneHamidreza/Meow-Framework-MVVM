@@ -36,7 +36,7 @@
                 android:id="@+id/btSend"
                 style="@style/Meow.Button"
                 android:layout_width="match_parent"
-                android:text="@string/cat_breed_send" />
+                android:text="@string/action_send" />
 
         </meow.widget.MeowFormView>
 
