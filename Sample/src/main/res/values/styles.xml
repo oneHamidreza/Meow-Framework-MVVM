@@ -3,7 +3,7 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
         <item name="android:windowTranslucentStatus">true</item>
-        <!--        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>-->
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
 
         <!-- Original AppCompat attributes. -->
         <item name="colorPrimary">@color/primary</item>
