@@ -13,4 +13,11 @@
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
+    <style name="App.ShapeAppearance.Navigation" parent="">
+        <item name="cornerSizeBottomRight">16dp</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+    </style>
+
 </resources>

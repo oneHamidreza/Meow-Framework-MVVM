@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@id/fragmentHome"
-        android:title="@string/fragment_home"
-        android:icon="@drawable/ic_home" />
+    <group android:id="@+id/group_home">
+        <item
+            android:id="@id/fragmentHome"
+            android:title="@string/fragment_home"
+            android:icon="@drawable/ic_home" />
+    </group>
 
-    <item
-        android:id="@id/fragmentAlerts"
-        android:title="@string/fragment_alerts"
-        android:icon="@drawable/ic_notification_important" />
+    <group android:id="@+id/group_api">
+        <item
+            android:id="@id/fragmentCatBreedIndex"
+            android:title="@string/fragment_cat_breed_index"
+            android:icon="@drawable/ic_cat" />
+        <item
+            android:id="@id/fragmentCatBreedDetail"
+            android:title="@string/fragment_cat_breed_detail"
+            android:icon="@drawable/ic_cat" />
+        <item
+            android:id="@id/fragmentCatBreedForm"
+            android:title="@string/fragment_cat_breed_form"
+            android:icon="@drawable/ic_cat" />
+        <item
+            android:id="@id/fragmentLogin"
+            android:title="@string/fragment_login"
+            android:icon="@drawable/ic_how_to_reg" />
+
+    </group>
 
 </menu>

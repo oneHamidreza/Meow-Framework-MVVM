@@ -60,6 +60,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            app:itemShapeFillColor="@color/drawer_item_background"
+            app:itemShapeAppearance="@style/App.ShapeAppearance.Navigation"
             app:itemIconTint="@drawable/drawer_item_color"
             app:itemTextColor="@drawable/drawer_item_color"
             app:menu="@menu/drawer_actions" />
