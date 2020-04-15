@@ -58,7 +58,7 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
             onErrorAction = {
                 containerViews.forEach { v -> v.visibility = View.VISIBLE }
                 val response = it.data
-                val errorItems =
+                @Suppress("UNCHECKED_CAST") val errorItems =
                     (if (response.code == HttpCodes.UNPROCESSABLE_ENTITY.code) response.data as? List<FormErrorModel> else null)
                 if (response.code == HttpCodes.UNPROCESSABLE_ENTITY.code && !errorItems.isNullOrEmpty())
                     onRequestNotValidFromResponse(errorItems)
@@ -205,7 +205,7 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
                             val response = (it as MeowEvent.Api.Success).data
                             @Suppress("UNCHECKED_CAST") val data = response.data as? T
                             if (data != null)
-                                onSuccessAction(data!!)
+                                onSuccessAction(data)
                         }
                         it.isApiError() -> {
                             lastStateHasBeenError = true
