@@ -1,3 +1,4 @@
+import com.android.build.gradle.internal.api.BaseVariantOutputImpl
 import com.android.build.gradle.internal.dsl.BuildType
 import meow.AppConfig
 import meow.AppConfig.Build
@@ -30,6 +31,13 @@ android {
 
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
+    }
+
+    applicationVariants.all {
+        outputs.all {
+            val fileName = "Meow-Framework-Sample-v${AppConfig.generateVersionName()}.apk"
+            (this as BaseVariantOutputImpl).outputFileName = fileName
+        }
     }
 
     buildTypes {

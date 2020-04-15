@@ -17,6 +17,7 @@
 package meow.util
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.content.res.TypedArray
 import android.graphics.Bitmap
@@ -172,6 +173,11 @@ fun MeowFragment<*>?.getColorCompat(
     @ColorRes resId: Int,
     theme: Resources.Theme? = null
 ) = this?.resources().getColorCompat(resId, theme)
+
+
+fun Context?.ofColorStateList(
+    @ColorRes resId: Int
+) = ColorStateList.valueOf(this?.getColorCompat(resId) ?: 0)
 
 fun Resources?.getDimensionToPx(@DimenRes resId: Int) = this?.getDimension(resId)?.toInt() ?: 0
 fun Context?.getDimensionToPx(@DimenRes resId: Int) = this?.resources().getDimensionToPx(resId)

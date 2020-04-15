@@ -30,10 +30,7 @@ import androidx.databinding.DataBindingUtil
 import com.etebarian.meowframework.R
 import com.etebarian.meowframework.databinding.MeowEmptyStateBinding
 import meow.core.api.UIErrorModel
-import meow.util.dp
-import meow.util.getColorCompat
-import meow.util.getDrawableCompat
-import meow.util.isNotNullOrEmpty
+import meow.util.*
 import meow.widget.impl.MeowEmptyStateInterface
 
 /**
@@ -91,7 +88,7 @@ class MeowEmptyState @JvmOverloads constructor(
             field = value
             binding.title = value
         }
-    var titleTextColor: Int = context.getColorCompat(R.color.text_on_background_high)
+    var titleTextColor: ColorStateList = context.ofColorStateList(R.color.text_on_background_high)
         set(value) {
             field = value
             binding.titleTextColor = value
@@ -102,7 +99,7 @@ class MeowEmptyState @JvmOverloads constructor(
             binding.desc = value
             binding.showDesc = value.isNotNullOrEmpty()
         }
-    var descTextColor: Int = context.getColorCompat(R.color.text_on_background_medium)
+    var descTextColor: ColorStateList = context.ofColorStateList(R.color.text_on_background_medium)
         set(value) {
             field = value
             binding.descTextColor = value
@@ -123,11 +120,11 @@ class MeowEmptyState @JvmOverloads constructor(
             iconTint = it.getColorStateList(R.styleable.MeowEmptyState_empty_iconTint) ?: iconTint
             iconSize = it.getDimensionPixelSize(R.styleable.MeowEmptyState_empty_iconSize, iconSize)
             title = it.getString(R.styleable.MeowEmptyState_empty_title)
-            titleTextColor =
-                it.getColorCompat(R.styleable.MeowEmptyState_empty_titleTextColor, titleTextColor)
+            titleTextColor = it.getColorStateList(R.styleable.MeowEmptyState_empty_titleTextColor)
+                ?: titleTextColor
             desc = it.getString(R.styleable.MeowEmptyState_empty_desc)
-            descTextColor =
-                it.getColorCompat(R.styleable.MeowEmptyState_empty_descTextColor, descTextColor)
+            descTextColor = it.getColorStateList(R.styleable.MeowEmptyState_empty_descTextColor)
+                ?: descTextColor
             primaryActionText = it.getString(R.styleable.MeowEmptyState_empty_primaryActionText)
         }
 

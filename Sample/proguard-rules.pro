@@ -28,9 +28,8 @@
 -if interface * { @retrofit2.http.* <methods>; }
 -keep,allowobfuscation interface <1>
 
-
 # Used for Kodein bindAutoTag
--keepnames public class * extends MeowViewModel
+-keepnames public class * extends meow.core.arch.MeowViewModel
 
 # Used for Glide
 -keep public class * implements com.bumptech.glide.module.GlideModule
@@ -42,6 +41,7 @@
 
 # Used for OKHttp
 -dontwarn okhttp3.internal.platform.ConscryptPlatform
+-dontwarn org.conscrypt.ConscryptHostnameVerifier
 
 # Used for Kotlinx Serialization
 -dontwarn kotlinx.serialization.SerializationKT
@@ -57,3 +57,4 @@
 -keepnames class sample.ParcelableArg
 -keepnames class sample.SerializableArg
 -keepnames class sample.EnumArg
+

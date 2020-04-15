@@ -68,10 +68,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         return when (item.itemId) {
             R.id.actionDayNight -> {
                 controller.swapTheme(this, true)
-                false
+                //update sp
+                true
             }
             R.id.actionLanguage -> {
                 controller.updateLanguage(this, if (controller.language == "en") "fa" else "en")
+                //update sp
                 true
             }
             else -> false
