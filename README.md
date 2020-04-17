@@ -1,6 +1,8 @@
+
 # Meow Framework MVVM Android/Kotlin 
 A Framework for Android Developers based on MVVM architecture and Material Design with most useful Kotlin Extensions.
 ![](/Resources/logo_meow_framework.png)
+[ ![Download](https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.2.4-alpha) ](https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.2.4-alpha/link)
 
 ## Setup
 ```kotlin
