@@ -1,5 +1,5 @@
 # Meow Framework MVVM 🐱 in Kotlin
-A Framework for Android Developers based on MVVM architecture and Material Design.
+A Framework for Android Developers based on MVVM architecture and Material Design with most useful Kotlin Extensions.
 ![](/Resources/logo_meow_framework.png)
 
 ## Setup
@@ -15,10 +15,14 @@ After adding library, some of most useful libraries (such as `Androidx`,`Corouti
 >```
 
 ## Getting Started
+
+### Initialize
 Create your application class that extends `MeowApp`. Dynamic Localization & Day/Night Theme congifurations must be set here with `MeowController`.
 ```kotlin
 class App : MeowApp {
 
+    // Layout Direction would be set automatically. 
+    // (Example: "en": LayoutDirection.LTR  "fa": LayoutDirection.RTL)
     override fun getLanguage(context: Context?) = "en" // or any language such as ("fa","fr","ar",etc.)
     
     // Sample app theme is setted by Android System Light/Dark (Day/Naight) mode
@@ -27,21 +31,34 @@ class App : MeowApp {
     override fun onCreate() {
         super.onCreate()
          MeowController().apply {
-            language = getLanguage(this@App)
+            language = getLanguage(this@App) 
             isDebugMode = BuildConfig.DEBUG
             theme = getTheme(this@App)
         }.bindApp(this)
     }
 
 }
-
-
 ```
-`MeowController` is a class that controlls some of configuration
+
+### Activity or Fragment
+Activities and Fragments in meow with supporting `DataBinding`
+```kotlin
+class MainActivity : MeowActivity<ActivityMainBinding>() {
+    override fun layoutId() = R.layout.activity_main
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setSupportActionBar(binding.toolbar)// You can access Toolbar like this line
+    }
+}
+```
+
+`MeowController` is a class that controlls some of configurations in your app like language and theme. Configuration updates are in Real time.
 ```kotlin
 import meow.controller
 
-controller.updateLanguage()
+controller.updateLanguage(meowActivity, string)
+controller.updateTheme(meowActivity, theme)
 ```
 License
 --------
