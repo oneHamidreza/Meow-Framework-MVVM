@@ -1,6 +1,6 @@
 # Meow Framework 🐱 in KOTLIN with ♥
 
-![](https://github.com/oneHamidreza/MeowFramework/raw/master/Resources/logo_meow_framework.png)
+![](/Resources/logo_meow_framework.png)
 
 Coming Soon !!! 
 ### developing.
