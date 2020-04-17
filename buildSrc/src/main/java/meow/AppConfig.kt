@@ -166,6 +166,7 @@ fun getAllResourcesSrcDirs(project: Project): ArrayList<String> {
     val path =
         project.rootDir.absolutePath + "\\" + AppConfig.Build.APP_MODULE + "\\src\\main\\kotlin\\" + AppConfig.Build.APP_PACKAGE
     val root = File(path)
+    list.add(project.rootDir.absolutePath + "\\" + AppConfig.Build.APP_MODULE + "\\src\\main\\res")
     root.listDirectoriesWithChild().forEach { directory ->
         if (directory.isRes())
             list.add(directory.path)
