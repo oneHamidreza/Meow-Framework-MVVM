@@ -1,5 +1,5 @@
 # Meow Framework MVVM 🐱 in Kotlin
-One Framework for android developers based MVVM architecture and Material Design.
+A Framework for Android Developers based on MVVM architecture and Material Design.
 ![](/Resources/logo_meow_framework.png)
 
 ## Setup
