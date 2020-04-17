@@ -15,6 +15,8 @@
     <color name="drawer_item_enabled">@color/primary</color>
     <color name="drawer_item_disabled">@color/text_on_surface_medium</color>
 
+    <color name="ic_launcher_background">#011A1E</color>
+
     <!-- ProgressBar -->
     <color name="progress_primary">@color/primary</color>
     <color name="progress_secondary">@color/secondary</color>
