@@ -1,15 +1,13 @@
-# Meow Framework 🐱 in KOTLIN with ♥
-
+# Meow Framework MVVM 🐱 in Kotlin
+One Framework for android developers based MVVM architecture and Material Design.
 ![](/Resources/logo_meow_framework.png)
 
 ## Setup
-
-Coming Soon !!! 
-### developing.
-
-Android Framework with most useful tools.
-
-🐈 This **CAT** can help you to develop code better. just trust it.
+```kotlin
+implementation("com.etebarian:meow-framework-mvvm:0.2.4-alpha")
+```
+After adding library, some of most useful libraries (such as `Androidx` `Coroutine` `Glide` `Kodein` `Kotlin Serialization`  `Material` `Navigation` `Retrofit` ) will be added in your app.
+So you dont need add above libraries 
 
 License
 --------
