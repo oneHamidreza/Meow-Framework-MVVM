@@ -19,7 +19,8 @@ Create your application class that extends `MeowApp`. Dynamic Localization & Day
 ```kotlin
 class App : MeowApp {
 
-    override fun getLanguage(context: Context?) = "en"
+    override fun getLanguage(context: Context?) = "en" // or any language such as ("fa","fr","ar",etc.)
+    
     // Sample app theme is setted by Android System Light/Dark (Day/Naight) mode
     override fun getTheme(context: Context?) = if (context.isNightModeFromSettings()) MeowController.Theme.NIGHT else  MeowController.Theme.DAY
     
@@ -33,6 +34,14 @@ class App : MeowApp {
     }
 
 }
+
+
+```
+`MeowController` is a class that controlls some of configuration
+```kotlin
+import meow.controller
+
+controller.updateLanguage()
 ```
 License
 --------
