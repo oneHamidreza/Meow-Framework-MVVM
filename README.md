@@ -6,7 +6,7 @@ One Framework for android developers based MVVM architecture and Material Design
 ```kotlin
 implementation("com.etebarian:meow-framework-mvvm:0.2.4-alpha")
 ```
-After adding library, some of most useful libraries (such as `Androidx` `Coroutine` `Glide` `Kodein` `Kotlin Serialization`  `Material` `Navigation` `Retrofit` ) will be added in your app.
+After adding library, some of most useful libraries (such as `Androidx`,`Coroutine`,`Glide`,`Kodein`,`Kotlin Serialization`,`Material` ,`Navigation`,`Retrofit` ) will be added in your app.
 So you dont need add above libraries 
 
 License
