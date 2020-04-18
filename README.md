@@ -1,5 +1,3 @@
-
-
 # Meow Framework MVVM Android/Kotlin
 A Framework that simplify developing MVVM architecture and Material Design in Android with Kotlin language including useful Extensions and Sample Application.   
 ![](/Resources/logo_meow_framework.png)
@@ -39,18 +37,19 @@ You need to define `appModule` for ViewModel.
 ```kotlin
 class App : MeowApp() {
 
-	// Create a kodein module
-	val appModule = Module("App Module", false){
-	    // Provide object of SomeOfClass(such as View Models) in Kodein with bind() function 
-	    // bind() from singleton { SomeOfClass(instance()) } 
-	}
-	override val kodein = Kodein.lazy {  
-		bind() from singleton { kodein.direct }  
-		bind() from singleton { this@App }  
-		import(androidXModule(this@App))  
-		import(meowModule)  
-		import(appModule)  
-	}
+   // Create a kodein module
+   val appModule = Module("App Module", false){
+       // Provide object of SomeOfClass(such as View Models) in Kodein with bind() function 
+       // bind() from singleton { SomeOfClass(instance()) } 
+   }
+    
+    override val kodein = Kodein.lazy {  
+        bind() from singleton { kodein.direct }  
+        bind() from singleton { this@App }  
+        import(androidXModule(this@App))  
+        import(meowModule)  
+        import(appModule)  
+   }
 }
 ```
 ### Meow Controller 🐱
