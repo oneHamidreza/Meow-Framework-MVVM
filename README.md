@@ -33,7 +33,7 @@ After adding library, some of most useful libraries (such as `Androidx AppCompat
 ## Getting Started
 ### Initialize
 Create your application class that extends `MeowApp` and set it in `AndroidManifest.xml`. Dependency Injection in MVVM architecture is necessary so we use `Kodein-DI` Framework. 
-You need to define `appModule` for ViewModel.
+You need to define `appModule` for ViewModels.
 ```kotlin
 class App : MeowApp() {
 
@@ -85,7 +85,7 @@ controller.updateTheme(meowActivity, theme)
 ###  MVVM Architecture
 MVVM is Model-View-ViewModel that we define it in Android App as Data Model - View (Activity, Fragment, DialogFragment, BottomSheetDialogFragment) - MeowViewModel.
  
-Follow below steps to be have one application with MVVM Architecture.
+Follow below steps to be have one activity with MVVM Architecture.
 #### 1.  Create your ViewModel extends `MeowViewModel` .
 ```kotlin
 class MainViewModel(app: App): MeowViewModel(app)
@@ -128,7 +128,45 @@ class MainActivity : MeowActivity<ActivityMainBinding>() {
 ```
 Now you have one Activity with MVVM architecture. 
 
-
+###  Material Design
+Update App Theme in `styles.xml` with `DayNight` Material Theme. More details are at [Official Material Design Site](https://material.io/develop/android/docs/getting-started/)
+```xml
+<style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+   <!-- Original AppCompat attributes. -->  
+   <!-- Define colors in colors.xml -->
+   <item name="colorPrimary">@color/primary</item>  
+   <item name="colorSecondary">@color/secondary</item>  
+   <item name="android:colorBackground">@color/background</item>  
+   <item name="colorError">@color/error_primary</item>  
+  
+   <!-- New MaterialComponents attributes. -->  
+   <item name="colorPrimaryVariant">@color/primary_variant</item>  
+   <item name="colorSecondaryVariant">@color/secondary_variant</item>  
+   <item name="colorSurface">@color/surface</item>  
+   <item name="colorOnPrimary">@color/on_primary</item>  
+   <item name="colorOnSecondary">@color/on_secondary</item>  
+   <item name="colorOnBackground">@color/on_background</item>  
+   <item name="colorOnError">@color/on_error_primary</item>  
+   <item name="colorOnSurface">@color/on_surface</item>  
+   <item name="scrimBackground">@color/mtrl_scrim_color</item>
+</style>
+```
+### Accessing views with DataBinding
+you can access views like this code:
+```xml
+<com.google.android.material.appbar.MaterialToolbar  
+  android:id="@+id/toolbar"  
+  style="@style/Meow.Toolbar">
+```
+```kotlin
+class MainActivity: MeowActivity<ActivityMainBinding>(){
+   override fun layoutId() = R.layout.activity_main 
+   override fun onCreate(savedInstanceState: Bundle?) {
+      binding.toolbar.title = "custom_title"
+   }
+}
+```
+ 
 License
 --------
 
