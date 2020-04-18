@@ -8,13 +8,30 @@ A Framework for Android Developers based on MVVM architecture and Material Desig
 ```kotlin
 implementation("com.etebarian:meow-framework-mvvm:0.2.4-alpha")
 ```
-After adding library, some of most useful libraries (such as `Androidx`,`Coroutine`,`Glide`,`Kodein`,`Kotlin Serialization`,`Material` ,`Navigation`,`Retrofit` ) will be added in your app. So you don't need add this libraries manually.
+After adding library, some of most useful libraries (such as `Androidx` , `Coroutine` , `Glide` , `Kodein` , `Kotlin Serialization` , `Material`  , `Navigation` , `Retrofit` ) will be added in your app. So you don't need add this libraries manually.
 
 > Enable Androidx in `gradle.properties` 
 >```properties
 >android.useAndroidX=true
 >android.enableJetifier=true
 >```
+>Update `build.gradle` like below : 
+>```groovy
+	>android{
+	>	defaultConfig {    
+	>		multiDexEnabled true  
+	>		vectorDrawables.useSupportLibrary true
+	>	}
+	>	compileOptions {  
+	  >			sourceCompatibility JavaVersion.VERSION_1_8  
+	  >			targetCompatibility JavaVersion.VERSION_1_8  
+	>	}
+	>	dataBinding {  
+	  >			isEnabled = true  
+	>	}
+	>}
+>```
+>
 
 ## Getting Started
 
