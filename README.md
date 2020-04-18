@@ -129,7 +129,7 @@ class MainActivity : MeowActivity<ActivityMainBinding>() {
 Now you have one Activity with MVVM architecture. 
 
 ###  Material Design
-Update App Theme in `styles.xml` with `DayNight` Material Theme. More details are at [Official Material Design Site](https://material.io/develop/android/docs/getting-started/)
+Update App Theme in `styles.xml` with `DayNight` Material Theme. More details are at [Official Material Design Site](https://material.io/develop/android/docs/getting-started/).
 ```xml
 <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
    <!-- Original AppCompat attributes. -->  
@@ -177,7 +177,7 @@ class AppApi(
 ): MeowApi(baseUrl)
 ```
 ### Sample Index
-For Example, server give this JSON response when call `users` with get method : 
+For Example, server give this JSON response when call `persons` with get method : 
 ```json
 [
    {
@@ -193,7 +193,49 @@ For Example, server give this JSON response when call `users` with get method :
 ]
 ```
 #### Data Model
+Create  data class for JSON response that use Moshi `@Json` annotation.
+```kotlin
+data class Person(
+   @Json(name = "id") var id: Int = 0,
+   @Json(name = "username") var username: String? = null,
+   @Json(name = "alias") var alias: String? = null
+){
+   // RecyclerView List Adapter requires DiffCallBack.
+   class DiffCallback : DiffUtil.ItemCallback<CatBreed>() {  
+        override fun areItemsTheSame(oldItem: Person, newItem: Person) = oldItem.id == newItem.id  
+        override fun areContentsTheSame(oldItem: Person, newItem: Person) = oldItem == newItem
+    }
+}
+```
+### Retrofit API Interface
+Define one interface containing Server API actions. We are using `Coroutine` so `suspend` prefix is necessary.
+```kotlin
+interface PersonApi {
+    @GET("persons")
+    suspend fun getPersonIndex(): List<Person>
+}
+```
+### Call API action from ViewModel 
+Use `safeCallApi` function for calling API actions. update your ViewModel class like this :  
+```kotlin
+class PersonIndexViewModel(app:App) : MeowViewModel(app) {
+    // Define LiveData variables
+    var eventLiveData = MutableLiveData<MeowEvent<*>>()  
+    var listLiveData = MutableLiveData<List<Person>>()
 
+    fun callApi() {
+       safeCallApi(
+           liveData = eventLiveData,  
+           apiAction = { AppApi(app).createServiceByAdapter<PersonApi>().getPersonIndex() }  
+       ) { _, it ->  
+	         // If connection was Success, this line will be run.
+	         // Otherwise MeowEvent.Api.Error will be posted into eventLiveData
+	         // You can observe it manually or use MeowFlow  
+             listLiveData.postValue(it)  
+         }
+    }
+}
+```
 
  
 License
