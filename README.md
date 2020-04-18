@@ -17,19 +17,19 @@ After adding library, some of most useful libraries (such as `Androidx` , `Corou
 >```
 >Update `build.gradle` like below : 
 >```groovy
-	>android{
-	>	defaultConfig {    
-	>		multiDexEnabled true  
-	>		vectorDrawables.useSupportLibrary true
-	>	}
-	>	compileOptions {  
-	  >			sourceCompatibility JavaVersion.VERSION_1_8  
-	  >			targetCompatibility JavaVersion.VERSION_1_8  
-	>	}
-	>	dataBinding {  
-	  >			isEnabled = true  
-	>	}
-	>}
+>android{
+>	defaultConfig {    
+>		multiDexEnabled true  
+>		vectorDrawables.useSupportLibrary true
+>	}
+>	compileOptions {  
+>		sourceCompatibility JavaVersion.VERSION_1_8  
+>		targetCompatibility JavaVersion.VERSION_1_8 
+>	}
+>	dataBinding {  
+>		isEnabled = true  
+>	}
+>}
 >```
 
 ## Getting Started
