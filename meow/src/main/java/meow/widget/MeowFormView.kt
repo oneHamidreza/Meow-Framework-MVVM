@@ -64,10 +64,10 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
         etList.forEach { childE ->
             checkWithTextFieldType(childE)
         }
-        spList.forEach { childS ->
-            checkWithSpinnerType(childS)
-        }
-        if (checkList.distinct().size == etList.size + spList.size) {
+//        spList.forEach { childS ->
+//            checkWithSpinnerType(childS)
+//        }
+        if (checkList.distinct().size == etList.size) {
             listener()
             checkList.clear()
             if (isResetForm)

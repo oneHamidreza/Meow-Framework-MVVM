@@ -42,12 +42,9 @@ import meow.widget.impl.FormInterface
 class MeowTextField : TextInputLayout, FormInterface {
 
     private var fontFamily: Int = 0
-
     val editText = TextInputEditText(context)
-
     var validateType = VALIDATE_TYPE_DEFAULT
     private var inputType = InputType.TYPE_CLASS_TEXT
-
     var text: Editable?
         set(value) {
             editText.text = value
@@ -123,6 +120,7 @@ class MeowTextField : TextInputLayout, FormInterface {
         addView(editText)
         editText.setTextSize(TypedValue.COMPLEX_UNIT_PX, this.textSize)
         editText.inputType = this.inputType
+
     }
 
     fun addTextChangedListener(textWatcher: TextWatcher) {

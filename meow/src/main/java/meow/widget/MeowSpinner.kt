@@ -55,6 +55,10 @@ open class MeowSpinner : TextInputLayout {
     var validateType = MeowTextField.VALIDATE_TYPE_DEFAULT
     var errorEmpty: String? = ""
 
+    constructor(context: Context) : super(context) {
+        initializeView()
+    }
+
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(
         context,
         attrs,

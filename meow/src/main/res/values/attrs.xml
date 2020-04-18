@@ -196,4 +196,10 @@
         <attr name="resetForm" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="MeowCircleImageView">
+        <attr name="meow_hasStroke" format="boolean" />
+        <attr name="meow_strokeColor" format="color" />
+        <attr name="meow_strokeWidth" format="dimension" />
+    </declare-styleable>
+
 </resources>

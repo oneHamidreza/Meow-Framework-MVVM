@@ -48,7 +48,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btSend.setOnClickListener {
-            callApiAndObserve()
+            binding.formView.validate {
+                callApiAndObserve()
+            }
         }
     }
 
@@ -62,13 +64,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     private fun callApiAndObserve() {
         MeowFlow.PutDataApi<MeowOauthToken>(this) {
-            binding.formView.validate {//todo @Ali not working !!! ?
-                val request = User.Api.RequestLogin(
-                    username = binding.etUsername.textString,
-                    password = binding.etPassword.textString
-                )
-                viewModel.callApi(request)
-            }
+            val request = User.Api.RequestLogin(
+                username = binding.etUsername.textString,
+                password = binding.etPassword.textString
+            )
+            viewModel.callApi(request)
         }.apply {
             errorHandlerType = MeowFlow.ErrorHandlerType.SNACK_BAR
             dialog = loadingAlert(R.string.dialog_login).show()
