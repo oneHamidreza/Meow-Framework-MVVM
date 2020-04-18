@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <attr name="meow_validateType" format="enum">
+        <enum name="optional" value="0" />
+        <enum name="empty" value="1" />
+        <enum name="mobile" value="2" />
+        <enum name="mobileLegacy" value="3" />
+        <enum name="email" value="4" />
+    </attr>
+    <attr name="meow_errorEmpty" format="string" />
+    <attr name="meow_errorMobile" format="string" />
+    <attr name="meow_errorMobileLegacy" format="string" />
+    <attr name="meow_errorEmail" format="string" />
+
     <declare-styleable name="MeowDashView">
         <attr name="dash_orientation" format="enum">
             <enum name="horizontal" value="0" />
@@ -23,80 +35,25 @@
         <attr name="empty_primaryActionText" format="string" />
     </declare-styleable>
 
-    <attr name="msd_shape" format="enum">
-        <enum name="rectangle" value="0" />
-        <enum name="oval" value="1" />
-        <enum name="line" value="2" />
-        <enum name="ring" value="3" />
-    </attr>
-    <attr name="msd_mainColor" format="color" />
-    <attr name="msd_mainColorAlpha" format="float" />
-    <attr name="msd_backgroundColor" format="color" />
-    <attr name="msd_rippleColor" format="color" />
-    <attr name="msd_rippleColorAlpha" format="float" />
-    <attr name="msd_hasStroke" format="boolean" />
-    <attr name="msd_strokeWidth" format="dimension" />
-    <attr name="msd_isTransparent" format="boolean" />
-    <attr name="msd_radius" format="dimension" />
-    <attr name="msd_radius_topLeft" format="dimension" />
-    <attr name="msd_radius_topRight" format="dimension" />
-    <attr name="msd_radius_bottomLeft" format="dimension" />
-    <attr name="msd_radius_bottomRight" format="dimension" />
-    <attr name="msd_isGradient" format="boolean" />
-    <attr name="msd_gradientFirstColor" format="color" />
-    <attr name="msd_gradientSecondColor" format="color" />
-    <attr name="msd_gradientOrientation" format="enum">
-        <enum name="top_bottom" value="0" />
-        <enum name="left_right" value="6" />
-    </attr>
-    <attr name="msd_gradientRadius" format="dimension" />
-    <attr name="msd_hasRipple" format="boolean" />
+    <declare-styleable name="MeowSpinner">
 
-    <attr name="isPersianNumber" format="boolean" />
+        <attr name="meow_validateType" />
+        <attr name="meow_errorEmpty" />
 
-    <attr name="calculateSizeReverse" format="boolean" />
-    <attr name="hasCustomBackground" format="boolean" />
-    <attr name="hasCustomForeground" format="boolean" />
-
-    <declare-styleable name="MeowShapeDrawableLegacy">
-        <attr name="msd_shape" />
-        <attr name="msd_mainColor" />
-        <attr name="msd_mainColorAlpha" />
-        <attr name="msd_backgroundColor" />
-        <attr name="msd_rippleColor" />
-        <attr name="msd_rippleColorAlpha" />
-        <attr name="msd_hasStroke" />
-        <attr name="msd_strokeWidth" />
-        <attr name="msd_isTransparent" />
-        <attr name="msd_radius" />
-        <attr name="msd_radius_topLeft" />
-        <attr name="msd_radius_topRight" />
-        <attr name="msd_radius_bottomLeft" />
-        <attr name="msd_radius_bottomRight" />
-        <attr name="msd_isGradient" />
-        <attr name="msd_gradientFirstColor" />
-        <attr name="msd_gradientSecondColor" />
-        <attr name="msd_gradientOrientation" />
-        <attr name="msd_gradientRadius" />
-        <attr name="msd_hasRipple" />
     </declare-styleable>
 
     <declare-styleable name="MeowTextField">
-        <attr name="meow_fontFamily" format="reference" />
-        <attr name="isPersianNumber" />
 
-        <attr name="meow_validateType" format="enum">
-            <enum name="optional" value="0" />
-            <enum name="empty" value="1" />
-            <enum name="mobile" value="2" />
-            <enum name="email" value="3" />
-        </attr>
+        <attr name="meow_fontFamily" format="reference" />
+
+        <attr name="meow_validateType" />
+
+        <attr name="meow_errorEmpty" />
+        <attr name="meow_errorMobile" />
+        <attr name="meow_errorMobileLegacy" />
+        <attr name="meow_errorEmail" />
 
         <attr name="meow_textSize" format="dimension" />
-
-        <attr name="meow_errorEmpty" format="string" />
-        <attr name="meow_errorMobile" format="string" />
-        <attr name="meow_errorEmail" format="string" />
 
         <attr name="meow_inputType">
             <!-- There is no content type.  The text is not editable. -->
@@ -237,41 +194,6 @@
 
     <declare-styleable name="MeowFormView">
         <attr name="resetForm" format="boolean" />
-    </declare-styleable>
-
-    <declare-styleable name="MeowImageView">
-        <attr name="msd_shape" />
-        <attr name="msd_mainColor" />
-        <attr name="msd_mainColorAlpha" />
-        <attr name="msd_backgroundColor" />
-        <attr name="msd_rippleColor" />
-        <attr name="msd_rippleColorAlpha" />
-        <attr name="msd_hasStroke" />
-        <attr name="msd_strokeWidth" />
-        <attr name="msd_isTransparent" />
-        <attr name="msd_radius" />
-        <attr name="msd_radius_topLeft" />
-        <attr name="msd_radius_topRight" />
-        <attr name="msd_radius_bottomLeft" />
-        <attr name="msd_radius_bottomRight" />
-        <attr name="msd_isGradient" />
-        <attr name="msd_gradientFirstColor" />
-        <attr name="msd_gradientSecondColor" />
-        <attr name="msd_gradientOrientation" />
-        <attr name="msd_gradientRadius" />
-        <attr name="msd_hasRipple" />
-
-        <attr name="meow_useColor" format="boolean" />
-        <attr name="meow_isBitmap" format="boolean" />
-        <attr name="meow_src" format="reference" />
-        <attr name="meow_bitmapColor" format="color" />
-        <attr name="meow_imageSize" format="dimension" />
-        <attr name="meow_isAction" format="boolean" />
-        <attr name="meow_actionBackgroundAlpha" format="boolean" />
-        <attr name="meow_changeSize" format="boolean" />
-        <attr name="meow_fitImage" format="boolean" />
-        <attr name="meow_aspectRatio" format="string" />
-        <attr name="meow_aspectRatioEnabled" format="boolean" />
     </declare-styleable>
 
 </resources>

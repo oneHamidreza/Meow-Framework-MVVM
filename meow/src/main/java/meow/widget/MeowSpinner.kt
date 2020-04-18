@@ -17,6 +17,7 @@
 package meow.widget
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.text.InputType
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -51,15 +52,24 @@ open class MeowSpinner : TextInputLayout {
         items
     )
 
+    var validateType = MeowTextField.VALIDATE_TYPE_DEFAULT
+    var errorEmpty: String? = ""
+
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(
         context,
         attrs,
         defStyle
     ) {
+        setAttributesFromXml(attrs, R.styleable.MeowSpinner) {
+            initializeAttributes(it)
+        }
         initializeView()
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+        setAttributesFromXml(attrs, R.styleable.MeowSpinner) {
+            initializeAttributes(it)
+        }
         initializeView()
     }
 
@@ -68,6 +78,14 @@ open class MeowSpinner : TextInputLayout {
         autoCompleteTextView.inputType = InputType.TYPE_NULL
         autoCompleteTextView.setTextIsSelectable(false)
         build()
+    }
+
+    private fun initializeAttributes(it: TypedArray) {
+        validateType = it.getInt(R.styleable.MeowSpinner_meow_validateType, validateType)
+
+        errorEmpty = it.getString(R.styleable.MeowSpinner_meow_errorEmpty)
+        if (errorEmpty.isNullOrEmpty())
+            errorEmpty = context.getString(R.string.error_required_value)
     }
 
     fun addItem(title: String, description: String? = null, imageViewResId: Int = 0): MeowSpinner {

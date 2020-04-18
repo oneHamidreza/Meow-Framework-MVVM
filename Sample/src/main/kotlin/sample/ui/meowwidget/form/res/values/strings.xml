@@ -25,4 +25,6 @@
     <string name="description2">Description 2</string>
     <string name="description3">Description 3</string>
     <string name="description4">Description 4</string>
+
+    <string name="limit_error">Text is longer than allowed limit</string>
 </resources>

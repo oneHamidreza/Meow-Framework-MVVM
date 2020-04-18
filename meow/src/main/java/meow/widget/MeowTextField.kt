@@ -28,7 +28,6 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import meow.controller
 import meow.core.api.FormErrorModel
-import meow.util.toPersianNumber
 import meow.widget.impl.FormInterface
 
 
@@ -43,7 +42,6 @@ import meow.widget.impl.FormInterface
 class MeowTextField : TextInputLayout, FormInterface {
 
     private var fontFamily: Int = 0
-    var isPersianNumber = controller.isPersian
 
     val editText = TextInputEditText(context)
 
@@ -70,7 +68,8 @@ class MeowTextField : TextInputLayout, FormInterface {
         const val VALIDATE_TYPE_DEFAULT = 0
         const val VALIDATE_TYPE_EMPTY = 1
         const val VALIDATE_TYPE_MOBILE = 2
-        const val VALIDATE_TYPE_EMAIL = 3
+        const val VALIDATE_TYPE_MOBILE_LEGACY = 3
+        const val VALIDATE_TYPE_EMAIL = 4
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(
@@ -107,23 +106,23 @@ class MeowTextField : TextInputLayout, FormInterface {
         if (errorEmpty.isNullOrEmpty())
             errorEmpty = context.getString(R.string.error_required_value)
 
-        errorMobile = it.getString(R.styleable.MeowTextField_meow_errorEmpty)
+        errorMobile = it.getString(R.styleable.MeowTextField_meow_errorMobile)
+        if (errorMobile.isNullOrEmpty())
+            errorMobile = context.getString(R.string.error_mobile_not_valid)
+
+        errorMobile = it.getString(R.styleable.MeowTextField_meow_errorMobileLegacy)
         if (errorMobile.isNullOrEmpty())
             errorMobile = context.getString(R.string.error_mobile_not_valid)
 
         errorEmail = it.getString(R.styleable.MeowTextField_meow_errorEmail)
         if (errorEmail.isNullOrEmpty())
             errorEmail = context.getString(R.string.error_email_not_valid)
-
-        isPersianNumber = it.getBoolean(R.styleable.MeowTextField_isPersianNumber, isPersianNumber)
     }
 
     private fun initializeView() {
         addView(editText)
         editText.setTextSize(TypedValue.COMPLEX_UNIT_PX, this.textSize)
         editText.inputType = this.inputType
-        if (isPersianNumber)
-            text = text.toPersianNumber()
     }
 
     fun addTextChangedListener(textWatcher: TextWatcher) {

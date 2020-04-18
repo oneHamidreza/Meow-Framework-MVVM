@@ -17,14 +17,10 @@
 package meow.widget
 
 import android.annotation.SuppressLint
-import android.view.Gravity
 import android.widget.TextView
 import androidx.annotation.StyleRes
 import androidx.core.widget.TextViewCompat
 import androidx.databinding.BindingAdapter
-import meow.controller
-import meow.util.toEnglishNumber
-import meow.util.toPersianNumber
 
 /**
  * [android.widget.TextView] Extensions.
@@ -49,39 +45,6 @@ object TextViewBindingAdapter {
     fun setSuffix(view: TextView, suffixText: String) {
         view.text = "${view.text}$suffixText"
     }
-
-    @BindingAdapter("isPersianNumber")
-    @JvmStatic
-    fun setPersianNumber(view: TextView, isPersianNumber: Boolean) {
-        view.text = if (isPersianNumber) view.text.toString().toPersianNumber() else view.text
-    }
-
-    @BindingAdapter("isEnglishNumber")
-    @JvmStatic
-    fun setEnglishNumber(view: TextView, isEnglishNumber: Boolean) {
-        view.text = if (isEnglishNumber) view.text.toString().toEnglishNumber() else view.text
-    }
-}
-
-@SuppressLint("RtlHardcoded")
-fun calculateGravityIfNeed(gravity: Int, isReverse: Boolean = false): Int {
-    var newGravity = gravity
-    if (gravity != Gravity.CENTER && gravity != Gravity.CENTER_HORIZONTAL) {
-        val localGravity = if (controller.isRtl) Gravity.RIGHT else Gravity.LEFT
-        val inverseLocalGravity = if (controller.isRtl) Gravity.LEFT else Gravity.RIGHT
-
-        val local = if (!isReverse) localGravity else inverseLocalGravity
-        val inverse = if (!isReverse) inverseLocalGravity else localGravity
-
-        if (gravity / Gravity.START != 0) {
-            val defG = gravity - Gravity.START
-            newGravity = local or defG
-        } else if (gravity / Gravity.END != 0) {
-            val defG = gravity - Gravity.END
-            newGravity = inverse or defG
-        }
-    }
-    return newGravity
 }
 
 fun TextView.setTextAppearanceCompat(@StyleRes resId: Int) =

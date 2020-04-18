@@ -24,7 +24,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    isPersianNumber="@{true}"
                     prefixText="@{@string/prefix}"
                     suffixText="@{@string/suffix}"
                     android:layout_width="match_parent"
@@ -85,6 +84,7 @@
                         style="@style/Meow.Spinner.Form.Outlined"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:meow_validateType="empty"
                         android:hint="@string/select" />
 
                     <com.google.android.material.button.MaterialButton

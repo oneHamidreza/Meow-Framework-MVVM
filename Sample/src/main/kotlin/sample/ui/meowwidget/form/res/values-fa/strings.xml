@@ -27,4 +27,6 @@
     <string name="description3">توضیحات 3</string>
     <string name="description4">توضیحات 4</string>
 
+    <string name="limit_error">بیش از حد مجاز</string>
+
 </resources>

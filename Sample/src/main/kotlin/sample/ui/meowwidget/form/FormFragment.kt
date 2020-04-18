@@ -59,8 +59,7 @@ class FormFragment : BaseFragment<FragmentFormBinding>() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (binding.et.text!!.length > binding.et.counterMaxLength)
-                    binding.et.error =
-                        "Text is longer than allowed limit"//todo @Ali getString in en and fa
+                    binding.et.error = getString(R.string.limit_error)
                 else
                     binding.et.isErrorEnabled = false
             }

@@ -22,11 +22,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.etebarian.meowframework.R
+import com.google.android.material.textfield.TextInputLayout
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import meow.core.api.FormErrorModel
 import meow.util.avoidException
 import meow.util.fetchAllDigit
 import meow.util.isValidEmail
+import meow.util.isValidMobileLegacy
 
 
 /**
@@ -41,8 +43,9 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
     LinearLayout(context, attrs) {
 
     private var etList = listOf<MeowTextField>()
+    private var spList = listOf<MeowSpinner>()
     private var isResetForm: Boolean = false
-    private var checkList = ArrayList<MeowTextField>()
+    private var checkList = ArrayList<TextInputLayout>()
 
     init {
         setAttributesFromXml(attrs, R.styleable.MeowFormView) {
@@ -53,14 +56,18 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
     override fun onFinishInflate() {
         super.onFinishInflate()
         etList = getAllEditTexts()
+        spList = getAllSpinners()
         resetForm()
     }
 
     fun validate(listener: () -> Unit) {
-        etList.forEach { childE ->//todo @Ali support spinner why it is editTextOnly
+        etList.forEach { childE ->
             checkWithTextFieldType(childE)
         }
-        if (checkList.distinct().size == etList.size) {
+        spList.forEach { childS ->
+            checkWithSpinnerType(childS)
+        }
+        if (checkList.distinct().size == etList.size + spList.size) {
             listener()
             checkList.clear()
             if (isResetForm)
@@ -81,7 +88,25 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
             MeowTextField.VALIDATE_TYPE_DEFAULT -> checkList.add(textField)
             MeowTextField.VALIDATE_TYPE_EMPTY -> emptyValidator(textField)
             MeowTextField.VALIDATE_TYPE_MOBILE -> mobileValidator(textField)
+            MeowTextField.VALIDATE_TYPE_MOBILE_LEGACY -> mobileLegacyValidator(textField)
             MeowTextField.VALIDATE_TYPE_EMAIL -> emailValidator(textField)
+        }
+    }
+
+    private fun checkWithSpinnerType(spinner: MeowSpinner) {
+        when (spinner.validateType) {
+            MeowTextField.VALIDATE_TYPE_DEFAULT -> checkList.add(spinner)
+            MeowTextField.VALIDATE_TYPE_EMPTY -> spinnerEmptyValidator(spinner)
+        }
+    }
+
+    private fun spinnerEmptyValidator(spinner: MeowSpinner) {
+        val text = spinner.autoCompleteTextView.text.trim()
+        if (text.isEmpty()) {
+            spinner.error = spinner.errorEmpty
+        } else {
+            spinner.isErrorEnabled = false
+            checkList.add(spinner)
         }
     }
 
@@ -103,6 +128,22 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
         } else {
             avoidException {
                 if (!isValidPhoneCustom(text.toString())) {
+                    textField.error = textField.errorMobile
+                } else {
+                    textField.isErrorEnabled = false
+                    checkList.add(textField)
+                }
+            }
+        }
+    }
+
+    private fun mobileLegacyValidator(textField: MeowTextField) {
+        val text = textField.text?.trim()
+        if (text.isNullOrEmpty()) {
+            textField.error = textField.errorEmpty
+        } else {
+            avoidException {
+                if (!text.toString().isValidMobileLegacy()) {
                     textField.error = textField.errorMobile
                 } else {
                     textField.isErrorEnabled = false
@@ -163,6 +204,24 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
 
         fun find(v: View, list: ArrayList<MeowTextField>) {
             if (v is MeowTextField)
+                list.add(v)
+            else if (v is ViewGroup) {
+                for (i in 0 until v.childCount) {
+                    find(v.getChildAt(i), list)
+                }
+            }
+        }
+
+        find(this, list)
+
+        return list
+    }
+
+    private fun getAllSpinners(): List<MeowSpinner> {
+        val list = arrayListOf<MeowSpinner>()
+
+        fun find(v: View, list: ArrayList<MeowSpinner>) {
+            if (v is MeowSpinner)
                 list.add(v)
             else if (v is ViewGroup) {
                 for (i in 0 until v.childCount) {
