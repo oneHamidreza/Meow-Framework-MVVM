@@ -31,7 +31,6 @@ After adding library, some of most useful libraries (such as `Androidx` , `Corou
 	>	}
 	>}
 >```
->
 
 ## Getting Started
 
