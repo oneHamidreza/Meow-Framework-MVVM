@@ -28,7 +28,7 @@ After adding library, some of most useful libraries (such as `Androidx AppCompat
 >		targetCompatibility JavaVersion.VERSION_1_8 
 >	}
 >	dataBinding {  
->		isEnabled = true  
+>		enabled true  
 >	}
 >}
 >```
