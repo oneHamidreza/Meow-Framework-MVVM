@@ -568,7 +568,7 @@ class SampleIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){
     }
 }
  ```
-`MeowFlow` is a helper class that observe `eventLiveData` and it handles errors from API automatically. You can set error handling with `errorHandlerType`. Supported types : `TOAST` , `SNACKBAR` , `EMPTY_STATE`  . For example, when `errorHandlerType` is `Toast` errors has been shown in toast form. See [strings_error.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/meow/src/main/res/values/strings_error.xml) to edit error messages.
+`MeowFlow` is a helper class that observe `eventLiveData` and it handles errors from API automatically. You can set error handling with `errorHandlerType`. Supported types : `TOAST` , `SNACKBAR` , `EMPTY_STATE`  . For example, when `errorHandlerType` is `Toast` errors has been shown in toast form. See [strings_error.xml](blob/master/meow/src/main/res/values/strings_error.xml) to edit error messages.
  
 License
 --------
