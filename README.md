@@ -295,7 +295,6 @@ We suggest you to use `MeowAdapter`. Let's take a look at this sample :
 ```kotlin
 
 ```
-
  
 License
 --------
