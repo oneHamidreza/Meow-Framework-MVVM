@@ -1,5 +1,5 @@
 # Meow Framework MVVM Android/Kotlin
-A Framework that simplify developing MVVM architecture and Material Design in Android with Kotlin language including useful Extensions and Sample Application.   
+A Framework that simplify developing MVVM architecture and Material Design in Android with Kotlin language including useful Extensions and Sample Application. Also this Framework has some tools for Retrofit and OKHttp and Coroutine for calling Server API actions. 
 ![](/Resources/logo_meow_framework.png)
 [ ![Download](https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.2.4-alpha) ](https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.2.4-alpha/link)
 
@@ -81,7 +81,6 @@ import meow.controller
 controller.updateLanguage(meowActivity, string)
 controller.updateTheme(meowActivity, theme)
 ```
-
 ###  MVVM Architecture
 MVVM is Model-View-ViewModel that we define it in Android App as Data Model - View (Activity, Fragment, DialogFragment, BottomSheetDialogFragment) - MeowViewModel.
  
@@ -169,7 +168,7 @@ class MainActivity: MeowActivity<ActivityMainBinding>(){
 ## Retrofit + OKHttp + Coroutine + Moshi
 Meow Framework provides for you to call Server Api from Android App with `Retrofit`. Creating client connections will be with `OKHttp` and `Moshi` help us to serialize json responses. We replaced `RxJava` with `Coroutine` for multi thread handling.
 
-### Initialize `MeowApi`
+###  Initialize `MeowApi`
 ```kotlin
 class AppApi(
     var app: App,
@@ -207,7 +206,7 @@ data class Person(
     }
 }
 ```
-### Retrofit API Interface
+#### Retrofit API Interface
 Define one interface containing Server API actions. We are using `Coroutine` so `suspend` prefix is necessary.
 ```kotlin
 interface PersonApi {
@@ -215,13 +214,14 @@ interface PersonApi {
     suspend fun getPersonIndex(): List<Person>
 }
 ```
-### Call API action from ViewModel 
+#### Call API action from ViewModel 
 Use `safeCallApi` function for calling API actions. update your ViewModel class like this :  
 ```kotlin
 class PersonIndexViewModel(app:App) : MeowViewModel(app) {
     // Define LiveData variables
     var eventLiveData = MutableLiveData<MeowEvent<*>>()  
     var listLiveData = MutableLiveData<List<Person>>()
+    var customLiveData = MutableLiveData<String>()
 
     fun callApi() {
        safeCallApi(
@@ -236,7 +236,53 @@ class PersonIndexViewModel(app:App) : MeowViewModel(app) {
     }
 }
 ```
-
+#### XML Layout
+Create `activity_sample_index.xml` containing `RecyclerView` for showing items.
+```xml
+<layout xmlns:android="http://schemas.android.com/apk/res/android">  
+    <data>  
+        <variable
+            name="viewModel"  
+            type="PersonIndexViewModel" />
+            <!-- Remember that viewModel type must be with package -->  
+    </data>    
+    <FrameLayout  
+        android:layout_width="match_parent"  
+        android:layout_height="match_parent">  
+  
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"  
+            style="@style/Meow.RecyclerView.Linear"  
+            meow_items="@{viewModel.listLiveData}" />  
+  
+        <meow.widget.MeowProgressBar
+            android:id="@+id/progressbar"  
+            style="@style/Meow.ProgressBar.Medium.Primary" />
+  
+    </FrameLayout>  
+</layout>
+```
+#### Activty/Fragment + MeowFlow
+Use `MeowFlow` for handling event from ViewModel.
+ ```kotlin
+class SampleIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){
+    //...
+    override fun initViewModel() {  
+        binding.viewModel = viewModel  
+        callApiAndObserve()  
+    }  
+    
+    private fun callApiAndObserve() {  
+        MeowFlow.GetDataApi<Person>(this) {  
+            viewModel.callApi()
+        }.apply {  
+            errorHandlerType = MeowFlow.ErrorHandlerType.TOAST  	
+            progressBarInterface = binding.progressbar      
+        }.observeForIndex(viewModel.eventLiveData, viewModel.listLiveData)  
+    }
+}
+ ```
+ `MeowFlow` is a helper class that observe `eventLiveData` and it handles errors from API automatically. You can set error handling with `errorHandlerType`. Supported types : `TOAST` , `SNACKBAR` , `EMPTY_STATE`  . For example, when `errorHandlerType` is `Toast` errors has been shown in toast form. See  `[strings_error.xml](/meow/src/main/res/values/strings_error.xml)` to understand error messages or customize it.    
  
 License
 --------
