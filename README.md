@@ -324,7 +324,7 @@ class PersonAdapter : MeowAdapter<Model, ViewHolder>(Person.DiffCallback()) {
 ```
 And finally bind adapter to `RecyclerView`. 
 ```kotlin
-class SampleIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){
+class PersonIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){
     override fun onCreate(savedInstanceState: Bundle?) {
         //...
         binding.recyclerView.adapter = PersonAdapter() 
@@ -332,7 +332,7 @@ class SampleIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){
 }
 ```
 Now you have one activity that connect to **REST API** and parse the response (if the response code is HttpCode.OK (200)) and it show items into a `RecyclerView` as a list.
-Above sample can be used for other types of REST API actions (such as `Detail` ,`Form` ). for more details see [API Package](/sample/src/main/kotlin/sample/ui/api) in `sample` module.   
+Above sample can be used for other types of REST API actions (such as `Detail` ,`Form` ). for more details see [API Package](/Sample/src/main/kotlin/sample/ui/api) in `Sample` module.   
 
  
 License
