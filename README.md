@@ -155,15 +155,16 @@ Update App Theme in `styles.xml` with `DayNight` Material Theme. More details ar
 You can access views like this code :
 ```xml
 <com.google.android.material.appbar.MaterialToolbar  
-  android:id="@+id/toolbar"  
-  style="@style/Meow.Toolbar">
+    android:id="@+id/toolbar"  
+    style="@style/Meow.Toolbar" />
 ```
 ```kotlin
 class MainActivity: MeowActivity<ActivityMainBinding>(){
-   override fun layoutId() = R.layout.activity_main 
-   override fun onCreate(savedInstanceState: Bundle?) {
-      binding.toolbar.title = "custom_title"
-   }
+    override fun layoutId() = R.layout.activity_main 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        // ...
+        binding.toolbar.title = "custom_title"
+    }
 }
 ```
 ## Retrofit + OKHttp + Coroutine + Moshi
@@ -291,21 +292,29 @@ class SampleIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){
 `MeowFlow` is a helper class that observe `eventLiveData` and it handles errors from API automatically. You can set error handling with `errorHandlerType`. Supported types : `TOAST` , `SNACKBAR` , `EMPTY_STATE`  . For example, when `errorHandlerType` is `Toast` errors has been shown in toast form. See [strings_error.xml](/meow/src/main/res/values/strings_error.xml) to edit error messages.
 
 #### Show API response into `RecyclerView`
-First create XML layout like this :
+`item_person.xml` describe the layout of each row of list and you can set properties with `DataBinding` structure. Define layout like this :
 ```xml
-
+<layout>
+   <data>
+        <variable  
+            name="model"  
+            type="Person" />
+   </data>
+   <LinearLayout>
+      <TextView
+         android:text="@{model.alias}" />
+   </LinearLayout>
+<layout>
 ```  
-
 
 We suggest you to use `MeowAdapter`. Let's take a look at this sample : 
 ```kotlin
-class CatBreedAdapter : MeowAdapter<Model, ViewHolder>(Person.DiffCallback()) {  
+class PersonAdapter : MeowAdapter<Model, ViewHolder>(Person.DiffCallback()) {  
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {  
         val binding = ItemPersonBinding.inflate(LayoutInflater.from(parent.context), parent, false)  
         return MeowViewHolder(binding.root) { position, model ->  
             binding.let {  
-                it.controller = controller  
                 it.setVariable(BR.model, model)  
                 it.executePendingBindings()  
             }  
@@ -313,6 +322,17 @@ class CatBreedAdapter : MeowAdapter<Model, ViewHolder>(Person.DiffCallback()) {
     }
 }
 ```
+And finally bind adapter to `RecyclerView`. 
+```kotlin
+class SampleIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){
+    override fun onCreate(savedInstanceState: Bundle?) {
+        //...
+        binding.recyclerView.adapter = PersonAdapter() 
+    }
+}
+```
+Now you have one activity that connect to **REST API** and parse the response (if the response code is HttpCode.OK (200)) and it show items into a `RecyclerView` as a list.
+Above sample can be used for other types of REST API actions (such as `Detail` ,`Form` ). for more details see [API Package](/sample/src/main/kotlin/sample/ui/api) in `sample` module.   
 
  
 License
