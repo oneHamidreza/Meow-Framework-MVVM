@@ -6,6 +6,9 @@ A Framework that simplify developing MVVM architecture and Material Design in An
 
 [![Download](https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.3.1-alpha) ](https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.3.1-alpha/link)
 
+[![GitHub release](https://img.shields.io/github/release/oneHamidreza/Meow-Framework-MVVM.js.svg)](https://gitHub.com/oneHamidreza/Meow-Framework-MVVM.js/releases/)
+
+
 ## Setup
 ```groovy
 implementation("com.etebarian:meow-framework-mvvm:0.3.1-alpha")
