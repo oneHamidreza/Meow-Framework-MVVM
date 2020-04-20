@@ -33,7 +33,6 @@ import sample.data.Content
 import sample.databinding.FragmentMenuBinding
 import sample.ui.base.BaseFragment
 import sample.ui.content.ContentAdapter
-import sample.ui.content.ContentViewModel
 
 /**
  * Menu Fragment.
@@ -46,8 +45,6 @@ import sample.ui.content.ContentViewModel
 class MenuFragment : BaseFragment<FragmentMenuBinding>() {
 
     private val viewModel: MenuViewModel by instanceViewModel()
-    private val contentViewModel: ContentViewModel by instanceViewModel()
-
     override fun layoutId() = R.layout.fragment_menu
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -92,7 +89,7 @@ class MenuFragment : BaseFragment<FragmentMenuBinding>() {
                 if (position == 0)
                     outRect.top = binding.textInput.measuredHeight + 24.dp()
             }
-            adapter = ContentAdapter(contentViewModel) { _, it, view ->
+            adapter = ContentAdapter() { _, it, view ->
                 showPopup(it, view)
             }
         }

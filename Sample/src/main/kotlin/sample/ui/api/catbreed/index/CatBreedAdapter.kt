@@ -35,23 +35,18 @@ import sample.databinding.ItemCatBreedBinding
 
 typealias Model = CatBreed
 
-typealias ViewHolder = MeowViewHolder<Model, ViewModel>
-typealias ViewModel = CatBreedIndexViewModel
+typealias ViewHolder = MeowViewHolder<Model>
 typealias DiffCallback = CatBreed.DiffCallback
 
-class CatBreedAdapter(
-    override var viewModel: ViewModel
-) : MeowAdapter<Model, ViewHolder, ViewModel>(
-    viewModel,
+class CatBreedAdapter : MeowAdapter<Model, ViewHolder>(
     DiffCallback()
 ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
             ItemCatBreedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MeowViewHolder(binding.root) { _, model, viewModel ->
+        return MeowViewHolder(binding.root) { _, model ->
             binding.let {
-                it.viewModel = viewModel
                 it.controller = controller
                 it.setVariable(BR.model, model)
                 it.executePendingBindings()

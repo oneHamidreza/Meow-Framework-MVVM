@@ -52,7 +52,7 @@ class FABExtendedFragment : BaseFragment<FragmentFabExtendedBinding>() {
     private fun setupRecyclerView() {
         binding.recyclerView.apply {
             addItemDecoration(MeowDividerDecoration(context()))
-            adapter = ContentAdapter(contentViewModel)
+            adapter = ContentAdapter()
         }
     }
 

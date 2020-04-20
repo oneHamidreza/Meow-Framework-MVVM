@@ -19,7 +19,6 @@ package meow.core.ui
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import meow.core.arch.MeowViewModel
 
 /**
  * Meow Adapter class inherits from [RecyclerView.Adapter].
@@ -29,11 +28,10 @@ import meow.core.arch.MeowViewModel
  * @since   2020-03-08
  */
 
-abstract class MeowAdapter<T, VH : MeowViewHolder<T, VM>, VM : MeowViewModel>(
-    open var viewModel: VM,
+abstract class MeowAdapter<T, VH : MeowViewHolder<T>>(
     diffCallback: DiffUtil.ItemCallback<T>
 ) : ListAdapter<T, VH>(diffCallback) {
     override fun onBindViewHolder(holder: VH, position: Int) {
-        holder.onBind(position, getItem(position), viewModel)
+        holder.onBind(position, getItem(position))
     }
 }

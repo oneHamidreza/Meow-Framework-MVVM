@@ -19,7 +19,6 @@ package meow.core.ui
 import android.view.View
 
 import androidx.recyclerview.widget.RecyclerView
-import meow.core.arch.MeowViewModel
 
 /**
  * Meow View Holder class.
@@ -29,12 +28,12 @@ import meow.core.arch.MeowViewModel
  * @since   2020-03-11
  */
 
-class MeowViewHolder<T, VM : MeowViewModel>(
+class MeowViewHolder<T>(
     itemView: View?,
-    var onBindBlock: (position: Int, model: T, viewModel: VM) -> Unit = { _, _, _ -> }
+    var onBindBlock: (position: Int, model: T) -> Unit = { _, _ -> }
 ) : RecyclerView.ViewHolder(itemView!!) {
 
-    fun onBind(position: Int, model: T, viewModel: VM) {
-        onBindBlock(position, model, viewModel)
+    fun onBind(position: Int, model: T) {
+        onBindBlock(position, model)
     }
 }

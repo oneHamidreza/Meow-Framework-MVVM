@@ -27,7 +27,6 @@ import sample.R
 import sample.databinding.FragmentFabSimpleBinding
 import sample.ui.base.BaseFragment
 import sample.ui.content.ContentAdapter
-import sample.ui.content.ContentViewModel
 
 /**
  * Material Floating Action Button Fragment class.
@@ -40,7 +39,6 @@ import sample.ui.content.ContentViewModel
 class FABSimpleFragment : BaseFragment<FragmentFabSimpleBinding>() {
 
     private val viewModel: FABSimpleViewModel by instanceViewModel()
-    private val contentViewModel: ContentViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_fab_simple
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,7 +50,7 @@ class FABSimpleFragment : BaseFragment<FragmentFabSimpleBinding>() {
     private fun setupRecyclerView() {
         binding.recyclerView.apply {
             addItemDecoration(MeowDividerDecoration(context()))
-            adapter = ContentAdapter(contentViewModel)
+            adapter = ContentAdapter()
         }
     }
 

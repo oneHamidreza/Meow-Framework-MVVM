@@ -23,7 +23,6 @@ import sample.R
 import sample.databinding.ActivityBottomAppBarBinding
 import sample.ui.base.BaseActivity
 import sample.ui.content.ContentAdapter
-import sample.ui.content.ContentViewModel
 
 /**
  * Material Bottom App Bar Activity.
@@ -36,7 +35,6 @@ import sample.ui.content.ContentViewModel
 class BottomAppBarActivity : BaseActivity<ActivityBottomAppBarBinding>() {
 
     private val viewModel: BottomAppBarViewModel by instanceViewModel()
-    private val contentViewModel: ContentViewModel by instanceViewModel()
 
     override fun layoutId() = R.layout.activity_bottom_app_bar
 
@@ -55,7 +53,7 @@ class BottomAppBarActivity : BaseActivity<ActivityBottomAppBarBinding>() {
     private fun setupRecyclerView() {
         binding.recyclerView.apply {
             addItemDecoration(MeowDividerDecoration(context()))
-            adapter = ContentAdapter(contentViewModel)
+            adapter = ContentAdapter()
         }
     }
 

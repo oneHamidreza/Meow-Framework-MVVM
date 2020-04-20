@@ -23,6 +23,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.akexorcist.localizationactivity.core.LocalizationApplicationDelegate
 import meow.core.arch.MeowViewModelFactory
 import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
 import org.kodein.di.direct
 import org.kodein.di.erased.bind
 import org.kodein.di.erased.singleton
@@ -44,7 +45,7 @@ val meowModule = Kodein.Module("Meow Module", false) {
     }
 }
 
-abstract class MeowApp : Application() {
+abstract class MeowApp : Application(), KodeinAware {
 
     private var localizationDelegate = LocalizationApplicationDelegate()
 

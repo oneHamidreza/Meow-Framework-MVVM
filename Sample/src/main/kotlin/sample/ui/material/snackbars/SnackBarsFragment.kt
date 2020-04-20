@@ -29,7 +29,6 @@ import sample.data.Content
 import sample.databinding.FragmentSnackbarsBinding
 import sample.ui.base.BaseFragment
 import sample.ui.content.ContentAdapter
-import sample.ui.content.ContentViewModel
 
 /**
  * Material Snack Bars Fragment.
@@ -42,8 +41,6 @@ import sample.ui.content.ContentViewModel
 class SnackBarsFragment : BaseFragment<FragmentSnackbarsBinding>() {
 
     private val viewModel: SnackBarsViewModel by instanceViewModel()
-    private val contentViewModel: ContentViewModel by instanceViewModel()
-
     override fun layoutId() = R.layout.fragment_snackbars
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,7 +52,7 @@ class SnackBarsFragment : BaseFragment<FragmentSnackbarsBinding>() {
     private fun setupRecyclerView() {
         binding.recyclerView.apply {
             addItemDecoration(MeowDividerDecoration(context()))
-            adapter = ContentAdapter(contentViewModel) { _, it, _ ->
+            adapter = ContentAdapter { _, it, _ ->
                 when (it.action) {
                     Content.Action.SNACK_SIMPLE -> {
                         snackL(R.string.snackbars_message)

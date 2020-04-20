@@ -28,7 +28,6 @@ import sample.data.Content
 import sample.databinding.FragmentAlertsBinding
 import sample.ui.base.BaseFragment
 import sample.ui.content.ContentAdapter
-import sample.ui.content.ContentViewModel
 
 /**
  * Material Alerts Fragment.
@@ -40,7 +39,6 @@ import sample.ui.content.ContentViewModel
 
 class AlertsFragment : BaseFragment<FragmentAlertsBinding>() {
 
-    private val contentViewModel: ContentViewModel by instanceViewModel()
     private val viewModel: AlertsViewModel by instanceViewModel()
 
     override fun layoutId() = R.layout.fragment_alerts
@@ -58,7 +56,7 @@ class AlertsFragment : BaseFragment<FragmentAlertsBinding>() {
     private fun setupRecyclerView() {
         binding.recyclerView.apply {
             addItemDecoration(MeowDividerDecoration(context()))
-            adapter = ContentAdapter(contentViewModel) { _, it, _ ->
+            adapter = ContentAdapter { _, it, _ ->
                 when (it.action) {
                     Content.Action.ALERT_SIMPLE -> {
                         alert()

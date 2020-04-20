@@ -30,7 +30,6 @@ import meow.util.getFontCompat
 import meow.util.isNightModeFromSettings
 import meow.util.toHexString
 import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
 import org.kodein.di.direct
 import org.kodein.di.erased.bind
@@ -49,7 +48,7 @@ import sample.di.mvvmModule
  * @since   2020-03-01
  */
 
-class App : MeowApp(), KodeinAware {
+class App : MeowApp() {
 
     override val kodein = Kodein.lazy {
         bind() from singleton { kodein.direct }

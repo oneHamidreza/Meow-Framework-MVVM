@@ -41,6 +41,7 @@ lateinit var controller: MeowController
 class MeowController(
     val meowSession: MeowSession = MeowSession()
 ) {
+    //todo clear
     lateinit var app: Application
 
     var isDebugMode: Boolean = true
@@ -51,7 +52,7 @@ class MeowController(
     var language: String = ""
     var currency: MeowCurrency = MeowCurrency.USD
     var calendar: Calendar = Calendar.GEORGIAN
-    var rootFolderName: String = "src/main/kotlin/meow"
+    var rootFolderName: String = "meow_app"
     var onColorGet: (color: Int) -> Int = { color -> color }
     internal var onColorStateListGet: (colorStateList: ColorStateList) -> ColorStateList =
         { color ->

@@ -33,24 +33,19 @@ import sample.databinding.ItemContentBinding
  */
 
 typealias Model = Content
-
-typealias ViewHolder = MeowViewHolder<Model, ViewModel>
-typealias ViewModel = ContentViewModel
+typealias ViewHolder = MeowViewHolder<Model>
 typealias DiffCallback = Content.DiffCallback
 
 class ContentAdapter(
-    override var viewModel: ViewModel,
     var onClickedItem: (pos: Int, item: Model, view: View) -> Unit = { _, _, _ -> }
-) : MeowAdapter<Model, ViewHolder, ViewModel>(
-    viewModel,
+) : MeowAdapter<Model, ViewHolder>(
     DiffCallback()
 ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemContentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MeowViewHolder(binding.root) { pos, model, viewModel ->
+        return MeowViewHolder(binding.root) { pos, model ->
             binding.let {
-                it.viewModel = viewModel
                 it.model = model
                 it.executePendingBindings()
 

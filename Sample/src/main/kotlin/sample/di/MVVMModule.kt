@@ -69,9 +69,7 @@ import sample.ui.sharedpreferences.SharedPreferencesViewModel
 val mvvmModule = Module("MVVM Module", false) {
 
     bindAutoTag<ContentsViewModel>() with provider {
-        ContentsViewModel(
-            kodein.direct.instance()
-        )
+        ContentsViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<HomeViewModel>() with provider {

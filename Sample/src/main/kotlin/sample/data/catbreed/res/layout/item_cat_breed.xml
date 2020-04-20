@@ -5,10 +5,6 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="sample.ui.api.catbreed.index.CatBreedIndexViewModel" />
-
-        <variable
             name="model"
             type="sample.data.catbreed.CatBreed" />
 
@@ -16,7 +12,6 @@
             name="controller"
             type="meow.MeowController" />
     </data>
-
 
     <com.google.android.material.card.MaterialCardView
         style="@style/Meow.CardView"

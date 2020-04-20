@@ -152,7 +152,7 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
     private fun setupRecyclerView() {
         binding.recyclerView.apply {
             addItemDecoration(MeowDividerDecoration(context()))
-            adapter = ContentAdapter(contentViewModel) { _, it, _ ->
+            adapter = ContentAdapter { _, it, _ ->
                 when (it.action) {
                     API_INDEX -> findNavController().navigate(HomeFragmentDirections.actionToCatBreedIndex())
                     API_DETAIL -> findNavController().navigate(HomeFragmentDirections.actionToCatBreedDetail())

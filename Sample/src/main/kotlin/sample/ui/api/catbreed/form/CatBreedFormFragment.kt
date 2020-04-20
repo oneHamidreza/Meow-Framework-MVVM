@@ -14,19 +14,17 @@
  * limitations under the License.
  */
 
-package sample.ui.api.catbreed.detail
+package sample.ui.api.catbreed.form
 
 import android.os.Bundle
 import android.view.View
 import meow.controller
 import meow.core.arch.MeowFlow
 import meow.util.instanceViewModel
-import meow.util.logD
 import meow.util.toastL
 import sample.R
 import sample.data.catbreed.CatBreed
 import sample.databinding.FragmentCatBreedFormBinding
-import sample.ui.api.catbreed.form.CatBreedFormViewModel
 import sample.ui.base.BaseFragment
 
 /**
@@ -53,19 +51,16 @@ class CatBreedFormFragment : BaseFragment<FragmentCatBreedFormBinding>() {
         binding.viewModel = viewModel
         binding.apply {
             progressbar.hide()
-            etName.apiField = "name"//todo @Ali convert to attrs
+            etName.apiField = "name"//todo @Ali create field from attrs
         }
     }
 
     private fun callApiAndObserve() {
         MeowFlow.PutDataApi<CatBreed.Api.ResponseCreate>(this) {
-            val request =
-                CatBreed.Api.RequestCreate(binding.etName.textString.apply { logD(m = this) })
-            viewModel.callApi(request)
-//            binding.formView.validate {//todo @Ali test
-//                val request = CatBreed.Api.RequestCreate(binding.etName.textString)
-//                viewModel.callApi(request)
-//            }
+            binding.formView.validate {
+                val request = CatBreed.Api.RequestCreate(binding.etName.textString)
+                viewModel.callApi(request)
+            }
         }.apply {
             containerViews = arrayOf(binding.formView)
             errorHandlerType = MeowFlow.ErrorHandlerType.SNACK_BAR

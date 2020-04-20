@@ -42,7 +42,7 @@ class CatBreedIndexFragment : BaseFragment<FragmentCatBreedIndexBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.recyclerView.apply {
-            adapter = CatBreedAdapter(viewModel)
+            adapter = CatBreedAdapter()
         }
     }
 

@@ -27,7 +27,6 @@ import sample.R
 import sample.databinding.ActivityTopAppBarBinding
 import sample.ui.base.BaseActivity
 import sample.ui.content.ContentAdapter
-import sample.ui.content.ContentViewModel
 
 /**
  * Material Top App Bar Activity.
@@ -40,8 +39,6 @@ import sample.ui.content.ContentViewModel
 class TopAppBarActivity : BaseActivity<ActivityTopAppBarBinding>() {
 
     private val viewModel: TopAppBarViewModel by instanceViewModel()
-    private val contentViewModel: ContentViewModel by instanceViewModel()
-
     override fun layoutId() = R.layout.activity_top_app_bar
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,7 +58,7 @@ class TopAppBarActivity : BaseActivity<ActivityTopAppBarBinding>() {
     private fun setupRecyclerView() {
         binding.recyclerView.apply {
             addItemDecoration(MeowDividerDecoration(context()))
-            adapter = ContentAdapter(contentViewModel)
+            adapter = ContentAdapter()
         }
     }
 }

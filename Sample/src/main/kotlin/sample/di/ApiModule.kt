@@ -52,9 +52,9 @@ val apiModule = Module("Api Module", false) {
 open class AppApi(
     open val app: App,
     open val dataSource: DataSource,
-    override var options: Options = Options(),
-//    override var baseUrl: String = "http://etebarian.com/meow/"
-    override var baseUrl: String = "http://192.168.1.4:9696/"
+    override var baseUrl: String = "http://etebarian.com/meow/",
+//    override var baseUrl: String = "http://192.168.1.4:9696/",
+    override var options: Options = Options()
 ) : MeowApi(baseUrl = baseUrl, options = options) {
 
     override fun getRefreshTokenResponse(): Response<MeowOauthToken>? {
@@ -92,6 +92,6 @@ open class AppApi(
 class TestAppApi(
     override var app: App,
     override var dataSource: DataSource,
-    override var options: Options = Options(),
-    override var baseUrl: String = "test-api.yoururl.com"
-) : AppApi(app, dataSource, options)
+    override var baseUrl: String = "test-api.yoururl.com",
+    override var options: Options = Options()
+) : AppApi(app, dataSource, baseUrl, options)
