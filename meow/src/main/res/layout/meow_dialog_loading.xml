@@ -7,9 +7,7 @@
             type="String" />
     </data>
 
-    <merge
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <merge>
 
         <meow.widget.MeowProgressBar
             style="@style/Meow.ProgressBar.Medium.Primary"

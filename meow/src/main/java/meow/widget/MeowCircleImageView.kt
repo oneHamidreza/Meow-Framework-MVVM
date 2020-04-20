@@ -52,13 +52,13 @@ open class MeowCircleImageView @JvmOverloads constructor(
     var strokeWidth = 0f
         set(value) {
             field = value
-            draw()
+            if (allowDraw)//todo without this
+                draw()
         }
 
     private var allowDraw = false
 
     init {
-        initializeView()
         setAttributesFromXml(attrs, R.styleable.MeowCircleImageView) {
             strokeColor =
                 it.getColor(R.styleable.MeowCircleImageView_meow_strokeColor, strokeColor)
@@ -66,6 +66,12 @@ open class MeowCircleImageView @JvmOverloads constructor(
                 it.getDimension(R.styleable.MeowCircleImageView_meow_strokeWidth, strokeWidth)
             hasStroke = it.getBoolean(R.styleable.MeowCircleImageView_meow_hasStroke, hasStroke)
         }
+
+        hasStroke = hasStroke
+        strokeColor = strokeColor
+        strokeWidth = strokeWidth
+
+        initializeView()
     }
 
     private fun initializeView() {

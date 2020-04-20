@@ -54,7 +54,6 @@ class MeowEmptyState @JvmOverloads constructor(
         this,
         true
     )
-    //todo @Hamid & @Ali Describe with Dou
 
     //todo @Hamid all widget like this
     var icon: Drawable? = null

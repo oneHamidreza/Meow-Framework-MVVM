@@ -89,7 +89,6 @@ abstract class MeowApi(
     open fun createDefaultService() = Retrofit.Builder()
         .baseUrl(baseUrl.apply { logD(m = this) })
         .client(getOKHttpClientBuilder().build())
-//        .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
 
     open fun getRefreshTokenResponse(): retrofit2.Response<MeowOauthToken>? {
