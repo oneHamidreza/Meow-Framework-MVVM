@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -9,6 +10,7 @@
     </data>
 
     <LinearLayout
+        meow_gap="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -20,11 +22,31 @@
 
         <com.google.android.material.checkbox.MaterialCheckBox
             style="@style/Meow.Checkbox.Primary"
-            android:text="@string/checkboxes_tint" />
+            android:text="@string/checkboxes_primary" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Meow.CardView"
+            app:cardBackgroundColor="?colorPrimary">
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                style="@style/Meow.Checkbox.OnPrimary"
+                android:text="@string/checkboxes_on_primary" />
+
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.checkbox.MaterialCheckBox
             style="@style/Meow.Checkbox.Secondary"
-            android:text="@string/checkboxes_tint" />
+            android:text="@string/checkboxes_secondary" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Meow.CardView"
+            app:cardBackgroundColor="?colorSecondary">
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                style="@style/Meow.Checkbox.OnSecondary"
+                android:text="@string/checkboxes_on_secondary" />
+
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 

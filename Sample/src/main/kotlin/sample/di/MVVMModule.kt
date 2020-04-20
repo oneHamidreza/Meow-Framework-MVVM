@@ -40,6 +40,7 @@ import sample.ui.material.bottomappbar.BottomAppBarViewModel
 import sample.ui.material.bottomnavigation.BottomNavigationViewModel
 import sample.ui.material.buttons.ButtonsViewModel
 import sample.ui.material.cards.CardsViewModel
+import sample.ui.material.checkboxes.CheckboxesViewModel
 import sample.ui.material.collapsing.toolbar.CollapsingToolbarViewModel
 import sample.ui.material.fab.extended.FABExtendedViewModel
 import sample.ui.material.fab.simple.FABSimpleViewModel
@@ -73,22 +74,16 @@ val mvvmModule = Module("MVVM Module", false) {
     }
 
     bindAutoTag<HomeViewModel>() with provider {
-        HomeViewModel(
-            kodein.direct.instance()
-        )
+        HomeViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<MainViewModel>() with provider {
-        MainViewModel(
-            kodein.direct.instance()
-        )
+        MainViewModel(kodein.direct.instance())
     }
 
     // Markdown
     bindAutoTag<MarkdownViewModel>() with provider {
-        MarkdownViewModel(
-            kodein.direct.instance()
-        )
+        MarkdownViewModel(kodein.direct.instance())
     }
 
     // Api Samples
@@ -118,140 +113,106 @@ val mvvmModule = Module("MVVM Module", false) {
     }
 
     bindAutoTag<AlertsViewModel>() with provider {
-        AlertsViewModel(
-            kodein.direct.instance()
-        )
+        AlertsViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<BottomAppBarViewModel>() with provider {
-        BottomAppBarViewModel(
-            kodein.direct.instance()
-        )
+        BottomAppBarViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<BottomNavigationViewModel>() with provider {
-        BottomNavigationViewModel(
-            kodein.direct.instance()
-        )
+        BottomNavigationViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<CardsViewModel>() with provider {
-        CardsViewModel(
-            kodein.direct.instance()
-        )
+        CardsViewModel(kodein.direct.instance())
+    }
+
+    bindAutoTag<CheckboxesViewModel>() with provider {
+        CheckboxesViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<CollapsingToolbarViewModel>() with provider {
-        CollapsingToolbarViewModel(
-            kodein.direct.instance()
-        )
+        CollapsingToolbarViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<DashViewModel>() with provider {
-        DashViewModel(
-            kodein.direct.instance()
-        )
+        DashViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<FABExtendedViewModel>() with provider {
-        FABExtendedViewModel(
-            kodein.direct.instance()
-        )
+        FABExtendedViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<FABSimpleViewModel>() with provider {
-        FABSimpleViewModel(
-            kodein.direct.instance()
-        )
+        FABSimpleViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<MenuViewModel>() with provider {
-        MenuViewModel(
-            kodein.direct.instance()
-        )
+        MenuViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<ProgressBarsViewModel>() with provider {
-        ProgressBarsViewModel(
-            kodein.direct.instance()
-        )
+        ProgressBarsViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<RadioButtonsViewModel>() with provider {
-        RadioButtonsViewModel(
-            kodein.direct.instance()
-        )
+        RadioButtonsViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<SnackBarsViewModel>() with provider {
-        SnackBarsViewModel(
-            kodein.direct.instance()
-        )
+        SnackBarsViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<SwitchesViewModel>() with provider {
-        SwitchesViewModel(
-            kodein.direct.instance()
-        )
+        SwitchesViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<TabLayoutViewModel>() with provider {
-        TabLayoutViewModel(
-            kodein.direct.instance()
-        )
+        TabLayoutViewModel(kodein.direct.instance())
     }
+
     bindAutoTag<TabLayoutChildViewModel>() with provider {
-        TabLayoutChildViewModel(
-            kodein.direct.instance()
-        )
+        TabLayoutChildViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<TextViewsViewModel>() with provider {
-        TextViewsViewModel(
-            kodein.direct.instance()
-        )
+        TextViewsViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<TopAppBarViewModel>() with provider {
-        TopAppBarViewModel(
-            kodein.direct.instance()
-        )
+        TopAppBarViewModel(kodein.direct.instance())
     }
+
     bindAutoTag<ContentViewModel>() with provider {
-        ContentViewModel(
-            kodein.direct.instance()
-        )
+        ContentViewModel(kodein.direct.instance())
     }
+
     bindAutoTag<CustomDialogViewModel>() with provider {
-        CustomDialogViewModel(
-            kodein.direct.instance()
-        )
+        CustomDialogViewModel(kodein.direct.instance())
     }
+
     bindAutoTag<FormViewModel>() with provider {
-        FormViewModel(
-            kodein.direct.instance()
-        )
+        FormViewModel(kodein.direct.instance())
     }
+
     bindAutoTag<ButtonsViewModel>() with provider {
-        ButtonsViewModel(
-            kodein.direct.instance()
-        )
+        ButtonsViewModel(kodein.direct.instance())
     }
+
     bindAutoTag<ImageviewsViewModel>() with provider {
-        ImageviewsViewModel(
-            kodein.direct.instance()
-        )
+        ImageviewsViewModel(kodein.direct.instance())
     }
+
     bindAutoTag<SharedPreferencesViewModel>() with provider {
-        SharedPreferencesViewModel(
-            kodein.direct.instance()
-        )
+        SharedPreferencesViewModel(kodein.direct.instance())
     }
+
     bindAutoTag<RateViewModel>() with provider {
-        RateViewModel(
-            kodein.direct.instance()
-        )
+        RateViewModel(kodein.direct.instance())
     }
+
     bind() from singleton { CatBreed.Repository(instance()) }
+
     bind() from singleton { User.Repository(instance()) }
 }

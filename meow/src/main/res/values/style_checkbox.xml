@@ -17,10 +17,14 @@
     </style>
 
     <style name="Meow.Checkbox.OnPrimary">
+        <item name="android:textColor">?colorOnPrimary</item>
+        <item name="buttonTint">?colorOnPrimary</item>
         <item name="android:theme">@style/Meow.Theme.Checkbox.OnPrimary</item>
     </style>
 
     <style name="Meow.Checkbox.OnSecondary">
+        <item name="android:textColor">?colorOnSecondary</item>
+        <item name="buttonTint">?colorOnSecondary</item>
         <item name="android:theme">@style/Meow.Theme.Checkbox.OnSecondary</item>
     </style>
 

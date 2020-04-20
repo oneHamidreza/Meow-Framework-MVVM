@@ -19,6 +19,7 @@
             <TextView
                 android:id="@+id/tv"
                 style="@style/Meow.TextView"
+                android:lineSpacingExtra="2dp"
                 android:padding="16dp"
                 android:textAppearance="@style/textAppearance.Body2" />
 
