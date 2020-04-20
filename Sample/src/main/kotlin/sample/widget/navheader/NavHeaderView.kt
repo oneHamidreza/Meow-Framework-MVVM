@@ -23,6 +23,7 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import meow.util.dp
+import meow.util.getStatusBarHeight
 import sample.R
 import sample.databinding.NavHeaderViewBinding
 
@@ -51,7 +52,7 @@ class NavHeaderView @JvmOverloads constructor(
         orientation = VERTICAL
         gravity = Gravity.CENTER
         minimumHeight = 144.dp()
-        setPaddingRelative(16.dp(), 48.dp(), 16.dp(), 16.dp())
+        setPaddingRelative(16.dp(), context.getStatusBarHeight() + 16.dp(), 16.dp(), 16.dp())
     }
 
 }

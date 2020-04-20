@@ -130,7 +130,7 @@ publishing {
 
             artifact("$buildDir/outputs/aar/meow-release.aar")
             artifact(sourcesJar.get())
-            artifact(javadocJar.get())
+//            artifact(javadocJar.get())
         }
     }
 }
