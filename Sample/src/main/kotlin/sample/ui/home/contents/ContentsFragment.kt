@@ -30,6 +30,7 @@ import sample.ui.content.ContentAdapter
 import sample.ui.content.ContentViewModel
 import sample.ui.home.HomeFragmentDirections
 import sample.ui.material.collapsing.toolbar.CollapsingToolbarActivity
+import sample.ui.material.topappbar.TopAppBarActivity
 
 /**
  * Contents Fragment.
@@ -181,7 +182,14 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                     MATERIAL_RADIO_BUTTONS -> findNavController().navigate(HomeFragmentDirections.actionToRadioButtons())
                     MATERIAL_SNACKBARS -> findNavController().navigate(HomeFragmentDirections.actionToSnackBars())
                     MATERIAL_SWITCHES -> findNavController().navigate(HomeFragmentDirections.actionToSwitches())
+                    MATERIAL_TABLAYOUT -> findNavController().navigate(HomeFragmentDirections.actionToTabLayout())
                     MATERIAL_TEXTVIEWS -> findNavController().navigate(HomeFragmentDirections.actionToTextviews())
+                    MATERIAL_TOP_APP_BAR -> startActivity(
+                        Intent(
+                            context(),
+                            TopAppBarActivity::class.java
+                        )
+                    )
 
                     WIDGET_DASH -> findNavController().navigate(HomeFragmentDirections.actionToDash())
                     WIDGET_FORM -> findNavController().navigate(HomeFragmentDirections.actionToForm())

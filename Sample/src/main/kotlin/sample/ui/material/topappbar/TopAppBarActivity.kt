@@ -17,11 +17,7 @@
 package sample.ui.material.topappbar
 
 import android.os.Bundle
-import meow.controller
-import meow.util.getColorCompat
 import meow.util.instanceViewModel
-import meow.util.setStatusBackgroundColor
-import meow.util.updateStatusBarByTheme
 import meow.widget.decoration.MeowDividerDecoration
 import sample.R
 import sample.databinding.ActivityTopAppBarBinding
@@ -44,8 +40,7 @@ class TopAppBarActivity : BaseActivity<ActivityTopAppBarBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(binding.toolbar)
-        updateStatusBarByTheme(!controller.isNightMode)
-        window.setStatusBackgroundColor(getColorCompat(R.color.surface))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = getString(R.string.activity_top_app_bar)
         setupRecyclerView()
         viewModel.fillList()

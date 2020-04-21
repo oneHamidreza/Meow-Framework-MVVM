@@ -22,6 +22,7 @@
         <activity
             android:name=".ui.main.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleInstance"
             android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,6 +41,11 @@
             android:screenOrientation="fullSensor" />
         <activity
             android:name=".ui.material.collapsing.toolbar.CollapsingToolbarActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".ui.main.MainActivity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".ui.material.topappbar.TopAppBarActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:parentActivityName=".ui.main.MainActivity"
             android:screenOrientation="fullSensor" />
