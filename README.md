@@ -361,7 +361,38 @@ A Dialog with `MeowLoadingView` for showing progress bar with text into Dialog.
 ```kotlin
 loadingAlert(R.string.loading_title_custom).show()
 ```
-
+Learn more about it at [AlertsFragment](/sample/ui/material/alert/AlertsFragment.kt)
+### CardView
+There are some customized styles related to `Material CardView`. 
+|Style|Usage
+|----------|:-------------:|
+|`Meow.CardView`|Regular Card with `surface` background color 
+|`Meow.CardView.Outlined`|Outlined Card with `surface` background color and `stroke_color.xml` outline color
+Use it like this in XML Layout : 
+```xml
+<com.google.android.material.card.MaterialCardView
+    style="@style/Meow.CardView"  
+    app:contentPadding="16dp" >
+   <!-- Place your views here -->
+</com.google.android.material.card.MaterialCardView>
+```    
+Learn more about it at [Material Card Component](https://material.io/components/android/catalog/cards/) and [fragment_cards.xml](/sample/ui/material/cards/res/layout/fragment_cards.xml).
+### Checkbox
+There are some customized styles related to `Material CheckBox`. 
+|Style|Usage
+|----------|:-------------:|
+|`Meow.Checkbox`|Checkbox with `accent_color` button tint 
+|`Meow.Checkbox.Primary`|Checkbox with `primary` button tint
+|`Meow.Checkbox.Secondary`|Checkbox with `secondary` button tint
+|`Meow.Checkbox.OnPrimary`|Checkbox with `onPrimary` button tint & `textColor`
+|`Meow.Checkbox.OnSecondary`|Checkbox with `onSecondary` button tint & `textColor`
+Use it like this in XML Layout :
+```xml  
+<com.google.android.material.checkbox.MaterialCheckBox  
+    style="@style/Meow.Checkbox"  
+    android:text="@string/checkbox_text" />
+```    
+Learn more about it at [Material Checkbox Component](https://material.io/develop/android/components/checkbox/) and [fragment_checkboxes.xml](/sample/ui/material/checkboxes/res/layout/fragment_checkboxes.xml).
 
 
  
