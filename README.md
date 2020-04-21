@@ -336,6 +336,34 @@ class PersonIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){
 Now you have one activity that connect to **REST API** and parse the response (if the response code is HttpCode.OK (200)) and it show items into a `RecyclerView` as a list.
 Above sample can be used for other types of REST API actions (such as `Detail` ,`Form` ). for more details see [API Package](/Sample/src/main/kotlin/sample/ui/api) in `Sample` module.   
 
+## Material Components
+### Alerts
+You can show Alert Dialog with `alert()` function in `MeowActivity/MeowFragment`
+```kotlin
+alert()  
+    .setTitle(R.string.alerts_simple_with_listener_title)  
+    .setMessage(R.string.alerts_simple_with_listener_message)  
+    .setPositiveButton(R.string.ok) { d, _ ->  
+        toastL(R.string.alerts_warn_ok_clicked)  
+        d.dismiss()  
+    }  
+    .setNegativeButton(R.string.cancel) { d, _ ->  
+        toastL(R.string.alerts_warn_cancel_clicked)  
+        d.dismiss()  
+    }  
+    .show()
+```
+### Loading Alert
+
+![](/Resources/img_material_loading_alert.png)
+
+A Dialog with `MeowLoadingView` for showing progress bar with text into Dialog.   
+```kotlin
+loadingAlert(R.string.loading_title_custom).show()
+```
+
+
+
  
 License
 --------
