@@ -19,8 +19,8 @@ package sample.ui.material.collapsing.toolbar
 import android.os.Bundle
 import meow.util.instanceViewModel
 import sample.R
-import sample.databinding.FragmentCollapsingToolbarBinding
-import sample.ui.base.BaseFragment
+import sample.databinding.ActivityCollapsingToolbarBinding
+import sample.ui.base.BaseActivity
 
 /**
  * Material Collapsing Toolbar Fragment.
@@ -30,14 +30,15 @@ import sample.ui.base.BaseFragment
  * @since   2020-03-30
  */
 
-class CollapsingToolbarFragment : BaseFragment<FragmentCollapsingToolbarBinding>() {
+class CollapsingToolbarActivity : BaseActivity<ActivityCollapsingToolbarBinding>() {
 
     private val viewModel: CollapsingToolbarViewModel by instanceViewModel()
-    override fun layoutId() = R.layout.fragment_collapsing_toolbar
+    override fun layoutId() = R.layout.activity_collapsing_toolbar
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        activity().setSupportActionBar(binding.toolbarCollapsing)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setSupportActionBar(binding.toolbarCollapsing)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun initViewModel() {

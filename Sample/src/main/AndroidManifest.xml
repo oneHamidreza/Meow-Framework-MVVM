@@ -38,6 +38,11 @@
             android:name=".ui.material.bottomnavigation.BottomNavigationActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".ui.material.collapsing.toolbar.CollapsingToolbarActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".ui.main.MainActivity"
+            android:screenOrientation="fullSensor" />
     </application>
 
 </manifest>

@@ -83,34 +83,20 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun setupNavigation() {
         navController = findNavController(R.id.navHost).apply {
             addOnDestinationChangedListener { _, destination, _ ->
-                fun setupToolbarByDestination(destinationId: Int) {
-                    when (destinationId) {
-                        R.id.fragmentHome -> {
-                            title = ""
-                            binding.toolbar.title = ""
-                            binding.toolbar.setElevationCompat(0f)
-                            binding.appBar.isLiftOnScroll = true
-                            binding.ivLogo.visibility = View.VISIBLE
-                        }
-                        else -> {
-                            binding.toolbar.setElevationCompat(getDimensionToPx(R.dimen.toolbar_elevation).toFloat())
-                            binding.appBar.isLiftOnScroll = false
-                            binding.ivLogo.visibility = View.GONE
-                        }
-                    }
-                }
 
                 when (destination.id) {
                     R.id.fragmentHome -> {
-                        setupToolbarByDestination(destination.id)
-                    }
-                    R.id.fragmentCollapsingToolbar -> {
-                        binding.toolbar.visibility = View.GONE
-                        setupToolbarByDestination(destination.id)
+                        title = ""
+                        binding.toolbar.title = ""
+                        binding.toolbar.setElevationCompat(0f)
+                        binding.appBar.isLiftOnScroll = true
+                        binding.ivLogo.visibility = View.VISIBLE
                     }
                     else -> {
+                        binding.toolbar.setElevationCompat(getDimensionToPx(R.dimen.toolbar_elevation).toFloat())
                         binding.toolbar.visibility = View.VISIBLE
-                        setupToolbarByDestination(destination.id)
+                        binding.appBar.isLiftOnScroll = false
+                        binding.ivLogo.visibility = View.GONE
                     }
                 }
 

@@ -16,6 +16,7 @@
 
 package sample.ui.home.contents
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.navigation.findNavController
 import meow.util.avoidException
@@ -28,6 +29,7 @@ import sample.ui.base.BaseFragment
 import sample.ui.content.ContentAdapter
 import sample.ui.content.ContentViewModel
 import sample.ui.home.HomeFragmentDirections
+import sample.ui.material.collapsing.toolbar.CollapsingToolbarActivity
 
 /**
  * Contents Fragment.
@@ -167,9 +169,12 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                     MATERIAL_BUTTONS -> findNavController().navigate(HomeFragmentDirections.actionToButtons())
                     MATERIAL_CARDS -> findNavController().navigate(HomeFragmentDirections.actionToCards())
                     MATERIAL_CHECKBOXES -> findNavController().navigate(HomeFragmentDirections.actionToCheckboxes())
-                    MATERIAL_COLLAPSING_TOOLBAR -> findNavController().navigate(
-                        HomeFragmentDirections.actionToCollapsingToolbar()
-                    )
+                    MATERIAL_COLLAPSING_TOOLBAR -> startActivity(
+                        Intent(
+                            context(),
+                            CollapsingToolbarActivity::class.java
+                        )
+                    )//todo add IntentExt
                     MATERIAL_FAB_EXTENDED -> findNavController().navigate(HomeFragmentDirections.actionToFabExtended())
                     MATERIAL_FAB_SIMPLE -> findNavController().navigate(HomeFragmentDirections.actionToFabSimple())
                     MATERIAL_IMAGEVIEWS -> findNavController().navigate(HomeFragmentDirections.actionToImageviews())

@@ -34,7 +34,7 @@
         <item>@string/fragment_buttons</item>
         <item>@string/fragment_cards</item>
         <item>@string/fragment_checkboxes</item>
-        <item>@string/fragment_collapsing_toolbar</item>
+        <item>@string/activity_collapsing_toolbar</item>
         <item>@string/fragment_fab_simple</item>
         <item>@string/fragment_fab_extended</item>
         <item>@string/fragment_imageviews</item>
