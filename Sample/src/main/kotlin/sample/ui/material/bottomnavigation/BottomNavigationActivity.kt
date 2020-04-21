@@ -40,6 +40,7 @@ class BottomNavigationActivity : BaseActivity<ActivityBottomNavigationBinding>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = getString(R.string.activity_bottom_navigation)
         setupBottomNavigation()
     }
@@ -48,7 +49,7 @@ class BottomNavigationActivity : BaseActivity<ActivityBottomNavigationBinding>()
         binding.viewModel = viewModel
     }
 
-    fun setupBottomNavigation() {
+    private fun setupBottomNavigation() {
         binding.bottomNavigation.apply {
 //            setupWithNavController(findNavController(R.id.))//todo handle navigation
             setOnNavigationItemSelectedListener {

@@ -16,12 +16,11 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:liftOnScroll="true">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
-                style="@style/Meow.Toolbar.Primary" />
+                style="@style/Meow.Toolbar.Surface" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
