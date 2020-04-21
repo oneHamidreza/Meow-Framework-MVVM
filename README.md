@@ -377,7 +377,7 @@ Use it like this in XML Layout :
    <!-- Place your views here -->
 </com.google.android.material.card.MaterialCardView>
 ```    
-Learn more about it at [Material Card Component](https://material.io/components/android/catalog/cards/) and [fragment_cards.xml](/sample/ui/material/cards/res/layout/fragment_cards.xml).
+Learn more about it at [Material Card Component](https://material.io/components/android/catalog/cards/) and [fragment_cards.xml](/Sample/src/main/kotlin/sample/ui/material/cards/res/layout/fragment_cards.xml).
 ### Checkbox
 There are some customized styles related to `Material CheckBox`. 
 |Style|Usage
@@ -394,7 +394,7 @@ Use it like this in XML Layout :
     style="@style/Meow.Checkbox"  
     android:text="@string/checkbox_text" />
 ```    
-Learn more about it at [Material Checkbox Component](https://material.io/develop/android/components/checkbox/) and [fragment_checkboxes.xml](/sample/ui/material/checkboxes/res/layout/fragment_checkboxes.xml).
+Learn more about it at [Material Checkbox Component](https://material.io/develop/android/components/checkbox/) and [fragment_checkboxes.xml](/Sample/src/main/kotlin/sample/ui/material/checkboxes/res/layout/fragment_checkboxes.xml).
 
 
  
