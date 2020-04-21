@@ -1,5 +1,7 @@
 <resources>
     <string name="fragment_radio_buttons">دکمه رادیویی ها (Radio Buttons)</string>
+    <string name="radio_buttons_vertical">عمودی</string>
+    <string name="radio_buttons_horizontal">افقی</string>
     <string name="radio_buttons_option_a">گزینه الف</string>
     <string name="radio_buttons_option_b">گزینه ب</string>
 </resources>

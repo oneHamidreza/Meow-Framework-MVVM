@@ -1,5 +1,7 @@
 <resources>
     <string name="fragment_radio_buttons">Radio Button</string>
+    <string name="radio_buttons_vertical">Vertical</string>
+    <string name="radio_buttons_horizontal">Horizontal</string>
     <string name="radio_buttons_option_a">Option A</string>
     <string name="radio_buttons_option_b">Option B</string>
 </resources>

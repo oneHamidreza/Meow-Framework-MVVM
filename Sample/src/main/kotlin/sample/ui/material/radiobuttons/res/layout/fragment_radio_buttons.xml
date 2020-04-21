@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,40 +9,139 @@
             type="sample.ui.material.radiobuttons.RadioButtonsViewModel" />
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <RadioGroup style="@style/Meow.RadioGroup.Vertical">
+        <LinearLayout
+            meow_gap="@{8}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/rb_option_a"
-                style="@style/Meow.RadioButton.Vertical"
-                android:text="@string/radio_buttons_option_a" />
+            <TextView
+                style="@style/Meow.TextView"
+                android:text="@string/radio_buttons_vertical"
+                android:textAppearance="?textAppearanceSubtitle1"
+                android:textColor="@color/text_on_surface_high" />
 
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/rb_option_b"
-                style="@style/Meow.RadioButton.Vertical"
-                android:text="@string/radio_buttons_option_b" />
+            <RadioGroup style="@style/Meow.RadioGroup.Vertical">
 
-        </RadioGroup>
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rb_option_a"
+                    style="@style/Meow.RadioButton.Vertical.Primary"
+                    android:text="@string/radio_buttons_option_a" />
 
-        <RadioGroup style="@style/Meow.RadioGroup.Horizontal">
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rb_option_b"
+                    style="@style/Meow.RadioButton.Vertical.Secondary"
+                    android:text="@string/radio_buttons_option_b" />
 
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/rb_option_c"
-                style="@style/Meow.RadioButton.Horizontal"
-                android:text="@string/radio_buttons_option_a" />
+            </RadioGroup>
 
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/rb_option_d"
-                style="@style/Meow.RadioButton.Horizontal"
-                android:text="@string/radio_buttons_option_b" />
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Meow.CardView"
+                app:cardBackgroundColor="@color/primary">
 
-        </RadioGroup>
+                <RadioGroup style="@style/Meow.RadioGroup.Vertical">
 
-    </LinearLayout>
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_option_aa"
+                        style="@style/Meow.RadioButton.Vertical.OnPrimary"
+                        android:text="@string/radio_buttons_option_a" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_option_bb"
+                        style="@style/Meow.RadioButton.Vertical.OnPrimary"
+                        android:text="@string/radio_buttons_option_b" />
+
+                </RadioGroup>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Meow.CardView"
+                app:cardBackgroundColor="@color/secondary">
+
+                <RadioGroup style="@style/Meow.RadioGroup.Vertical">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_option_cc"
+                        style="@style/Meow.RadioButton.Vertical.OnSecondary"
+                        android:text="@string/radio_buttons_option_a" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_option_dd"
+                        style="@style/Meow.RadioButton.Vertical.OnSecondary"
+                        android:text="@string/radio_buttons_option_b" />
+
+                </RadioGroup>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                style="@style/Meow.TextView"
+                android:text="@string/radio_buttons_horizontal"
+                android:textAppearance="?textAppearanceSubtitle1"
+                android:textColor="@color/text_on_surface_high" />
+
+            <RadioGroup style="@style/Meow.RadioGroup.Horizontal">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rb_option_c"
+                    style="@style/Meow.RadioButton.Horizontal.Primary"
+                    android:text="@string/radio_buttons_option_a" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rb_option_d"
+                    style="@style/Meow.RadioButton.Horizontal.Secondary"
+                    android:text="@string/radio_buttons_option_b" />
+
+            </RadioGroup>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Meow.CardView"
+                app:cardBackgroundColor="@color/primary">
+
+                <RadioGroup style="@style/Meow.RadioGroup.Horizontal">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_option_e"
+                        style="@style/Meow.RadioButton.Horizontal.OnPrimary"
+                        android:text="@string/radio_buttons_option_a" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_option_f"
+                        style="@style/Meow.RadioButton.Horizontal.OnPrimary"
+                        android:text="@string/radio_buttons_option_b" />
+
+                </RadioGroup>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Meow.CardView"
+                app:cardBackgroundColor="@color/secondary">
+
+                <RadioGroup style="@style/Meow.RadioGroup.Horizontal">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_option_g"
+                        style="@style/Meow.RadioButton.Horizontal.OnSecondary"
+                        android:text="@string/radio_buttons_option_a" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_option_h"
+                        style="@style/Meow.RadioButton.Horizontal.OnSecondary"
+                        android:text="@string/radio_buttons_option_b" />
+
+                </RadioGroup>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </layout>
