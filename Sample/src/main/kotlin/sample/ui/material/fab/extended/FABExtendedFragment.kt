@@ -18,8 +18,10 @@ package sample.ui.material.fab.extended
 
 import android.os.Bundle
 import android.view.View
+import meow.util.dp
 import meow.util.instanceViewModel
 import meow.util.safeObserve
+import meow.widget.addItemDecoration
 import meow.widget.decoration.MeowDividerDecoration
 import meow.widget.safePost
 import sample.R
@@ -52,6 +54,10 @@ class FABExtendedFragment : BaseFragment<FragmentFabExtendedBinding>() {
     private fun setupRecyclerView() {
         binding.recyclerView.apply {
             addItemDecoration(MeowDividerDecoration(context()))
+            addItemDecoration { position, outRect ->
+                if (position == binding.recyclerView.adapter!!.itemCount - 1)
+                    outRect.bottom = 72.dp()
+            }
             adapter = ContentAdapter()
         }
     }
