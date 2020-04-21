@@ -17,10 +17,12 @@
 
     <style name="Meow.Switch.OnPrimary">
         <item name="android:theme">@style/Meow.Theme.Switch.OnPrimary</item>
+        <item name="android:textColor">?colorOnPrimary</item>
     </style>
 
     <style name="Meow.Switch.OnSecondary">
         <item name="android:theme">@style/Meow.Theme.Switch.OnSecondary</item>
+        <item name="android:textColor">?colorOnSecondary</item>
     </style>
 
     <style name="Meow.Theme.Switch.Primary" parent="">

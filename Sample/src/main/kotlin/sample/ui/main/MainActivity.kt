@@ -28,7 +28,9 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import meow.controller
-import meow.util.*
+import meow.util.getColorCompat
+import meow.util.getDimensionToPx
+import meow.util.instanceViewModel
 import meow.widget.setElevationCompat
 import sample.R
 import sample.databinding.ActivityMainBinding
@@ -55,8 +57,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.onCreate(savedInstanceState)
         setSupportActionBar(binding.toolbar)
         setupNavigation()
-        updateStatusBarByTheme(!controller.isNightMode)
-        updateNavigationBarColor(getColorCompat(R.color.nav_bar))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

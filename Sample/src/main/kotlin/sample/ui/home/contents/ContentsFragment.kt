@@ -112,7 +112,7 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                 MATERIAL_IMAGEVIEWS,
                 MATERIAL_RADIO_BUTTONS,
                 MATERIAL_SNACKBARS,
-                MATERIAL_SWITCH,
+                MATERIAL_SWITCHES,
                 MATERIAL_TABLAYOUT,
                 MATERIAL_TEXTVIEWS,
                 MATERIAL_TOP_APP_BAR
@@ -180,6 +180,7 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                     MATERIAL_IMAGEVIEWS -> findNavController().navigate(HomeFragmentDirections.actionToImageviews())
                     MATERIAL_RADIO_BUTTONS -> findNavController().navigate(HomeFragmentDirections.actionToRadioButtons())
                     MATERIAL_SNACKBARS -> findNavController().navigate(HomeFragmentDirections.actionToSnackBars())
+                    MATERIAL_SWITCHES -> findNavController().navigate(HomeFragmentDirections.actionToSwitches())
                     MATERIAL_TEXTVIEWS -> findNavController().navigate(HomeFragmentDirections.actionToTextviews())
 
                     WIDGET_DASH -> findNavController().navigate(HomeFragmentDirections.actionToDash())
