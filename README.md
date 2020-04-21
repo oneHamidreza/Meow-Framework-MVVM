@@ -1,3 +1,4 @@
+
 # Meow Framework MVVM Android/Kotlin
 
 A Framework that simplify developing MVVM architecture and Material Design in Android with Kotlin language including useful Extensions and Sample Application. Also this Framework has some tools for Retrofit and OKHttp and Coroutine for calling REST API actions. 
@@ -341,8 +342,8 @@ Above sample can be used for other types of REST API actions (such as `Detail` ,
 You can show Alert Dialog with `alert()` function in `MeowActivity/MeowFragment`
 ```kotlin
 alert()  
-    .setTitle(R.string.alerts_simple_with_listener_title)  
-    .setMessage(R.string.alerts_simple_with_listener_message)  
+    .setTitle(R.string.alert_title)  
+    .setMessage(R.string.alert_message)  
     .setPositiveButton(R.string.ok) { d, _ ->  
         toastL(R.string.alerts_warn_ok_clicked)  
         d.dismiss()  
@@ -378,6 +379,7 @@ Use it like this in XML Layout :
 </com.google.android.material.card.MaterialCardView>
 ```    
 Learn more about it at [Material Card Component](https://material.io/components/android/catalog/cards/) and [fragment_cards.xml](/Sample/src/main/kotlin/sample/ui/material/cards/res/layout/fragment_cards.xml).
+
 ### Checkbox
 There are some customized styles related to `Material CheckBox`. 
 |Style|Usage
@@ -396,6 +398,80 @@ Use it like this in XML Layout :
 ```    
 Learn more about it at [Material Checkbox Component](https://material.io/develop/android/components/checkbox/) and [fragment_checkboxes.xml](/Sample/src/main/kotlin/sample/ui/material/checkboxes/res/layout/fragment_checkboxes.xml).
 
+### Floating Action Button
+Use it like this in XML Layout :
+```xml  
+<androidx.coordinatorlayout.widget.CoordinatorLayout  
+    android:layout_width="match_parent"  
+    android:layout_height="wrap_content">  
+  
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"  
+        style="@style/Meow.RecyclerView.Linear"  
+        app:meow_items="@{viewModel.listLiveData}" />  
+  
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        style="@style/Meow.FloatingActionButton"    
+		android:onClick="@{viewModel::onClickedFab}"
+        app:icon="@drawable/ic_add"  
+        app:layout_anchor="@id/recyclerView"  
+        app:layout_anchorGravity="bottom|center_horizontal" />  
+  
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+```    
+Learn more about it at [Material Floating Action Button Component](https://material.io/develop/android/components/floating-action-button/) and [fragment_fab_simple.xml](/Sample/src/main/kotlin/sample/ui/material/fab/simple/res/layout/fragment_fab_simple.xml).
+
+### Extended Floating Action Button
+A FAB that supports `android:text` property.
+Use it like this in XML Layout :
+```xml
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    style="@style/Meow.FloatingActionButton"    
+    android:onClick="@{viewModel::onClickedFab}"
+    app:icon="@drawable/ic_add"  
+    app:layout_anchor="@id/recyclerView"  
+    app:layout_anchorGravity="bottom|center_horizontal" />  
+```    
+Learn more about it at [Material Extended Floating Action Button Component](https://material.io/develop/android/components/extended-floating-action-button/) and [fragment_fab_simple.xml](/Sample/src/main/kotlin/sample/ui/material/fab/extended/res/layout/fragment_fab_extended.xml).
+
+### Radio Group
+There are some customized styles related to `Material Radio Group`. 
+|Style|Usage
+|----------|:-------------:|
+|`Meow.RadioGroup.Horizontal`|RadioGroup with Horizontal Radio Buttons
+|`Meow.RadioGroup.Vertical`|RadioGroup with Vertical Radio Buttons
+
+
+### Radio Button
+There are some customized styles related to `Material Radio Button`. 
+|Style|Usage
+|----------|:-------------:|
+|`Meow.RadioButton.Vertical`|Vertical RadioButton with `accent_color` button tint
+|`Meow.RadioButton.Horizontal`|Horizontal RadioButton with `accent_color` button tint
+|`Meow.RadioButton.Vertical.Primary`|Vertical RadioButton with `primary` button tint 
+|`Meow.RadioButton.Horizontal.Primary`|Horizontal RadioButton with `primary` button tint 
+|`Meow.RadioButton.Vertical.Secondary`|Vertical RadioButton with `secondary` button tint 
+|`Meow.RadioButton.Horizontal.Secondary`|Horizontal RadioButton with `secondary` button tint 
+|`Meow.RadioButton.Vertical.OnPrimary`|Vertical RadioButton with `onPrimary` button tint & `textColor`
+|`Meow.RadioButton.Horizontal.OnPrimary`|Horizontal RadioButton with `onPrimary` button tint & `textColor`
+|`Meow.RadioButton.Vertical.OnSecondary`|Vertical RadioButton with `onSecondary` button tint & `textColor`
+|`Meow.RadioButton.Horizontal.OnSecondary`|Horizontal RadioButton with `onSecondary` button tint & `textColor`
+
+Use it like this in XML Layout :
+```xml  
+<RadioGroup style="@style/Meow.RadioGroup.Vertical">  
+
+    <com.google.android.material.radiobutton.MaterialRadioButton 
+        style="@style/Meow.RadioButton.Vertical.Primary"  
+        android:text="@string/radio_buttons_option_a" />  
+        
+    <com.google.android.material.radiobutton.MaterialRadioButton 
+        style="@style/Meow.RadioButton.Vertical.Primary"  
+        android:text="@string/radio_buttons_option_b" />  
+          
+</RadioGroup>
+```    
+Learn more about it at [Material Radio Button Component](https://material.io/develop/android/components/radiobutton/) and [fragment_radiobuttons.xml](/Sample/src/main/kotlin/sample/ui/material/radiobuttons/res/layout/fragment_radiobuttons.xml).
 
  
 License
