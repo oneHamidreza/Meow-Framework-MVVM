@@ -19,17 +19,17 @@ After adding library, some of most useful libraries (such as `Androidx AppCompat
 >Update `build.gradle` like below : 
 >```groovy
 >android{
->	defaultConfig {    
->		multiDexEnabled true  
->		vectorDrawables.useSupportLibrary true
->	}
->	compileOptions {  
->		sourceCompatibility JavaVersion.VERSION_1_8  
->		targetCompatibility JavaVersion.VERSION_1_8 
->	}
->	dataBinding {  
->		enabled true  
->	}
+>    defaultConfig {    
+>        multiDexEnabled true  
+>        vectorDrawables.useSupportLibrary true
+>    }
+>    compileOptions {  
+>        sourceCompatibility JavaVersion.VERSION_1_8  
+>        targetCompatibility JavaVersion.VERSION_1_8 
+>    }
+>    dataBinding {  
+>        enabled true  
+>   }
 >}
 >```
 
@@ -368,6 +368,7 @@ There are some customized styles related to `Material CardView`.
 |----------|:-------------:|
 |`Meow.CardView`|Regular Card with `surface` background color 
 |`Meow.CardView.Outlined`|Outlined Card with `surface` background color and `stroke_color.xml` outline color
+
 Use it like this in XML Layout : 
 ```xml
 <com.google.android.material.card.MaterialCardView
@@ -386,6 +387,7 @@ There are some customized styles related to `Material CheckBox`.
 |`Meow.Checkbox.Secondary`|Checkbox with `secondary` button tint
 |`Meow.Checkbox.OnPrimary`|Checkbox with `onPrimary` button tint & `textColor`
 |`Meow.Checkbox.OnSecondary`|Checkbox with `onSecondary` button tint & `textColor`
+
 Use it like this in XML Layout :
 ```xml  
 <com.google.android.material.checkbox.MaterialCheckBox  
