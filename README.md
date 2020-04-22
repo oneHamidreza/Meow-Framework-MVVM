@@ -5,11 +5,11 @@ A Framework that simplify developing MVVM architecture and Material Design in An
 
 ![](/Resources/img_github.png)
 
-[ ![Download](https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.2.4-alpha) ](https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.2.4-alpha/link)
+[ ![Download](https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.4.0-alpha) ](https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.4.0-alpha/link)
 
 ## Setup
 ```groovy
-implementation("com.etebarian:meow-framework-mvvm:0.2.4-alpha")
+implementation("com.etebarian:meow-framework-mvvm:0.4.0-alpha")
 ```
 After adding library, some of most useful libraries (such as `Androidx AppCompat` , `Coroutine` , `Glide` , `Kodein` , `Kotlinx Serialization` , `Material Components` , `Moshi` , `Navigation Components` , `Retrofit` ) will be added in your app. So you don't need to add this libraries manually.
 > Enable Androidx in `gradle.properties` 
