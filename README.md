@@ -129,7 +129,24 @@ class MainActivity : MeowActivity<ActivityMainBinding>() {
     }
 }
 ```
-Now you have one Activity with MVVM architecture. 
+
+### Accessing views with DataBinding
+You can access views like this code :
+```xml
+<com.google.android.material.appbar.MaterialToolbar  
+    android:id="@+id/toolbar"  
+    style="@style/Meow.Toolbar" />
+```
+```kotlin
+class MainActivity: MeowActivity<ActivityMainBinding>(){
+    override fun layoutId() = R.layout.activity_main 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        // ...
+        binding.toolbar.title = "custom_title"
+    }
+}
+```
+Now you have one Activity with MVVM architecture. In above sample, you can replace `MeowActivity` with `MeowFragment` to have MVVM Fragment. 
 
 ###  Material Design
 Update App Theme in `styles.xml` with `DayNight` Material Theme. More details are at [Official Material Design Site](https://material.io/develop/android/docs/getting-started/).
@@ -154,22 +171,72 @@ Update App Theme in `styles.xml` with `DayNight` Material Theme. More details ar
    <item name="scrimBackground">@color/mtrl_scrim_color</item>
 </style>
 ```
-### Accessing views with DataBinding
-You can access views like this code :
+#### Material Text Styles + Font by using `Meow.TextAppearance` Style
+First create `styles_text_appearances.xml` like this : 
 ```xml
-<com.google.android.material.appbar.MaterialToolbar  
-    android:id="@+id/toolbar"  
-    style="@style/Meow.Toolbar" />
+<resources xmlns:tools="http://schemas.android.com/tools">  
+    <!-- If You want to have custom font in your app, set fontFamily here. -->
+      
+    <style name="App.TextAppearance.Headline1" parent="@style/Meow.TextAppearance.Headline1">  
+        <item name="fontFamily">@font/app_font_regular</item>  
+    </style> 
+    <style name="App.TextAppearance.Headline2" parent="@style/Meow.TextAppearance.Headline2">  
+        <item name="fontFamily">@font/app_font_regular</item>  
+    </style>  
+    <style name="App.TextAppearance.Headline3" parent="@style/Meow.TextAppearance.Headline3">  
+        <item name="fontFamily">@font/app_font_regular</item>  
+    </style>  
+    <style name="App.TextAppearance.Headline4" parent="@style/Meow.TextAppearance.Headline4">  
+         <item name="fontFamily">@font/app_font_regular</item>  
+    </style>  
+    <style name="App.TextAppearance.Headline5" parent="@style/Meow.TextAppearance.Headline5">  
+        <item name="fontFamily">@font/app_font_regular</item>  
+    </style>  
+    <style name="App.TextAppearance.Headline6" parent="@style/Meow.TextAppearance.Headline6">  
+        <item name="fontFamily">@font/app_font_bold</item>  
+    </style>  
+    <style name="App.TextAppearance.Body1" parent="@style/Meow.TextAppearance.Body1">  
+        <item name="fontFamily">@font/app_font_regular</item>  
+    </style>  
+    <style name="App.TextAppearance.Body2" parent="@style/Meow.TextAppearance.Body2">  
+        <item name="fontFamily">@font/app_font_regular</item>  
+    </style> 
+    <style name="App.TextAppearance.Subtitle1" parent="@style/Meow.TextAppearance.Subtitle1">  
+        <item name="fontFamily">@font/app_font_bold</item>  
+    </style>  
+    <style name="App.TextAppearance.Subtitle2" parent="@style/Meow.TextAppearance.Subtitle2">  
+        <item name="fontFamily">@font/app_font_bold</item>  
+    </style>  
+    <style name="App.TextAppearance.Caption" parent="@style/Meow.TextAppearance.Caption">  
+        <item name="fontFamily">@font/app_font_regular</item>  
+    </style>  
+    <style name="App.TextAppearance.Overline" parent="@style/Meow.TextAppearance.Overline">  
+        <item name="fontFamily">@font/app_font_regular</item>  
+    </style>  
+    <style name="App.TextAppearance.Button" parent="@style/Meow.TextAppearance.Button">  
+        <item name="fontFamily">@font/app_font_bold</item>  
+    </style>  
+</resources>
 ```
-```kotlin
-class MainActivity: MeowActivity<ActivityMainBinding>(){
-    override fun layoutId() = R.layout.activity_main 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        // ...
-        binding.toolbar.title = "custom_title"
-    }
-}
+Then use above styles in `AppTheme`.
+```xml
+<style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <item name="textAppearanceHeadline1">@style/App.TextAppearance.Headline1</item>  
+    <item name="textAppearanceHeadline2">@style/App.TextAppearance.Headline2</item>  
+    <item name="textAppearanceHeadline3">@style/App.TextAppearance.Headline3</item>  
+    <item name="textAppearanceHeadline4">@style/App.TextAppearance.Headline4</item>  
+    <item name="textAppearanceHeadline5">@style/App.TextAppearance.Headline5</item>  
+    <item name="textAppearanceHeadline6">@style/App.TextAppearance.Headline6</item>  
+    <item name="textAppearanceSubtitle1">@style/App.TextAppearance.Subtitle1</item>  
+    <item name="textAppearanceSubtitle2">@style/App.TextAppearance.Subtitle2</item>  
+    <item name="textAppearanceBody1">@style/App.TextAppearance.Body1</item>  
+    <item name="textAppearanceBody2">@style/App.TextAppearance.Body2</item>  
+    <item name="textAppearanceCaption">@style/App.TextAppearance.Caption</item>  
+    <item name="textAppearanceButton">@style/App.TextAppearance.Button</item>  
+    <item name="textAppearanceOverline">@style/App.TextAppearance.Overline</item>
+</style>
 ```
+
 ## Retrofit + OKHttp + Coroutine + Moshi
 Meow Framework provides for you to call Server Api from Android App with `Retrofit`. Creating client connections will be with `OKHttp` and `Moshi` help us to serialize json responses. We replaced `RxJava` with `Coroutine` for multi thread handling.
 
@@ -212,7 +279,7 @@ data class Person(
 }
 ```
 #### Retrofit API Interface
-Define one interface containing Server API actions. We are using `Coroutine` so `suspend` prefix is necessary.
+Define an interface containing Rest API actions. Meow Framework uses `Coroutine` Library for calling Rest API actions, so you must write `suspend` prefix for functions.
 ```kotlin
 interface PersonApi {
     @GET("persons")
@@ -220,7 +287,7 @@ interface PersonApi {
 }
 ```
 #### Call API action from ViewModel 
-Use `safeCallApi` function for calling API actions. update your ViewModel class like this :  
+Use `safeCallApi` function for calling API actions. Update your ViewModel class like this :  
 ```kotlin
 class PersonIndexViewModel(app:App) : MeowViewModel(app) {
     // Define LiveData variables
@@ -556,7 +623,7 @@ class MyPagerAdapter(
 #### 3. Bind Adapter to `ViewPager2` & Attach `TabLayout` to `ViewPager2` 
 ```kotlin
 fun onCreate(savedInstanceState: Bundle?){
-    //..  
+    // ...
     binding.apply {
         binding.viewPager.adapter = MyPagerAdapter(childFragmentManager, lifecycle)  
         TabLayoutMediator(tabLayout, viewpager) { tab, position ->  
@@ -580,10 +647,72 @@ There are some customized styles related to `Material TabLayout`.
 |`Meow.TabLayout.Primary`|TabLayout with `primary` background color
 |`Meow.TabLayout.Secondary`|TabLayout with `primary` background color
 |`Meow.TabLayout.PrimarySurface`|TabLayout with `primary` background color in DAY mode and `surface` background color in NIGHT Mode
+Learn more about it at [Material TabLayout Component](https://material.io/develop/android/components/tab-layout/)
+
+### TextView
+Use it like this in XML Layout :
+```xml    
+<TextView  
+    style="@style/Meow.TextView"  
+    android:text="@string/some_text"  
+    android:textAppearance="?textAppearanceBody1"  
+    android:textColor="@color/text_on_background_high" />
+```
+Learn more about it at [fragment_textviews.xml](/Sample/src/main/kotlin/sample/ui/material/textviews/res/layout/fragment_textviews.xml).
+
+Colors for texts based on Material Colors contain `EMPHASIS_HIGH` , `EMPHASIS_MEDIUM` , `DISABLED`. 
+
+|Color|Value
+|----------|:-------------:|
+|`@color/text_on_background_high`| `onBackground` color with %87 transparency
+|`@color/text_on_background_medium`| `onBackground` color with %60 transparency
+|`@color/text_on_background_disabled`| `onBackground` color with %38 transparency
+|`@color/text_on_surface_high`| `onSurface` color with %87 transparency
+|`@color/text_on_surface_medium`| `onSurface` color with %60 transparency
+|`@color/text_on_surface_disabled`| `onSurface` color with %38 transparency
+|`@color/text_on_primary_high`| `onPrimary` color with %87 transparency
+|`@color/text_on_primary_medium`| `onPrimary` color with %60 transparency
+|`@color/text_on_primary_disabled`| `onPrimary` color with %38 transparency
+|`@color/text_on_secondary_high`| `onSecondary` color with %87 transparency
+|`@color/text_on_secondary_medium`| `onSecondary` color with %60 transparency
+|`@color/text_on_secondary_disabled`| `onSecondary` color with %38 transparency
 
 
+### Top App Bar using `Material Toolbar`
+Use it like this in XML Layout :
+```xml
+<layout>  
+    <data/>  
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"  
+        android:layout_height="match_parent"  
+        android:fitsSystemWindows="true">  
+  
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"  
+            android:layout_height="wrap_content"  
+            app:liftOnScroll="true">  
+  
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"  
+                style="@style/Meow.Toolbar.Surface" />  
+  
+        </com.google.android.material.appbar.AppBarLayout>  
+    
+    <!-- Main Layout -->
 
-
+ </androidx.coordinatorlayout.widget.CoordinatorLayout>  
+</layout>
+```
+  
+There are some customized styles related to `Material Toolbar`. 
+|Style|Usage
+|----------|:-------------:|
+|`Meow.Toolbar.Surface`|Toolbar with `surface` background color
+|`Meow.Toolbar.PrimarySurface`|Toolbar with `primary` background color in DAY mode and `surface` background color in NIGHT Mode
+|`Meow.Toolbar.Primary`|Toolbar with `primary` background color
+|`Meow.Toolbar.Secondary`|Toolbar with `secondary` background color
+Learn more about it at [Material Top App Bars Component](https://material.io/develop/android/components/top-app-bars/)
 
 License
 --------
