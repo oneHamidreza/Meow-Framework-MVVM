@@ -269,7 +269,7 @@ Create `activity_sample_index.xml` containing `RecyclerView` for showing items.
 ```
 #### MeowActivty/MeowFragment + MeowFlow
 Use `MeowFlow` for handling events from ViewModel.
- ```kotlin
+```kotlin
 class SampleIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){
     //...
     override fun initViewModel() {  
@@ -291,7 +291,7 @@ class SampleIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){
         }
     }
 }
- ```
+```
 `MeowFlow` is a helper class that observe `eventLiveData` and it handles errors from API automatically. You can set error handling with `errorHandlerType`. Supported types : `TOAST` , `SNACKBAR` , `EMPTY_STATE`  . For example, when `errorHandlerType` is `Toast` errors has been shown in toast form. See [strings_error.xml](/meow/src/main/res/values/strings_error.xml) to edit error messages.
 
 #### Show API response into `RecyclerView`
@@ -338,6 +338,7 @@ Now you have one activity that connect to **REST API** and parse the response (i
 Above sample can be used for other types of REST API actions (such as `Detail` ,`Form` ). for more details see [API Package](/Sample/src/main/kotlin/sample/ui/api) in `Sample` module.   
 
 ## Material Components
+
 ### Alerts
 You can show Alert Dialog with `alert()` function in `MeowActivity/MeowFragment`
 ```kotlin
@@ -471,9 +472,119 @@ Use it like this in XML Layout :
           
 </RadioGroup>
 ```    
-Learn more about it at [Material Radio Button Component](https://material.io/develop/android/components/radiobutton/) and [fragment_radiobuttons.xml](/Sample/src/main/kotlin/sample/ui/material/radiobuttons/res/layout/fragment_radiobuttons.xml).
+Learn more about it at [Material Radio Button Component](https://material.io/develop/android/components/radiobutton/) and [fragment_radio_buttons.xml](/Sample/src/main/kotlin/sample/ui/material/radiobuttons/res/layout/fragment_radio_buttons.xml).
 
- 
+### Snack Bars
+You can show Snack Bars with `snackL()` or `snackS()` function in `MeowActivity/MeowFragment`
+```kotlin
+// Shows Snack Bars with LENGTH_SHORT
+snackS(R.string.snackbars_message)
+// Shows Snack Bars with LENGTH_LONG
+snackL(R.string.snackbars_message)
+// Shows Snack Bars with LENGTH_INDEFINITE
+snackI(R.string.snackbars_message)
+
+// Shows Snack Bars with LENGTH_LONG with action button
+snackL(  
+    message = R.string.snackbars_message,  
+    resActionText = R.string.snackbars_action,
+      
+    // Optional if you want to set custom textApperance to message and action, set this attributes.
+    messageTextAppearanceId = R.style.textAppearance_Snack_Message, 
+    actionTextAppearanceId = R.style.textAppearance_Snack_Action  
+) {
+    // Callback for action button click 
+}
+
+```
+Learn more about it at [SnackBarsFragment](/Sample/src/main/kotlin/sample/ui/material/snackbars/SnackBarsFragment.kt).
+
+### Switch
+There are some customized styles related to `Material Switch`. 
+|Style|Usage
+|----------|:-------------:|
+|`Meow.Switch`|Switch with `accent_color` button tint 
+|`Meow.Switch.Primary`|Switch with `primary` button tint
+|`Meow.Switch.Secondary`|Switch with `secondary` button tint
+|`Meow.Switch.OnPrimary`|Switch with `onPrimary` button tint & `textColor`
+|`Meow.Switch.OnSecondary`|Switch with `onSecondary` button tint & `textColor`
+
+Use it like this in XML Layout :
+```xml    
+<com.google.android.material.switchmaterial.SwitchMaterial  
+    style="@style/Meow.Switch"  
+    android:text="@string/switch_text" />
+```
+Learn more about it at [Material Switch Component](https://material.io/develop/android/components/switch/) and [fragment_switches.xml](/Sample/src/main/kotlin/sample/ui/material/switches/res/layout/fragment_switches.xml).
+
+### TabLayout + ViewPager2
+If you want to show contents into a ViewPager, we recommend use `ViewPager2`.  `TabLayout` is the indicator of ViewPager state. 
+#### 1. Define XML layout like this :
+```xml
+<layout>
+    <data />
+    <LinearLayout  
+        android:layout_width="match_parent"  
+        android:layout_height="match_parent"  
+        android:orientation="vertical">  
+  
+        <com.google.android.material.tabs.TabLayout  
+            android:id="@+id/tabLayout"  
+            style="@style/Meow.TabLayout.Surface" />  
+  
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpager"  
+            style="@style/Meow.ViewPager" />  
+  
+    </LinearLayout>
+</layout>
+``` 
+
+#### 2. Create Custom Pager Adapter extends `MeowPagerAdapter`
+```kotlin
+class MyPagerAdapter(  
+    fragmentManager: FragmentManager,  
+    lifecycle: Lifecycle  
+) : MeowPagerAdapter(fragmentManager, lifecycle) {  
+    
+    // Replace this with the array of Fragments that you want to show into ViewPager 
+    private val fragmentArray = Array<Fragment>(3) { ChildFragment.newInstance(it) }
+    override fun getFragments() = fragmentArray  
+}
+```
+
+#### 3. Bind Adapter to `ViewPager2` & Attach `TabLayout` to `ViewPager2` 
+```kotlin
+fun onCreate(savedInstanceState: Bundle?){
+    //..  
+    binding.apply {
+        binding.viewPager.adapter = MyPagerAdapter(childFragmentManager, lifecycle)  
+        TabLayoutMediator(tabLayout, viewpager) { tab, position ->  
+            tab.text = "Tab Title #" + (position + 1)  
+        }.attach()
+
+		// Optional - If you want to show Material Badge on TabLayout
+        tabLayout.getTabAt(0)?.orCreateBadge?.apply {  
+            isVisible = true  
+            number = 10
+        }
+    }
+}
+``` 
+Now you have a `ViewPager2` + `TabLayout` in a Activity/Fragment
+  
+There are some customized styles related to `Material TabLayout`. 
+|Style|Usage
+|----------|:-------------:|
+|`Meow.TabLayout.Surface`|TabLayout with `surface` background color
+|`Meow.TabLayout.Primary`|TabLayout with `primary` background color
+|`Meow.TabLayout.Secondary`|TabLayout with `primary` background color
+|`Meow.TabLayout.PrimarySurface`|TabLayout with `primary` background color in DAY mode and `surface` background color in NIGHT Mode
+
+
+
+
+
 License
 --------
 
