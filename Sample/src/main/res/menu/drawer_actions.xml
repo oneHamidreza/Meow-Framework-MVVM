@@ -11,21 +11,68 @@
     <group android:id="@+id/group_api">
         <item
             android:id="@id/fragmentCatBreedIndex"
-            android:title="@string/fragment_cat_breed_index"
-            android:icon="@drawable/ic_cat" />
+            android:title="@string/fragment_cat_breed_index" />
         <item
             android:id="@id/fragmentCatBreedDetail"
-            android:title="@string/fragment_cat_breed_detail"
-            android:icon="@drawable/ic_cat" />
+            android:title="@string/fragment_cat_breed_detail" />
         <item
             android:id="@id/fragmentCatBreedForm"
-            android:title="@string/fragment_cat_breed_form"
-            android:icon="@drawable/ic_cat" />
+            android:title="@string/fragment_cat_breed_form" />
         <item
             android:id="@id/fragmentLogin"
-            android:title="@string/fragment_login"
-            android:icon="@drawable/ic_how_to_reg" />
-
+            android:title="@string/fragment_login" />
     </group>
 
+    <group android:id="@+id/group_material">
+        <item
+            android:id="@id/fragmentAlerts"
+            android:title="@string/fragment_alerts" />
+        <item
+            android:id="@+id/activityBottomAppBar"
+            android:title="@string/activity_bottom_app_bar" />
+        <item
+            android:id="@+id/activityBottomNavigation"
+            android:title="@string/activity_bottom_navigation" />
+        <item
+            android:id="@id/fragmentButtons"
+            android:title="@string/fragment_buttons" />
+        <item
+            android:id="@id/fragmentCards"
+            android:title="@string/fragment_cards" />
+        <item
+            android:id="@id/fragmentCheckboxes"
+            android:title="@string/fragment_checkboxes" />
+        <item
+            android:id="@+id/activityCollapsingToolbar"
+            android:title="@string/activity_collapsing_toolbar" />
+        <item
+            android:id="@id/fragmentFabSimple"
+            android:title="@string/fragment_fab_simple" />
+        <item
+            android:id="@id/fragmentFabExtended"
+            android:title="@string/fragment_fab_extended" />
+
+        <!-- todo @Ali fragmentImageviews complete -->
+        <item
+            android:id="@id/fragmentImageviews"
+            android:title="@string/fragment_imageviews" />
+        <item
+            android:id="@id/fragmentRadioButtons"
+            android:title="@string/fragment_radio_buttons" />
+        <item
+            android:id="@id/fragmentSnackBars"
+            android:title="@string/fragment_snackbars" />
+        <item
+            android:id="@id/fragmentSwitches"
+            android:title="@string/fragment_switches" />
+        <item
+            android:id="@id/fragmentTabLayout"
+            android:title="@string/fragment_tablayout" />
+        <item
+            android:id="@id/fragmentTextviews"
+            android:title="@string/fragment_textviews" />
+        <item
+            android:id="@+id/activityTopAppBar"
+            android:title="@string/activity_top_app_bar" />
+    </group>
 </menu>

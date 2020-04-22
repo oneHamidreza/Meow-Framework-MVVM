@@ -35,7 +35,7 @@ class TabLayoutPagerAdapter(
     lifecycle: Lifecycle
 ) : MeowPagerAdapter(fragmentManager, lifecycle) {
 
-    val fragmentArray = Array<Fragment>(3) { TabLayoutChildFragment.newInstance(it) }
+    private val fragmentArray = Array<Fragment>(3) { TabLayoutChildFragment.newInstance(it) }
 
     override fun getFragments() = fragmentArray
 }

@@ -15,7 +15,7 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
-            style="@style/Meow.TabLayout.PrimarySurface" />
+            style="@style/Meow.TabLayout.Surface" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewpager"

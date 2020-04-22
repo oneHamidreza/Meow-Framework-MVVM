@@ -110,7 +110,7 @@ val appModule = Module("App Module", false){
             name="viewModel"  
             type="MainViewModel" />
 	</data>
-	<LinearLayout ... /> <!-- or another View -->
+	<LinearLayout /> <!-- or another View -->
 </layout>
 ```
 
@@ -712,6 +712,7 @@ There are some customized styles related to `Material Toolbar`.
 |`Meow.Toolbar.PrimarySurface`|Toolbar with `primary` background color in DAY mode and `surface` background color in NIGHT Mode
 |`Meow.Toolbar.Primary`|Toolbar with `primary` background color
 |`Meow.Toolbar.Secondary`|Toolbar with `secondary` background color
+
 Learn more about it at [Material Top App Bars Component](https://material.io/develop/android/components/top-app-bars/)
 
 License

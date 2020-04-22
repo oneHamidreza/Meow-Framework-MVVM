@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Meow.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+    <style name="Meow.Toolbar.Surface" parent="Widget.MaterialComponents.Toolbar.Surface">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">?actionBarSize</item>
-    </style>
-
-    <style name="Meow.Theme.Toolbar" parent="">
-        <item name="android:windowContentOverlay">@null</item>
     </style>
 
     <style name="Meow.Toolbar.Primary" parent="Widget.MaterialComponents.Toolbar.Primary">
@@ -15,15 +11,22 @@
         <item name="android:layout_height">?actionBarSize</item>
     </style>
 
+    <style name="Meow.Toolbar.Secondary" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?actionBarSize</item>
+        <item name="android:background">?colorSecondary</item>
+        <item name="titleTextColor">?colorOnSecondary</item>
+        <item name="subtitleTextColor">@color/text_on_secondary_medium</item>
+        <item name="android:theme">@style/ThemeOverlay.MaterialComponents.Toolbar.Secondary</item>
+    </style>
+
     <style name="Meow.Toolbar.PrimarySurface" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">?actionBarSize</item>
     </style>
 
-    <style name="Meow.Toolbar.Surface" parent="Widget.MaterialComponents.Toolbar.Surface">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">?actionBarSize</item>
-        <item name="android:theme">@style/Meow.Theme.Toolbar</item>
+    <style name="ThemeOverlay.MaterialComponents.Toolbar.Secondary" parent="">
+        <item name="colorControlNormal">?colorOnSecondary</item>
+        <item name="actionMenuTextColor">?colorOnSecondary</item>
     </style>
-
 </resources>

@@ -16,6 +16,7 @@
 
 package sample.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -35,6 +36,10 @@ import meow.widget.setElevationCompat
 import sample.R
 import sample.databinding.ActivityMainBinding
 import sample.ui.base.BaseActivity
+import sample.ui.material.bottomappbar.BottomAppBarActivity
+import sample.ui.material.bottomnavigation.BottomNavigationActivity
+import sample.ui.material.collapsing.toolbar.CollapsingToolbarActivity
+import sample.ui.material.topappbar.TopAppBarActivity
 import sample.widget.navheader.NavHeaderView
 
 /**
@@ -76,7 +81,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 //update sp
                 true
             }
-            else -> false
+            R.id.activityBottomAppBar -> {
+                startActivity(Intent(this, BottomAppBarActivity::class.java))
+                true
+            }
+            R.id.activityBottomNavigation -> {
+                startActivity(Intent(this, BottomNavigationActivity::class.java))
+                true
+            }
+            R.id.activityCollapsingToolbar -> {
+                startActivity(Intent(this, CollapsingToolbarActivity::class.java))
+                true
+            }
+            R.id.activityTopAppBar -> {
+                startActivity(Intent(this, TopAppBarActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
@@ -99,8 +120,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                         binding.ivLogo.visibility = View.GONE
                     }
                 }
-
-
             }
         }
         appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
@@ -114,12 +133,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 )
             )
             navigationView.setNavigationItemSelectedListener { menuItem ->
-                menuItem.isChecked = true
+//                menuItem.isChecked = true
                 drawerLayout.closeDrawers()
                 true
             }
             navigationView.setupWithNavController(navController)
-//            toolbar.setBackgroundColor(getColorCompat(R.color.primary))
         }
     }
 

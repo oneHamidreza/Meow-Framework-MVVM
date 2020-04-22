@@ -7,23 +7,23 @@
         <item name="android:layout_weight">1</item>
     </style>
 
-    <style name="Meow.TabLayout" parent="Widget.MaterialComponents.TabLayout">
+    <style name="Meow.TabLayout.Surface" parent="Widget.MaterialComponents.TabLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="Meow.TabLayout.Surface" parent="Widget.MaterialComponents.TabLayout.PrimarySurface">
+    <style name="Meow.TabLayout.Primary" parent="Widget.MaterialComponents.TabLayout.Colored">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/surface</item>
+    </style>
+
+    <style name="Meow.TabLayout.Secondary" parent="Widget.MaterialComponents.TabLayout.Colored">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?colorSecondary</item>
     </style>
 
     <style name="Meow.TabLayout.PrimarySurface" parent="Widget.MaterialComponents.TabLayout.PrimarySurface">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
-    <style name="Meow.TabLayout.Colored" parent="Widget.MaterialComponents.TabLayout.Colored">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
