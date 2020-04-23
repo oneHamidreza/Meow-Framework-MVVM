@@ -38,7 +38,7 @@ import meow.util.PermissionUtils
  * @since   2020-03-11
  */
 
-interface FragmentActivityInterface<B : ViewDataBinding> {
+interface FragmentActivityInterface<B : ViewDataBinding> : LifecycleOwner {
 
     var binding: B
 
@@ -56,8 +56,6 @@ interface FragmentActivityInterface<B : ViewDataBinding> {
     fun activity(): MeowActivity<*>
 
     fun resources() = context().resources
-
-    fun viewLifecycleOwner(): LifecycleOwner?
 
     fun initViewModel()
 

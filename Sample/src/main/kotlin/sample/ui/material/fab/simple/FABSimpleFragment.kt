@@ -62,7 +62,7 @@ class FABSimpleFragment : BaseFragment<FragmentFabSimpleBinding>() {
 
     override fun initViewModel() {
         binding.viewModel = viewModel
-        viewModel.addItemLiveData.safeObserve {
+        viewModel.addItemLiveData.safeObserve(this) {
             binding.recyclerView.safePost(50) {
                 scrollToPosition(0)
             }

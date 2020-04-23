@@ -60,19 +60,17 @@ class MenuFragment : BaseFragment<FragmentMenuBinding>() {
 
     override fun initViewModel() {
         binding.viewModel = viewModel
-        binding.viewModel?.apply {
-            listLiveData.safeObserve(binding.lifecycleOwner) {
-                if (binding.completeTextView.adapter == null) {
-                    val suggesteds =
-                        it.filterIndexed { i, _ -> i % 10 == 0 }.map { content -> content.title }
-                    binding.completeTextView.setAdapter(
-                        ArrayAdapter(
-                            context(),
-                            R.layout.dropdown_menu_popup_item,
-                            suggesteds
-                        )
+        viewModel.listLiveData.safeObserve(this) {
+            if (binding.completeTextView.adapter == null) {
+                val suggesteds =
+                    it.filterIndexed { i, _ -> i % 10 == 0 }.map { content -> content.title }
+                binding.completeTextView.setAdapter(
+                    ArrayAdapter(
+                        context(),
+                        R.layout.dropdown_menu_popup_item,
+                        suggesteds
                     )
-                }
+                )
             }
         }
     }

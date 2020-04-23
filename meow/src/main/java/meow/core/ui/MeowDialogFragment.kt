@@ -50,7 +50,6 @@ abstract class MeowDialogFragment<B : ViewDataBinding> : DialogFragment(),
     override fun context() = requireContext()
     override fun activity() = requireActivity() as MeowActivity<*>
     override fun contentView() = view!!
-    override fun viewLifecycleOwner() = viewLifecycleOwner
 
     override lateinit var binding: B
 

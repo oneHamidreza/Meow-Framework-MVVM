@@ -187,7 +187,7 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
 
             action()
 
-            eventLiveData.safeObserve(fragmentActivity.viewLifecycleOwner()) {
+            eventLiveData.safeObserve(fragmentActivity) {
                 if (it is MeowEvent<*>) {
                     when {
                         it.isApiCancellation() -> {
@@ -215,7 +215,7 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
                     }
                 }
             }
-            listLiveData.safeObserve(fragmentActivity.viewLifecycleOwner()) {
+            listLiveData.safeObserve(fragmentActivity) {
                 if (it.isEmpty())
                     emptyStateInterface?.show(emptyErrorModel)
                 else

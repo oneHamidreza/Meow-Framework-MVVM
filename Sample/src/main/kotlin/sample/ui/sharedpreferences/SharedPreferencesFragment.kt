@@ -37,16 +37,15 @@ class SharedPreferencesFragment : BaseFragment<FragmentSharedPreferencesBinding>
     override fun layoutId() = R.layout.fragment_shared_preferences
 
     override fun initViewModel() {
-        binding.viewModel = viewModel.apply {//todo all
-            userStateLiveData.safeObserve(binding.lifecycleOwner) {
-                val text = it.second.toString()
-                when (it.first) {
-                    State.PUT -> {
-                        snackL(getString(R.string.shared_preferences_warn_put) + " " + text)
-                    }
-                    State.GET -> {
-                        snackL(getString(R.string.shared_preferences_warn_get) + " " + text)
-                    }
+        binding.viewModel = viewModel
+        viewModel.userStateLiveData.safeObserve(this) {
+            val text = it.second.toString()
+            when (it.first) {
+                State.PUT -> {
+                    snackL(getString(R.string.shared_preferences_warn_put) + " " + text)
+                }
+                State.GET -> {
+                    snackL(getString(R.string.shared_preferences_warn_get) + " " + text)
                 }
             }
         }

@@ -28,7 +28,6 @@ import sample.R
 import sample.databinding.FragmentFabExtendedBinding
 import sample.ui.base.BaseFragment
 import sample.ui.content.ContentAdapter
-import sample.ui.content.ContentViewModel
 
 /**
  * Material Floating Action Button Extended Fragment.
@@ -41,8 +40,6 @@ import sample.ui.content.ContentViewModel
 class FABExtendedFragment : BaseFragment<FragmentFabExtendedBinding>() {
 
     private val viewModel: FABExtendedViewModel by instanceViewModel()
-    private val contentViewModel: ContentViewModel by instanceViewModel()
-
     override fun layoutId() = R.layout.fragment_fab_extended
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,7 +61,7 @@ class FABExtendedFragment : BaseFragment<FragmentFabExtendedBinding>() {
 
     override fun initViewModel() {
         binding.viewModel = viewModel
-        viewModel.scrollToFirstLiveData.safeObserve(viewLifecycleOwner) {
+        viewModel.scrollToFirstLiveData.safeObserve(this) {
             binding.recyclerView.safePost(50) {
                 scrollToPosition(0)
             }
