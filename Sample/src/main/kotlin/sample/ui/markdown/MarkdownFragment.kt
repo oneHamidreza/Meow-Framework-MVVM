@@ -41,6 +41,8 @@ class MarkdownFragment : BaseFragment<FragmentMarkdownBinding>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        if (navArgs.title != null)
+            activity().supportActionBar?.title = navArgs.title
         TextViewBinding.setMarkdownAssets(binding.tv, navArgs.fileName)
     }
 

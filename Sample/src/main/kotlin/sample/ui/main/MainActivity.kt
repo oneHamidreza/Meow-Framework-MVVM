@@ -29,7 +29,9 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import meow.controller
-import meow.util.*
+import meow.util.getColorCompat
+import meow.util.getDimensionToPx
+import meow.util.instanceViewModel
 import meow.widget.setElevationCompat
 import sample.R
 import sample.databinding.ActivityMainBinding
@@ -39,7 +41,6 @@ import sample.ui.material.bottomnavigation.BottomNavigationActivity
 import sample.ui.material.collapsing.toolbar.CollapsingToolbarActivity
 import sample.ui.material.topappbar.TopAppBarActivity
 import sample.widget.navheader.NavHeaderView
-import java.util.*
 
 /**
  * Main Activity class.
@@ -159,10 +160,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     fun test() {
-        val calendar = Calendar.getInstance().apply {
-            add(Calendar.YEAR, -2)
-        }
-        toastL(dateFormatSimple(calendar))
+//        val calendar = Calendar.getInstance().apply {
+//            add(Calendar.YEAR, -2)
+//        }
+//        toastL(dateFormatSimple(calendar))
     }
 
 }

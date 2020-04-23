@@ -127,6 +127,7 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                 EXTENSIONS_JSON,
                 EXTENSIONS_KODEIN,
                 EXTENSIONS_KOTLIN,
+                EXTENSIONS_LOG,
                 EXTENSIONS_NETWORK,
                 EXTENSIONS_PERMISSION,
                 EXTENSIONS_SNACKBAR,
@@ -197,10 +198,40 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                     WIDGET_RATEBAR -> findNavController().navigate(HomeFragmentDirections.actionToRateBar())
 
                     EXTENSIONS_ANDROID -> findNavController().navigate(
-                        HomeFragmentDirections.actionToMarkdown("ReadME_Extensions_Android.md")
+                        HomeFragmentDirections.actionToMarkdown(
+                            "ReadME_Extensions_Android.md",
+                            "Android"
+                        )
                     )
                     EXTENSIONS_CURRENCY -> findNavController().navigate(
-                        HomeFragmentDirections.actionToMarkdown("ReadME_Extensions_Currency.md")
+                        HomeFragmentDirections.actionToMarkdown(
+                            "ReadME_Extensions_Currency.md",
+                            "Currency"
+                        )
+                    )
+                    EXTENSIONS_DATE -> findNavController().navigate(
+                        HomeFragmentDirections.actionToMarkdown("ReadME_Extensions_Date.md", "Date")
+                    )
+                    EXTENSIONS_EXCEPTION -> findNavController().navigate(
+                        HomeFragmentDirections.actionToMarkdown(
+                            "ReadME_Extensions_Exception.md",
+                            "Exception"
+                        )
+                    )
+                    EXTENSIONS_FILE -> findNavController().navigate(
+                        HomeFragmentDirections.actionToMarkdown("ReadME_Extensions_File.md", "File")
+                    )
+                    EXTENSIONS_JSON -> findNavController().navigate(
+                        HomeFragmentDirections.actionToMarkdown("ReadME_Extensions_Json.md", "Json")
+                    )
+                    EXTENSIONS_KODEIN -> findNavController().navigate(
+                        HomeFragmentDirections.actionToMarkdown(
+                            "ReadME_Extensions_Kodein.md",
+                            "Kodein"
+                        )
+                    )
+                    EXTENSIONS_LOG -> findNavController().navigate(
+                        HomeFragmentDirections.actionToMarkdown("ReadME_Extensions_Log.md", "Log")
                     )
 
                     EXTENSIONS_SHARED_PREFERENCES -> findNavController().navigate(

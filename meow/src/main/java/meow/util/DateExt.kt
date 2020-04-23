@@ -180,7 +180,8 @@ fun Context?.dateFormatSimple(timestamp: Long): String {//ex: 2 years ago
     return ""
 }
 
-fun Context?.dateFormatDetail(calendar: Calendar) = dateFormatDetail(calendar.timeInMillis)
+fun Context?.dateFormatDetail(calendar: Calendar) =
+    dateFormatDetail(calendar.timeInMillis)//ex: yesterday 20:50 a.m.
 
 fun Context?.dateFormatDetail(timestamp: Long): String {//ex: yesterday 20:50 a.m.
     if (this == null)
@@ -303,7 +304,10 @@ fun String?.fetchTimestampWithDash() = avoidException {
     c.timeInMillis
 } ?: 0L
 
-fun Context?.dateNormal(time: Long): String {//ex: 23 month 1397
+fun Context?.dateFormatNormal(calendar: Calendar) =
+    dateFormatNormal(calendar.timeInMillis)//ex: 23 month 1397
+
+fun Context?.dateFormatNormal(time: Long): String {//ex: 23 month 1397
     if (this == null)
         return ""
     return avoidException {
@@ -331,7 +335,7 @@ fun Long.dateSmall() = avoidException {//ex: 6/20
     }
 } ?: ""
 
-fun Context?.dateNormalWithTime(time: Long): String {//ex: 23 mehr 1397 14:15
+fun Context?.dateFormatNormalWithTime(time: Long): String {//ex: 23 mehr 1397 14:15
     if (this == null)
         return ""
     return avoidException {

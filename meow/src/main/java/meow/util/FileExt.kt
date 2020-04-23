@@ -74,13 +74,6 @@ object MeowFileUtils {
         } ?: false
     }
 
-    fun existFileInPath(path: String) = avoidException {
-        File(path).exists()
-        } ?: false
-
-    fun getFileLength(path: String) = avoidException {
-        File(path).length()
-        } ?: 0
 }
 
 fun Context.clearCache() {

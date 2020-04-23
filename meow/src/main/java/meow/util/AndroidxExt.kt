@@ -41,6 +41,8 @@ import org.kodein.di.direct
  * @since   2020-03-30
  */
 
+//todo convert meow.util to meow.ktx
+
 fun <T> LiveData<T>?.safeObserve(owner: LifecycleOwner? = null, observer: (T) -> Unit) {
     if (this == null)
         return

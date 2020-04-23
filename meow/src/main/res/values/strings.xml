@@ -18,7 +18,7 @@
     <string name="georgian_day" translatable="false">Day</string>
     <string name="georgian_week" translatable="false">Week</string>
     <string name="georgian_month" translatable="false">Month</string>
-    <string name="georgian_year" translatable="false">Year</string>
+    <string name="georgian_year" translatable="false">Years</string>
 
     <string name="jalali_today" translatable="false">امروز</string>
     <string name="jalali_moreDays" translatable="false">روز دیگر</string>

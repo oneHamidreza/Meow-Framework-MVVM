@@ -1,5 +1,5 @@
 <resources>
-    <string name="fragment_buttons">(Button) دکمه ها</string>
+    <string name="fragment_buttons">دکمه‌ها (Buttons)</string>
 
     <string name="button_inset_top">دکمه بدون فاصله بالا</string>
     <string name="button_unelevated_inset_top">دکمه بدون سایه بدون فاصله بالا</string>

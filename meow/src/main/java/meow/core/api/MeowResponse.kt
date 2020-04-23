@@ -173,12 +173,12 @@ fun createResponseFromHttpError(throwable: HttpException): MeowResponse.Error<*>
             throwable.response()?.errorBody()?.source()?.let {
                 if (throwable.code() == HttpCodes.UNPROCESSABLE_ENTITY.code) MeowResponse.UnprocessableEntityError(
                     code = throwable.code(),
-                    data = it.toListClass<FormErrorModel>().apply { logD(m = this?.size) },
+                    data = it.fromJsonList<FormErrorModel>().apply { logD(m = this?.size) },
                     exception = throwable
                 ) else
                     MeowResponse.HttpError(
                         code = throwable.code(),
-                        data = it.toClass(),
+                        data = it.fromJson(),
                         exception = throwable
                     )
             } ?: MeowResponse.UnExpectedError()

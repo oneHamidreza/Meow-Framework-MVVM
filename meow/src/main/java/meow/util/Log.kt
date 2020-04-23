@@ -31,19 +31,19 @@ fun logE(tag: String = "", m: Any?, tr: Throwable? = null): Int {
     } else 0
 }
 
-fun logV(tag: String = "", m: Any?, tr: Throwable? = null): Int {
-    return if (controller.isDebugMode) {
-        val t = createTag(tag)
-        printSystemIfTest(t, m.toString(), tr)
-        Log.v(t, m.toString(), tr)
-    } else 0
-}
-
 fun logI(tag: String = "", m: Any?, tr: Throwable? = null): Int {
     return if (controller.isDebugMode) {
         val t = createTag(tag)
         printSystemIfTest(t, m.toString(), tr)
         Log.i(t, m.toString(), tr)
+    } else 0
+}
+
+fun logV(tag: String = "", m: Any?, tr: Throwable? = null): Int {
+    return if (controller.isDebugMode) {
+        val t = createTag(tag)
+        printSystemIfTest(t, m.toString(), tr)
+        Log.v(t, m.toString(), tr)
     } else 0
 }
 
@@ -57,7 +57,7 @@ fun logW(tag: String = "", m: Any?, tr: Throwable? = null): Int {
 
 private fun createTag(tag: String): String {
     if (controller.isLogTagNative)
-        return if (tag.isEmpty()) "src/main/kotlin/meow" else tag
+        return if (tag.isEmpty()) "meow" else tag
 
     val t = avoidException {
         val stackThread = Thread.currentThread().stackTrace
@@ -70,7 +70,6 @@ private fun createTag(tag: String): String {
         s.append("_")
         s.append(tag)
     }
-    s.append("_meowL")
 
     if (s.length > 32)
         return s.toString().removeRange(0..(s.length - 32))

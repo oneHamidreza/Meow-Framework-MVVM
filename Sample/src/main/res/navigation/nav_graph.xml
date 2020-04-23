@@ -108,6 +108,11 @@
             android:name="fileName"
             app:argType="string"
             app:nullable="false" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 
     <!-- Api -->

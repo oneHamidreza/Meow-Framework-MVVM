@@ -71,6 +71,7 @@ class App : MeowApp() {
     override fun onCreate() {
         super.onCreate()
         MeowController().apply {
+            isDebugMode = BuildConfig.DEBUG
             onColorGet = {
                 when (it.toHexString().toLowerCase()) {//todo
 //                    "#1cb3c8" -> Color.RED
@@ -79,11 +80,13 @@ class App : MeowApp() {
             }
             language = getLanguage(this@App)
             currency = MeowCurrency.USD
-            isDebugMode = BuildConfig.DEBUG
+            theme = getTheme(this@App)
             isLogTagNative = false
             defaultTypefaceResId = if (isPersian) R.font.farsi_regular else R.font.english_regular
             toastTypefaceResId = if (isPersian) R.font.farsi_regular else R.font.english_regular
-            theme = getTheme(this@App)
+            onException = {
+                // Log to Fabric or any other Crash Management System. Just use `avoidException` instead of `try{}catch{}`
+            }
         }.bindApp(this)
     }
 
