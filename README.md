@@ -9,7 +9,7 @@ A Framework that simplify developing MVVM architecture and Material Design in An
 
 ## Setup
 ```groovy
-implementation("com.etebarian:meow-framework-mvvm:0.4.0-alpha")
+implementation 'com.etebarian:meow-framework-mvvm:0.4.0-alpha'
 ```
 After adding library, some of most useful libraries (such as `Androidx AppCompat` , `Coroutine` , `Glide` , `Kodein` , `Kotlinx Serialization` , `Material Components` , `Moshi` , `Navigation Components` , `Retrofit` ) will be added in your app. So you don't need to add this libraries manually.
 > Enable Androidx in `gradle.properties` 
@@ -59,7 +59,7 @@ class App : MeowApp() {
 ### Meow Controller 🐱
 `MeowController` is a class that controls some of configurations in your app like language and theme. Configuration updates are in Real time . Dynamic Localization & Day/Night Theme configurations must be set here with `MeowController`.
   If you use `avoidException` in your app, this class can controls Exception Handlers with `onException` property. 
-```Kotlin
+```kotlin
 class App : MeowApp() { 
     // Layout Direction would be set automatically. 
     // (Example: "en": LayoutDirection.LTR  "fa": LayoutDirection.RTL)
@@ -374,8 +374,8 @@ class SampleIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){
       <TextView
          android:text="@{model.alias}" />
    </LinearLayout>
-<layout>
-```  
+</layout>
+```
 
 We suggest you to use `MeowAdapter`. Let's take a look at this sample : 
 ```kotlin
