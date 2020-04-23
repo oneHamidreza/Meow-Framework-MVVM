@@ -26,6 +26,7 @@ import meow.MeowApp
 import meow.MeowController
 import meow.controller
 import meow.meowModule
+import meow.util.MeowCurrency
 import meow.util.getFontCompat
 import meow.util.isNightModeFromSettings
 import meow.util.toHexString
@@ -77,6 +78,7 @@ class App : MeowApp() {
                 }
             }
             language = getLanguage(this@App)
+            currency = MeowCurrency.USD
             isDebugMode = BuildConfig.DEBUG
             isLogTagNative = false
             defaultTypefaceResId = if (isPersian) R.font.farsi_regular else R.font.english_regular

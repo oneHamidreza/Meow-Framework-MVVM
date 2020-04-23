@@ -196,6 +196,10 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                     WIDGET_PROGRESS_BARS -> findNavController().navigate(HomeFragmentDirections.actionToProgressBars())
                     WIDGET_RATEBAR -> findNavController().navigate(HomeFragmentDirections.actionToRateBar())
 
+                    EXTENSIONS_ANDROID -> findNavController().navigate(
+                        HomeFragmentDirections.actionToMarkdown("ReadME_Extensions_Android.md")
+                    )
+
                     EXTENSIONS_SHARED_PREFERENCES -> findNavController().navigate(
                         HomeFragmentDirections.actionToSharedPreferences()
                     )
