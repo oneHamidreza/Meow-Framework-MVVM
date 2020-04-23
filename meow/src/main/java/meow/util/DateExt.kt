@@ -118,6 +118,9 @@ fun Context?.getTimeTwelveHour(calendar: Calendar): String {
     return ""
 }
 
+fun Context?.dateFormatSimple(calendar: Calendar) =
+    this?.dateFormatSimple(calendar.timeInMillis)//ex: 2 years ago
+
 fun Context?.dateFormatSimple(timestamp: Long): String {//ex: 2 years ago
     if (this == null)
         return ""
@@ -177,7 +180,9 @@ fun Context?.dateFormatSimple(timestamp: Long): String {//ex: 2 years ago
     return ""
 }
 
-fun Context?.dateFormatDetail(timestamp: Long): String {//ex: yesterday 20:50
+fun Context?.dateFormatDetail(calendar: Calendar) = dateFormatDetail(calendar.timeInMillis)
+
+fun Context?.dateFormatDetail(timestamp: Long): String {//ex: yesterday 20:50 a.m.
     if (this == null)
         return ""
     if (timestamp <= 0)

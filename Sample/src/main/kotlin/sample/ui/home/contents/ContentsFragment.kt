@@ -199,6 +199,9 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                     EXTENSIONS_ANDROID -> findNavController().navigate(
                         HomeFragmentDirections.actionToMarkdown("ReadME_Extensions_Android.md")
                     )
+                    EXTENSIONS_CURRENCY -> findNavController().navigate(
+                        HomeFragmentDirections.actionToMarkdown("ReadME_Extensions_Currency.md")
+                    )
 
                     EXTENSIONS_SHARED_PREFERENCES -> findNavController().navigate(
                         HomeFragmentDirections.actionToSharedPreferences()
