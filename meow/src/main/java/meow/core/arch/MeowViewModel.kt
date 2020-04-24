@@ -26,8 +26,8 @@ import meow.controller
 import meow.core.api.*
 import meow.util.avoidException
 import meow.util.hasNotNetwork
-import meow.util.launchSilent
 import meow.util.resources
+import meow.util.scopeLaunch
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
@@ -62,19 +62,19 @@ open class MeowViewModel(open val app: MeowApp) : AndroidViewModel(app), KodeinA
         job: Job = Job(),
         apiAction: suspend () -> T,
         resultBlock: (response: MeowResponse<*>, responseModel: T?) -> Unit
-    ) = launchSilent(
+    ) = scopeLaunch(
         exceptionHandler = exceptionHandler,
         job = job
     ) {
 
         if (request != null && !request.validate()) {
             resultBlock(MeowResponse.RequestNotValid(request), null)
-            return@launchSilent
+            return@scopeLaunch
         }
 
         if (isNetworkRequired && app.hasNotNetwork()) {
             liveData.postValue(MeowEvent.Api.Error(MeowResponse.NetworkError()))
-            return@launchSilent
+            return@scopeLaunch
         } else
             liveData.postValue(MeowEvent.Api.Loading())
 

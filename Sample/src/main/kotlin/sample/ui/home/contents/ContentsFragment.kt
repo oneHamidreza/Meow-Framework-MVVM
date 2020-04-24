@@ -230,8 +230,20 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                             "Kodein"
                         )
                     )
+                    EXTENSIONS_KOTLIN -> findNavController().navigate(
+                        HomeFragmentDirections.actionToMarkdown(
+                            "ReadME_Extensions_Kotlin.md",
+                            "Kotlin"
+                        )
+                    )
                     EXTENSIONS_LOG -> findNavController().navigate(
                         HomeFragmentDirections.actionToMarkdown("ReadME_Extensions_Log.md", "Log")
+                    )
+                    EXTENSIONS_NETWORK -> findNavController().navigate(
+                        HomeFragmentDirections.actionToMarkdown(
+                            "ReadME_Extensions_Network.md",
+                            "Network"
+                        )
                     )
 
                     EXTENSIONS_SHARED_PREFERENCES -> findNavController().navigate(

@@ -52,7 +52,7 @@ object AppConfig {//todo find way for show sources
          */
         const val API = 1
         const val MAJOR = 0
-        const val MINOR = 4
+        const val MINOR = 5
         const val PATCH = 0
         val BUILD_PHASE = Build.PHASE.ALPHA
 

@@ -30,7 +30,7 @@ import io.noties.prism4j.Prism4j.Grammar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import meow.controller
-import meow.util.launchSilent
+import meow.util.scopeLaunch
 import sample.prism4j.languages.*
 
 
@@ -67,7 +67,7 @@ object TextViewBinding {
     @BindingAdapter("markdown_assets")
     fun setMarkdownAssets(textView: TextView, markdownAssets: String) =
         textView.apply {
-            launchSilent {
+            scopeLaunch {
                 val str =
                     resources.assets.open(markdownAssets).bufferedReader().use { it.readText() }
                 withContext(Dispatchers.Main) {

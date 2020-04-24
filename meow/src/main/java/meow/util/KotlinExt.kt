@@ -49,18 +49,14 @@ inline fun <reified B, T> B.getField(name: String, useSuperClass: Boolean = fals
         (filed?.get(this@getField) as? T)
     }
 
-fun launchSilent(
+fun scopeLaunch(
     context: CoroutineContext = Dispatchers.IO,
-    exceptionHandler: CoroutineExceptionHandler? = null,
+    exceptionHandler: CoroutineExceptionHandler = CoroutineExceptionHandler { _, e -> e.printStackTrace() },
     job: Job = Job(),
     start: CoroutineStart = CoroutineStart.DEFAULT,
     block: suspend CoroutineScope.() -> Unit
 ): Job {
-    val scope = if (exceptionHandler != null)
-        CoroutineScope(context + job + exceptionHandler)
-    else
-        CoroutineScope(context + job)
-    return scope.launch(context, start, block)
+    return CoroutineScope(context + job + exceptionHandler).launch(context, start, block)
 }
 
 fun <A, B> ofPair(first: A, second: B) = Pair(first, second)
