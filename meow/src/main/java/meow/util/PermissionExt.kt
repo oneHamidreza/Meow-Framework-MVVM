@@ -57,7 +57,7 @@ class PermissionUtils(
 ) {
     private var onResult: (isSuccess: Boolean) -> Unit = {}
 
-    fun check(requestedPermissions: ArrayList<String>, onResult: (isSuccess: Boolean) -> Unit) {
+    fun check(vararg requestedPermissions: String, onResult: (isSuccess: Boolean) -> Unit) {
         this.onResult = onResult
 
         val notGrantedPermissions = arrayListOf<String>()

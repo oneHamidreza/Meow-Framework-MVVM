@@ -1,4 +1,4 @@
-## Log Extensions
+## Log Extensions 📃
 
 Set `isDebugMode` in `MeowController` to Use `log{d,e,i,v,w}()`  functions.
 

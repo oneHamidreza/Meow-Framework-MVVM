@@ -160,6 +160,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     fun test() {
+//        needPermissions(
+//            Manifest.permission.READ_EXTERNAL_STORAGE,
+//            Manifest.permission.WRITE_EXTERNAL_STORAGE
+//        ) {
+//            toastL(it.toString())
+//        }
 //        val calendar = Calendar.getInstance().apply {
 //            add(Calendar.YEAR, -2)
 //        }

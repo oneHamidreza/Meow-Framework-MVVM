@@ -17,6 +17,7 @@
 package meow.core.ui
 
 import android.content.Context
+import android.content.res.Resources
 import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
@@ -55,13 +56,15 @@ interface FragmentActivityInterface<B : ViewDataBinding> : LifecycleOwner {
 
     fun activity(): MeowActivity<*>
 
-    fun resources() = context().resources
+    fun resources(): Resources = context().resources
 
     fun initViewModel()
 
-    fun needPermission(permissions: ArrayList<String>, onResult: (isSuccess: Boolean) -> Unit) {
+    fun needPermissions(vararg permissions: String, onResult: (isSuccess: Boolean) -> Unit) {
         permissionUtils = PermissionUtils(this)
-        permissionUtils?.check(permissions, onResult)
+        permissionUtils?.check(*permissions) {
+            onResult(it)
+        }
     }
 
     fun onRequestPermission(requestCode: Int, grantResults: IntArray) {

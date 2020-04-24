@@ -20,7 +20,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import io.noties.markwon.Markwon
 import io.noties.markwon.ext.tables.TablePlugin
-import io.noties.markwon.image.ImagesPlugin
+import io.noties.markwon.image.glide.GlideImagesPlugin
 import io.noties.markwon.syntax.Prism4jThemeDarkula
 import io.noties.markwon.syntax.Prism4jThemeDefault
 import io.noties.markwon.syntax.SyntaxHighlightPlugin
@@ -67,6 +67,8 @@ object TextViewBinding {
     @BindingAdapter("markdown_assets")
     fun setMarkdownAssets(textView: TextView, markdownAssets: String) =
         textView.apply {
+//            movementMethod = LinkMovementMethod.getInstance()
+
             scopeLaunch {
                 val str =
                     resources.assets.open(markdownAssets).bufferedReader().use { it.readText() }
@@ -78,7 +80,9 @@ object TextViewBinding {
                         val highlight = SyntaxHighlightPlugin.create(prism4j, theme)
                         usePlugin(highlight)
 
-                        usePlugin(ImagesPlugin.create())
+                        usePlugin(GlideImagesPlugin.create(context))
+//                        usePlugin(LinkifyPlugin.create())
+//                        usePlugin(TableEntryPlugin.create(context))
                         usePlugin(TablePlugin.create(context))
                     }.build().setMarkdown(textView, str)
                 }

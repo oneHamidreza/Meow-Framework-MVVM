@@ -1,4 +1,4 @@
-## Kotlin Extensions
+## Kotlin Extensions 💎
 
 Use `scopeLaunch()` to launch a `Coroutine` scope + `Job` + `exceptionHandler` properties. Default context is `Dispatchers.IO`.  See this example : 
 

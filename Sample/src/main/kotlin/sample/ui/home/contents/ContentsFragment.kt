@@ -245,6 +245,12 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                             "Network"
                         )
                     )
+                    EXTENSIONS_PERMISSION -> findNavController().navigate(
+                        HomeFragmentDirections.actionToMarkdown(
+                            "ReadME_Extensions_Permission.md",
+                            "Permission"
+                        )
+                    )
 
                     EXTENSIONS_SHARED_PREFERENCES -> findNavController().navigate(
                         HomeFragmentDirections.actionToSharedPreferences()

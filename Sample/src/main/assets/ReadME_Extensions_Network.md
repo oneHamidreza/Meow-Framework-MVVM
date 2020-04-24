@@ -1,4 +1,4 @@
-## Network Extensions
+## Network Extensions 📶
 
 Use `Context?.hasNetwork()` to check device's Network availability by using `Context.CONNECTIVITY_SERVICE`.  See this example : 
 
