@@ -16,7 +16,6 @@
 
 package sample.ui.markdown
 
-import android.os.Bundle
 import androidx.navigation.fragment.navArgs
 import meow.util.instanceViewModel
 import sample.R
@@ -39,15 +38,11 @@ class MarkdownFragment : BaseFragment<FragmentMarkdownBinding>() {
     private val viewModel: MarkdownViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_markdown
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun initViewModel() {
+        binding.viewModel = viewModel
         if (navArgs.title != null)
             activity().supportActionBar?.title = navArgs.title
         TextViewBinding.setMarkdownAssets(binding.tv, navArgs.fileName)
-    }
-
-    override fun initViewModel() {
-        binding.viewModel = viewModel
     }
 
 }
