@@ -251,6 +251,18 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                             "Permission"
                         )
                     )
+                    EXTENSIONS_SNACKBAR -> findNavController().navigate(
+                        HomeFragmentDirections.actionToMarkdown(
+                            "ReadME_Extensions_Snackbar.md",
+                            "Snackbar"
+                        )
+                    )
+                    EXTENSIONS_STATUS_BAR -> findNavController().navigate(
+                        HomeFragmentDirections.actionToMarkdown(
+                            "ReadME_Extensions_Statusbar.md",
+                            "Statusbar"
+                        )
+                    )
 
                     EXTENSIONS_SHARED_PREFERENCES -> findNavController().navigate(
                         HomeFragmentDirections.actionToSharedPreferences()

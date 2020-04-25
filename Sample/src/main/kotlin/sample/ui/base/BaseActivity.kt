@@ -18,10 +18,9 @@ package sample.ui.base
 
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding
-import meow.controller
 import meow.core.ui.MeowActivity
 import meow.util.getColorCompat
-import meow.util.updateNavigationBarColor
+import meow.util.updateNavigationBarColorByTheme
 import meow.util.updateStatusBarByTheme
 import sample.R
 
@@ -37,8 +36,8 @@ abstract class BaseActivity<B : ViewDataBinding> : MeowActivity<B>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        updateStatusBarByTheme(!controller.isNightMode)
-        updateNavigationBarColor(getColorCompat(R.color.nav_bar))
+        updateStatusBarByTheme()
+        updateNavigationBarColorByTheme(getColorCompat(R.color.meow_nav_bar))
     }
 
 }

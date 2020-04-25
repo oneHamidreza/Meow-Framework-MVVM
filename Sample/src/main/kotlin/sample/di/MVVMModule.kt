@@ -112,6 +112,11 @@ val mvvmModule = Module("MVVM Module", false) {
         )
     }
 
+    // KTX
+    bindAutoTag<SharedPreferencesViewModel>() with provider {
+        SharedPreferencesViewModel(kodein.direct.instance())
+    }
+
     bindAutoTag<AlertsViewModel>() with provider {
         AlertsViewModel(kodein.direct.instance())
     }
@@ -202,10 +207,6 @@ val mvvmModule = Module("MVVM Module", false) {
 
     bindAutoTag<ImageviewsViewModel>() with provider {
         ImageviewsViewModel(kodein.direct.instance())
-    }
-
-    bindAutoTag<SharedPreferencesViewModel>() with provider {
-        SharedPreferencesViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<RateViewModel>() with provider {

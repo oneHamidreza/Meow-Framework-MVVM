@@ -44,7 +44,7 @@
 -dontwarn org.conscrypt.ConscryptHostnameVerifier
 
 # Used for Kotlinx Serialization
--dontwarn kotlinx.serialization.SerializationKT
+-dontnote kotlinx.serialization.SerializationKT
 -keep,includedescriptorclasses class sample.**$$serializer { *; } # <-- change package name to your app's
 -keepclassmembers class sample.** { # <-- change package name to your app's
     *** Companion;
@@ -54,7 +54,27 @@
 }
 
 # Used for Navigation pass data
--keepnames class sample.ParcelableArg
--keepnames class sample.SerializableArg
--keepnames class sample.EnumArg
+-keepnames class sample.ParcelableArg # <-- change package name to your app's
+-keepnames class sample.SerializableArg # <-- change package name to your app's
+-keepnames class sample.EnumArg # <-- change package name to your app's
 
+# Used for Moshi
+-keepclasseswithmembers class * {
+    @com.squareup.moshi.* <methods>;
+}
+-keep @com.squareup.moshi.JsonQualifier interface *
+# Enum field names are used by the integrated EnumJsonAdapter.
+# values() is synthesized by the Kotlin compiler and is used by EnumJsonAdapter indirectly
+# Annotate enums with @JsonClass(generateAdapter = false) to use them with Moshi.
+-keepclassmembers @com.squareup.moshi.JsonClass class * extends java.lang.Enum {
+    <fields>;
+    **[] values();
+}
+-keep class kotlin.reflect.jvm.internal.impl.builtins.BuiltInsLoaderImpl
+-keepclassmembers class kotlin.Metadata {
+     public <methods>;
+}
+-keepnames class kotlin.jvm.internal.DefaultConstructorMarker
+-keepclassmembers @com.squareup.moshi.JsonClass @kotlin.Metadata class * {
+    synthetic <init>(...);
+}

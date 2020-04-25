@@ -18,7 +18,7 @@ package sample.data.user
 
 import androidx.recyclerview.widget.DiffUtil
 import com.squareup.moshi.Json
-import kotlinx.serialization.Serializable
+import com.squareup.moshi.JsonClass
 import meow.core.api.MeowOauthToken
 import meow.util.removeExtraSpaces
 import retrofit2.http.GET
@@ -33,7 +33,7 @@ import sample.data.DataSource
  * @since   2020-03-01
  */
 
-@Serializable
+@JsonClass(generateAdapter = true)
 data class User(
     @Json(name = "id") var id: String? = null,
     @Json(name = "first_name") var firstName: String? = null,

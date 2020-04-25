@@ -19,7 +19,9 @@ package sample.ui.sharedpreferences
 import android.view.View
 import meow.core.arch.MeowViewModel
 import meow.core.arch.SingleLiveData
+import meow.util.fromJson
 import meow.util.ofPair
+import meow.util.toJson
 import sample.App
 import sample.data.user.User
 
@@ -34,6 +36,7 @@ import sample.data.user.User
 class SharedPreferencesViewModel(override var app: App) : MeowViewModel(app) {
 
     val userStateLiveData = SingleLiveData<Pair<State, User>>()
+    val testStateLiveData = SingleLiveData<String>()
 
     fun onClickedPut(@Suppress("UNUSED_PARAMETER") view: View) {
         val user = User(
@@ -47,6 +50,16 @@ class SharedPreferencesViewModel(override var app: App) : MeowViewModel(app) {
 
     fun onClickedGet(@Suppress("UNUSED_PARAMETER") view: View) {
         userStateLiveData.postValue(ofPair(State.GET, app.dataSource.fetchUser()))
+    }
+
+    fun onClickedTest(@Suppress("UNUSED_PARAMETER") view: View) {
+        val json = User(
+            id = "245",
+            firstName = "Hamidreza",
+            lastName = "Etebarian"
+        ).toJson()
+        val reversed = json.fromJson<User>().toJson()
+        testStateLiveData.postValue("$json = $reversed")
     }
 
 }

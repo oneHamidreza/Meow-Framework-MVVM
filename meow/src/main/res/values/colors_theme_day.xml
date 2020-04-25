@@ -4,8 +4,8 @@
     <color name="error_primary">#b00020</color>
     <color name="on_error_primary">#ffffff</color>
 
-    <color name="status_bar">@color/primary_variant</color>
-    <color name="nav_bar">#f5f5f5</color>
+    <color name="meow_status_bar">@color/primary_variant</color>
+    <color name="meow_nav_bar">#f5f5f5</color>
 
     <color name="background">#ffffff</color>
     <color name="on_background">#000000</color>

@@ -53,7 +53,7 @@ object AppConfig {//todo find way for show sources
         const val API = 1
         const val MAJOR = 0
         const val MINOR = 5
-        const val PATCH = 0
+        const val PATCH = 13
         val BUILD_PHASE = Build.PHASE.ALPHA
 
         const val SDK_COMPILE = 29
@@ -123,7 +123,8 @@ object AppConfig {//todo find way for show sources
         )
 
         val kaptItems = arrayListOf(
-            "com.github.bumptech.glide:compiler:${Versions.GLIDE}"
+            "com.github.bumptech.glide:compiler:${Versions.GLIDE}",
+            "com.squareup.moshi:moshi-kotlin-codegen:${Versions.MOSHI}"
         )
     }
 

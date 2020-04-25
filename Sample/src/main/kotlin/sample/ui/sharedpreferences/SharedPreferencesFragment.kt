@@ -16,12 +16,15 @@
 
 package sample.ui.sharedpreferences
 
+import android.os.Bundle
+import android.view.View
 import meow.util.instanceViewModel
 import meow.util.safeObserve
 import meow.util.snackL
 import sample.R
 import sample.databinding.FragmentSharedPreferencesBinding
 import sample.ui.base.BaseFragment
+import sample.widget.TextViewBinding
 
 /**
  * Shared Preferences Fragment.
@@ -36,6 +39,11 @@ class SharedPreferencesFragment : BaseFragment<FragmentSharedPreferencesBinding>
     private val viewModel: SharedPreferencesViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_shared_preferences
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        TextViewBinding.setMarkdownAssets(binding.tv, "ReadME_Extensions_Shared_Preferences.md")
+    }
+
     override fun initViewModel() {
         binding.viewModel = viewModel
         viewModel.userStateLiveData.safeObserve(this) {
@@ -48,6 +56,10 @@ class SharedPreferencesFragment : BaseFragment<FragmentSharedPreferencesBinding>
                     snackL(getString(R.string.shared_preferences_warn_get) + " " + text)
                 }
             }
+        }
+
+        viewModel.testStateLiveData.safeObserve(this) {
+            snackL(it)
         }
     }
 

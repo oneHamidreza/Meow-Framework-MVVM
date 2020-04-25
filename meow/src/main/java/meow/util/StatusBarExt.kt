@@ -22,6 +22,7 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import com.etebarian.meowframework.R
+import meow.controller
 import meow.core.ui.MeowActivity
 import meow.core.ui.MeowFragment
 
@@ -35,7 +36,7 @@ import meow.core.ui.MeowFragment
 
 @TargetApi(Build.VERSION_CODES.M)
 fun MeowActivity<*>.updateStatusBarByTheme(
-    isDarkIcon: Boolean
+    isDarkIcon: Boolean = !controller.isNightMode
 ) = avoidException {
     sdkNeed(Build.VERSION_CODES.M) {
         var flags = window.decorView.systemUiVisibility
@@ -45,15 +46,15 @@ fun MeowActivity<*>.updateStatusBarByTheme(
             flags and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
         window.decorView.systemUiVisibility = flags
-        window.statusBarColor = getColorCompat(R.color.status_bar)
+        window.statusBarColor = getColorCompat(R.color.meow_status_bar)
     }
 
     setMIUIStatusBarDarkIcon(isDarkIcon)
     setMeizuStatusBarDarkIcon(isDarkIcon)
 }
 
-fun MeowActivity<*>.updateNavigationBarColor(
-    color: Int
+fun MeowActivity<*>.updateNavigationBarColorByTheme(
+    color: Int = getColorCompat(R.color.meow_nav_bar)
 ) = avoidException {
     sdkNeed(21) {
         window.navigationBarColor = color

@@ -71,7 +71,7 @@ class App : MeowApp() {
     override fun onCreate() {
         super.onCreate()
         MeowController().apply {
-            isDebugMode = BuildConfig.DEBUG
+            isDebugMode = true// BuildConfig.DEBUG
             onColorGet = {
                 when (it.toHexString().toLowerCase()) {//todo
 //                    "#1cb3c8" -> Color.RED

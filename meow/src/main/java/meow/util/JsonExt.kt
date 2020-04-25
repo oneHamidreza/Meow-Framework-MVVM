@@ -33,19 +33,19 @@ import kotlin.reflect.full.primaryConstructor
  * @since   2020-03-01
  */
 
-val moshiBuilder = Moshi.Builder().add(KotlinJsonAdapterFactory())
-
 inline fun <reified T> BufferedSource?.fromJson(): T? {
     if (this == null) return null
     return avoidException {
-        moshiBuilder.build().adapter(javaClass<T>()).fromJson(this)
+        Moshi.Builder().add(KotlinJsonAdapterFactory()).build().adapter(javaClass<T>())
+            .fromJson(this)
     }
 }
 
 inline fun <reified T> String?.fromJson(): T? {
     if (this == null) return null
     return avoidException {
-        moshiBuilder.build().adapter(javaClass<T>()).fromJson(this)
+        Moshi.Builder().add(KotlinJsonAdapterFactory()).build().adapter(javaClass<T>())
+            .fromJson(this)
     }
 }
 
@@ -53,7 +53,8 @@ inline fun <reified T> BufferedSource?.fromJsonList(): List<T>? {
     if (this == null) return null
     return avoidException {
         val type = Types.newParameterizedType(javaClass<List<*>>(), javaClass<T>())
-        moshiBuilder.build().adapter<List<T>>(type).fromJson(this)
+        Moshi.Builder().add(KotlinJsonAdapterFactory()).build().adapter<List<T>>(type)
+            .fromJson(this)
     }
 }
 
@@ -61,14 +62,15 @@ inline fun <reified T> String?.fromJsonList(): List<T>? {
     if (this == null) return null
     return avoidException {
         val type = Types.newParameterizedType(javaClass<List<*>>(), javaClass<T>())
-        moshiBuilder.build().adapter<List<T>>(type).fromJson(this)
+        Moshi.Builder().add(KotlinJsonAdapterFactory()).build().adapter<List<T>>(type)
+            .fromJson(this)
     }
 }
 
 inline fun <reified T> T?.toJson(): String {
     if (this == null) return "{}"
     return avoidException {
-        moshiBuilder.build().adapter(javaClass<T>()).toJson(this)
+        Moshi.Builder().add(KotlinJsonAdapterFactory()).build().adapter(javaClass<T>()).toJson(this)
     } ?: "{}"
 }
 
@@ -76,7 +78,7 @@ inline fun <reified T : Any> List<T>?.toJson(): String {
     if (this == null) return "[]"
     return avoidException {
         val type = Types.newParameterizedType(javaClass<List<*>>(), javaClass<T>())
-        moshiBuilder.build().adapter<List<T>>(type).toJson(this)
+        Moshi.Builder().add(KotlinJsonAdapterFactory()).build().adapter<List<T>>(type).toJson(this)
     } ?: "[]"
 }
 

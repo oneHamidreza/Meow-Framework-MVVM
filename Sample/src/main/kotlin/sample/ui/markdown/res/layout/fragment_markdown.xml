@@ -19,11 +19,7 @@
 
             <TextView
                 android:id="@+id/tv"
-                style="@style/Meow.TextView"
-                android:textColorHighlight="@color/primary_variant"
-                android:lineSpacingExtra="2dp"
-                android:padding="16dp"
-                android:textAppearance="@style/textAppearance.Body2" />
+                style="@style/App.TextView.Markdown" />
 
         </LinearLayout>
 
