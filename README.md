@@ -1,9 +1,8 @@
-
 # Meow Framework MVVM Android/Kotlin
 
 A Framework that simplify developing MVVM architecture and Material Design in Android with Kotlin language including useful Extensions and Sample Application. Also this Framework has some tools for Retrofit and OKHttp and Coroutine for calling REST API actions. 
 
-![](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Resources/img_github.png)
+![](https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_github.png)
 
 [ ![Download](https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.5.0-alpha) ](https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.5.0-alpha/link)
 
@@ -11,7 +10,9 @@ A Framework that simplify developing MVVM architecture and Material Design in An
 ```groovy
 implementation 'com.etebarian:meow-framework-mvvm:0.5.0-alpha'
 ```
+
 After adding library, some of most useful libraries (such as `Androidx AppCompat` , `Coroutine` , `Glide` , `Kodein` , `Kotlinx Serialization` , `Material Components` , `Moshi` , `Navigation Components` , `Retrofit` ) will be added in your app. So you don't need to add this libraries manually.
+
 > Enable Androidx in `gradle.properties` 
 >```properties
 >android.useAndroidX=true
