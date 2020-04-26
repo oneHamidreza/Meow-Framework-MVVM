@@ -12,9 +12,6 @@ Use `File?.safeDelete()`  to delete a file without throw an exception.
 
 Use `File?.safeExist()`  to check a file exists without throw an exception.
 
-Use `File?.safeLength()`  to check a file length  without throw an exception.  
+Use `File?.safeLength()`  to get length of a file without throw an exception.  
 
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NjA2MDY5NF19
--->
