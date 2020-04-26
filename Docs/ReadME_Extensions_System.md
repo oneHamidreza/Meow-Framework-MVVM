@@ -1,3 +1,4 @@
+
 ## 🚂 System Extensions
 
 Use `getDeviceModel()` to get model of Device as a String.
@@ -38,10 +39,7 @@ Use `Context?.isNightModeFromSettings()` to check that Night/Dark mode is enable
 
 Use `Context?.showOrHideKeyboard()` to show or hide soft Keyboard.
 
-Use `Context?.vibrate(duration)` to vibrate Device for specific duration time in millisecond. Default value of `duration` is 150.second: SomeString
-}
-```
-
+Use `Context?.vibrate(duration)` to vibrate Device for specific duration time in millisecond. Default value of `duration` is 150.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2OTY5NzE5M119
+eyJoaXN0b3J5IjpbLTEzNjAwOTE0OTEsLTI2OTY5NzE5M119
 -->
