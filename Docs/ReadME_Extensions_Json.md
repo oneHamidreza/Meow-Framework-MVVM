@@ -2,6 +2,8 @@
 
 Use `String?.fromJson()` to convert a String to any Data Model.
 
+Use `String?.fromJsonList()` to convert a String to any list of Data Model.
+
 Use `Any?.toJson()` to convert any Data Model to a JSON String.
 
  See this example : 
@@ -36,11 +38,17 @@ fun testJsonArray(){
     )
     val json = userList.toJson()   
     // json = [
-    //        {
-    //      "id": 	1,
-    //      "first_name": "SomeFirstName",
-    //      "last_name": "SomeLastName"
-    //  }
+    //     {
+    //          "id": 	1,
+    //          "first_name": "Hamidreza",
+    //          "last_name": "Etebarian"
+    //     },
+    //
+    //     {
+    //          "id": 	1,
+    //          "first_name": "Hamidreza",
+    //          "last_name": "Etebarian"
+    //     }
     // ]
     
     // Create a model from JSON string.
@@ -50,6 +58,6 @@ fun testJsonArray(){
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MjI2OTA0MjksLTQ0NDYyMTA3NiwtMT
-gzNjQ4MzkwNl19
+eyJoaXN0b3J5IjpbLTI0NzMwMzAsLTQ0NDYyMTA3NiwtMTgzNj
+Q4MzkwNl19
 -->
