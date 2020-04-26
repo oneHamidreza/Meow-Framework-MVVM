@@ -15,3 +15,7 @@ Use `String?.isValidUsername()` to validate an Username String.
 Use `String?.isValidColor()` to validate an Email String.
 
 Use `String?.isValidIdentityCodeIran()` to validate an Iran's Identity Code String.
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTk3OTExMjU0Ml19
+-->
