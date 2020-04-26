@@ -23,12 +23,14 @@ fun testJson(){
     //      "first_name": "SomeFirstName",
     //      "last_name": "SomeLastName"
     //  }
-    val modelFromJson = json.fromJson<User>()
     
+    // Create a model from JSON string.
+    val modelFromJson = json.fromJson<User>()
+    println(modelFromJson.)
 }
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg2MDM0NDE5NSwtNDQ0NjIxMDc2LC0xOD
-M2NDgzOTA2XX0=
+eyJoaXN0b3J5IjpbLTEyMzYxMjc3MjMsLTQ0NDYyMTA3NiwtMT
+gzNjQ4MzkwNl19
 -->
