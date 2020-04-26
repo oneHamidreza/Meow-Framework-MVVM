@@ -1,4 +1,4 @@
-## 💉 JSON Extensions
+##  JSON Extensions
 
 Use `String?.fromJson()` to convert a String to any Data Model.
 
@@ -28,7 +28,7 @@ fun testJsonObject(){
     
     // Create a model from JSON Object string.
     val modelFromJson = json.fromJson<User>()
-    println(modelFromJson.firstName) // Prints `SomeFirstName`
+    println(modelFromJson.irt // Prints `SomeFirstName`
 }
 
 fun testJsonArray(){
@@ -39,9 +39,9 @@ fun testJsonArray(){
     val json = userList.toJson()   
     // json = [
     //     {
-    //          "id": 1,
-    //          "first_name": "Hamidreza",
-    //          "last_name": "Etebarian"
+    //          "id": ,
+    //          "first_name": "i",
+    //          "last_name": "ar"
     //     },
     //
     //     {
@@ -57,3 +57,6 @@ fun testJsonArray(){
 }
 
 ```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbODY2MTA3NTIyXX0=
+-->
