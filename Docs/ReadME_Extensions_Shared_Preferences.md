@@ -33,6 +33,3 @@ class MyActivity : MeowActivity<*> {
     )
 }
 ```
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NzgwODA3MzJdfQ==
--->
