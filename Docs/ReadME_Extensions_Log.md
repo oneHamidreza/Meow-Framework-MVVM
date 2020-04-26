@@ -30,6 +30,3 @@ Above example can be used for this types :
  - `logW()`
 
  
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzUwMjYwMTRdfQ==
--->
