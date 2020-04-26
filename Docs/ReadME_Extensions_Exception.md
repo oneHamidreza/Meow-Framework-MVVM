@@ -58,7 +58,34 @@ avoidException (
 )
 ```
 
+#### 3. Return Support Exception Handling
+ 
+Legacy  `val v = try{} catch()` : 
 
+```kotlin
+val someValue = try { 
+        someCallFunction()
+    } catch(e:Exception) {
+        e.printStackTrace()
+        null
+    }
+```
+Above codes with `avoidException` will be like this :  
+```kotlin
+avoidException (
+    tryBlock = {
+        someCallFunction()
+    },
+    exceptionBlock = {
+        someErrorFunction()
+    },
+    finallyBlock = {
+        someFinallyFuntion()
+    }
+)
+```
+
+3. 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODc1MjUwNDVdfQ==
+eyJoaXN0b3J5IjpbLTQyNDEyOTEzMl19
 -->
