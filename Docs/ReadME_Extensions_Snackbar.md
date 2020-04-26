@@ -6,27 +6,26 @@ You can show Snackbars with `snackL()` or `snackS()`or `snackI()` in `MeowActivi
 class MyActivity : MeowActivity<*> {  
     override fun onCreate(savedInstanceState: Bundle?) {
         //...
-        // Shows Snack Bars with LENGTH_SHORT
+        // Shows Snackbar with LENGTH_SHORT duration.
         snackS(R.string.snackbars_message)
-        // Shows Snack Bars with LENGTH_LONG
+        
+        // Shows Snackbar with LENGTH_LONG duration.
         snackL(R.string.snackbars_message)
-        // Shows Snack Bars with LENGTH_INDEFINITE
+        
+        // Shows Snackbar with LENGTH_INDEFINITE duration.
         snackI(R.string.snackbars_message)
 
-        // Shows Snack Bars with LENGTH_LONG with action button
+        // Shows Snackbar with LENGTH_LONG with action button.
         snackL(  
             message = R.string.snackbars_message,  
             resActionText = R.string.snackbars_action,
       
-            // Optional if you want to set custom textApperance to message and action, set this attributes.
+            // Optional - if you want to set custom textApperance to message and action, set this attributes.
             messageTextAppearanceId = R.style.textAppearance_Snack_Message, 
             actionTextAppearanceId = R.style.textAppearance_Snack_Action  
             ) {
-                // Callback for action button click 
+                // Callback for action button click.
          }
     }
 }
 ```
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1MjkxNTgzMl19
--->
