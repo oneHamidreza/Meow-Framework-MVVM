@@ -25,7 +25,7 @@ sdkNeed(23) {
 }
 ```
 
-Use `MenuItem.setTypefaceResId(context,id)`  to set Typeface on menu items. See this example : 
+Use `MenuItem.setTypefaceResId(context,id)`  to set Typeface on menu items. See this example :
 
 ```kotlin
 // You must define your fonts in `res/font` folder.
