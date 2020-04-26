@@ -13,11 +13,12 @@ Use `Context?.getCountryCode()` to get Country Code (if it exists) of Device as 
 
 Use `Context?.getDisplaySize()` to get size of Device's Display as a Point.
 
-Use `Context?.getToolbarHeight()` to get height of Toolbar as a Int.
+Use `Context?.getToolbarHeight()` to get height of Toolbar/ActionBar as a Int.
 
-Use `Context?.getStatusBarHeight()` to get height of Status as a Int.
+Use `Context?.getStatusBarHeight()` to get height of Statusbar as a Int.
 
 Use `Float.dp()` or `Int.dp()` to get a value of float or int into dip unit. See this example :
+
 ```kotlin
 fun testDisplayMetricsDP(){
     // Returns 2f * app.resources.displayMetrics.density. If device has xxhdpi density (factor = 3) , the value of `someDp` will be `6f`.
@@ -33,7 +34,7 @@ fun testDisplayMetricsPX(){
     val somePxInt = 6.dp()
 }
 ```  
-> You must bind your Application class with `meow.controller` in Application `onCreate()` to use above example.
+> You must bind your Application class with `meow.controller` in Application `onCreate()` to use above examples.
 
 Use `Context?.isNightModeFromSettings()` to check that Night/Dark mode is enabled by System or not.
 
@@ -41,5 +42,6 @@ Use `Context?.showOrHideKeyboard()` to show or hide soft Keyboard.
 
 Use `Context?.vibrate(duration)` to vibrate Device for specific duration time in millisecond. Default value of `duration` is 150.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNjAwOTE0OTEsLTI2OTY5NzE5M119
+eyJoaXN0b3J5IjpbMjA4MDIxNTQ2NywtMTM2MDA5MTQ5MSwtMj
+Y5Njk3MTkzXX0=
 -->
