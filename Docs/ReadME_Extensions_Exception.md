@@ -64,28 +64,20 @@ Legacy  `val v = try{} catch()` :
 
 ```kotlin
 val someValue = try { 
-        someCallFunction()
+        someReturnFunction()
     } catch(e:Exception) {
         e.printStackTrace()
-        null
+        null // or "SomeValue"
     }
 ```
 Above codes with `avoidException` will be like this :  
 ```kotlin
-avoidException (
-    tryBlock = {
-        someCallFunction()
-    },
-    exceptionBlock = {
-        someErrorFunction()
-    },
-    finallyBlock = {
-        someFinallyFuntion()
-    }
-)
+val someValue = avoidException { 
+    someReturnFunction()
+} // or  ?: "SomeValue"
 ```
 
 3. 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQyNDEyOTEzMl19
+eyJoaXN0b3J5IjpbLTEzOTA3Njc1NDBdfQ==
 -->
