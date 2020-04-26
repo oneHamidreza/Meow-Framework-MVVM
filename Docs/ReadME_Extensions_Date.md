@@ -20,7 +20,7 @@ val calendar = Calendar().apply{
     add(Calendar.YEAR,-2)
 }
 dateFormatSimple(calendar) 
-// Return "2 Years Ago" and when App's Language is Farsi ("fa") : "2 سال قبل"  
+// Returns "2 Years Ago" and when App's Language is Farsi ("fa") : "2 سال قبل"  
 ```
 
 Use `Context?.dateFormatDetail(calendar)` to have a Date String with `Detail Format`. See this example : 
@@ -33,19 +33,19 @@ dateFormatDetail(calendar)
 // Returns "Yesterday 10:10 p.m." and when App's Language is Farsi ("fa") : "دیروز 10:10 " 
 ```
 
-Use `Context?.dateFormatNormal(calendar)` to have a Normalized Date String. See this example : 
+Use `Context?.dateFormatNormal(calendar)` to have a Date String with `Normal Format`. See this example : 
 
 ```kotlin
 dateFormatNormal(calendar)
 // Return "23 Jan 2020" and when App's Calendar is JALALI : "23 مهر ‌" 1392
 ```
 
-Use `Context?.dateFormatNormalWithTime(calendar)` to have a Normalized Date String with clock 12 Hrs. Example : 
+Use `Context?.dateFormatNormalWithTime(calendar)` to have a Date String  with `Simple Format + clock 12 Hrs`. See this example : 
 
 ```kotlin
 dateFormatNormalWithTime(calendar)
 // Return "23 Jan 2020 10:10 a.m." and when App's Calendar is JALALI : "23 مهر ‌" 1392 10:10 ب.ظ
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2OTE1NTY4OV19
+eyJoaXN0b3J5IjpbMTYwODkyMDUxM119
 -->
