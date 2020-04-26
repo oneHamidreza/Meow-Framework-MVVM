@@ -33,6 +33,3 @@ Use `String?.convertToInt()` to convert a String to Int safely. If it is `Null` 
 Use `String?.removeExtraSpaces()` to remove the extra spaces in a String.
 
 Use `String?.addHttpIfNeed(isHttpsBoolean)` to add HTTP/HTTPS  at start of a String if needed.
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwOTM3OTYzNzNdfQ==
--->
