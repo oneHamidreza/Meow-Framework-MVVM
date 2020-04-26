@@ -1,6 +1,6 @@
 ## Android Extensions 🧩
 
-Use `LiveData<T>?.safeObserve()` when you want to observe any Live Data. Example : 
+Use `LiveData<T>?.safeObserve()` when you want to observe any Live Data safely. See this example : 
 
 ```kotlin
 // The value of lifecycleOwner is `this` in a MeowActivity/MeowFragment 
@@ -9,7 +9,7 @@ stringLiveData.safeOvserve(this){
 }
 ```
 
-Use `instanceViewModel<T>()` lazy function  in **MeowActivity/MeowFragment** to have an instance of any ViewModel. Example : 
+Use `instanceViewModel<T>()` lazy function  in **MeowActivity/MeowFragment** to have an instance of any ViewModel. See this example : 
 
 ```kotlin
 class MyActivity : MeowActivity<*> {
@@ -17,7 +17,7 @@ class MyActivity : MeowActivity<*> {
 } // You must provide instance of ViewModel into your Kodein module.
 ```
 
-Use `sdkNeed(buildSdkInt)` function  anywhere to run a block only in specified SDK version or above it. Example : 
+Use `sdkNeed(buildSdkInt)` from anywhere to run a block only in specified SDK version or higher than it. See this example : 
 
 ```kotlin
 sdkNeed(23) {
@@ -25,9 +25,10 @@ sdkNeed(23) {
 }
 ```
 
-Use `MenuItem.setTypefaceResId(context,id)` function  to set Typeface on menu items. Example : 
+Use `MenuItem.setTypefaceResId(context,id)`  to set Typeface on menu items. See this example : 
 
 ```kotlin
+// You must define your fonts in `res/font` folder.
 menuItem.setTypefaceResId(R.font.my_regular)
 ```
 
