@@ -68,16 +68,16 @@ Legacy  `val v = try{} catch()` :
 val someValue = try { 
         someReturnFunction()
 } catch(e:Exception) {
-        e.printStackTrace()
-        null // or "SomeValue"
-    }
+    e.printStackTrace()
+    null // or `someValue`
+}
 ```
 Above codes with `avoidException` will be like this :  
 ```kotlin
 val someValue = avoidException { 
     someReturnFunction()
-} // or  ?: "SomeValue"
+} // or  ?: `someValue`
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxNzg0OTU0OF19
+eyJoaXN0b3J5IjpbLTcxMjA3NjIyNF19
 -->
