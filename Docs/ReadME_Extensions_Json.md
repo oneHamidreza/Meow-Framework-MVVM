@@ -1,4 +1,4 @@
-## tree JSON Extensions
+## 📇 JSON Extensions
 
 Use `String?.fromJson()` to convert a String to any Data Model.
 
