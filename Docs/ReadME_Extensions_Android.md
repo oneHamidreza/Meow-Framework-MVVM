@@ -3,7 +3,7 @@
 Use `LiveData<T>?.safeObserve()` when you want to observe any Live Data safely. See this example : 
 
 ```kotlin
-// The value of lifecycleOwner is `this` in a MeowActivity/MeowFragment 
+// The value of lifecycleOwner is `this` in a MeowActivity/MeowFragment
 stringLiveData.safeOvserve(this){
 	toast(it)
 }
