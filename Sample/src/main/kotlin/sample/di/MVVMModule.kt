@@ -16,13 +16,14 @@
 
 package sample.di
 
-import meow.util.bindAutoTag
+import meow.ktx.bindAutoTag
 import org.kodein.di.Kodein.Module
 import org.kodein.di.direct
 import org.kodein.di.erased.bind
 import org.kodein.di.erased.instance
 import org.kodein.di.erased.provider
 import org.kodein.di.erased.singleton
+import sample.data.GithubRepository
 import sample.data.catbreed.CatBreed
 import sample.data.user.User
 import sample.ui.api.catbreed.detail.CatBreedDetailViewModel
@@ -83,7 +84,10 @@ val mvvmModule = Module("MVVM Module", false) {
 
     // Markdown
     bindAutoTag<MarkdownViewModel>() with provider {
-        MarkdownViewModel(kodein.direct.instance())
+        MarkdownViewModel(
+            kodein.direct.instance(),
+            instance()
+        )
     }
 
     // Api Samples
@@ -114,7 +118,7 @@ val mvvmModule = Module("MVVM Module", false) {
 
     // KTX
     bindAutoTag<SharedPreferencesViewModel>() with provider {
-        SharedPreferencesViewModel(kodein.direct.instance())
+        SharedPreferencesViewModel(kodein.direct.instance(), instance())
     }
 
     bindAutoTag<AlertsViewModel>() with provider {
@@ -216,4 +220,6 @@ val mvvmModule = Module("MVVM Module", false) {
     bind() from singleton { CatBreed.Repository(instance()) }
 
     bind() from singleton { User.Repository(instance()) }
+
+    bind() from singleton { GithubRepository(instance()) }
 }

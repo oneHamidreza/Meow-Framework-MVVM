@@ -19,10 +19,10 @@ package sample.ui.material.snackbars
 import android.os.Bundle
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
-import meow.util.instanceViewModel
-import meow.util.snackI
-import meow.util.snackL
-import meow.util.toastL
+import meow.ktx.instanceViewModel
+import meow.ktx.snackI
+import meow.ktx.snackL
+import meow.ktx.toastL
 import meow.widget.decoration.MeowDividerDecoration
 import sample.R
 import sample.data.Content

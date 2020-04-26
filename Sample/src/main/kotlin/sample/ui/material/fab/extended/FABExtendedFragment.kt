@@ -18,9 +18,9 @@ package sample.ui.material.fab.extended
 
 import android.os.Bundle
 import android.view.View
-import meow.util.dp
-import meow.util.instanceViewModel
-import meow.util.safeObserve
+import meow.ktx.dp
+import meow.ktx.instanceViewModel
+import meow.ktx.safeObserve
 import meow.widget.addItemDecoration
 import meow.widget.decoration.MeowDividerDecoration
 import meow.widget.safePost

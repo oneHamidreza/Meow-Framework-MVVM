@@ -3,76 +3,133 @@
 
     <group android:id="@+id/group_home">
         <item
-            android:id="@id/fragmentHome"
-            android:title="@string/fragment_home"
-            android:icon="@drawable/ic_home" />
+            android:id="@+id/actionToHome"
+            android:icon="@drawable/ic_home"
+            android:title="@string/fragment_home" />
     </group>
 
     <group android:id="@+id/group_api">
         <item
-            android:id="@id/fragmentCatBreedIndex"
+            android:id="@+id/actionToApiCatBreedIndex"
             android:title="@string/fragment_cat_breed_index" />
         <item
-            android:id="@id/fragmentCatBreedDetail"
+            android:id="@+id/actionToApiCatBreedDetail"
             android:title="@string/fragment_cat_breed_detail" />
         <item
-            android:id="@id/fragmentCatBreedForm"
+            android:id="@+id/actionToApiCatBreedForm"
             android:title="@string/fragment_cat_breed_form" />
         <item
-            android:id="@id/fragmentLogin"
+            android:id="@+id/actionToApiLogin"
             android:title="@string/fragment_login" />
     </group>
 
     <group android:id="@+id/group_material">
         <item
-            android:id="@id/fragmentAlerts"
+            android:id="@+id/actionToMaterialAlerts"
             android:title="@string/fragment_alerts" />
         <item
-            android:id="@+id/activityBottomAppBar"
+            android:id="@+id/actionToMaterialBottomAppBar"
             android:title="@string/activity_bottom_app_bar" />
         <item
-            android:id="@+id/activityBottomNavigation"
+            android:id="@+id/actionToMaterialBottomNavigation"
             android:title="@string/activity_bottom_navigation" />
         <item
-            android:id="@id/fragmentButtons"
+            android:id="@+id/actionToMaterialButtons"
             android:title="@string/fragment_buttons" />
         <item
-            android:id="@id/fragmentCards"
+            android:id="@+id/actionToMaterialCards"
             android:title="@string/fragment_cards" />
         <item
-            android:id="@id/fragmentCheckboxes"
+            android:id="@+id/actionToMaterialCheckboxes"
             android:title="@string/fragment_checkboxes" />
         <item
-            android:id="@+id/activityCollapsingToolbar"
+            android:id="@+id/actionToMaterialCollapsingToolbar"
             android:title="@string/activity_collapsing_toolbar" />
         <item
-            android:id="@id/fragmentFabSimple"
+            android:id="@+id/actionToMaterialFabSimple"
             android:title="@string/fragment_fab_simple" />
         <item
-            android:id="@id/fragmentFabExtended"
+            android:id="@+id/actionToMaterialFabExtended"
             android:title="@string/fragment_fab_extended" />
 
         <!-- todo @Ali fragmentImageviews complete -->
         <item
-            android:id="@id/fragmentImageviews"
+            android:id="@+id/actionToMaterialImageviews"
             android:title="@string/fragment_imageviews" />
         <item
-            android:id="@id/fragmentRadioButtons"
+            android:id="@+id/actionToMaterialRadioButtons"
             android:title="@string/fragment_radio_buttons" />
         <item
-            android:id="@id/fragmentSnackBars"
+            android:id="@+id/actionToMaterialSnackBars"
             android:title="@string/fragment_snackbars" />
         <item
-            android:id="@id/fragmentSwitches"
+            android:id="@+id/actionToMaterialSwitches"
             android:title="@string/fragment_switches" />
         <item
-            android:id="@id/fragmentTabLayout"
+            android:id="@+id/actionToMaterialTabLayout"
             android:title="@string/fragment_tablayout" />
         <item
-            android:id="@id/fragmentTextviews"
+            android:id="@+id/actionToMaterialTextviews"
             android:title="@string/fragment_textviews" />
         <item
-            android:id="@+id/activityTopAppBar"
+            android:id="@+id/actionToMaterialTopAppBar"
             android:title="@string/activity_top_app_bar" />
+    </group>
+
+    <group android:id="@+id/group_extensions">
+        <item
+            android:id="@+id/actionToExtensionsAndroid"
+            android:title="@string/contents_extensions_android" />
+        <item
+            android:id="@+id/actionToExtensionsCurrency"
+            android:title="@string/contents_extensions_currency" />
+        <item
+            android:id="@+id/actionToExtensionsDate"
+            android:title="@string/contents_extensions_date" />
+        <item
+            android:id="@+id/actionToExtensionsException"
+            android:title="@string/contents_extensions_exception" />
+        <item
+            android:id="@+id/actionToExtensionsFile"
+            android:title="@string/contents_extensions_file" />
+        <item
+            android:id="@+id/actionToExtensionsJson"
+            android:title="@string/contents_extensions_json" />
+        <item
+            android:id="@+id/actionToExtensionsKodein"
+            android:title="@string/contents_extensions_kodein" />
+        <item
+            android:id="@+id/actionToExtensionsKotlin"
+            android:title="@string/contents_extensions_kotlin" />
+        <item
+            android:id="@+id/actionToExtensionsLog"
+            android:title="@string/contents_extensions_log" />
+        <item
+            android:id="@+id/actionToExtensionsNetwork"
+            android:title="@string/contents_extensions_network" />
+        <item
+            android:id="@+id/actionToExtensionsPermission"
+            android:title="@string/contents_extensions_permission" />
+        <item
+            android:id="@+id/actionToExtensionsSharedPreferences"
+            android:title="@string/contents_extensions_shared_preferences" />
+        <item
+            android:id="@+id/actionToExtensionsSnackbar"
+            android:title="@string/contents_extensions_snackbar" />
+        <item
+            android:id="@+id/actionToExtensionsStatusbar"
+            android:title="@string/contents_extensions_statusbar" />
+        <item
+            android:id="@+id/actionToExtensionsString"
+            android:title="@string/contents_extensions_string" />
+        <item
+            android:id="@+id/actionToExtensionsSystem"
+            android:title="@string/contents_extensions_system" />
+        <item
+            android:id="@+id/actionToExtensionsToast"
+            android:title="@string/contents_extensions_toast" />
+        <item
+            android:id="@+id/actionToExtensionsValidate"
+            android:title="@string/contents_extensions_validate" />
     </group>
 </menu>

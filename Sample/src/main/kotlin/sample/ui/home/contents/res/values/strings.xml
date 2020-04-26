@@ -7,25 +7,44 @@
         <item>Sample Login Api with Oauth2</item>
     </string-array>
 
+    <string name="contents_extensions_android">Android</string>
+    <string name="contents_extensions_currency">Currency</string>
+    <string name="contents_extensions_date">Date</string>
+    <string name="contents_extensions_exception">Exception</string>
+    <string name="contents_extensions_file">File</string>
+    <string name="contents_extensions_json">Json</string>
+    <string name="contents_extensions_kodein">Kodein</string>
+    <string name="contents_extensions_kotlin">Kotlin</string>
+    <string name="contents_extensions_log">Log</string>
+    <string name="contents_extensions_network">Network</string>
+    <string name="contents_extensions_permission">Permission</string>
+    <string name="contents_extensions_shared_preferences">Shared Preferences</string>
+    <string name="contents_extensions_snackbar">Snackbar</string>
+    <string name="contents_extensions_statusbar">Status Bar</string>
+    <string name="contents_extensions_string">String</string>
+    <string name="contents_extensions_system">System</string>
+    <string name="contents_extensions_toast">Toast</string>
+    <string name="contents_extensions_validate">Validate</string>
+
     <string-array name="contents_extensions_titles">
-        <item>Android</item>
-        <item>Currency</item>
-        <item>Date</item>
-        <item>Exception</item>
-        <item>File</item>
-        <item>Json</item>
-        <item>Kodein</item>
-        <item>Kotlin</item>
-        <item>Log</item>
-        <item>Network</item>
-        <item>Permission</item>
-        <item>Snackbar</item>
-        <item>Status Bar</item>
-        <item>Shared Preferences</item>
-        <item>String</item>
-        <item>System</item>
-        <item>Toast</item>
-        <item>Validate</item>
+        <item>@string/contents_extensions_android</item>
+        <item>@string/contents_extensions_currency</item>
+        <item>@string/contents_extensions_date</item>
+        <item>@string/contents_extensions_exception</item>
+        <item>@string/contents_extensions_file</item>
+        <item>@string/contents_extensions_json</item>
+        <item>@string/contents_extensions_kodein</item>
+        <item>@string/contents_extensions_kotlin</item>
+        <item>@string/contents_extensions_log</item>
+        <item>@string/contents_extensions_network</item>
+        <item>@string/contents_extensions_permission</item>
+        <item>@string/contents_extensions_shared_preferences</item>
+        <item>@string/contents_extensions_snackbar</item>
+        <item>@string/contents_extensions_statusbar</item>
+        <item>@string/contents_extensions_string</item>
+        <item>@string/contents_extensions_system</item>
+        <item>@string/contents_extensions_toast</item>
+        <item>@string/contents_extensions_validate</item>
     </string-array>
 
     <string-array name="contents_material_titles">

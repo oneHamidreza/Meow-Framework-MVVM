@@ -17,12 +17,15 @@
 package sample.ui.sharedpreferences
 
 import android.view.View
+import androidx.lifecycle.MutableLiveData
+import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
 import meow.core.arch.SingleLiveData
-import meow.util.fromJson
-import meow.util.ofPair
-import meow.util.toJson
+import meow.ktx.fromJson
+import meow.ktx.ofPair
+import meow.ktx.toJson
 import sample.App
+import sample.data.GithubRepository
 import sample.data.user.User
 
 /** todo all docs like this
@@ -33,10 +36,26 @@ import sample.data.user.User
  * @since   2020-04-03
  */
 
-class SharedPreferencesViewModel(override var app: App) : MeowViewModel(app) {
+class SharedPreferencesViewModel(
+    override var app: App,
+    val repository: GithubRepository
+) : MeowViewModel(app) {
+
+    var eventLiveData = MutableLiveData<MeowEvent<*>>()
+    var modelLiveData = MutableLiveData<String>()
 
     val userStateLiveData = SingleLiveData<Pair<State, User>>()
     val testStateLiveData = SingleLiveData<String>()
+
+    fun callApi(path: String) {
+        safeCallApi(
+            liveData = eventLiveData,
+            isNetworkRequired = true,
+            apiAction = { repository.getMarkdownFromApi(path) }
+        ) { _, it ->
+            modelLiveData.postValue(it)
+        }
+    }
 
     fun onClickedPut(@Suppress("UNUSED_PARAMETER") view: View) {
         val user = User(

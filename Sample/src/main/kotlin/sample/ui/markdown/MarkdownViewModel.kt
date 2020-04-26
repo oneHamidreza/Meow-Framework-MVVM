@@ -16,8 +16,11 @@
 
 package sample.ui.markdown
 
+import androidx.lifecycle.MutableLiveData
+import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
 import sample.App
+import sample.data.GithubRepository
 
 /**
  * Markdown View Model.
@@ -27,4 +30,22 @@ import sample.App
  * @since   2020-04-14
  */
 
-class MarkdownViewModel(app: App) : MeowViewModel(app)
+class MarkdownViewModel(
+    app: App,
+    val repository: GithubRepository
+) : MeowViewModel(app) {
+
+    var eventLiveData = MutableLiveData<MeowEvent<*>>()
+    var modelLiveData = MutableLiveData<String>()
+
+    fun callApi(path: String) {
+        safeCallApi(
+            liveData = eventLiveData,
+            isNetworkRequired = true,
+            apiAction = { repository.getMarkdownFromApi(path) }
+        ) { _, it ->
+            modelLiveData.postValue(it)
+        }
+    }
+
+}

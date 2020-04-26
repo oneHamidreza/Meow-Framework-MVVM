@@ -18,7 +18,7 @@ package sample.ui.meowwidget.rateview
 
 import android.os.Bundle
 import android.view.View
-import meow.util.instanceViewModel
+import meow.ktx.instanceViewModel
 import sample.R
 import sample.databinding.FragmentRateBinding
 import sample.ui.base.BaseFragment

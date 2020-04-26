@@ -18,10 +18,10 @@ package sample.ui.material.alerts
 
 import android.os.Bundle
 import android.view.View
-import meow.util.alert
-import meow.util.instanceViewModel
-import meow.util.loadingAlert
-import meow.util.toastL
+import meow.ktx.alert
+import meow.ktx.instanceViewModel
+import meow.ktx.loadingAlert
+import meow.ktx.toastL
 import meow.widget.decoration.MeowDividerDecoration
 import sample.R
 import sample.data.Content

@@ -20,9 +20,9 @@ import android.os.Bundle
 import android.view.View
 import meow.core.api.MeowOauthToken
 import meow.core.arch.MeowFlow
-import meow.util.instanceViewModel
-import meow.util.loadingAlert
-import meow.util.toastL
+import meow.ktx.instanceViewModel
+import meow.ktx.loadingAlert
+import meow.ktx.toastL
 import org.kodein.di.erased.instance
 import sample.R
 import sample.data.DataSource

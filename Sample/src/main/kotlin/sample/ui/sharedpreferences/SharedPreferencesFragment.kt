@@ -18,13 +18,14 @@ package sample.ui.sharedpreferences
 
 import android.os.Bundle
 import android.view.View
-import meow.util.instanceViewModel
-import meow.util.safeObserve
-import meow.util.snackL
+import meow.core.arch.MeowFlow
+import meow.ktx.instanceViewModel
+import meow.ktx.safeObserve
+import meow.ktx.snackL
 import sample.R
 import sample.databinding.FragmentSharedPreferencesBinding
 import sample.ui.base.BaseFragment
-import sample.widget.TextViewBinding
+import sample.widget.setMarkdownData
 
 /**
  * Shared Preferences Fragment.
@@ -41,7 +42,21 @@ class SharedPreferencesFragment : BaseFragment<FragmentSharedPreferencesBinding>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        TextViewBinding.setMarkdownAssets(binding.tv, "ReadME_Extensions_Shared_Preferences.md")
+        callApiAndObserve()
+    }
+
+    private fun callApiAndObserve() {
+        MeowFlow.GetDataApi<String>(this) {
+            viewModel.callApi("Docs/ReadME_Extensions_Shared_Preferences.md")
+        }.apply {
+            errorHandlerType = MeowFlow.ErrorHandlerType.EMPTY_STATE
+            progressBarInterface = binding.progressbar
+            emptyStateInterface = binding.emptyState
+        }.observeForDetail(viewModel.eventLiveData)
+
+        viewModel.modelLiveData.safeObserve(this) {
+            binding.tv.setMarkdownData(it)
+        }
     }
 
     override fun initViewModel() {

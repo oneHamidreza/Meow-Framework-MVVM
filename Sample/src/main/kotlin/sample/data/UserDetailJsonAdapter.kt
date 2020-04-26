@@ -17,10 +17,10 @@
 package sample.data
 
 import com.squareup.moshi.*
-import meow.util.javaClass
-import meow.util.ofMoshi
-import meow.util.readObject
-import meow.util.selectName
+import meow.ktx.javaClass
+import meow.ktx.ofMoshi
+import meow.ktx.readObject
+import meow.ktx.selectName
 import sample.data.user.User
 
 /**

@@ -16,7 +16,7 @@
 
 package sample.ui.meowwidget.progressbars
 
-import meow.util.instanceViewModel
+import meow.ktx.instanceViewModel
 import sample.R
 import sample.databinding.FragmentProgressBarsBinding
 import sample.ui.base.BaseFragment

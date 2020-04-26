@@ -101,6 +101,7 @@ object AppConfig {//todo find way for show sources
             "com.squareup.okhttp3:okhttp:${Versions.OKHTTP}",
             "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}",
             "com.squareup.retrofit2:converter-moshi:${Versions.RETROFIT}",
+            "com.squareup.retrofit2:converter-scalars:${Versions.RETROFIT}",
             "com.squareup.moshi:moshi:${Versions.MOSHI}",
             "com.squareup.moshi:moshi-kotlin:${Versions.MOSHI}",
             // Kodein

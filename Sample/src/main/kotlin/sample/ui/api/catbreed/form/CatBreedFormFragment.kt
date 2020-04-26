@@ -20,8 +20,8 @@ import android.os.Bundle
 import android.view.View
 import meow.controller
 import meow.core.arch.MeowFlow
-import meow.util.instanceViewModel
-import meow.util.toastL
+import meow.ktx.instanceViewModel
+import meow.ktx.toastL
 import sample.R
 import sample.data.catbreed.CatBreed
 import sample.databinding.FragmentCatBreedFormBinding

@@ -8,42 +8,56 @@
             type="sample.ui.sharedpreferences.SharedPreferencesViewModel" />
     </data>
 
-    <androidx.core.widget.NestedScrollView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
 
-            <Button
-                style="@style/Meow.Button"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp"
-                android:onClick="@{viewModel::onClickedPut}"
-                android:text="@string/shared_preferences_put_user" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <Button
-                style="@style/Meow.Button"
-                android:layout_gravity="center"
-                android:onClick="@{viewModel::onClickedGet}"
-                android:text="@string/shared_preferences_get_user" />
+                <Button
+                    style="@style/Meow.Button"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:onClick="@{viewModel::onClickedPut}"
+                    android:text="@string/shared_preferences_put_user" />
 
-            <Button
-                style="@style/Meow.Button"
-                android:layout_gravity="center"
-                android:visibility="gone"
-                android:onClick="@{viewModel::onClickedTest}"
-                android:text="test" />
+                <Button
+                    style="@style/Meow.Button"
+                    android:layout_gravity="center"
+                    android:onClick="@{viewModel::onClickedGet}"
+                    android:text="@string/shared_preferences_get_user" />
 
-            <TextView
-                android:id="@+id/tv"
-                style="@style/App.TextView.Markdown" />
+                <Button
+                    style="@style/Meow.Button"
+                    android:layout_gravity="center"
+                    android:onClick="@{viewModel::onClickedTest}"
+                    android:text="test"
+                    android:visibility="gone" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/tv"
+                    style="@style/App.TextView.Markdown" />
 
-    </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <meow.widget.MeowProgressBar
+            android:id="@+id/progressbar"
+            style="@style/Meow.ProgressBar.Medium.Primary" />
+
+        <meow.widget.MeowEmptyState
+            android:id="@+id/emptyState"
+            style="@style/Meow.EmptyState.OnBackground" />
+
+    </FrameLayout>
 
 </layout>

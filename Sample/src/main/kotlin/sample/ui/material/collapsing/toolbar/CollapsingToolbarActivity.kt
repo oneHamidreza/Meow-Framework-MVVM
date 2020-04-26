@@ -17,7 +17,7 @@
 package sample.ui.material.collapsing.toolbar
 
 import android.os.Bundle
-import meow.util.instanceViewModel
+import meow.ktx.instanceViewModel
 import sample.R
 import sample.databinding.ActivityCollapsingToolbarBinding
 import sample.ui.base.BaseActivity

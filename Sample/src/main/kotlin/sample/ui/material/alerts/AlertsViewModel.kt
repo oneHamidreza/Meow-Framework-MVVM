@@ -18,7 +18,7 @@ package sample.ui.material.alerts
 
 import androidx.lifecycle.MutableLiveData
 import meow.core.arch.MeowViewModel
-import meow.util.getStringArray
+import meow.ktx.getStringArray
 import sample.App
 import sample.R
 import sample.data.Content

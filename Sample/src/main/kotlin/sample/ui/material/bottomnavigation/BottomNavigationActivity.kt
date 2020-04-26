@@ -18,8 +18,8 @@ package sample.ui.material.bottomnavigation
 
 import android.os.Bundle
 import android.view.Gravity
-import meow.util.instanceViewModel
-import meow.util.toastL
+import meow.ktx.instanceViewModel
+import meow.ktx.toastL
 import sample.R
 import sample.databinding.ActivityBottomNavigationBinding
 import sample.ui.base.BaseActivity

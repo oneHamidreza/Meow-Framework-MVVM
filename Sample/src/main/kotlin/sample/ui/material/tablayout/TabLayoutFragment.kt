@@ -18,7 +18,7 @@ package sample.ui.material.tablayout
 
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayoutMediator
-import meow.util.instanceViewModel
+import meow.ktx.instanceViewModel
 import sample.R
 import sample.databinding.FragmentTablayoutBinding
 import sample.ui.base.BaseFragment

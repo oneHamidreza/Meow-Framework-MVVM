@@ -21,10 +21,12 @@ import meow.core.data.MeowSharedPreferences
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 import org.kodein.di.erased.instance
+import retrofit2.create
 import sample.App
 import sample.data.catbreed.CatBreed
 import sample.data.user.User
 import sample.di.AppApi
+import sample.widget.githubRaw
 
 
 /**
@@ -53,6 +55,10 @@ class DataSource(override var app: App) : DataSourceInterface, KodeinAware {
 
     suspend fun postCatBreedToApi(request: CatBreed.Api.RequestCreate) =
         api.createServiceByAdapter<CatBreed.Api>().createCatBreed(request.name)
+
+    suspend fun getMarkdownFromApi(path: String): String {
+        return api.createScalersService().create<GithubApi>().getFileAsString(path.githubRaw())
+    }
 
     fun isLogin() = fetchApiToken().isNotEmpty()
     fun fetchUser() = spMain.get("user", User())

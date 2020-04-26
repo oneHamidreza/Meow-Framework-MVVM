@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.DiffUtil
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import meow.core.api.MeowOauthToken
-import meow.util.removeExtraSpaces
+import meow.ktx.removeExtraSpaces
 import retrofit2.http.GET
 import retrofit2.http.Query
 import sample.data.DataSource

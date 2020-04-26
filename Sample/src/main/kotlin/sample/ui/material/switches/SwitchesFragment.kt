@@ -16,7 +16,7 @@
 
 package sample.ui.material.switches
 
-import meow.util.instanceViewModel
+import meow.ktx.instanceViewModel
 import sample.R
 import sample.databinding.FragmentSwitchesBinding
 import sample.ui.base.BaseFragment

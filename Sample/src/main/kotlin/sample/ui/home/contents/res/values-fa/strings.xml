@@ -7,4 +7,23 @@
         <item>نمونه لاگین با Oauth2</item>
     </string-array>
 
+    <string name="contents_extensions_android">اندروید</string>
+    <string name="contents_extensions_currency">واحد پول</string>
+    <string name="contents_extensions_date">تاریخ</string>
+    <string name="contents_extensions_exception">خطا‌</string>
+    <string name="contents_extensions_file">فایل</string>
+    <string name="contents_extensions_json">جِی‌سون</string>
+    <string name="contents_extensions_kodein">کدئین</string>
+    <string name="contents_extensions_kotlin">کاتلین</string>
+    <string name="contents_extensions_log">لاگ</string>
+    <string name="contents_extensions_network">شبکه</string>
+    <string name="contents_extensions_permission">دسترسی</string>
+    <string name="contents_extensions_shared_preferences">تنظیمات اشتراکی</string>
+    <string name="contents_extensions_snackbar">اسنک‌بار</string>
+    <string name="contents_extensions_statusbar">نوار وضعیت</string>
+    <string name="contents_extensions_string">رشته کاراکتر</string>
+    <string name="contents_extensions_system">سیستم</string>
+    <string name="contents_extensions_toast">تُست</string>
+    <string name="contents_extensions_validate">ارزیابی</string>
+
 </resources>

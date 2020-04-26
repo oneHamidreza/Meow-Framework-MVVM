@@ -19,8 +19,8 @@ package sample.ui.home.contents
 import android.content.Intent
 import android.os.Bundle
 import androidx.navigation.findNavController
-import meow.util.avoidException
-import meow.util.instanceViewModel
+import meow.ktx.avoidException
+import meow.ktx.instanceViewModel
 import meow.widget.decoration.MeowDividerDecoration
 import sample.R
 import sample.data.Content.Action.*
@@ -31,6 +31,7 @@ import sample.ui.content.ContentViewModel
 import sample.ui.home.HomeFragmentDirections
 import sample.ui.material.collapsing.toolbar.CollapsingToolbarActivity
 import sample.ui.material.topappbar.TopAppBarActivity
+
 
 /**
  * Contents Fragment.
@@ -130,9 +131,9 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                 EXTENSIONS_LOG,
                 EXTENSIONS_NETWORK,
                 EXTENSIONS_PERMISSION,
+                EXTENSIONS_SHARED_PREFERENCES,
                 EXTENSIONS_SNACKBAR,
                 EXTENSIONS_STATUS_BAR,
-                EXTENSIONS_SHARED_PREFERENCES,
                 EXTENSIONS_STRING,
                 EXTENSIONS_SYSTEM,
                 EXTENSIONS_TOAST,
@@ -158,33 +159,33 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
             addItemDecoration(MeowDividerDecoration(context()))
             adapter = ContentAdapter { _, it, _ ->
                 when (it.action) {
-                    API_INDEX -> findNavController().navigate(HomeFragmentDirections.actionToCatBreedIndex())
-                    API_DETAIL -> findNavController().navigate(HomeFragmentDirections.actionToCatBreedDetail())
-                    API_FORM -> findNavController().navigate(HomeFragmentDirections.actionToCatBreedForm())
-                    API_LOGIN -> findNavController().navigate(HomeFragmentDirections.actionToLogin())
+                    API_INDEX -> findNavController().navigate(HomeFragmentDirections.actionToApiCatBreedIndex())
+                    API_DETAIL -> findNavController().navigate(HomeFragmentDirections.actionToApiCatBreedDetail())
+                    API_FORM -> findNavController().navigate(HomeFragmentDirections.actionToApiCatBreedForm())
+                    API_LOGIN -> findNavController().navigate(HomeFragmentDirections.actionToApiLogin())
 
-                    MATERIAL_ALERTS -> findNavController().navigate(HomeFragmentDirections.actionToAlerts())
-                    MATERIAL_BOTTOM_APP_BAR -> findNavController().navigate(HomeFragmentDirections.actionToBottomAppBar())
+                    MATERIAL_ALERTS -> findNavController().navigate(HomeFragmentDirections.actionToMaterialAlerts())
+                    MATERIAL_BOTTOM_APP_BAR -> findNavController().navigate(HomeFragmentDirections.actionToMaterialBottomAppBar())
                     MATERIAL_BOTTOM_NAVIGATION -> findNavController().navigate(
-                        HomeFragmentDirections.actionToBottomNavigation()
+                        HomeFragmentDirections.actionToMaterialBottomNavigation()
                     )
-                    MATERIAL_BUTTONS -> findNavController().navigate(HomeFragmentDirections.actionToButtons())
-                    MATERIAL_CARDS -> findNavController().navigate(HomeFragmentDirections.actionToCards())
-                    MATERIAL_CHECKBOXES -> findNavController().navigate(HomeFragmentDirections.actionToCheckboxes())
+                    MATERIAL_BUTTONS -> findNavController().navigate(HomeFragmentDirections.actionToMaterialButtons())
+                    MATERIAL_CARDS -> findNavController().navigate(HomeFragmentDirections.actionToMaterialCards())
+                    MATERIAL_CHECKBOXES -> findNavController().navigate(HomeFragmentDirections.actionToMaterialCheckboxes())
                     MATERIAL_COLLAPSING_TOOLBAR -> startActivity(
                         Intent(
                             context(),
                             CollapsingToolbarActivity::class.java
                         )
                     )//todo add IntentExt
-                    MATERIAL_FAB_EXTENDED -> findNavController().navigate(HomeFragmentDirections.actionToFabExtended())
-                    MATERIAL_FAB_SIMPLE -> findNavController().navigate(HomeFragmentDirections.actionToFabSimple())
-                    MATERIAL_IMAGEVIEWS -> findNavController().navigate(HomeFragmentDirections.actionToImageviews())
-                    MATERIAL_RADIO_BUTTONS -> findNavController().navigate(HomeFragmentDirections.actionToRadioButtons())
-                    MATERIAL_SNACKBARS -> findNavController().navigate(HomeFragmentDirections.actionToSnackBars())
-                    MATERIAL_SWITCHES -> findNavController().navigate(HomeFragmentDirections.actionToSwitches())
-                    MATERIAL_TABLAYOUT -> findNavController().navigate(HomeFragmentDirections.actionToTabLayout())
-                    MATERIAL_TEXTVIEWS -> findNavController().navigate(HomeFragmentDirections.actionToTextviews())
+                    MATERIAL_FAB_EXTENDED -> findNavController().navigate(HomeFragmentDirections.actionToMaterialFabExtended())
+                    MATERIAL_FAB_SIMPLE -> findNavController().navigate(HomeFragmentDirections.actionToMaterialFabSimple())
+                    MATERIAL_IMAGEVIEWS -> findNavController().navigate(HomeFragmentDirections.actionToMaterialImageviews())
+                    MATERIAL_RADIO_BUTTONS -> findNavController().navigate(HomeFragmentDirections.actionToMaterialRadioButtons())
+                    MATERIAL_SNACKBARS -> findNavController().navigate(HomeFragmentDirections.actionToMaterialSnackBars())
+                    MATERIAL_SWITCHES -> findNavController().navigate(HomeFragmentDirections.actionToMaterialSwitches())
+                    MATERIAL_TABLAYOUT -> findNavController().navigate(HomeFragmentDirections.actionToMaterialTabLayout())
+                    MATERIAL_TEXTVIEWS -> findNavController().navigate(HomeFragmentDirections.actionToMaterialTextviews())
                     MATERIAL_TOP_APP_BAR -> startActivity(
                         Intent(
                             context(),
@@ -199,73 +200,109 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
 
                     EXTENSIONS_ANDROID -> findNavController().navigate(
                         HomeFragmentDirections.actionToMarkdown(
-                            "ReadME_Extensions_Android.md",
-                            "Android"
+                            "Docs/ReadME_Extensions_Android.md",
+                            getString(R.string.contents_extensions_android)
                         )
                     )
                     EXTENSIONS_CURRENCY -> findNavController().navigate(
                         HomeFragmentDirections.actionToMarkdown(
-                            "ReadME_Extensions_Currency.md",
-                            "Currency"
+                            "Docs/ReadME_Extensions_Currency.md",
+                            getString(R.string.contents_extensions_currency)
                         )
                     )
                     EXTENSIONS_DATE -> findNavController().navigate(
-                        HomeFragmentDirections.actionToMarkdown("ReadME_Extensions_Date.md", "Date")
+                        HomeFragmentDirections.actionToMarkdown(
+                            "Docs/ReadME_Extensions_Date.md",
+                            getString(R.string.contents_extensions_date)
+                        )
                     )
                     EXTENSIONS_EXCEPTION -> findNavController().navigate(
                         HomeFragmentDirections.actionToMarkdown(
-                            "ReadME_Extensions_Exception.md",
-                            "Exception"
+                            "Docs/ReadME_Extensions_Exception.md",
+                            getString(R.string.contents_extensions_exception)
                         )
                     )
                     EXTENSIONS_FILE -> findNavController().navigate(
-                        HomeFragmentDirections.actionToMarkdown("ReadME_Extensions_File.md", "File")
+                        HomeFragmentDirections.actionToMarkdown(
+                            "Docs/ReadME_Extensions_File.md",
+                            getString(R.string.contents_extensions_file)
+                        )
                     )
                     EXTENSIONS_JSON -> findNavController().navigate(
-                        HomeFragmentDirections.actionToMarkdown("ReadME_Extensions_Json.md", "Json")
+                        HomeFragmentDirections.actionToMarkdown(
+                            "Docs/ReadME_Extensions_Json.md",
+                            getString(R.string.contents_extensions_json)
+                        )
                     )
                     EXTENSIONS_KODEIN -> findNavController().navigate(
                         HomeFragmentDirections.actionToMarkdown(
-                            "ReadME_Extensions_Kodein.md",
-                            "Kodein"
+                            "Docs/ReadME_Extensions_Kodein.md",
+                            getString(R.string.contents_extensions_kodein)
                         )
                     )
                     EXTENSIONS_KOTLIN -> findNavController().navigate(
                         HomeFragmentDirections.actionToMarkdown(
-                            "ReadME_Extensions_Kotlin.md",
-                            "Kotlin"
+                            "Docs/ReadME_Extensions_Kotlin.md",
+                            getString(R.string.contents_extensions_kotlin)
                         )
                     )
                     EXTENSIONS_LOG -> findNavController().navigate(
-                        HomeFragmentDirections.actionToMarkdown("ReadME_Extensions_Log.md", "Log")
+                        HomeFragmentDirections.actionToMarkdown(
+                            "Docs/ReadME_Extensions_Log.md",
+                            getString(R.string.contents_extensions_log)
+                        )
                     )
                     EXTENSIONS_NETWORK -> findNavController().navigate(
                         HomeFragmentDirections.actionToMarkdown(
-                            "ReadME_Extensions_Network.md",
-                            "Network"
+                            "Docs/ReadME_Extensions_Network.md",
+                            getString(R.string.contents_extensions_network)
                         )
                     )
                     EXTENSIONS_PERMISSION -> findNavController().navigate(
                         HomeFragmentDirections.actionToMarkdown(
-                            "ReadME_Extensions_Permission.md",
-                            "Permission"
+                            "Docs/ReadME_Extensions_Permission.md",
+                            getString(R.string.contents_extensions_permission)
                         )
+                    )
+                    EXTENSIONS_SHARED_PREFERENCES -> findNavController().navigate(
+                        HomeFragmentDirections.actionToSharedPreferences()
                     )
                     EXTENSIONS_SNACKBAR -> findNavController().navigate(
                         HomeFragmentDirections.actionToMarkdown(
-                            "ReadME_Extensions_Snackbar.md",
-                            "Snackbar"
+                            "Docs/ReadME_Extensions_Snackbar.md",
+                            getString(R.string.contents_extensions_snackbar)
                         )
                     )
-                    EXTENSIONS_STATUS_BAR -> findNavController().navigate(
+                    EXTENSIONS_STATUS_BAR ->
+                        findNavController().navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_Statusbar.md",
+                                getString(R.string.contents_extensions_statusbar)
+                            )
+                        )
+                    EXTENSIONS_STRING -> findNavController().navigate(
                         HomeFragmentDirections.actionToMarkdown(
-                            "ReadME_Extensions_Statusbar.md",
-                            "Statusbar"
+                            "Docs/ReadME_Extensions_String.md",
+                            getString(R.string.contents_extensions_string)
                         )
                     )
-
-                    EXTENSIONS_SHARED_PREFERENCES -> findNavController().navigate(
-                        HomeFragmentDirections.actionToSharedPreferences()
+                    EXTENSIONS_SYSTEM -> findNavController().navigate(
+                        HomeFragmentDirections.actionToMarkdown(
+                            "Docs/ReadME_Extensions_System.md",
+                            getString(R.string.contents_extensions_system)
+                        )
+                    )
+                    EXTENSIONS_TOAST -> findNavController().navigate(
+                        HomeFragmentDirections.actionToMarkdown(
+                            "Docs/ReadME_Extensions_Toast.md",
+                            getString(R.string.contents_extensions_toast)
+                        )
+                    )
+                    EXTENSIONS_VALIDATE -> findNavController().navigate(
+                        HomeFragmentDirections.actionToMarkdown(
+                            "Docs/ReadME_Extensions_Validate.md",
+                            getString(R.string.contents_extensions_validate)
+                        )
                     )
 
                     else -> {

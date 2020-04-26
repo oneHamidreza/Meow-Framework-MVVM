@@ -22,8 +22,8 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
-import meow.util.dp
-import meow.util.getStatusBarHeight
+import meow.ktx.dp
+import meow.ktx.getStatusBarHeight
 import sample.R
 import sample.databinding.NavHeaderViewBinding
 

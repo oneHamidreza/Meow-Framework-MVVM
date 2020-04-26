@@ -19,7 +19,7 @@ package sample.ui.api.catbreed.index
 import android.os.Bundle
 import android.view.View
 import meow.core.arch.MeowFlow
-import meow.util.instanceViewModel
+import meow.ktx.instanceViewModel
 import sample.R
 import sample.data.catbreed.CatBreed
 import sample.databinding.FragmentCatBreedIndexBinding

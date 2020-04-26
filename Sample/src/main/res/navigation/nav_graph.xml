@@ -17,64 +17,69 @@
 
         <!-- Api -->
         <action
-            android:id="@+id/actionToCatBreedIndex"
+            android:id="@+id/actionToApiCatBreedIndex"
             app:destination="@id/fragmentCatBreedIndex" />
         <action
-            android:id="@+id/actionToCatBreedDetail"
+            android:id="@+id/actionToApiCatBreedDetail"
             app:destination="@id/fragmentCatBreedDetail" />
         <action
-            android:id="@+id/actionToCatBreedForm"
+            android:id="@+id/actionToApiCatBreedForm"
             app:destination="@id/fragmentCatBreedForm" />
         <action
-            android:id="@+id/actionToLogin"
+            android:id="@+id/actionToApiLogin"
             app:destination="@id/fragmentLogin" />
 
         <!-- Material -->
         <action
-            android:id="@+id/actionToAlerts"
+            android:id="@+id/actionToMaterialAlerts"
             app:destination="@id/fragmentAlerts" />
         <action
-            android:id="@+id/actionToBottomAppBar"
+            android:id="@+id/actionToMaterialBottomAppBar"
             app:destination="@id/activityBottomAppBar" />
         <action
-            android:id="@+id/actionToBottomNavigation"
+            android:id="@+id/actionToMaterialBottomNavigation"
             app:destination="@id/activityBottomNavigation" />
         <action
-            android:id="@+id/actionToButtons"
+            android:id="@+id/actionToMaterialButtons"
             app:destination="@id/fragmentButtons" />
         <action
-            android:id="@+id/actionToCards"
+            android:id="@+id/actionToMaterialCards"
             app:destination="@id/fragmentCards" />
         <action
-            android:id="@+id/actionToCheckboxes"
+            android:id="@+id/actionToMaterialCheckboxes"
             app:destination="@id/fragmentCheckboxes" />
         <action
-            android:id="@+id/actionToCollapsingToolbar"
+            android:id="@+id/actionToMaterialCollapsingToolbar"
             app:destination="@id/activityCollapsingToolbar" />
         <action
-            android:id="@+id/actionToFabExtended"
+            android:id="@+id/actionToMaterialFabExtended"
             app:destination="@id/fragmentFabExtended" />
         <action
-            android:id="@+id/actionToFabSimple"
+            android:id="@+id/actionToMaterialFabSimple"
             app:destination="@id/fragmentFabSimple" />
         <action
-            android:id="@+id/actionToImageviews"
+            android:id="@+id/actionToMaterialImageviews"
             app:destination="@id/fragmentImageviews" />
         <action
-            android:id="@+id/actionToRadioButtons"
+            android:id="@+id/actionToMaterialRadioButtons"
             app:destination="@id/fragmentRadioButtons" />
         <action
-            android:id="@+id/actionToSnackBars"
+            android:id="@+id/actionToMaterialSnackBars"
             app:destination="@id/fragmentSnackBars" />
         <action
-            android:id="@+id/actionToSwitches"
+            android:id="@+id/actionToMaterialSwitches"
             app:destination="@id/fragmentSwitches" />
         <action
-            android:id="@+id/actionToTabLayout"
+            android:id="@+id/actionToMaterialTabLayout"
             app:destination="@id/fragmentTabLayout" />
         <action
-            android:id="@+id/actionToTextviews"
+            android:id="@+id/actionToMaterialTextviews"
             app:destination="@id/fragmentTextviews" />
+
+        <!-- Extensions -->
+        <action
+            android:id="@+id/actionToSharedPreferences"
+            app:destination="@id/fragmentSharedPreferences" />
 
         <!-- Meow Widgets-->
         <action
@@ -89,12 +94,6 @@
         <action
             android:id="@+id/actionToRateBar"
             app:destination="@id/fragmentRate" />
-
-        <!-- Extensions -->
-        <action
-            android:id="@+id/actionToSharedPreferences"
-            app:destination="@id/fragmentSharedPreferences" />
-
     </fragment>
 
     <!-- Markdown -->
@@ -110,9 +109,9 @@
             app:nullable="false" />
         <argument
             android:name="title"
+            android:defaultValue="@null"
             app:argType="string"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:nullable="true" />
     </fragment>
 
     <!-- Api -->
@@ -136,13 +135,6 @@
         android:name="sample.ui.api.login.LoginFragment"
         android:label="@string/fragment_login"
         tools:layout="@layout/fragment_login" />
-
-    <!-- Extensions -->
-    <fragment
-        android:id="@+id/fragmentSharedPreferences"
-        android:name="sample.ui.sharedpreferences.SharedPreferencesFragment"
-        android:label="@string/fragment_shared_preferences"
-        tools:layout="@layout/fragment_shared_preferences" />
 
     <!-- Material -->
     <fragment
@@ -220,6 +212,13 @@
         android:name="sample.ui.material.textviews.TextViewsFragment"
         android:label="@string/fragment_textviews"
         tools:layout="@layout/fragment_textviews" />
+
+    <!-- Extensions -->
+    <fragment
+        android:id="@+id/fragmentSharedPreferences"
+        android:name="sample.ui.sharedpreferences.SharedPreferencesFragment"
+        android:label="@string/fragment_shared_preferences"
+        tools:layout="@layout/fragment_shared_preferences" />
 
     <!-- Meow Widgets -->
     <fragment

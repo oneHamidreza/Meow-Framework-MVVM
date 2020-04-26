@@ -21,8 +21,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.ArrayAdapter
-import meow.util.instanceViewModel
-import meow.util.toastL
+import meow.ktx.instanceViewModel
+import meow.ktx.toastL
 import sample.R
 import sample.databinding.FragmentFormBinding
 import sample.ui.base.BaseFragment

@@ -19,9 +19,9 @@ package sample.ui.base
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding
 import meow.core.ui.MeowActivity
-import meow.util.getColorCompat
-import meow.util.updateNavigationBarColorByTheme
-import meow.util.updateStatusBarByTheme
+import meow.ktx.getColorCompat
+import meow.ktx.updateNavigationBarColorByTheme
+import meow.ktx.updateStatusBarByTheme
 import sample.R
 
 /**

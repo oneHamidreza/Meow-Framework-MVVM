@@ -19,8 +19,8 @@ package sample.ui.meowwidget.dash
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import meow.util.dp
-import meow.util.instanceViewModel
+import meow.ktx.dp
+import meow.ktx.instanceViewModel
 import sample.R
 import sample.databinding.FragmentDashBinding
 import sample.ui.base.BaseFragment

@@ -16,7 +16,7 @@
 
 package sample.ui.material.checkboxes
 
-import meow.util.instanceViewModel
+import meow.ktx.instanceViewModel
 import sample.R
 import sample.databinding.FragmentCheckboxesBinding
 import sample.ui.base.BaseFragment

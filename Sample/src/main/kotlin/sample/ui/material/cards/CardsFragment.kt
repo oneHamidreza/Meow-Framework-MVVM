@@ -18,7 +18,7 @@ package sample.ui.material.cards
 
 import android.os.Bundle
 import android.view.View
-import meow.util.instanceViewModel
+import meow.ktx.instanceViewModel
 import meow.widget.setCheckableWithLongClick
 import sample.R
 import sample.databinding.FragmentCardsBinding

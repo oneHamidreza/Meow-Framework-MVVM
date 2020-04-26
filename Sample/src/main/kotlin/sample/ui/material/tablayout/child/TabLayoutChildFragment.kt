@@ -17,7 +17,7 @@
 package sample.ui.material.tablayout.child
 
 import android.os.Bundle
-import meow.util.instanceViewModel
+import meow.ktx.instanceViewModel
 import sample.R
 import sample.databinding.FragmentTablayoutChildBinding
 import sample.ui.base.BaseFragment

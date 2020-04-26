@@ -16,7 +16,6 @@
 
 package sample.ui.main
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -27,20 +26,21 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import meow.controller
-import meow.util.getColorCompat
-import meow.util.getDimensionToPx
-import meow.util.instanceViewModel
+import meow.ktx.getColorCompat
+import meow.ktx.getDimensionToPx
+import meow.ktx.instanceViewModel
 import meow.widget.setElevationCompat
 import sample.R
 import sample.databinding.ActivityMainBinding
 import sample.ui.base.BaseActivity
+import sample.ui.home.HomeFragmentDirections
 import sample.ui.material.bottomappbar.BottomAppBarActivity
 import sample.ui.material.bottomnavigation.BottomNavigationActivity
 import sample.ui.material.collapsing.toolbar.CollapsingToolbarActivity
 import sample.ui.material.topappbar.TopAppBarActivity
 import sample.widget.navheader.NavHeaderView
+import sample.widget.startActivity
 
 /**
  * Main Activity class.
@@ -83,22 +83,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 //update sp
                 true
             }
-            R.id.activityBottomAppBar -> {
-                startActivity(Intent(this, BottomAppBarActivity::class.java))
-                true
-            }
-            R.id.activityBottomNavigation -> {
-                startActivity(Intent(this, BottomNavigationActivity::class.java))
-                true
-            }
-            R.id.activityCollapsingToolbar -> {
-                startActivity(Intent(this, CollapsingToolbarActivity::class.java))
-                true
-            }
-            R.id.activityTopAppBar -> {
-                startActivity(Intent(this, TopAppBarActivity::class.java))
-                true
-            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -134,12 +118,185 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     context()
                 )
             )
-            navigationView.setNavigationItemSelectedListener { menuItem ->
-//                menuItem.isChecked = true
+            navigationView.setNavigationItemSelectedListener { item ->
+                when (item.itemId) {
+                    R.id.actionToApiCatBreedIndex -> navController.navigate(HomeFragmentDirections.actionToApiCatBreedIndex())
+                    R.id.actionToApiCatBreedDetail -> navController.navigate(HomeFragmentDirections.actionToApiCatBreedDetail())
+                    R.id.actionToApiCatBreedForm -> navController.navigate(HomeFragmentDirections.actionToApiCatBreedForm())
+                    R.id.actionToApiLogin -> navController.navigate(HomeFragmentDirections.actionToApiLogin())
+
+                    R.id.actionToMaterialAlerts -> navController.navigate(HomeFragmentDirections.actionToMaterialAlerts())
+                    R.id.actionToMaterialBottomAppBar -> startActivity<BottomAppBarActivity>()
+                    R.id.actionToMaterialBottomNavigation -> startActivity<BottomNavigationActivity>()
+                    R.id.actionToMaterialButtons -> navController.navigate(HomeFragmentDirections.actionToMaterialButtons())
+                    R.id.actionToMaterialCards -> navController.navigate(HomeFragmentDirections.actionToMaterialCards())
+                    R.id.actionToMaterialCheckboxes -> navController.navigate(HomeFragmentDirections.actionToMaterialCheckboxes())
+                    R.id.actionToMaterialCollapsingToolbar -> startActivity<CollapsingToolbarActivity>()
+                    R.id.actionToMaterialFabSimple -> navController.navigate(HomeFragmentDirections.actionToMaterialFabSimple())
+                    R.id.actionToMaterialFabExtended -> navController.navigate(
+                        HomeFragmentDirections.actionToMaterialFabExtended()
+                    )
+                    R.id.actionToMaterialImageviews -> navController.navigate(HomeFragmentDirections.actionToMaterialImageviews())
+                    R.id.actionToMaterialRadioButtons -> navController.navigate(
+                        HomeFragmentDirections.actionToMaterialRadioButtons()
+                    )
+                    R.id.actionToMaterialSnackBars -> navController.navigate(HomeFragmentDirections.actionToMaterialSnackBars())
+                    R.id.actionToMaterialTabLayout -> navController.navigate(HomeFragmentDirections.actionToMaterialTabLayout())
+                    R.id.actionToMaterialTextviews -> navController.navigate(HomeFragmentDirections.actionToMaterialTextviews())
+                    R.id.actionToMaterialTopAppBar -> startActivity<TopAppBarActivity>()
+
+
+                    R.id.actionToExtensionsAndroid -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_Android.md",
+                                getString(R.string.contents_extensions_android)
+                            )
+                        )
+                    }
+
+                    R.id.actionToExtensionsCurrency -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_Currency.md",
+                                getString(R.string.contents_extensions_currency)
+                            )
+                        )
+                    }
+                    R.id.actionToExtensionsDate -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_Date.md",
+                                getString(R.string.contents_extensions_date)
+                            )
+                        )
+                    }
+
+                    R.id.actionToExtensionsException -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_Exception.md",
+                                getString(R.string.contents_extensions_exception)
+                            )
+                        )
+                    }
+                    R.id.actionToExtensionsFile -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_File.md",
+                                getString(R.string.contents_extensions_file)
+                            )
+                        )
+                    }
+                    R.id.actionToExtensionsJson -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_Json.md",
+                                getString(R.string.contents_extensions_json)
+                            )
+                        )
+                    }
+                    R.id.actionToExtensionsKodein -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_Kodein.md",
+                                getString(R.string.contents_extensions_kodein)
+                            )
+                        )
+                    }
+                    R.id.actionToExtensionsKotlin -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_Kotlin.md",
+                                getString(R.string.contents_extensions_kotlin)
+                            )
+                        )
+                    }
+                    R.id.actionToExtensionsLog -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_Log.md",
+                                getString(R.string.contents_extensions_log)
+                            )
+                        )
+                    }
+                    R.id.actionToExtensionsNetwork -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_Network.md",
+                                getString(R.string.contents_extensions_network)
+                            )
+                        )
+                    }
+                    R.id.actionToExtensionsPermission -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_Permission.md",
+                                getString(R.string.contents_extensions_permission)
+                            )
+                        )
+                    }
+                    R.id.actionToExtensionsSharedPreferences -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToSharedPreferences()
+                        )
+                    }
+                    R.id.actionToExtensionsSnackbar -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_Snackbar.md",
+                                getString(R.string.contents_extensions_snackbar)
+                            )
+                        )
+                    }
+                    R.id.actionToExtensionsStatusbar -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_Statusbar.md",
+                                getString(R.string.contents_extensions_statusbar)
+                            )
+                        )
+                    }
+                    R.id.actionToExtensionsString -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_String.md",
+                                getString(R.string.contents_extensions_string)
+                            )
+                        )
+                    }
+                    R.id.actionToExtensionsSystem -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_System.md",
+                                getString(R.string.contents_extensions_system)
+                            )
+                        )
+                    }
+                    R.id.actionToExtensionsToast -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_Toast.md",
+                                getString(R.string.contents_extensions_toast)
+                            )
+                        )
+                    }
+                    R.id.actionToExtensionsValidate -> {
+                        navController.navigate(
+                            HomeFragmentDirections.actionToMarkdown(
+                                "Docs/ReadME_Extensions_Validate.md",
+                                getString(R.string.contents_extensions_validate)
+                            )
+                        )
+                    }
+                }
+
+//                item.isChecked = true
+//                for (var it in item.)
                 drawerLayout.closeDrawers()
                 true
             }
-            navigationView.setupWithNavController(navController)
+//            navigationView.setupWithNavController(navController)
         }
     }
 
@@ -160,18 +317,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     fun test() {
-        application
 
-//        needPermissions(
-//            Manifest.permission.READ_EXTERNAL_STORAGE,
-//            Manifest.permission.WRITE_EXTERNAL_STORAGE
-//        ) {
-//            toastL(it.toString())
-//        }
-//        val calendar = Calendar.getInstance().apply {
-//            add(Calendar.YEAR, -2)
-//        }
-//        toastL(dateFormatSimple(calendar))
     }
 
 }

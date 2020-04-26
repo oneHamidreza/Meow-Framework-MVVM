@@ -18,7 +18,7 @@ package sample.data
 
 import androidx.recyclerview.widget.DiffUtil
 import kotlinx.serialization.Serializable
-import meow.util.isNotNullOrEmpty
+import meow.ktx.isNotNullOrEmpty
 
 /**
  * Content Data class.
@@ -71,9 +71,9 @@ data class Content(
         EXTENSIONS_LOG,
         EXTENSIONS_NETWORK,
         EXTENSIONS_PERMISSION,
+        EXTENSIONS_SHARED_PREFERENCES,
         EXTENSIONS_SNACKBAR,
         EXTENSIONS_STATUS_BAR,
-        EXTENSIONS_SHARED_PREFERENCES,
         EXTENSIONS_STRING,
         EXTENSIONS_SYSTEM,
         EXTENSIONS_TOAST,

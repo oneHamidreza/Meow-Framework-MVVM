@@ -16,7 +16,7 @@
 
 package sample.ui.material.radiobuttons
 
-import meow.util.instanceViewModel
+import meow.ktx.instanceViewModel
 import sample.R
 import sample.databinding.FragmentRadioButtonsBinding
 import sample.ui.base.BaseFragment

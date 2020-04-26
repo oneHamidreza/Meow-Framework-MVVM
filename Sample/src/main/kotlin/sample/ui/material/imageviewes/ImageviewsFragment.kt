@@ -16,7 +16,7 @@
 
 package sample.ui.material.imageviewes
 
-import meow.util.instanceViewModel
+import meow.ktx.instanceViewModel
 import sample.R
 import sample.databinding.FragmentImageviewsBinding
 import sample.ui.base.BaseFragment

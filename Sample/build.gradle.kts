@@ -106,7 +106,7 @@ tasks {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(project(":meow"))
+    implementation(project(":Framework"))
 
     // Implementation Dependencies
     Library.implementationItems.forEach {

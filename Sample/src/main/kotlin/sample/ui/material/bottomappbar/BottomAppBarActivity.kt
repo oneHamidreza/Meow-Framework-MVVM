@@ -17,7 +17,7 @@
 package sample.ui.material.bottomappbar
 
 import android.os.Bundle
-import meow.util.instanceViewModel
+import meow.ktx.instanceViewModel
 import meow.widget.decoration.MeowDividerDecoration
 import sample.R
 import sample.databinding.ActivityBottomAppBarBinding

@@ -18,7 +18,7 @@ package sample.ui.api.catbreed.detail
 
 import meow.controller
 import meow.core.arch.MeowFlow
-import meow.util.instanceViewModel
+import meow.ktx.instanceViewModel
 import sample.R
 import sample.data.catbreed.CatBreed
 import sample.databinding.FragmentCatBreedDetailBinding

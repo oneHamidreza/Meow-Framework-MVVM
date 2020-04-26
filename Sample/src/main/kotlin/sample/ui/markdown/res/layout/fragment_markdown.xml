@@ -8,21 +8,35 @@
             type="sample.ui.markdown.MarkdownViewModel" />
     </data>
 
-    <androidx.core.widget.NestedScrollView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
 
-            <TextView
-                android:id="@+id/tv"
-                style="@style/App.TextView.Markdown" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/tv"
+                    style="@style/App.TextView.Markdown" />
 
-    </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <meow.widget.MeowProgressBar
+            android:id="@+id/progressbar"
+            style="@style/Meow.ProgressBar.Medium.Primary" />
+
+        <meow.widget.MeowEmptyState
+            android:id="@+id/emptyState"
+            style="@style/Meow.EmptyState.OnBackground" />
+
+    </FrameLayout>
 
 </layout>

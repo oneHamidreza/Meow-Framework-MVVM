@@ -20,7 +20,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import meow.core.ui.MeowPagerAdapter
-import meow.util.bundleOf
+import meow.ktx.bundleOf
 import sample.ui.home.contents.ContentsFragment
 import sample.ui.markdown.MarkdownFragment
 

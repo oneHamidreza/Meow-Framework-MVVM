@@ -17,11 +17,13 @@
 package sample.ui.markdown
 
 import androidx.navigation.fragment.navArgs
-import meow.util.instanceViewModel
+import meow.core.arch.MeowFlow
+import meow.ktx.instanceViewModel
+import meow.ktx.safeObserve
 import sample.R
 import sample.databinding.FragmentMarkdownBinding
 import sample.ui.base.BaseFragment
-import sample.widget.TextViewBinding
+import sample.widget.setMarkdownData
 
 /**
  * Markdown Fragment.
@@ -33,7 +35,9 @@ import sample.widget.TextViewBinding
 
 class MarkdownFragment : BaseFragment<FragmentMarkdownBinding>() {
 
-    val navArgs: MarkdownFragmentArgs by navArgs()
+    private val navArgs: MarkdownFragmentArgs by navArgs()
+
+    private var cachedModel: String? = null
 
     private val viewModel: MarkdownViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_markdown
@@ -42,7 +46,38 @@ class MarkdownFragment : BaseFragment<FragmentMarkdownBinding>() {
         binding.viewModel = viewModel
         if (navArgs.title != null)
             activity().supportActionBar?.title = navArgs.title
-        TextViewBinding.setMarkdownAssets(binding.tv, navArgs.fileName)
+        if (cachedModel == null)
+            callApiAndObserve(true) //todo improve avoid call twice
+        else {
+            callApiAndObserve(false)
+            viewModel.modelLiveData.postValue(cachedModel)
+        }
+    }
+
+    private fun callApiAndObserve(allowCallApi: Boolean) {
+        MeowFlow.GetDataApi<String>(this) {
+            viewModel.callApi(navArgs.fileName)
+        }.apply {
+            allowCallAction = allowCallApi
+            errorHandlerType = MeowFlow.ErrorHandlerType.EMPTY_STATE
+            progressBarInterface = binding.progressbar
+            emptyStateInterface = binding.emptyState
+        }.observeForDetail(viewModel.eventLiveData)
+
+        viewModel.modelLiveData.safeObserve(this) {//todo call twice after pop-up
+            binding.tv.setMarkdownData(it)
+            cachedModel = it
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        cachedModel = null
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cachedModel = null
     }
 
 }

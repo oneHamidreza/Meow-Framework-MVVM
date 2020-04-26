@@ -17,8 +17,8 @@
 package sample.ui.home
 
 import com.google.android.material.tabs.TabLayoutMediator
-import meow.util.getStringArrayCompat
-import meow.util.instanceViewModel
+import meow.ktx.getStringArrayCompat
+import meow.ktx.instanceViewModel
 import sample.R
 import sample.databinding.FragmentHomeBinding
 import sample.ui.base.BaseFragment

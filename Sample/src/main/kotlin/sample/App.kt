@@ -25,11 +25,11 @@ import com.bumptech.glide.module.AppGlideModule
 import meow.MeowApp
 import meow.MeowController
 import meow.controller
+import meow.ktx.MeowCurrency
+import meow.ktx.getFontCompat
+import meow.ktx.isNightModeFromSettings
+import meow.ktx.toHexString
 import meow.meowModule
-import meow.util.MeowCurrency
-import meow.util.getFontCompat
-import meow.util.isNightModeFromSettings
-import meow.util.toHexString
 import org.kodein.di.Kodein
 import org.kodein.di.android.x.androidXModule
 import org.kodein.di.direct

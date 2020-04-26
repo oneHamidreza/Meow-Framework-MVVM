@@ -22,10 +22,10 @@ import android.view.MenuInflater
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.core.widget.addTextChangedListener
-import meow.util.dp
-import meow.util.instanceViewModel
-import meow.util.popup
-import meow.util.safeObserve
+import meow.ktx.dp
+import meow.ktx.instanceViewModel
+import meow.ktx.popup
+import meow.ktx.safeObserve
 import meow.widget.addItemDecoration
 import meow.widget.decoration.MeowDividerDecoration
 import sample.R
