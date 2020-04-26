@@ -1,6 +1,6 @@
 ## 💵 Currency Extensions
 
-First set Currency mode in Application's `MeowController`. Supported currencies are `Rial` , `Toman` , `USD` . 
+First set Currency mode in Application's `MeowController`. Supported currencies are `Rial` , `Toman` , `USD`. 
 ```kotlin
 class App : MeowApp() {
     override fun onCreate() {
