@@ -15,7 +15,7 @@ data class User(
     @Json(name = "last_name") var lastName: String? = null  
 )
 
-fun testJson(){
+fun testJsonObject(){
     val user = User(1,"SomeFirstName","SomeLastName")
     val json = user.toJson()   
     // json = {
@@ -26,11 +26,27 @@ fun testJson(){
     
     // Create a model from JSON string.
     val modelFromJson = json.fromJson<User>()
-    println(modelFromJson.)
+    println(modelFromJson.firstName)
+}
+
+fun testJsonArray(){
+    val userList = listof(User(1,"Ham","SomeLastName"),
+    User(1,"SomeFirstName","SomeLastName")
+    )
+    val json = user.toJson()   
+    // json = {
+    //      "id": 	1,
+    //      "first_name": "SomeFirstName",
+    //      "last_name": "SomeLastName"
+    //  }
+    
+    // Create a model from JSON string.
+    val modelFromJson = json.fromJson<User>()
+    println(modelFromJson.firstName)
 }
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMzYxMjc3MjMsLTQ0NDYyMTA3NiwtMT
+eyJoaXN0b3J5IjpbLTIwOTcwNDM5OTIsLTQ0NDYyMTA3NiwtMT
 gzNjQ4MzkwNl19
 -->
