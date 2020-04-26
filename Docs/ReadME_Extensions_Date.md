@@ -46,6 +46,3 @@ Use `Context?.dateFormatNormalWithTime(calendar)` to have a Date String  with `S
 dateFormatNormalWithTime(calendar)
 // Return "23 Jan 2020 10:10 a.m." and when App's Calendar is JALALI : "23 مهر ‌" 1392 10:10 ب.ظ
 ```
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYwODkyMDUxM119
--->
