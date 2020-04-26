@@ -1,8 +1,8 @@
 ## 📬 Shared Preferences Extensions
 
-We used `in.co.ophio:secure-preferences` library to have a real secured Shared Preferences . 
+We used `in.co.ophio:secure-preferences` library to have a real secured Shared Preferences. 
 
-Use `MeowSharedPreferences` to store data into Android Shared Preferences, See this example : 
+Use `MeowSharedPreferences` to store data into Android Shared Preferences. See this example : 
 
 ```kotlin
 class MyActivity : MeowActivity<*> {  
@@ -11,10 +11,10 @@ class MyActivity : MeowActivity<*> {
         // Initialize an object of MeowSharedPreferences with `Main_Settings_v1` settings name.
         val sp = MeowSharedPreferences(application, "Main_Settings_v1")
 
-        // Example: put a String with `KEY_USERNAME`
+        // Example: put a String with `KEY_USERNAME` key and `SomeUserName` value.
         sp.put("KEY_USERNAME", "SomeUserName")
 
-        // Example: get a String with default value
+        // Example: get a String with `KEY_USERNAME` key and default value `public_user_default`
         val username = sp.get("KEY_USERNAME", "public_user_default")
 
         // Example: put a Object with `KEY_STUDENT`.
@@ -34,5 +34,5 @@ class MyActivity : MeowActivity<*> {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxODkzODQ1Nl19
+eyJoaXN0b3J5IjpbLTE1NzgwODA3MzJdfQ==
 -->
