@@ -30,15 +30,18 @@ fun testJsonObject(){
 }
 
 fun testJsonArray(){
-    val userList = listof(User(1,"Ham","SomeLastName"),
-    User(1,"SomeFirstName","SomeLastName")
+    val userList = listof(
+        User(1,"Hamidreza","Etebarian"),
+        User(2,"Ali","Modares")
     )
-    val json = user.toJson()   
-    // json = {
+    val json = userList.toJson()   
+    // json = [
+    //        {
     //      "id": 	1,
     //      "first_name": "SomeFirstName",
     //      "last_name": "SomeLastName"
     //  }
+    // ]
     
     // Create a model from JSON string.
     val modelFromJson = json.fromJson<User>()
@@ -47,6 +50,6 @@ fun testJsonArray(){
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTcwNDM5OTIsLTQ0NDYyMTA3NiwtMT
+eyJoaXN0b3J5IjpbLTE0MjI2OTA0MjksLTQ0NDYyMTA3NiwtMT
 gzNjQ4MzkwNl19
 -->
