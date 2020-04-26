@@ -1,6 +1,7 @@
-## Kotlin Extensions 💎
 
-Use `scopeLaunch()` to launch a `Coroutine` scope + `Job` + `exceptionHandler` properties. Default context is `Dispatchers.IO`.  See this example : 
+## 💎 Kotlin Extensions
+
+Use `scopeLaunch()` to launch a `Coroutine` Scope + `Job` + `exceptionHandler` properties. Default coroutine context is `Dispatchers.IO`.  See this example : 
 
 ```kotlin
 // Simple launch coroutine from anywhere.
@@ -8,13 +9,15 @@ scopeLaunch {
     // Call some functions which need `Dispatchers.IO` scope.  
 }
 
-// Advanced launch coroutine
+// Advanced launch coroutine.
 scopeLaunch(
     context = Dispatchers.Main,
     exceptionHandler = CoroutineExceptionHandler{_,e -> e.printStackTrace()},  
     job = myJob, // Optional   
     start = CoroutineStart.DEFAULT // Optional
-)
+){
+    // Call some functions which need `Dispatchers.IO` scope.  
+}
 ```
   
 Use `ofPair<A,B>(first:A,second:B)` to have a `Pair` instance of `A` type and `B` type .  See this example : 
@@ -26,7 +29,6 @@ fun testOfPair(){
 	// Log into DEBUG level : myPair >> first: 1 second: SomeString
 }
 ```
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk4OTg1MzU5M119
+eyJoaXN0b3J5IjpbNDUyMjU2MjAzXX0=
 -->
