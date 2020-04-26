@@ -28,7 +28,7 @@ fun testJsonObject(){
     
     // Create a model from JSON Object string.
     val modelFromJson = json.fromJson<User>()
-    println(modelFromJson.firstName)
+    println(modelFromJson.firstName) // Prints `SomeFirstName`
 }
 
 fun testJsonArray(){
@@ -53,11 +53,7 @@ fun testJsonArray(){
     
     // Create a list of models from JSON Array string.
     val modelFromJson = json.fromJsonList<User>()
-    println(modelFromJson.firstName)
+    println(modelFromJson.size) // Prints `2`
 }
 
 ```
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbNDEyOTA4NTAzLC00NDQ2MjEwNzYsLTE4Mz
-Y0ODM5MDZdfQ==
--->
