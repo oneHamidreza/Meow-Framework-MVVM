@@ -1,9 +1,11 @@
 ## 💉 Json Extensions
 
-Use `String?.fromJson()` to convert a String to any Data Model. See this example : 
+Use `String?.fromJson()` to convert a String to any Data Model with .
+Use `Any?.toJson()` to convert a any Data Model to a Json String .
+ See this example : 
 
 ```kotlin
-// Use `Moshi.JsonClass` and `Moshi.Json`
+// Use `Moshi.JsonClass` and `Moshi.Json` annotations.
 @JsonClass(generateAdapter = true)  
 data class User(  
     @Json(name = "id") var id: String? = null,  
@@ -11,12 +13,10 @@ data class User(
     @Json(name = "last_name") var lastName: String? = null  
 )
 
-val module = Module("NAME_OF_MODULE", false){
-    bindAutoTag<MyViewModel>() with provider {  
-        MyViewModel(kodein.direct.instance())  
-    }
-}
+fu
+
+val user = 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwNjQ0OTc1Nl19
+eyJoaXN0b3J5IjpbMTUxMDU0NzAxNV19
 -->
