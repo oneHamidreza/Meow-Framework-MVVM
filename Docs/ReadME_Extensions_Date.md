@@ -7,7 +7,7 @@ class App : MeowApp() {
     override fun onCreate() {
         MeowController().apply {         
             // ...
-            calendar = MeowController.Calendar.JALALI // or GEORGIAN
+            calendar = MeowController.Calendar.JALALI // or GEORGIAN 
         }.bindApp(this)
     }
 }
