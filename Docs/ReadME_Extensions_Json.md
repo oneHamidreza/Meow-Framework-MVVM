@@ -16,12 +16,16 @@ data class User(
 )
 
 fun testJson(){
-    val user = User(1,"SomeFirstName 
+    val user = User(1,"SomeFirstName","SomeLastName")
+    val json = user.toJson() 
+    //  json = `{
+    //	
+    //  }`
 
 }
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MjAzNzk5MDYsLTE4MzY0ODM5MDZdfQ
+eyJoaXN0b3J5IjpbLTEzNzg4ODkyMDIsLTE4MzY0ODM5MDZdfQ
 ==
 -->
