@@ -1,6 +1,6 @@
 ## 🤡 Exception Extensions 
 
-Use `avoidException`  instead of `try{} catch()` to can handle when an exception has been occurred in your app. Just set `onException` block in your `MeowController`  then you can access the happen exceptions.
+Use `avoidException`  instead of `try{} catch()` to can handle when an exception has been occurred in your app. Just set `onException` block in your `MeowController`  then you can access the happen exceptions (Only Non-Fatal Error). 
 
 ```kotlin
 // MeowController() ...
@@ -31,7 +31,7 @@ avoidException {
 
 #### 2. Advanced Exception Handling
  
-Legacy  `try{} catch()` : 
+Legacy  `try{} catch() finally{}` : 
 
 ```kotlin
 try { 
@@ -57,6 +57,8 @@ avoidException (
     }
 )
 ```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcyMzYwNzA2NV19
+eyJoaXN0b3J5IjpbLTEwODc1MjUwNDVdfQ==
 -->
