@@ -17,17 +17,18 @@ data class User(
 
 fun testJson(){
     val user = User(1,"SomeFirstName","SomeLastName")
-    val json = user.toJson() 
-    //  
+    val json = user.toJson()   
     // json = {
     //      "id": 	1,
     //      "first_name": "SomeFirstName",
     //      "last_name": "SomeLastName"
     //  }
-
+    val modelFromJson = json.fromJson<User>()
+    
 }
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ0NDYyMTA3NiwtMTgzNjQ4MzkwNl19
+eyJoaXN0b3J5IjpbLTg2MDM0NDE5NSwtNDQ0NjIxMDc2LC0xOD
+M2NDgzOTA2XX0=
 -->
