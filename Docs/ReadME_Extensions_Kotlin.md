@@ -1,4 +1,3 @@
-
 ## 💎 Kotlin Extensions
 
 Use `scopeLaunch()` to launch a `Coroutine` Scope + `Job` + `exceptionHandler` properties. Default coroutine context is `Dispatchers.IO`.  See this example : 
@@ -29,6 +28,3 @@ fun testOfPair(){
 	// Log into DEBUG level : myPair >> first: 1 second: SomeString
 }
 ```
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbNDUyMjU2MjAzXX0=
--->
