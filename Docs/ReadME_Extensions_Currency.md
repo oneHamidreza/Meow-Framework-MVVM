@@ -6,7 +6,7 @@ class App : MeowApp() {
     override fun onCreate() {
         MeowController().apply {         
             // ...
-            currency = MeowCurrency.Toman // or USD or Rial
+            currency = MeowCurrency.Toman // or USD or Rial 
         }.bindApp(this)
     }
 }
@@ -33,3 +33,6 @@ class MyActivity : MeowActivity<*> {
     }
 }
 ```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMjA0MDM2NTgyNV19
+-->
