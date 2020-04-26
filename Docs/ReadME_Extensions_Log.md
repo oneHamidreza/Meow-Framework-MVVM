@@ -1,6 +1,6 @@
 ## 📃 Log Extensions
 
-Set `isDebugMode` in `MeowController` to Use `log{d,e,i,v,w}()`  functions.
+Set `isDebugMode` in `MeowController` in Application's `onCreate()` to Use `log{d,e,i,v,w}()`  functions.
 
 ```kotlin
 // MeowController() ...
@@ -21,14 +21,14 @@ class Foo {
 }
 ```
 
-Above Example can be used for this types :
+Above example can be used for this types :
 
- - `logE`
- - `logI`
- - `logV`
- - `logW`
+ - `logE()`
+ - `logI()`
+ - `logV()`
+ - `logW()`
 
  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODM0NTg1MTc5XX0=
+eyJoaXN0b3J5IjpbMTYwOTQzOTgwNl19
 -->
