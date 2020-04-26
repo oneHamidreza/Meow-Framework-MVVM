@@ -41,7 +41,3 @@ Use `Context?.isNightModeFromSettings()` to check that Night/Dark mode is enable
 Use `Context?.showOrHideKeyboard()` to show or hide soft Keyboard.
 
 Use `Context?.vibrate(duration)` to vibrate Device for specific duration time in millisecond. Default value of `duration` is 150.
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4MDIxNTQ2NywtMTM2MDA5MTQ5MSwtMj
-Y5Njk3MTkzXX0=
--->
