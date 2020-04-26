@@ -13,7 +13,7 @@ class App : MeowApp() {
 }
 ```
 
-Use `Context?.dateFormatSimple(calendar)` to have a Date String. See this example : 
+Use `Context?.dateFormatSimple(calendar)` to have a Date String with `Simple Format`. See this example : 
 
 ```kotlin
 val calendar = Calendar().apply{
@@ -23,14 +23,14 @@ dateFormatSimple(calendar)
 // Return "2 Years Ago" and when App's Language is Farsi ("fa") : "2 سال قبل"  
 ```
 
-Use `Context?.dateFormatDetail(calendar)` to have a Date String with more details. See this example : 
+Use `Context?.dateFormatDetail(calendar)` to have a Date String with `Detail Format`. See this example : 
 
 ```kotlin
 val calendar = Calendar().apply{
     add(Calendar.DAY_OF_YEAR,-1)
 }
 dateFormatDetail(calendar)
-// Return "Yesterday 10:10 p.m." and when App's Language is Farsi ("fa") : "دیروز 10:10 " 
+// Returns "Yesterday 10:10 p.m." and when App's Language is Farsi ("fa") : "دیروز 10:10 " 
 ```
 
 Use `Context?.dateFormatNormal(calendar)` to have a Normalized Date String. See this example : 
@@ -47,5 +47,5 @@ dateFormatNormalWithTime(calendar)
 // Return "23 Jan 2020 10:10 a.m." and when App's Calendar is JALALI : "23 مهر ‌" 1392 10:10 ب.ظ
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM1OTQ1ODYyXX0=
+eyJoaXN0b3J5IjpbLTc2OTE1NTY4OV19
 -->
