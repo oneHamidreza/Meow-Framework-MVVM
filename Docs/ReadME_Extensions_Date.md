@@ -40,7 +40,7 @@ dateFormatNormal(calendar)
 // Return "23 Jan 2020" and when App's Calendar is JALALI : "23 مهر ‌" 1392
 ```
 
-Use `Context?.dateFormatNormalWithTime(calendar)` to have a Date String  with `Simple Format + clock 12 Hrs`. See this example : 
+Use `Context?.dateFormatNormalWithTime(calendar)` to have a Date String  with `Simple Format + Clock 12 Hrs`. See this example : 
 
 ```kotlin
 dateFormatNormalWithTime(calendar)
