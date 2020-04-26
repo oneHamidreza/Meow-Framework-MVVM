@@ -1,7 +1,7 @@
-## 💉 Json Extensions
+## 💉 JSON Extensions
 
-Use `String?.fromJson()` to convert a String to any Data Model with .
-Use `Any?.toJson()` to convert a any Data Model to a Json String .
+Use `String?.fromJson()` to convert a String to any Data Model.
+Use `Any?.toJson()` to convert any Data Model to a JSON String.
  See this example : 
 
 ```kotlin
@@ -13,10 +13,12 @@ data class User(
     @Json(name = "last_name") var lastName: String? = null  
 )
 
-fu
+fun testJson(){
+    val user = User(1,"SomeFirstName 
 
-val user = 
+}
+
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUxMDU0NzAxNV19
+eyJoaXN0b3J5IjpbLTE4MzY0ODM5MDZdfQ==
 -->
