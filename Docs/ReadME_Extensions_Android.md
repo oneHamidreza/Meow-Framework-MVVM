@@ -1,4 +1,4 @@
-## 🧩 Android Extensions
+## 🧩 Android Extensions 
 
 Use `LiveData<T>?.safeObserve()` when you want to observe any Live Data safely. See this example : 
 
