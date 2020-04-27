@@ -9,7 +9,7 @@ A Framework that simplify developing MVVM architecture and Material Design in An
 ## 🛠 Setup  
 
 ```groovy  
-implementation "com.etebarian:meow-framework-mvvm:0.6.1-alpha"  
+implementation("com.etebarian:meow-framework-mvvm:0.6.1-alpha")  
 ```  
 
 After adding library, some of most useful libraries (such as `Androidx AppCompat` , `Coroutine` , `Glide` , `Kodein` , `Kotlinx Serialization` , `Material Components` , `Moshi` , `Navigation Components` , `Retrofit` ) will be added in your app. So you don't need to add this libraries manually.  
