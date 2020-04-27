@@ -31,7 +31,6 @@ import sample.ui.api.catbreed.form.CatBreedFormViewModel
 import sample.ui.api.catbreed.index.CatBreedIndexViewModel
 import sample.ui.api.login.LoginViewModel
 import sample.ui.content.ContentViewModel
-import sample.ui.dialog.CustomDialogViewModel
 import sample.ui.home.HomeViewModel
 import sample.ui.home.contents.ContentsViewModel
 import sample.ui.main.MainViewModel
@@ -195,10 +194,6 @@ val mvvmModule = Module("MVVM Module", false) {
 
     bindAutoTag<ContentViewModel>() with provider {
         ContentViewModel(kodein.direct.instance())
-    }
-
-    bindAutoTag<CustomDialogViewModel>() with provider {
-        CustomDialogViewModel(kodein.direct.instance())
     }
 
     bindAutoTag<FormViewModel>() with provider {
