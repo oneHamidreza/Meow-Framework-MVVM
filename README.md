@@ -6,11 +6,11 @@ A Framework that simplify developing MVVM architecture and Material Design in An
 
 [ ![Download](https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.6.1-alpha) ](https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.6.1-alpha/link)  
   
-## 🛠 Setup  
+## 🛠 Setup
 
-```groovy  
-implementation("com.etebarian:meow-framework-mvvm:0.6.1-alpha")  
-```  
+```groovy
+implementation("com.etebarian:meow-framework-mvvm:0.6.1-alpha")
+```
 
 After adding library, some of most useful libraries (such as `Androidx AppCompat` , `Coroutine` , `Glide` , `Kodein` , `Kotlinx Serialization` , `Material Components` , `Moshi` , `Navigation Components` , `Retrofit` ) will be added in your app. So you don't need to add this libraries manually.  
 
@@ -49,8 +49,9 @@ You need to define `appModule` for View Models. Update application class like be
 ```kotlin
 class App : MeowApp() {
 
-    // Create a kodein module
-    val appModule = Module("App Module", false){ // Provide object of SomeOfClass(such as View Models) in Kodein with bind() function       
+    // Create a kodein module.
+    val appModule = Module("App Module", false) {
+        // Provide object of SomeOfClass(such as View Models) in Kodein with bind() function.
         bind() from singleton { SomeOfClass(instance()) }    
     }
    
@@ -60,8 +61,8 @@ class App : MeowApp() {
         bind() from singleton { this@App }    
         import(androidXModule(this@App))    
         import(meowModule)    
-        import(appModule)    
-   }  
+        import(appModule)
+    }  
 }  
 ```
 
