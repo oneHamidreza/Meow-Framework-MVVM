@@ -45,11 +45,11 @@
 
             </com.google.android.material.appbar.AppBarLayout>
 
-            <androidx.fragment.app.FragmentContainerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <fragment
                 android:id="@+id/navHost"
                 android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:defaultNavHost="true"
                 app:navGraph="@navigation/nav_graph" />
 
@@ -60,10 +60,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            app:itemShapeFillColor="@color/drawer_item_background"
+            app:itemIconTint="@drawable/drawer_item_text"
             app:itemShapeAppearance="@style/App.ShapeAppearance.Navigation"
             app:itemShapeAppearanceOverlay="@style/App.ShapeAppearance.Navigation"
-            app:itemIconTint="@drawable/drawer_item_text"
+            app:itemShapeFillColor="@color/drawer_item_background"
             app:itemTextColor="@drawable/drawer_item_text"
             app:menu="@menu/drawer_actions" />
 
