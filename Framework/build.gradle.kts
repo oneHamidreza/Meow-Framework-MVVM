@@ -138,6 +138,7 @@ publishing {
 bintray {
     user = getPropertyAny("bintray.user")
     key = getPropertyAny("bintray.key")
+
     dryRun = false
     publish = true
     setPublications(publicationName)
