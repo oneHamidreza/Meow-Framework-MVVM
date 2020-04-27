@@ -32,7 +32,7 @@ import meow.core.ui.MeowFragment
  * @since   2020-03-19
  */
 
-//todo improve by documents and support all features @Modares
+//todo improve by documents and support all features
 object MeowNotificationUtils {
 
     private const val CHANNEL_ID_DEFAULT = "default"

@@ -52,7 +52,7 @@ open class MeowCircleImageView @JvmOverloads constructor(
     var strokeWidth = 0f
         set(value) {
             field = value
-            if (allowDraw)//todo without this
+            if (allowDraw)//todo @Ali without this
                 draw()
         }
 

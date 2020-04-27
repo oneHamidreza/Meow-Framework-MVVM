@@ -78,6 +78,7 @@ object AppConfig {//todo find way for show sources
         const val GOOGLE_PHONE_NUMBER = "8.10.5"
         const val LOCALIZATION = "1.2.4"
         const val RATINGBAR = "1.5.0"
+        const val SWIPE_REFRESH_LAYOUT = "1.0.0"
     }
 
     object Library {
@@ -89,6 +90,7 @@ object AppConfig {//todo find way for show sources
             kotlinx("serialization-runtime", Versions.SERIALIZATION_RUNTIME),
             // Material
             "com.google.android.material:material:${Versions.MATERIAL}",
+            "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.SWIPE_REFRESH_LAYOUT}",
             // Lifecycle
             "androidx.lifecycle:lifecycle-common-java8:${Versions.LIFECYCLE}",
             "androidx.lifecycle:lifecycle-extensions:${Versions.LIFECYCLE}",

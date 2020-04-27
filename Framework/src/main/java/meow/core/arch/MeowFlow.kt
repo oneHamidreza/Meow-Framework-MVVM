@@ -19,6 +19,7 @@ package meow.core.arch
 import android.app.Dialog
 import android.view.View
 import androidx.lifecycle.LiveData
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.etebarian.meowframework.R
 import meow.core.api.*
 import meow.core.arch.MeowFlow.GetDataApi
@@ -102,6 +103,8 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
 
         var progressBarInterface: ProgressBarInterface? = null
 
+        var swipeRefreshLayout: SwipeRefreshLayout? = null
+
         var emptyStateInterface: MeowEmptyStateInterface? = null
 
         var emptyErrorModel: UIErrorModel = UIErrorModel(
@@ -155,6 +158,7 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
         var onHideLoading: () -> Unit = {
             progressBarInterface?.hide()
             dialog?.hide()
+            swipeRefreshLayout?.isRefreshing = false
         }
 
         var onClickedActionEmptyState: () -> Unit = {
@@ -162,6 +166,10 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
         }
 
         var onClickedActionSnack: () -> Unit = {
+            action()
+        }
+
+        var onRefreshedSwipeRefreshLayout: () -> Unit = {
             action()
         }
 
@@ -189,6 +197,10 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
 
             if (allowCallAction)
                 action()
+
+            swipeRefreshLayout?.setOnRefreshListener {
+                onRefreshedSwipeRefreshLayout()
+            }
 
             eventLiveData.safeObserve(fragmentActivity) {
                 if (it is MeowEvent<*>) {

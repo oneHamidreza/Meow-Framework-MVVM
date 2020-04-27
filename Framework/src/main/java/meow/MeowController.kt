@@ -29,7 +29,7 @@ import meow.ktx.getField
 import meow.ktx.setField
 
 /**
- * 🐈 This CAT can control configurations and UI properties in one Application. Just trust it.
+ * 🐈 This CAT can control configurations and UI properties in an Application. Just trust it.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -41,7 +41,6 @@ lateinit var controller: MeowController
 class MeowController(
     val meowSession: MeowSession = MeowSession()
 ) {
-    //todo clear
     lateinit var app: Application
 
     var isDebugMode: Boolean = true
@@ -53,6 +52,7 @@ class MeowController(
     var currency: MeowCurrency = MeowCurrency.USD
     var calendar: Calendar = Calendar.GEORGIAN
     var rootFolderName: String = "meow_app"
+
     var onColorGet: (color: Int) -> Int = { color -> color }
     internal var onColorStateListGet: (colorStateList: ColorStateList) -> ColorStateList =
         { color ->
@@ -66,25 +66,23 @@ class MeowController(
             }
             ColorStateList.valueOf(onColorGet(color.defaultColor))
         }
+
     var defaultTypefaceResId: Int = 0
     var toastTypefaceResId: Int = 0
 
     var theme = Theme.DAY
-
     val isNightMode
         get() = theme == Theme.NIGHT
 
     val isRtl
         get() = language == "fa" || language == "ar"
-
     val isPersian
         get() = language == "fa"
 
     fun swapTheme(
         activity: MeowActivity<*>,
         updateConfig: Boolean = true
-    ) =
-        updateTheme(activity, if (isNightMode) Theme.DAY else Theme.NIGHT, updateConfig)
+    ) = updateTheme(activity, if (isNightMode) Theme.DAY else Theme.NIGHT, updateConfig)
 
     fun updateLanguage(activity: MeowActivity<*>, language: String) {
         this.language = language

@@ -16,6 +16,8 @@
 
 package sample.ui.main
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -81,6 +83,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             R.id.actionLanguage -> {
                 controller.updateLanguage(this, if (controller.language == "en") "fa" else "en")
                 //update sp
+                true
+            }
+            R.id.actionGithub -> {
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://github.com/oneHamidreza/Meow-Framework-MVVM")
+                    )
+                )
                 true
             }
             else -> super.onOptionsItemSelected(item)

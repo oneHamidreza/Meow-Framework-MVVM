@@ -10,7 +10,6 @@
 
     <item name="ripple_default" format="float" type="dimen">0.24</item>
 
-    <!-- todo research 1dp or 1px ? -->
     <dimen name="divider_recyclerview_height">1dp</dimen>
 
     <dimen name="text_field_text_size">14sp</dimen>

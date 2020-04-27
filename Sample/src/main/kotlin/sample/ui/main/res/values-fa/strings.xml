@@ -2,4 +2,5 @@
     <string name="fragment_main">@string/app_name</string>
     <string name="main_menu_day_night">تغییر تم روز و شب</string>
     <string name="main_menu_language">تغییر زبان</string>
+    <string name="main_menu_github">گیت‌هاب</string>
 </resources>
