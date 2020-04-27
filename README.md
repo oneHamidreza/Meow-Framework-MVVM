@@ -17,8 +17,8 @@ After adding library, some of most useful libraries (such as `Androidx AppCompat
 > Enable Androidx in `gradle.properties`  
 > 
 > ```properties
->android.useAndroidX=true  
->android.enableJetifier=true  
+>android.useAndroidX=true
+>android.enableJetifier=true
 >```  
 >Update `build.gradle` like below : 
 >```groovy  
