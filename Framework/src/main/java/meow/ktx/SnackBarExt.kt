@@ -19,7 +19,6 @@ package meow.ktx
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.widget.TextViewCompat
 import com.google.android.material.snackbar.Snackbar
 import meow.core.ui.FragmentActivityInterface
@@ -27,7 +26,7 @@ import meow.core.ui.MeowActivity
 import meow.core.ui.MeowFragment
 
 /**
- * [Toast] Extensions for use in [FragmentActivityInterface] instances like [MeowActivity], [MeowFragment] .
+ * [Snackbar] Extensions for use in [FragmentActivityInterface] instances like [MeowActivity], [MeowFragment] .
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

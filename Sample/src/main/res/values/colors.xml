@@ -10,16 +10,12 @@
     <color name="secondary_dark">#190023</color>
     <color name="secondary_variant">@color/secondary_dark</color>
     <color name="on_secondary">#ffffff</color>
-    <color name="status_bar">@color/surface</color>
+    <color name="status_bar">@color/meow_surface</color>
 
-    <color name="drawer_item_enabled">@color/primary</color>
+    <color name="drawer_item_enabled">?colorPrimary</color>
     <color name="drawer_item_disabled">@color/text_on_surface_medium</color>
 
     <color name="ic_launcher_background">#011A1E</color>
-
-    <!-- ProgressBar -->
-    <color name="progress_primary">@color/primary</color>
-    <color name="progress_secondary">@color/secondary</color>
 
     <color name="test">#111ccc</color>
 

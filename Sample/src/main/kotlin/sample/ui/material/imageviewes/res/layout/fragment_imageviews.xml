@@ -28,7 +28,7 @@
             android:layout_height="56dp"
             app:meow_data="@{`https://i.stack.imgur.com/EYzpL.jpg`}"
             app:meow_placeHolder="@{@drawable/ic_android}"
-            app:meow_strokeColor="@color/primary_variant"
+            app:meow_strokeColor="?colorPrimaryVariant"
             app:meow_strokeWidth="2dp" />
 
     </LinearLayout>

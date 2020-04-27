@@ -42,7 +42,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 style="@style/Meow.CardView"
-                app:cardBackgroundColor="@color/primary">
+                app:cardBackgroundColor="?colorPrimary">
 
                 <RadioGroup style="@style/Meow.RadioGroup.Vertical">
 
@@ -62,7 +62,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 style="@style/Meow.CardView"
-                app:cardBackgroundColor="@color/secondary">
+                app:cardBackgroundColor="?colorSecondary">
 
                 <RadioGroup style="@style/Meow.RadioGroup.Vertical">
 
@@ -102,7 +102,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 style="@style/Meow.CardView"
-                app:cardBackgroundColor="@color/primary">
+                app:cardBackgroundColor="?colorPrimary">
 
                 <RadioGroup style="@style/Meow.RadioGroup.Horizontal">
 
@@ -122,7 +122,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 style="@style/Meow.CardView"
-                app:cardBackgroundColor="@color/secondary">
+                app:cardBackgroundColor="?colorSecondary">
 
                 <RadioGroup style="@style/Meow.RadioGroup.Horizontal">
 

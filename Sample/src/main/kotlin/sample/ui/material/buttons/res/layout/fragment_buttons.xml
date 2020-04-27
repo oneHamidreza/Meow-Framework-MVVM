@@ -52,6 +52,8 @@
                 app:selectionRequired="true"
                 app:singleSelection="true">
 
+                <!-- todo @Ali create styles -->
+
                 <com.google.android.material.button.MaterialButton
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="wrap_content"
@@ -105,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:button="@drawable/selector_favorite"
-                app:buttonTint="@color/on_surface" />
+                app:buttonTint="?colorOnSurface" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -126,50 +128,50 @@
                     <com.google.android.material.button.MaterialButton
                         style="@style/Meow.Button"
                         android:text="@string/b_c_primary"
-                        app:backgroundTint="@color/primary"
-                        android:textColor="@color/on_primary"
+                        app:backgroundTint="?colorPrimary"
+                        android:textColor="?colorOnPrimary"
                         app:cornerRadius="0dp" />
 
                     <com.google.android.material.button.MaterialButton
                         style="@style/Meow.Button"
                         android:text="@string/b_c_primary_variant"
-                        app:backgroundTint="@color/primary_variant"
-                        android:textColor="@color/on_primary"
+                        app:backgroundTint="?colorPrimaryVariant"
+                        android:textColor="?colorOnPrimary"
                         app:cornerRadius="0dp" />
 
                     <com.google.android.material.button.MaterialButton
                         style="@style/Meow.Button"
                         android:text="@string/b_c_secondary"
-                        app:backgroundTint="@color/secondary"
-                        android:textColor="@color/on_secondary"
+                        app:backgroundTint="?colorSecondary"
+                        android:textColor="?colorOnPrimary"
                         app:cornerRadius="0dp" />
 
                     <com.google.android.material.button.MaterialButton
                         style="@style/Meow.Button"
                         android:text="@string/b_c_secondary_variant"
-                        app:backgroundTint="@color/secondary_variant"
-                        android:textColor="@color/on_secondary"
+                        app:backgroundTint="?colorSecondaryVariant"
+                        android:textColor="?colorOnPrimary"
                         app:cornerRadius="0dp" />
 
                     <com.google.android.material.button.MaterialButton
                         style="@style/Meow.Button"
                         android:text="@string/b_c_surface"
-                        app:backgroundTint="@color/surface"
-                        android:textColor="@color/on_surface"
+                        app:backgroundTint="?colorSurface"
+                        android:textColor="?colorOnSurface"
                         app:cornerRadius="0dp" />
 
                     <com.google.android.material.button.MaterialButton
                         style="@style/Meow.Button"
                         android:text="@string/b_c_background"
-                        app:backgroundTint="@color/background"
-                        android:textColor="@color/on_background"
+                        app:backgroundTint="?colorError"
+                        android:textColor="?colorOnBackground"
                         app:cornerRadius="0dp" />
 
                     <com.google.android.material.button.MaterialButton
                         style="@style/Meow.Button"
                         android:text="@string/b_c_error"
-                        android:textColor="@color/on_error_primary"
-                        app:backgroundTint="@color/error_primary"
+                        android:textColor="?colorOnError"
+                        app:backgroundTint="?colorError"
                         app:cornerRadius="0dp" />
 
                 </LinearLayout>

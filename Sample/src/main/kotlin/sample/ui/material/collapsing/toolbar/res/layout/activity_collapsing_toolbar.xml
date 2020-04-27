@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:collapsedTitleTextAppearance="@style/textAppearance.CollapsingToolbar.Collapsed"
-                app:contentScrim="@color/primary"
+                app:contentScrim="?colorPrimary"
                 app:expandedTitleGravity="top"
                 app:expandedTitleMarginStart="24dp"
                 app:expandedTitleMarginTop="16dp"
@@ -136,7 +136,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/cards_with_action_save"
-                                android:textColor="@color/primary" />
+                                android:textColor="?colorPrimary" />
 
                         </LinearLayout>
 
