@@ -13,6 +13,7 @@ plugins {
     kotlin("kapt")
     kotlin("plugin.serialization") version (meow.AppConfig.Versions.KOTLINX_SERIALIZATION)//need package
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -117,6 +118,10 @@ dependencies {
     Library.kaptItems.forEach {
         kapt(it)
     }
+
+    // Firebase
+    implementation("com.google.firebase:firebase-analytics:17.4.0")
+    implementation("com.google.firebase:firebase-messaging:20.1.6")
 
     // Markwon
     val markwonVersion = "4.3.1"
