@@ -31,7 +31,7 @@
         <com.google.android.material.card.MaterialCardView
             style="@style/Meow.CardView"
             app:contentPadding="4dp"
-            app:cardBackgroundColor="@color/primary">
+            app:cardBackgroundColor="?colorPrimary">
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 style="@style/Meow.Switch.OnPrimary"
@@ -42,7 +42,7 @@
         <com.google.android.material.card.MaterialCardView
             style="@style/Meow.CardView"
             app:contentPadding="4dp"
-            app:cardBackgroundColor="@color/secondary">
+            app:cardBackgroundColor="?colorSecondary">
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 style="@style/Meow.Switch.OnSecondary"

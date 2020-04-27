@@ -51,7 +51,7 @@ class MeowDividerDecoration(
     init {
         divider.shape = GradientDrawable.RECTANGLE
         divider.setSize(1, context.getDimensionToPx(R.dimen.divider_recyclerview_height))
-        divider.setColor(context.getColorCompat(R.color.divider_recyclerview))
+        divider.setColor(context.getColorCompat(R.color.meow_divider_recyclerview))
 
         marginLeft = marginStart.dp()
         marginRight = marginEnd.dp()

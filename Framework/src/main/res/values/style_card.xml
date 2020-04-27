@@ -2,9 +2,9 @@
 <resources>
 
     <style name="ThemeOverlay.App.Card" parent="">
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorSurface">@color/surface</item>
-        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorPrimary">?colorPrimary</item>
+        <item name="colorSurface">@color/meow_surface</item>
+        <item name="colorOnSurface">?colorOnSurface</item>
     </style>
 
     <style name="Meow.CardView" parent="Widget.MaterialComponents.CardView">

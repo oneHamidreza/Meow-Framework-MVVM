@@ -70,6 +70,8 @@ class App : MeowApp() {
 
     override fun onCreate() {
         super.onCreate()
+
+
         MeowController().apply {
             isDebugMode = true// BuildConfig.DEBUG
             onColorGet = {

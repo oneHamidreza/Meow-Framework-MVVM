@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Meow Framework MVVM</string>
+    <string name="app_name" translatable="false">Meow Sample</string>
 
     <string name="theme_dark">Dark Mode</string>
     <string name="ok">OK</string>

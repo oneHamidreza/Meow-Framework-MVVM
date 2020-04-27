@@ -61,6 +61,7 @@ class MarkdownFragment : BaseFragment<FragmentMarkdownBinding>() {
             allowCallAction = allowCallApi
             errorHandlerType = MeowFlow.ErrorHandlerType.EMPTY_STATE
             progressBarInterface = binding.progressbar
+            swipeRefreshLayout = binding.srl
             emptyStateInterface = binding.emptyState
         }.observeForDetail(viewModel.eventLiveData)
 

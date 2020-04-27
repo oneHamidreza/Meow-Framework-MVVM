@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--todo all styles add colors -->
 
     <style name="Meow.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="android:layout_width">match_parent</item>
