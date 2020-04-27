@@ -34,7 +34,7 @@ import meow.core.ui.isFragment
  * @since   2020-03-17
  */
 
-private val REQUEST_CODE = 1122
+private const val REQUEST_CODE = 1122
 
 fun Context?.shouldShowPermissionDialog(permissions: List<String>): Boolean {
     if (this == null)

@@ -44,8 +44,7 @@ import java.util.concurrent.TimeUnit
 
 typealias InterceptorBlock = (builder: Request.Builder) -> Unit
 
-val TAG = "MeowApi"
-
+const val TAG = "MeowApi"
 
 abstract class MeowApi(
     open var baseUrl: String,

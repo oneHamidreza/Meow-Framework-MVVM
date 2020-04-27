@@ -16,6 +16,7 @@
 
 package meow.widget
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -70,6 +71,8 @@ class MeowEmptyState @JvmOverloads constructor(
                 }
             }
         }
+
+    @SuppressLint("RestrictedApi")
     var iconTint: ColorStateList =
         ColorStateList.valueOf(MaterialColors.getColor(this, R.attr.colorPrimary))
         //todo all R.color convert to ?attr/color

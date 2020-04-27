@@ -122,11 +122,11 @@ publishing {
                 from(project.sourceSets["main"].allSource)
             }
 
-            val javadocJar by tasks.registering(Jar::class) {
-                dependsOn("dokka")
-                archiveClassifier.convention("javadoc")
-                from("$buildDir/dokka")
-            }
+//            val javadocJar by tasks.registering(Jar::class) {
+//                dependsOn("dokka")
+//                archiveClassifier.convention("javadoc")
+//                from("$buildDir/dokka")
+//            }
 
             artifact("$buildDir/outputs/aar/meow-release.aar")
             artifact(sourcesJar.get())

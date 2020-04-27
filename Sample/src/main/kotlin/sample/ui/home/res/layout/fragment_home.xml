@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -17,9 +18,10 @@
         <!-- tabBackground disabling ripple -->
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
+            style="@style/Meow.TabLayout.Surface"
             android:elevation="@dimen/toolbar_elevation"
             app:tabMode="scrollable"
-            style="@style/Meow.TabLayout.Surface" />
+            tools:targetApi="lollipop" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewpager"

@@ -1,6 +1,7 @@
 package sample.firebase
 
 import com.google.firebase.messaging.FirebaseMessagingService
+import meow.ktx.logD
 
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
@@ -26,4 +27,10 @@ import com.google.firebase.messaging.FirebaseMessagingService
  * @since   2020-04-27
  */
 
-class PushNotificationService : FirebaseMessagingService()
+class PushNotificationService : FirebaseMessagingService() {
+
+    override fun onNewToken(token: String) {
+        super.onNewToken(token)
+        logD(m = "onNewToken : $token")
+    }
+}

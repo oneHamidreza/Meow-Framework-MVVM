@@ -53,20 +53,13 @@ abstract class MeowFragment<B : ViewDataBinding> : Fragment(),
 
     override lateinit var binding: B
 
-//    private var cachedView: View? = null
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        if (cachedView == null) {
-//            cachedView = binding.root
-//        } else {
-//            (binding.root.parent as? ViewGroup)?.removeView(binding.root)
-//        }
         binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
-        return binding.root!!
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

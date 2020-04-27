@@ -40,9 +40,9 @@ import sample.widget.githubRaw
 class DataSource(override var app: App) : DataSourceInterface, KodeinAware {
 
     override val kodein by closestKodein(app)
-    private val api: AppApi by instance()
-    private val spMain: MeowSharedPreferences by instance("spMain")
-    private val spUpdate: MeowSharedPreferences by instance("spUpdate")
+    private val api: AppApi by instance<AppApi>()
+    private val spMain: MeowSharedPreferences by instance<MeowSharedPreferences>("spMain")
+    private val spUpdate: MeowSharedPreferences by instance<MeowSharedPreferences>("spUpdate")
 
     suspend fun postLoginToApi(request: User.Api.RequestLogin) =
         api.createServiceByAdapter<User.Api>().login(request.username, request.password)

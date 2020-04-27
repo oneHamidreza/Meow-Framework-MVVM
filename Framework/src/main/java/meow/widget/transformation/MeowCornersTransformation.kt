@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package ir.onehe.meow.utils
+package meow.widget.transformation
 
 /**
  * Copyright (C) 2017 Wasabeef
@@ -24,7 +24,6 @@ package ir.onehe.meow.utils
 import android.content.Context
 import android.graphics.*
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool
-import meow.widget.transformation.BitmapTransformation
 
 /**
  * Created by 1HE on 10/12/2018.

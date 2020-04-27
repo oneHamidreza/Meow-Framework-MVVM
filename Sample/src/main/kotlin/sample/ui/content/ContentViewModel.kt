@@ -20,7 +20,7 @@ import sample.App
  */
 
 /**
- * [Content] View Model class.
+ * Content View Model class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

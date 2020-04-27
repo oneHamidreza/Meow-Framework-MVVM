@@ -95,9 +95,8 @@ object MeowColorUtils {
     }
 
     /**
-     * Check the color is dark or light.
+     * Checks that given color is dark or light.
      * @param color is the color in integer type.
-     * @param amount is a float that describes the state of lighter or darker function. choose value lower than 1 to get darker color and choose value higher than 1 to get lighter color.
      * @return the lighter or darker color.
      */
     fun isColorDark(@ColorInt color: Int): Boolean {
@@ -118,7 +117,7 @@ object MeowColorUtils {
 
 fun Int.toHexString() = String.format("#%06X", (0xFFFFFF and this))
 
-fun Context.resources() = resources
+fun Context.resources(): Resources = resources
 
 fun Resources?.getDrawableCompat(
     @DrawableRes resId: Int,
@@ -142,7 +141,7 @@ fun MeowFragment<*>?.getDrawableCompat(
 ) =
     this?.resources().getDrawableCompat(resId, theme)
 
-fun Context?.getFontCompat(@FontRes resId: Int = 0) =
+fun Context?.getFontCompat(@FontRes resId: Int = 0): Typeface =
     if (this == null || resId == 0) Typeface.DEFAULT else avoidException {
         ResourcesCompat.getFont(
             this,
@@ -150,7 +149,7 @@ fun Context?.getFontCompat(@FontRes resId: Int = 0) =
         )
     } ?: Typeface.DEFAULT
 
-fun MeowFragment<*>?.getFontCompat(@FontRes resId: Int = 0) =
+fun MeowFragment<*>?.getFontCompat(@FontRes resId: Int = 0): Typeface =
     this?.context().getFontCompat(resId)
 
 fun TypedArray.getColorCompat(index: Int, defValue: Int) =
@@ -186,6 +185,7 @@ fun MeowFragment<*>?.getDimensionToPx(@DimenRes resId: Int) =
 
 fun Resources?.getFloatCompat(@DimenRes resId: Int) =
     if (this == null) 0f else ResourcesCompat.getFloat(this, resId)
+
 fun Context?.getFloatCompat(@DimenRes resId: Int) = this?.resources().getFloatCompat(resId)
 fun MeowFragment<*>?.getFloatCompat(@DimenRes resId: Int) =
     this?.resources().getFloatCompat(resId)
@@ -199,13 +199,13 @@ fun Context?.getBooleanCompat(@BoolRes resId: Int) = this?.resources().getBoolea
 fun MeowFragment<*>?.getBooleanCompat(@BoolRes resId: Int) =
     this?.resources().getBooleanCompat(resId)
 
-fun Resources?.getStringArrayCompat(@ArrayRes resId: Int) =
+fun Resources?.getStringArrayCompat(@ArrayRes resId: Int): Array<String> =
     this?.getStringArray(resId) ?: emptyArray()
 
-fun Context?.getStringArrayCompat(@ArrayRes resId: Int) =
+fun Context?.getStringArrayCompat(@ArrayRes resId: Int): Array<String> =
     this?.resources().getStringArrayCompat(resId)
 
-fun MeowFragment<*>?.getStringArrayCompat(@ArrayRes resId: Int) =
+fun MeowFragment<*>?.getStringArrayCompat(@ArrayRes resId: Int): Array<String> =
     this?.resources().getStringArrayCompat(resId)
 
 fun Drawable?.setTintCompat(@ColorInt color: Int): Drawable {

@@ -65,7 +65,6 @@ class MaterialCardDecoration(
     fun getLastIndex(parent: RecyclerView) =
         (parent.adapter as? ListAdapter<*, *>)?.itemCount ?: 1 - 1
 
-
     override fun getItemOffsets(
         outRect: Rect,
         view: View,

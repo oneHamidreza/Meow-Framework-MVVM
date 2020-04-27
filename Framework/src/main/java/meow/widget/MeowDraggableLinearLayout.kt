@@ -16,6 +16,7 @@
 
 package meow.widget
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
@@ -65,6 +66,7 @@ class MeowDraggableLinearLayout @JvmOverloads constructor(
         return viewDragHelper.shouldInterceptTouchEvent(ev) || super.onInterceptTouchEvent(ev)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(ev: MotionEvent): Boolean {
         viewDragHelper.processTouchEvent(ev)
         return super.onTouchEvent(ev)

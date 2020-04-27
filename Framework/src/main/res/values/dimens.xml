@@ -3,13 +3,6 @@
 
     <dimen name="toolbar_elevation">4dp</dimen>
 
-    <dimen name="shape_corner_size_default">4dp</dimen>
-
-    <dimen name="button_radius">4dp</dimen>
-    <dimen name="button_stroke">1.5dp</dimen>
-
-    <item name="ripple_default" format="float" type="dimen">0.24</item>
-
     <dimen name="divider_recyclerview_height">1dp</dimen>
 
     <dimen name="text_field_text_size">14sp</dimen>

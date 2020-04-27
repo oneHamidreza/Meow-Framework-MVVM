@@ -35,8 +35,8 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.NotificationTarget
 import com.bumptech.glide.request.transition.ViewPropertyTransition
-import ir.onehe.meow.utils.MeowCornersTransformation
 import meow.ktx.*
+import meow.widget.transformation.MeowCornersTransformation
 import java.io.File
 import kotlin.math.abs
 
@@ -154,7 +154,7 @@ fun ImageView?.loadGlide(
     requestBuilder.into(this)
 }
 
-fun ImageView?.calculateForBestFit(ratio: Double?, imageWidth: Int): Point {
+fun calculateForBestFit(ratio: Double?, imageWidth: Int): Point {
     val p = Point()
     if (ratio == null)
         return p

@@ -8,7 +8,7 @@
     </string-array>
     <string-array name="alerts_contents_list_desc">
         <item>a very simple material dialog</item>
-        <item>a simple material dialog with ok and cancel buttons</item>
+        <item>a simple material dialog with OK and cancel buttons</item>
         <item>a loading material dialog with progress bar</item>
     </string-array>
 
@@ -17,7 +17,7 @@
     <string name="alerts_simple_with_listener_title">Hi! 👋 the simple title</string>
     <string name="alerts_simple_with_listener_message">Here is the contents for testing Material Alert Dialog with listeners. the buttons hide dialog and toast some message</string>
     <string name="alerts_loading_title">Loading …</string>
-    <string name="alerts_warn_ok_clicked">Ok Button Clicked!</string>
+    <string name="alerts_warn_ok_clicked">OK Button Clicked!</string>
     <string name="alerts_warn_cancel_clicked">Cancel Button Clicked!</string>
     <string name="alerts_warn_on_canceled">Alert Canceled!</string>
 

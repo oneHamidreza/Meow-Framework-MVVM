@@ -25,7 +25,7 @@ import sample.data.Content
 import sample.databinding.ItemContentBinding
 
 /**
- * [Title] Adapter class.
+ * [Content] Adapter class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

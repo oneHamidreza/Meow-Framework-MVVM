@@ -28,7 +28,6 @@ import meow.controller
 import meow.ktx.MeowCurrency
 import meow.ktx.getFontCompat
 import meow.ktx.isNightModeFromSettings
-import meow.ktx.toHexString
 import meow.meowModule
 import org.kodein.di.Kodein
 import org.kodein.di.android.x.androidXModule
@@ -65,27 +64,21 @@ class App : MeowApp() {
 
     override fun getLanguage(context: Context?) = "en"
     override fun getTheme(context: Context?) =
-//        MeowController.Theme.NIGHT
         if (context.isNightModeFromSettings()) MeowController.Theme.NIGHT else MeowController.Theme.DAY
 
     override fun onCreate() {
         super.onCreate()
-
-
         MeowController().apply {
-            isDebugMode = true// BuildConfig.DEBUG
-            onColorGet = {
-                when (it.toHexString().toLowerCase()) {//todo
-//                    "#1cb3c8" -> Color.RED
-                    else -> it
-                }
-            }
+            isDebugMode = BuildConfig.DEBUG
+            isLogTagNative = false
+
             language = getLanguage(this@App)
             currency = MeowCurrency.USD
             theme = getTheme(this@App)
-            isLogTagNative = false
+
             defaultTypefaceResId = if (isPersian) R.font.farsi_regular else R.font.english_regular
             toastTypefaceResId = if (isPersian) R.font.farsi_regular else R.font.english_regular
+
             onException = {
                 // Log to Fabric or any other Crash Management System. Just use `avoidException` instead of `try{}catch{}`
             }

@@ -16,6 +16,7 @@
 
 package meow.ktx
 
+import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.os.Build
 import android.view.View
@@ -66,6 +67,7 @@ fun MeowFragment<*>.updateStatusBarByTheme(
     isDarkIcon: Boolean
 ) = activity().updateStatusBarByTheme(isDarkIcon)
 
+@SuppressLint("PrivateApi")
 private fun MeowActivity<*>.setMIUIStatusBarDarkIcon(darkIcon: Boolean) = avoidException(false) {
     val clazz: Class<out Window?> = window.javaClass
     val layoutParams = Class.forName("android.view.MiuiWindowManager\$LayoutParams")

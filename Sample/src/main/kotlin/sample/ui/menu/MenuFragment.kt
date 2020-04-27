@@ -87,7 +87,7 @@ class MenuFragment : BaseFragment<FragmentMenuBinding>() {
                 if (position == 0)
                     outRect.top = binding.textInput.measuredHeight + 24.dp()
             }
-            adapter = ContentAdapter() { _, it, view ->
+            adapter = ContentAdapter { _, it, view ->
                 showPopup(it, view)
             }
         }

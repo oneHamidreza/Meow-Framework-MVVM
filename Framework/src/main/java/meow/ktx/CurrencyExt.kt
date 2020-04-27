@@ -155,7 +155,7 @@ fun Context?.createCurrency(d: Double?, dec: Int = 0): String {
 fun MeowFragment<*>?.createCurrency(d: Double?, dec: Int = 0) =
     this?.context().createCurrency(d, dec)
 
-fun BigDecimal.createPrice() = setScale(2, BigDecimal.ROUND_HALF_EVEN)
+fun BigDecimal.createPrice(): BigDecimal = setScale(2, BigDecimal.ROUND_HALF_EVEN)
 
 fun String?.numToWord(): String {
     if (this == null)

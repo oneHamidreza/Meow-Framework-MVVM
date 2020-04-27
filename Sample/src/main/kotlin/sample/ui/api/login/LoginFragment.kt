@@ -40,7 +40,7 @@ import sample.ui.base.BaseFragment
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
-    private val dataSource: DataSource by instance()
+    private val dataSource: DataSource by instance<DataSource>()
 
     private val viewModel: LoginViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_login

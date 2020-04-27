@@ -21,7 +21,7 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil
 import java.util.regex.Pattern
 
 /**
- * [String] Validate Extensions.
+ * Validate Extensions.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

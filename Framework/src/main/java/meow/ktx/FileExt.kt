@@ -81,7 +81,7 @@ fun Context.clearCache() {
     MeowFileUtils.deleteAllFiles(f.path ?: "")
 }
 
-fun File?.safeListFiles() =
+fun File?.safeListFiles(): Array<File> =
     avoidException { if (safeExist()) this?.listFiles() else null } ?: arrayOf()
 
 fun File?.safeDelete() = avoidException { this?.delete() } ?: false
@@ -142,7 +142,7 @@ fun FragmentActivityInterface<*>.getAppCachePath(
     } ?: "sdcard/"
 }
 
-fun Context?.saveBitmapInFile(
+fun saveBitmapInFile(
     bitmap: Bitmap,
     folderPath: String,
     name: String? = null

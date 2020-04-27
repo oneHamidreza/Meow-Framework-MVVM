@@ -35,13 +35,6 @@
                     android:onClick="@{viewModel::onClickedGet}"
                     android:text="@string/shared_preferences_get_user" />
 
-                <Button
-                    style="@style/Meow.Button"
-                    android:layout_gravity="center"
-                    android:onClick="@{viewModel::onClickedTest}"
-                    android:text="test"
-                    android:visibility="gone" />
-
                 <TextView
                     android:id="@+id/tv"
                     style="@style/App.TextView.Markdown" />

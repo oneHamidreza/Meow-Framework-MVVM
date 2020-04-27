@@ -146,7 +146,6 @@ fun Context?.getDisplaySize(): Point {
 
 /**
  * Get Toolbar height in pixel.
- * @param context is the Android Context and can be null. if it is null then returns 0.
  * @return Height of action bar in pixel.
  */
 fun Context?.getToolbarHeight(): Int {
@@ -160,7 +159,6 @@ fun Context?.getToolbarHeight(): Int {
 
 /**
  * Get Status Bar height in pixel.
- * @param context is the Android Context and can be null. if it is null then returns 1.
  * @return Height of status bar in pixel.
  */
 fun Context?.getStatusBarHeight(): Int {
@@ -202,6 +200,7 @@ fun Context?.vibrate(duration: Long = 150) {
     if (this == null) return
     avoidException {
         val vibrator = getSystemService(AppCompatActivity.VIBRATOR_SERVICE) as Vibrator
+        @Suppress("ControlFlowWithEmptyBody")
         if (sdkNeedReturn(26) {
                 vibrator.vibrate(
                     VibrationEffect.createOneShot(
@@ -209,8 +208,8 @@ fun Context?.vibrate(duration: Long = 150) {
                         VibrationEffect.DEFAULT_AMPLITUDE
                     )
                 )
-            })
-        else
+            }
+        ) else
             vibrator.vibrate(longArrayOf(0, duration), -1)
     }
 }

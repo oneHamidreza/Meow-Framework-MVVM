@@ -362,7 +362,7 @@ fun Calendar.canUseApp(minimumAge: Int): Boolean {
     return !now.before(this)
 }
 
-fun String.createCalendarByStringDateOnly() = avoidException {
+fun String.createCalendarByStringDateOnly(): Calendar = avoidException {
     if (isEmpty())
         return Calendar.getInstance()
 

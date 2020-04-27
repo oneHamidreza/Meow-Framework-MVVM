@@ -16,8 +16,6 @@
 
 package sample.ui.meowwidget.rateview
 
-import android.os.Bundle
-import android.view.View
 import meow.ktx.instanceViewModel
 import sample.R
 import sample.databinding.FragmentRateBinding
@@ -35,10 +33,6 @@ class RateFragment : BaseFragment<FragmentRateBinding>() {
 
     private val viewModel: RateViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_rate
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
 
     override fun initViewModel() {
         binding.viewModel = viewModel
