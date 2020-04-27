@@ -14,7 +14,7 @@ implementation("com.etebarian:meow-framework-mvvm:0.6.1-alpha")
 
 After adding library, some of most useful libraries (such as `Androidx AppCompat` , `Coroutine` , `Glide` , `Kodein` , `Kotlinx Serialization` , `Material Components` , `Moshi` , `Navigation Components` , `Retrofit` ) will be added in your app. So you don't need to add this libraries manually.  
 
-List of dependencies can be found in `[meow.AppConfig.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/buildSrc/src/main/java/meow/AppConfig.kt)` in `Dependencies` Object.
+List of dependencies can be found in [meow.AppConfig.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/buildSrc/src/main/java/meow/AppConfig.kt) in `Dependencies` Object.
 
 > Enable androidx in `gradle.properties`
 >
@@ -41,9 +41,13 @@ List of dependencies can be found in `[meow.AppConfig.kt](https://github.com/one
   
 ## 💡 Getting Started
 
+## Sample Application
+
+We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.6.1-alpha/Meow-Framework-Sample-v.0.6.1-alpha.apk) to be familiar with `Meow Framework`.
+
 ### Initialization
 
-Create your application class which extends `MeowApp` and set it in `AndroidManifest.xml`. Dependency Injection in MVVM architecture is necessary so we use `Kodein-DI` Framework.  
+Create your application class which extends `MeowApp` and set it in `AndroidManifest.xml`. Dependency Injection in MVVM architecture is necessary so we use `Kodein-DI` Framework.
 You need to define `appModule` for View Models. Update application class like below :
 
 ```kotlin
