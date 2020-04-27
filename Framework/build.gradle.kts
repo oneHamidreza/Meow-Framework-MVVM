@@ -1,6 +1,6 @@
 import com.jfrog.bintray.gradle.BintrayExtension
 import meow.AppConfig
-import meow.AppConfig.Library
+import meow.AppConfig.Dependencies
 import meow.AppConfig.Publishing
 import meow.AppConfig.Versions
 import meow.getPropertyAny
@@ -65,7 +65,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     // Implementation Dependencies
-    Library.implementationItems.forEach {
+    Dependencies.implementationItems.forEach {
         implementation(it)
     }
 }

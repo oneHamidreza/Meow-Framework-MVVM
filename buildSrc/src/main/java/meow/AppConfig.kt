@@ -81,7 +81,7 @@ object AppConfig {//todo find way for show sources
         const val SWIPE_REFRESH_LAYOUT = "1.0.0"
     }
 
-    object Library {
+    object Dependencies {
         val implementationItems = arrayOf(
             // Kotlin
             kotlin("stdlib-jdk8", Versions.KOTLIN),

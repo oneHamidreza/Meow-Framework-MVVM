@@ -2,7 +2,7 @@ import com.android.build.gradle.internal.api.BaseVariantOutputImpl
 import com.android.build.gradle.internal.dsl.BuildType
 import meow.AppConfig
 import meow.AppConfig.Build
-import meow.AppConfig.Library
+import meow.AppConfig.Dependencies
 import meow.AppConfig.Versions
 import meow.getAllResourcesSrcDirs
 import meow.getPropertyAny
@@ -110,12 +110,12 @@ dependencies {
     implementation(project(":Framework"))
 
     // Implementation Dependencies
-    Library.implementationItems.forEach {
+    Dependencies.implementationItems.forEach {
         implementation(it)
     }
 
     // Kapt Dependencies
-    Library.kaptItems.forEach {
+    Dependencies.kaptItems.forEach {
         kapt(it)
     }
 

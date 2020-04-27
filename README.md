@@ -14,7 +14,9 @@ implementation("com.etebarian:meow-framework-mvvm:0.6.1-alpha")
 
 After adding library, some of most useful libraries (such as `Androidx AppCompat` , `Coroutine` , `Glide` , `Kodein` , `Kotlinx Serialization` , `Material Components` , `Moshi` , `Navigation Components` , `Retrofit` ) will be added in your app. So you don't need to add this libraries manually.  
 
-> Enable Androidx in `gradle.properties`
+List of dependencies can be found in `[meow.AppConfig.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/buildSrc/src/main/java/meow/AppConfig.kt)` in `Dependencies` Object.
+
+> Enable androidx in `gradle.properties`
 >
 > ```properties
 >android.useAndroidX=true
@@ -37,18 +39,23 @@ After adding library, some of most useful libraries (such as `Androidx AppCompat
 >}
 >```
   
-## 💡 Getting Started  
+## 💡 Getting Started
 
-### Initialize  
+### Initialization
 
-Create your application class that extends `MeowApp` and set it in `AndroidManifest.xml`. Dependency Injection in MVVM architecture is necessary so we use `Kodein-DI` Framework.   
-You need to define `appModule` for ViewModels.  
-```kotlin  
-class App : MeowApp() {  
-  
- // Create a kodein module val appModule = Module("App Module", false){ // Provide object of SomeOfClass(such as View Models) in Kodein with bind() function       // bind() from singleton { SomeOfClass(instance()) }   
-   }  
-     override val kodein = Kodein.lazy {    
+Create your application class which extends `MeowApp` and set it in `AndroidManifest.xml`. Dependency Injection in MVVM architecture is necessary so we use `Kodein-DI` Framework.  
+You need to define `appModule` for View Models. Update application class like below :
+
+```kotlin
+class App : MeowApp() {
+
+    // Create a kodein module
+    val appModule = Module("App Module", false){ // Provide object of SomeOfClass(such as View Models) in Kodein with bind() function       
+        bind() from singleton { SomeOfClass(instance()) }    
+    }
+   
+   // Override from `KodeinAware` interface.
+    override val kodein = Kodein.lazy {    
         bind() from singleton { kodein.direct }    
         bind() from singleton { this@App }    
         import(androidXModule(this@App))    
@@ -56,7 +63,8 @@ class App : MeowApp() {
         import(appModule)    
    }  
 }  
-```  
+```
+
 ### Meow Controller 🐱  
 `MeowController` is a class that controls some of configurations in your app like language and theme. Configuration updates are in Real time . Dynamic Localization & Day/Night Theme configurations must be set here with `MeowController`.  
   If you use `avoidException` in your app, this class can controls Exception Handlers with `onException` property.   
