@@ -23,11 +23,10 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.etebarian.meowframework.R
 import com.google.android.material.textfield.TextInputLayout
-import com.google.i18n.phonenumbers.PhoneNumberUtil
 import meow.core.api.FormErrorModel
 import meow.ktx.avoidException
-import meow.ktx.fetchAllDigit
 import meow.ktx.isValidEmail
+import meow.ktx.isValidMobile
 import meow.ktx.isValidMobileLegacy
 
 
@@ -64,9 +63,9 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
         etList.forEach { childE ->
             checkWithTextFieldType(childE)
         }
-//        spList.forEach { childS ->
-//            checkWithSpinnerType(childS)
-//        }
+        spList.forEach { childS ->
+            checkWithSpinnerType(childS)
+        }
         if (checkList.distinct().size == etList.size) {
             listener()
             checkList.clear()
@@ -122,12 +121,12 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
 
 
     private fun mobileValidator(textField: MeowTextField) {
-        val text = textField.text?.trim()
-        if (text.isNullOrEmpty()) {
+        val text = textField.textString.trim()
+        if (text.isEmpty()) {
             textField.error = textField.errorEmpty
         } else {
             avoidException {
-                if (!isValidPhoneCustom(text.toString())) {
+                if (!text.isValidMobile()) {
                     textField.error = textField.errorMobile
                 } else {
                     textField.isErrorEnabled = false
@@ -138,12 +137,12 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
     }
 
     private fun mobileLegacyValidator(textField: MeowTextField) {
-        val text = textField.text?.trim()
-        if (text.isNullOrEmpty()) {
+        val text = textField.textString.trim()
+        if (text.isEmpty()) {
             textField.error = textField.errorEmpty
         } else {
             avoidException {
-                if (!text.toString().isValidMobileLegacy()) {
+                if (!text.isValidMobileLegacy()) {
                     textField.error = textField.errorMobile
                 } else {
                     textField.isErrorEnabled = false
@@ -167,36 +166,6 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
                 }
             }
         }
-    }
-
-    private fun isValidPhoneCustom(s: String): Boolean {//todo @Ali use two methods
-
-        fun getCountryISOFromPhone(s: String?): String {
-            val mPhoneNumberUtil = PhoneNumberUtil.getInstance()
-            var region = ""
-            if (s != null) {
-                avoidException {
-                    var phone = s
-                    if (!phone.contains("+"))
-                        phone = "+$phone"
-                    val p = mPhoneNumberUtil.parse(phone, null)
-                    val sb = StringBuilder(16)
-                    sb.append('+').append(p.countryCode).append(p.nationalNumber)
-                    region = mPhoneNumberUtil.getRegionCodeForNumber(p)
-                }
-            }
-            return region
-        }
-
-        val countryIso = getCountryISOFromPhone(s)
-        val util = PhoneNumberUtil.getInstance()
-        return avoidException {
-            if (s.startsWith("+98") || s.startsWith("98")) {
-                val m = s.fetchAllDigit()
-                return !m.isNullOrEmpty() && m.startsWith("98") && m.length == 12
-            }
-            util.isValidNumber(util.parse(s, countryIso))
-        } ?: false
     }
 
     private fun getAllEditTexts(): List<MeowTextField> {

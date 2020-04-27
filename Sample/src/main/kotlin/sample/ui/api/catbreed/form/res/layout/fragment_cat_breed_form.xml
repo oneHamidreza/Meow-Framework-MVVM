@@ -30,7 +30,6 @@
                 app:meow_inputType="text"
                 app:meow_validateType="empty"
                 app:startIconDrawable="@drawable/ic_cat" />
-            <!--todo @Ali TextField can support email + empty validator ??? -->
 
             <Button
                 android:id="@+id/btSend"

@@ -17,11 +17,13 @@
 package meow.widget
 
 import android.content.Context
-import android.graphics.drawable.GradientDrawable
+import android.graphics.*
+import android.graphics.drawable.BitmapDrawable
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.content.ContextCompat
 import com.etebarian.meowframework.R
+import meow.ktx.avoidException
+import kotlin.math.min
 
 
 /**
@@ -40,23 +42,8 @@ open class MeowCircleImageView @JvmOverloads constructor(
 ) : AppCompatImageView(context, attrs, defStyleAttrs) {
 
     var hasStroke = false
-        set(value) {
-            field = value
-            draw()
-        }
     var strokeColor = 0
-        set(value) {
-            field = value
-            draw()
-        }
     var strokeWidth = 0f
-        set(value) {
-            field = value
-            if (allowDraw)//todo without this
-                draw()
-        }
-
-    private var allowDraw = false
 
     init {
         setAttributesFromXml(attrs, R.styleable.MeowCircleImageView) {
@@ -67,35 +54,71 @@ open class MeowCircleImageView @JvmOverloads constructor(
             hasStroke = it.getBoolean(R.styleable.MeowCircleImageView_meow_hasStroke, hasStroke)
         }
 
-        hasStroke = hasStroke
-        strokeColor = strokeColor
-        strokeWidth = strokeWidth
+
 
         initializeView()
     }
 
     private fun initializeView() {
-        allowDraw = true
-        draw()
+
     }
 
-    private fun draw() {
-        if (!allowDraw)
-            return
+    override fun onDraw(canvas: Canvas) {
+        avoidException {
+            val drawable = drawable ?: return
 
-        if (hasStroke) {
-            val sw = strokeWidth.toInt()
-            setPadding(sw, sw, sw, sw)
-            val drawable = GradientDrawable()
-            drawable.apply {
-                shape = GradientDrawable.OVAL
-                setColor(strokeColor)
-            }
-            background = drawable
-        } else {
-            setPadding(0, 0, 0, 0)
-            setBackgroundColor(ContextCompat.getColor(context, R.color.transparent))
+            if (width == 0 || height == 0)
+                return
+
+            val b: Bitmap = (drawable as BitmapDrawable).bitmap
+
+            val bitmap: Bitmap = b.copy(Bitmap.Config.ARGB_8888, true)
+            val w = width
+            val roundBitmap: Bitmap = getCroppedBitmap(bitmap, w)
+            canvas.drawBitmap(roundBitmap, 0f, 0f, null)
         }
     }
+
+    private fun getCroppedBitmap(bmp: Bitmap, radius: Int): Bitmap {
+        val bitmap: Bitmap
+        bitmap = if (bmp.width != radius || bmp.height != radius) {
+            val smallest: Float = min(bmp.width.toFloat(), bmp.height.toFloat())
+            val factor = smallest / radius
+            Bitmap.createScaledBitmap(
+                bmp,
+                (bmp.width / factor).toInt(),
+                (bmp.height / factor).toInt(),
+                false
+            )
+        } else {
+            bmp
+        }
+        val output: Bitmap = Bitmap.createBitmap(
+            radius, radius,
+            Bitmap.Config.ARGB_8888
+        )
+        val canvas = Canvas(output)
+
+        val paint = Paint()
+        val rect = Rect(0, 0, radius, radius)
+        paint.isAntiAlias = true
+        paint.isFilterBitmap = true
+        paint.isDither = true
+        canvas.drawARGB(0, 0, 0, 0)
+        canvas.drawCircle(
+            radius / 2 + 0.7f,
+            radius / 2 + 0.7f, radius / 2 + 0.1f, paint
+        )
+        paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
+        canvas.drawBitmap(bitmap, rect, rect, paint)
+
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = strokeWidth
+        paint.color = strokeColor
+        canvas.drawCircle(radius / 2 + 0.7f, radius / 2 + 0.7f, radius / 2 + 0.1f, paint)
+
+        return output
+    }
+
 
 }

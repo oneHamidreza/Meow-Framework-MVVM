@@ -26,7 +26,7 @@
 
             <!--todo placeholder-->
             <!--todo @Ali CircleImageView-->
-            <ImageView
+            <meow.widget.MeowCircleImageView
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:layout_marginEnd="16dp"

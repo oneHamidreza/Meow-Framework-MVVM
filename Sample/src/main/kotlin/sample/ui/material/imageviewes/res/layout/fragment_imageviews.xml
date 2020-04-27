@@ -26,10 +26,10 @@
         <meow.widget.MeowCircleImageView
             android:layout_width="56dp"
             android:layout_height="56dp"
-            app:meow_data="@{`https://i.stack.imgur.com/EYzpL.jpg`}"
-            app:meow_placeHolder="@{@drawable/ic_android}"
-            app:meow_strokeColor="@color/primary_variant"
-            app:meow_strokeWidth="2dp" />
+            android:layout_margin="36dp"
+            app:meow_strokeColor="@color/white"
+            app:meow_strokeWidth="2dp"
+            app:srcCompat="@drawable/avatar" />
 
     </LinearLayout>
 
