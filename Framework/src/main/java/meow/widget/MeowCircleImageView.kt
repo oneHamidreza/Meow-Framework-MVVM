@@ -120,5 +120,4 @@ open class MeowCircleImageView @JvmOverloads constructor(
         return output
     }
 
-
 }
