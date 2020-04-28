@@ -21,14 +21,18 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!--todo @Ali remove margin form textFields Only -->
             <meow.widget.MeowTextField
                 android:id="@+id/etName"
-                style="@style/Meow.TextField.Form.Outlined"
+                style="@style/Meow.TextField.Outlined"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="8dp"
                 android:hint="@string/cat_breed_name"
                 app:errorEnabled="true"
                 app:meow_inputType="text"
                 app:meow_validateType="empty"
+                app:meow_apiField="name"
                 app:startIconDrawable="@drawable/ic_cat" />
 
             <Button

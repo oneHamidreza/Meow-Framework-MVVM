@@ -2,7 +2,7 @@ package meow.widget
 
 import android.content.Context
 import android.util.AttributeSet
-import com.willy.ratingbar.ScaleRatingBar
+import meow.widget.ratingbar.ScaleRatingBar
 
 open class MeowRateView @JvmOverloads constructor(
     context: Context,
@@ -12,7 +12,7 @@ open class MeowRateView @JvmOverloads constructor(
     context,
     attrs,
     defStyleAttrs
-) {//todo @Ali copy from repository in this project because jitPack
+) {
 
     init {
         initializeView()

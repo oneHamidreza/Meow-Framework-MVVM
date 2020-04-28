@@ -24,14 +24,14 @@
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/textAppearance.Body2"
                     prefixText="@{@string/prefix}"
                     suffixText="@{@string/suffix}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/hello_world"
-                    android:textColor="@{@color/black}"
-                    style="@style/textAppearance.Body2" />
+                    android:textColor="@{@color/black}" />
 
                 <meow.widget.MeowFormView
                     android:id="@+id/fv"
@@ -43,7 +43,11 @@
 
                     <meow.widget.MeowTextField
                         android:id="@+id/et"
-                        style="@style/Meow.TextField.Form.Filled.Dense"
+                        style="@style/Meow.TextField.Filled.Dense"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="4dp"
                         android:hint="@string/mobile"
                         app:counterEnabled="true"
                         app:counterMaxLength="10"
@@ -54,38 +58,54 @@
 
                     <meow.widget.MeowTextField
                         android:id="@+id/et2"
-                        style="@style/Meow.TextField.Form.Filled"
+                        style="@style/Meow.TextField.Filled"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="4dp"
                         android:hint="@string/email"
                         app:errorEnabled="true"
                         app:meow_inputType="textEmailAddress"
-                        app:startIconDrawable="@drawable/ic_android"
-                        app:meow_validateType="email" />
+                        app:meow_validateType="email"
+                        app:startIconDrawable="@drawable/ic_android" />
 
                     <meow.widget.MeowTextField
                         android:id="@+id/et3"
-                        style="@style/Meow.TextField.Form.Outlined"
+                        style="@style/Meow.TextField.Outlined"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="4dp"
                         android:hint="@string/name"
                         app:errorEnabled="true"
                         app:meow_inputType="text"
-                        app:startIconDrawable="@drawable/ic_android"
-                        app:meow_validateType="empty" />
+                        app:meow_validateType="empty"
+                        app:startIconDrawable="@drawable/ic_android" />
 
                     <meow.widget.MeowTextField
                         android:id="@+id/et4"
-                        style="@style/Meow.TextField.Form.Outlined.Dense"
+                        style="@style/Meow.TextField.Outlined.Dense"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="4dp"
                         android:hint="@string/address"
                         app:errorEnabled="true"
                         app:meow_inputType="textMultiLine"
-                        app:startIconDrawable="@drawable/ic_call"
-                        app:meow_validateType="optional" />
+                        app:meow_validateType="optional"
+                        app:startIconDrawable="@drawable/ic_call" />
 
                     <meow.widget.MeowSpinner
                         android:id="@+id/sp1"
-                        style="@style/Meow.Spinner.Form.Outlined"
+                        style="@style/Meow.Spinner.Outlined"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:meow_validateType="empty"
-                        android:hint="@string/select" />
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="8dp"
+                        android:hint="@string/select"
+                        app:meow_validateType="empty" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/bt"

@@ -51,7 +51,6 @@ class CatBreedFormFragment : BaseFragment<FragmentCatBreedFormBinding>() {
         binding.viewModel = viewModel
         binding.apply {
             progressbar.hide()
-            etName.apiField = "name"//todo @Ali create field from attrs
         }
     }
 

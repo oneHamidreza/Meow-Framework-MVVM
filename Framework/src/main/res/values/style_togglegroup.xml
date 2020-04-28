@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Meow" />
+
+    <style name="Meow.ToggleGroup.Default">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="selectionRequired">false</item>
+        <item name="singleSelection">false</item>
+    </style>
+
+    <style name="Meow.ToggleGroup">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="selectionRequired">true</item>
+        <item name="singleSelection">true</item>
+    </style>
+
+    <style name="Meow.ToggleGroup.Selection">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="selectionRequired">false</item>
+        <item name="singleSelection">true</item>
+    </style>
+
+    <style name="Meow.ToggleGroup.MultiSelection">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="selectionRequired">true</item>
+        <item name="singleSelection">false</item>
+    </style>
+
+</resources>

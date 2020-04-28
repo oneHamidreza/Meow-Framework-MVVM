@@ -14,22 +14,31 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
             app:meow_aspectRatio="@{`16:9`}"
-            app:meow_data="@{`https://i.stack.imgur.com/EYzpL.jpg`}"
-            app:meow_placeHolder="@{@drawable/ic_android}" />
+            app:meow_data="@{`https://www.rspcasa.org.au/wp-content/uploads/2019/01/Adopt-cat-mobile-banner-600x300-fit-constrain-q70-mobile_banner_image.jpg`}"
+            app:meow_placeHolder="@{@drawable/placeholder}" />
 
         <meow.widget.MeowCircleImageView
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:layout_margin="36dp"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
             app:meow_strokeColor="@color/white"
             app:meow_strokeWidth="2dp"
             app:srcCompat="@drawable/avatar" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            app:srcCompat="@drawable/ic_android"
+            app:tint="@color/primary_variant" />
 
     </LinearLayout>
 

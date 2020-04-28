@@ -14,171 +14,183 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <com.google.android.material.button.MaterialButton
+            style="@style/Meow.Button.insetTop"
+            android:text="@string/button_inset_top" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Meow.Button.Unelevated.insetTop"
+            android:text="@string/button_unelevated_inset_top" />
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_weight="1">
 
-            <com.google.android.material.button.MaterialButton
-                style="@style/Meow.Button.insetTop"
-                android:text="@string/button_inset_top" />
-
-            <com.google.android.material.button.MaterialButton
-                style="@style/Meow.Button.Unelevated.insetTop"
-                android:text="@string/button_unelevated_inset_top" />
-
-            <com.google.android.material.button.MaterialButton
-                style="@style/Meow.Button"
-                android:text="@string/button_default" />
-
-            <com.google.android.material.button.MaterialButton
-                style="@style/Meow.Button.Flat"
-                android:text="@string/button_flat" />
-
-            <com.google.android.material.button.MaterialButton
-                style="@style/Meow.Button.OutLined"
-                android:text="@string/button_outline" />
-
-            <com.google.android.material.button.MaterialButton
-                style="@style/Meow.Button.Unelevated"
-                android:text="@string/button_unelevated" />
-
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/btg"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                app:selectionRequired="true"
-                app:singleSelection="true">
-
-                <!-- todo @Ali create styles -->
+                android:orientation="vertical">
 
                 <com.google.android.material.button.MaterialButton
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/button1" />
+                    style="@style/Meow.Button"
+                    android:text="@string/button_default" />
 
                 <com.google.android.material.button.MaterialButton
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/button2" />
+                    style="@style/Meow.Button.Flat"
+                    android:text="@string/button_flat" />
 
                 <com.google.android.material.button.MaterialButton
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/button3" />
-
-            </com.google.android.material.button.MaterialButtonToggleGroup>
-
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                app:selectionRequired="true"
-                app:singleSelection="true">
+                    style="@style/Meow.Button.Outlined"
+                    android:text="@string/button_outline" />
 
                 <com.google.android.material.button.MaterialButton
-                    style="@style/Meow.Button.Outlined.IconOnly"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/ic_error" />
-
-                <com.google.android.material.button.MaterialButton
-                    style="@style/Meow.Button.Outlined.IconOnly"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/ic_android" />
-
-                <com.google.android.material.button.MaterialButton
-                    style="@style/Meow.Button.Outlined.IconOnly"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/ic_add" />
-
-            </com.google.android.material.button.MaterialButtonToggleGroup>
-
-            <CheckBox
-                android:id="@+id/icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:button="@drawable/selector_favorite"
-                app:buttonTint="?colorOnSurface" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/sample_color"
-                android:layout_marginStart="16dp"
-                android:textAppearance="@style/textAppearance.Subtitle1" />
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    style="@style/Meow.Button.Unelevated"
+                    android:text="@string/button_unelevated" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <com.google.android.material.button.MaterialButton
-                        style="@style/Meow.Button"
-                        android:text="@string/b_c_primary"
-                        app:backgroundTint="?colorPrimary"
-                        android:textColor="?colorOnPrimary"
-                        app:cornerRadius="0dp" />
+                        style="@style/Meow.Button.Outlined.IconOnly"
+                        app:icon="@drawable/ic_android" />
 
                     <com.google.android.material.button.MaterialButton
-                        style="@style/Meow.Button"
-                        android:text="@string/b_c_primary_variant"
-                        app:backgroundTint="?colorPrimaryVariant"
-                        android:textColor="?colorOnPrimary"
-                        app:cornerRadius="0dp" />
+                        style="@style/Meow.Button.Flat.IconOnly"
+                        app:icon="@drawable/ic_android" />
 
                     <com.google.android.material.button.MaterialButton
-                        style="@style/Meow.Button"
-                        android:text="@string/b_c_secondary"
-                        app:backgroundTint="?colorSecondary"
-                        android:textColor="?colorOnPrimary"
-                        app:cornerRadius="0dp" />
+                        style="@style/Meow.Button.IconOnly"
+                        app:icon="@drawable/ic_android" />
 
                     <com.google.android.material.button.MaterialButton
-                        style="@style/Meow.Button"
-                        android:text="@string/b_c_secondary_variant"
-                        app:backgroundTint="?colorSecondaryVariant"
-                        android:textColor="?colorOnPrimary"
-                        app:cornerRadius="0dp" />
-
-                    <com.google.android.material.button.MaterialButton
-                        style="@style/Meow.Button"
-                        android:text="@string/b_c_surface"
-                        app:backgroundTint="?colorSurface"
-                        android:textColor="?colorOnSurface"
-                        app:cornerRadius="0dp" />
-
-                    <com.google.android.material.button.MaterialButton
-                        style="@style/Meow.Button"
-                        android:text="@string/b_c_background"
-                        app:backgroundTint="?colorError"
-                        android:textColor="?colorOnBackground"
-                        app:cornerRadius="0dp" />
-
-                    <com.google.android.material.button.MaterialButton
-                        style="@style/Meow.Button"
-                        android:text="@string/b_c_error"
-                        android:textColor="?colorOnError"
-                        app:backgroundTint="?colorError"
-                        app:cornerRadius="0dp" />
+                        style="@style/Meow.Button.Unelevated.IconOnly"
+                        app:icon="@drawable/ic_android" />
 
                 </LinearLayout>
 
-            </HorizontalScrollView>
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/btg"
+                    style="@style/Meow.ToggleGroup">
 
-        </LinearLayout>
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Meow.Button.Outlined"
+                        android:text="@string/button1" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Meow.Button.Outlined"
+                        android:text="@string/button2" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Meow.Button.Outlined"
+                        android:text="@string/button3" />
+
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+
+                <com.google.android.material.button.MaterialButtonToggleGroup style="@style/Meow.ToggleGroup">
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Meow.Button.Outlined.IconOnly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_error" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Meow.Button.Outlined.IconOnly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_android" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Meow.Button.Outlined.IconOnly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_add" />
+
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+
+                <CheckBox
+                    android:id="@+id/icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:button="@drawable/selector_favorite"
+                    app:buttonTint="?colorOnSurface" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/sample_color"
+                    android:textAppearance="@style/textAppearance.Subtitle1" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            style="@style/Meow.Button"
+                            android:text="@string/b_c_primary"
+                            android:textColor="?colorOnPrimary"
+                            app:backgroundTint="?colorPrimary"
+                            app:cornerRadius="0dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            style="@style/Meow.Button"
+                            android:text="@string/b_c_primary_variant"
+                            android:textColor="?colorOnPrimary"
+                            app:backgroundTint="?colorPrimaryVariant"
+                            app:cornerRadius="0dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            style="@style/Meow.Button"
+                            android:text="@string/b_c_secondary"
+                            android:textColor="?colorOnPrimary"
+                            app:backgroundTint="?colorSecondary"
+                            app:cornerRadius="0dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            style="@style/Meow.Button"
+                            android:text="@string/b_c_secondary_variant"
+                            android:textColor="?colorOnPrimary"
+                            app:backgroundTint="?colorSecondaryVariant"
+                            app:cornerRadius="0dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            style="@style/Meow.Button"
+                            android:text="@string/b_c_surface"
+                            android:textColor="?colorOnSurface"
+                            app:backgroundTint="?colorSurface"
+                            app:cornerRadius="0dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            style="@style/Meow.Button"
+                            android:text="@string/b_c_background"
+                            android:textColor="?colorOnBackground"
+                            app:backgroundTint="?colorError"
+                            app:cornerRadius="0dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            style="@style/Meow.Button"
+                            android:text="@string/b_c_error"
+                            android:textColor="?colorOnError"
+                            app:backgroundTint="?colorError"
+                            app:cornerRadius="0dp" />
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+            </LinearLayout>
+
+        </ScrollView>
 
         <com.google.android.material.button.MaterialButton
             style="@style/Meow.Button.insetBottom"

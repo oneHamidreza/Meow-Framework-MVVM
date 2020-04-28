@@ -55,6 +55,8 @@
 
         <attr name="meow_textSize" format="dimension" />
 
+        <attr name="meow_apiField" format="string" />
+
         <attr name="meow_inputType">
             <!-- There is no content type.  The text is not editable. -->
             <flag name="none" value="0x00000000" />
@@ -200,6 +202,22 @@
         <attr name="meow_hasStroke" format="boolean" />
         <attr name="meow_strokeColor" format="color" />
         <attr name="meow_strokeWidth" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="MeowRatingBar">
+        <attr format="integer" name="meow_numStars" />
+        <attr format="float" name="meow_minimumStars" />
+        <attr format="float" name="meow_rating" />
+        <attr format="dimension" name="meow_starPadding" />
+        <attr format="reference" name="meow_drawableEmpty" />
+        <attr format="reference" name="meow_drawableFilled" />
+        <attr format="boolean" name="meow_isIndicator" />
+        <attr format="boolean" name="meow_scrollable" />
+        <attr format="boolean" name="meow_clickable" />
+        <attr format="boolean" name="meow_clearRatingEnabled" />
+        <attr format="dimension" name="meow_starWidth" />
+        <attr format="dimension" name="meow_starHeight" />
+        <attr format="float" name="meow_stepSize" />
     </declare-styleable>
 
 </resources>

@@ -52,7 +52,6 @@
             android:id="@+id/actionToMaterialFabExtended"
             android:title="@string/fragment_fab_extended" />
 
-        <!-- todo @Ali fragmentImageviews complete -->
         <item
             android:id="@+id/actionToMaterialImageviews"
             android:title="@string/fragment_imageviews" />

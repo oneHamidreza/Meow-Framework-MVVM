@@ -19,7 +19,11 @@
 
         <meow.widget.MeowTextField
             android:id="@+id/etUsername"
-            style="@style/Meow.TextField.Form.Outlined"
+            style="@style/Meow.TextField.Outlined"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="4dp"
             android:hint="@string/login_username"
             app:errorEnabled="true"
             app:meow_inputType="text"
@@ -27,7 +31,11 @@
 
         <meow.widget.MeowTextField
             android:id="@+id/etPassword"
-            style="@style/Meow.TextField.Form.Outlined"
+            style="@style/Meow.TextField.Outlined"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
             android:hint="@string/login_password"
             app:errorEnabled="true"
             app:meow_inputType="textPassword"

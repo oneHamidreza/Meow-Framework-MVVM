@@ -24,8 +24,6 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <!--todo placeholder-->
-            <!--todo @Ali CircleImageView-->
             <meow.widget.MeowCircleImageView
                 android:layout_width="56dp"
                 android:layout_height="56dp"
@@ -33,6 +31,7 @@
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
                 meow_glideCornerSize="@{4}"
+                meow_placeHolder="@{@drawable/avatar}"
                 meow_data="@{model.imageUrl}" />
 
             <TextView

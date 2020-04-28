@@ -99,6 +99,8 @@ class MeowTextField : TextInputLayout, FormInterface {
 
         textSize = it.getDimension(R.styleable.MeowTextField_meow_textSize, textSize)
 
+        apiField = it.getString(R.styleable.MeowTextField_meow_textSize)
+
         errorEmpty = it.getString(R.styleable.MeowTextField_meow_errorEmpty)
         if (errorEmpty.isNullOrEmpty())
             errorEmpty = context.getString(R.string.error_required_value)
