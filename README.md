@@ -16,7 +16,7 @@ After adding library, some of most useful libraries (such as `Androidx AppCompat
 
 List of dependencies can be found in [meow.AppConfig.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/buildSrc/src/main/java/meow/AppConfig.kt) in `Dependencies` Object.
 
-> Enable androidx in `gradle.properties`
+> Enable androidx in `gradle.properties`.
 >
 > ```properties
 >android.useAndroidX=true
@@ -41,7 +41,7 @@ List of dependencies can be found in [meow.AppConfig.kt](https://github.com/oneH
   
 ## 💡 Getting Started
 
-## Sample Application
+### Sample Application
 
 We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.6.1-alpha/Meow-Framework-Sample-v.0.6.1-alpha.apk) to be familiar with `Meow Framework`.
 
