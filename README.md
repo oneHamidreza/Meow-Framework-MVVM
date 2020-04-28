@@ -47,7 +47,7 @@ We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow
 
 ### Initialization
 
-Create your application class which extends `MeowApp` and set it in `AndroidManifest.xml`. Dependency Injection in MVVM architecture is necessary so we use `Kodein-DI` Framework.
+Create your application class which extends `MeowApp` and set it in `AndroidManifest.xml`. Dependency Injection in MVVM architecture is necessary, so we use `Kodein-DI` Framework.
 You need to define `appModule` for View Models. Update application class like below :
 
 ```kotlin
