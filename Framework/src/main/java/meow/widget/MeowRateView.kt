@@ -19,6 +19,5 @@ open class MeowRateView @JvmOverloads constructor(
     }
 
     private fun initializeView() {
-
     }
 }
