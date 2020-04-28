@@ -41,6 +41,8 @@ List of dependencies can be found in [meow.AppConfig.kt](https://github.com/oneH
   
 ## 💡 Getting Started
 
+We assume that you know MVVM architecture, but if you have some problems in understanding its, this [Articles](https://proandroiddev.com/tagged/mvvm) can help you.
+
 ### 📱 Sample Application
 
 We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.6.1-alpha/Meow-Framework-Sample-v.0.6.1-alpha.apk) to be familiar with `Meow Framework`.
