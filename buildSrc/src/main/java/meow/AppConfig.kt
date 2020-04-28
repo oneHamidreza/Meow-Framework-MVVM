@@ -53,7 +53,7 @@ object AppConfig {//todo find way for show sources
         const val API = 1
         const val MAJOR = 0
         const val MINOR = 6
-        const val PATCH = 1
+        const val PATCH = 2
         val BUILD_PHASE = Build.PHASE.ALPHA
 
         const val SDK_COMPILE = 29
@@ -80,7 +80,7 @@ object AppConfig {//todo find way for show sources
         const val SWIPE_REFRESH_LAYOUT = "1.0.0"
     }
 
-    object Library {
+    object Dependencies {
         val implementationItems = arrayOf(
             // Kotlin
             kotlin("stdlib-jdk8", Versions.KOTLIN),

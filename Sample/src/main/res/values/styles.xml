@@ -68,10 +68,15 @@
     </style>
 
     <style name="App.TextView.Markdown" parent="Meow.TextView">
-        <item name="android:textColorHighlight">?colorPrimaryVariant</item>
         <item name="android:lineSpacingExtra">4dp</item>
         <item name="android:padding">16dp</item>
+        <!-- todo all textAppearnces convert to ?attr . -->
         <item name="android:textAppearance">@style/textAppearance.Body2</item>
+        <item name="android:theme">@style/App.Theme.TextView.Markdown</item>
+    </style>
+
+    <style name="App.Theme.TextView.Markdown" parent="">
+        <item name="colorAccent">?colorPrimaryVariant</item>
     </style>
 
     <style name="NavigationItemNoRipple">
