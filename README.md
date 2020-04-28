@@ -47,7 +47,7 @@ We assume that you know MVVM architecture, but if you have some problems in unde
 
 We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.6.1-alpha/Meow-Framework-Sample-v.0.6.1-alpha.apk) to be familiar with `Meow Framework`.
 
-### Initialization
+### 🎮 Initialization
 
 Create your application class which extends `MeowApp` and set it in `AndroidManifest.xml`. Dependency Injection in MVVM architecture is necessary, so we use `Kodein-DI` Framework.
 You need to define `appModule` for View Models. Update application class like below :
@@ -58,23 +58,30 @@ class App : MeowApp() {
     // Create a kodein module.
     val appModule = Module("App Module", false) {
         // Provide object of SomeOfClass(such as View Models) in Kodein with bind() function.
-        bind() from singleton { SomeOfClass(instance()) }    
+        bind() from singleton { SomeOfClass(instance()) }
     }
-   
-   // Override from `KodeinAware` interface.
-    override val kodein = Kodein.lazy {    
-        bind() from singleton { kodein.direct }    
-        bind() from singleton { this@App }    
-        import(androidXModule(this@App))    
-        import(meowModule)    
+
+   // Source is `KodeinAware` interface.
+    override val kodein = Kodein.lazy {
+        bind() from singleton { kodein.direct }
+        bind() from singleton { this@App }
+        import(androidXModule(this@App))
+        import(meowModule) // Important
         import(appModule)
-    }  
-}  
+    }
+}
 ```
 
-### Meow Controller 🐱  
+### 🐱 Meow Controller 🐱
+
+This Framework has two Highlighted Features :
+- Dynamic **Day/Night** Theme to switch from `LIGHT` to `DARK` mode.
+- Dynamic **Locale Configuration** to change language of app Realtime.
+to use above features, you'll need to define your `MeowController`.
+
 `MeowController` is a class that controls some of configurations in your app like language and theme. Configuration updates are in Real time . Dynamic Localization & Day/Night Theme configurations must be set here with `MeowController`.  
-  If you use `avoidException` in your app, this class can controls Exception Handlers with `onException` property.   
+  If you use `avoidException` in your app, this class can controls Exception Handlers with `onException` property.
+
 ```kotlin  
 class App : MeowApp() {   
     // Layout Direction would be set automatically.   
