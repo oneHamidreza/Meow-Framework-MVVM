@@ -487,8 +487,8 @@ Learn more about it at [AlertsFragment.kt](https://github.com/oneHamidreza/Meow-
 
 There are some customized styles related to `Material CardView`.
 
-|Style|Usage
-|---|---|
+|Style|Usage|
+|---|:---:|
 |`Meow.CardView`|Regular Card with `surface` background color|
 |`Meow.CardView.Outlined`|Outlined Card with `surface` background color and `stroke_color.xml` outline color|
 
@@ -501,13 +501,13 @@ Use it like this in XML Layout :
   
 ### Checkbox  
 There are some customized styles related to `Material CheckBox`.   
-|Style|Usage  
-|----------|:-------------:|  
+|Style|Usage
+|---|---|
 |`Meow.Checkbox`|Checkbox with `accent_color` button tint   
 |`Meow.Checkbox.Primary`|Checkbox with `primary` button tint  
 |`Meow.Checkbox.Secondary`|Checkbox with `secondary` button tint  
 |`Meow.Checkbox.OnPrimary`|Checkbox with `onPrimary` button tint & `textColor`  
-|`Meow.Checkbox.OnSecondary`|Checkbox with `onSecondary` button tint & `textColor`  
+|`Meow.Checkbox.OnSecondary`|Checkbox with `onSecondary` button tint & `textColor` 
   
 Use it like this in XML Layout :  
 ```xml <com.google.android.material.checkbox.MaterialCheckBox    
