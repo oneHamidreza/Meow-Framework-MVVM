@@ -4,12 +4,12 @@ A Framework that simplify developing MVVM architecture and Material Design in An
 
 ![](https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_github.png)
 
-[ ![Download](https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.6.4-alpha) ](https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.6.4-alpha/link)
+[ ![Download](https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.6.5-alpha) ](https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.6.5-alpha/link)
   
 ## 🛠 Setup
 
 ```groovy
-implementation("com.etebarian:meow-framework-mvvm:0.6.4-alpha")
+implementation("com.etebarian:meow-framework-mvvm:0.6.5-alpha")
 ```
 
 After adding library, some of most useful libraries (such as `Androidx AppCompat` , `Coroutine` , `Glide` , `Kodein` , `Kotlinx Serialization` , `Material Components` , `Moshi` , `Navigation Components` , `Retrofit` ) will be added in your app. So you don't need to add this libraries manually.  
@@ -21,7 +21,7 @@ List of dependencies can be found in [meow.AppConfig.kt](https://github.com/oneH
 > ```properties
 >android.useAndroidX=true
 >android.enableJetifier=true
->```  
+>```
 >Update `build.gradle` like below :
 >```groovy
 >android {
@@ -45,7 +45,7 @@ We assume that you know MVVM architecture, but if you have some problems in unde
 
 ### 📱 Sample Application
 
-We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.6.4-alpha/Meow-Framework-Sample-v.0.6.4-alpha.apk) to be familiar with `Meow Framework`.
+We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.6.5-alpha/Meow-Framework-Sample-v.0.6.5-alpha.apk) to be familiar with `Meow Framework`.
 
 ### 🎮 Initialization
 
@@ -448,41 +448,51 @@ Above sample can be used for other types of REST API patterns/flows (such as `De
 
 ## 🎨 Material Components
 
-### Alerts  
+### Alerts
 
-You can show Alert Dialog with `alert()` function in `MeowActivity/MeowFragment`
+You can show Alert Dialog with `alert()` function in `MeowActivity/MeowFragment`.
 
 ```kotlin
-alert()    
-    .setTitle(R.string.alert_title)    
-    .setMessage(R.string.alert_message)    
-    .setPositiveButton(R.string.ok) { d, _ ->  
-       toastL(R.string.alerts_warn_ok_clicked)  
-          d.dismiss()    
-    }    
-    .setNegativeButton(R.string.cancel) { d, _ ->  
-       toastL(R.string.alerts_warn_cancel_clicked)  
-          d.dismiss()    
-    }    
-    .show()  
-```  
-### Loading Alert  
+fun testAlert(){
+
+    alert()
+        .setTitle(R.string.alert_title)
+        .setMessage(R.string.alert_message) 
+        .setPositiveButton(R.string.ok) { d, _ ->
+            toastL(R.string.alerts_warn_ok_clicked)
+            d.dismiss()
+        }
+        .setNegativeButton(R.string.cancel) { d, _ ->  
+            toastL(R.string.alerts_warn_cancel_clicked)
+            d.dismiss()
+        }.show()
+}
+```
+
+### Loading Alert
   
-![](https://github.com/oneHamidreza/Meow-Framework-MVVM/Resources/img_material_loading_alert.png)  
+![](https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_material_loading_alert.png)
   
-A Dialog with `MeowLoadingView` for showing progress bar with text into Dialog.     
+A Dialog with `MeowLoadingView` for showing progress bar with text into Dialog.
+
 ```kotlin  
 loadingAlert(R.string.loading_title_custom).show()  
-```  
-Learn more about it at [AlertsFragment](/sample/ui/material/alert/AlertsFragment.kt)  
-### CardView  
-There are some customized styles related to `Material CardView`.   
+```
+Learn more about it at [AlertsFragment.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/alert/AlertsFragment.kt)
+
+### Button
+// Todo complete this.
+
+### CardView
+
+There are some customized styles related to `Material CardView`.
+
 |Style|Usage
-|----------|:-------------:|
-|`Meow.CardView`|Regular Card with `surface` background color   
-|`Meow.CardView.Outlined`|Outlined Card with `surface` background color and `stroke_color.xml` outline color  
-  
-Use it like this in XML Layout :   
+|---|---|
+|`Meow.CardView`|Regular Card with `surface` background color|
+|`Meow.CardView.Outlined`|Outlined Card with `surface` background color and `stroke_color.xml` outline color|
+
+Use it like this in XML Layout :
 ```xml  
 <com.google.android.material.card.MaterialCardView  
  style="@style/Meow.CardView" app:contentPadding="16dp" >  
