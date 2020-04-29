@@ -49,17 +49,16 @@ class MyGrammarLocator : GrammarLocator {
     ): Grammar? {
         return when (language) {
             "clike" -> Prism_clike.create(prism4j)
-            "groovy" -> Prism_groovy.create(prism4j)
+            "groovy", "properties" -> Prism_groovy.create(prism4j)
             "json" -> Prism_json.create(prism4j)
             "kotlin" -> Prism_kotlin.create(prism4j)
-            "markup" -> Prism_markup.create(prism4j)
-            "properties" -> Prism_groovy.create(prism4j)
+            "markup", "xml" -> Prism_markup.create(prism4j)
             else -> null
         }
     }
 
     override fun languages() =
-        setOf("clike", "groovy", "json", "kotlin", "markup", "properties")
+        setOf("clike", "groovy", "json", "kotlin", "markup", "properties", "xml")
 }
 
 fun TextView.setMarkdownData(markdownData: String?) {
