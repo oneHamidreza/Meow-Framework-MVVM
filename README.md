@@ -72,7 +72,7 @@ class App : MeowApp() {
 }
 ```
 
-### 🐱 Meow Controller 🐱
+### 🐱 Meow Controller 🐈
 
 This Framework has two Highlighted Features :
 - Dynamic **Day/Night** Theme to switch from `LIGHT` to `DARK` mode.
@@ -151,7 +151,7 @@ val appModule = Module("App Module", false) {
 </layout>
 ```
 
-#### 4. Create Activity/Fragment + `DataBinding` + `ViewModel` extends `MeowActivity/MeowFragment`.
+#### 4. Create Activity/Fragment extends `MeowActivity/MeowFragment` + `DataBinding` + `ViewModel`.
 
 ‍‍‍`MainActivity` is a sample activity that needs Kodein Dependency Injection and ViewDataBinding and View Model. See this example :
 
@@ -171,12 +171,14 @@ class MainActivity : MeowActivity<ActivityMainBinding>() {
 ### Accessing views with DataBinding
 
 You can access views like this code :
+
 ```xml
 <com.google.android.material.appbar.MaterialToolbar
     android:id="@+id/toolbar"
     style="@style/Meow.Toolbar" />  
 ```  
-```kotlin  
+
+```kotlin
 class MainActivity : MeowActivity<ActivityMainBinding>() {
     override fun layoutId() = R.layout.activity_main
     override fun onCreate(savedInstanceState: Bundle?) {
