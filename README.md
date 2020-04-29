@@ -90,6 +90,7 @@ class App : MeowApp() {
     // Layout Direction would be set automatically by Android System.
     // (Example: "en": LayoutDirection.LTR  "fa": LayoutDirection.RTL).
     
+    // Our Primary Sample app's language is English.
     override fun getLanguage(context: Context?) = "en" // or any language such as ("fa","fr","ar",etc.)     
     
     // Our Sample app's theme is set by Android System Light/Dark (Day/Night) mode.  
@@ -476,8 +477,8 @@ loadingAlert(R.string.loading_title_custom).show()
 Learn more about it at [AlertsFragment](/sample/ui/material/alert/AlertsFragment.kt)  
 ### CardView  
 There are some customized styles related to `Material CardView`.   
-|Style|Usage  
-|----------|:-------------:|  
+|Style|Usage
+|----------|:-------------:|
 |`Meow.CardView`|Regular Card with `surface` background color   
 |`Meow.CardView.Outlined`|Outlined Card with `surface` background color and `stroke_color.xml` outline color  
   
