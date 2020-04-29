@@ -37,6 +37,11 @@ import meow.ktx.setField
 
 lateinit var controller: MeowController
 
+fun MeowApp.bindMeow(controllerBlock: (controller: MeowController) -> Unit) =
+    MeowController().apply {
+        controllerBlock(this)
+    }.bindApp(this)
+
 class MeowController(
     val meowSession: MeowSession = MeowSession()
 ) {

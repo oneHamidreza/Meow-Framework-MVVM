@@ -22,12 +22,9 @@ import android.util.Log
 import com.bumptech.glide.GlideBuilder
 import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.module.AppGlideModule
-import meow.MeowApp
-import meow.MeowController
-import meow.controller
+import meow.*
 import meow.ktx.getFontCompat
 import meow.ktx.isNightModeFromSettings
-import meow.meowModule
 import org.kodein.di.Kodein
 import org.kodein.di.android.x.androidXModule
 import org.kodein.di.direct
@@ -67,20 +64,22 @@ class App : MeowApp() {
 
     override fun onCreate() {
         super.onCreate()
-        MeowController().apply {
-            isDebugMode = BuildConfig.DEBUG
-            isLogTagNative = false
+        bindMeow {
+            it.isDebugMode = BuildConfig.DEBUG
+            it.isLogTagNative = false
 
-            currency = MeowController.Currency.USD
-            calendar = MeowController.Calendar.GEORGIAN
+            it.currency = MeowController.Currency.USD
+            it.calendar = MeowController.Calendar.GEORGIAN
 
-            defaultTypefaceResId = if (isPersian) R.font.farsi_regular else R.font.english_regular
-            toastTypefaceResId = if (isPersian) R.font.farsi_regular else R.font.english_regular
+            it.defaultTypefaceResId =
+                if (it.isPersian) R.font.farsi_regular else R.font.english_regular
+            it.toastTypefaceResId =
+                if (it.isPersian) R.font.farsi_regular else R.font.english_regular
 
-            onException = {
+            it.onException = {
                 // Log to Fabric or any other Crash Management System. Just use `avoidException` instead of `try{}catch{}`
             }
-        }.bindApp(this)
+        }
     }
 
 }
