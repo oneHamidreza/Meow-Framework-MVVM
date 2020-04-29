@@ -90,8 +90,6 @@ class FormFragment : BaseFragment<FragmentFormBinding>() {
         }
 
         binding.pv.error = getString(R.string.error_sample)
-
-
     }
 
     override fun initViewModel() {
