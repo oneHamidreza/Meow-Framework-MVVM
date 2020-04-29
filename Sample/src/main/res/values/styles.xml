@@ -21,6 +21,7 @@
         <item name="colorOnError">@color/meow_on_error</item>
         <item name="colorOnSurface">@color/meow_on_surface</item>
         <item name="scrimBackground">@color/mtrl_scrim_color</item>
+
         <item name="textAppearanceHeadline1">@style/textAppearance.Headline1</item>
         <item name="textAppearanceHeadline2">@style/textAppearance.Headline2</item>
         <item name="textAppearanceHeadline3">@style/textAppearance.Headline3</item>
