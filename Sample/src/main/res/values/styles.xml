@@ -52,6 +52,10 @@
 
     </style>
 
+    <style name="AppTheme.Splash">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
     <style name="ThemeOverlay.NavigationView" parent="">
         <item name="android:colorControlHighlight" tools:ignore="NewApi">
             @android:color/transparent

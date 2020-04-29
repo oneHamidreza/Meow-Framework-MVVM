@@ -16,6 +16,7 @@
 
 package sample.widget
 
+import android.app.Activity
 import android.content.Intent
 import android.text.method.LinkMovementMethod
 import android.widget.TextView
@@ -29,7 +30,6 @@ import io.noties.prism4j.GrammarLocator
 import io.noties.prism4j.Prism4j
 import io.noties.prism4j.Prism4j.Grammar
 import meow.controller
-import meow.core.ui.FragmentActivityInterface
 import meow.ktx.javaClass
 import sample.prism4j.languages.*
 
@@ -81,6 +81,8 @@ fun TextView.setMarkdownData(markdownData: String?) {
 fun String.githubRaw() =
     "https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/$this"
 
-inline fun <reified T> FragmentActivityInterface<*>.startActivity() {
-    context().startActivity(Intent(context(), javaClass<T>()))
+inline fun <reified T> Activity.startActivity(finish: Boolean = false) {
+    startActivity(Intent(this, javaClass<T>()))
+    if (finish)
+        finish()
 }
