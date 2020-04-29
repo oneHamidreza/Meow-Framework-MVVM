@@ -77,6 +77,7 @@ class App : MeowApp() {
 This Framework has two Highlighted Features :
 - Dynamic **Day/Night** Theme to switch from `LIGHT` to `DARK` mode.
 - Dynamic **Localization** to change language , currency formatting , date formatting of app Realtime.
+
 to use above features, you'll need to define your `MeowController`.
 
 `MeowController` is a class that controls some features in app such as above.
