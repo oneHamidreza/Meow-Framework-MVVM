@@ -4,6 +4,7 @@ package meow.ktx
 
 import android.content.Context
 import com.etebarian.meowframework.R
+import meow.MeowController
 import meow.controller
 import meow.core.ui.MeowFragment
 import java.math.BigDecimal
@@ -21,12 +22,6 @@ import java.util.*
  */
 
 private val currencyDefault = controller.currency.default
-
-enum class MeowCurrency(val default: String) {
-    USD("$0.00"),
-    RIAL("0"),
-    TOMAN("0")
-}
 
 fun Double?.formatCurrencyRial(dec: Int = 0, original: String? = null) = avoidException {
     val sb = StringBuilder("#.")
@@ -107,8 +102,8 @@ fun String?.formatCurrency(dec: Int = 0) = avoidException {
         currencyDefault
 
     when (controller.currency) {
-        MeowCurrency.USD -> this.formatCurrencyUSD()
-        MeowCurrency.RIAL, MeowCurrency.TOMAN -> this.toDoubleCurrency()
+        MeowController.Currency.USD -> this.formatCurrencyUSD()
+        MeowController.Currency.RIAL, MeowController.Currency.TOMAN -> this.toDoubleCurrency()
             .formatCurrencyRial(dec, this)
     }
 } ?: currencyDefault
@@ -118,8 +113,8 @@ fun Double?.formatCurrency(dec: Int = 0) = avoidException {
         currencyDefault
 
     when (controller.currency) {
-        MeowCurrency.USD -> this.formatCurrencyUSD()
-        MeowCurrency.RIAL, MeowCurrency.TOMAN -> this.formatCurrencyRial(
+        MeowController.Currency.USD -> this.formatCurrencyUSD()
+        MeowController.Currency.RIAL, MeowController.Currency.TOMAN -> this.formatCurrencyRial(
             dec,
             BigDecimal(this!!).toString()
         )
@@ -137,9 +132,9 @@ fun Context?.createCurrency(s: String?, dec: Int = 0): String {
     if (this == null)
         return s ?: ""
     return when (controller.currency) {
-        MeowCurrency.USD -> "$" + s.formatCurrency(dec)
-        MeowCurrency.RIAL -> s.formatCurrency(dec) + " " + getString(R.string.currency_rial)
-        MeowCurrency.TOMAN -> s.formatCurrency(dec) + " " + getString(R.string.currency_toman)
+        MeowController.Currency.USD -> "$" + s.formatCurrency(dec)
+        MeowController.Currency.RIAL -> s.formatCurrency(dec) + " " + getString(R.string.currency_rial)
+        MeowController.Currency.TOMAN -> s.formatCurrency(dec) + " " + getString(R.string.currency_toman)
     }
 }
 

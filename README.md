@@ -76,33 +76,50 @@ class App : MeowApp() {
 
 This Framework has two Highlighted Features :
 - Dynamic **Day/Night** Theme to switch from `LIGHT` to `DARK` mode.
-- Dynamic **Locale Configuration** to change language of app Realtime.
+- Dynamic **Localization** to change language , currency formatting , date formatting of app Realtime.
 to use above features, you'll need to define your `MeowController`.
 
-`MeowController` is a class that controls some of configurations in your app like language and theme. Configuration updates are in Real time . Dynamic Localization & Day/Night Theme configurations must be set here with `MeowController`.  
-  If you use `avoidException` in your app, this class can controls Exception Handlers with `onException` property.
+`MeowController` is a class that controls some features in app such as above.
+ If you want to use `avoidException` in your app, this class can controls Exception Handlers with `onException` property.
+
+Update your application class like this :
 
 ```kotlin  
-class App : MeowApp() {   
-    // Layout Direction would be set automatically.   
-    // (Example: "en": LayoutDirection.LTR  "fa": LayoutDirection.RTL)  
- override fun getLanguage(context: Context?) = "en" // or any language such as ("fa","fr","ar",etc.)     // Sample app theme is setted by Android System Light/Dark (Day/Night) mode  
- override fun getTheme(context: Context?) = if (context.isNightModeFromSettings()) MeowController.Theme.NIGHT else  MeowController.Theme.DAY     override fun onCreate() {  
- super.onCreate() MeowController().apply {            isDebugMode = BuildConfig.DEBUG  
- language = getLanguage(this@App)            theme = getTheme(this@App)  
- }.bindApp(this) }}  
-```  
-You can update language and theme from UI Thread by using `MeowController` global instance.  
-```kotlin  
-import meow.controller  
+class App : MeowApp() {
+    // Layout Direction would be set automatically by Android System.
+    // (Example: "en": LayoutDirection.LTR  "fa": LayoutDirection.RTL).
+    
+    override fun getLanguage(context: Context?) = "en" // or any language such as ("fa","fr","ar",etc.)     
+    
+    // Our Sample app's theme is set by Android System Light/Dark (Day/Night) mode.  
+    override fun getTheme(context: Context?) =
+        if (context.isNightModeFromSettings()) MeowController.Theme.NIGHT else  MeowController.Theme.DAY
+         
+    override fun onCreate() {
+        super.onCreate()
+        MeowController().apply {
+            isDebugMode = BuildConfig.DEBUG
+            // Set other properties here.
+        }.bindApp(this) 
+    }
+ }  
+```
+
+You can update language and theme from UI Thread by using `MeowController` global instance.
+
+```kotlin
+import meow.controller
   
-controller.updateLanguage(meowActivity, string)  
-controller.updateTheme(meowActivity, theme)  
-```  
-###  MVVM Architecture  
-MVVM is Model-View-ViewModel that we define it in Android App as Data Model - View (Activity, Fragment, DialogFragment, BottomSheetDialogFragment) - MeowViewModel.  
+controller.updateLanguage(meowActivity, string)
+controller.updateTheme(meowActivity, theme)
+```
+
+###  MVVM Architecture
+
+MVVM is Model-View-ViewModel that we define it in Android App as Data Model - View (Activity, Fragment, DialogFragment, BottomSheetDialogFragment) - MeowViewModel.
    
-Follow below steps to be have one activity with MVVM Architecture.  
+Follow below steps to be have an activity with MVVM Architecture.
+
 #### 1.  Create your ViewModel extends `MeowViewModel` .  
 ```kotlin  
 class MainViewModel(app: App): MeowViewModel(app)  

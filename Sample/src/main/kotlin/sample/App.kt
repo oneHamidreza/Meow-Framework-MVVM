@@ -25,7 +25,6 @@ import com.bumptech.glide.module.AppGlideModule
 import meow.MeowApp
 import meow.MeowController
 import meow.controller
-import meow.ktx.MeowCurrency
 import meow.ktx.getFontCompat
 import meow.ktx.isNightModeFromSettings
 import meow.meowModule
@@ -72,9 +71,8 @@ class App : MeowApp() {
             isDebugMode = BuildConfig.DEBUG
             isLogTagNative = false
 
-            language = getLanguage(this@App)
-            currency = MeowCurrency.USD
-            theme = getTheme(this@App)
+            currency = MeowController.Currency.USD
+            calendar = MeowController.Calendar.GEORGIAN
 
             defaultTypefaceResId = if (isPersian) R.font.farsi_regular else R.font.english_regular
             toastTypefaceResId = if (isPersian) R.font.farsi_regular else R.font.english_regular

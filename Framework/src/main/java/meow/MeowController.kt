@@ -24,7 +24,6 @@ import meow.core.api.MeowSession
 import meow.core.data.MeowSharedPreferences
 import meow.core.ui.MeowActivity
 import meow.ktx.MeowContextWrapper
-import meow.ktx.MeowCurrency
 import meow.ktx.getField
 import meow.ktx.setField
 
@@ -47,9 +46,10 @@ class MeowController(
     var isLogTagNative: Boolean = true
     var apiSuccessRange: IntRange = 200..200
     var onException: (exception: Exception) -> Unit = {}
+
     var dpi: Float = 1f
     var language: String = ""
-    var currency: MeowCurrency = MeowCurrency.USD
+    var currency: Currency = Currency.USD
     var calendar: Calendar = Calendar.GEORGIAN
     var rootFolderName: String = "meow_app"
 
@@ -116,9 +116,11 @@ class MeowController(
         }
     }
 
-    fun bindApp(app: Application) {
+    fun bindApp(app: MeowApp) {
         controller = this
         controller.app = app
+        language = app.getLanguage(app)
+        theme = app.getTheme(app)
         dpi = app.resources.displayMetrics.density
 
         MeowContextWrapper.wrap(app, "en")
@@ -134,5 +136,10 @@ class MeowController(
         GEORGIAN, JALALI
     }
 
+    enum class Currency(val default: String) {
+        USD("$0.00"),
+        RIAL("0"),
+        TOMAN("0")
+    }
 
 }
