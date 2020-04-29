@@ -240,131 +240,217 @@ Just do same as [styles_text_appearances.xml](https://github.com/oneHamidreza/Me
 ></style>
 >```
   
-## Retrofit + OKHttp + Coroutine + Moshi  
-Meow Framework provides for you to call Server Api from Android App with `Retrofit`. Creating client connections will be with `OKHttp` and `Moshi` help us to serialize json responses. We replaced `RxJava` with `Coroutine` for multi thread handling.  
+## 📶 REST API : Retrofit + OKHttp + Coroutine + Moshi
+
+Meow Framework provides for you to call Server REST API actions from Android App with `Retrofit`. Creating client connections will be with `OKHttp` and `Moshi` help us to serialize json responses. We replaced `RxJava` with `Coroutine` to multi thread handling.
   
-###  Create Api extends `MeowApi`  
-```kotlin  
-class AppApi(  
- var app: App, baseUrl : String = "http://api-url.any/api/v1/"): MeowApi(baseUrl)  
+### Create Api that extends `MeowApi`
+
+```kotlin
+class AppApi(
+    var app: App,
+    baseUrl : String = "http://api-url.any/api/v1/"
+): MeowApi(baseUrl)  
 ```  
-### Sample Index  
-For Example, server give this JSON response when call `persons` with get method :   
-```json  
-[  
- {  "id":1,  
-  "username":"oneHamidreza",  
-  "alias":"Hamidreza Etebarian"  
- }, {  "id":2,  
-  "username":"samhd82",  
-  "alias":"Ali Modares"  
- }]  
-```  
-#### Data Model  
-Create  data class for JSON response that use Moshi `@Json` annotation.  
-```kotlin  
-data class Person(  
- @Json(name = "id") var id: Int = 0, @Json(name = "username") var username: String? = null, @Json(name = "alias") var alias: String? = null){  
- // RecyclerView List Adapter requires DiffCallBack. class DiffCallback : DiffUtil.ItemCallback<CatBreed>() {        override fun areItemsTheSame(oldItem: Person, newItem: Person) = oldItem.id == newItem.id  
- // override fun areContentsTheSame(oldItem: Person, newItem: Person) = oldItem == newItem  
- }}  
-```  
-#### Retrofit API Interface  
-Define an interface containing Rest API actions. Meow Framework uses `Coroutine` Library for calling Rest API actions, so you must write `suspend` prefix for functions.  
-```kotlin  
-interface PersonApi {  
- @GET("persons") suspend fun getPersonIndex(): List<Person>}  
-```  
-#### Call API action from ViewModel Use `safeCallApi` function for calling API actions. Update your ViewModel class like this :    
-```kotlin  
-class PersonIndexViewModel(app:App) : MeowViewModel(app) {  
- // Define LiveData variables var eventLiveData = MutableLiveData<MeowEvent<*>>()    var listLiveData = MutableLiveData<List<Person>>()  
- var customLiveData = MutableLiveData<String>()  
- fun callApi() { safeCallApi( liveData = eventLiveData,           apiAction = { AppApi(app).createServiceByAdapter<PersonApi>().getPersonIndex() }  
-   ) { _, it ->  
-          // If connection was Success, this line will be run.  
- // Otherwise MeowEvent.Api.Error will be posted into eventLiveData // You can observe it manually or use MeowFlow             listLiveData.postValue(it)  
- // }  
- }}  
-```  
-#### XML Layout  
-Create `activity_sample_index.xml` containing `RecyclerView` for showing items.  
-```xml  
-<layout xmlns:android="http://schemas.android.com/apk/res/android">    
-    <data>  
-       <variable  
- name="viewModel"            type="PersonIndexViewModel" />  
- <!-- Remember that viewModel type must be with package -->    </data>      
-    <FrameLayout    
- android:layout_width="match_parent"    
- android:layout_height="match_parent">    
+
+### API FLows/Patterns
+
+We'll show you how to call a request to server and get response from it. Then Data has been shown in UI by parsing Data.
+Some of actions that is related to REST API can be have a pattern/flow. We define this patterns as :
+
+- `Index` : Response with simple request from server can be parsed as List of Data Model.
+- `Detail` : Response with simple request from server can be parsed as a Data Model.
+- `Form` : Response with advanced request (send a form) from server can be parsed as a Data Model.
+
+### Sample `Index` Api
+
+For example, server give this JSON response when call `/api/v1/persons` with GET method :
+
+```json
+[
+  {
+    "id":1,
+    "username":"oneHamidreza",
+    "alias":"Hamidreza Etebarian"
+  },
   
-     <androidx.recyclerview.widget.RecyclerView  
-  android:id="@+id/recyclerView"  
-         style="@style/Meow.RecyclerView.Linear"  
-                meow_items="@{viewModel.listLiveData}" />    
-  
-     <meow.widget.MeowProgressBar  
-  android:id="@+id/progressbar"  
-         style="@style/Meow.ProgressBar.Medium.Primary" />  
- </FrameLayout> </layout>  
+  {
+    "id":2,
+    "username":"samdh82",
+    "alias":"Ali Modares"
+  }
+]
+
+```
+
+#### Data Model
+
+Create a data class for JSON response that use Moshi `@Json` annotation.
+
+```kotlin
+data class Person(
+    @Json(name = "id") var id: Int = 0,
+    @Json(name = "username") var username: String? = null,
+    @Json(name = "alias") var alias: String? = null) {
+    
+    // RecyclerView List Adapter requires DiffCallBack.
+    class DiffCallback : DiffUtil.ItemCallback<CatBreed>() {
+        override fun areItemsTheSame(oldItem: Person, newItem: Person) = oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: Person, newItem: Person) = oldItem == newItem
+    }
+}
 ```  
-#### MeowActivty/MeowFragment + MeowFlow  
-Use `MeowFlow` for handling events from ViewModel.  
+
+#### Retrofit API Interface
+
+Define an interface containing Rest API actions. Meow Framework uses `Coroutine` library to calling Rest API actions, so you must write `suspend` prefix for functions.
+
+```kotlin
+interface PersonApi {
+    @GET("persons") // Don't need to write absolute path. OKHTTP appends this string at end of baseUrl.
+    suspend fun getPersonIndex(): List<Person>
+}
+```
+
+#### Call API action from ViewModel Use `safeCallApi()`. Update your ViewModel class like this :
+
 ```kotlin  
-class SampleIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){  
- //... override fun initViewModel() {        binding.viewModel = viewModel  
- // callApiAndObserve()    
-    }  
+class PersonIndexViewModel(app:App) : MeowViewModel(app) {
+    // Define LiveData variables.
+    var eventLiveData = MutableLiveData<MeowEvent<*>>()
+    var listLiveData = MutableLiveData<List<Person>>()
+    var customLiveData = MutableLiveData<String>()
+    
+    fun callApi() {
+        safeCallApi(
+            liveData = eventLiveData,   
+            apiAction = { AppApi(app).createServiceByAdapter<PersonApi>().getPersonIndex() }
+        ) { _, it ->
+            // If connection was Success, this line will be run.
+            // Otherwise MeowEvent.Api.Error will be posted into eventLiveData.
+            
+            // You can observe it manually or use MeowFlow.
+            listLiveData.postValue(it)
+        }
+    }
+}
+```
+
+#### XML Layout
+
+Create `activity_sample_index.xml` that hast `RecyclerView` to showing items.
+
+```xml
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data> 
+        <variable
+            name="viewModel"
+            type="PersonIndexViewModel" />
+    <!-- Remember that viewModel type must be with package -->
+    </data>
+    
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            style="@style/Meow.RecyclerView.Linear"
+            meow_items="@{viewModel.listLiveData}" />
+            
+        <meow.widget.MeowProgressBar
+            android:id="@+id/progressbar"
+            style="@style/Meow.ProgressBar.Medium.Primary" />
      
-    private fun callApiAndObserve() {  
-       MeowFlow.GetDataApi<Person>(this) {  
-              viewModel.callApi()  
- }.apply {            errorHandlerType = MeowFlow.ErrorHandlerType.TOAST     
-        progressBarInterface = binding.progressbar      
-           }.observeForIndex(viewModel.eventLiveData, viewModel.listLiveData)
-               // Optional - call safeObserve function for observe changes of liveData safely.  
- viewModel.customLiveData.safeObserve(this) { // Access the value of liveData with it paramater        }  
- }}  
-```  
-`MeowFlow` is a helper class that observe `eventLiveData` and it handles errors from API automatically. You can set error handling with `errorHandlerType`. Supported types : `TOAST` , `SNACKBAR` , `EMPTY_STATE` . For example, when `errorHandlerType` is `Toast` errors has been shown in toast form. See [strings_error.xml](/meow/src/main/res/values/strings_error.xml) to edit error messages.  
+    </FrameLayout>
+</layout>
+```
+
+#### MeowActivity/MeowFragment + MeowFlow
+
+Use `MeowFlow` to handle events from ViewModel automatically.
+
+```kotlin
+class SampleIndexActivity : MeowActivity<ActivitySampleIndexBinding>() {
+    //...
+    override fun initViewModel() {
+        binding.viewModel = viewModel
+        callApiAndObserve()    
+    }
+    
+    private fun callApiAndObserve() {
+        MeowFlow.GetDataApi<Person>(this) { // You must define type of API response.
+            viewModel.callApi()
+        }.apply {
+            errorHandlerType = MeowFlow.ErrorHandlerType.TOAST
+            progressBarInterface = binding.progressbar
+        }.observeForIndex(viewModel.eventLiveData, viewModel.listLiveData)
+        
+        // Optional - call safeObserve function for observe changes of liveData safely.
+        viewModel.customLiveData.safeObserve(this) {
+            // Access the value of liveData with it parameter.
+        }
+    }
+}
+```
+
+`MeowFlow` is a helper class that observes `eventLiveData` and it handles errors from API automatically. You can set error handling with `errorHandlerType`. Supported types : `TOAST` , `SNACKBAR` , `EMPTY_STATE`.
+ For example, when `errorHandlerType` is `Toast` errors has been shown in toast form. See [strings_error.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Framework/src/main/res/values/strings_error.xml) to edit error messages.
   
-#### Show API response into `RecyclerView`  
-`item_person.xml` describe the layout of each row of list and you can set properties with `DataBinding` structure. Define layout like this :  
-```xml  
-<layout>  
- <data> <variable            name="model"  
-        type="Person" />  
- </data> <LinearLayout> <TextView  android:text="@{model.alias}" />  
- </LinearLayout></layout>  
-```  
-  
-We suggest you to use `MeowAdapter`. Let's take a look at this sample :   
-```kotlin  
-class PersonAdapter : MeowAdapter<Model, ViewHolder>(Person.DiffCallback()) {   
- override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {        val binding = ItemPersonBinding.inflate(LayoutInflater.from(parent.context), parent, false)  
-    return MeowViewHolder(binding.root) { position, model ->  
-           binding.let {  
-                      it.setVariable(BR.model, model)  
-                                 it.executePendingBindings()  
-                                        }  
-                                           }  
- }}  
-```  
-And finally bind adapter to `RecyclerView`.   
-```kotlin  
-class PersonIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){  
- override fun onCreate(savedInstanceState: Bundle?) { //... binding.recyclerView.adapter = PersonAdapter()    }  
+#### Show API response into `RecyclerView`
+
+`item_person.xml` describes the layout of each row of list and you can set properties with `DataBinding` structure. Define layout like this :
+
+```xml
+<layout>
+    <data>
+        <variable
+            name="model"
+            type="Person" />           
+    </data> 
+
+    <LinearLayout>
+        <TextView  android:text="@{model.alias}" />
+    </LinearLayout>
+</layout>  
+```
+
+We suggest you to use `MeowAdapter`. Let's take a look at this sample :
+
+```kotlin
+class PersonAdapter : MeowAdapter<Model, ViewHolder>(Person.DiffCallback()) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = ItemPersonBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MeowViewHolder(binding.root) { position, model ->
+            binding.let {
+                it.setVariable(BR.model, model)
+                it.executePendingBindings()
+            }
+        }
+    }
 }  
-```  
-Now you have one activity that connect to **REST API** and parse the response (if the response code is HttpCode.OK (200)) and it show items into a `RecyclerView` as a list.  
-Above sample can be used for other types of REST API actions (such as `Detail` ,`Form` ). for more details see [API Package](/Sample/src/main/kotlin/sample/ui/api) in `Sample` module.     
-  
-## Material Components  
-  
-### Alerts  
-You can show Alert Dialog with `alert()` function in `MeowActivity/MeowFragment`  
+```
+
+finally bind adapter to `RecyclerView`.
+
 ```kotlin  
+class PersonIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){
+    override fun onCreate(savedInstanceState: Bundle?) {
+        //...
+        binding.recyclerView.adapter = PersonAdapter()
+    }
+}
+```  
+Now you have a activity that connect to **REST API** and parse the response (if the response code is HttpCode.OK (200)) and it shows items into a `RecyclerView` as a list.
+Above sample can be used for other types of REST API patterns/flows (such as `Detail` ,`Form`). for more details see [API Package](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/api) in `Sample` module.
+
+## 🎨 Material Components
+
+### Alerts  
+
+You can show Alert Dialog with `alert()` function in `MeowActivity/MeowFragment`
+
+```kotlin
 alert()    
     .setTitle(R.string.alert_title)    
     .setMessage(R.string.alert_message)    
