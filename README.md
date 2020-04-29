@@ -195,7 +195,7 @@ Now you have an Activity with MVVM architecture. In above sample, you can replac
 
 Update App Theme in `styles.xml` with `DayNight` Material Theme. More details are at [Official Material Design Site](https://material.io/develop/android/docs/getting-started/).
 
-```xml  
+```xml
 <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
     <!-- Original AppCompat attributes. -->   <!-- Define colors in colors.xml -->
     <item name="colorPrimary">YOUR_PRIMARY_COLOR</item>
