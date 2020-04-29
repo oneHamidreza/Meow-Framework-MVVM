@@ -107,6 +107,16 @@
                         android:hint="@string/select"
                         app:meow_validateType="empty" />
 
+                    <meow.widget.MeowPinView
+                        android:id="@+id/pv"
+                        style="@style/Meow.PinView.Filled"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="8dp"
+                        app:meow_hint="@string/enter_code"
+                        app:meow_icon="@drawable/ic_dialpad" />
+
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/bt"
                         style="@style/Widget.MaterialComponents.Button"

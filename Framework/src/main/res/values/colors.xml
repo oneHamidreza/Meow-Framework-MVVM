@@ -24,4 +24,6 @@
     <color name="badge_backgroud">#B71C1C</color>
     <color name="on_badge_backgroud">#fff</color>
 
+    <color name="pin_box">#1b000000</color>
+
 </resources>

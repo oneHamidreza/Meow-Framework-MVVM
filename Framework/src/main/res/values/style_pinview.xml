@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Meow.PinView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="meow_textAppearance">?textAppearanceBody1</item>
+        <item name="meow_textColor">@color/text_on_background_high</item>
+        <item name="meow_hintColor">@color/text_on_background_high</item>
+        <item name="meow_iconColor">?colorPrimary</item>
+    </style>
+
+    <style name="Meow.PinView.Filled">
+        <item name="meow_boxStyle">filled</item>
+    </style>
+
+    <style name="Meow.PinView.Outlined">
+        <item name="meow_boxStyle">outlined</item>
+    </style>
+
+</resources>

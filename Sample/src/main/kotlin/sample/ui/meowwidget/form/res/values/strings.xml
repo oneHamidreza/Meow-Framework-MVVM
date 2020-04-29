@@ -27,4 +27,7 @@
     <string name="description4">Description 4</string>
 
     <string name="limit_error">Text is longer than allowed limit</string>
+
+    <string name="enter_code">Please Enter Code</string>
+    <string name="error_sample">Sample Error</string>
 </resources>

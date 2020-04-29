@@ -89,6 +89,9 @@ class FormFragment : BaseFragment<FragmentFormBinding>() {
             toastL(id.toString())
         }
 
+        binding.pv.error = getString(R.string.error_sample)
+
+
     }
 
     override fun initViewModel() {

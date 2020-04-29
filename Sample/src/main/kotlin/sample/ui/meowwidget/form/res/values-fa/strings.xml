@@ -29,4 +29,8 @@
 
     <string name="limit_error">بیش از حد مجاز</string>
 
+    <string name="enter_code">لطفا کد را وارد نمایید</string>
+    <string name="error_sample">خطای تست</string>
+
+
 </resources>

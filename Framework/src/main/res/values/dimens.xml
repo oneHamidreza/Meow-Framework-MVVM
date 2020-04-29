@@ -7,4 +7,6 @@
 
     <dimen name="text_field_text_size">14sp</dimen>
 
+    <dimen name="pin_box_radius">8dp</dimen>
+
 </resources>

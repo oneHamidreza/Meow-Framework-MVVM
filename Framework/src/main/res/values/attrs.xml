@@ -220,4 +220,22 @@
         <attr format="float" name="meow_stepSize" />
     </declare-styleable>
 
+    <declare-styleable name="MeowPinView">
+
+        <attr name="meow_hint" format="string" />
+        <attr name="meow_count" format="integer" />
+        <attr name="meow_icon" format="reference" />
+        <attr name="meow_iconColor" format="color" />
+        <attr name="meow_textColor" format="color" />
+        <attr name="meow_hintColor" format="color" />
+        <attr name="meow_showBack" format="boolean" />
+        <attr name="meow_textAppearance" format="reference" />
+        <attr name="meow_hintTextAppearance" format="reference" />
+        <attr name="meow_errorTextAppearance" format="reference" />
+        <attr name="meow_boxStyle" format="enum">
+            <enum name="outlined" value="0" />
+            <enum name="filled" value="1" />
+        </attr>
+    </declare-styleable>
+
 </resources>
