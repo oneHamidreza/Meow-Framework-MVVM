@@ -282,7 +282,6 @@ For example, server give this JSON response when call `/api/v1/persons` with GET
     "alias":"Ali Modares"
   }
 ]
-
 ```
 
 #### Data Model
