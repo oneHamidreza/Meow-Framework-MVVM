@@ -483,6 +483,7 @@ A Dialog with `MeowLoadingView` for showing progress bar with text into Dialog.
 ```kotlin  
 loadingAlert(R.string.loading_title_custom).show()  
 ```
+
 Learn more about it at [AlertsFragment.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/alert/AlertsFragment.kt).
 
 ### Button
