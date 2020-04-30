@@ -255,10 +255,10 @@ class AppApi(
 ): MeowApi(baseUrl)  
 ```  
 
-### API FLows/Patterns
+### Common API Flow/Patterns
 
 We'll show you how to call a request to server and get response from it. Then Data has been shown in UI by parsing Data.
-Some of actions that is related to REST API can be have a pattern/flow. We define this patterns as :
+Some of actions that is related to REST API can be have a flow/pattern. We define this patterns as :
 
 - `Index` : Response with simple request from server can be parsed as List of Data Model.
 - `Detail` : Response with simple request from server can be parsed as a Data Model.
@@ -452,8 +452,7 @@ Above sample can be used for other types of REST API patterns/flows (such as `De
 You can show Alert Dialog with `alert()` function in `MeowActivity/MeowFragment`.
 
 ```kotlin
-fun testAlert(){
-
+fun testAlert() {
     alert()
         .setTitle(R.string.alert_title)
         .setMessage(R.string.alert_message) 
