@@ -479,7 +479,35 @@ loadingAlert(R.string.loading_title_custom).show()
 Learn more about it at [AlertsFragment.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/alert/AlertsFragment.kt).
 
 ### Button
-// Todo complete this.
+
+There are some customized styles related to `Material Button`.
+
+|Style|Usage|
+|---|:---:|
+|`Meow.Button`|Regular Button with `primary` background color|
+|`Meow.Button.Outlined`|Outlined Button with `transparent` background color and `stroke_color.xml` outline color|
+|`Meow.Button.Flat`|Flat Button with `transparent` background color|
+|`Meow.Button.Unelevated`|Regular Button with `primary` background color with `0dp` elevation|
+|`Meow.Button.IconOnly`|A Meow Button that shows icon only |
+|`Meow.Button.IconOnly`|A Meow Button that shows icon only |
+
+Use it like this in XML Layout :
+
+```xml
+<LinearLayout>
+    <Button
+        style="@style/Meow.Button"
+        android:text="SomeRegularButton" />
+    <Button
+        style="@style/Meow.Button"
+        android:textColor="?colorOnSecondaryVariant"
+        android:text="SomeCustomizedButton"
+        app:backgroundTint="?colorSecondaryVariant" />
+</LinearLayout>
+```
+
+Learn more about it at [Material Card Component](https://material.io/components/android/catalog/cards/) and [fragment_cards.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/cards/res/layout/fragment_cards.xml).
+
 
 ### CardView
 
