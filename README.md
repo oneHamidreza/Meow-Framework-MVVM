@@ -444,7 +444,7 @@ class PersonIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){
 }
 ```  
 Now you have a activity that connect to **REST API** and parse the response (if the response code is HttpCode.OK (200)) and it shows items into a `RecyclerView` as a list.
-Above sample can be used for other types of REST API patterns/flows (such as `Detail` ,`Form`). for more details see [API Package](https://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/api) in `Sample` module.
+Above sample can be used for other types of REST API patterns/flows (such as `Detail` ,`Form`). for more details see [API Package](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/api) in `Sample` module.
 
 ## 🎨 Material Components
 
@@ -478,7 +478,7 @@ A Dialog with `MeowLoadingView` for showing progress bar with text into Dialog.
 ```kotlin  
 loadingAlert(R.string.loading_title_custom).show()  
 ```
-Learn more about it at [AlertsFragment.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/alert/AlertsFragment.kt).
+Learn more about it at [AlertsFragment.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/alert/AlertsFragment.kt).
 
 ### Button
 // Todo complete this.
@@ -502,7 +502,7 @@ Use it like this in XML Layout :
     </com.google.android.material.card.MaterialCardView>
 ```
 
-Learn more about it at [Material Card Component](https://material.io/components/android/catalog/cards/) and [fragment_cards.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/cards/res/layout/fragment_cards.xml).
+Learn more about it at [Material Card Component](https://material.io/components/android/catalog/cards/) and [fragment_cards.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/cards/res/layout/fragment_cards.xml).
 
 ### Checkbox
 
@@ -524,7 +524,7 @@ Use it like this in XML Layout :
     android:text="@string/checkbox_text" />  
 ```
 
-Learn more about it at [Material Checkbox Component](https://material.io/develop/android/components/checkbox/) and [fragment_checkboxes.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/checkboxes/res/layout/fragment_checkboxes.xml).
+Learn more about it at [Material Checkbox Component](https://material.io/develop/android/components/checkbox/) and [fragment_checkboxes.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/checkboxes/res/layout/fragment_checkboxes.xml).
 
 ### Floating Action Button
 
@@ -548,7 +548,7 @@ Use it like this in XML Layout :
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 ```
 
-Learn more about it at [Material Floating Action Button Component](https://material.io/develop/android/components/floating-action-button/) and [fragment_fab_simple.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/fab/simple/res/layout/fragment_fab_simple.xml).
+Learn more about it at [Material Floating Action Button Component](https://material.io/develop/android/components/floating-action-button/) and [fragment_fab_simple.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/fab/simple/res/layout/fragment_fab_simple.xml).
   
 ### Extended Floating Action Button
 
@@ -564,7 +564,7 @@ Use it like this in XML Layout :
     app:layout_anchorGravity="bottom|center_horizontal" />
 ```
 
-Learn more about it at [Material Extended Floating Action Button Component](https://material.io/develop/android/components/extended-floating-action-button/) and [fragment_fab_simple.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/fab/extended/res/layout/fragment_fab_extended.xml).
+Learn more about it at [Material Extended Floating Action Button Component](https://material.io/develop/android/components/extended-floating-action-button/) and [fragment_fab_simple.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/fab/extended/res/layout/fragment_fab_extended.xml).
 
 ### Radio Group  
 
@@ -605,7 +605,7 @@ Use it like this in XML Layout :
 </RadioGroup>
 ```
 
-Learn more about it at [Material Radio Button Component](https://material.io/develop/android/components/radiobutton/) and [fragment_radio_buttons.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/radiobuttons/res/layout/fragment_radio_buttons.xml).
+Learn more about it at [Material Radio Button Component](https://material.io/develop/android/components/radiobutton/) and [fragment_radio_buttons.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/radiobuttons/res/layout/fragment_radio_buttons.xml).
   
 ### Snack Bars
 
@@ -633,7 +633,7 @@ fun testSnackbars(){
     }    
 }
 ```  
-Learn more about it at [SnackBarsFragment](https://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/snackbars/SnackBarsFragment.kt).
+Learn more about it at [SnackBarsFragment](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/snackbars/SnackBarsFragment.kt).
   
 ### Switch
 
@@ -655,7 +655,7 @@ Use it like this in XML Layout :
     android:text="@string/switch_text" />
 ```
 
-Learn more about it at [Material Switch Component](https://material.io/develop/android/components/switch/) and [fragment_switches.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/switches/res/layout/fragment_switches.xml).
+Learn more about it at [Material Switch Component](https://material.io/develop/android/components/switch/) and [fragment_switches.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/switches/res/layout/fragment_switches.xml).
   
 ### TabLayout + ViewPager2  
 
@@ -740,7 +740,7 @@ Use it like this in XML Layout :
     android:textColor="@color/text_on_background_high" />
 ```
 
-Learn more about it at [fragment_textviews.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/textviews/res/layout/fragment_textviews.xml).
+Learn more about it at [fragment_textviews.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/textviews/res/layout/fragment_textviews.xml).
 
 Colors for texts based on Material Colors contain `EMPHASIS_HIGH` , `EMPHASIS_MEDIUM` , `DISABLED`.
 
