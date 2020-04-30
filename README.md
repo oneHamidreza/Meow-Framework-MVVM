@@ -199,7 +199,6 @@ We have developed some Kotlin Extensions that can be help us in building Android
 - [🍞 Toast Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Toast.md)
 - [✅ Validate Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Validate.md)
 
-  
 ### Ⓜ Material Design
 
 Update App Theme in `styles.xml` with `DayNight` Material Theme. More details are at [Official Material Design Site](https://material.io/develop/android/docs/getting-started/).
