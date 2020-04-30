@@ -16,27 +16,13 @@ After adding library, some of most useful libraries (such as `Androidx AppCompat
 
 List of dependencies can be found in [meow.AppConfig.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/buildSrc/src/main/java/meow/AppConfig.kt) in `Dependencies` Object.
 
-> Enable androidx in `gradle.properties`.
+Check out [build.gradle.kts] to avoid any issues related to Setup and Adding Framework.
+
+> > Enable androidx in `gradle.properties`.
 >
 > ```properties
 >android.useAndroidX=true
 >android.enableJetifier=true
->```
->Update `build.gradle` like below :
->```groovy
->android {
->   defaultConfig {
->       multiDexEnabled true
->       vectorDrawables.useSupportLibrary true
->   }
->   compileOptions {
->       sourceCompatibility JavaVersion.VERSION_1_8
->       targetCompatibility JavaVersion.VERSION_1_8 
->   }
->   dataBinding {
->       enabled true
->   }
->}
 >```
   
 ## 💡 Getting Started
@@ -191,6 +177,28 @@ class MainActivity : MeowActivity<ActivityMainBinding>() {
 ```
 
 Now you have an Activity with MVVM architecture. In above sample, you can replace `MeowActivity` with `MeowFragment` to have MVVM Fragment.
+
+### 🧩 Meow KTX (Kotlin Extensions)
+
+We have developed some Kotlin Extensions that can be help us in building Android App. Just use `meow.ktx` package which include the following:
+
+- [🧩 Android Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Android.md)
+- [💵 Currency Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Currency.md)
+- [📅 Date Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Date.md)
+- [📂 File Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_File.md)
+- [📇 JSON Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Json.md)
+- [💉 Kodein Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Kodein.md)
+- [💎 Kotlin Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Kotlin.md)
+- [📃 Log Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Log.md)
+- [📶 Network Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Network.md)
+- [🚦 Permission Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Permission.md)
+- [📬 Shared Preferences Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Shared_Preferences.md)
+- [🍟 Snackbar Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Snackbar.md)
+- [🧬 String Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_String.md)
+- [🚂 System Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_System.md)
+- [🍞 Toast Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Toast.md)
+- [✅ Validate Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Validate.md)
+
   
 ### Ⓜ Material Design
 
