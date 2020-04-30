@@ -444,7 +444,7 @@ class PersonIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){
 }
 ```  
 Now you have a activity that connect to **REST API** and parse the response (if the response code is HttpCode.OK (200)) and it shows items into a `RecyclerView` as a list.
-Above sample can be used for other types of REST API patterns/flows (such as `Detail` ,`Form`). for more details see [API Package](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/api) in `Sample` module.
+Above sample can be used for other types of REST API patterns/flows (such as `Detail` ,`Form`). for more details see [API Package](https://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/api) in `Sample` module.
 
 ## 🎨 Material Components
 
@@ -478,7 +478,7 @@ A Dialog with `MeowLoadingView` for showing progress bar with text into Dialog.
 ```kotlin  
 loadingAlert(R.string.loading_title_custom).show()  
 ```
-Learn more about it at [AlertsFragment.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/alert/AlertsFragment.kt)
+Learn more about it at [AlertsFragment.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/alert/AlertsFragment.kt).
 
 ### Button
 // Todo complete this.
@@ -493,245 +493,324 @@ There are some customized styles related to `Material CardView`.
 |`Meow.CardView.Outlined`|Outlined Card with `surface` background color and `stroke_color.xml` outline color|
 
 Use it like this in XML Layout :
-```xml  
-<com.google.android.material.card.MaterialCardView  
- style="@style/Meow.CardView" app:contentPadding="16dp" >  
- <!-- Place your views here --></com.google.android.material.card.MaterialCardView>  
-``` Learn more about it at [Material Card Component](https://material.io/components/android/catalog/cards/) and [fragment_cards.xml](/Sample/src/main/kotlin/sample/ui/material/cards/res/layout/fragment_cards.xml).  
+
+```xml
+<com.google.android.material.card.MaterialCardView
+    style="@style/Meow.CardView"
+    app:contentPadding="16dp" >
+        <!-- Place your views here -->
+    </com.google.android.material.card.MaterialCardView>
+```
+
+Learn more about it at [Material Card Component](https://material.io/components/android/catalog/cards/) and [fragment_cards.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/cards/res/layout/fragment_cards.xml).
+
+### Checkbox
+
+There are some customized styles related to `Material CheckBox`.
+
+|Style|Usage|
+|---|:---:|
+|`Meow.Checkbox`|Checkbox with `accent_color` button tint|
+|`Meow.Checkbox.Primary`|Checkbox with `primary` button tint|
+|`Meow.Checkbox.Secondary`|Checkbox with `secondary` button tint|
+|`Meow.Checkbox.OnPrimary`|Checkbox with `onPrimary` button tint & `textColor`|
+|`Meow.Checkbox.OnSecondary`|Checkbox with `onSecondary` button tint & `textColor`|
   
-### Checkbox  
-There are some customized styles related to `Material CheckBox`.   
-|Style|Usage
-|---|---|
-|`Meow.Checkbox`|Checkbox with `accent_color` button tint   
-|`Meow.Checkbox.Primary`|Checkbox with `primary` button tint  
-|`Meow.Checkbox.Secondary`|Checkbox with `secondary` button tint  
-|`Meow.Checkbox.OnPrimary`|Checkbox with `onPrimary` button tint & `textColor`  
-|`Meow.Checkbox.OnSecondary`|Checkbox with `onSecondary` button tint & `textColor` 
-  
-Use it like this in XML Layout :  
-```xml <com.google.android.material.checkbox.MaterialCheckBox    
-    style="@style/Meow.Checkbox"    
+Use it like this in XML Layout :
+
+```xml
+<com.google.android.material.checkbox.MaterialCheckBox
+    style="@style/Meow.Checkbox"
     android:text="@string/checkbox_text" />  
-``` Learn more about it at [Material Checkbox Component](https://material.io/develop/android/components/checkbox/) and [fragment_checkboxes.xml](/Sample/src/main/kotlin/sample/ui/material/checkboxes/res/layout/fragment_checkboxes.xml).  
-  
-### Floating Action Button  
-Use it like this in XML Layout :  
-```xml <androidx.coordinatorlayout.widget.CoordinatorLayout    
-    android:layout_width="match_parent"    
-    android:layout_height="wrap_content">    
+```
+
+Learn more about it at [Material Checkbox Component](https://material.io/develop/android/components/checkbox/) and [fragment_checkboxes.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/checkboxes/res/layout/fragment_checkboxes.xml).
+
+### Floating Action Button
+
+Use it like this in XML Layout :
+```xml
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
     
-    <androidx.recyclerview.widget.RecyclerView  
- android:id="@+id/recyclerView"        style="@style/Meow.RecyclerView.Linear"  
-    app:meow_items="@{viewModel.listLiveData}" />    
-    
-    <com.google.android.material.floatingactionbutton.FloatingActionButton  
- style="@style/Meow.FloatingActionButton"      android:onClick="@{viewModel::onClickedFab}"  
- app:icon="@drawable/ic_add"        app:layout_anchor="@id/recyclerView"  
-    app:layout_anchorGravity="bottom|center_horizontal" />    
- </androidx.coordinatorlayout.widget.CoordinatorLayout>  
-``` Learn more about it at [Material Floating Action Button Component](https://material.io/develop/android/components/floating-action-button/) and [fragment_fab_simple.xml](/Sample/src/main/kotlin/sample/ui/material/fab/simple/res/layout/fragment_fab_simple.xml).  
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        style="@style/Meow.RecyclerView.Linear"
+        app:meow_items="@{viewModel.listLiveData}" />
+        
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        style="@style/Meow.FloatingActionButton"
+        android:onClick="@{viewModel::onClickedFab}"
+        app:icon="@drawable/ic_add"
+        app:layout_anchor="@id/recyclerView"
+        app:layout_anchorGravity="bottom|center_horizontal" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+```
+
+Learn more about it at [Material Floating Action Button Component](https://material.io/develop/android/components/floating-action-button/) and [fragment_fab_simple.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/fab/simple/res/layout/fragment_fab_simple.xml).
   
-### Extended Floating Action Button  
-A FAB that supports `android:text` property.  
-Use it like this in XML Layout :  
-```xml  
-<com.google.android.material.floatingactionbutton.FloatingActionButton  
- style="@style/Meow.FloatingActionButton" android:onClick="@{viewModel::onClickedFab}"  
-  app:icon="@drawable/ic_add"    
- app:layout_anchor="@id/recyclerView"    
- app:layout_anchorGravity="bottom|center_horizontal" /> ``` Learn more about it at [Material Extended Floating Action Button Component](https://material.io/develop/android/components/extended-floating-action-button/) and [fragment_fab_simple.xml](/Sample/src/main/kotlin/sample/ui/material/fab/extended/res/layout/fragment_fab_extended.xml).  
-  
+### Extended Floating Action Button
+
+A FAB that supports `android:text` property.
+Use it like this in XML Layout :
+
+```xml
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    style="@style/Meow.FloatingActionButton"
+    android:onClick="@{viewModel::onClickedFab}"
+    app:icon="@drawable/ic_add"
+    app:layout_anchor="@id/recyclerView"
+    app:layout_anchorGravity="bottom|center_horizontal" />
+```
+
+Learn more about it at [Material Extended Floating Action Button Component](https://material.io/develop/android/components/extended-floating-action-button/) and [fragment_fab_simple.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/fab/extended/res/layout/fragment_fab_extended.xml).
+
 ### Radio Group  
-There are some customized styles related to `Material Radio Group`.   
-|Style|Usage  
-|----------|:-------------:|  
-|`Meow.RadioGroup.Horizontal`|RadioGroup with Horizontal Radio Buttons  
-|`Meow.RadioGroup.Vertical`|RadioGroup with Vertical Radio Buttons  
+
+There are some customized styles related to `Material Radio Group`.
+
+|Style|Usage|
+|---|:---:|
+|`Meow.RadioGroup.Horizontal`|RadioGroup with Horizontal Radio Buttons|
+|`Meow.RadioGroup.Vertical`|RadioGroup with Vertical Radio Buttons|
   
+### Radio Button
+
+There are some customized styles related to `Material Radio Button`.
+
+|Style|Usage|
+|---|:---:|
+|`Meow.RadioButton.Vertical`|Vertical RadioButton with `accent_color` button tint|
+|`Meow.RadioButton.Horizontal`|Horizontal RadioButton with `accent_color` button tint|
+|`Meow.RadioButton.Vertical.Primary`|Vertical RadioButton with `primary` button tint|
+|`Meow.RadioButton.Horizontal.Primary`|Horizontal RadioButton with `primary` button tint|
+|`Meow.RadioButton.Vertical.Secondary`|Vertical RadioButton with `secondary` button tint|
+|`Meow.RadioButton.Horizontal.Secondary`|Horizontal RadioButton with `secondary` button tint|
+|`Meow.RadioButton.Vertical.OnPrimary`|Vertical RadioButton with `onPrimary` button tint & `textColor`|
+|`Meow.RadioButton.Horizontal.OnPrimary`|Horizontal RadioButton with `onPrimary` button tint & `textColor`|
+|`Meow.RadioButton.Vertical.OnSecondary`|Vertical RadioButton with `onSecondary` button tint & `textColor`|
+|`Meow.RadioButton.Horizontal.OnSecondary`|Horizontal RadioButton with `onSecondary` button tint & `textColor`|
+
+Use it like this in XML Layout :
+```xml
+<RadioGroup style="@style/Meow.RadioGroup.Vertical">
+    <com.google.android.material.radiobutton.MaterialRadioButton
+        style="@style/Meow.RadioButton.Vertical.Primary"
+        android:text="@string/radio_buttons_option_a" />
+             
+    <com.google.android.material.radiobutton.MaterialRadioButton
+        style="@style/Meow.RadioButton.Vertical.Primary"
+        android:text="@string/radio_buttons_option_b" />
+</RadioGroup>
+```
+
+Learn more about it at [Material Radio Button Component](https://material.io/develop/android/components/radiobutton/) and [fragment_radio_buttons.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/radiobuttons/res/layout/fragment_radio_buttons.xml).
   
-### Radio Button  
-There are some customized styles related to `Material Radio Button`.   
-|Style|Usage  
-|----------|:-------------:|  
-|`Meow.RadioButton.Vertical`|Vertical RadioButton with `accent_color` button tint  
-|`Meow.RadioButton.Horizontal`|Horizontal RadioButton with `accent_color` button tint  
-|`Meow.RadioButton.Vertical.Primary`|Vertical RadioButton with `primary` button tint   
-|`Meow.RadioButton.Horizontal.Primary`|Horizontal RadioButton with `primary` button tint   
-|`Meow.RadioButton.Vertical.Secondary`|Vertical RadioButton with `secondary` button tint   
-|`Meow.RadioButton.Horizontal.Secondary`|Horizontal RadioButton with `secondary` button tint   
-|`Meow.RadioButton.Vertical.OnPrimary`|Vertical RadioButton with `onPrimary` button tint & `textColor`  
-|`Meow.RadioButton.Horizontal.OnPrimary`|Horizontal RadioButton with `onPrimary` button tint & `textColor`  
-|`Meow.RadioButton.Vertical.OnSecondary`|Vertical RadioButton with `onSecondary` button tint & `textColor`  
-|`Meow.RadioButton.Horizontal.OnSecondary`|Horizontal RadioButton with `onSecondary` button tint & `textColor`  
-  
-Use it like this in XML Layout :  
-```xml <RadioGroup style="@style/Meow.RadioGroup.Vertical">   
- <com.google.android.material.radiobutton.MaterialRadioButton        style="@style/Meow.RadioButton.Vertical.Primary"  
-    android:text="@string/radio_buttons_option_a" />  
-         
-    <com.google.android.material.radiobutton.MaterialRadioButton 
-       style="@style/Meow.RadioButton.Vertical.Primary"  
-          android:text="@string/radio_buttons_option_b" />    
- </RadioGroup>  
-``` Learn more about it at [Material Radio Button Component](https://material.io/develop/android/components/radiobutton/) and [fragment_radio_buttons.xml](/Sample/src/main/kotlin/sample/ui/material/radiobuttons/res/layout/fragment_radio_buttons.xml).  
-  
-### Snack Bars  
-You can show Snack Bars with `snackL()` or `snackS()` function in `MeowActivity/MeowFragment`  
-```kotlin  
-// Shows Snack Bars with LENGTH_SHORT  
-snackS(R.string.snackbars_message)  
-// Shows Snack Bars with LENGTH_LONG  
-snackL(R.string.snackbars_message)  
-// Shows Snack Bars with LENGTH_INDEFINITE  
-snackI(R.string.snackbars_message)  
-  
-// Shows Snack Bars with LENGTH_LONG with action button  
-snackL(    
-    message = R.string.snackbars_message,    
-    resActionText = R.string.snackbars_action,
-    // Optional if you want to set custom textApperance to message and action, set this attributes.  
- messageTextAppearanceId = R.style.textAppearance_Snack_Message,actionTextAppearanceId = R.style.textAppearance_Snack_Action ) {  
- // Callback for action button click }  
-  
+### Snack Bars
+
+You can show Snack Bars with `snackL()` or `snackS()` functions in `MeowActivity/MeowFragment`.
+
+```kotlin
+fun testSnackbars(){
+    // Shows Snack Bars with LENGTH_SHORT.  
+    snackS(R.string.snackbars_message)
+    // Shows Snack Bars with LENGTH_LONG.
+    snackL(R.string.snackbars_message)
+    // Shows Snack Bars with LENGTH_INDEFINITE.
+    snackI(R.string.snackbars_message)
+      
+    // Shows Snack Bars with LENGTH_LONG with action button.
+    snackL(    
+        message = R.string.snackbars_message,    
+        resActionText = R.string.snackbars_action,
+        
+        // Optional - if you want to set custom textAppearances to message and action, set this attributes.
+        messageTextAppearanceId = R.style.textAppearance_Snack_Message,
+        actionTextAppearanceId = R.style.textAppearance_Snack_Action
+    ) {
+        // Callback for action button click
+    }    
+}
 ```  
-Learn more about it at [SnackBarsFragment](/Sample/src/main/kotlin/sample/ui/material/snackbars/SnackBarsFragment.kt).  
+Learn more about it at [SnackBarsFragment](https://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/snackbars/SnackBarsFragment.kt).
   
-### Switch  
-There are some customized styles related to `Material Switch`.   
-|Style|Usage  
-|----------|:-------------:|  
-|`Meow.Switch`|Switch with `accent_color` button tint   
-|`Meow.Switch.Primary`|Switch with `primary` button tint  
-|`Meow.Switch.Secondary`|Switch with `secondary` button tint  
-|`Meow.Switch.OnPrimary`|Switch with `onPrimary` button tint & `textColor`  
-|`Meow.Switch.OnSecondary`|Switch with `onSecondary` button tint & `textColor`  
+### Switch
+
+There are some customized styles related to `Material Switch`.
+
+|Style|Usage|
+|---|:---:|
+|`Meow.Switch`|Switch with `accent_color` button tint|
+|`Meow.Switch.Primary`|Switch with `primary` button tint|
+|`Meow.Switch.Secondary`|Switch with `secondary` button tint|
+|`Meow.Switch.OnPrimary`|Switch with `onPrimary` button tint & `textColor`|
+|`Meow.Switch.OnSecondary`|Switch with `onSecondary` button tint & `textColor`|
   
-Use it like this in XML Layout :  
-```xml <com.google.android.material.switchmaterial.SwitchMaterial    
-    style="@style/Meow.Switch"    
-    android:text="@string/switch_text" />  
-```  
-Learn more about it at [Material Switch Component](https://material.io/develop/android/components/switch/) and [fragment_switches.xml](/Sample/src/main/kotlin/sample/ui/material/switches/res/layout/fragment_switches.xml).  
+Use it like this in XML Layout :
+
+```xml
+<com.google.android.material.switchmaterial.SwitchMaterial
+    style="@style/Meow.Switch"
+    android:text="@string/switch_text" />
+```
+
+Learn more about it at [Material Switch Component](https://material.io/develop/android/components/switch/) and [fragment_switches.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/switches/res/layout/fragment_switches.xml).
   
 ### TabLayout + ViewPager2  
-If you want to show contents into a ViewPager, we recommend use `ViewPager2`.  `TabLayout` is the indicator of ViewPager state.   
-#### 1. Define XML layout like this :  
-```xml  
-<layout>  
- <data /> <LinearLayout android:layout_width="match_parent"    
- android:layout_height="match_parent"    
- android:orientation="vertical">    
-  
-     <com.google.android.material.tabs.TabLayout    
- android:id="@+id/tabLayout"  
-        style="@style/Meow.TabLayout.Surface" />    
-  
-     <androidx.viewpager2.widget.ViewPager2  
-  android:id="@+id/viewpager"  
-         style="@style/Meow.ViewPager" />    
+
+If you want to show contents into a ViewPager, we recommend to use `ViewPager2`. `TabLayout` is the indicator of ViewPager state. Follow below steps to have a View with Swipe Gesture.
+
+#### 1. Define XML layout like this :
+
+```xml
+<layout>
+    <data />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            style="@style/Meow.TabLayout.Surface" />
+            
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpager"
+            style="@style/Meow.ViewPager" />    
     
     </LinearLayout>  
 </layout>  
-```   
-#### 2. Create Custom Pager Adapter extends `MeowPagerAdapter`  
-```kotlin  
-class MyPagerAdapter(    
-    fragmentManager: FragmentManager,    
-lifecycle: Lifecycle ) : MeowPagerAdapter(fragmentManager, lifecycle) {  
- 
-    // Replace this with the array of Fragments that you want to show into ViewPager   
-    private val fragmentArray = Array<Fragment>(3) { ChildFragment.newInstance(it) }  
- override fun getFragments() = fragmentArray }  
+```
+
+#### 2. Create Custom Pager Adapter extends `MeowPagerAdapter`
+
+```kotlin
+class MyPagerAdapter(
+    fragmentManager: FragmentManager,
+    lifecycle: Lifecycle) : MeowPagerAdapter(fragmentManager, lifecycle) {
+        // Replace this with the array of Fragments that you want to show into ViewPager.
+        private val fragmentArray = Array<Fragment>(3) { ChildFragment.newInstance(it) }
+        override fun getFragments() = fragmentArray
+}
 ```  
   
-#### 3. Bind Adapter to `ViewPager2` & Attach `TabLayout` to `ViewPager2` ```kotlin  
-fun onCreate(savedInstanceState: Bundle?){  
- // ... binding.apply { binding.viewPager.adapter = MyPagerAdapter(childFragmentManager, lifecycle)        TabLayoutMediator(tabLayout, viewpager) { tab, position ->  
-        tab.text = "Tab Title #" + (position + 1)  
-           }.attach()
+#### 3. Bind Adapter to `ViewPager2` & Attach `TabLayout` to `ViewPager2`
+
+```kotlin
+fun onCreate(savedInstanceState: Bundle?) {
+    // ...
+    binding.apply {
+        binding.viewPager.adapter = MyPagerAdapter(childFragmentManager, lifecycle)
+        TabLayoutMediator(tabLayout, viewpager) { tab, position ->
+            tab.text = "Tab Title #" + (position + 1)
+        }.attach()
+        
+        // Optional - If you want to show Material Badge on TabLayout.
+        tabLayout.getTabAt(0)?.orCreateBadge?.apply {
+            isVisible = true
+            number = 10
+        }
+    }
+}  
+```
+
+Now you have `ViewPager2` + `TabLayout` in an Activity/Fragment.
+
+There are some customized styles related to `Material TabLayout`.
+
+|Style|Usage|
+|---|:---:|
+|`Meow.TabLayout.Surface`|TabLayout with `surface` background color|
+|`Meow.TabLayout.Primary`|TabLayout with `primary` background color|
+|`Meow.TabLayout.Secondary`|TabLayout with `primary` background color|
+|`Meow.TabLayout.PrimarySurface`|TabLayout with `primary` background color in DAY mode and `surface` background color in NIGHT Mode|
+
+Learn more about it at [Material TabLayout Component](https://material.io/develop/android/components/tab-layout/).
   
- // Optional - If you want to show Material Badge on TabLayout tabLayout.getTabAt(0)?.orCreateBadge?.apply {            isVisible = true  
-        number = 10  
- } }}  
-``` Now you have a `ViewPager2` + `TabLayout` in a Activity/Fragment  
-    
-There are some customized styles related to `Material TabLayout`.   
-|Style|Usage  
-|----------|:-------------:|  
-|`Meow.TabLayout.Surface`|TabLayout with `surface` background color  
-|`Meow.TabLayout.Primary`|TabLayout with `primary` background color  
-|`Meow.TabLayout.Secondary`|TabLayout with `primary` background color  
-|`Meow.TabLayout.PrimarySurface`|TabLayout with `primary` background color in DAY mode and `surface` background color in NIGHT Mode  
-Learn more about it at [Material TabLayout Component](https://material.io/develop/android/components/tab-layout/)  
-  
-### TextView  
+### TextView
+
 Use it like this in XML Layout :  
-```xml <TextView    
-    style="@style/Meow.TextView"    
-    android:text="@string/some_text"    
-    android:textAppearance="?textAppearanceBody1"    
-    android:textColor="@color/text_on_background_high" />  
-```  
-Learn more about it at [fragment_textviews.xml](/Sample/src/main/kotlin/sample/ui/material/textviews/res/layout/fragment_textviews.xml).  
-  
-Colors for texts based on Material Colors contain `EMPHASIS_HIGH` , `EMPHASIS_MEDIUM` , `DISABLED`.   
-  
-|Color|Value  
-|----------|:-------------:|  
-|`@color/text_on_background_high`| `onBackground` color with %87 transparency  
-|`@color/text_on_background_medium`| `onBackground` color with %60 transparency  
-|`@color/text_on_background_disabled`| `onBackground` color with %38 transparency  
-|`@color/text_on_surface_high`| `onSurface` color with %87 transparency  
-|`@color/text_on_surface_medium`| `onSurface` color with %60 transparency  
-|`@color/text_on_surface_disabled`| `onSurface` color with %38 transparency  
-|`@color/text_on_primary_high`| `onPrimary` color with %87 transparency  
-|`@color/text_on_primary_medium`| `onPrimary` color with %60 transparency  
-|`@color/text_on_primary_disabled`| `onPrimary` color with %38 transparency  
-|`@color/text_on_secondary_high`| `onSecondary` color with %87 transparency  
-|`@color/text_on_secondary_medium`| `onSecondary` color with %60 transparency  
-|`@color/text_on_secondary_disabled`| `onSecondary` color with %38 transparency  
-  
-  
+
+```xml
+<TextView
+    style="@style/Meow.TextView"
+    android:text="@string/some_text"
+    android:textAppearance="?textAppearanceBody1"
+    android:textColor="@color/text_on_background_high" />
+```
+
+Learn more about it at [fragment_textviews.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/master/Sample/src/main/kotlin/sample/ui/material/textviews/res/layout/fragment_textviews.xml).
+
+Colors for texts based on Material Colors contain `EMPHASIS_HIGH` , `EMPHASIS_MEDIUM` , `DISABLED`.
+
+|Color|Value|
+|---|:---:|
+|`@color/text_on_background_high`| `onBackground` color with %87 transparency|
+|`@color/text_on_background_medium`| `onBackground` color with %60 transparency|
+|`@color/text_on_background_disabled`| `onBackground` color with %38 transparency|
+|`@color/text_on_surface_high`| `onSurface` color with %87 transparency|
+|`@color/text_on_surface_medium`| `onSurface` color with %60 transparency|
+|`@color/text_on_surface_disabled`| `onSurface` color with %38 transparency|
+|`@color/text_on_primary_high`| `onPrimary` color with %87 transparency|
+|`@color/text_on_primary_medium`| `onPrimary` color with %60 transparency|
+|`@color/text_on_primary_disabled`| `onPrimary` color with %38 transparency|
+|`@color/text_on_secondary_high`| `onSecondary` color with %87 transparency|
+|`@color/text_on_secondary_medium`| `onSecondary` color with %60 transparency|
+|`@color/text_on_secondary_disabled`| `onSecondary` color with %38 transparency|
+
 ### Top App Bar using `Material Toolbar`  
-Use it like this in XML Layout :  
-```xml  
-<layout>    
-    <data/>    
-    <androidx.coordinatorlayout.widget.CoordinatorLayout  
-  android:layout_width="match_parent"    
- android:layout_height="match_parent"    
- android:fitsSystemWindows="true">    
-  
-     <com.google.android.material.appbar.AppBarLayout  
-  android:layout_width="match_parent"    
- android:layout_height="wrap_content"    
- app:liftOnScroll="true">    
-  
-         <com.google.android.material.appbar.MaterialToolbar  
-  android:id="@+id/toolbar"  
-             style="@style/Meow.Toolbar.Surface" />    
-  
-     </com.google.android.material.appbar.AppBarLayout>  
+
+Use it like this in XML Layout :
+
+```xml
+<layout>
+    <data/>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true" >    
+
+         <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:liftOnScroll="true" >
+            
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                style="@style/Meow.Toolbar.Surface" />
+            
+          </com.google.android.material.appbar.AppBarLayout>  
       
-    <!-- Main Layout -->  
+    <!-- Main Layout -->
+    
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>  
+```
+
+There are some customized styles related to `Material Toolbar`.
+
+|Style|Usage|
+|---|:---:|
+|`Meow.Toolbar.Surface`|Toolbar with `surface` background color|
+|`Meow.Toolbar.PrimarySurface`|Toolbar with `primary` background color in DAY mode and `surface` background color in NIGHT Mode|
+|`Meow.Toolbar.Primary`|Toolbar with `primary` background color|
+|`Meow.Toolbar.Secondary`|Toolbar with `secondary` background color|
   
- </androidx.coordinatorlayout.widget.CoordinatorLayout> </layout>  
-```  
-  There are some customized styles related to `Material Toolbar`.   
-|Style|Usage  
-|----------|:-------------:|  
-|`Meow.Toolbar.Surface`|Toolbar with `surface` background color  
-|`Meow.Toolbar.PrimarySurface`|Toolbar with `primary` background color in DAY mode and `surface` background color in NIGHT Mode  
-|`Meow.Toolbar.Primary`|Toolbar with `primary` background color  
-|`Meow.Toolbar.Secondary`|Toolbar with `secondary` background color  
-  
-Learn more about it at [Material Top App Bars Component](https://material.io/develop/android/components/top-app-bars/)  
+Learn more about it at [Material Top App Bars Component](https://material.io/develop/android/components/top-app-bars/).
   
 License  
 --------  
-  
- Copyright 2020 Hamidreza Etebarian  
- Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at  
- http://www.apache.org/licenses/LICENSE-2.0  
- Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+Copyright 2020 Hamidreza Etebarian
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
