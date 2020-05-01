@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="16dp">
 
             <TextView
                 style="@style/Meow.TextView"
@@ -45,12 +45,9 @@
                 android:textAppearance="?textAppearanceCaption"
                 android:textColor="@color/on_background_high" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/divider_on_background" />
+            <meow.widget.MeowDivider
+                style="@style/Meow.Divider.Horizontal"
+                android:layout_margin="16dp" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -79,12 +76,9 @@
                 android:textAppearance="?textAppearanceOverline"
                 android:textColor="@color/on_background_high" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/divider_on_background" />
+            <meow.widget.MeowDivider
+                style="@style/Meow.Divider.Horizontal"
+                android:layout_margin="16dp" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -113,12 +107,9 @@
                 android:textAppearance="?textAppearanceBody2"
                 android:textColor="@color/on_background_high" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/divider_on_background" />
+            <meow.widget.MeowDivider
+                style="@style/Meow.Divider.Horizontal"
+                android:layout_margin="16dp" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -147,12 +138,9 @@
                 android:textAppearance="?textAppearanceBody1"
                 android:textColor="@color/on_background_high" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/divider_on_background" />
+            <meow.widget.MeowDivider
+                style="@style/Meow.Divider.Horizontal"
+                android:layout_margin="16dp" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -181,12 +169,9 @@
                 android:textAppearance="?textAppearanceSubtitle2"
                 android:textColor="@color/on_background_high" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/divider_on_background" />
+            <meow.widget.MeowDivider
+                style="@style/Meow.Divider.Horizontal"
+                android:layout_margin="16dp" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -215,12 +200,9 @@
                 android:textAppearance="?textAppearanceSubtitle1"
                 android:textColor="@color/on_background_high" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/divider_on_background" />
+            <meow.widget.MeowDivider
+                style="@style/Meow.Divider.Horizontal"
+                android:layout_margin="16dp" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -249,12 +231,9 @@
                 android:textAppearance="?textAppearanceHeadline6"
                 android:textColor="@color/on_background_high" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/divider_on_background" />
+            <meow.widget.MeowDivider
+                style="@style/Meow.Divider.Horizontal"
+                android:layout_margin="16dp" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -283,12 +262,9 @@
                 android:textAppearance="?textAppearanceHeadline5"
                 android:textColor="@color/on_background_high" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/divider_on_background" />
+            <meow.widget.MeowDivider
+                style="@style/Meow.Divider.Horizontal"
+                android:layout_margin="16dp" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -317,12 +293,9 @@
                 android:textAppearance="?textAppearanceHeadline4"
                 android:textColor="@color/on_background_high" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/divider_on_background" />
+            <meow.widget.MeowDivider
+                style="@style/Meow.Divider.Horizontal"
+                android:layout_margin="16dp" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -351,12 +324,9 @@
                 android:textAppearance="?textAppearanceHeadline3"
                 android:textColor="@color/on_background_high" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/divider_on_background" />
+            <meow.widget.MeowDivider
+                style="@style/Meow.Divider.Horizontal"
+                android:layout_margin="16dp" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -385,12 +355,9 @@
                 android:textAppearance="?textAppearanceHeadline2"
                 android:textColor="@color/on_background_high" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/divider_on_background" />
+            <meow.widget.MeowDivider
+                style="@style/Meow.Divider.Horizontal"
+                android:layout_margin="16dp" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -419,12 +386,9 @@
                 android:textAppearance="?textAppearanceHeadline1"
                 android:textColor="@color/on_background_high" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/divider_on_background" />
+            <meow.widget.MeowDivider
+                style="@style/Meow.Divider.Horizontal"
+                android:layout_margin="16dp" />
 
         </LinearLayout>
 

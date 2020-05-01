@@ -1,5 +1,5 @@
 <resources>
-    <string name="fragment_textviews">(TextView) متن</string>
+    <string name="fragment_textviews">متن‌ها (Text Views)</string>
     <string name="textviews_headline1">تیتر 1</string>
     <string name="textviews_headline2">تیتر 2</string>
     <string name="textviews_headline3">تیتر 3</string>

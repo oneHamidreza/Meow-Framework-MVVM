@@ -70,7 +70,7 @@ object AppConfig {//todo find way for show sources
         const val MATERIAL = "1.2.0-alpha05"
         const val LIFECYCLE = "2.2.0"
         const val EXIF_INTERFACE = "1.1.0"
-        const val OKHTTP = "3.12.0" // Don't update.
+        const val OKHTTP = "3.12.0" // Don't update. //todo not working on 4.4 @Ali Help.
         const val RETROFIT = "2.7.2"
         const val MOSHI = "1.9.2"
         const val KODEIN = "6.5.2"
