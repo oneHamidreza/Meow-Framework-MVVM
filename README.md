@@ -4,12 +4,12 @@ A Framework that simplify developing MVVM architecture and Material Design in An
 
 ![](https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_github.png)
 
-[ ![Download](https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.6.5-alpha) ](https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.6.5-alpha/link)
+[ ![Download](https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.6.6-alpha) ](https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.6.6-alpha/link)
   
 ## 🛠 Setup
 
 ```groovy
-implementation("com.etebarian:meow-framework-mvvm:0.6.5-alpha")
+implementation("com.etebarian:meow-framework-mvvm:0.6.6-alpha")
 ```
 
 After adding library, some of most useful libraries (such as `Androidx AppCompat` , `Coroutine` , `Glide` , `Kodein` , `Kotlinx Serialization` , `Material Components` , `Moshi` , `Navigation Components` , `Retrofit` ) will be added in your app. So you don't need to add this libraries manually.  
@@ -33,7 +33,7 @@ We assume that you know MVVM architecture, but if you have some problems in unde
 
 ### 📱 Sample Application
 
-We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.6.5-alpha/Meow-Framework-Sample-v.0.6.5-alpha.apk) to be familiar with `Meow Framework`.
+We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.6.6-alpha/Meow-Framework-Sample-v0.6.6-alpha.apk) to be familiar with `Meow Framework`.
 
 ### 🎮 Initialization
 
