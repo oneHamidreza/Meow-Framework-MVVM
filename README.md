@@ -16,14 +16,16 @@ After adding library, some of most useful libraries (such as `Androidx AppCompat
 
 List of dependencies can be found in [meow.AppConfig.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/buildSrc/src/main/java/meow/AppConfig.kt) in `Dependencies` Object.
 
-Check out [build.gradle.kts] to avoid any issues related to Setup and Adding Framework.
+Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Framework/build.gradle.kts) in Sample module to avoid any issues related for setup & adding Framework.
 
-> > Enable androidx in `gradle.properties`.
+> Enable androidx in `gradle.properties`.
 >
 > ```properties
 >android.useAndroidX=true
 >android.enableJetifier=true
 >```
+>
+> Remember that you'll need to enable Java 8 & DataBinding in your app module `build.gradle`.
   
 ## 💡 Getting Started
 
@@ -88,6 +90,9 @@ class App : MeowApp() {
         bindMeow { // Import it from meow package.
             it.isDebugMode = BuildConfig.DEBUG
             // Set other properties here.
+            it.onException = {
+                // Log to Fabric or any other Crash Management System. Just use `avoidException` instead of `try{}catch{}`
+            }
         } 
     }
 }
@@ -180,7 +185,7 @@ Now you have an Activity with MVVM architecture. In above sample, you can replac
 
 ### 🧩 Meow KTX (Kotlin Extensions)
 
-We have developed some Kotlin Extensions that can be help us in building Android App. Just use `meow.ktx` package which include the following:
+We have developed some Kotlin Extensions that can be help us in building Android Apps. Just import `meow.ktx` package which include the following :
 
 - [🧩 Android Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Android.md)
 - [💵 Currency Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Currency.md)

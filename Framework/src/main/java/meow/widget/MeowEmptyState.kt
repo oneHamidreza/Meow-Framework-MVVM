@@ -139,6 +139,7 @@ class MeowEmptyState @JvmOverloads constructor(
             icon = icon
             iconSize = iconSize
         }
+        hide()
     }
 
     override fun getActionButton() = binding.bt

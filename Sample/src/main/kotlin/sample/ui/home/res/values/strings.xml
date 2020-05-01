@@ -2,7 +2,7 @@
     <string name="fragment_home">Home</string>
     <string-array name="home_tab_titles">
         <item>ReadMe</item>
-        <item>API</item>
+        <item>API Samples</item>
         <item>Material</item>
         <item>KTX : Utils/Extensions</item>
         <item>Widget</item>

@@ -45,6 +45,7 @@ class MeowProgressBar @JvmOverloads constructor(
             progressTintList = progressTintList
             indeterminateTintList = indeterminateTintList
         }
+        hide()
     }
 
     override fun show() {

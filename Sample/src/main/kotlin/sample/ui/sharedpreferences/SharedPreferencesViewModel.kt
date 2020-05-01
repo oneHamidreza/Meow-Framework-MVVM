@@ -67,6 +67,7 @@ class SharedPreferencesViewModel(
         userStateLiveData.postValue(ofPair(State.PUT, user))
     }
 
+
     fun onClickedGet(@Suppress("UNUSED_PARAMETER") view: View) {
         userStateLiveData.postValue(ofPair(State.GET, app.dataSource.fetchUser()))
     }

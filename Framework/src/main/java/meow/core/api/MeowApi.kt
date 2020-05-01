@@ -22,10 +22,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import meow.MeowApp
 import meow.controller
-import meow.ktx.avoidException
-import meow.ktx.hasNetwork
-import meow.ktx.javaClass
-import meow.ktx.logD
+import meow.ktx.*
 import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -77,13 +74,19 @@ abstract class MeowApi(
         options: Options
     ): InterceptorBlock =
         {
-            if (app.hasNetwork())
-                it.header("Cache-Control", "no-cache")
-            else if (options.isEnabledCache)
-                it.header(
-                    "Cache-Control",
-                    "public, only-if-cached, max-stale=$options.maxStateSecond"
-                )
+            val cachePair = ofPair(
+                "Cache-Control",
+                "public, only-if-cached, max-stale=${options.cacheMaxStaleSecond}"
+            )
+
+            if (options.isEnabledForceCache)
+                it.header(cachePair.first, cachePair.second)
+            else {
+                if (app.hasNetwork())
+                    it.header("Cache-Control", "no-cache")
+                else if (options.isEnabledCache)
+                    it.header(cachePair.first, cachePair.second)
+            }
         }
 
     open fun createDefaultService() = Retrofit.Builder()
@@ -199,6 +202,7 @@ abstract class MeowApi(
 
     class Options(
         var isEnabledCache: Boolean = false,
+        var isEnabledForceCache: Boolean = false,
         var cacheDir: File? = null,
         var cacheMaxStaleSecond: Long = 30 * 60L
     )
@@ -206,6 +210,7 @@ abstract class MeowApi(
 }
 
 fun MeowApi.enableCache() = apply { options.isEnabledCache = true }
+fun MeowApi.enableForceCache() = apply { options.isEnabledForceCache = true }
 fun MeowApi.changeCacheInDay(day: Int) = apply { options.cacheMaxStaleSecond = day * 24 * 60 * 60L }
 fun MeowApi.changeCacheInHour(hour: Int) = apply { options.cacheMaxStaleSecond = hour * 60 * 60L }
 fun MeowApi.changeCacheInMinutes(minute: Int) = apply { options.cacheMaxStaleSecond = minute * 60L }

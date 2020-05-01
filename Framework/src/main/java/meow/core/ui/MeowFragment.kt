@@ -58,13 +58,18 @@ abstract class MeowFragment<B : ViewDataBinding> : Fragment(),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
+        if (!::binding.isInitialized)
+            binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        super.onCreate(savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         initViewModel()
     }
 

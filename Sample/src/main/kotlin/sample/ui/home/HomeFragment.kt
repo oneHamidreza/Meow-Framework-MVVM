@@ -40,6 +40,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         binding.viewModel = viewModel
         binding.apply {
             viewpager.offscreenPageLimit = 5
+            viewpager.isSaveEnabled =
+                false // for this bug : java.lang.IllegalStateException: Fragment no longer exists for key
             viewpager.adapter = HomePagerAdapter(childFragmentManager, lifecycle)
             TabLayoutMediator(tabLayout, viewpager) { tab, position ->
                 tab.text = getStringArrayCompat(R.array.home_tab_titles)[position]

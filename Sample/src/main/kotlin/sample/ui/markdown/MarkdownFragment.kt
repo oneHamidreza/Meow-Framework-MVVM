@@ -37,48 +37,33 @@ class MarkdownFragment : BaseFragment<FragmentMarkdownBinding>() {
 
     private val navArgs: MarkdownFragmentArgs by navArgs()
 
-    private var cachedModel: String? = null
-
     private val viewModel: MarkdownViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_markdown
 
     override fun initViewModel() {
-        binding.viewModel = viewModel
+        if (binding.viewModel == null) {
+            binding.viewModel = viewModel
+            callApiAndObserve()
+        }
+
+        viewModel.modelLiveData.safeObserve(this) {
+            binding.tv.setMarkdownData(it)
+        }
+
         if (navArgs.title != null)
             activity().supportActionBar?.title = navArgs.title
-        if (cachedModel == null)
-            callApiAndObserve(true) //todo improve avoid call twice
-        else {
-            callApiAndObserve(false)
-            viewModel.modelLiveData.postValue(cachedModel)
-        }
+
     }
 
-    private fun callApiAndObserve(allowCallApi: Boolean) {
+    private fun callApiAndObserve() {
         MeowFlow.GetDataApi<String>(this) {
             viewModel.callApi(navArgs.fileName)
         }.apply {
-            allowCallAction = allowCallApi
             errorHandlerType = MeowFlow.ErrorHandlerType.EMPTY_STATE
             progressBarInterface = binding.progressbar
             swipeRefreshLayout = binding.srl
             emptyStateInterface = binding.emptyState
         }.observeForDetail(viewModel.eventLiveData)
-
-        viewModel.modelLiveData.safeObserve(this) {//todo call twice after pop-up
-            binding.tv.setMarkdownData(it)
-            cachedModel = it
-        }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        cachedModel = null
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        cachedModel = null
     }
 
 }
