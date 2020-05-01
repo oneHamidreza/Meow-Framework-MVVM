@@ -4,8 +4,14 @@ A Framework that simplify developing MVVM architecture and Material Design in An
 
 ![](https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_github.png)
 
-[ ![Download](https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.6.6-alpha) ](https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.6.6-alpha/link)
-  
+[![Download](https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.6.6-alpha)](https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.6.6-alpha/link)
+
+
+## 📱 Sample Application
+
+We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.6.6-alpha/Meow-Framework-Sample-v0.6.6-alpha.apk) to be familiar with `Meow Framework`.
+
+
 ## 🛠 Setup
 
 ```groovy
@@ -16,7 +22,7 @@ After adding library, some of most useful libraries (such as `Androidx AppCompat
 
 List of dependencies can be found in [meow.AppConfig.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/buildSrc/src/main/java/meow/AppConfig.kt) in `Dependencies` Object.
 
-Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Framework/build.gradle.kts) in Sample module to avoid any issues related for setup & adding Framework.
+Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Framework/build.gradle.kts) in Sample module to avoid any issues related to setup & adding Framework.
 
 > Enable androidx in `gradle.properties`.
 >
@@ -30,10 +36,6 @@ Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM
 ## 💡 Getting Started
 
 We assume that you know MVVM architecture, but if you have some problems in understanding its, this [Articles](https://proandroiddev.com/tagged/mvvm) can help you.
-
-### 📱 Sample Application
-
-We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.6.6-alpha/Meow-Framework-Sample-v0.6.6-alpha.apk) to be familiar with `Meow Framework`.
 
 ### 🎮 Initialization
 
