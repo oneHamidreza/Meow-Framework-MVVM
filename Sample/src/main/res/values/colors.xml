@@ -12,8 +12,8 @@
     <color name="on_secondary">#ffffff</color>
     <color name="status_bar">@color/meow_surface</color>
 
-    <color name="drawer_item_enabled">?colorPrimary</color>
-    <color name="drawer_item_disabled">@color/on_surface_medium</color>
+    <color name="navigation_view_item_checked">?colorPrimary</color>
+    <color name="navigation_view_item_unchecked">@color/on_surface_medium</color>
 
     <color name="ic_launcher_background">#011A1E</color>
 

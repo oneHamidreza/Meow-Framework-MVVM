@@ -21,25 +21,25 @@
         <meow.widget.MeowDashView
             android:id="@+id/dashView"
             style="@style/Meow.Dash.Horizontal.Secondary"
-            app:dash_gap="4dp" />
+            app:meow_dash_gap="4dp" />
 
         <meow.widget.MeowDashView
             style="@style/Meow.Dash.Horizontal.PrimaryVariant"
-            app:dash_gap="4dp"
-            app:dash_length="8dp"
-            app:dash_thickness="2dp" />
+            app:meow_dash_gap="4dp"
+            app:meow_dash_length="8dp"
+            app:meow_dash_thickness="2dp" />
 
         <meow.widget.MeowDashView
             style="@style/Meow.Dash.Horizontal.SecondaryVariant"
-            app:dash_gap="8dp"
-            app:dash_length="12dp"
-            app:dash_thickness="4dp" />
+            app:meow_dash_gap="8dp"
+            app:meow_dash_length="12dp"
+            app:meow_dash_thickness="4dp" />
 
         <meow.widget.MeowDashView
             style="@style/Meow.Dash.Horizontal.OnSurface"
-            app:dash_gap="16dp"
-            app:dash_length="12dp"
-            app:dash_thickness="8dp" />
+            app:meow_dash_gap="16dp"
+            app:meow_dash_length="12dp"
+            app:meow_dash_thickness="8dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,25 +53,25 @@
 
             <meow.widget.MeowDashView
                 style="@style/Meow.Dash.Vertical.Secondary"
-                app:dash_gap="4dp" />
+                app:meow_dash_gap="4dp" />
 
             <meow.widget.MeowDashView
                 style="@style/Meow.Dash.Vertical.PrimaryVariant"
-                app:dash_gap="4dp"
-                app:dash_length="8dp"
-                app:dash_thickness="2dp" />
+                app:meow_dash_gap="4dp"
+                app:meow_dash_length="8dp"
+                app:meow_dash_thickness="2dp" />
 
             <meow.widget.MeowDashView
                 style="@style/Meow.Dash.Vertical.SecondaryVariant"
-                app:dash_gap="8dp"
-                app:dash_length="12dp"
-                app:dash_thickness="4dp" />
+                app:meow_dash_gap="8dp"
+                app:meow_dash_length="12dp"
+                app:meow_dash_thickness="4dp" />
 
             <meow.widget.MeowDashView
                 style="@style/Meow.Dash.Vertical.OnSurface"
-                app:dash_gap="16dp"
-                app:dash_length="12dp"
-                app:dash_thickness="8dp" />
+                app:meow_dash_gap="16dp"
+                app:meow_dash_length="12dp"
+                app:meow_dash_thickness="8dp" />
 
         </LinearLayout>
 

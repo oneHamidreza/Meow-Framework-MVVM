@@ -111,13 +111,14 @@
 
                 </com.google.android.material.button.MaterialButtonToggleGroup>
 
-                <CheckBox
-                    android:id="@+id/icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:button="@drawable/selector_favorite"
-                    app:buttonTint="?colorOnSurface" />
+                <!--                <com.google.android.material.checkbox.MaterialCheckBox-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginStart="24dp"-->
+                <!--                    android:button="@drawable/selector_favorite"-->
+                <!--                    android:visibility="gone"-->
+                <!--                    app:buttonTint="?colorOnSurface" />-->
+                <!-- todo @Ali 4.4 force close on android:button -->
 
                 <TextView
                     android:layout_width="match_parent"

@@ -20,6 +20,7 @@ import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
 import androidx.lifecycle.ViewModelProvider
+import androidx.multidex.MultiDex
 import com.akexorcist.localizationactivity.core.LocalizationApplicationDelegate
 import meow.core.arch.MeowViewModelFactory
 import org.kodein.di.Kodein
@@ -60,6 +61,8 @@ abstract class MeowApp : Application(), KodeinAware {
         localizationDelegate.setDefaultLanguage(newBase!!, Locale(language))
         val context = localizationDelegate.attachBaseContext(newBase)
         super.attachBaseContext(context)
+
+        MultiDex.install(this)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {

@@ -14,14 +14,14 @@
     <attr name="meow_errorEmail" format="string" />
 
     <declare-styleable name="MeowDashView">
-        <attr name="dash_orientation" format="enum">
+        <attr name="meow_dash_orientation" format="enum">
             <enum name="horizontal" value="0" />
             <enum name="vertical" value="1" />
         </attr>
-        <attr name="dash_gap" format="dimension" />
-        <attr name="dash_length" format="dimension" />
-        <attr name="dash_thickness" format="dimension" />
-        <attr name="dash_color" format="color" />
+        <attr name="meow_dash_gap" format="dimension" />
+        <attr name="meow_dash_length" format="dimension" />
+        <attr name="meow_dash_thickness" format="dimension" />
+        <attr name="meow_dash_color" format="color" />
     </declare-styleable>
 
     <declare-styleable name="MeowEmptyState">
@@ -235,6 +235,19 @@
         <attr name="meow_boxStyle" format="enum">
             <enum name="outlined" value="0" />
             <enum name="filled" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="MeowDivider">
+        <attr name="meow_divider_background_type" format="enum">
+            <enum name="background" value="0" />
+            <enum name="surface" value="1" />
+            <enum name="primary" value="2" />
+            <enum name="secondary" value="3" />
+        </attr>
+        <attr name="meow_divider_orientation" format="enum">
+            <enum name="vertical" value="0" />
+            <enum name="horizontal" value="1" />
         </attr>
     </declare-styleable>
 

@@ -161,7 +161,7 @@ abstract class MeowApi(
             return if (token.isLogin) {
                 logD(
                     TAG,
-                    "response code in authenticator : " + response.code + " , response count : " + response.responseCount()
+                    "response code in authenticator : " + response.code() + " , response count : " + response.responseCount()
                 )
                 if (response.responseCount() >= 2) {
                     logD(TAG, "response count is full")
@@ -180,7 +180,7 @@ abstract class MeowApi(
                             meowApi.onSaveOauth(newToken)
                             token
 
-                            response.request.newBuilder()
+                            response.request().newBuilder()
                                 .header("Authorization", token.apply { isLogin = true }.token)
                                 .build()
                         }
@@ -228,11 +228,11 @@ fun OkHttpClient.Builder.addInterceptorBlocks(interceptorBlocks: List<Intercepto
 }
 
 fun Response.responseCount(): Int {
-    var rs = priorResponse
+    var rs = priorResponse()
     var result = 1
     while (rs != null) {
         result++
-        rs = rs.priorResponse
+        rs = rs.priorResponse()
     }
     return result
 }

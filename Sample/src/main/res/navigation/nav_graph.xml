@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentHome">
+    app:startDestination="@id/fragmentDividers">
 
     <fragment
         android:id="@+id/fragmentHome"
@@ -85,6 +85,9 @@
         <action
             android:id="@+id/actionToDash"
             app:destination="@id/fragmentDash" />
+        <action
+            android:id="@+id/actionToDividers"
+            app:destination="@id/fragmentDividers" />
         <action
             android:id="@+id/actionToForm"
             app:destination="@id/fragmentForm" />
@@ -226,6 +229,11 @@
         android:name="sample.ui.meowwidget.dash.DashFragment"
         android:label="@string/fragment_dash"
         tools:layout="@layout/fragment_dash" />
+    <fragment
+        android:id="@+id/fragmentDividers"
+        android:name="sample.ui.meowwidget.dividers.DividersFragment"
+        android:label="@string/fragment_dividers"
+        tools:layout="@layout/fragment_dividers" />
     <fragment
         android:id="@+id/fragmentForm"
         android:name="sample.ui.meowwidget.form.FormFragment"

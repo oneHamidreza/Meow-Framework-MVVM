@@ -50,7 +50,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@color/divider_on_background" />
+                android:background="@drawable/divider_on_background" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -84,7 +84,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@color/divider_on_background" />
+                android:background="@drawable/divider_on_background" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -118,7 +118,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@color/divider_on_background" />
+                android:background="@drawable/divider_on_background" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -152,7 +152,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@color/divider_on_background" />
+                android:background="@drawable/divider_on_background" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -186,7 +186,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@color/divider_on_background" />
+                android:background="@drawable/divider_on_background" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -220,7 +220,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@color/divider_on_background" />
+                android:background="@drawable/divider_on_background" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -254,7 +254,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@color/divider_on_background" />
+                android:background="@drawable/divider_on_background" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -288,7 +288,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@color/divider_on_background" />
+                android:background="@drawable/divider_on_background" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -322,7 +322,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@color/divider_on_background" />
+                android:background="@drawable/divider_on_background" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -356,7 +356,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@color/divider_on_background" />
+                android:background="@drawable/divider_on_background" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -390,7 +390,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@color/divider_on_background" />
+                android:background="@drawable/divider_on_background" />
 
             <TextView
                 style="@style/Meow.TextView"
@@ -424,7 +424,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@color/divider_on_background" />
+                android:background="@drawable/divider_on_background" />
 
         </LinearLayout>
 

@@ -32,6 +32,7 @@ import meow.controller
 import meow.ktx.getColorCompat
 import meow.ktx.getDimensionToPx
 import meow.ktx.instanceViewModel
+import meow.ktx.sdkNeed
 import meow.widget.setElevationCompat
 import sample.R
 import sample.databinding.ActivityMainBinding
@@ -129,6 +130,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     context()
                 )
             )
+            sdkNeed(21) {
+                navigationView.setItemBackgroundResource(R.drawable.navigation_view_item_background)
+            }
+
             navigationView.setNavigationItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.actionToApiCatBreedIndex -> navController.navigate(HomeFragmentDirections.actionToApiCatBreedIndex())
@@ -155,7 +160,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     R.id.actionToMaterialTabLayout -> navController.navigate(HomeFragmentDirections.actionToMaterialTabLayout())
                     R.id.actionToMaterialTextviews -> navController.navigate(HomeFragmentDirections.actionToMaterialTextviews())
                     R.id.actionToMaterialTopAppBar -> startActivity<TopAppBarActivity>()
-
 
                     R.id.actionToExtensionsAndroid -> {
                         navController.navigate(

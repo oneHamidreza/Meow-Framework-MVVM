@@ -88,13 +88,13 @@ class MeowDashView @JvmOverloads constructor(
 
         setAttributesFromXml(attrs, R.styleable.MeowDashView) {
             orientation = Orientation.values()[it.getInt(
-                R.styleable.MeowDashView_dash_orientation,
+                R.styleable.MeowDashView_meow_dash_orientation,
                 orientation.ordinal
             )]
-            gap = it.getDimension(R.styleable.MeowDashView_dash_gap, gap)
-            length = it.getDimension(R.styleable.MeowDashView_dash_length, length)
-            thickness = it.getDimension(R.styleable.MeowDashView_dash_thickness, thickness)
-            dashColor = it.getColorCompat(R.styleable.MeowDashView_dash_color, dashColor)
+            gap = it.getDimension(R.styleable.MeowDashView_meow_dash_gap, gap)
+            length = it.getDimension(R.styleable.MeowDashView_meow_dash_length, length)
+            thickness = it.getDimension(R.styleable.MeowDashView_meow_dash_thickness, thickness)
+            dashColor = it.getColorCompat(R.styleable.MeowDashView_meow_dash_color, dashColor)
         }
     }
 

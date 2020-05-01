@@ -6,11 +6,9 @@ A Framework that simplify developing MVVM architecture and Material Design in An
 
 [![Download](https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.6.6-alpha)](https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.6.6-alpha/link)
 
-
 ## 📱 Sample Application
 
 We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.6.6-alpha/Meow-Framework-Sample-v0.6.6-alpha.apk) to be familiar with `Meow Framework`.
-
 
 ## 🛠 Setup
 
@@ -839,7 +837,10 @@ There are some customized styles related to `Material Toolbar`.
 |`Meow.Toolbar.Secondary`|Toolbar with `secondary` background color|
   
 Learn more about it at [Material Top App Bars Component](https://material.io/develop/android/components/top-app-bars/).
-  
+
+## 🌌 Meow Custom Widgets
+
+
 License  
 --------  
 Copyright 2020 Hamidreza Etebarian

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Meow.Divider" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Meow.Divider.Horizontal">
+        <item name="meow_divider_orientation">horizontal</item>
+    </style>
+
+    <style name="Meow.Divider.Vertical">
+        <item name="meow_divider_orientation">vertical</item>
+    </style>
+
+    <style name="Meow.Divider.Horizontal.OnSurface">
+        <item name="meow_divider_background_type">surface</item>
+    </style>
+
+    <style name="Meow.Divider.Horizontal.OnPrimary">
+        <item name="meow_divider_background_type">primary</item>
+    </style>
+
+    <style name="Meow.Divider.Horizontal.OnSecondary">
+        <item name="meow_divider_background_type">secondary</item>
+    </style>
+
+    <style name="Meow.Divider.Vertical.OnSurface">
+        <item name="meow_divider_background_type">surface</item>
+    </style>
+
+    <style name="Meow.Divider.Vertical.OnPrimary">
+        <item name="meow_divider_background_type">primary</item>
+    </style>
+
+    <style name="Meow.Divider.Vertical.OnSecondary">
+        <item name="meow_divider_background_type">secondary</item>
+    </style>
+
+</resources>

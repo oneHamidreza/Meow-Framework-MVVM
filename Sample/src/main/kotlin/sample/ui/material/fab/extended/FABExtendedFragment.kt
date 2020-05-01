@@ -21,6 +21,7 @@ import android.view.View
 import meow.ktx.dp
 import meow.ktx.instanceViewModel
 import meow.ktx.safeObserve
+import meow.ktx.snackL
 import meow.widget.addItemDecoration
 import meow.widget.decoration.MeowDividerDecoration
 import meow.widget.safePost
@@ -65,6 +66,7 @@ class FABExtendedFragment : BaseFragment<FragmentFabExtendedBinding>() {
             binding.recyclerView.safePost(50) {
                 scrollToPosition(0)
             }
+            snackL(R.string.fab_extended_warn_success)
         }
     }
 

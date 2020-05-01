@@ -9,8 +9,8 @@
         android:left="8dp"
         android:right="8dp">
         <shape android:shape="rectangle">
-            <solid android:color="@drawable/drawer_item_text" />
-            <corners android:radius="3dp" />
+            <solid android:color="@color/white" />
+            <corners android:radius="@dimen/cornerSizePrimary" />
         </shape>
     </item>
     <item
@@ -22,13 +22,13 @@
             <item android:state_checked="true">
                 <shape android:shape="rectangle">
                     <solid android:color="?colorControlHighlight" />
-                    <corners android:radius="3dp" />
+                    <corners android:radius="@dimen/cornerSizePrimary" />
                 </shape>
             </item>
             <item>
                 <shape android:shape="rectangle">
                     <solid android:color="@android:color/transparent" />
-                    <corners android:radius="3dp" />
+                    <corners android:radius="@dimen/cornerSizePrimary" />
                 </shape>
             </item>
         </selector>

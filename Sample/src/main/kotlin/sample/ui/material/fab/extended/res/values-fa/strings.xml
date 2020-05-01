@@ -1,4 +1,5 @@
 <resources>
     <string name="fragment_fab_extended">دکمه‌ی شناور (FAB Extended)</string>
     <string name="fab_extended_text">افزودن آیتم</string>
+    <string name="fab_extended_warn_success">آیتم با موفقیت اضافه شد.</string>
 </resources>

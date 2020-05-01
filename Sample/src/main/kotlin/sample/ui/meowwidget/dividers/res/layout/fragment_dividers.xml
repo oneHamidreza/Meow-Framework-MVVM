@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="sample.ui.meowwidget.dividers.DividersViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:meow_gap="@{16}">
+
+        <meow.widget.MeowDivider style="@style/Meow.Divider.Horizontal" />
+
+        <meow.widget.MeowDivider style="@style/Meow.Divider.Horizontal" />
+
+        <meow.widget.MeowDivider style="@style/Meow.Divider.Vertical" />
+
+    </LinearLayout>
+
+</layout>

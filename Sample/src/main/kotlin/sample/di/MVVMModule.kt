@@ -54,6 +54,7 @@ import sample.ui.material.textviews.TextViewsViewModel
 import sample.ui.material.topappbar.TopAppBarViewModel
 import sample.ui.menu.MenuViewModel
 import sample.ui.meowwidget.dash.DashViewModel
+import sample.ui.meowwidget.dividers.DividersViewModel
 import sample.ui.meowwidget.form.FormViewModel
 import sample.ui.meowwidget.progressbars.ProgressBarsViewModel
 import sample.ui.meowwidget.rateview.RateViewModel
@@ -212,9 +213,16 @@ val mvvmModule = Module("MVVM Module", false) {
         RateViewModel(kodein.direct.instance())
     }
 
+    // Meow Widget
+    bindAutoTag<DividersViewModel>() with provider {
+        DividersViewModel(kodein.direct.instance())
+    }
+
     bind() from singleton { CatBreed.Repository(instance()) }
 
     bind() from singleton { User.Repository(instance()) }
 
     bind() from singleton { GithubRepository(instance()) }
+
+
 }

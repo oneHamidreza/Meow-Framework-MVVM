@@ -62,6 +62,7 @@ object AppConfig {//todo find way for show sources
 
         const val KOTLIN = "1.3.72"
         const val KOTLINX_SERIALIZATION = "1.3.70"
+        const val MULTIDEX = "2.0.1"
         const val NAVIGATION = "2.3.0-alpha04"
         const val DOKKA = "0.10.1"
         const val COROUTINE = "1.3.5"
@@ -69,7 +70,7 @@ object AppConfig {//todo find way for show sources
         const val MATERIAL = "1.2.0-alpha05"
         const val LIFECYCLE = "2.2.0"
         const val EXIF_INTERFACE = "1.1.0"
-        const val OKHTTP = "4.4.0"//TODO TEST ON API 19
+        const val OKHTTP = "3.12.0" // Don't update.
         const val RETROFIT = "2.7.2"
         const val MOSHI = "1.9.2"
         const val KODEIN = "6.5.2"
@@ -87,6 +88,8 @@ object AppConfig {//todo find way for show sources
             // Kotlinx
             kotlinx("coroutines-core", Versions.COROUTINE),
             kotlinx("serialization-runtime", Versions.SERIALIZATION_RUNTIME),
+            // MultiDex
+            "androidx.multidex:multidex:${Versions.MULTIDEX}",
             // Material
             "com.google.android.material:material:${Versions.MATERIAL}",
             "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.SWIPE_REFRESH_LAYOUT}",
@@ -105,6 +108,7 @@ object AppConfig {//todo find way for show sources
             "com.squareup.retrofit2:converter-scalars:${Versions.RETROFIT}",
             "com.squareup.moshi:moshi:${Versions.MOSHI}",
             "com.squareup.moshi:moshi-kotlin:${Versions.MOSHI}",
+            "org.conscrypt:conscrypt-android:2.2.1",
             // Kodein
             "org.kodein.di:kodein-di-core:${Versions.KODEIN}",
             "org.kodein.di:kodein-di-erased:${Versions.KODEIN}",

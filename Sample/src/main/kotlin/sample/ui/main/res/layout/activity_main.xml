@@ -60,12 +60,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            app:itemIconTint="@drawable/drawer_item_text"
+            android:theme="@style/NavigationItemNoRipple"
             app:itemShapeAppearance="@style/App.ShapeAppearance.Navigation"
             app:itemShapeAppearanceOverlay="@style/App.ShapeAppearance.Navigation"
-            app:itemTextColor="@drawable/drawer_item_text"
-            app:itemBackground="@drawable/shape_item_background"
-            android:theme="@style/NavigationItemNoRipple"
             app:menu="@menu/drawer_actions" />
 
     </androidx.drawerlayout.widget.DrawerLayout>

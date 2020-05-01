@@ -35,9 +35,9 @@ class MeowLoggingInterceptor : Interceptor {
         val t1 = System.nanoTime()
         logD(
             "OkHttp",
-            "Request Connection >>  ${request.method}  ${request.url} isHTTPS = ${request.isHttps}\n"
-                    + "Request Headers >> ${request.headers}\n"
-                    + if (request.body != null) "Request Body >> ${request.body}" else ""
+            "Request Connection >>  ${request.method()}  ${request.url()} isHTTPS = ${request.isHttps}\n"
+                    + "Request Headers >> ${request.headers()}\n"
+                    + if (request.body() != null) "Request Body >> ${request.body()}" else ""
         )
 
         val response = chain.proceed(request)
@@ -45,9 +45,10 @@ class MeowLoggingInterceptor : Interceptor {
         val body = response.peekBody(1024 * 1024)
         logD(
             "OkHttp",
-            "Response >>  ${request.method}  ${response.request.url} isHTTPS = ${request.isHttps} \n in ${((t2 - t1) / 1e6).toInt()} ms\n"
-                    + "Response Headers >> ${response.headers}\n"
-                    + if (response.body != null) "Response Body >> ${body.string()}" else ""
+            "Response >>  ${request.method()}  ${response.request()
+                .url()} isHTTPS = ${request.isHttps} \n in ${((t2 - t1) / 1e6).toInt()} ms\n"
+                    + "Response Headers >> ${response.headers()}\n"
+                    + if (response.body() != null) "Response Body >> ${body.string()}" else ""
         )
 
         return response
