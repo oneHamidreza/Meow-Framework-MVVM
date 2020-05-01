@@ -23,7 +23,7 @@
             android:gravity="center"
             android:text="@{viewModel.getTextByPosition(pos)}"
             android:textAppearance="?textAppearanceHeadline4"
-            android:textColor="@color/text_on_background_high" />
+            android:textColor="@color/on_background_high" />
 
     </LinearLayout>
 

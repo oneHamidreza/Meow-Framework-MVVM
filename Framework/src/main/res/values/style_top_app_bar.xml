@@ -16,7 +16,7 @@
         <item name="android:layout_height">?actionBarSize</item>
         <item name="android:background">?colorSecondary</item>
         <item name="titleTextColor">?colorOnSecondary</item>
-        <item name="subtitleTextColor">@color/text_on_secondary_medium</item>
+        <item name="subtitleTextColor">@color/on_secondary_medium</item>
         <item name="android:theme">@style/ThemeOverlay.MaterialComponents.Toolbar.Secondary</item>
     </style>
 

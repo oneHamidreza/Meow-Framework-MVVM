@@ -28,7 +28,7 @@
             android:paddingEnd="16dp"
             android:paddingBottom="4dp"
             android:textAppearance="?textAppearanceSubtitle1"
-            android:textColor="@color/text_on_surface_high" />
+            android:textColor="@color/on_surface_high" />
 
         <TextView
             android:id="@+id/tv_description"
@@ -39,7 +39,7 @@
             android:paddingEnd="16dp"
             android:paddingBottom="16dp"
             android:textAppearance="?textAppearanceCaption"
-            android:textColor="@color/text_on_surface_disabled" />
+            android:textColor="@color/on_surface_disabled" />
 
     </LinearLayout>
 

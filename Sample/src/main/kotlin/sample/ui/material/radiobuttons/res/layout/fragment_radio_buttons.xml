@@ -24,7 +24,7 @@
                 style="@style/Meow.TextView"
                 android:text="@string/radio_buttons_vertical"
                 android:textAppearance="?textAppearanceSubtitle1"
-                android:textColor="@color/text_on_surface_high" />
+                android:textColor="@color/on_surface_high" />
 
             <RadioGroup style="@style/Meow.RadioGroup.Vertical">
 
@@ -84,7 +84,7 @@
                 style="@style/Meow.TextView"
                 android:text="@string/radio_buttons_horizontal"
                 android:textAppearance="?textAppearanceSubtitle1"
-                android:textColor="@color/text_on_surface_high" />
+                android:textColor="@color/on_surface_high" />
 
             <RadioGroup style="@style/Meow.RadioGroup.Horizontal">
 

@@ -57,7 +57,7 @@ class MeowTextField : TextInputLayout, FormInterface {
     var errorMobile: String? = ""
     var errorEmail: String? = ""
 
-    var textSize = resources.getDimension(R.dimen.text_field_text_size)
+    var textSize = resources.getDimension(R.dimen.field_size)
 
     override var apiField: String? = null
 

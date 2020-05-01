@@ -35,7 +35,7 @@
                 style="@style/Meow.TextView"
                 android:text="@{controller.isPersian ? viewModel.modelLiveData.persianName : viewModel.modelLiveData.name}"
                 android:textAppearance="?textAppearanceHeadline4"
-                android:textColor="@color/text_on_surface_high" />
+                android:textColor="@color/on_surface_high" />
 
         </LinearLayout>
 

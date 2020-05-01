@@ -9,23 +9,23 @@
     </style>
 
     <style name="Meow.EmptyState.OnBackground">
-        <item name="empty_titleTextColor">@color/text_on_background_high</item>
-        <item name="empty_descTextColor">@color/text_on_background_medium</item>
+        <item name="empty_titleTextColor">@color/on_background_high</item>
+        <item name="empty_descTextColor">@color/on_background_medium</item>
     </style>
 
     <style name="Meow.EmptyState.OnSurface">
-        <item name="empty_titleTextColor">@color/text_on_surface_high</item>
-        <item name="empty_descTextColor">@color/text_on_surface_medium</item>
+        <item name="empty_titleTextColor">@color/on_surface_high</item>
+        <item name="empty_descTextColor">@color/on_surface_medium</item>
     </style>
 
     <style name="Meow.EmptyState.OnPrimary">
-        <item name="empty_titleTextColor">@color/text_on_primary_high</item>
-        <item name="empty_descTextColor">@color/text_on_primary_medium</item>
+        <item name="empty_titleTextColor">@color/on_primary_high</item>
+        <item name="empty_descTextColor">@color/on_primary_medium</item>
     </style>
 
     <style name="Meow.EmptyState.OnSecondary">
-        <item name="empty_titleTextColor">@color/text_on_secondary_high</item>
-        <item name="empty_descTextColor">@color/text_on_secondary_medium</item>
+        <item name="empty_titleTextColor">@color/on_secondary_high</item>
+        <item name="empty_descTextColor">@color/on_secondary_medium</item>
     </style>
 
     <style name="Meow.Button.EmptyState" parent="Meow.Button" />

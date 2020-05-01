@@ -74,7 +74,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="8dp"
                 android:padding="8dp"
-                android:tint="@color/text_on_background_high"
+                android:tint="@color/on_background_high"
                 android:visibility="@{showBack ? View.VISIBLE : View.GONE}"
                 app:srcCompat="@drawable/ic_backspace" />
 

@@ -84,7 +84,7 @@ data class Content(
         WIDGET_FORM,
         WIDGET_PROGRESS_BARS,
         WIDGET_RATEBAR,
-        WIDGET_TEXT_FIELD,
+        WIDGET_FIELD,
 
         ALERT_SIMPLE,
         ALERT_SIMPLE_WITH_LISTENER,

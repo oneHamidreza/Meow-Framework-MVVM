@@ -39,7 +39,7 @@
     <string name="error_response_http_too_many_request_title">تعداد درخواست زیاد!</string>
     <string name="error_response_http_too_many_request_message">لطفا کمی صبر کنید. تعداد درخواست‌ها به سرور زیاد است.</string>
 
-    <string name="error_actionText_try_again">تلاش دوباره</string>
+    <string name="error_actiontry_again">تلاش دوباره</string>
 
     <string name="error_mobile_not_valid">شماره موبایل نامعتبر است</string>
     <string name="error_email_not_valid">ایمیل نامعتبر است</string>

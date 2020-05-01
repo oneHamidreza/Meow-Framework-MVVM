@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="@{title}"
             android:textAppearance="?textAppearanceSubtitle1"
-            android:textColor="@color/text_on_surface_medium"/>
+            android:textColor="@color/on_surface_medium" />
 
     </merge>
 

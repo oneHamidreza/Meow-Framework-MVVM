@@ -38,7 +38,7 @@
                 style="@style/Meow.TextView"
                 android:text="@{controller.isPersian ? model.persianName : model.name}"
                 android:textAppearance="?textAppearanceSubtitle1"
-                android:textColor="@color/text_on_surface_high" />
+                android:textColor="@color/on_surface_high" />
 
         </LinearLayout>
 

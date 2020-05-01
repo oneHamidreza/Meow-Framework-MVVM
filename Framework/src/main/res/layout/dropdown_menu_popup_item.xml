@@ -6,4 +6,4 @@
     android:maxLines="1"
     android:padding="16dp"
     android:textAppearance="?textAppearanceSubtitle1"
-    android:textColor="@color/text_on_surface_high" />
+    android:textColor="@color/on_surface_high" />

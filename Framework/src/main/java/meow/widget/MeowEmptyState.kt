@@ -93,7 +93,7 @@ class MeowEmptyState @JvmOverloads constructor(
             field = value
             binding.title = value
         }
-    var titleTextColor: ColorStateList = context.ofColorStateList(R.color.text_on_background_high)
+    var titleTextColor: ColorStateList = context.ofColorStateList(R.color.on_background_high)
         set(value) {
             field = value
             binding.titleTextColor = value
@@ -104,7 +104,7 @@ class MeowEmptyState @JvmOverloads constructor(
             binding.desc = value
             binding.showDesc = value.isNotNullOrEmpty()
         }
-    var descTextColor: ColorStateList = context.ofColorStateList(R.color.text_on_background_medium)
+    var descTextColor: ColorStateList = context.ofColorStateList(R.color.on_background_medium)
         set(value) {
             field = value
             binding.descTextColor = value

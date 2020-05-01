@@ -39,7 +39,7 @@
     <string name="error_response_http_too_many_request_title">Too Many Requests!</string>
     <string name="error_response_http_too_many_request_message">Please wait. There are too many requests now to server.</string>
 
-    <string name="error_actionText_try_again">Try Again</string>
+    <string name="error_actiontry_again">Try Again</string>
 
     <string name="error_mobile_not_valid">Invalid Mobile Number</string>
     <string name="error_email_not_valid">Invalid Email Address</string>

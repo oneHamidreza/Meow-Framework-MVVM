@@ -13,7 +13,7 @@
     <color name="status_bar">@color/meow_surface</color>
 
     <color name="drawer_item_enabled">?colorPrimary</color>
-    <color name="drawer_item_disabled">@color/text_on_surface_medium</color>
+    <color name="drawer_item_disabled">@color/on_surface_medium</color>
 
     <color name="ic_launcher_background">#011A1E</color>
 

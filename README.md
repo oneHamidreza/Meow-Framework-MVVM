@@ -776,7 +776,7 @@ Use it like this in XML Layout :
     style="@style/Meow.TextView"
     android:text="@string/some_text"
     android:textAppearance="?textAppearanceBody1"
-    android:textColor="@color/text_on_background_high" />
+    android:textColor="@color/on_background_high" />
 ```
 
 Learn more about it at [fragment_textviews.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/textviews/res/layout/fragment_textviews.xml).
@@ -785,18 +785,18 @@ Colors for texts based on Material Colors contain `EMPHASIS_HIGH` , `EMPHASIS_ME
 
 |Color|Value|
 |---|:---:|
-|`@color/text_on_background_high`| `onBackground` color with %87 transparency|
-|`@color/text_on_background_medium`| `onBackground` color with %60 transparency|
-|`@color/text_on_background_disabled`| `onBackground` color with %38 transparency|
-|`@color/text_on_surface_high`| `onSurface` color with %87 transparency|
-|`@color/text_on_surface_medium`| `onSurface` color with %60 transparency|
-|`@color/text_on_surface_disabled`| `onSurface` color with %38 transparency|
-|`@color/text_on_primary_high`| `onPrimary` color with %87 transparency|
-|`@color/text_on_primary_medium`| `onPrimary` color with %60 transparency|
-|`@color/text_on_primary_disabled`| `onPrimary` color with %38 transparency|
-|`@color/text_on_secondary_high`| `onSecondary` color with %87 transparency|
-|`@color/text_on_secondary_medium`| `onSecondary` color with %60 transparency|
-|`@color/text_on_secondary_disabled`| `onSecondary` color with %38 transparency|
+|`@color/on_background_high`| `onBackground` color with %87 transparency|
+|`@color/on_background_medium`| `onBackground` color with %60 transparency|
+|`@color/on_background_disabled`| `onBackground` color with %38 transparency|
+|`@color/on_surface_high`| `onSurface` color with %87 transparency|
+|`@color/on_surface_medium`| `onSurface` color with %60 transparency|
+|`@color/on_surface_disabled`| `onSurface` color with %38 transparency|
+|`@color/on_primary_high`| `onPrimary` color with %87 transparency|
+|`@color/on_primary_medium`| `onPrimary` color with %60 transparency|
+|`@color/on_primary_disabled`| `onPrimary` color with %38 transparency|
+|`@color/on_secondary_high`| `onSecondary` color with %87 transparency|
+|`@color/on_secondary_medium`| `onSecondary` color with %60 transparency|
+|`@color/on_secondary_disabled`| `onSecondary` color with %38 transparency|
 
 ### Top App Bar using `Material Toolbar`  
 

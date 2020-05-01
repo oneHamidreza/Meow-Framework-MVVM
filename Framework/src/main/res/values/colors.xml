@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- TextView -->
-    <color name="text_on_background_high">@color/material_on_background_emphasis_high_type</color>
-    <color name="text_on_background_medium">@color/material_on_background_emphasis_medium</color>
-    <color name="text_on_background_disabled">@color/material_on_background_disabled</color>
-    <color name="text_on_surface_high">@color/material_on_surface_emphasis_high_type</color>
-    <color name="text_on_surface_medium">@color/material_on_surface_emphasis_medium</color>
-    <color name="text_on_surface_disabled">@color/material_on_surface_disabled</color>
-    <color name="text_on_primary_high">@color/material_on_primary_emphasis_high_type</color>
-    <color name="text_on_primary_medium">@color/material_on_primary_emphasis_medium</color>
-    <color name="text_on_primary_disabled">@color/material_on_primary_disabled</color>
-    <color name="text_on_secondary_high">@color/material_on_secondary_emphasis_high_type</color>
-    <color name="text_on_secondary_medium">@color/material_on_secondary_emphasis_medium</color>
-    <color name="text_on_secondary_disabled">@color/material_on_secondary_disabled</color>
+    <!-- Material Colors -->
+    <color name="on_background_high">@color/material_on_background_emphasis_high_type</color>
+    <color name="on_background_medium">@color/material_on_background_emphasis_medium</color>
+    <color name="on_background_disabled">@color/material_on_background_disabled</color>
+    <color name="on_surface_high">@color/material_on_surface_emphasis_high_type</color>
+    <color name="on_surface_medium">@color/material_on_surface_emphasis_medium</color>
+    <color name="on_surface_disabled">@color/material_on_surface_disabled</color>
+    <color name="on_primary_high">@color/material_on_primary_emphasis_high_type</color>
+    <color name="on_primary_medium">@color/material_on_primary_emphasis_medium</color>
+    <color name="on_primary_disabled">@color/material_on_primary_disabled</color>
+    <color name="on_secondary_high">@color/material_on_secondary_emphasis_high_type</color>
+    <color name="on_secondary_medium">@color/material_on_secondary_emphasis_medium</color>
+    <color name="on_secondary_disabled">@color/material_on_secondary_disabled</color>
 
     <color name="notification">#ffffff</color>
 
