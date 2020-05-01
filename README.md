@@ -4,16 +4,16 @@ A Framework that simplify developing MVVM architecture and Material Design in An
 
 <img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_github.png" width="80%">
 
-[![Download](https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.7.0-alpha)](https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.7.0-alpha/link)
+[![Download](https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.7.2-alpha)](https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.7.2-alpha/link)
 
 ## 📱 Sample Application
 
-We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.7.0-alpha/Meow-Framework-Sample-v0.7.0-alpha.apk) to be familiar with `Meow Framework`.
+We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.7.2-alpha/Meow-Framework-Sample-v0.7.2-alpha.apk) to be familiar with `Meow Framework`.
 
 ## 🛠 Setup
 
 ```groovy
-implementation("com.etebarian:meow-framework-mvvm:0.7.0-alpha")
+implementation("com.etebarian:meow-framework-mvvm:0.7.2-alpha")
 ```
 
 After adding library, some of most useful libraries (such as `Androidx AppCompat` , `Coroutine` , `Glide` , `Kodein` , `Kotlinx Serialization` , `Material Components` , `Moshi` , `Navigation Components` , `Retrofit` ) will be added in your app. So you don't need to add this libraries manually.  

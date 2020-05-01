@@ -53,7 +53,7 @@ object AppConfig {//todo find way for show sources
         const val API = 1
         const val MAJOR = 0
         const val MINOR = 7
-        const val PATCH = 0
+        const val PATCH = 2
         val BUILD_PHASE = Build.PHASE.ALPHA
 
         const val SDK_COMPILE = 29
@@ -108,7 +108,6 @@ object AppConfig {//todo find way for show sources
             "com.squareup.retrofit2:converter-scalars:${Versions.RETROFIT}",
             "com.squareup.moshi:moshi:${Versions.MOSHI}",
             "com.squareup.moshi:moshi-kotlin:${Versions.MOSHI}",
-            "org.conscrypt:conscrypt-android:2.2.1",
             // Kodein
             "org.kodein.di:kodein-di-core:${Versions.KODEIN}",
             "org.kodein.di:kodein-di-erased:${Versions.KODEIN}",
