@@ -66,8 +66,8 @@ class SnackBarsFragment : BaseFragment<FragmentSnackbarsBinding>() {
                         snackL(
                             R.string.snackbars_message,
                             R.string.snackbars_action,
-                            messageTextAppearanceId = R.style.textAppearance_Snack_Message,
-                            actionTextAppearanceId = R.style.textAppearance_Snack_Action
+                            messageTextAppearanceId = R.style.App_TextAppearance_Snack_Message,
+                            actionTextAppearanceId = R.style.App_TextAppearance_Snack_Action
                         )
                     }
                     Content.Action.SNACK_INDEFINITE -> {

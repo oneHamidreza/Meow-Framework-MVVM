@@ -28,7 +28,7 @@ import sample.App
 import sample.data.GithubRepository
 import sample.data.user.User
 
-/** todo all docs like this
+/**
  * Shared Preferences View Model.
  *
  * @author  Hamidreza Etebarian

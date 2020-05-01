@@ -22,19 +22,19 @@
         <item name="colorOnSurface">@color/meow_on_surface</item>
         <item name="scrimBackground">@color/mtrl_scrim_color</item>
 
-        <item name="textAppearanceHeadline1">@style/textAppearance.Headline1</item>
-        <item name="textAppearanceHeadline2">@style/textAppearance.Headline2</item>
-        <item name="textAppearanceHeadline3">@style/textAppearance.Headline3</item>
-        <item name="textAppearanceHeadline4">@style/textAppearance.Headline4</item>
-        <item name="textAppearanceHeadline5">@style/textAppearance.Headline5</item>
-        <item name="textAppearanceHeadline6">@style/textAppearance.Headline6</item>
-        <item name="textAppearanceSubtitle1">@style/textAppearance.Subtitle1</item>
-        <item name="textAppearanceSubtitle2">@style/textAppearance.Subtitle2</item>
-        <item name="textAppearanceBody1">@style/textAppearance.Body1</item>
-        <item name="textAppearanceBody2">@style/textAppearance.Body2</item>
-        <item name="textAppearanceCaption">@style/textAppearance.Caption</item>
-        <item name="textAppearanceButton">@style/textAppearance.Button</item>
-        <item name="textAppearanceOverline">@style/textAppearance.Overline</item>
+        <item name="textAppearanceHeadline1">@style/App.TextAppearance.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/App.TextAppearance.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/App.TextAppearance.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/App.TextAppearance.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/App.TextAppearance.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/App.TextAppearance.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/App.TextAppearance.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/App.TextAppearance.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/App.TextAppearance.Body1</item>
+        <item name="textAppearanceBody2">@style/App.TextAppearance.Body2</item>
+        <item name="textAppearanceCaption">@style/App.TextAppearance.Caption</item>
+        <item name="textAppearanceButton">@style/App.TextAppearance.Button</item>
+        <item name="textAppearanceOverline">@style/App.TextAppearance.Overline</item>
 
         <!-- Shape Appearances attributes. -->
         <item name="shapeAppearanceSmallComponent">@style/App.ShapeAppearance.SmallComponent</item>
@@ -76,8 +76,7 @@
         <item name="android:lineSpacingExtra">4dp</item>
         <item name="android:padding">16dp</item>
         <item name="android:textIsSelectable">true</item>
-        <!-- todo all textAppearnces convert to ?attr . -->
-        <item name="android:textAppearance">@style/textAppearance.Body2</item>
+        <item name="android:textAppearance">?textAppearanceBody2</item>
         <item name="android:theme">@style/App.Theme.TextView.Markdown</item>
     </style>
 

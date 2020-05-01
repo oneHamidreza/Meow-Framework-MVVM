@@ -152,7 +152,15 @@ bintray {
         vcsUrl = "https://github.com/${Publishing.developerId}/${Publishing.name}.git"
         version.vcsTag = "v${project.version}"
         setLicenses("Apache-2.0")
-        setLabels("kotlin", "meow-framework")//todo more
+        setLabels(
+            "kotlin",
+            "meow-framework",
+            "android",
+            "library",
+            "mvvm",
+            "material",
+            "rest-api"
+        )
         publicDownloadNumbers = true
     })
 }

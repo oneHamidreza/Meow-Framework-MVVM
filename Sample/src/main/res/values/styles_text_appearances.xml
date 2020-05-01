@@ -1,123 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="textAppearance.Headline1" parent="@style/Meow.TextAppearance.Headline1">
+    <style name="App.TextAppearance.Headline1" parent="@style/Meow.TextAppearance.Headline1">
         <item name="fontFamily">@font/english_regular</item>
     </style>
 
-    <style name="textAppearance.Headline1.dp" parent="@style/Meow.TextAppearance.Headline1">
+    <style name="App.TextAppearance.Headline1.dp" parent="@style/Meow.TextAppearance.Headline1">
         <item name="android:textSize" tools:ignore="SpUsage">96dp</item>
     </style>
 
-    <style name="textAppearance.Headline2" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Headline2" parent="@style/Meow.TextAppearance.Headline2">
         <item name="fontFamily">@font/english_regular</item>
     </style>
 
-    <style name="textAppearance.Headline2.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Headline2.dp" parent="@style/Meow.TextAppearance.Headline2">
         <item name="android:textSize" tools:ignore="SpUsage">60dp</item>
     </style>
 
-    <style name="textAppearance.Headline3" parent="@style/Meow.TextAppearance.Headline3">
+    <style name="App.TextAppearance.Headline3" parent="@style/Meow.TextAppearance.Headline3">
         <item name="fontFamily">@font/english_regular</item>
     </style>
 
-    <style name="textAppearance.Headline3.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Headline3.dp" parent="@style/Meow.TextAppearance.Headline2">
         <item name="android:textSize" tools:ignore="SpUsage">48dp</item>
     </style>
 
-    <style name="textAppearance.Headline4" parent="@style/Meow.TextAppearance.Headline4">
+    <style name="App.TextAppearance.Headline4" parent="@style/Meow.TextAppearance.Headline4">
         <item name="fontFamily">@font/english_regular</item>
     </style>
 
-    <style name="textAppearance.Headline4.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Headline4.dp" parent="@style/Meow.TextAppearance.Headline2">
         <item name="android:textSize" tools:ignore="SpUsage">34dp</item>
     </style>
 
-    <style name="textAppearance.Headline5" parent="@style/Meow.TextAppearance.Headline5">
+    <style name="App.TextAppearance.Headline5" parent="@style/Meow.TextAppearance.Headline5">
         <item name="fontFamily">@font/english_regular</item>
     </style>
 
-    <style name="textAppearance.Headline5.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Headline5.dp" parent="@style/Meow.TextAppearance.Headline2">
         <item name="android:textSize" tools:ignore="SpUsage">24dp</item>
     </style>
 
-    <style name="textAppearance.Headline6" parent="@style/Meow.TextAppearance.Headline6">
+    <style name="App.TextAppearance.Headline6" parent="@style/Meow.TextAppearance.Headline6">
         <item name="fontFamily">@font/english_bold</item>
     </style>
 
-    <style name="textAppearance.Headline6.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Headline6.dp" parent="@style/Meow.TextAppearance.Headline2">
         <item name="android:textSize" tools:ignore="SpUsage">20dp</item>
     </style>
 
-    <style name="textAppearance.Body1" parent="@style/Meow.TextAppearance.Body1">
+    <style name="App.TextAppearance.Body1" parent="@style/Meow.TextAppearance.Body1">
         <item name="fontFamily">@font/english_regular</item>
     </style>
 
-    <style name="textAppearance.Body1.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Body1.dp" parent="@style/Meow.TextAppearance.Headline2">
         <item name="android:textSize" tools:ignore="SpUsage">16dp</item>
     </style>
 
-    <style name="textAppearance.Body2" parent="@style/Meow.TextAppearance.Body2">
+    <style name="App.TextAppearance.Body2" parent="@style/Meow.TextAppearance.Body2">
         <item name="fontFamily">@font/english_regular</item>
     </style>
 
-    <style name="textAppearance.Body2.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Body2.dp" parent="@style/Meow.TextAppearance.Headline2">
         <item name="android:textSize" tools:ignore="SpUsage">14dp</item>
     </style>
 
-    <style name="textAppearance.Subtitle1" parent="@style/Meow.TextAppearance.Subtitle1">
+    <style name="App.TextAppearance.Subtitle1" parent="@style/Meow.TextAppearance.Subtitle1">
         <item name="fontFamily">@font/english_bold</item>
     </style>
 
-    <style name="textAppearance.Subtitle1.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Subtitle1.dp" parent="@style/Meow.TextAppearance.Headline2">
         <item name="android:textSize" tools:ignore="SpUsage">14dp</item>
     </style>
 
-    <style name="textAppearance.Subtitle2" parent="@style/Meow.TextAppearance.Subtitle2">
+    <style name="App.TextAppearance.Subtitle2" parent="@style/Meow.TextAppearance.Subtitle2">
         <item name="fontFamily">@font/english_bold</item>
     </style>
 
-    <style name="textAppearance.Subtitle2.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Subtitle2.dp" parent="@style/Meow.TextAppearance.Headline2">
         <item name="android:textSize" tools:ignore="SpUsage">14dp</item>
     </style>
 
-    <style name="textAppearance.Caption" parent="@style/Meow.TextAppearance.Caption">
+    <style name="App.TextAppearance.Caption" parent="@style/Meow.TextAppearance.Caption">
         <item name="fontFamily">@font/english_regular</item>
     </style>
 
-    <style name="textAppearance.Caption.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Caption.dp" parent="@style/Meow.TextAppearance.Headline2">
         <item name="android:textSize" tools:ignore="SpUsage">12dp</item>
     </style>
 
-    <style name="textAppearance.Overline" parent="@style/Meow.TextAppearance.Overline">
+    <style name="App.TextAppearance.Overline" parent="@style/Meow.TextAppearance.Overline">
         <item name="fontFamily">@font/english_regular</item>
     </style>
 
-    <style name="textAppearance.Overline.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Overline.dp" parent="@style/Meow.TextAppearance.Headline2">
         <item name="android:textSize" tools:ignore="SpUsage">12dp</item>
     </style>
 
-    <style name="textAppearance.Button" parent="@style/Meow.TextAppearance.Button">
+    <style name="App.TextAppearance.Button" parent="@style/Meow.TextAppearance.Button">
         <item name="fontFamily">@font/english_bold</item>
     </style>
 
-    <style name="textAppearance.Button.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Button.dp" parent="@style/Meow.TextAppearance.Headline2">
         <item name="android:textSize" tools:ignore="SpUsage">14dp</item>
     </style>
 
-    <style name="textAppearance.CollapsingToolbar.Expanded" parent="@style/TextAppearance.Design.CollapsingToolbar.Expanded">
+    <style name="App.TextAppearance.CollapsingToolbar.Expanded" parent="@style/TextAppearance.Design.CollapsingToolbar.Expanded">
         <item name="fontFamily">@font/english_bold</item>
     </style>
 
-    <style name="textAppearance.CollapsingToolbar.Collapsed" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+    <style name="App.TextAppearance.CollapsingToolbar.Collapsed" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="fontFamily">@font/english_bold</item>
     </style>
 
-    <style name="textAppearance.Snack.Message" parent="@style/textAppearance.Body1">
+    <style name="App.TextAppearance.Snack.Message" parent="@style/App.TextAppearance.Body1">
         <item name="android:textColor">#ffff00</item>
     </style>
 
-    <style name="textAppearance.Snack.Action" parent="@style/textAppearance.Button">
+    <style name="App.TextAppearance.Snack.Action" parent="@style/App.TextAppearance.Button">
         <item name="android:textColor">#ff0000</item>
     </style>
 

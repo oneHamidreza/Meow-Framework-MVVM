@@ -278,7 +278,7 @@ Some of actions that is related to REST API can be have a flow/pattern. We defin
 
 ### Sample `Index` Api
 
-For example, server give this JSON response when call `/api/v1/persons` with GET method :
+For example, server gives this JSON response when we call `/api/v1/persons` with GET method :
 
 ```json
 [
@@ -325,7 +325,7 @@ interface PersonApi {
 }
 ```
 
-#### Call API action from ViewModel Use `safeCallApi()`. Update your ViewModel class like this :
+#### Call API action from ViewModel by using `safeCallApi()`. Update your ViewModel class like this :
 
 ```kotlin  
 class PersonIndexViewModel(app:App) : MeowViewModel(app) {

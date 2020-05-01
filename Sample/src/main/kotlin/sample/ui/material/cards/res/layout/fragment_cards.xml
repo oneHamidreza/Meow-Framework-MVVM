@@ -32,14 +32,14 @@
                     <com.google.android.material.textview.MaterialTextView
                         style="@style/Meow.TextView"
                         android:text="@string/cards_simple_title"
-                        android:textAppearance="@style/textAppearance.Subtitle1"
+                        android:textAppearance="?textAppearanceSubtitle1"
                         android:textColor="@color/text_on_surface_high" />
 
                     <com.google.android.material.textview.MaterialTextView
                         style="@style/Meow.TextView"
                         android:layout_marginTop="8dp"
                         android:text="@string/cards_simple_desc"
-                        android:textAppearance="@style/textAppearance.Body2"
+                        android:textAppearance="?textAppearanceBody2"
                         android:textColor="@color/text_on_surface_medium" />
 
                 </LinearLayout>
@@ -63,7 +63,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:text="@string/cards_with_action_title"
-                        android:textAppearance="@style/textAppearance.Subtitle1"
+                        android:textAppearance="?textAppearanceSubtitle1"
                         android:textColor="@color/text_on_surface_high" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -72,7 +72,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginTop="8dp"
                         android:text="@string/cards_with_action_desc"
-                        android:textAppearance="@style/textAppearance.Body2"
+                        android:textAppearance="?textAppearanceBody2"
                         android:textColor="@color/text_on_surface_medium" />
 
                     <LinearLayout
@@ -117,14 +117,14 @@
                     <com.google.android.material.textview.MaterialTextView
                         style="@style/Meow.TextView"
                         android:text="@string/cards_stroke_title"
-                        android:textAppearance="@style/textAppearance.Subtitle1"
+                        android:textAppearance="?textAppearanceSubtitle1"
                         android:textColor="@color/text_on_surface_high" />
 
                     <com.google.android.material.textview.MaterialTextView
                         style="@style/Meow.TextView"
                         android:layout_marginTop="8dp"
                         android:text="@string/cards_stroke_desc"
-                        android:textAppearance="@style/textAppearance.Body2"
+                        android:textAppearance="?textAppearanceBody2"
                         android:textColor="@color/text_on_surface_medium" />
 
                 </LinearLayout>
@@ -146,14 +146,14 @@
                     <com.google.android.material.textview.MaterialTextView
                         style="@style/Meow.TextView"
                         android:text="@string/cards_high_elevation_title"
-                        android:textAppearance="@style/textAppearance.Subtitle1"
+                        android:textAppearance="?textAppearanceSubtitle1"
                         android:textColor="@color/text_on_surface_high" />
 
                     <com.google.android.material.textview.MaterialTextView
                         style="@style/Meow.TextView"
                         android:layout_marginTop="8dp"
                         android:text="@string/cards_high_elevation_desc"
-                        android:textAppearance="@style/textAppearance.Body2"
+                        android:textAppearance="?textAppearanceBody2"
                         android:textColor="@color/text_on_surface_medium" />
 
                 </LinearLayout>
@@ -185,7 +185,7 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="8dp"
                         android:text="@string/cards_with_image_title"
-                        android:textAppearance="@style/textAppearance.Subtitle1"
+                        android:textAppearance="?textAppearanceSubtitle1"
                         android:textColor="@color/text_on_surface_high" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -194,7 +194,7 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="16dp"
                         android:text="@string/cards_with_image_desc"
-                        android:textAppearance="@style/textAppearance.Body2"
+                        android:textAppearance="?textAppearanceBody2"
                         android:textColor="@color/text_on_surface_medium" />
 
                 </LinearLayout>
@@ -215,14 +215,14 @@
                     <com.google.android.material.textview.MaterialTextView
                         style="@style/Meow.TextView"
                         android:text="@string/cards_checkable_title"
-                        android:textAppearance="@style/textAppearance.Subtitle1"
+                        android:textAppearance="?textAppearanceSubtitle1"
                         android:textColor="@color/text_on_surface_high" />
 
                     <com.google.android.material.textview.MaterialTextView
                         style="@style/Meow.TextView"
                         android:layout_marginTop="8dp"
                         android:text="@string/cards_checkable_desc"
-                        android:textAppearance="@style/textAppearance.Body2"
+                        android:textAppearance="?textAppearanceBody2"
                         android:textColor="@color/text_on_surface_medium" />
 
                 </LinearLayout>

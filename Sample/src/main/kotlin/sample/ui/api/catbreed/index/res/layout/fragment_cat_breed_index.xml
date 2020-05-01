@@ -8,15 +8,20 @@
             type="sample.ui.api.catbreed.index.CatBreedIndexViewModel" />
     </data>
 
-    <!--todo swipe refresh layout -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            style="@style/Meow.RecyclerView.Linear"
-            meow_items="@{viewModel.listLiveData}" />
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/srl"
+            style="@style/Meow.SwipeRefreshLayout">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                style="@style/Meow.RecyclerView.Linear"
+                meow_items="@{viewModel.listLiveData}" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <meow.widget.MeowProgressBar
             android:id="@+id/progressbar"

@@ -124,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="@string/sample_color"
-                    android:textAppearance="@style/textAppearance.Subtitle1" />
+                    android:textAppearance="?textAppearanceSubtitle1" />
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"

@@ -24,11 +24,11 @@
                 android:orientation="vertical">
 
                 <TextView
-                    style="@style/textAppearance.Body2"
                     prefixText="@{@string/prefix}"
                     suffixText="@{@string/suffix}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAppearance="?textAppearanceBody2"
                     android:gravity="center"
                     android:text="@string/hello_world"
                     android:textColor="@{@color/black}" />

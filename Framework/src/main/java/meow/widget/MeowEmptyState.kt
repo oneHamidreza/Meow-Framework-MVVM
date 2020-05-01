@@ -60,7 +60,6 @@ class MeowEmptyState @JvmOverloads constructor(
         true
     )
 
-    //todo @Hamid all widget like this
     var icon: Drawable? = null
         set(value) {
             field = value
@@ -75,7 +74,6 @@ class MeowEmptyState @JvmOverloads constructor(
     @SuppressLint("RestrictedApi")
     var iconTint: ColorStateList =
         ColorStateList.valueOf(MaterialColors.getColor(this, R.attr.colorPrimary))
-        //todo all R.color convert to ?attr/color
         set(value) {
             field = value
             binding.iconTint = value
