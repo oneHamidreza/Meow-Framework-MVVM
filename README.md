@@ -256,7 +256,7 @@ Just do same as [styles_text_appearances.xml](https://github.com/oneHamidreza/Me
   
 ## 📶 REST API : Retrofit + OKHttp + Coroutine + Moshi
 
-Meow Framework provides for you to call Server REST API actions from Android App with `Retrofit`. Creating client connections will be with `OKHttp` and `Moshi` help us to serialize json responses. We replaced `RxJava` with `Coroutine` to multi thread handling.
+Meow Framework provides for you to call Server REST API actions from Android App with `Retrofit`. Creating client connections will be with `OKHttp` and `Moshi` which help us to serialize json responses. We replaced `RxJava` with `Coroutine` to multi thread handling.
   
 ### Create Api that extends `MeowApi`
 
