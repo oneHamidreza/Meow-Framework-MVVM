@@ -41,12 +41,15 @@ Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM
 ## 📃 Table of Contents
 
 - [💡 Getting Started](https://github.com/oneHamidreza/Meow-Framework-MVVM#-getting-started)
-  - [🎮 Initialization](https://github.com/oneHamidreza/Meow-Framework-MVVM#-initialization) : How to have a `MeowApp`.
-  - [🐱 Meow Controller 🐈](https://github.com/oneHamidreza/Meow-Framework-MVVM#-meow-controller-) : Trust this CAT.
-  - [📐 MVVM Architecture](https://github.com/oneHamidreza/Meow-Framework-MVVM#-mvvm-architecture) : Get to know this architecture.
-  - [### Accessing views with DataBinding](https://github.com/oneHamidreza/Meow-Framework-MVVM#-acc) : Forget `findViewById()`.
-
+  - [Initialization](https://github.com/oneHamidreza/Meow-Framework-MVVM#-initialization) : How to have a `MeowApp`.
+  - [Meow Controller 🐈](https://github.com/oneHamidreza/Meow-Framework-MVVM#-meow-controller-) : Trust this CAT.
+  - [MVVM Architecture](https://github.com/oneHamidreza/Meow-Framework-MVVM#-mvvm-architecture) : Get to know this architecture.
+  - [Accessing Views with DataBinding](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#accessing-views-with-databinding) : Forget `findViewById()`.
+- [🧩 Meow KTX (Kotlin Extensions)](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#-meow-ktx-kotlin-extensions)
 - [📶 REST API : Retrofit + OKHttp + Coroutine + Moshi](https://github.com/oneHamidreza/Meow-Framework-MVVM#-rest-api--retrofit--okhttp--coroutine--moshi)
+  - [MeowApi](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#create-api-that-extends-meowapi) : A new way to connect server.
+  - [Common API Flow/Patterns](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#common-api-flowpatterns) : Some predefined patterns for REST APIs.
+  - [Sample `Index` Api](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#sample-index-api) : A Sample for filling `RecyclerView` from JSON Data.
 - [🎨 Material Components](https://github.com/oneHamidreza/Meow-Framework-MVVM#-material-components)
 - [🌌 Meow Custom Widgets](https://github.com/oneHamidreza/Meow-Framework-MVVM#-meow-custom-widgets)
 
@@ -180,7 +183,7 @@ class MainActivity : MeowActivity<ActivityMainBinding>() {
 }
 ```
 
-### Accessing views with DataBinding
+### Accessing Views with DataBinding
 
 You can access views like this code :
 
@@ -202,7 +205,7 @@ class MainActivity : MeowActivity<ActivityMainBinding>() {
 
 Now you have an Activity with MVVM architecture. In above sample, you can replace `MeowActivity` with `MeowFragment` to have MVVM Fragment.
 
-### 🧩 Meow KTX (Kotlin Extensions)
+## 🧩 Meow KTX (Kotlin Extensions)
 
 We have developed some Kotlin Extensions that can be help us in building Android Apps. Just import `meow.ktx` package which include the following :
 
