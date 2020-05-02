@@ -3,14 +3,12 @@
 A Framework that simplify developing MVVM architecture and Material Design in Android with Kotlin language including useful Extensions and Sample Application. Also this Framework has some tools for Retrofit and OKHttp and Coroutine for calling REST API requests.
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_github.png" width="60%">
+<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_github.png" width="60%" />
 
-    <a href="https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.7.2-alpha/link">
-        <img src="https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.7.2-alpha">
-    </a>
+<a href="https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.7.2-alpha/link" >
+<img src="https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.7.2-alpha" />
+</a>
 </p>
-
-[![Download](https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.7.2-alpha)](https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.7.2-alpha/link)
 
 ## 📱 Sample Application
 
