@@ -89,7 +89,7 @@ object AppConfig {//todo find way for show sources
             kotlinx("coroutines-core", Versions.COROUTINE),
             kotlinx("serialization-runtime", Versions.SERIALIZATION_RUNTIME),
             // MultiDex
-            "androidx.multidex:multidex:${Versions.MULTIDEX}",
+//            "androidx.multidex:multidex:${Versions.MULTIDEX}",
             // Material
             "com.google.android.material:material:${Versions.MATERIAL}",
             "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.SWIPE_REFRESH_LAYOUT}",

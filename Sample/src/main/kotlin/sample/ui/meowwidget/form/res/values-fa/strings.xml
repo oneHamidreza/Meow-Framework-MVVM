@@ -32,5 +32,7 @@
     <string name="enter_code">لطفا کد را وارد نمایید</string>
     <string name="error_sample">خطای تست</string>
 
+    <string name="date">تاریخ</string>
+    <string name="date_num">12/2/1399</string>
 
 </resources>

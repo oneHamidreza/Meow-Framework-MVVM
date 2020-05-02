@@ -30,4 +30,7 @@
 
     <string name="enter_code">Please Enter Code</string>
     <string name="error_sample">Sample Error</string>
+
+    <string name="date">Date</string>
+    <string name="date_num">5/2/2020</string>
 </resources>

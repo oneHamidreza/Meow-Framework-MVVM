@@ -13,6 +13,12 @@
     <attr name="meow_errorMobileLegacy" format="string" />
     <attr name="meow_errorEmail" format="string" />
 
+    <attr name="meow_hint" format="string" />
+    <attr name="meow_hintColor" format="color" />
+    <attr name="meow_hintTextAppearance" format="reference" />
+    <attr name="meow_icon" format="reference" />
+    <attr name="meow_iconColor" format="color" />
+
     <declare-styleable name="MeowDashView">
         <attr name="meow_dash_orientation" format="enum">
             <enum name="horizontal" value="0" />
@@ -205,32 +211,31 @@
     </declare-styleable>
 
     <declare-styleable name="MeowRatingBar">
-        <attr format="integer" name="meow_numStars" />
-        <attr format="float" name="meow_minimumStars" />
-        <attr format="float" name="meow_rating" />
-        <attr format="dimension" name="meow_starPadding" />
-        <attr format="reference" name="meow_drawableEmpty" />
-        <attr format="reference" name="meow_drawableFilled" />
-        <attr format="boolean" name="meow_isIndicator" />
-        <attr format="boolean" name="meow_scrollable" />
-        <attr format="boolean" name="meow_clickable" />
-        <attr format="boolean" name="meow_clearRatingEnabled" />
-        <attr format="dimension" name="meow_starWidth" />
-        <attr format="dimension" name="meow_starHeight" />
-        <attr format="float" name="meow_stepSize" />
+        <attr name="meow_numStars" format="integer" />
+        <attr name="meow_minimumStars" format="float" />
+        <attr name="meow_rating" format="float" />
+        <attr name="meow_starPadding" format="dimension" />
+        <attr name="meow_drawableEmpty" format="reference" />
+        <attr name="meow_drawableFilled" format="reference" />
+        <attr name="meow_isIndicator" format="boolean" />
+        <attr name="meow_scrollable" format="boolean" />
+        <attr name="meow_clickable" format="boolean" />
+        <attr name="meow_clearRatingEnabled" format="boolean" />
+        <attr name="meow_starWidth" format="dimension" />
+        <attr name="meow_starHeight" format="dimension" />
+        <attr name="meow_stepSize" format="float" />
     </declare-styleable>
 
     <declare-styleable name="MeowPinView">
-
-        <attr name="meow_hint" format="string" />
+        <attr name="meow_hint" />
+        <attr name="meow_hintColor" />
+        <attr name="meow_hintTextAppearance" />
         <attr name="meow_count" format="integer" />
-        <attr name="meow_icon" format="reference" />
-        <attr name="meow_iconColor" format="color" />
+        <attr name="meow_icon" />
+        <attr name="meow_iconColor" />
         <attr name="meow_textColor" format="color" />
-        <attr name="meow_hintColor" format="color" />
         <attr name="meow_showBack" format="boolean" />
         <attr name="meow_textAppearance" format="reference" />
-        <attr name="meow_hintTextAppearance" format="reference" />
         <attr name="meow_errorTextAppearance" format="reference" />
         <attr name="meow_boxStyle" format="enum">
             <enum name="outlined" value="0" />
@@ -249,6 +254,17 @@
             <enum name="vertical" value="0" />
             <enum name="horizontal" value="1" />
         </attr>
+    </declare-styleable>
+
+    <declare-styleable name="MeowHintButton">
+        <attr name="meow_hint" />
+        <attr name="meow_hintColor" />
+        <attr name="meow_hintTextAppearance" />
+        <attr name="meow_title" format="string" />
+        <attr name="meow_titleColor" format="color" />
+        <attr name="meow_titleTextAppearance" format="reference" />
+        <attr name="meow_icon" />
+        <attr name="meow_iconColor" />
     </declare-styleable>
 
 </resources>

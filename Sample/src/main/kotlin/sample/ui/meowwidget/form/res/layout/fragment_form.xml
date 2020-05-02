@@ -28,9 +28,9 @@
                     suffixText="@{@string/suffix}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?textAppearanceBody2"
                     android:gravity="center"
                     android:text="@string/hello_world"
+                    android:textAppearance="?textAppearanceBody2"
                     android:textColor="@{@color/black}" />
 
                 <meow.widget.MeowFormView
@@ -116,6 +116,17 @@
                         android:layout_marginBottom="8dp"
                         app:meow_hint="@string/enter_code"
                         app:meow_icon="@drawable/ic_dialpad" />
+
+                    <meow.widget.MeowHintButton
+                        android:id="@+id/hintButton"
+                        style="@style/Meow.HintButton"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="24dp"
+                        app:meow_hint="@string/date"
+                        app:meow_icon="@drawable/ic_date"
+                        android:clickable="true"
+                        app:meow_title="@string/date_num" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/bt"

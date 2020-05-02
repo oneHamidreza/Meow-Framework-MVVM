@@ -16,6 +16,7 @@
 
 package sample.ui.meowwidget.form
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -40,6 +41,7 @@ class FormFragment : BaseFragment<FragmentFormBinding>() {
     private val viewModel: FormViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_form
 
+    @SuppressLint("PrivateResource")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
