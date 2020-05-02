@@ -79,6 +79,7 @@ object AppConfig {//todo find way for show sources
         const val GOOGLE_PHONE_NUMBER = "8.10.5"
         const val LOCALIZATION = "1.2.4"
         const val SWIPE_REFRESH_LAYOUT = "1.0.0"
+        const val BROWSER = "1.2.0"
     }
 
     object Dependencies {
@@ -89,10 +90,11 @@ object AppConfig {//todo find way for show sources
             kotlinx("coroutines-core", Versions.COROUTINE),
             kotlinx("serialization-runtime", Versions.SERIALIZATION_RUNTIME),
             // MultiDex
-//            "androidx.multidex:multidex:${Versions.MULTIDEX}",
+            "androidx.multidex:multidex:${Versions.MULTIDEX}",
             // Material
             "com.google.android.material:material:${Versions.MATERIAL}",
             "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.SWIPE_REFRESH_LAYOUT}",
+            "androidx.browser:browser:${Versions.BROWSER}",
             // Lifecycle
             "androidx.lifecycle:lifecycle-common-java8:${Versions.LIFECYCLE}",
             "androidx.lifecycle:lifecycle-extensions:${Versions.LIFECYCLE}",
