@@ -47,7 +47,7 @@ Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM
   - [Accessing Views with DataBinding](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#accessing-views-with-databinding) : Forget `findViewById()`.
 - [🧩 Meow KTX (Kotlin Extensions)](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#-meow-ktx-kotlin-extensions)
 - [📶 REST API : Retrofit + OKHttp + Coroutine + Moshi](https://github.com/oneHamidreza/Meow-Framework-MVVM#-rest-api--retrofit--okhttp--coroutine--moshi)
-  - [MeowApi](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#create-api-that-extends-meowapi) : A new way to connect server.
+  - [Create Api that extends `MeowApi`](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#create-api-that-extends-meowapi) : A new way to connect server.
   - [Common API Flow/Patterns](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#common-api-flowpatterns) : Some predefined patterns for REST APIs.
   - [Sample `Index` Api](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#sample-index-api) : A Sample for filling `RecyclerView` from JSON Data.
 - [🎨 Material Components](https://github.com/oneHamidreza/Meow-Framework-MVVM#-material-components)
