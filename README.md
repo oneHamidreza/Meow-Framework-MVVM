@@ -41,6 +41,7 @@ Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM
 ## 📃 Table of Contents
 
 - [💡 Getting Started](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#-getting-started)
+  - [🎮 Initialization](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#-initialization)
 - [📶 REST API : Retrofit + OKHttp + Coroutine + Moshi](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#-rest-api--retrofit--okhttp--coroutine--moshi)
 - [🎨 Material Components](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#-material-components)
 - [🌌 Meow Custom Widgets](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#-meow-custom-widgets)
