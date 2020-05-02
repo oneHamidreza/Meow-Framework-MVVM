@@ -21,6 +21,7 @@ import android.view.View
 import android.view.ViewGroup
 import meow.core.ui.MeowAdapter
 import meow.core.ui.MeowViewHolder
+import meow.ktx.avoidException
 import sample.data.Content
 import sample.databinding.ItemContentBinding
 
@@ -50,7 +51,9 @@ class ContentAdapter(
                 it.executePendingBindings()
 
                 it.root.setOnClickListener { view ->
-                    onClickedItem(pos, model, view)
+                    avoidException {
+                        onClickedItem(pos, model, view)
+                    }
                 }
             }
         }

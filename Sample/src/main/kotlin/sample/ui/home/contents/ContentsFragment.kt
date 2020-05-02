@@ -162,7 +162,7 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                     API_INDEX -> findNavController().navigate(HomeFragmentDirections.actionToApiCatBreedIndex())
                     API_DETAIL -> findNavController().navigate(HomeFragmentDirections.actionToApiCatBreedDetail())
                     API_FORM -> findNavController().navigate(HomeFragmentDirections.actionToApiCatBreedForm())
-                    API_LOGIN -> findNavController().navigate(HomeFragmentDirections.actionToApiLogin())
+                    API_LOGIN -> findNavController().navigate(HomeFragmentDirections.actionToApiLogin())//todo safeNavigate()
 
                     MATERIAL_ALERTS -> findNavController().navigate(HomeFragmentDirections.actionToMaterialAlerts())
                     MATERIAL_BOTTOM_APP_BAR -> findNavController().navigate(HomeFragmentDirections.actionToMaterialBottomAppBar())

@@ -30,7 +30,11 @@ Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM
 >```
 >
 > Remember that you'll need to enable Java 8 & DataBinding in your app module `build.gradle`.
-  
+
+## 📃 Table of Contents
+
+- [💡 Getting Started](#-getting-started)
+
 ## 💡 Getting Started
 
 We assume that you know MVVM architecture, but if you have some problems in understanding its, this [Articles](https://proandroiddev.com/tagged/mvvm) can help you.
