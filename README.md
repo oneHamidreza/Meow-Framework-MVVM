@@ -44,18 +44,20 @@ Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM
   - [Initialization](https://github.com/oneHamidreza/Meow-Framework-MVVM#-initialization) : How to have a `MeowApp`.
   - [Meow Controller 🐈](https://github.com/oneHamidreza/Meow-Framework-MVVM#-meow-controller-) : Trust this CAT.
   - [MVVM Architecture](https://github.com/oneHamidreza/Meow-Framework-MVVM#-mvvm-architecture) : Get to know this architecture.
-  - [Accessing Views with DataBinding](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#accessing-views-with-databinding) : Forget `findViewById()`.
-
-- [🧩 Meow KTX (Kotlin Extensions)](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#-meow-ktx-kotlin-extensions)
+  - [Accessing Views with DataBinding](https://github.com/oneHamidreza/Meow-Framework-MVVM#accessing-views-with-databinding) : Forget `findViewById()`.
 
 - [📶 REST API : Retrofit + OKHttp + Coroutine + Moshi](https://github.com/oneHamidreza/Meow-Framework-MVVM#-rest-api--retrofit--okhttp--coroutine--moshi)
-  - [Create Api that extends `MeowApi`](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#create-api-that-extends-meowapi) : A new way to connect server.
-  - [Common API Flow/Patterns](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#common-api-flowpatterns) : Some predefined patterns for REST APIs.
-  - [Sample `Index` Api](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#sample-index-api) : A Sample for filling `RecyclerView` from JSON Data.
+  - [Create Api that extends `MeowApi`](https://github.com/oneHamidreza/Meow-Framework-MVVM#create-api-that-extends-meowapi) : A new way to connect server.
+  - [Common API Flow/Patterns](https://github.com/oneHamidreza/Meow-Framework-MVVM#common-api-flowpatterns) : Some predefined patterns for REST APIs.
+  - [Sample `Index` Api](https://github.com/oneHamidreza/Meow-Framework-MVVM#sample-index-api) : A Sample for filling `RecyclerView` from JSON Data.
+
+- [🧩 Meow KTX (Kotlin Extensions)](https://github.com/oneHamidreza/Meow-Framework-MVVM#-meow-ktx-kotlin-extensions)
 
 - [🎨 Material Components](https://github.com/oneHamidreza/Meow-Framework-MVVM#-material-components)
 
 - [🌌 Meow Custom Widgets](https://github.com/oneHamidreza/Meow-Framework-MVVM#-meow-custom-widgets)
+- [🖐 Contributing](https://github.com/oneHamidreza/Meow-Framework-MVVM#-contributing)
+
 
 ## 💡 Getting Started
 
@@ -208,77 +210,6 @@ class MainActivity : MeowActivity<ActivityMainBinding>() {
 ```
 
 Now you have an Activity with MVVM architecture. In above sample, you can replace `MeowActivity` with `MeowFragment` to have MVVM Fragment.
-
-## 🧩 Meow KTX (Kotlin Extensions)
-
-We have developed some Kotlin Extensions that can be help us in building Android Apps. Just import `meow.ktx` package which include the following :
-
-- [🧩 Android Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Android.md)
-- [💵 Currency Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Currency.md)
-- [📅 Date Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Date.md)
-- [📂 File Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_File.md)
-- [📇 JSON Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Json.md)
-- [💉 Kodein Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Kodein.md)
-- [💎 Kotlin Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Kotlin.md)
-- [📃 Log Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Log.md)
-- [📶 Network Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Network.md)
-- [🚦 Permission Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Permission.md)
-- [📬 Shared Preferences Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Shared_Preferences.md)
-- [🍟 Snackbar Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Snackbar.md)
-- [🧬 String Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_String.md)
-- [🚂 System Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_System.md)
-- [🍞 Toast Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Toast.md)
-- [✅ Validate Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Validate.md)
-
-### Ⓜ Material Design
-
-Update App Theme in `styles.xml` with `DayNight` Material Theme. More details are at [Official Material Design Site](https://material.io/develop/android/docs/getting-started/).
-
-```xml
-<style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-    <!-- Original AppCompat attributes. -->   <!-- Define colors in colors.xml -->
-    <item name="colorPrimary">YOUR_PRIMARY_COLOR</item>
-    <item name="colorSecondary">YOUR_SECONDARY_COLOR</item>
-    
-    <item name="android:colorBackground">@color/meow_background</item>
-    <item name="colorError">@color/meow_error</item>
-    
-    <!-- New MaterialComponents attributes. -->
-    <item name="colorPrimaryVariant">YOUR_PRIMARY_VARIANT_COLOR</item>
-    <item name="colorSecondaryVariant">YOUR_SECONDARY_VARIANT_COLOR</item>
-    <item name="colorSurface">@color/meow_surface</item>
-    <item name="colorOnPrimary">YOUR_ON_PRIMARY_COLOR</item>
-    <item name="colorOnSecondary">YOUR_ON_SECONDARY_COLOR</item>
-    <item name="colorOnBackground">@color/meow_on_background</item>
-    <item name="colorOnError">@color/meow_on_error</item>
-    <item name="colorOnSurface">@color/meow_on_surface</item>
-    <item name="scrimBackground">@color/mtrl_scrim_color</item>
-</style>  
-```
-
-#### 🖌 Material Text Styles + Font by using `Meow.TextAppearance` Style
-
-Just do same as [styles_text_appearances.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/res/values/styles_text_appearances.xml).
-
-> You must apply styles in `AppTheme`.
->
->```xml
-><style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar" >
->   <item name="textAppearanceHeadline1">@style/textAppearance.Headline1</item>
->   <item name="textAppearanceHeadline2">@style/textAppearance.Headline2</item>
->   <item name="textAppearanceHeadline3">@style/textAppearance.Headline3</item>
->   <item name="textAppearanceHeadline4">@style/textAppearance.Headline4</item>
->   <item name="textAppearanceHeadline5">@style/textAppearance.Headline5</item>
->   <item name="textAppearanceHeadline6">@style/textAppearance.Headline6</item>
->   <item name="textAppearanceSubtitle1">@style/textAppearance.Subtitle1</item>
->   <item name="textAppearanceSubtitle2">@style/textAppearance.Subtitle2</item>
->   <item name="textAppearanceBody1">@style/textAppearance.Body1</item>
->   <item name="textAppearanceBody2">@style/textAppearance.Body2</item>
->   <item name="textAppearanceCaption">@style/textAppearance.Caption</item>
->   <item name="textAppearanceButton">@style/textAppearance.Button</item>
->   <item name="textAppearanceOverline">@style/textAppearance.Overline</item>
-></style>
->```
   
 ## 📶 REST API : Retrofit + OKHttp + Coroutine + Moshi
 
@@ -482,6 +413,77 @@ class PersonIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){
 ```  
 Now you have a activity that connect to **REST API** and parse the response (if the response code is HttpCode.OK (200)) and it shows items into a `RecyclerView` as a list.
 Above sample can be used for other types of REST API patterns/flows (such as `Detail` ,`Form`). for more details see [API Package](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/api) in `Sample` module.
+
+## 🧩 Meow KTX (Kotlin Extensions)
+
+We have developed some Kotlin Extensions that can be help us in building Android Apps. Just import `meow.ktx` package which include the following :
+
+- [🧩 Android Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Android.md)
+- [💵 Currency Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Currency.md)
+- [📅 Date Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Date.md)
+- [📂 File Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_File.md)
+- [📇 JSON Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Json.md)
+- [💉 Kodein Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Kodein.md)
+- [💎 Kotlin Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Kotlin.md)
+- [📃 Log Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Log.md)
+- [📶 Network Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Network.md)
+- [🚦 Permission Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Permission.md)
+- [📬 Shared Preferences Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Shared_Preferences.md)
+- [🍟 Snackbar Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Snackbar.md)
+- [🧬 String Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_String.md)
+- [🚂 System Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_System.md)
+- [🍞 Toast Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Toast.md)
+- [✅ Validate Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Validate.md)
+
+### Ⓜ Material Design
+
+Update App Theme in `styles.xml` with `DayNight` Material Theme. More details are at [Official Material Design Site](https://material.io/develop/android/docs/getting-started/).
+
+```xml
+<style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <!-- Original AppCompat attributes. -->   <!-- Define colors in colors.xml -->
+    <item name="colorPrimary">YOUR_PRIMARY_COLOR</item>
+    <item name="colorSecondary">YOUR_SECONDARY_COLOR</item>
+    
+    <item name="android:colorBackground">@color/meow_background</item>
+    <item name="colorError">@color/meow_error</item>
+    
+    <!-- New MaterialComponents attributes. -->
+    <item name="colorPrimaryVariant">YOUR_PRIMARY_VARIANT_COLOR</item>
+    <item name="colorSecondaryVariant">YOUR_SECONDARY_VARIANT_COLOR</item>
+    <item name="colorSurface">@color/meow_surface</item>
+    <item name="colorOnPrimary">YOUR_ON_PRIMARY_COLOR</item>
+    <item name="colorOnSecondary">YOUR_ON_SECONDARY_COLOR</item>
+    <item name="colorOnBackground">@color/meow_on_background</item>
+    <item name="colorOnError">@color/meow_on_error</item>
+    <item name="colorOnSurface">@color/meow_on_surface</item>
+    <item name="scrimBackground">@color/mtrl_scrim_color</item>
+</style>  
+```
+
+#### 🖌 Material Text Styles + Font by using `Meow.TextAppearance` Style
+
+Just do same as [styles_text_appearances.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/res/values/styles_text_appearances.xml).
+
+> You must apply styles in `AppTheme`.
+>
+>```xml
+><style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar" >
+>   <item name="textAppearanceHeadline1">@style/textAppearance.Headline1</item>
+>   <item name="textAppearanceHeadline2">@style/textAppearance.Headline2</item>
+>   <item name="textAppearanceHeadline3">@style/textAppearance.Headline3</item>
+>   <item name="textAppearanceHeadline4">@style/textAppearance.Headline4</item>
+>   <item name="textAppearanceHeadline5">@style/textAppearance.Headline5</item>
+>   <item name="textAppearanceHeadline6">@style/textAppearance.Headline6</item>
+>   <item name="textAppearanceSubtitle1">@style/textAppearance.Subtitle1</item>
+>   <item name="textAppearanceSubtitle2">@style/textAppearance.Subtitle2</item>
+>   <item name="textAppearanceBody1">@style/textAppearance.Body1</item>
+>   <item name="textAppearanceBody2">@style/textAppearance.Body2</item>
+>   <item name="textAppearanceCaption">@style/textAppearance.Caption</item>
+>   <item name="textAppearanceButton">@style/textAppearance.Button</item>
+>   <item name="textAppearanceOverline">@style/textAppearance.Overline</item>
+></style>
+>```
 
 ## 🎨 Material Components
 
@@ -866,7 +868,7 @@ Learn more about it at [Material Top App Bars Component](https://material.io/dev
 
 ## 🌌 Meow Custom Widgets
 
-## Contributing
+## 🖐 Contributing
 
 If you want to contribute to this project, just send an email with `Meow Framework Contributing` to oneHamidreza@gmail.com .
 
