@@ -4,11 +4,14 @@ A Framework that simplify developing MVVM architecture and Material Design in An
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_github.png" width="60%" />
+</p>
 
+<p align="center">
 <a href="https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.7.2-alpha/link" >
 <img src="https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.7.2-alpha" />
 </a>
 </p>
+
 
 ## 📱 Sample Application
 
