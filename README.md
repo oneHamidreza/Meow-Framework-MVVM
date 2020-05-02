@@ -40,11 +40,15 @@ Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM
 
 ## 📃 Table of Contents
 
-- [💡 Getting Started](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#-getting-started)
-  - [🎮 Initialization](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#-initialization)
-- [📶 REST API : Retrofit + OKHttp + Coroutine + Moshi](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#-rest-api--retrofit--okhttp--coroutine--moshi)
-- [🎨 Material Components](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#-material-components)
-- [🌌 Meow Custom Widgets](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/README.md#-meow-custom-widgets)
+- [💡 Getting Started](https://github.com/oneHamidreza/Meow-Framework-MVVM#-getting-started)
+  - [🎮 Initialization](https://github.com/oneHamidreza/Meow-Framework-MVVM#-initialization) : How to have a `MeowApp`.
+  - [🐱 Meow Controller 🐈](https://github.com/oneHamidreza/Meow-Framework-MVVM#-meow-controller-) : Trust this CAT.
+  - [📐 MVVM Architecture](https://github.com/oneHamidreza/Meow-Framework-MVVM#-mvvm-architecture) : Get to know this architecture.
+  - [### Accessing views with DataBinding](https://github.com/oneHamidreza/Meow-Framework-MVVM#-acc) : Forget `findViewById()`.
+
+- [📶 REST API : Retrofit + OKHttp + Coroutine + Moshi](https://github.com/oneHamidreza/Meow-Framework-MVVM#-rest-api--retrofit--okhttp--coroutine--moshi)
+- [🎨 Material Components](https://github.com/oneHamidreza/Meow-Framework-MVVM#-material-components)
+- [🌌 Meow Custom Widgets](https://github.com/oneHamidreza/Meow-Framework-MVVM#-meow-custom-widgets)
 
 ## 💡 Getting Started
 
