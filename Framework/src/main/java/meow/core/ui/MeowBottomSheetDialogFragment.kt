@@ -22,7 +22,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.DialogFragment
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import meow.ktx.PermissionUtils
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -31,14 +32,14 @@ import org.kodein.di.android.x.closestKodein
 import org.kodein.di.erased.kcontext
 
 /**
- * Meow Fragment class inherits from [Fragment] , [FragmentActivityInterface] , [KodeinAware].
+ * Meow Bottom Sheet Dialog Fragment class inherits from [DialogFragment] , [FragmentActivityInterface] , [KodeinAware].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-02-28
+ * @since   2020-05-03
  */
 
-abstract class MeowFragment<B : ViewDataBinding> : Fragment(),
+abstract class MeowBottomSheetDialogFragment<B : ViewDataBinding> : BottomSheetDialogFragment(),
     FragmentActivityInterface<B>,
     KodeinAware {
 
@@ -58,18 +59,13 @@ abstract class MeowFragment<B : ViewDataBinding> : Fragment(),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        if (!::binding.isInitialized)//todo check
-            binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
+        binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding.lifecycleOwner = viewLifecycleOwner
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        binding.lifecycleOwner = viewLifecycleOwner
         initViewModel()
     }
 
@@ -80,5 +76,4 @@ abstract class MeowFragment<B : ViewDataBinding> : Fragment(),
     ) {
         onRequestPermission(requestCode, grantResults)
     }
-
 }

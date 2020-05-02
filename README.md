@@ -1,6 +1,6 @@
 # Meow Framework MVVM Android/Kotlin
 
-A Framework that simplify developing MVVM architecture and Material Design in Android with Kotlin language including useful Extensions and Sample Application. Also this Framework has some tools for Retrofit and OKHttp and Coroutine for calling REST API requests.
+A Framework that simplify developing MVVM architecture and Material Design in Android with Kotlin language including useful Extensions and Sample Application.This Framework has some tools for Retrofit and OKHttp and Coroutine for calling REST API requests. Meow Custom Widgets is another features.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_github.png" width="60%" />
@@ -27,7 +27,7 @@ After adding library, some of most useful libraries (such as `Androidx AppCompat
 
 List of dependencies can be found in [meow.AppConfig.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/buildSrc/src/main/java/meow/AppConfig.kt) in `Dependencies` Object.
 
-Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Framework/build.gradle.kts) in Sample module to avoid any issues related to setup & adding Framework.
+Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Framework/build.gradle.kts) in Sample module to avoid any issues that related to setup & adding Framework.
 
 > Enable androidx in `gradle.properties`.
 >
@@ -53,6 +53,9 @@ Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM
 
 - [🧩 Meow KTX (Kotlin Extensions)](https://github.com/oneHamidreza/Meow-Framework-MVVM#-meow-ktx-kotlin-extensions)
 
+- [🎨 Material Components](https://github.com/oneHamidreza/Meow-Framework-MVVM#mat)
+
+
 - [🎨 Material Components](https://github.com/oneHamidreza/Meow-Framework-MVVM#-material-components)
 
 - [🌌 Meow Custom Widgets](https://github.com/oneHamidreza/Meow-Framework-MVVM#-meow-custom-widgets)
@@ -66,7 +69,7 @@ We assume that you know MVVM architecture, but if you have some problems in unde
 ### 🎮 Initialization
 
 Create your application class which extends `MeowApp` and set it in `AndroidManifest.xml`. Dependency Injection in MVVM architecture is necessary, so we use `Kodein-DI` Framework.
-You need to define `appModule` for View Models. Update application class like below :
+You'll need to define `appModule` for View Models. Update application class like below :
 
 ```kotlin
 class App : MeowApp() {
@@ -92,7 +95,7 @@ class App : MeowApp() {
 
 This Framework has two Highlighted Features :
 - Dynamic **Day/Night** Theme to switch from `LIGHT` to `DARK` mode.
-- Dynamic **Localization** to change language , currency formatting , date formatting of app Realtime.
+- Dynamic **Localization** to change language , currency formatting , date formatting of app at Realtime.
 
 to use above features, you'll need to define your `MeowController`.
 
@@ -118,7 +121,7 @@ class App : MeowApp() {
         bindMeow { // Import it from meow package.
             it.isDebugMode = BuildConfig.DEBUG
             // Set other properties here.
-            it.onException = {
+            it.onException = { // Only non-fatal error
                 // Log to Fabric or any other Crash Management System. Just use `avoidException` instead of `try{}catch{}`
             }
         } 
@@ -134,6 +137,8 @@ import meow.controller
 controller.updateLanguage(meowActivity, string)
 controller.updateTheme(meowActivity, theme)
 ```
+
+The Sample Application has above features. try to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.7.2-alpha/Meow-Framework-Sample-v0.7.2-alpha.apk) .
 
 ### 📐 MVVM Architecture
 
@@ -159,7 +164,7 @@ val appModule = Module("App Module", false) {
 
 >`bindAutoTag()` was imported from `meow.ktx.*` package.
 
-#### 3.  Create XML layout with `DataBinding` structure.
+#### 3. Create XML layout with `DataBinding` structure.
 
 ```xml
 <layout>
@@ -172,7 +177,7 @@ val appModule = Module("App Module", false) {
 </layout>
 ```
 
-#### 4. Create Activity/Fragment extends `MeowActivity/MeowFragment` + `DataBinding` + `ViewModel`.
+#### 4. Create Activity/Fragment ( extends `MeowActivity/MeowFragment` ) + `DataBinding` + `ViewModel`.
 
 ‍‍‍`MainActivity` is a sample activity that needs Kodein Dependency Injection and ViewDataBinding and View Model. See this example :
 
@@ -196,15 +201,15 @@ You can access views like this code :
 ```xml
 <com.google.android.material.appbar.MaterialToolbar
     android:id="@+id/toolbar"
-    style="@style/Meow.Toolbar" />  
-```  
+    style="@style/Meow.Toolbar" />
+```
 
 ```kotlin
 class MainActivity : MeowActivity<ActivityMainBinding>() {
     override fun layoutId() = R.layout.activity_main
     override fun onCreate(savedInstanceState: Bundle?) {
         // ...
-        binding.toolbar.title = "custom_title" 
+        binding.toolbar.title = "custom_title" // Use binding variable 
     }
 }
 ```
@@ -213,7 +218,7 @@ Now you have an Activity with MVVM architecture. In above sample, you can replac
   
 ## 📶 REST API : Retrofit + OKHttp + Coroutine + Moshi
 
-Meow Framework provides for you to call Server REST API actions from Android App with `Retrofit`. Creating client connections will be with `OKHttp` and `Moshi` which help us to serialize json responses. We replaced `RxJava` with `Coroutine` to multi thread handling.
+Meow Framework provides some tools to call Server REST API actions from Android App with `Retrofit`. Creating client connections will be with `OKHttp` . `Moshi` helps us to serialize json responses. We replaced `RxJava` with `Coroutine` for multi thread handling.
   
 ### Create Api that extends `MeowApi`
 
@@ -221,8 +226,8 @@ Meow Framework provides for you to call Server REST API actions from Android App
 class AppApi(
     var app: App,
     baseUrl : String = "http://api-url.any/api/v1/"
-): MeowApi(baseUrl)  
-```  
+): MeowApi(baseUrl)
+```
 
 ### Common API Flow/Patterns
 
@@ -255,7 +260,7 @@ For example, server gives this JSON response when we call `/api/v1/persons` with
 
 #### Data Model
 
-Create a data class for JSON response that use Moshi `@Json` annotation.
+Create a data class for JSON response which use Moshi `@Json` annotation.
 
 ```kotlin
 data class Person(
@@ -277,14 +282,14 @@ Define an interface containing Rest API actions. Meow Framework uses `Coroutine`
 
 ```kotlin
 interface PersonApi {
-    @GET("persons") // Don't need to write absolute path. OKHTTP appends this string at end of baseUrl.
+    @GET("persons") // Don't need to write absolute path. OKHTTP appends this string at end of your baseUrl API.
     suspend fun getPersonIndex(): List<Person>
 }
 ```
 
 #### Call API action from ViewModel by using `safeCallApi()`. Update your ViewModel class like this :
 
-```kotlin  
+```kotlin
 class PersonIndexViewModel(app:App) : MeowViewModel(app) {
     // Define LiveData variables.
     var eventLiveData = MutableLiveData<MeowEvent<*>>()
@@ -308,11 +313,11 @@ class PersonIndexViewModel(app:App) : MeowViewModel(app) {
 
 #### XML Layout
 
-Create `activity_sample_index.xml` that hast `RecyclerView` to showing items.
+Create `activity_sample_index.xml` which has `RecyclerView` to showing items as List.
 
 ```xml
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <data> 
+    <data>
         <variable
             name="viewModel"
             type="PersonIndexViewModel" />
@@ -349,10 +354,10 @@ class SampleIndexActivity : MeowActivity<ActivitySampleIndexBinding>() {
     }
     
     private fun callApiAndObserve() {
-        MeowFlow.GetDataApi<Person>(this) { // You must define type of API response.
+        MeowFlow.GetDataApi<Person>(this) { // You must pass the type of API response. For Example : `Person`.
             viewModel.callApi()
         }.apply {
-            errorHandlerType = MeowFlow.ErrorHandlerType.TOAST
+            errorHandlerType = MeowFlow.ErrorHandlerType.TOAST // Error handling will be with toast().
             progressBarInterface = binding.progressbar
         }.observeForIndex(viewModel.eventLiveData, viewModel.listLiveData)
         
@@ -398,10 +403,10 @@ class PersonAdapter : MeowAdapter<Model, ViewHolder>(Person.DiffCallback()) {
             }
         }
     }
-}  
+}
 ```
 
-finally bind adapter to `RecyclerView`.
+Finally bind adapter to `RecyclerView`.
 
 ```kotlin  
 class PersonIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){
@@ -435,33 +440,34 @@ We have developed some Kotlin Extensions that can be help us in building Android
 - [🍞 Toast Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Toast.md)
 - [✅ Validate Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Validate.md)
 
-### Ⓜ Material Design
+## Ⓜ Material Design Setup
 
 Update App Theme in `styles.xml` with `DayNight` Material Theme. More details are at [Official Material Design Site](https://material.io/develop/android/docs/getting-started/).
 
 ```xml
 <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-    <!-- Original AppCompat attributes. -->   <!-- Define colors in colors.xml -->
+    <!-- Original AppCompat attributes. -->
+    <!-- Define colors in colors.xml -->
+    
     <item name="colorPrimary">YOUR_PRIMARY_COLOR</item>
     <item name="colorSecondary">YOUR_SECONDARY_COLOR</item>
-    
+        
     <item name="android:colorBackground">@color/meow_background</item>
-    <item name="colorError">@color/meow_error</item>
-    
     <!-- New MaterialComponents attributes. -->
     <item name="colorPrimaryVariant">YOUR_PRIMARY_VARIANT_COLOR</item>
     <item name="colorSecondaryVariant">YOUR_SECONDARY_VARIANT_COLOR</item>
-    <item name="colorSurface">@color/meow_surface</item>
     <item name="colorOnPrimary">YOUR_ON_PRIMARY_COLOR</item>
     <item name="colorOnSecondary">YOUR_ON_SECONDARY_COLOR</item>
-    <item name="colorOnBackground">@color/meow_on_background</item>
-    <item name="colorOnError">@color/meow_on_error</item>
+    <item name="colorSurface">@color/meow_surface</item>
     <item name="colorOnSurface">@color/meow_on_surface</item>
+    <item name="colorOnBackground">@color/meow_on_background</item>
+    <item name="colorError">@color/meow_error</item>
+    <item name="colorOnError">@color/meow_on_error</item>
     <item name="scrimBackground">@color/mtrl_scrim_color</item>
-</style>  
+</style>
 ```
 
-#### 🖌 Material Text Styles + Font by using `Meow.TextAppearance` Style
+### 🖌 Material Text Styles + Font by using `Meow.TextAppearance` Style
 
 Just do same as [styles_text_appearances.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/res/values/styles_text_appearances.xml).
 
@@ -469,19 +475,19 @@ Just do same as [styles_text_appearances.xml](https://github.com/oneHamidreza/Me
 >
 >```xml
 ><style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar" >
->   <item name="textAppearanceHeadline1">@style/textAppearance.Headline1</item>
->   <item name="textAppearanceHeadline2">@style/textAppearance.Headline2</item>
->   <item name="textAppearanceHeadline3">@style/textAppearance.Headline3</item>
->   <item name="textAppearanceHeadline4">@style/textAppearance.Headline4</item>
->   <item name="textAppearanceHeadline5">@style/textAppearance.Headline5</item>
->   <item name="textAppearanceHeadline6">@style/textAppearance.Headline6</item>
->   <item name="textAppearanceSubtitle1">@style/textAppearance.Subtitle1</item>
->   <item name="textAppearanceSubtitle2">@style/textAppearance.Subtitle2</item>
->   <item name="textAppearanceBody1">@style/textAppearance.Body1</item>
->   <item name="textAppearanceBody2">@style/textAppearance.Body2</item>
->   <item name="textAppearanceCaption">@style/textAppearance.Caption</item>
->   <item name="textAppearanceButton">@style/textAppearance.Button</item>
->   <item name="textAppearanceOverline">@style/textAppearance.Overline</item>
+>   <item name="textAppearanceHeadline1">@style/App.TextAppearance.Headline1</item>
+>   <item name="textAppearanceHeadline2">@style/App.TextAppearance.Headline2</item>
+>   <item name="textAppearanceHeadline3">@style/App.TextAppearance.Headline3</item>
+>   <item name="textAppearanceHeadline4">@style/App.TextAppearance.Headline4</item>
+>   <item name="textAppearanceHeadline5">@style/App.TextAppearance.Headline5</item>
+>   <item name="textAppearanceHeadline6">@style/App.TextAppearance.Headline6</item>
+>   <item name="textAppearanceSubtitle1">@style/App.TextAppearance.Subtitle1</item>
+>   <item name="textAppearanceSubtitle2">@style/App.TextAppearance.Subtitle2</item>
+>   <item name="textAppearanceBody1">@style/App.TextAppearance.Body1</item>
+>   <item name="textAppearanceBody2">@style/App.TextAppearance.Body2</item>
+>   <item name="textAppearanceCaption">@style/App.TextAppearance.Caption</item>
+>   <item name="textAppearanceButton">@style/App.TextAppearance.Button</item>
+>   <item name="textAppearanceOverline">@style/App.TextAppearance.Overline</item>
 ></style>
 >```
 
