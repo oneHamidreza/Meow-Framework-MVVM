@@ -19,25 +19,33 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center"
+            android:orientation="horizontal"
             app:meow_gap="@{16}">
 
-            <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Small.Primary" />
+            <meow.widget.MeowProgressBar
+                style="@style/Meow.ProgressBar.Small.Primary"
+                app:meow_progress_showOnInit="true" />
 
-            <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Small.PrimaryVariant" />
+            <meow.widget.MeowProgressBar
+                style="@style/Meow.ProgressBar.Small.PrimaryVariant"
+                app:meow_progress_showOnInit="true" />
 
-            <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Small.Secondary" />
+            <meow.widget.MeowProgressBar
+                style="@style/Meow.ProgressBar.Small.Secondary"
+                app:meow_progress_showOnInit="true" />
 
-            <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Small.SecondaryVariant" />
+            <meow.widget.MeowProgressBar
+                style="@style/Meow.ProgressBar.Small.SecondaryVariant"
+                app:meow_progress_showOnInit="true" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center"
+            android:orientation="horizontal"
             app:meow_gap="@{16}">
 
             <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Medium.Primary" />
@@ -53,8 +61,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center"
+            android:orientation="horizontal"
             app:meow_gap="@{16}">
 
             <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Large.Primary" />

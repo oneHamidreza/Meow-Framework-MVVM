@@ -267,4 +267,8 @@
         <attr name="meow_iconColor" />
     </declare-styleable>
 
+    <declare-styleable name="MeowProgressBar">
+        <attr name="meow_progress_showOnInit" format="boolean" />
+    </declare-styleable>
+
 </resources>

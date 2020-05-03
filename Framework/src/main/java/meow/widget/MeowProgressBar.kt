@@ -21,6 +21,7 @@ import android.content.res.ColorStateList
 import android.util.AttributeSet
 import android.view.View
 import android.widget.ProgressBar
+import com.etebarian.meowframework.R
 import meow.controller
 import meow.ktx.sdkNeed
 import meow.widget.impl.ProgressBarInterface
@@ -40,12 +41,19 @@ class MeowProgressBar @JvmOverloads constructor(
     defStyleAttrs: Int = 0
 ) : ProgressBar(context, attrs, defStyleAttrs), ProgressBarInterface {
 
+    private var showOnInit: Boolean = false
+
     init {
+        setAttributesFromXml(attrs, R.styleable.MeowProgressBar) {
+            showOnInit =
+                it.getBoolean(R.styleable.MeowProgressBar_meow_progress_showOnInit, showOnInit)
+        }
         sdkNeed(21) {
             progressTintList = progressTintList
             indeterminateTintList = indeterminateTintList
         }
-        hide()
+        if (!showOnInit)
+            hide()
     }
 
     override fun show() {
