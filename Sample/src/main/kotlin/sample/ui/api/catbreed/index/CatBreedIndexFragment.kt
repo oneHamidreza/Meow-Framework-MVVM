@@ -56,7 +56,6 @@ class CatBreedIndexFragment : BaseFragment<FragmentCatBreedIndexBinding>() {
             viewModel.callApi()
         }.apply {
             errorHandlerType = MeowFlow.ErrorHandlerType.EMPTY_STATE
-            progressBarInterface = binding.progressbar
             swipeRefreshLayout = binding.srl
             emptyStateInterface = binding.emptyState
         }.observeForIndex(viewModel.eventLiveData, viewModel.listLiveData)

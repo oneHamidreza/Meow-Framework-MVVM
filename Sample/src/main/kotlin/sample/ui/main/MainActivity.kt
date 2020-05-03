@@ -16,8 +16,6 @@
 
 package sample.ui.main
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -29,10 +27,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import meow.controller
-import meow.ktx.getColorCompat
-import meow.ktx.getDimensionToPx
-import meow.ktx.instanceViewModel
-import meow.ktx.sdkNeed
+import meow.ktx.*
 import meow.widget.setElevationCompat
 import sample.R
 import sample.databinding.ActivityMainBinding
@@ -87,12 +82,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 true
             }
             R.id.actionGithub -> {
-                startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("https://github.com/oneHamidreza/Meow-Framework-MVVM")
-                    )
-                )
+                openChrome("https://github.com/oneHamidreza/Meow-Framework-MVVM")
                 true
             }
             else -> super.onOptionsItemSelected(item)

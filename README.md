@@ -1,6 +1,7 @@
 # Meow Framework MVVM Android/Kotlin
 
-A Framework that simplify developing MVVM architecture and Material Design in Android with Kotlin language including useful Extensions and Sample Application.This Framework has some tools for Retrofit and OKHttp and Coroutine for calling REST API requests. Meow Custom Widgets is another features.
+A Framework that simplify developing MVVM Architecture and Material Design in Android with Kotlin language including useful Extensions and Sample Application. This Framework has some tools for Retrofit and OKHttp and Coroutine for calling REST API requests.  
+Dynamic Localization and Day/Night Theme & Meow Custom Widgets are another features.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_github.png" width="60%" />
@@ -23,11 +24,12 @@ We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow
 implementation("com.etebarian:meow-framework-mvvm:0.7.2-alpha")
 ```
 
-After adding library, some of most useful libraries (such as `Androidx AppCompat` , `Coroutine` , `Glide` , `Kodein` , `Kotlinx Serialization` , `Material Components` , `Moshi` , `Navigation Components` , `Retrofit` ) will be added in your app. So you don't need to add this libraries manually.  
+After adding library, some of most useful libraries (such as `Androidx AppCompat` , `Coroutine` , `Glide` , `Kodein` , `Kotlinx Serialization` , `Material Components` , `Moshi` , `Navigation Components` , `Retrofit` ) will be added in your app. So you would'nt need to add this libraries manually.
 
 List of dependencies can be found in [meow.AppConfig.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/buildSrc/src/main/java/meow/AppConfig.kt) in `Dependencies` Object.
 
 Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Framework/build.gradle.kts) in Sample module to avoid any issues that related to setup & adding Framework.
+We recommend that use `Kotlin DSL Gradle` instead of `Groovy` . That is not Buggy 😊.
 
 > Enable androidx in `gradle.properties`.
 >
@@ -53,12 +55,12 @@ Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM
 
 - [🧩 Meow KTX (Kotlin Extensions)](https://github.com/oneHamidreza/Meow-Framework-MVVM#-meow-ktx-kotlin-extensions)
 
+- [Ⓜ Material Design Setup](https://github.com/oneHamidreza/Meow-Framework-MVVM#-material-components)
+
 - [🎨 Material Components](https://github.com/oneHamidreza/Meow-Framework-MVVM#mat)
 
-
-- [🎨 Material Components](https://github.com/oneHamidreza/Meow-Framework-MVVM#-material-components)
-
 - [🌌 Meow Custom Widgets](https://github.com/oneHamidreza/Meow-Framework-MVVM#-meow-custom-widgets)
+
 - [🖐 Contributing](https://github.com/oneHamidreza/Meow-Framework-MVVM#-contributing)
 
 

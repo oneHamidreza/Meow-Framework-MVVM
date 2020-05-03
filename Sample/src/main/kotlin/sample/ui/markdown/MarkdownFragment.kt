@@ -16,6 +16,7 @@
 
 package sample.ui.markdown
 
+import android.text.Spanned
 import androidx.navigation.fragment.navArgs
 import meow.core.arch.MeowFlow
 import meow.ktx.instanceViewModel
@@ -56,11 +57,10 @@ class MarkdownFragment : BaseFragment<FragmentMarkdownBinding>() {
     }
 
     private fun callApiAndObserve() {
-        MeowFlow.GetDataApi<String>(this) {
+        MeowFlow.GetDataApi<Spanned>(this) {
             viewModel.callApi(navArgs.fileName)
         }.apply {
             errorHandlerType = MeowFlow.ErrorHandlerType.EMPTY_STATE
-            progressBarInterface = binding.progressbar
             swipeRefreshLayout = binding.srl
             emptyStateInterface = binding.emptyState
         }.observeForDetail(viewModel.eventLiveData)

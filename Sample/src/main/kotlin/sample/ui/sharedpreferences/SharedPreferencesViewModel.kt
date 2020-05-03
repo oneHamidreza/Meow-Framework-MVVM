@@ -16,6 +16,7 @@
 
 package sample.ui.sharedpreferences
 
+import android.text.Spanned
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import meow.core.api.MeowEvent
@@ -42,7 +43,7 @@ class SharedPreferencesViewModel(
 ) : MeowViewModel(app) {
 
     var eventLiveData = MutableLiveData<MeowEvent<*>>()
-    var modelLiveData = MutableLiveData<String>()
+    var modelLiveData = MutableLiveData<Spanned>()
 
     val userStateLiveData = SingleLiveData<Pair<State, User>>()
     val testStateLiveData = SingleLiveData<String>()

@@ -153,6 +153,7 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
             progressBarInterface?.show()
             dialog?.show()
             emptyStateInterface?.hide()
+            swipeRefreshLayout?.isRefreshing = true
         }
 
         var onHideLoading: () -> Unit = {

@@ -17,7 +17,9 @@
 package sample.widget
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.widget.TextView
 import io.noties.markwon.Markwon
@@ -43,6 +45,26 @@ import sample.prism4j.languages.*
  * @since   2020-04-14
  */
 
+private var markwon: Markwon? = null
+
+fun Context.getOrCreateMarkwon(): Markwon {
+    if (markwon == null) {
+        markwon = Markwon.builder(this).apply {
+            val prism4j = Prism4j(MyGrammarLocator())
+            val theme =
+                if (controller.isNightMode) Prism4jThemeDarkula.create() else Prism4jThemeDefault.create()
+            val highlight = SyntaxHighlightPlugin.create(prism4j, theme)
+            usePlugin(highlight)
+
+            usePlugin(HtmlPlugin.create())
+            usePlugin(LinkifyPlugin.create())
+            usePlugin(ImagesPlugin.create())
+            usePlugin(TablePlugin.create(this@getOrCreateMarkwon))
+        }.build()
+    }
+    return markwon!!
+}
+
 class MyGrammarLocator : GrammarLocator {
     override fun grammar(
         prism4j: Prism4j,
@@ -62,22 +84,9 @@ class MyGrammarLocator : GrammarLocator {
         setOf("clike", "groovy", "json", "kotlin", "markup", "properties", "xml")
 }
 
-fun TextView.setMarkdownData(markdownData: String?) {
-    if (markdownData == null)
-        return
+fun TextView.setMarkdownData(markdownData: Spanned) {
     movementMethod = LinkMovementMethod.getInstance()
-    Markwon.builder(context).apply {
-        val prism4j = Prism4j(MyGrammarLocator())
-        val theme =
-            if (controller.isNightMode) Prism4jThemeDarkula.create() else Prism4jThemeDefault.create()
-        val highlight = SyntaxHighlightPlugin.create(prism4j, theme)
-        usePlugin(highlight)
-
-        usePlugin(HtmlPlugin.create())
-        usePlugin(LinkifyPlugin.create())
-        usePlugin(ImagesPlugin.create())
-        usePlugin(TablePlugin.create(context))
-    }.build().setMarkdown(this, markdownData)
+    text = markdownData
 }
 
 fun String.githubRaw() =

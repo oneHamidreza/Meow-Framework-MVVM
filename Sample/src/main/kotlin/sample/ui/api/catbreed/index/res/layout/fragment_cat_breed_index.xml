@@ -23,10 +23,6 @@
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        <meow.widget.MeowProgressBar
-            android:id="@+id/progressbar"
-            style="@style/Meow.ProgressBar.Medium.Primary" />
-
         <meow.widget.MeowEmptyState
             android:id="@+id/emptyState"
             style="@style/Meow.EmptyState.OnBackground" />
