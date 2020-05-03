@@ -8,8 +8,8 @@ Dynamic Localization and Day/Night Theme & Meow Custom Widgets are another featu
 </p>
 
 <p align="center">
-<a href="https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.7.5-alpha/link" >
-<img src="https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.7.5-alpha" />
+<a href="https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.7.5-alpha/link">
+<img src="https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.7.5-alpha"/>
 </a>
 </p>
 
