@@ -8,20 +8,25 @@ Dynamic Localization and Day/Night Theme & Meow Custom Widgets are another featu
 </p>
 
 <p align="center">
-<a href="https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.7.2-alpha/link" >
-<img src="https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.7.2-alpha" />
+<a href="https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.7.3-alpha/link" >
+<img src="https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.7.3-alpha" />
 </a>
 </p>
 
 
 ## 📱 Sample Application
 
-We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.7.2-alpha/Meow-Framework-Sample-v0.7.2-alpha.apk) to be familiar with `Meow Framework`.
+We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.7.3-alpha/Meow-Framework-Sample-v0.7.3-alpha.apk) to be familiar with `Meow Framework`.
+
+<p>
+<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-01.png" width="30%" />
+<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-02.png" width="30%" />
+</p>
 
 ## 🛠 Setup
 
 ```groovy
-implementation("com.etebarian:meow-framework-mvvm:0.7.2-alpha")
+implementation("com.etebarian:meow-framework-mvvm:0.7.3-alpha")
 ```
 
 After adding library, some of most useful libraries (such as `Androidx AppCompat` , `Coroutine` , `Glide` , `Kodein` , `Kotlinx Serialization` , `Material Components` , `Moshi` , `Navigation Components` , `Retrofit` ) will be added in your app. So you would'nt need to add this libraries manually.
@@ -140,7 +145,7 @@ controller.updateLanguage(meowActivity, string)
 controller.updateTheme(meowActivity, theme)
 ```
 
-The Sample Application has above features. try to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.7.2-alpha/Meow-Framework-Sample-v0.7.2-alpha.apk) .
+The Sample Application has above features. try to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.7.3-alpha/Meow-Framework-Sample-v0.7.3-alpha.apk) .
 
 ### 📐 MVVM Architecture
 
