@@ -501,7 +501,7 @@ You can show Alert Dialog with `alert()` function in `MeowActivity/MeowFragment`
 fun testAlert() {
     alert()
         .setTitle(R.string.alert_title)
-        .setMessage(R.string.alert_message) 
+        .setMessage(R.string.alert_message)
         .setPositiveButton(R.string.ok) { d, _ ->
             toastL(R.string.alerts_warn_ok_clicked)
             d.dismiss()
@@ -517,17 +517,19 @@ fun testAlert() {
   
 ![](https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_material_loading_alert.png)
   
-A Dialog with `MeowLoadingView` for showing progress bar with text into Dialog.
+A Dialog with `MeowLoadingView` to showing progress bar with text into Dialog.
 
-```kotlin  
-loadingAlert(R.string.loading_title_custom).show()  
+```kotlin
+fun testLoadingAlertDialog() {
+    loadingAlert(R.string.loading_title_custom).show()
+}
 ```
 
 Learn more about it at [AlertsFragment.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/alert/AlertsFragment.kt).
 
 ### Button
 
-There are some customized styles related to `Material Button`.
+There are some customized styles which is related to `Material Button`.
 
 |Style|Usage|
 |---|:---:|
@@ -535,8 +537,7 @@ There are some customized styles related to `Material Button`.
 |`Meow.Button.Outlined`|Outlined Button with `transparent` background color and `stroke_color.xml` outline color|
 |`Meow.Button.Flat`|Flat Button with `transparent` background color|
 |`Meow.Button.Unelevated`|Regular Button with `primary` background color with `0dp` elevation|
-|`Meow.Button.IconOnly`|A Meow Button that shows icon only |
-|`Meow.Button.IconOnly`|A Meow Button that shows icon only |
+|`Meow.Button.IconOnly`|A Meow Button that shows has not text|
 
 Use it like this in XML Layout :
 
@@ -555,10 +556,9 @@ Use it like this in XML Layout :
 
 Learn more about it at [Material Card Component](https://material.io/components/android/catalog/cards/) and [fragment_cards.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/cards/res/layout/fragment_cards.xml).
 
-
 ### CardView
 
-There are some customized styles related to `Material CardView`.
+There are some customized styles which is related to `Material CardView`.
 
 |Style|Usage|
 |---|:---:|
@@ -579,7 +579,7 @@ Learn more about it at [Material Card Component](https://material.io/components/
 
 ### Checkbox
 
-There are some customized styles related to `Material CheckBox`.
+There are some customized styles which is related to `Material CheckBox`.
 
 |Style|Usage|
 |---|:---:|
@@ -641,7 +641,7 @@ Learn more about it at [Material Extended Floating Action Button Component](http
 
 ### Radio Group  
 
-There are some customized styles related to `Material Radio Group`.
+There are some customized styles which is related to `Material Radio Group`.
 
 |Style|Usage|
 |---|:---:|
@@ -650,7 +650,7 @@ There are some customized styles related to `Material Radio Group`.
   
 ### Radio Button
 
-There are some customized styles related to `Material Radio Button`.
+There are some customized styles which is related to `Material Radio Button`.
 
 |Style|Usage|
 |---|:---:|
@@ -666,6 +666,7 @@ There are some customized styles related to `Material Radio Button`.
 |`Meow.RadioButton.Horizontal.OnSecondary`|Horizontal RadioButton with `onSecondary` button tint & `textColor`|
 
 Use it like this in XML Layout :
+
 ```xml
 <RadioGroup style="@style/Meow.RadioGroup.Vertical">
     <com.google.android.material.radiobutton.MaterialRadioButton
@@ -694,7 +695,7 @@ fun testSnackbars(){
     snackI(R.string.snackbars_message)
       
     // Shows Snack Bars with LENGTH_LONG with action button.
-    snackL(    
+    snackL(
         message = R.string.snackbars_message,    
         resActionText = R.string.snackbars_action,
         
@@ -706,11 +707,12 @@ fun testSnackbars(){
     }    
 }
 ```  
+
 Learn more about it at [SnackBarsFragment](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/snackbars/SnackBarsFragment.kt).
   
 ### Switch
 
-There are some customized styles related to `Material Switch`.
+There are some customized styles which is related to `Material Switch`.
 
 |Style|Usage|
 |---|:---:|
@@ -756,7 +758,7 @@ If you want to show contents into a ViewPager, we recommend to use `ViewPager2`.
 </layout>  
 ```
 
-#### 2. Create Custom Pager Adapter extends `MeowPagerAdapter`
+#### 2. Create Custom Pager Adapter that extends `MeowPagerAdapter`
 
 ```kotlin
 class MyPagerAdapter(
@@ -776,7 +778,7 @@ fun onCreate(savedInstanceState: Bundle?) {
     binding.apply {
         binding.viewPager.adapter = MyPagerAdapter(childFragmentManager, lifecycle)
         TabLayoutMediator(tabLayout, viewpager) { tab, position ->
-            tab.text = "Tab Title #" + (position + 1)
+            tab.text = "Tab Title #" + (position + 1) // Set Tab titles here.
         }.attach()
         
         // Optional - If you want to show Material Badge on TabLayout.
@@ -790,7 +792,7 @@ fun onCreate(savedInstanceState: Bundle?) {
 
 Now you have `ViewPager2` + `TabLayout` in an Activity/Fragment.
 
-There are some customized styles related to `Material TabLayout`.
+There are some customized styles which is related to `Material TabLayout`.
 
 |Style|Usage|
 |---|:---:|
@@ -815,7 +817,7 @@ Use it like this in XML Layout :
 
 Learn more about it at [fragment_textviews.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/textviews/res/layout/fragment_textviews.xml).
 
-Colors for texts based on Material Colors contain `EMPHASIS_HIGH` , `EMPHASIS_MEDIUM` , `DISABLED`.
+Colors for texts based on Material Colors which contains `EMPHASIS_HIGH` , `EMPHASIS_MEDIUM` , `DISABLED` states.
 
 |Color|Value|
 |---|:---:|
@@ -832,7 +834,7 @@ Colors for texts based on Material Colors contain `EMPHASIS_HIGH` , `EMPHASIS_ME
 |`@color/on_secondary_medium`| `onSecondary` color with %60 transparency|
 |`@color/on_secondary_disabled`| `onSecondary` color with %38 transparency|
 
-### Top App Bar using `Material Toolbar`  
+### Top App Bar using `Material Toolbar`
 
 Use it like this in XML Layout :
 
@@ -858,10 +860,10 @@ Use it like this in XML Layout :
     <!-- Main Layout -->
     
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</layout>  
+</layout>
 ```
 
-There are some customized styles related to `Material Toolbar`.
+There are some customized styles which is related to `Material Toolbar`.
 
 |Style|Usage|
 |---|:---:|
@@ -876,7 +878,7 @@ Learn more about it at [Material Top App Bars Component](https://material.io/dev
 
 ## 🖐 Contributing
 
-If you want to contribute to this project, just send an email with `Meow Framework Contributing` to oneHamidreza@gmail.com .
+If you want to contribute to this project, just send an email to oneHamidreza@gmail.com with `Meow-Framework-Contributing` subject.
 
 License  
 --------  
