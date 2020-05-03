@@ -19,6 +19,7 @@ package sample.data
 import android.text.Spanned
 import meow.core.arch.DataSourceInterface
 import meow.core.data.MeowSharedPreferences
+import meow.ktx.ofPair
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 import org.kodein.di.erased.instance
@@ -27,7 +28,7 @@ import sample.App
 import sample.data.catbreed.CatBreed
 import sample.data.user.User
 import sample.di.AppApi
-import sample.widget.getOrCreateMarkwon
+import sample.widget.createMarkwon
 import sample.widget.githubRaw
 
 
@@ -58,9 +59,9 @@ class DataSource(override var app: App) : DataSourceInterface, KodeinAware {
     suspend fun postCatBreedToApi(request: CatBreed.Api.RequestCreate) =
         api.createServiceByAdapter<CatBreed.Api>().createCatBreed(request.name)
 
-    suspend fun getMarkdownFromApi(path: String): Spanned {
+    suspend fun getMarkdownFromApi(path: String): Pair<String, Spanned> {
         val raw = api.createScalersService().create<GithubApi>().getFileAsString(path.githubRaw())
-        return app.getOrCreateMarkwon().toMarkdown(raw)
+        return ofPair(raw, app.createMarkwon().toMarkdown(raw))
     }
 
     fun isLogin() = fetchApiToken().isNotEmpty()
@@ -72,4 +73,7 @@ class DataSource(override var app: App) : DataSourceInterface, KodeinAware {
 
     fun fetchApiRefreshToken() = spMain.get("apiRefreshToken", "")
     fun saveApiRefreshToken(it: String) = spMain.put("apiRefreshToken", it)
+
+    fun fetchMarkdownData(key: String) = spMain.get("markdown_$key", "")
+    fun saveMarkdownData(key: String, it: String) = spMain.put("markdown_$key", it)
 }

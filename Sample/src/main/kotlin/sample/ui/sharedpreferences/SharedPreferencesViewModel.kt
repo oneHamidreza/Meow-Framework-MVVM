@@ -54,7 +54,7 @@ class SharedPreferencesViewModel(
             isNetworkRequired = true,
             apiAction = { repository.getMarkdownFromApi(path) }
         ) { _, it ->
-            modelLiveData.postValue(it)
+            modelLiveData.postValue(it?.second)
         }
     }
 

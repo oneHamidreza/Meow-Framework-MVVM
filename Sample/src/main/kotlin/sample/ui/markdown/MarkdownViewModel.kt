@@ -20,8 +20,11 @@ import android.text.Spanned
 import androidx.lifecycle.MutableLiveData
 import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
+import meow.ktx.hasNetwork
+import meow.ktx.ofPair
 import sample.App
 import sample.data.GithubRepository
+import sample.widget.createMarkwon
 
 /**
  * Markdown View Model.
@@ -42,10 +45,20 @@ class MarkdownViewModel(
     fun callApi(path: String) {
         safeCallApi(
             liveData = eventLiveData,
-            isNetworkRequired = true,
-            apiAction = { repository.getMarkdownFromApi(path) }
+            isNetworkRequired = app.hasNetwork(),
+            apiAction = {
+                val saved = repository.fetchMarkdownData(path)
+                val model = if (saved.isNotEmpty() && !app.hasNetwork())
+                    ofPair(saved, app.createMarkwon().toMarkdown(saved))
+                else
+                    repository.getMarkdownFromApi(path)
+
+                model
+            }
         ) { _, it ->
-            modelLiveData.postValue(it)
+            modelLiveData.postValue(it?.second)
+            if (it != null)
+                repository.saveMarkdownData(path, it.first)
         }
     }
 

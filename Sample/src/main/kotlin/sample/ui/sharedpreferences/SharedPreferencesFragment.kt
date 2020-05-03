@@ -17,6 +17,7 @@
 package sample.ui.sharedpreferences
 
 import android.os.Bundle
+import android.text.Spanned
 import android.view.View
 import meow.core.arch.MeowFlow
 import meow.ktx.instanceViewModel
@@ -46,7 +47,7 @@ class SharedPreferencesFragment : BaseFragment<FragmentSharedPreferencesBinding>
     }
 
     private fun callApiAndObserve() {
-        MeowFlow.GetDataApi<String>(this) {
+        MeowFlow.GetDataApi<Pair<String, Spanned>>(this) {
             viewModel.callApi("Docs/ReadME_Extensions_Shared_Preferences.md")
         }.apply {
             errorHandlerType = MeowFlow.ErrorHandlerType.EMPTY_STATE

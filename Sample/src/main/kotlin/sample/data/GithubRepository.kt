@@ -29,6 +29,9 @@ import retrofit2.http.Url
 
 class GithubRepository(private val ds: DataSource) {
     suspend fun getMarkdownFromApi(path: String) = ds.getMarkdownFromApi(path)
+
+    fun fetchMarkdownData(key: String) = ds.fetchMarkdownData(key)
+    fun saveMarkdownData(key: String, it: String) = ds.saveMarkdownData(key, it)
 }
 
 interface GithubApi {

@@ -57,7 +57,7 @@ class MarkdownFragment : BaseFragment<FragmentMarkdownBinding>() {
     }
 
     private fun callApiAndObserve() {
-        MeowFlow.GetDataApi<Spanned>(this) {
+        MeowFlow.GetDataApi<Pair<String, Spanned>>(this) {
             viewModel.callApi(navArgs.fileName)
         }.apply {
             errorHandlerType = MeowFlow.ErrorHandlerType.EMPTY_STATE

@@ -44,23 +44,18 @@ import sample.prism4j.languages.*
  * @since   2020-04-14
  */
 
-private var markwon: Markwon? = null
+fun Context.createMarkwon(): Markwon {
+    return Markwon.builder(this).apply {
+        val prism4j = Prism4j(MyGrammarLocator())
+        val theme =
+            if (controller.isNightMode) Prism4jThemeDarkula.create() else Prism4jThemeDefault.create()
+        val highlight = SyntaxHighlightPlugin.create(prism4j, theme)
+        usePlugin(highlight)
 
-fun Context.getOrCreateMarkwon(): Markwon {
-    if (markwon == null) {
-        markwon = Markwon.builder(this).apply {
-            val prism4j = Prism4j(MyGrammarLocator())
-            val theme =
-                if (controller.isNightMode) Prism4jThemeDarkula.create() else Prism4jThemeDefault.create()
-            val highlight = SyntaxHighlightPlugin.create(prism4j, theme)
-            usePlugin(highlight)
-
-            usePlugin(ImagesPlugin.create())
-            usePlugin(HtmlPlugin.create())
-            usePlugin(TablePlugin.create(this@getOrCreateMarkwon))
-        }.build()
-    }
-    return markwon!!
+        usePlugin(ImagesPlugin.create())
+        usePlugin(HtmlPlugin.create())
+        usePlugin(TablePlugin.create(this@createMarkwon))
+    }.build()
 }
 
 class MyGrammarLocator : GrammarLocator {
@@ -84,7 +79,7 @@ class MyGrammarLocator : GrammarLocator {
 
 fun TextView.setMarkdownData(markdownData: Spanned) {
     movementMethod = LinkMovementMethod.getInstance()
-    context.getOrCreateMarkwon().setParsedMarkdown(this, markdownData)
+    context.createMarkwon().setParsedMarkdown(this, markdownData)
 }
 
 fun String.githubRaw() =
