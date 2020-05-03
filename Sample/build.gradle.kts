@@ -137,7 +137,7 @@ dependencies {
     implementation("io.noties.markwon:syntax-highlight:$markwonVersion")
 
     implementation("io.noties:prism4j:2.0.0")
-
+    implementation("ru.noties:markwon-view:2.0.2")
     // Markwon Image Loader
-    implementation("ru.noties:markwon-image-loader:1.0.5")
+//    implementation("ru.noties:markwon-image-loader:2.0.2")
 }
