@@ -274,9 +274,10 @@ For example, server gives this JSON response when we call `/api/v1/persons` with
 
 #### Data Model
 
-Create a data class for JSON response which use Moshi `@Json` annotation.
+Create a data class for JSON response which uses Moshi `@Json` annotation.
 
 ```kotlin
+@JsonClass(generateAdapter = true)
 data class Person(
     @Json(name = "id") var id: Int = 0,
     @Json(name = "username") var username: String? = null,

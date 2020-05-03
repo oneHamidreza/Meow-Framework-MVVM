@@ -2,6 +2,7 @@ package sample.data.catbreed
 
 import androidx.recyclerview.widget.DiffUtil
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 import retrofit2.http.GET
 import retrofit2.http.Query
 import sample.data.DataSource
@@ -14,6 +15,7 @@ import sample.data.DataSource
  * @since   2020-04-11
  */
 
+@JsonClass(generateAdapter = true)
 data class CatBreed(
     @Json(name = "id") var id: Int,
     @Json(name = "name") var name: String,
