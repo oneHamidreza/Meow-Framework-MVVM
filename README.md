@@ -544,7 +544,7 @@ Learn more about it at [AlertsFragment.kt](https://github.com/oneHamidreza/Meow-
 
 ### Button
 
-There are some customized styles which is related to `Material Button`.
+There are some customized styles that is related to `Material Button`.
 
 |Style|Usage|
 |---|:---:|
@@ -573,7 +573,7 @@ Learn more about it at [Material Card Component](https://material.io/components/
 
 ### CardView
 
-There are some customized styles which is related to `Material CardView`.
+There are some customized styles that is related to `Material CardView`.
 
 |Style|Usage|
 |---|:---:|
@@ -594,7 +594,7 @@ Learn more about it at [Material Card Component](https://material.io/components/
 
 ### Checkbox
 
-There are some customized styles which is related to `Material CheckBox`.
+There are some customized styles that is related to `Material CheckBox`.
 
 |Style|Usage|
 |---|:---:|
@@ -656,7 +656,7 @@ Learn more about it at [Material Extended Floating Action Button Component](http
 
 ### Radio Group  
 
-There are some customized styles which is related to `Material Radio Group`.
+There are some customized styles that is related to `Material Radio Group`.
 
 |Style|Usage|
 |---|:---:|
@@ -665,7 +665,7 @@ There are some customized styles which is related to `Material Radio Group`.
   
 ### Radio Button
 
-There are some customized styles which is related to `Material Radio Button`.
+There are some customized styles that is related to `Material Radio Button`.
 
 |Style|Usage|
 |---|:---:|
@@ -727,7 +727,7 @@ Learn more about it at [SnackBarsFragment](https://github.com/oneHamidreza/Meow-
   
 ### Switch
 
-There are some customized styles which is related to `Material Switch`.
+There are some customized styles that is related to `Material Switch`.
 
 |Style|Usage|
 |---|:---:|
@@ -807,7 +807,7 @@ fun onCreate(savedInstanceState: Bundle?) {
 
 Now you have `ViewPager2` + `TabLayout` in an Activity/Fragment.
 
-There are some customized styles which is related to `Material TabLayout`.
+There are some customized styles that is related to `Material TabLayout`.
 
 |Style|Usage|
 |---|:---:|
@@ -878,7 +878,7 @@ Use it like this in XML Layout :
 </layout>
 ```
 
-There are some customized styles which is related to `Material Toolbar`.
+There are some customized styles that is related to `Material Toolbar`.
 
 |Style|Usage|
 |---|:---:|

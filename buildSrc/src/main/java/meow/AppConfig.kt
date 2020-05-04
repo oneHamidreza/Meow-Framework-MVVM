@@ -60,26 +60,26 @@ object AppConfig {//todo find way for show sources
         const val SDK_MIN = 19
         const val SDK_TARGET = 29
 
-        const val KOTLIN = "1.3.72"
-        const val KOTLINX_SERIALIZATION = "1.3.70"
-        const val MULTIDEX = "2.0.1"
-        const val NAVIGATION = "2.3.0-alpha04"
-        const val DOKKA = "0.10.1"
+        const val BROWSER = "1.2.0"
         const val COROUTINE = "1.3.5"
-        const val SERIALIZATION_RUNTIME = "0.20.0"
-        const val MATERIAL = "1.2.0-alpha05"
-        const val LIFECYCLE = "2.2.0"
+        const val DOKKA = "0.10.1"
         const val EXIF_INTERFACE = "1.1.0"
-        const val OKHTTP = "3.12.0" // Don't update. //todo not working on 4.4 @Ali Help.
-        const val RETROFIT = "2.7.2"
-        const val MOSHI = "1.9.2"
-        const val KODEIN = "6.5.2"
-        const val SECURE_PREFERENCES = "0.1.3"
         const val GLIDE = "4.11.0"
         const val GOOGLE_PHONE_NUMBER = "8.10.5"
+        const val KODEIN = "6.5.2"
+        const val KOTLIN = "1.3.72"
+        const val KOTLINX_SERIALIZATION = "1.3.70"
+        const val LIFECYCLE = "2.2.0"
         const val LOCALIZATION = "1.2.4"
+        const val MATERIAL = "1.2.0-alpha05"
+        const val MOSHI = "1.9.2"
+        const val MULTIDEX = "2.0.1"
+        const val NAVIGATION = "2.3.0-alpha04"
+        const val OKHTTP = "3.12.0" // Don't update. //todo not working on 4.4 @Ali Help.
+        const val RETROFIT = "2.7.2"
+        const val SECURE_PREFERENCES = "0.1.3"
+        const val SERIALIZATION_RUNTIME = "0.20.0"
         const val SWIPE_REFRESH_LAYOUT = "1.0.0"
-        const val BROWSER = "1.2.0"
     }
 
     object Dependencies {
