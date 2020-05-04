@@ -19,15 +19,15 @@ Dynamic Localization and Day/Night Theme & Meow Custom Widgets are another featu
 We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.7.7-alpha/Meow-Framework-Sample-v0.7.7-alpha.apk) to be familiar with `Meow Framework`.
 
 <p>
-<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-01.png" width="15%" />
-<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-02.png" width="15%" />
-<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-03.png" width="15%" />
-<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-04.png" width="15%" />
-<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-05.png" width="15%" />
-<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-06.png" width="15%" />
-<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-07.png" width="15%" />
-<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-08.png" width="15%" />
-<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-09.png" width="15%" />
+<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-01.jpg" width="30%" />
+<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-02.jpg" width="30%" />
+<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-03.jpg" width="30%" />
+<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-04.jpg" width="30%" />
+<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-05.jpg" width="30%" />
+<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-06.jpg" width="30%" />
+<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-07.jpg" width="30%" />
+<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-08.jpg" width="30%" />
+<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-09.jpg" width="30%" />
 </p>
 
 ## 🛠 Setup
