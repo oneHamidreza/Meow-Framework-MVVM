@@ -48,7 +48,7 @@ open class MeowFormView(context: Context, attrs: AttributeSet? = null) :
 
     init {
         setAttributesFromXml(attrs, R.styleable.MeowFormView) {
-            isResetForm = it.getBoolean(R.styleable.MeowFormView_resetForm, isResetForm)
+            isResetForm = it.getBoolean(R.styleable.MeowFormView_meow_resetForm, isResetForm)
         }
     }
 

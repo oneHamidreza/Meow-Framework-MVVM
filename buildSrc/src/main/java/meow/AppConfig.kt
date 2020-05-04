@@ -90,11 +90,11 @@ object AppConfig {//todo find way for show sources
             kotlinx("coroutines-core", Versions.COROUTINE),
             kotlinx("serialization-runtime", Versions.SERIALIZATION_RUNTIME),
             // MultiDex
-            "androidx.multidex:multidex:${Versions.MULTIDEX}",
+//            "androidx.multidex:multidex:${Versions.MULTIDEX}",
             // Material
             "com.google.android.material:material:${Versions.MATERIAL}",
             "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.SWIPE_REFRESH_LAYOUT}",
-            "androidx.browser:browser:${Versions.BROWSER}",
+//            "androidx.browser:browser:${Versions.BROWSER}",
             // Lifecycle
             "androidx.lifecycle:lifecycle-common-java8:${Versions.LIFECYCLE}",
             "androidx.lifecycle:lifecycle-extensions:${Versions.LIFECYCLE}",

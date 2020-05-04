@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    app:resetForm="true">
+                    app:meow_resetForm="true">
 
                     <meow.widget.MeowTextField
                         android:id="@+id/et"

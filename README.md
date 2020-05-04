@@ -40,7 +40,7 @@ After adding library, some of most useful libraries (such as `Androidx AppCompat
 
 List of dependencies can be found in [meow.AppConfig.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/buildSrc/src/main/java/meow/AppConfig.kt) in `Dependencies` Object.
 
-Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Framework/build.gradle.kts) in Sample module to avoid any issues that is related to setup & adding Framework.
+Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Framework/build.gradle.kts) in Sample module to avoid any issues that related to setup & adding Framework.
 We recommend that use `Kotlin DSL Gradle` instead of `Groovy` . That is not Buggy 😊.
 
 > Enable androidx in `gradle.properties`.
@@ -118,7 +118,7 @@ to use above features, you'll need to define your `MeowController`.
 
 Update your application class like this :
 
-```kotlin  
+```kotlin
 class App : MeowApp() {
     // Layout Direction would be set automatically by Android System.
     // (Example: "en": LayoutDirection.LTR  "fa": LayoutDirection.RTL).
@@ -157,7 +157,7 @@ The Sample Application has above features. try to install [Meow-Sample.apk](http
 ### 📐 MVVM Architecture
 
 MVVM is Model-View-ViewModel that we define it in Android App as Data Model - View (Activity, Fragment, DialogFragment, BottomSheetDialogFragment) - MeowViewModel.
-   
+
 Follow below steps to have an activity with MVVM Architecture.
 
 #### 1. Create your ViewModel that extends `MeowViewModel`.
@@ -229,11 +229,11 @@ class MainActivity : MeowActivity<ActivityMainBinding>() {
 ```
 
 Now you have an Activity with MVVM architecture. In above sample, you can replace `MeowActivity` with `MeowFragment` to have MVVM Fragment.
-  
+
 ## 📶 REST API : Retrofit + OKHttp + Coroutine + Moshi
 
 Meow Framework provides some tools to call Server REST API actions from Android App with `Retrofit`. Creating client connections will be with `OKHttp` . `Moshi` helps us to serialize json responses. We replaced `RxJava` with `Coroutine` for multi thread handling.
-  
+
 ### Create Api that extends `MeowApi`
 
 ```kotlin
@@ -289,7 +289,7 @@ data class Person(
         override fun areContentsTheSame(oldItem: Person, newItem: Person) = oldItem == newItem
     }
 }
-```  
+```
 
 #### Retrofit API Interface
 
@@ -386,7 +386,7 @@ class SampleIndexActivity : MeowActivity<ActivitySampleIndexBinding>() {
 
 `MeowFlow` is a helper class that observes `eventLiveData` and it handles errors from API automatically. You can set error handling with `errorHandlerType`. Supported types : `TOAST` , `SNACKBAR` , `EMPTY_STATE`.
  For example, when `errorHandlerType` is `Toast` errors has been shown in toast form. See [strings_error.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Framework/src/main/res/values/strings_error.xml) to edit error messages.
-  
+
 #### Show API response into `RecyclerView`
 
 `item_person.xml` describes the layout of each row of list and you can set properties with `DataBinding` structure. Define layout like this :
@@ -423,14 +423,14 @@ class PersonAdapter : MeowAdapter<Model, ViewHolder>(Person.DiffCallback()) {
 
 Finally bind adapter to `RecyclerView`.
 
-```kotlin  
+```kotlin
 class PersonIndexActivity : MeowActivity<ActivitySampleIndexBinding>(){
     override fun onCreate(savedInstanceState: Bundle?) {
         //...
         binding.recyclerView.adapter = PersonAdapter()
     }
 }
-```  
+```
 Now you have a activity that connect to **REST API** and parse the response (if the response code is HttpCode.OK (200)) and it shows items into a `RecyclerView` as a list.
 Above sample can be used for other types of REST API patterns/flows (such as `Detail` ,`Form`). for more details see [API Package](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/api) in `Sample` module.
 
@@ -529,9 +529,9 @@ fun testAlert() {
 ```
 
 ### Loading Alert
-  
+
 ![](https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_material_loading_alert.png)
-  
+
 A Dialog with `MeowLoadingView` to showing progress bar with text into Dialog.
 
 ```kotlin
@@ -544,7 +544,7 @@ Learn more about it at [AlertsFragment.kt](https://github.com/oneHamidreza/Meow-
 
 ### Button
 
-There are some customized styles that is related to `Material Button`.
+There are some customized styles which is related to `Material Button`.
 
 |Style|Usage|
 |---|:---:|
@@ -573,7 +573,7 @@ Learn more about it at [Material Card Component](https://material.io/components/
 
 ### CardView
 
-There are some customized styles that is related to `Material CardView`.
+There are some customized styles which is related to `Material CardView`.
 
 |Style|Usage|
 |---|:---:|
@@ -594,7 +594,7 @@ Learn more about it at [Material Card Component](https://material.io/components/
 
 ### Checkbox
 
-There are some customized styles that is related to `Material CheckBox`.
+There are some customized styles which is related to `Material CheckBox`.
 
 |Style|Usage|
 |---|:---:|
@@ -603,7 +603,7 @@ There are some customized styles that is related to `Material CheckBox`.
 |`Meow.Checkbox.Secondary`|Checkbox with `secondary` button tint|
 |`Meow.Checkbox.OnPrimary`|Checkbox with `onPrimary` button tint & `textColor`|
 |`Meow.Checkbox.OnSecondary`|Checkbox with `onSecondary` button tint & `textColor`|
-  
+
 Use it like this in XML Layout :
 
 ```xml
@@ -637,7 +637,7 @@ Use it like this in XML Layout :
 ```
 
 Learn more about it at [Material Floating Action Button Component](https://material.io/develop/android/components/floating-action-button/) and [fragment_fab_simple.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/fab/simple/res/layout/fragment_fab_simple.xml).
-  
+
 ### Extended Floating Action Button
 
 A FAB that supports `android:text` property.
@@ -654,18 +654,18 @@ Use it like this in XML Layout :
 
 Learn more about it at [Material Extended Floating Action Button Component](https://material.io/develop/android/components/extended-floating-action-button/) and [fragment_fab_simple.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/fab/extended/res/layout/fragment_fab_extended.xml).
 
-### Radio Group  
+### Radio Group
 
-There are some customized styles that is related to `Material Radio Group`.
+There are some customized styles which is related to `Material Radio Group`.
 
 |Style|Usage|
 |---|:---:|
 |`Meow.RadioGroup.Horizontal`|RadioGroup with Horizontal Radio Buttons|
 |`Meow.RadioGroup.Vertical`|RadioGroup with Vertical Radio Buttons|
-  
+
 ### Radio Button
 
-There are some customized styles that is related to `Material Radio Button`.
+There are some customized styles which is related to `Material Radio Button`.
 
 |Style|Usage|
 |---|:---:|
@@ -695,7 +695,7 @@ Use it like this in XML Layout :
 ```
 
 Learn more about it at [Material Radio Button Component](https://material.io/develop/android/components/radiobutton/) and [fragment_radio_buttons.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/radiobuttons/res/layout/fragment_radio_buttons.xml).
-  
+
 ### Snack Bars
 
 You can show Snack Bars with `snackL()` or `snackS()` functions in `MeowActivity/MeowFragment`.
@@ -721,13 +721,13 @@ fun testSnackbars(){
         // Callback for action button click
     }    
 }
-```  
+```
 
 Learn more about it at [SnackBarsFragment](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/snackbars/SnackBarsFragment.kt).
-  
+
 ### Switch
 
-There are some customized styles that is related to `Material Switch`.
+There are some customized styles which is related to `Material Switch`.
 
 |Style|Usage|
 |---|:---:|
@@ -736,7 +736,7 @@ There are some customized styles that is related to `Material Switch`.
 |`Meow.Switch.Secondary`|Switch with `secondary` button tint|
 |`Meow.Switch.OnPrimary`|Switch with `onPrimary` button tint & `textColor`|
 |`Meow.Switch.OnSecondary`|Switch with `onSecondary` button tint & `textColor`|
-  
+
 Use it like this in XML Layout :
 
 ```xml
@@ -746,8 +746,8 @@ Use it like this in XML Layout :
 ```
 
 Learn more about it at [Material Switch Component](https://material.io/develop/android/components/switch/) and [fragment_switches.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/switches/res/layout/fragment_switches.xml).
-  
-### TabLayout + ViewPager2  
+
+### TabLayout + ViewPager2
 
 If you want to show contents into a ViewPager, we recommend to use `ViewPager2`. `TabLayout` is the indicator of ViewPager state. Follow below steps to have a View with Swipe Gesture.
 
@@ -783,8 +783,8 @@ class MyPagerAdapter(
         private val fragmentArray = Array<Fragment>(3) { ChildFragment.newInstance(it) }
         override fun getFragments() = fragmentArray
 }
-```  
-  
+```
+
 #### 3. Bind Adapter to `ViewPager2` & Attach `TabLayout` to `ViewPager2`
 
 ```kotlin
@@ -807,7 +807,7 @@ fun onCreate(savedInstanceState: Bundle?) {
 
 Now you have `ViewPager2` + `TabLayout` in an Activity/Fragment.
 
-There are some customized styles that is related to `Material TabLayout`.
+There are some customized styles which is related to `Material TabLayout`.
 
 |Style|Usage|
 |---|:---:|
@@ -817,10 +817,10 @@ There are some customized styles that is related to `Material TabLayout`.
 |`Meow.TabLayout.PrimarySurface`|TabLayout with `primary` background color in DAY mode and `surface` background color in NIGHT Mode|
 
 Learn more about it at [Material TabLayout Component](https://material.io/develop/android/components/tab-layout/).
-  
+
 ### TextView
 
-Use it like this in XML Layout :  
+Use it like this in XML Layout :
 
 ```xml
 <TextView
@@ -878,7 +878,7 @@ Use it like this in XML Layout :
 </layout>
 ```
 
-There are some customized styles that is related to `Material Toolbar`.
+There are some customized styles which is related to `Material Toolbar`.
 
 |Style|Usage|
 |---|:---:|
@@ -886,10 +886,426 @@ There are some customized styles that is related to `Material Toolbar`.
 |`Meow.Toolbar.PrimarySurface`|Toolbar with `primary` background color in DAY mode and `surface` background color in NIGHT Mode|
 |`Meow.Toolbar.Primary`|Toolbar with `primary` background color|
 |`Meow.Toolbar.Secondary`|Toolbar with `secondary` background color|
-  
+
 Learn more about it at [Material Top App Bars Component](https://material.io/develop/android/components/top-app-bars/).
 
 ## 🌌 Meow Custom Widgets
+
+### Meow Circle ImageView
+
+Meow Widget's Attributes:
+
+|Attributes|Descriptions|
+|---|:---:|
+|`meow_strokeColor`|Circle image view stroke color|
+|`meow_strokeWidth`|Circle image view stroke width|
+
+Use it like this in XML Layout :
+
+```xml
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            app:srcCompat="@drawable/ic_android"
+            app:tint="@color/primary_variant" />
+```
+
+Learn more about it at [fragment_imageviews.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/imageviews/res/layout/fragment_imageviews.xml).
+
+### Meow Dash View
+
+There are some styles that is related to `Dash View`.
+
+|Style|Usage|
+|---|:---:|
+|`Meow.Dash.Horizontal`|DashView with `Horizontal` orientation|
+|`Meow.Dash.Horizontal.Primary`|DashView with `Horizontal` orientation and `primary` color|
+|`Meow.Dash.Horizontal.PrimaryVariant`|DashView with `Horizontal` orientation and `PrimaryVariant` color|
+|`Meow.Dash.Horizontal.PrimarySurface`|DashView with `Horizontal` orientation and `PrimarySurface` color|
+|`Meow.Dash.Horizontal.Secondary`|DashView with `Horizontal` orientation and `secondary` color|
+|`Meow.Dash.Horizontal.SecondaryVariant`|DashView with `Horizontal` orientation and `SecondaryVariant` color|
+|`Meow.Dash.Horizontal.OnPrimary`|DashView with `Horizontal` orientation and `OnPrimary` color|
+|`Meow.Dash.Horizontal.OnSecondary`|DashView with `Horizontal` orientation and `OnSecondary` color|
+|`Meow.Dash.Horizontal.OnSurface`|DashView with `Horizontal` orientation and `OnSurface` color|
+|`Meow.Dash.Vertical`|DashView with `Vertical` orientation|
+|`Meow.Dash.Vertical.Primary`|DashView with `Vertical` orientation and `primary` color|
+|`Meow.Dash.Vertical.PrimaryVariant`|DashView with `Vertical` orientation and `PrimaryVariant` color|
+|`Meow.Dash.Vertical.PrimarySurface`|DashView with `Vertical` orientation and `PrimarySurface` color|
+|`Meow.Dash.Vertical.Secondary`|DashView with `Vertical` orientation and `secondary` color|
+|`Meow.Dash.Vertical.SecondaryVariant`|DashView with `Vertical` orientation and `SecondaryVariant` color|
+|`Meow.Dash.Vertical.OnPrimary`|DashView with `Vertical` orientation and `OnPrimary` color|
+|`Meow.Dash.Vertical.OnSecondary`|DashView with `Vertical` orientation and `OnSecondary` color|
+|`Meow.Dash.Vertical.OnSurface`|DashView with `Vertical` orientation and `OnSurface` color|
+
+Meow Dash Attributes:
+
+|Attributes|Descriptions|
+|---|:---:|
+|`meow_dash_gap`|Dash Gap|
+|`meow_dash_length`|Dash length|
+|`meow_dash_thickness`|Dash thickness|
+|`meow_dash_color`|Dash color|
+
+Use it like this in XML Layout :
+
+```xml
+ <meow.widget.MeowDashView
+    app:meow_dash_gap="4dp"
+    app:meow_dash_length="8dp"
+    app:meow_dash_thickness="2dp" />
+```
+
+Learn more about it at [fragment_dash.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/dash/res/layout/fragment_dash.xml).
+
+### Meow Divider
+
+There are some styles that is related to `Divider`.
+
+|Style|Usage|
+|---|:---:|
+|`Meow.Divider.Horizontal`|Divider with `Horizontal` orientation|
+|`Meow.Divider.Vertical`|Divider with `Vertical` orientation|
+|`Meow.Divider.Horizontal.OnPrimary`|Divider with `Horizontal` orientation and `primary` divider background type|
+|`Meow.Divider.Horizontal.OnSecondary`|Divider with `Horizontal` orientation and `secondary` divider background type|
+|`Meow.Divider.Horizontal.OnSurface`|Divider with `Horizontal` orientation and `surface` divider background type|
+|`Meow.Divider.Vertical.OnPrimary`|Divider with `Vertical` orientation and `primary` divider background type|
+|`Meow.Divider.Vertical.OnSecondary`|Divider with `Vertical` orientation and `secondary` divider background type|
+|`Meow.Divider.Vertical.OnSurface`|Divider with `Vertical` orientation and `surface` divider background type|
+
+Meow Divider Attributes:
+
+|Attributes|Descriptions|
+|---|:---:|
+|`meow_divider_orientation`|Oreintation: `vertical` or `horizontal`|
+|`meow_divider_background_type`|Types: `background`,`surface`,`secondary`,`primary`|
+
+Use it like this in XML Layout :
+
+> You just need use style.😉
+>
+```xml
+<meow.widget.MeowDivider style="@style/Meow.Divider.Horizontal" />
+```
+
+Learn more about it at [fragment_dividers.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/dividers/res/layout/fragment_dividers.xml).
+
+### Meow Empty State
+
+There are some styles that is related to `Empty State`.
+
+|Style|Usage|
+|---|:---:|
+|`Meow.EmptyState`|EmptyState default style with icon size and icon tint|
+|`Meow.EmptyState.OnBackground`|EmptyState with title and description `OnBackground` color|
+|`Meow.EmptyState.OnPrimary`|EmptyState with title and description `OnPrimary` color|
+|`Meow.EmptyState.OnSecondary`|EmptyState with title and description `OnSecondary` colore|
+|`Meow.EmptyState.OnSurface`|EmptyState with title and description `OnSurface` color|
+
+Meow Empty state Attributes:
+
+|Attributes|Descriptions|
+|---|:---:|
+|`meow_empty_iconRes`|Icon resource|
+|`meow_empty_iconSize`|Icon size|
+|`meow_empty_iconTint`|Icon tint color|
+|`meow_empty_title`|Title text|
+|`meow_empty_titleTextColor`|Title text color|
+|`meow_empty_desc`|Description text|
+|`meow_empty_descTextColor`|Description text color|
+|`meow_empty_primaryActionText`|Button text|
+
+Use it like this in XML Layout :
+
+> You just need use style.😉
+>
+```xml
+<meow.widget.MeowEmptyState
+    android:id="@+id/emptyState"
+    style="@style/Meow.EmptyState.OnBackground" />
+```
+
+Learn more about it at [fragment_cat_breed_index.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/api/catbreed/index/res/layout/fragment_cat_breed_index.xml).
+
+### Meow Hint Button
+
+There are some styles that is related to `Hint Button`.
+
+|Style|Usage|
+|---|:---:|
+|`Meow.HintButton`|HintButton default style with icon color|
+
+Meow HintButton Attributes:
+
+|Attributes|Descriptions|
+|---|:---:|
+|`meow_hint`|Hint text|
+|`meow_hintColor`|Hint text color|
+|`meow_hintTextAppearance`|Hint textAppearance|
+|`meow_title`|Title text|
+|`meow_titleColor`|Title text color|
+|`meow_titleTextAppearance`|Title textAppearance|
+|`meow_icon`|Icon resourcer|
+|`meow_iconColor`|Icon color|
+
+Use it like this in XML Layout :
+
+```xml
+<meow.widget.MeowHintButton
+    style="@style/Meow.HintButton"
+    app:meow_hint="@string/date"
+    app:meow_icon="@drawable/ic_date"
+    app:meow_title="@string/date_num" />
+```
+
+Learn more about it at [fragment_form.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/form/res/layout/fragment_form.xml).
+
+### Meow PinView
+
+There are some styles that is related to `PinView`.
+
+|Style|Usage|
+|---|:---:|
+|`Meow.PinView.Filled`|PinView Filled box style|
+|`Meow.PinView.Outlined`|PinView Outlined box style|
+
+Meow PinView Attributes:
+
+|Attributes|Descriptions|
+|---|:---:|
+|`meow_hint`|Hint text|
+|`meow_hintColor`|Hint text color|
+|`meow_hintTextAppearance`|Hint textAppearance|
+|`meow_count`|Length of pin (box count)|
+|`meow_textColor`|Boxes text color|
+|`meow_textAppearance`|Boxes textAppearance|
+|`meow_icon`|Icon resourcer|
+|`meow_iconColor`|Icon color|
+|`meow_showBack`|Show clear boxes text|
+|`meow_errorTextAppearance`|Error textAppearance|
+|`meow_boxStyle`|Styles: `outlined` or `filled`|
+
+Use it like this in XML Layout :
+
+```xml
+<meow.widget.MeowPinView
+    android:id="@+id/pv"
+    style="@style/Meow.PinView.Filled"
+    app:meow_hint="@string/enter_code"
+    app:meow_icon="@drawable/ic_dialpad" />
+```
+
+Learn more about it at [fragment_form.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/form/res/layout/fragment_form.xml).
+
+### Meow ProgressBar
+
+There are some styles that is related to `ProgressBar`.
+
+|Style|Usage|
+|---|:---:|
+|`Meow.ProgressBar.Small`|ProgressBar small|
+|`Meow.ProgressBar.Small.Primary`|ProgressBar small with `primary` color|
+|`Meow.ProgressBar.Small.PrimaryVariant`|ProgressBar small with `PrimaryVariant` color|
+|`Meow.ProgressBar.Small.PrimarySurface`|ProgressBar small with `PrimarySurface` color|
+|`Meow.ProgressBar.Small.Secondary`|ProgressBar small with `secondary` color|
+|`Meow.ProgressBar.Small.SecondaryVariant`|ProgressBar small with `SecondaryVariant` color|
+|`Meow.ProgressBar.Small.OnPrimary`|ProgressBar small with `OnPrimary` color|
+|`Meow.ProgressBar.Small.OnSecondary`|ProgressBar small with `OnSecondary` color|
+|`Meow.ProgressBar.Small.OnSurface`|ProgressBar small with `OnSurface` color|
+|`Meow.ProgressBar.Medium`|ProgressBar medium|
+|`Meow.ProgressBar.Medium.Primary`|ProgressBar medium with `primary` color|
+|`Meow.ProgressBar.Medium.PrimaryVariant`|ProgressBar medium with `PrimaryVariant` color|
+|`Meow.ProgressBar.Medium.PrimarySurface`|ProgressBar medium with `PrimarySurface` color|
+|`Meow.ProgressBar.Medium.Secondary`|ProgressBar medium with `secondary` color|
+|`Meow.ProgressBar.Medium.SecondaryVariant`|ProgressBar medium with `SecondaryVariant` color|
+|`Meow.ProgressBar.Medium.OnPrimary`|ProgressBar medium with `OnPrimary` color|
+|`Meow.ProgressBar.Medium.OnSecondary`|ProgressBar medium with `OnSecondary` color|
+|`Meow.ProgressBar.Medium.OnSurface`|ProgressBar medium with `OnSurface` color|
+|`Meow.ProgressBar.Large`|ProgressBar large|
+|`Meow.ProgressBar.Large.Primary`|ProgressBar large with `primary` color|
+|`Meow.ProgressBar.Large.PrimaryVariant`|ProgressBar large with `PrimaryVariant` color|
+|`Meow.ProgressBar.Large.PrimarySurface`|ProgressBar large with `PrimarySurface` color|
+|`Meow.ProgressBar.Large.Secondary`|ProgressBar large with `secondary` color|
+|`Meow.ProgressBar.Large.SecondaryVariant`|ProgressBar large with `SecondaryVariant` color|
+|`Meow.ProgressBar.Large.OnPrimary`|ProgressBar large with `OnPrimary` color|
+|`Meow.ProgressBar.Large.OnSecondary`|ProgressBar large with `OnSecondary` color|
+|`Meow.ProgressBar.Large.OnSurface`|ProgressBar large with `OnSurface` color|
+
+
+Meow ProgressBar Attributes:
+
+|Attributes|Descriptions|
+|---|:---:|
+|`meow_progress_showOnInit`|show while when use it|
+
+Use it like this in XML Layout :
+
+```xml
+<meow.widget.MeowProgressBar
+    style="@style/Meow.ProgressBar.Small.Primary"
+    app:meow_progress_showOnInit="true" />
+```
+
+Learn more about it at [fragment_progress_bars.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/progressbars/res/layout/fragment_progress_bars.xml).
+
+### Meow RatingBar
+
+There are some styles that is related to `RatingBar`.
+
+|Style|Usage|
+|---|:---:|
+|`Meow.RateView`|RateView default style|
+|`Meow.RateView.Indicator`|RateView Indicator (just show)|
+
+Meow RatingBar Attributes:
+
+|Attributes|Descriptions|
+|---|:---:|
+|`meow_numStars`|The numbe of stars|
+|`meow_minimumStars`|The minimum selected stars|
+|`meow_rating`|Show while when use it|
+|`meow_starPadding`|Stars padding|
+|`meow_drawableEmpty`|Stars drawable when is empty|
+|`meow_drawableFilled`|Stars drawable when is filled|
+|`meow_isIndicator`|Dramatic or selective.|
+|`meow_scrollable`|Scrollable|
+|`meow_clickable`|Clickable|
+|`meow_clearRatingEnabled`|Clear rating|
+|`meow_starWidth`|Star Width|
+|`meow_starHeight`|Star Height|
+|`meow_stepSize`|Step Size|
+
+Use it like this in XML Layout :
+
+```xml
+<meow.widget.MeowRateView
+    style="@style/Meow.RateView" 
+    app:meow_drawableEmpty="@drawable/ic_star"
+    app:meow_drawableFilled="@drawable/ic_star_fill"
+    app:meow_numStars="5"
+    app:meow_stepSize="0.5" />
+```
+
+Learn more about it at [fragment_rate.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/rateview/res/layout/fragment_rate.xml).
+
+### Meow FormView (a cool widget😎)
+
+>With this widget, you no longer need to check the form fields (like editext and spinner) one by one
+>
+
+Meow FormView Attributes:
+
+|Attributes|Descriptions|
+|---|:---:|
+|`meow_resetForm`|To clear the text of all widgets in it|
+
+Use it like this in XML Layout :
+
+```xml
+<meow.widget.MeowFormView
+    android:id="@+id/fv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:resetForm="true">
+    
+    <!--you can add MeowTextField,MeowSpinner,Button and other views in this layout-->
+    
+</meow.widget.MeowFormView>
+```
+
+You can call `validate()` function for validate all widgets in `MeowFormView`:
+```kotlin
+binding.fv.validate {
+    //When MeowFormView validate all widgets with thier validate type you can do anythings here
+}
+```
+
+Learn more about it at [fragment_form.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/form/res/layout/fragment_form.xml).
+
+### Meow Spinner
+
+There are some styles that is related to `Spinner`.
+
+|Style|Usage|
+|---|:---:|
+|`Meow.Spinner.Outlined`|Spinner with outlined style|
+|`Meow.Spinner.Outlined.Dense`|Spinner with outlined dense style|
+|`Meow.Spinner.Filled`|Spinner with Filled style|
+|`Meow.Spinner.Filled.Dense`|Spinner with Filled dense style|
+
+Meow Spinner Attributes:
+ > For use validation Feature you should add `MeowSpinner` to `FormView` Layout
+>
+|Attributes|Descriptions|
+|---|:---:|
+|`meow_validateType`|Types: `empty`,`optional`|
+|`meow_errorEmpty`|Error empty Text (when spinner was empty you can show your customize error)|
+
+Use it like this in XML Layout :
+
+```xml
+<meow.widget.MeowSpinner
+    style="@style/Meow.Spinner.Outlined"
+    android:hint="@string/select"
+    app:meow_validateType="empty" />
+```
+
+And for add Item in `MeowSpinner` :
+Supports : title , description and icon
+```kotlin
+ binding.spinner
+    .addItem(R.string.item1, R.string.description1, R.drawable.ic_error)
+    .addItem(R.string.item2, R.string.description2, R.drawable.ic_error)
+    .addItem(R.string.item3, imageViewResId = R.drawable.ic_error)
+    .addItem(R.string.item4, imageViewResId = R.drawable.ic_error)
+    .addItem(R.string.item5, R.string.description3)
+    .addItem(R.string.item6, R.string.description4)
+    .addItem(R.string.item7)
+    .addItem(R.string.item8)
+    .build()
+```
+
+Learn more about it at [Material Exposed Dropdown Menu Component](https://material.io/components/menus#exposed-dropdown-menu) and [fragment_form.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/form/res/layout/fragment_form.xml).
+
+### Meow TextField
+
+There are some styles that is related to `TextField`.
+
+|Style|Usage|
+|---|:---:|
+|`Meow.TextField.Outlined`|TextField with outlined style|
+|`Meow.TextField.Outlined.Dense`|TextField with outlined dense style|
+|`Meow.TextField.Filled`|TextField with Filled style|
+|`Meow.TextField.Filled.Dense`|TextField with Filled dense style|
+
+Meow TextField Attributes:
+ > For use validation Feature you should add `MeowTextField` to `FormView` Layout
+>
+ > If the error text is blank, the default message will be displayed
+>
+|Attributes|Descriptions|
+|---|:---:|
+|`meow_validateType`|Types: `empty`,`mobile`,`mobileLegacy`,`email`,`optional`|
+|`meow_errorEmpty`|Error empty Text (when textfield was empty you can show your customize error)|
+|`meow_errorMobile`|Error invalid mobile number|
+|`meow_errorMobileLegacy`|Error invalid mobile legacy (persian) number|
+|`meow_errorEmail`|Error invalid email|
+|`meow_textSize`|TextField text size|
+|`meow_inputType`|Default android `TextInputLayout` input type|
+
+Use it like this in XML Layout :
+
+```xml
+<meow.widget.MeowTextField
+    style="@style/Meow.TextField.Filled"
+    android:hint="@string/email"
+    app:errorEnabled="true"
+    app:meow_inputType="textEmailAddress"
+    app:meow_validateType="email"
+    app:startIconDrawable="@drawable/ic_android" />
+```
+
+Learn more about it at [Material TextField Component](https://material.io/components/text-fields) and [fragment_form.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/form/res/layout/fragment_form.xml).
 
 ## 🖐 Contributing
 

@@ -13,7 +13,7 @@ plugins {
     kotlin("kapt")
     kotlin("plugin.serialization") version (meow.AppConfig.Versions.KOTLINX_SERIALIZATION)//need package
     id("androidx.navigation.safeargs.kotlin")
-    id("com.google.gms.google-services")
+//    id("com.google.gms.google-services")
 }
 
 android {

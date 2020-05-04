@@ -76,7 +76,7 @@ class FormFragment : BaseFragment<FragmentFormBinding>() {
             R.layout.dropdown_menu_popup_item,
             items
         )
-//        binding.filledExposedDropdown.setAdapter(adapter)
+//        binding.sp1.setAdapter(adapter)
 
 
         binding.sp1

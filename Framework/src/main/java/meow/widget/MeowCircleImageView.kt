@@ -41,7 +41,6 @@ open class MeowCircleImageView @JvmOverloads constructor(
     defStyleAttrs: Int = 0
 ) : AppCompatImageView(context, attrs, defStyleAttrs) {
 
-    var hasStroke = false
     var strokeColor = 0
     var strokeWidth = 0f
 
@@ -51,16 +50,7 @@ open class MeowCircleImageView @JvmOverloads constructor(
                 it.getColor(R.styleable.MeowCircleImageView_meow_strokeColor, strokeColor)
             strokeWidth =
                 it.getDimension(R.styleable.MeowCircleImageView_meow_strokeWidth, strokeWidth)
-            hasStroke = it.getBoolean(R.styleable.MeowCircleImageView_meow_hasStroke, hasStroke)
         }
-
-
-
-        initializeView()
-    }
-
-    private fun initializeView() {
-
     }
 
     override fun onDraw(canvas: Canvas) {
