@@ -893,7 +893,7 @@ Learn more about it at [Material Top App Bars Component](https://material.io/dev
 
 ### Meow Circle ImageView
 
-Meow Widget's Attributes:
+Meow CircleImageView Attributes:
 
 |Attributes|Descriptions|
 |---|:---:|
@@ -903,16 +903,17 @@ Meow Widget's Attributes:
 Use it like this in XML Layout :
 
 ```xml
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            app:srcCompat="@drawable/ic_android"
-            app:tint="@color/primary_variant" />
+<meow.widget.MeowCircleImageView
+    android:layout_width="56dp"
+    android:layout_height="56dp"
+    app:meow_strokeColor="@color/white"
+    app:meow_strokeWidth="2dp"
+    app:srcCompat="@drawable/avatar" />
 ```
 
 Learn more about it at [fragment_imageviews.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/imageviews/res/layout/fragment_imageviews.xml).
 
-### Meow Dash View
+### Meow DashView
 
 There are some styles that is related to `Dash View`.
 
