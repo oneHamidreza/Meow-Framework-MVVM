@@ -6,13 +6,6 @@
 
     <style name="App.ShapeAppearance.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent" />
 
-    <style name="App.ShapeAppearance.Card" parent="App.ShapeAppearance.MediumComponent" />
-
-    <style name="App.ShapeAppearance.CardView" parent="">
-        <item name="cornerSizeBottomRight">0dp</item>
-        <item name="cornerSizeBottomLeft">0dp</item>
-    </style>
-
     <style name="App.ShapeAppearance.Navigation" parent="">
         <item name="cornerSizeBottomRight">16dp</item>
         <item name="cornerSizeTopRight">16dp</item>

@@ -84,7 +84,7 @@
         <item name="colorAccent">?colorPrimaryVariant</item>
     </style>
 
-    <style name="NavigationItemNoRipple">
+    <style name="App.Theme.Navigation" parent="">
         <item name="android:colorControlHighlight" tools:targetApi="lollipop">
             @android:color/transparent
         </item>

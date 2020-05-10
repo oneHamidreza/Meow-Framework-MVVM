@@ -65,18 +65,18 @@ object AppConfig {//todo find way for show sources
         const val DOKKA = "0.10.1"
         const val EXIF_INTERFACE = "1.1.0"
         const val GLIDE = "4.11.0"
-        const val GOOGLE_PHONE_NUMBER = "8.10.5"
-        const val KODEIN = "6.5.2"
+        const val GOOGLE_PHONE_NUMBER = "8.12.2"
+        const val KODEIN = "6.5.5"
         const val KOTLIN = "1.3.72"
         const val KOTLINX_SERIALIZATION = "1.3.70"
         const val LIFECYCLE = "2.2.0"
-        const val LOCALIZATION = "1.2.4"
-        const val MATERIAL = "1.2.0-alpha05"
+        const val LOCALIZATION = "1.2.5"
+        const val MATERIAL = "1.2.0-alpha04"
         const val MOSHI = "1.9.2"
         const val MULTIDEX = "2.0.1"
         const val NAVIGATION = "2.3.0-alpha04"
         const val OKHTTP = "3.12.0" // Don't update. //todo not working on 4.4 @Ali Help.
-        const val RETROFIT = "2.7.2"
+        const val RETROFIT = "2.8.1"
         const val SECURE_PREFERENCES = "0.1.3"
         const val SERIALIZATION_RUNTIME = "0.20.0"
         const val SWIPE_REFRESH_LAYOUT = "1.0.0"
@@ -90,11 +90,11 @@ object AppConfig {//todo find way for show sources
             kotlinx("coroutines-core", Versions.COROUTINE),
             kotlinx("serialization-runtime", Versions.SERIALIZATION_RUNTIME),
             // MultiDex
-//            "androidx.multidex:multidex:${Versions.MULTIDEX}",
+            "androidx.multidex:multidex:${Versions.MULTIDEX}",
             // Material
             "com.google.android.material:material:${Versions.MATERIAL}",
             "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.SWIPE_REFRESH_LAYOUT}",
-//            "androidx.browser:browser:${Versions.BROWSER}",
+            "androidx.browser:browser:${Versions.BROWSER}",
             // Lifecycle
             "androidx.lifecycle:lifecycle-common-java8:${Versions.LIFECYCLE}",
             "androidx.lifecycle:lifecycle-extensions:${Versions.LIFECYCLE}",
@@ -149,7 +149,7 @@ object AppConfig {//todo find way for show sources
         const val userOrg = "infinitydesign"
         const val groupId = "com.etebarian"
         const val artifactId = "meow-framework-mvvm"
-        const val libraryDesc = "One MVVVM framework for Android Developers in Kotlin."
+        const val libraryDesc = "Develop MVVM & Material Android App Easy."
     }
 }
 

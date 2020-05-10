@@ -33,7 +33,7 @@ import sample.App
 import sample.data.DataSource
 
 /**
- * The Module of application (resources, shared preferences).
+ * The Module of Api.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

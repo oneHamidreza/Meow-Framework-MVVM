@@ -3,6 +3,9 @@ package meow.ktx
 //import androidx.browser.customtabs.CustomTabsIntent
 import android.content.Intent
 import android.net.Uri
+import androidx.browser.customtabs.CustomTabsIntent
+import com.etebarian.meowframework.R
+import com.google.android.material.color.MaterialColors
 import meow.core.ui.FragmentActivityInterface
 
 /*
@@ -35,22 +38,22 @@ fun FragmentActivityInterface<*>.openChrome(url: String?) {
 
     avoidException(
         tryBlock = {
-//            val intentBuilder = CustomTabsIntent.Builder()
-//            intentBuilder.setToolbarColor(
-//                MaterialColors.getColor(
-//                    context(),
-//                    R.attr.colorPrimary,
-//                    ""
-//                )
-//            )
-//            intentBuilder.setSecondaryToolbarColor(
-//                MaterialColors.getColor(
-//                    context(),
-//                    R.attr.colorSecondary,
-//                    ""
-//                )
-//            )
-//            intentBuilder.build().launchUrl(context(), Uri.parse(url.addHttpIfNeed()))
+            val intentBuilder = CustomTabsIntent.Builder()
+            intentBuilder.setToolbarColor(
+                MaterialColors.getColor(
+                    context(),
+                    R.attr.colorPrimary,
+                    ""
+                )
+            )
+            intentBuilder.setSecondaryToolbarColor(
+                MaterialColors.getColor(
+                    context(),
+                    R.attr.colorSecondary,
+                    ""
+                )
+            )
+            intentBuilder.build().launchUrl(context(), Uri.parse(url.addHttpIfNeed()))
         },
         exceptionBlock = {
             openBrowser(url)
