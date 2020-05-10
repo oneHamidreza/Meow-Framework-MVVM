@@ -23,6 +23,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
+import meow.ktx.KeyboardUtils
 import meow.ktx.PermissionUtils
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -42,6 +43,10 @@ abstract class MeowDialogFragment<B : ViewDataBinding> : DialogFragment(),
     FragmentActivityInterface<B>,
     KodeinAware {
 
+    override var isEnabledKeyboardUtils = true
+    override var isShowingKeyboard = false
+    override var keyboardUtils: KeyboardUtils? = null
+
     override val kodeinContext: KodeinContext<*> get() = kcontext(activity)
     private val _parentKodein by closestKodein()
     override val kodein by Kodein.lazy { extend(_parentKodein) }
@@ -58,14 +63,20 @@ abstract class MeowDialogFragment<B : ViewDataBinding> : DialogFragment(),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
+        if (!::binding.isInitialized)//todo check
+            binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        binding.lifecycleOwner = viewLifecycleOwner
         initViewModel()
+        setupKeyboardUtils()
     }
 
     override fun onRequestPermissionsResult(
@@ -75,4 +86,10 @@ abstract class MeowDialogFragment<B : ViewDataBinding> : DialogFragment(),
     ) {
         onRequestPermission(requestCode, grantResults)
     }
+
+    override fun onDestroy() {
+        onKeyboardDestroy()
+        super.onDestroy()
+    }
+
 }

@@ -22,8 +22,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.DialogFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import meow.ktx.KeyboardUtils
 import meow.ktx.PermissionUtils
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -32,16 +32,20 @@ import org.kodein.di.android.x.closestKodein
 import org.kodein.di.erased.kcontext
 
 /**
- * Meow Bottom Sheet Dialog Fragment class inherits from [DialogFragment] , [FragmentActivityInterface] , [KodeinAware].
+ * Meow Bottom Sheet Dialog Fragment class inherits from [BottomSheetDialogFragment] , [FragmentActivityInterface] , [KodeinAware].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2020-05-03
+ * @since   2020-02-28
  */
 
 abstract class MeowBottomSheetDialogFragment<B : ViewDataBinding> : BottomSheetDialogFragment(),
     FragmentActivityInterface<B>,
     KodeinAware {
+
+    override var isEnabledKeyboardUtils = true
+    override var isShowingKeyboard = false
+    override var keyboardUtils: KeyboardUtils? = null
 
     override val kodeinContext: KodeinContext<*> get() = kcontext(activity)
     private val _parentKodein by closestKodein()
@@ -59,14 +63,20 @@ abstract class MeowBottomSheetDialogFragment<B : ViewDataBinding> : BottomSheetD
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
+        if (!::binding.isInitialized)//todo check
+            binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        binding.lifecycleOwner = viewLifecycleOwner
         initViewModel()
+        setupKeyboardUtils()
     }
 
     override fun onRequestPermissionsResult(
@@ -76,4 +86,10 @@ abstract class MeowBottomSheetDialogFragment<B : ViewDataBinding> : BottomSheetD
     ) {
         onRequestPermission(requestCode, grantResults)
     }
+
+    override fun onDestroy() {
+        onKeyboardDestroy()
+        super.onDestroy()
+    }
+
 }

@@ -40,11 +40,12 @@ abstract class MeowActivity<B : ViewDataBinding> : LocalizationActivity(),
     FragmentActivityInterface<B>,
     KodeinAware {
 
-    var isEnabledKeyboardUtils = true
     var isEnabledContextWrapper = true
     var isEnabledAutoUpdateStatusBarTheme = false
 
-    var isShowingKeyboard = false
+    override var isEnabledKeyboardUtils = true
+    override var isShowingKeyboard = false
+    override var keyboardUtils: KeyboardUtils? = null
 
     override val kodein by closestKodein()
 
@@ -55,32 +56,14 @@ abstract class MeowActivity<B : ViewDataBinding> : LocalizationActivity(),
 
     override lateinit var binding: B
 
-    private lateinit var keyboardUtils: KeyboardUtils
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         controller.updateLanguage(this, controller.language)
         controller.updateTheme(this, updateConfig = false)
         bindContentView(layoutId())
         initViewModel()
-
-        if (isEnabledKeyboardUtils) {
-            keyboardUtils = KeyboardUtils(this) {
-                isShowingKeyboard = it
-                if (it) onKeyboardStateChanged(
-                    isKeyboardUp = true,
-                    isFromOnCreate = false
-                ) else onKeyboardStateChanged(
-                    isKeyboardUp = false,
-                    isFromOnCreate = false
-                )
-            }
-            keyboardUtils.enable()
-            onKeyboardStateChanged(isKeyboardUp = false, isFromOnCreate = true)
-        }
+        setupKeyboardUtils()
     }
-
-    open fun onKeyboardStateChanged(isKeyboardUp: Boolean, isFromOnCreate: Boolean = false) {}
 
     private fun bindContentView(layoutId: Int) {
         binding = DataBindingUtil.setContentView(this, layoutId)
@@ -106,8 +89,7 @@ abstract class MeowActivity<B : ViewDataBinding> : LocalizationActivity(),
     }
 
     override fun onDestroy() {
-        if (isEnabledKeyboardUtils)
-            keyboardUtils.disable()
+        onKeyboardDestroy()
         super.onDestroy()
     }
 

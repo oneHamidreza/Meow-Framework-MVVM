@@ -23,6 +23,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import meow.ktx.KeyboardUtils
 import meow.ktx.PermissionUtils
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -41,6 +42,10 @@ import org.kodein.di.erased.kcontext
 abstract class MeowFragment<B : ViewDataBinding> : Fragment(),
     FragmentActivityInterface<B>,
     KodeinAware {
+
+    override var isEnabledKeyboardUtils = true
+    override var isShowingKeyboard = false
+    override var keyboardUtils: KeyboardUtils? = null
 
     override val kodeinContext: KodeinContext<*> get() = kcontext(activity)
     private val _parentKodein by closestKodein()
@@ -71,6 +76,7 @@ abstract class MeowFragment<B : ViewDataBinding> : Fragment(),
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initViewModel()
+        setupKeyboardUtils()
     }
 
     override fun onRequestPermissionsResult(
@@ -79,6 +85,11 @@ abstract class MeowFragment<B : ViewDataBinding> : Fragment(),
         grantResults: IntArray
     ) {
         onRequestPermission(requestCode, grantResults)
+    }
+
+    override fun onDestroy() {
+        onKeyboardDestroy()
+        super.onDestroy()
     }
 
 }

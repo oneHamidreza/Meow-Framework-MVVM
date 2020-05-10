@@ -29,6 +29,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import meow.MeowApp
+import meow.ktx.KeyboardUtils
 import meow.ktx.PermissionUtils
 
 /**
@@ -44,6 +45,10 @@ interface FragmentActivityInterface<B : ViewDataBinding> : LifecycleOwner {
     var binding: B
 
     var permissionUtils: PermissionUtils?
+
+    var isEnabledKeyboardUtils: Boolean
+    var isShowingKeyboard: Boolean
+    var keyboardUtils: KeyboardUtils?
 
     @LayoutRes
     fun layoutId(): Int
@@ -69,6 +74,32 @@ interface FragmentActivityInterface<B : ViewDataBinding> : LifecycleOwner {
 
     fun onRequestPermission(requestCode: Int, grantResults: IntArray) {
         permissionUtils?.onRequest(requestCode, grantResults)
+    }
+
+    fun setupKeyboardUtils() {
+        if (isEnabledKeyboardUtils) {
+            keyboardUtils = KeyboardUtils(activity()) {
+                isShowingKeyboard = it
+                if (it) onKeyboardStateChanged(
+                    isKeyboardUp = true,
+                    isFromOnCreate = false
+                ) else onKeyboardStateChanged(
+                    isKeyboardUp = false,
+                    isFromOnCreate = false
+                )
+            }
+            keyboardUtils?.enable()
+            onKeyboardStateChanged(isKeyboardUp = false, isFromOnCreate = true)
+        }
+    }
+
+    fun onKeyboardStateChanged(isKeyboardUp: Boolean, isFromOnCreate: Boolean = false) {
+
+    }
+
+    fun onKeyboardDestroy() {
+        if (isEnabledKeyboardUtils)
+            keyboardUtils?.disable()
     }
 }
 
