@@ -16,10 +16,10 @@
 
 package sample.ui.api.login
 
-import androidx.lifecycle.MutableLiveData
 import meow.core.api.MeowEvent
 import meow.core.api.MeowOauthToken
 import meow.core.arch.MeowViewModel
+import meow.core.arch.SingleLiveData
 import sample.App
 import sample.data.user.User
 
@@ -36,8 +36,8 @@ class LoginViewModel(
     private val repository: User.Repository
 ) : MeowViewModel(app) {
 
-    var eventLiveData = MutableLiveData<MeowEvent<*>>()
-    var modelLiveData = MutableLiveData<MeowOauthToken>()
+    var eventLiveData = SingleLiveData<MeowEvent<*>>()
+    var modelLiveData = SingleLiveData<MeowOauthToken>()
 
     fun callApi(request: User.Api.RequestLogin) {
         safeCallApi(

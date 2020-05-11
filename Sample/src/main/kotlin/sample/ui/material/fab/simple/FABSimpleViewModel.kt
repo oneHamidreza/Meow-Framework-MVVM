@@ -17,7 +17,6 @@
 package sample.ui.material.fab.simple
 
 import android.view.View
-import androidx.lifecycle.MutableLiveData
 import meow.core.arch.MeowViewModel
 import meow.core.arch.SingleLiveData
 import sample.App
@@ -34,7 +33,7 @@ import sample.data.Content
 
 class FABSimpleViewModel(app: App) : MeowViewModel(app) {
 
-    val listLiveData = MutableLiveData<List<Content>>()
+    val listLiveData = SingleLiveData<List<Content>>()
     val addItemLiveData = SingleLiveData<Boolean>()
 
     fun fillList() {

@@ -43,6 +43,6 @@
 
     <string name="error_mobile_not_valid">شماره موبایل نامعتبر است</string>
     <string name="error_email_not_valid">ایمیل نامعتبر است</string>
-    <string name="error_required_value">لطفا مقدار مورد نیاز را وارد نمایید</string>
+    <string name="error_required_value">لطفا مقدار را وارد نمایید</string>
 
 </resources>

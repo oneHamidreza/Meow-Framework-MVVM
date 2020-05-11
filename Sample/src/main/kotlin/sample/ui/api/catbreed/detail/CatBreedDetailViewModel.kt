@@ -16,9 +16,9 @@
 
 package sample.ui.api.catbreed.detail
 
-import androidx.lifecycle.MutableLiveData
 import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
+import meow.core.arch.SingleLiveData
 import sample.App
 import sample.data.catbreed.CatBreed
 
@@ -35,8 +35,8 @@ class CatBreedDetailViewModel(
     private val repository: CatBreed.Repository
 ) : MeowViewModel(app) {
 
-    var eventLiveData = MutableLiveData<MeowEvent<*>>()
-    var modelLiveData = MutableLiveData<CatBreed>()
+    var eventLiveData = SingleLiveData<MeowEvent<*>>()
+    var modelLiveData = SingleLiveData<CatBreed>()
 
     fun callApi() {
         safeCallApi(

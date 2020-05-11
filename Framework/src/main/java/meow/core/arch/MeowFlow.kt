@@ -48,16 +48,14 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
 
         init {
             onBeforeAction = {
-                containerViews.forEach { it.visibility = visibilityWhenLoading }
+                onShowOrHideContainerViews(false)
                 onShowLoading(null)
             }
             onAfterAction = {
                 onHideLoading()
-                if (!lastStateHasBeenError)
-                    containerViews.forEach { it.visibility = View.VISIBLE }
+                onShowOrHideContainerViews(true)
             }
             onErrorAction = {
-                containerViews.forEach { v -> v.visibility = View.VISIBLE }
                 val response = it.data
                 @Suppress("UNCHECKED_CAST") val errorItems =
                     (if (response.code == HttpCodes.UNPROCESSABLE_ENTITY.code) response.data as? List<FormErrorModel> else null)
@@ -73,13 +71,13 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
         Api<T>(fragmentActivity, action) {
         init {
             onBeforeAction = {
-                containerViews.forEach { it.visibility = visibilityWhenLoading }
+                onShowOrHideContainerViews(false)
                 onShowLoading(null)
             }
             onAfterAction = {
                 onHideLoading()
                 if (!lastStateHasBeenError)
-                    containerViews.forEach { it.visibility = View.VISIBLE }
+                    onShowOrHideContainerViews(true)
             }
         }
     }
@@ -160,6 +158,12 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
             progressBarInterface?.hide()
             dialog?.hide()
             swipeRefreshLayout?.isRefreshing = false
+        }
+
+        var onShowOrHideContainerViews: (show: Boolean) -> Unit = {
+            containerViews.forEach { v ->
+                v.visibility = if (it) View.VISIBLE else visibilityWhenLoading
+            }
         }
 
         var onClickedActionEmptyState: () -> Unit = {

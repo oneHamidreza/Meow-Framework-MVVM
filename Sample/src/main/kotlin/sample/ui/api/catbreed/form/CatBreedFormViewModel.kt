@@ -16,9 +16,9 @@
 
 package sample.ui.api.catbreed.form
 
-import androidx.lifecycle.MutableLiveData
 import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
+import meow.core.arch.SingleLiveData
 import sample.App
 import sample.data.catbreed.CatBreed
 
@@ -35,13 +35,12 @@ class CatBreedFormViewModel(
     private val repository: CatBreed.Repository
 ) : MeowViewModel(app) {
 
-    var eventLiveData = MutableLiveData<MeowEvent<*>>()
-    var modelLiveData = MutableLiveData<CatBreed.Api.ResponseCreate>()
+    var eventLiveData = SingleLiveData<MeowEvent<*>>()
+    var modelLiveData = SingleLiveData<CatBreed.Api.ResponseCreate>()
 
     fun callApi(request: CatBreed.Api.RequestCreate) {
         safeCallApi(
             liveData = eventLiveData,
-            isNetworkRequired = true,
             apiAction = { repository.postCatBreedToApi(request) }
         ) { _, it ->
             modelLiveData.postValue(it)

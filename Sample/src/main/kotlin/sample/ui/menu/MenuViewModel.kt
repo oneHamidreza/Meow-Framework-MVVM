@@ -16,8 +16,8 @@
 
 package sample.ui.menu
 
-import androidx.lifecycle.MutableLiveData
 import meow.core.arch.MeowViewModel
+import meow.core.arch.SingleLiveData
 import sample.App
 import sample.R
 import sample.data.Content
@@ -32,7 +32,7 @@ import sample.data.Content
 
 class MenuViewModel(app: App) : MeowViewModel(app) {
 
-    val listLiveData = MutableLiveData<List<Content>>()
+    val listLiveData = SingleLiveData<List<Content>>()
     val list = arrayListOf<Content>()
 
     fun fillList() {

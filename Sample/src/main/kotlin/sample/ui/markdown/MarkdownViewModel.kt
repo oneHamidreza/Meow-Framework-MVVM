@@ -17,9 +17,9 @@
 package sample.ui.markdown
 
 import android.text.Spanned
-import androidx.lifecycle.MutableLiveData
 import meow.core.api.MeowEvent
 import meow.core.arch.MeowViewModel
+import meow.core.arch.SingleLiveData
 import meow.ktx.hasNetwork
 import meow.ktx.ofPair
 import sample.App
@@ -39,8 +39,8 @@ class MarkdownViewModel(
     val repository: GithubRepository
 ) : MeowViewModel(app) {
 
-    var eventLiveData = MutableLiveData<MeowEvent<*>>()
-    var modelLiveData = MutableLiveData<Spanned>()
+    var eventLiveData = SingleLiveData<MeowEvent<*>>()
+    var modelLiveData = SingleLiveData<Spanned>()
 
     fun callApi(path: String) {
         safeCallApi(

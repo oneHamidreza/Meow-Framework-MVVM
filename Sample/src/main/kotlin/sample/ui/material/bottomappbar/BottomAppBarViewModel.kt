@@ -16,8 +16,8 @@
 
 package sample.ui.material.bottomappbar
 
-import androidx.lifecycle.MutableLiveData
 import meow.core.arch.MeowViewModel
+import meow.core.arch.SingleLiveData
 import sample.App
 import sample.R
 import sample.data.Content
@@ -31,7 +31,7 @@ import sample.data.Content
  */
 
 class BottomAppBarViewModel(app: App) : MeowViewModel(app) {
-    val listLiveData = MutableLiveData<List<Content>>()
+    val listLiveData = SingleLiveData<List<Content>>()
 
     fun fillList() {
         val list = arrayListOf<Content>()

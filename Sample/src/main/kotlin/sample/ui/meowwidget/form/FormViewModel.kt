@@ -16,8 +16,8 @@
 
 package sample.ui.meowwidget.form
 
-import androidx.lifecycle.MutableLiveData
 import meow.core.arch.MeowViewModel
+import meow.core.arch.SingleLiveData
 import sample.App
 import sample.data.Content
 
@@ -31,6 +31,6 @@ import sample.data.Content
 
 class FormViewModel(app: App) : MeowViewModel(app) {
 
-    val listLiveData = MutableLiveData<List<Content>>()
+    val listLiveData = SingleLiveData<List<Content>>()
 
 }
