@@ -124,6 +124,8 @@ class App : MeowApp() {
 
 ### 🐱 Meow Controller 🐈
 
+![](https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_meow_day_night.gif)
+
 This Framework has two Highlighted Features :
 - Dynamic **Day/Night** Theme to switch from `LIGHT` to `DARK` mode.
 - Dynamic **Localization** to change language , currency formatting , date formatting of app at Realtime.
