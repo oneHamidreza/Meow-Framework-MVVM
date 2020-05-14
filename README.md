@@ -13,14 +13,13 @@ Dynamic Localization and Day/Night Theme & Meow Custom Widgets are another featu
 </a>
 </p>
 
-
 ## 📱 Sample Application
 
 We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.7.14-alpha/Meow-Framework-Sample-v0.7.14-alpha.apk) to be familiar with `Meow Framework`.
 
 <p>
-<a href='https://play.google.com/store/apps/details?id=com.etebarian.meowframework_sample&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1' target="_blank">
-<img width="20%" alt='Get Meow Framework Sample on Google Play' src='https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png'/>
+<a target="_blank" href="https://play.google.com/store/apps/details?id=com.etebarian.meowframework_sample&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
+<img width="20%" alt="Get Meow Framework Sample on Google Play" src="https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png"/>
 </a>
 </p>
 
