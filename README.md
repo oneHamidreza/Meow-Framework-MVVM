@@ -66,7 +66,7 @@ We recommend that use `Kotlin DSL Gradle` instead of `Groovy` . That is not Bugg
 >android.enableJetifier=true
 >```
 >
-> Remember that you'll need to enable Java 8 & DataBinding in your app module `build.gradle`.
+> Remember that you'll need to enable Java 8 & DataBinding & Kotlin Kapt in your app module `build.gradle`.
 
 ## 📃 Table of Contents
 
@@ -112,6 +112,7 @@ class App : MeowApp() {
 
    // Source is `KodeinAware` interface.
     override val kodein = Kodein.lazy {
+        // Import org.kodein.di.Kodein.*
         bind() from singleton { kodein.direct }
         bind() from singleton { this@App }
         import(androidXModule(this@App))
@@ -300,7 +301,7 @@ data class Person(
     @Json(name = "alias") var alias: String? = null) {
     
     // RecyclerView List Adapter requires DiffCallBack.
-    class DiffCallback : DiffUtil.ItemCallback<CatBreed>() {
+    class DiffCallback : DiffUtil.ItemCallback<Person>() {
         override fun areItemsTheSame(oldItem: Person, newItem: Person) = oldItem.id == newItem.id
         override fun areContentsTheSame(oldItem: Person, newItem: Person) = oldItem == newItem
     }
@@ -321,7 +322,7 @@ interface PersonApi {
 #### Call API action from ViewModel by using `safeCallApi()`. Update your ViewModel class like this :
 
 ```kotlin
-class PersonIndexViewModel(app:App) : MeowViewModel(app) {
+class PersonIndexViewModel(override var app: App) : MeowViewModel(app) {
     // Define LiveData variables. use `SingleLiveData` to observe only when changed.
     var eventLiveData = SingleLiveData<MeowEvent<*>>()
     var listLiveData = SingleLiveData<List<Person>>()
@@ -332,7 +333,7 @@ class PersonIndexViewModel(app:App) : MeowViewModel(app) {
             liveData = eventLiveData,   
             apiAction = { AppApi(app).createServiceByAdapter<PersonApi>().getPersonIndex() }
         ) { _, it ->
-            // If connection was Success, this line will be run.
+            // If connection was Success and Retrofit can parse json data as list of models, this line will be run.
             // Otherwise MeowEvent.Api.Error will be posted into eventLiveData.
             
             // You can observe it manually or use MeowFlow.
@@ -379,6 +380,10 @@ Use `MeowFlow` to handle events from ViewModel automatically.
 ```kotlin
 class SampleIndexActivity : MeowActivity<ActivitySampleIndexBinding>() {
     //...
+    
+    private val viewModel by instance<PersonIndexViewModel>()
+    override fun layoutId() = R.layout.activity_sample_index
+    
     override fun initViewModel() {
         binding.viewModel = viewModel
         callApiAndObserve()    
@@ -660,9 +665,10 @@ A FAB that supports `android:text` property.
 Use it like this in XML Layout :
 
 ```xml
-<com.google.android.material.floatingactionbutton.FloatingActionButton
-    style="@style/Meow.FloatingActionButton"
+<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+    style="@style/Meow.FloatingActionButton.Extended"
     android:onClick="@{viewModel::onClickedFab}"
+    android:text="@string/fab_extended_text"
     app:icon="@drawable/ic_add"
     app:layout_anchor="@id/recyclerView"
     app:layout_anchorGravity="bottom|center_horizontal" />
