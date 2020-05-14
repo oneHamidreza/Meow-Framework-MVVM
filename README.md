@@ -42,7 +42,7 @@ If you like this project and you want to progress it, you can support us by clic
 
 <p align="center">
 <a href="https://paypal.com/">
-<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_support.png"/>
+<img width="20%" src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_support.png"/>
 </a>
 </p>
 
