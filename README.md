@@ -40,7 +40,7 @@ We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow
 We are developing this framework in open source community without financial planning. But the maintenance & preparing updates at periodic times is Time-consuming.
 If you like this project and you want to progress it, you can support us by clicking this badge :
 
-<p align="center">
+<p>
 <a href="https://paypal.com/">
 <img width="20%" src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_support.png"/>
 </a>
