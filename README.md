@@ -3,6 +3,11 @@
 A Framework that simplify developing MVVM Architecture and Material Design in Android with Kotlin language including useful Extensions and Sample Application. This Framework has some tools for Retrofit and OKHttp and Coroutine for calling REST API requests.  
 Dynamic Localization and Day/Night Theme & Meow Custom Widgets are another features.
 
+<p>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://assets8.lottiefiles.com/packages/lf20_4VYPxJ.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop controls autoplay></lottie-player>
+</p>
+
 <p align="center">
 <img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_github.png" width="60%" />
 </p>
