@@ -3,11 +3,6 @@
 A Framework that simplify developing MVVM Architecture and Material Design in Android with Kotlin language including useful Extensions and Sample Application. This Framework has some tools for Retrofit and OKHttp and Coroutine for calling REST API requests.  
 Dynamic Localization and Day/Night Theme & Meow Custom Widgets are another features.
 
-<p>
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-<lottie-player src="https://assets8.lottiefiles.com/packages/lf20_4VYPxJ.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop controls autoplay></lottie-player>
-</p>
-
 <p align="center">
 <img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_github.png" width="60%" />
 </p>
@@ -38,6 +33,17 @@ We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow
 <img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-07.jpg" width="20%" />
 <img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-08.jpg" width="20%" />
 <img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-09.jpg" width="20%" />
+</p>
+
+## 😍 Donate & Support
+
+We developed this framework in open source community without financial planning. But the maintenances & preparing updates at periodic times is Time-consuming.
+If you like this project and you want to progress it, you can support us by clicking this badge :
+
+<p align="center">
+<a href="https://paypal.com/">
+<img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_support.png"/>
+</a>
 </p>
 
 ## 🛠 Setup
