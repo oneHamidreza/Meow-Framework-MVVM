@@ -46,6 +46,8 @@ If you like this project and you want to give us peace of mind, you can support 
 </a>
 </p>
 
+PayPal Email : `imehrzadm@outlook.com`
+
 ## 🛠 Setup
 
 ```groovy
@@ -83,9 +85,9 @@ We recommend that use `Kotlin DSL Gradle` instead of `Groovy` . That is not Bugg
 
 - [🧩 Meow KTX (Kotlin Extensions)](https://github.com/oneHamidreza/Meow-Framework-MVVM#-meow-ktx-kotlin-extensions)
 
-- [Ⓜ Material Design Setup](https://github.com/oneHamidreza/Meow-Framework-MVVM#-material-components)
+- [Ⓜ Material Design Setup](https://github.com/oneHamidreza/Meow-Framework-MVVM#-material-design-setup)
 
-- [🎨 Material Components](https://github.com/oneHamidreza/Meow-Framework-MVVM#mat)
+- [🎨 Material Components](https://github.com/oneHamidreza/Meow-Framework-MVVM#material-components)
 
 - [🌌 Meow Custom Widgets](https://github.com/oneHamidreza/Meow-Framework-MVVM#-meow-custom-widgets)
 
