@@ -19,7 +19,7 @@ We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow
 
 <p>
 <a target="_blank" href="https://play.google.com/store/apps/details?id=com.etebarian.meowframework_sample&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
-<img width="20%" alt="Get Meow Framework Sample on Google Play" src="https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png"/>
+<img width="25%" alt="Get Meow Framework Sample on Google Play" src="https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png"/>
 </a>
 </p>
 
@@ -38,15 +38,13 @@ We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow
 ## 😍 Donate & Support
 
 We are developing this framework in open source community without financial planning. But the maintenance & preparing updates at periodic times is Time-consuming.
-If you like this project and you want to give us peace of mind, you can support us by clicking this badge :
+If you like this project and you want to give us peace of mind, you can support us by sending a payment to `imehrzadm@outlook.com` :
 
 <p>
 <a href="https://paypal.com/">
 <img width="20%" src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_support.png"/>
 </a>
 </p>
-
-PayPal Email : `imehrzadm@outlook.com`
 
 ## 🛠 Setup
 
