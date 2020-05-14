@@ -1322,7 +1322,11 @@ Use it like this in XML Layout :
     app:startIconDrawable="@drawable/ic_android" />
 ```
 
-Learn more about it at [Material TextField Component](https://material.io/components/text-fields) and [fragment_form.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/form/res/layout/fragment_form.xml).
+Learn more about it at [Material TextField Component](https://material.io/components/text-fields) and [fragment_form.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/form/res/layout/fragment_form.xml).
+
+## 👮 ‍R8/Proguard
+
+Just include contents of [proguard-rules.pro](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/proguard-rules.pro)
 
 ## 🖐 Contributing
 
