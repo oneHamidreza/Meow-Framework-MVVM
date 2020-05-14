@@ -18,6 +18,10 @@ Dynamic Localization and Day/Night Theme & Meow Custom Widgets are another featu
 
 We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.7.14-alpha/Meow-Framework-Sample-v0.7.14-alpha.apk) to be familiar with `Meow Framework`.
 
+<p align="center">
+<a href='https://play.google.com/store/apps/details?id=com.etebarian.meowframework_sample&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png'/></a>
+</p>
+
 <p>
 <img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-01.jpg" width="20%" />
 <img src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Screenshots/Screenshot-02.jpg" width="20%" />

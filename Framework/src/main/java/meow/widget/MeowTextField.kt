@@ -23,6 +23,7 @@ import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.TypedValue
+import android.view.View
 import com.etebarian.meowframework.R
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -125,7 +126,8 @@ class MeowTextField : TextInputLayout, FormInterface {
         addView(editText)
         editText.setTextSize(TypedValue.COMPLEX_UNIT_PX, this.textSize)
         editText.inputType = this.inputType
-
+        if (controller.isPersian)
+            textDirection = View.TEXT_DIRECTION_LTR
     }
 
     fun addTextChangedListener(textWatcher: TextWatcher) {

@@ -27,8 +27,6 @@ import java.io.File
  * @since   2020-02-24
  */
 
-//todo :jar: No valid plugin descriptors were found in META-INF/gradle-plugins
-
 object AppConfig {//todo find way for show sources
 
     object Build {
@@ -55,7 +53,7 @@ object AppConfig {//todo find way for show sources
         const val API = 1
         const val MAJOR = 0
         const val MINOR = 7
-        const val PATCH = 14
+        const val PATCH = 15
         val BUILD_PHASE = Build.PHASE.ALPHA
 
         const val SDK_COMPILE = 29

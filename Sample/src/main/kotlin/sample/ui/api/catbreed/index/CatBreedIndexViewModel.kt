@@ -41,7 +41,6 @@ class CatBreedIndexViewModel(
     fun callApi() {
         safeCallApi(
             liveData = eventLiveData,
-            isNetworkRequired = true,
             apiAction = { repository.getCatBreedsFromApi() }
         ) { _, it ->
             listLiveData.postValue(it)

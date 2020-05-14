@@ -33,6 +33,7 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import retrofit2.HttpException
 import java.io.IOException
+import java.net.SocketException
 import java.net.SocketTimeoutException
 
 /**
@@ -95,7 +96,7 @@ open class MeowViewModel(open val app: MeowApp) : AndroidViewModel(app), KodeinA
             if (controller.isDebugMode)
                 e.printStackTrace()
             when (e) {
-                is SocketTimeoutException -> MeowResponse.ConnectionError()
+                is SocketTimeoutException, is SocketException -> MeowResponse.ConnectionError()
                 is IOException -> MeowResponse.NetworkError()
                 is HttpException -> createResponseFromHttpError(e)
                 is CancellationException -> MeowResponse.Cancellation()
