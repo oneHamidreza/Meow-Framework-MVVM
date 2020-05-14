@@ -107,7 +107,7 @@ class App : MeowApp() {
     // Create a kodein module.
     val appModule = Module("App Module", false) {
         // Provide object of SomeOfClass(such as View Models) in Kodein with bind() function.
-        bind() from singleton { SomeOfClass(instance()) }
+        // bind() from singleton { SomeOfClass(instance()) }
     }
 
    // Source is `KodeinAware` interface.
