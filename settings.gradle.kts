@@ -1,2 +1,2 @@
 rootProject.name = "Meow-Framework-MVVM"
-include(":Framework", ":Sample")
+include(":MeowFramework", ":Sample")

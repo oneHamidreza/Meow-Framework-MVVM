@@ -56,7 +56,7 @@ After adding library, some of most useful libraries (such as `Androidx AppCompat
 
 List of dependencies can be found in [meow.AppConfig.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/buildSrc/src/main/java/meow/AppConfig.kt) in `Dependencies` Object.
 
-Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Framework/build.gradle.kts) in Sample module to avoid any issues that related to setup & adding Framework.
+Check out [build.gradle.kts](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/MeowFramework/build.gradle.kts) in Sample module to avoid any issues that related to setup & adding Framework.
 We recommend that use `Kotlin DSL Gradle` instead of `Groovy` . That is not Buggy 😊.
 
 > Enable androidx in `gradle.properties`.
@@ -408,7 +408,7 @@ class SampleIndexActivity : MeowActivity<ActivitySampleIndexBinding>() {
 ```
 
 `MeowFlow` is a helper class that observes `eventLiveData` and it handles errors from API automatically. You can set error handling with `errorHandlerType`. Supported types : `TOAST` , `SNACKBAR` , `EMPTY_STATE`.
- For example, when `errorHandlerType` is `Toast` errors has been shown in toast form. See [strings_error.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Framework/src/main/res/values/strings_error.xml) to edit error messages.
+ For example, when `errorHandlerType` is `Toast` errors has been shown in toast form. See [strings_error.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/MeowFramework/src/main/res/values/strings_error.xml) to edit error messages.
 
 #### Show API response into `RecyclerView`
 
