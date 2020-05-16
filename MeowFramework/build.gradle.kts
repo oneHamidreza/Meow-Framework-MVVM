@@ -128,7 +128,7 @@ publishing {
 //                from("$buildDir/dokka")
 //            }
 
-            artifact("$buildDir/outputs/aar/Framework-release.aar")
+            artifact("$buildDir/outputs/aar/MeowFramework-release.aar")
             artifact(sourcesJar.get())
 //            artifact(javadocJar.get())
         }

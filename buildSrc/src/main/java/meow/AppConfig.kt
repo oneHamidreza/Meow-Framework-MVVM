@@ -52,9 +52,9 @@ object AppConfig {//todo find way for show sources
          */
         const val API = 1
         const val MAJOR = 0
-        const val MINOR = 7
-        const val PATCH = 15
-        val BUILD_PHASE = Build.PHASE.ALPHA
+        const val MINOR = 8
+        const val PATCH = 1
+        val BUILD_PHASE = Build.PHASE.STABLE
 
         const val SDK_COMPILE = 29
         const val SDK_MIN = 19
