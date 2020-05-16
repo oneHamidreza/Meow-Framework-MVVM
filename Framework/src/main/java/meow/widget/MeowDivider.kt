@@ -65,12 +65,12 @@ class MeowDivider @JvmOverloads constructor(
     init {
         setAttributesFromXml(attrs, R.styleable.MeowDivider) {
             orientation = Orientation.values()[it.getInt(
-                R.styleable.MeowDivider_meow_divider_orientation,
+                R.styleable.MeowDivider_meow_orientation,
                 orientation.ordinal
             )]
 
             type = Type.values()[it.getInt(
-                R.styleable.MeowDivider_meow_divider_background_type,
+                R.styleable.MeowDivider_meow_background_type,
                 type.ordinal
             )]
         }

@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import meow.widget.ratingbar.ScaleRatingBar
 
-open class MeowRateView @JvmOverloads constructor(
+open class MeowRatingBar @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttrs: Int = 0

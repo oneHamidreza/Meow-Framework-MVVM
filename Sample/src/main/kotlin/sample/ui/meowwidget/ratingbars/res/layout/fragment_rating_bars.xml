@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="sample.ui.meowwidget.rateview.RateViewModel" />
+            type="sample.ui.meowwidget.ratingbars.RatingBarsViewModel" />
     </data>
 
     <LinearLayout
@@ -15,20 +15,20 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <meow.widget.MeowRateView
+        <meow.widget.MeowRatingBar
+            style="@style/Meow.RatingBar"
             app:meow_drawableEmpty="@drawable/ic_star"
             app:meow_drawableFilled="@drawable/ic_star_fill"
             app:meow_numStars="5"
-            app:meow_stepSize="0.5"
-            style="@style/Meow.RateView" />
+            app:meow_stepSize="0.5" />
 
-        <meow.widget.MeowRateView
+        <meow.widget.MeowRatingBar
+            style="@style/Meow.RatingBar.Indicator"
             android:layout_marginTop="16dp"
             app:meow_drawableEmpty="@drawable/empty"
-            app:meow_numStars="6"
             app:meow_minimumStars="3"
-            app:meow_stepSize="1"
-            style="@style/Meow.RateView.Indicator" />
+            app:meow_numStars="6"
+            app:meow_stepSize="1" />
 
     </LinearLayout>
 

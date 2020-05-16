@@ -7,7 +7,7 @@
         <item name="meow_textAppearance">?textAppearanceBody1</item>
         <item name="meow_textColor">@color/on_background_high</item>
         <item name="meow_hintColor">@color/on_background_high</item>
-        <item name="meow_iconColor">?colorPrimary</item>
+        <item name="meow_iconTint">?colorPrimary</item>
     </style>
 
     <style name="Meow.PinView.Filled">

@@ -79,12 +79,10 @@ data class Content(
         EXTENSIONS_TOAST,
         EXTENSIONS_VALIDATE,
 
-        WIDGET_ANDROID,
         WIDGET_DASH,
         WIDGET_FORM,
         WIDGET_PROGRESS_BARS,
         WIDGET_RATEBAR,
-        WIDGET_FIELD,
 
         ALERT_SIMPLE,
         ALERT_SIMPLE_WITH_LISTENER,

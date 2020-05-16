@@ -7,35 +7,35 @@
     </style>
 
     <style name="Meow.Divider.Horizontal">
-        <item name="meow_divider_orientation">horizontal</item>
+        <item name="meow_orientation">horizontal</item>
     </style>
 
     <style name="Meow.Divider.Vertical">
-        <item name="meow_divider_orientation">vertical</item>
+        <item name="meow_orientation">vertical</item>
     </style>
 
     <style name="Meow.Divider.Horizontal.OnSurface">
-        <item name="meow_divider_background_type">surface</item>
+        <item name="meow_background_type">surface</item>
     </style>
 
     <style name="Meow.Divider.Horizontal.OnPrimary">
-        <item name="meow_divider_background_type">primary</item>
+        <item name="meow_background_type">primary</item>
     </style>
 
     <style name="Meow.Divider.Horizontal.OnSecondary">
-        <item name="meow_divider_background_type">secondary</item>
+        <item name="meow_background_type">secondary</item>
     </style>
 
     <style name="Meow.Divider.Vertical.OnSurface">
-        <item name="meow_divider_background_type">surface</item>
+        <item name="meow_background_type">surface</item>
     </style>
 
     <style name="Meow.Divider.Vertical.OnPrimary">
-        <item name="meow_divider_background_type">primary</item>
+        <item name="meow_background_type">primary</item>
     </style>
 
     <style name="Meow.Divider.Vertical.OnSecondary">
-        <item name="meow_divider_background_type">secondary</item>
+        <item name="meow_background_type">secondary</item>
     </style>
 
 </resources>

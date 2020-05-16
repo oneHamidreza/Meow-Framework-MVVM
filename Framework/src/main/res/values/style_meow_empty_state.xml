@@ -4,28 +4,28 @@
     <style name="Meow.EmptyState" parent="">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="meow_empty_iconSize">108dp</item>
-        <item name="meow_empty_iconTint">?colorSecondary</item>
+        <item name="meow_iconSize">108dp</item>
+        <item name="meow_iconTint">?colorSecondary</item>
     </style>
 
     <style name="Meow.EmptyState.OnBackground">
-        <item name="meow_empty_titleTextColor">@color/on_background_high</item>
-        <item name="meow_empty_descTextColor">@color/on_background_medium</item>
+        <item name="meow_titleTextColor">@color/on_background_high</item>
+        <item name="meow_descTextColor">@color/on_background_medium</item>
     </style>
 
     <style name="Meow.EmptyState.OnSurface">
-        <item name="meow_empty_titleTextColor">@color/on_surface_high</item>
-        <item name="meow_empty_descTextColor">@color/on_surface_medium</item>
+        <item name="meow_titleTextColor">@color/on_surface_high</item>
+        <item name="meow_descTextColor">@color/on_surface_medium</item>
     </style>
 
     <style name="Meow.EmptyState.OnPrimary">
-        <item name="meow_empty_titleTextColor">@color/on_primary_high</item>
-        <item name="meow_empty_descTextColor">@color/on_primary_medium</item>
+        <item name="meow_titleTextColor">@color/on_primary_high</item>
+        <item name="meow_descTextColor">@color/on_primary_medium</item>
     </style>
 
     <style name="Meow.EmptyState.OnSecondary">
-        <item name="meow_empty_titleTextColor">@color/on_secondary_high</item>
-        <item name="meow_empty_descTextColor">@color/on_secondary_medium</item>
+        <item name="meow_titleTextColor">@color/on_secondary_high</item>
+        <item name="meow_descTextColor">@color/on_secondary_medium</item>
     </style>
 
     <style name="Meow.Button.EmptyState" parent="Meow.Button" />

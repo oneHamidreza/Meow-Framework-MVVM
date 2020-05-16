@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Meow.RateView">
+    <style name="Meow.RatingBar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
         <item name="meow_isIndicator">false</item>
     </style>
 
-    <style name="Meow.RateView.Indicator">
+    <style name="Meow.RatingBar.Indicator">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>

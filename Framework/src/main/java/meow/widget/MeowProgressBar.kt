@@ -46,7 +46,7 @@ class MeowProgressBar @JvmOverloads constructor(
     init {
         setAttributesFromXml(attrs, R.styleable.MeowProgressBar) {
             showOnInit =
-                it.getBoolean(R.styleable.MeowProgressBar_meow_progress_showOnInit, showOnInit)
+                it.getBoolean(R.styleable.MeowProgressBar_meow_showOnInit, showOnInit)
         }
         sdkNeed(21) {
             progressTintList = progressTintList

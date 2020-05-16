@@ -44,7 +44,7 @@ import sample.ui.material.checkboxes.CheckboxesViewModel
 import sample.ui.material.collapsing.toolbar.CollapsingToolbarViewModel
 import sample.ui.material.fab.extended.FABExtendedViewModel
 import sample.ui.material.fab.simple.FABSimpleViewModel
-import sample.ui.material.imageviewes.ImageviewsViewModel
+import sample.ui.material.imageviews.ImageviewsViewModel
 import sample.ui.material.radiobuttons.RadioButtonsViewModel
 import sample.ui.material.snackbars.SnackBarsViewModel
 import sample.ui.material.switches.SwitchesViewModel
@@ -57,7 +57,7 @@ import sample.ui.meowwidget.dash.DashViewModel
 import sample.ui.meowwidget.dividers.DividersViewModel
 import sample.ui.meowwidget.form.FormViewModel
 import sample.ui.meowwidget.progressbars.ProgressBarsViewModel
-import sample.ui.meowwidget.rateview.RateViewModel
+import sample.ui.meowwidget.ratingbars.RatingBarsViewModel
 import sample.ui.sharedpreferences.SharedPreferencesViewModel
 
 /**
@@ -209,8 +209,8 @@ val mvvmModule = Module("MVVM Module", false) {
         ImageviewsViewModel(kodein.direct.instance())
     }
 
-    bindAutoTag<RateViewModel>() with provider {
-        RateViewModel(kodein.direct.instance())
+    bindAutoTag<RatingBarsViewModel>() with provider {
+        RatingBarsViewModel(kodein.direct.instance())
     }
 
     // Meow Widget

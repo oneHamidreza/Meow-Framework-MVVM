@@ -122,7 +122,7 @@ class App : MeowApp() {
 }
 ```
 
-### 🐱 Meow Controller 🐈
+### 🐱 Meow Controller
 
 ![](https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_meow_day_night.gif)
 
@@ -563,11 +563,11 @@ fun testLoadingAlertDialog() {
 }
 ```
 
-Learn more about it at [AlertsFragment.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/alert/AlertsFragment.kt).
+Learn more about it at [AlertsFragment.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/alert/AlertsFragment.kt).
 
 ### Button
 
-There are some customized styles which is related to `Material Button`.
+There are some customized styles that is related to `Material Button`.
 
 |Style|Usage|
 |---|:---:|
@@ -592,11 +592,11 @@ Use it like this in XML Layout :
 </LinearLayout>
 ```
 
-Learn more about it at [Material Card Component](https://material.io/components/android/catalog/cards/) and [fragment_cards.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/cards/res/layout/fragment_cards.xml).
+Learn more about it at [Material Card Component](https://material.io/components/android/catalog/cards/) and [fragment_cards.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/cards/res/layout/fragment_cards.xml).
 
 ### CardView
 
-There are some customized styles which is related to `Material CardView`.
+There are some customized styles that is related to `Material CardView`.
 
 |Style|Usage|
 |---|:---:|
@@ -613,11 +613,11 @@ Use it like this in XML Layout :
     </com.google.android.material.card.MaterialCardView>
 ```
 
-Learn more about it at [Material Card Component](https://material.io/components/android/catalog/cards/) and [fragment_cards.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/cards/res/layout/fragment_cards.xml).
+Learn more about it at [Material Card Component](https://material.io/components/android/catalog/cards/) and [fragment_cards.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/cards/res/layout/fragment_cards.xml).
 
 ### Checkbox
 
-There are some customized styles which is related to `Material CheckBox`.
+There are some customized styles that is related to `Material CheckBox`.
 
 |Style|Usage|
 |---|:---:|
@@ -635,7 +635,7 @@ Use it like this in XML Layout :
     android:text="@string/checkbox_text" />  
 ```
 
-Learn more about it at [Material Checkbox Component](https://material.io/develop/android/components/checkbox/) and [fragment_checkboxes.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/checkboxes/res/layout/fragment_checkboxes.xml).
+Learn more about it at [Material Checkbox Component](https://material.io/develop/android/components/checkbox/) and [fragment_checkboxes.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/checkboxes/res/layout/fragment_checkboxes.xml).
 
 ### Floating Action Button
 
@@ -659,7 +659,7 @@ Use it like this in XML Layout :
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 ```
 
-Learn more about it at [Material Floating Action Button Component](https://material.io/develop/android/components/floating-action-button/) and [fragment_fab_simple.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/fab/simple/res/layout/fragment_fab_simple.xml).
+Learn more about it at [Material Floating Action Button Component](https://material.io/develop/android/components/floating-action-button/) and [fragment_fab_simple.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/fab/simple/res/layout/fragment_fab_simple.xml).
 
 ### Extended Floating Action Button
 
@@ -680,7 +680,7 @@ Learn more about it at [Material Extended Floating Action Button Component](http
 
 ### Radio Group
 
-There are some customized styles which is related to `Material Radio Group`.
+There are some customized styles that is related to `Material Radio Group`.
 
 |Style|Usage|
 |---|:---:|
@@ -689,7 +689,7 @@ There are some customized styles which is related to `Material Radio Group`.
 
 ### Radio Button
 
-There are some customized styles which is related to `Material Radio Button`.
+There are some customized styles that is related to `Material Radio Button`.
 
 |Style|Usage|
 |---|:---:|
@@ -718,7 +718,7 @@ Use it like this in XML Layout :
 </RadioGroup>
 ```
 
-Learn more about it at [Material Radio Button Component](https://material.io/develop/android/components/radiobutton/) and [fragment_radio_buttons.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/radiobuttons/res/layout/fragment_radio_buttons.xml).
+Learn more about it at [Material Radio Button Component](https://material.io/develop/android/components/radiobutton/) and [fragment_radio_buttons.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/radiobuttons/res/layout/fragment_radio_buttons.xml).
 
 ### Snack Bars
 
@@ -751,7 +751,7 @@ Learn more about it at [SnackBarsFragment](https://github.com/oneHamidreza/Meow-
 
 ### Switch
 
-There are some customized styles which is related to `Material Switch`.
+There are some customized styles that is related to `Material Switch`.
 
 |Style|Usage|
 |---|:---:|
@@ -831,7 +831,7 @@ fun onCreate(savedInstanceState: Bundle?) {
 
 Now you have `ViewPager2` + `TabLayout` in an Activity/Fragment.
 
-There are some customized styles which is related to `Material TabLayout`.
+There are some customized styles that is related to `Material TabLayout`.
 
 |Style|Usage|
 |---|:---:|
@@ -883,12 +883,12 @@ Use it like this in XML Layout :
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true" >    
+        android:fitsSystemWindows="true">    
 
          <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:liftOnScroll="true" >
+            app:liftOnScroll="true">
             
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
@@ -902,7 +902,7 @@ Use it like this in XML Layout :
 </layout>
 ```
 
-There are some customized styles which is related to `Material Toolbar`.
+There are some customized styles that is related to `Material Toolbar`.
 
 |Style|Usage|
 |---|:---:|
@@ -921,8 +921,8 @@ Meow CircleImageView Attributes:
 
 |Attributes|Descriptions|
 |---|:---:|
-|`meow_strokeColor`|Circle image view stroke color|
-|`meow_strokeWidth`|Circle image view stroke width|
+|`meow_strokeColor`|The stroke color of image|
+|`meow_strokeWidth`|The stroke width of image|
 
 Use it like this in XML Layout :
 
@@ -935,9 +935,9 @@ Use it like this in XML Layout :
     app:srcCompat="@drawable/avatar" />
 ```
 
-Learn more about it at [fragment_imageviews.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/imageviews/res/layout/fragment_imageviews.xml).
+Learn more about it at [fragment_imageviews.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/imageviews/res/layout/fragment_imageviews.xml).
 
-### Meow DashView
+### Meow Dash View
 
 There are some styles that is related to `Dash View`.
 
@@ -980,7 +980,7 @@ Use it like this in XML Layout :
     app:meow_dash_thickness="2dp" />
 ```
 
-Learn more about it at [fragment_dash.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/dash/res/layout/fragment_dash.xml).
+Learn more about it at [fragment_dash.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/dash/res/layout/fragment_dash.xml).
 
 ### Meow Divider
 
@@ -1001,8 +1001,8 @@ Meow Divider Attributes:
 
 |Attributes|Descriptions|
 |---|:---:|
-|`meow_divider_orientation`|Oreintation: `vertical` or `horizontal`|
-|`meow_divider_background_type`|Types: `background`,`surface`,`secondary`,`primary`|
+|`meow_orientation`|Orientation: `vertical` or `horizontal`|
+|`meow_background_type`|Types: `background`,`surface`,`secondary`,`primary`|
 
 Use it like this in XML Layout :
 
@@ -1012,7 +1012,7 @@ Use it like this in XML Layout :
 <meow.widget.MeowDivider style="@style/Meow.Divider.Horizontal" />
 ```
 
-Learn more about it at [fragment_dividers.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/dividers/res/layout/fragment_dividers.xml).
+Learn more about it at [fragment_dividers.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/dividers/res/layout/fragment_dividers.xml).
 
 ### Meow Empty State
 
@@ -1030,26 +1030,24 @@ Meow Empty state Attributes:
 
 |Attributes|Descriptions|
 |---|:---:|
-|`meow_empty_iconRes`|Icon resource|
-|`meow_empty_iconSize`|Icon size|
-|`meow_empty_iconTint`|Icon tint color|
-|`meow_empty_title`|Title text|
-|`meow_empty_titleTextColor`|Title text color|
-|`meow_empty_desc`|Description text|
-|`meow_empty_descTextColor`|Description text color|
-|`meow_empty_primaryActionText`|Button text|
+|`meow_icon`|Icon resource|
+|`meow_iconSize`|Icon size|
+|`meow_iconTint`|Icon tint color|
+|`meow_title`|Title text|
+|`meow_titleTextColor`|Title text color|
+|`meow_desc`|Description text|
+|`meow_descTextColor`|Description text color|
+|`meow_primaryActionText`|Button text|
 
 Use it like this in XML Layout :
 
-> You just need use style.😉
->
 ```xml
 <meow.widget.MeowEmptyState
     android:id="@+id/emptyState"
     style="@style/Meow.EmptyState.OnBackground" />
 ```
 
-Learn more about it at [fragment_cat_breed_index.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/api/catbreed/index/res/layout/fragment_cat_breed_index.xml).
+> Not Completed yet!.
 
 ### Meow Hint Button
 
@@ -1069,7 +1067,7 @@ Meow HintButton Attributes:
 |`meow_title`|Title text|
 |`meow_titleColor`|Title text color|
 |`meow_titleTextAppearance`|Title textAppearance|
-|`meow_icon`|Icon resourcer|
+|`meow_icon`|Icon resource|
 |`meow_iconColor`|Icon color|
 
 Use it like this in XML Layout :
@@ -1082,7 +1080,7 @@ Use it like this in XML Layout :
     app:meow_title="@string/date_num" />
 ```
 
-Learn more about it at [fragment_form.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/form/res/layout/fragment_form.xml).
+Learn more about it at [fragment_form.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/form/res/layout/fragment_form.xml).
 
 ### Meow PinView
 
@@ -1103,8 +1101,8 @@ Meow PinView Attributes:
 |`meow_count`|Length of pin (box count)|
 |`meow_textColor`|Boxes text color|
 |`meow_textAppearance`|Boxes textAppearance|
-|`meow_icon`|Icon resourcer|
-|`meow_iconColor`|Icon color|
+|`meow_icon`|Icon resource|
+|`meow_iconTint`|Icon color|
 |`meow_showBack`|Show clear boxes text|
 |`meow_errorTextAppearance`|Error textAppearance|
 |`meow_boxStyle`|Styles: `outlined` or `filled`|
@@ -1119,7 +1117,7 @@ Use it like this in XML Layout :
     app:meow_icon="@drawable/ic_dialpad" />
 ```
 
-Learn more about it at [fragment_form.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/form/res/layout/fragment_form.xml).
+Learn more about it at [fragment_form.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/form/res/layout/fragment_form.xml).
 
 ### Meow ProgressBar
 
@@ -1127,101 +1125,93 @@ There are some styles that is related to `ProgressBar`.
 
 |Style|Usage|
 |---|:---:|
-|`Meow.ProgressBar.Small`|ProgressBar small|
-|`Meow.ProgressBar.Small.Primary`|ProgressBar small with `primary` color|
-|`Meow.ProgressBar.Small.PrimaryVariant`|ProgressBar small with `PrimaryVariant` color|
-|`Meow.ProgressBar.Small.PrimarySurface`|ProgressBar small with `PrimarySurface` color|
-|`Meow.ProgressBar.Small.Secondary`|ProgressBar small with `secondary` color|
-|`Meow.ProgressBar.Small.SecondaryVariant`|ProgressBar small with `SecondaryVariant` color|
-|`Meow.ProgressBar.Small.OnPrimary`|ProgressBar small with `OnPrimary` color|
-|`Meow.ProgressBar.Small.OnSecondary`|ProgressBar small with `OnSecondary` color|
-|`Meow.ProgressBar.Small.OnSurface`|ProgressBar small with `OnSurface` color|
-|`Meow.ProgressBar.Medium`|ProgressBar medium|
-|`Meow.ProgressBar.Medium.Primary`|ProgressBar medium with `primary` color|
-|`Meow.ProgressBar.Medium.PrimaryVariant`|ProgressBar medium with `PrimaryVariant` color|
-|`Meow.ProgressBar.Medium.PrimarySurface`|ProgressBar medium with `PrimarySurface` color|
-|`Meow.ProgressBar.Medium.Secondary`|ProgressBar medium with `secondary` color|
-|`Meow.ProgressBar.Medium.SecondaryVariant`|ProgressBar medium with `SecondaryVariant` color|
-|`Meow.ProgressBar.Medium.OnPrimary`|ProgressBar medium with `OnPrimary` color|
-|`Meow.ProgressBar.Medium.OnSecondary`|ProgressBar medium with `OnSecondary` color|
-|`Meow.ProgressBar.Medium.OnSurface`|ProgressBar medium with `OnSurface` color|
-|`Meow.ProgressBar.Large`|ProgressBar large|
-|`Meow.ProgressBar.Large.Primary`|ProgressBar large with `primary` color|
-|`Meow.ProgressBar.Large.PrimaryVariant`|ProgressBar large with `PrimaryVariant` color|
-|`Meow.ProgressBar.Large.PrimarySurface`|ProgressBar large with `PrimarySurface` color|
-|`Meow.ProgressBar.Large.Secondary`|ProgressBar large with `secondary` color|
-|`Meow.ProgressBar.Large.SecondaryVariant`|ProgressBar large with `SecondaryVariant` color|
-|`Meow.ProgressBar.Large.OnPrimary`|ProgressBar large with `OnPrimary` color|
-|`Meow.ProgressBar.Large.OnSecondary`|ProgressBar large with `OnSecondary` color|
-|`Meow.ProgressBar.Large.OnSurface`|ProgressBar large with `OnSurface` color|
-
+|`Meow.ProgressBar.Small`|Small ProgressBar|
+|`Meow.ProgressBar.Small.Primary`|Small ProgressBar with `primary` color|
+|`Meow.ProgressBar.Small.PrimaryVariant`|Small ProgressBar with `PrimaryVariant` color|
+|`Meow.ProgressBar.Small.PrimarySurface`|Small ProgressBar with `PrimarySurface` color|
+|`Meow.ProgressBar.Small.Secondary`|Small ProgressBar with `secondary` color|
+|`Meow.ProgressBar.Small.SecondaryVariant`|Small ProgressBar with `SecondaryVariant` color|
+|`Meow.ProgressBar.Small.OnPrimary`|Small ProgressBar with `OnPrimary` color|
+|`Meow.ProgressBar.Small.OnSecondary`|Small ProgressBar with `OnSecondary` color|
+|`Meow.ProgressBar.Small.OnSurface`|Small ProgressBar with `OnSurface` color|
+|`Meow.ProgressBar.Medium`|Medium ProgressBar|
+|`Meow.ProgressBar.Medium.Primary`|Medium ProgressBar with `primary` color|
+|`Meow.ProgressBar.Medium.PrimaryVariant`|Medium ProgressBar with `PrimaryVariant` color|
+|`Meow.ProgressBar.Medium.PrimarySurface`|Medium ProgressBar with `PrimarySurface` color|
+|`Meow.ProgressBar.Medium.Secondary`|Medium ProgressBar with `secondary` color|
+|`Meow.ProgressBar.Medium.SecondaryVariant`|Medium ProgressBar with `SecondaryVariant` color|
+|`Meow.ProgressBar.Medium.OnPrimary`|Medium ProgressBar with `OnPrimary` color|
+|`Meow.ProgressBar.Medium.OnSecondary`|Medium ProgressBar with `OnSecondary` color|
+|`Meow.ProgressBar.Medium.OnSurface`|Medium ProgressBar with `OnSurface` color|
+|`Meow.ProgressBar.Large`|Large ProgressBar|
+|`Meow.ProgressBar.Large.Primary`|Large ProgressBar with `primary` color|
+|`Meow.ProgressBar.Large.PrimaryVariant`|Large ProgressBar with `PrimaryVariant` color|
+|`Meow.ProgressBar.Large.PrimarySurface`|Large ProgressBar with `PrimarySurface` color|
+|`Meow.ProgressBar.Large.Secondary`|Large ProgressBar with `secondary` color|
+|`Meow.ProgressBar.Large.SecondaryVariant`|Large ProgressBar with `SecondaryVariant` color|
+|`Meow.ProgressBar.Large.OnPrimary`|Large ProgressBar with `OnPrimary` color|
+|`Meow.ProgressBar.Large.OnSecondary`|Large ProgressBar with `OnSecondary` color|
+|`Meow.ProgressBar.Large.OnSurface`|Large ProgressBar with `OnSurface` color|
 
 Meow ProgressBar Attributes:
 
 |Attributes|Descriptions|
 |---|:---:|
-|`meow_progress_showOnInit`|show while when use it|
+|`meow_showOnInit`|Specify that the progress can be show on Initialization|
 
 Use it like this in XML Layout :
 
 ```xml
 <meow.widget.MeowProgressBar
     style="@style/Meow.ProgressBar.Small.Primary"
-    app:meow_progress_showOnInit="true" />
+    app:meow_showOnInit="true" />
 ```
 
-Learn more about it at [fragment_progress_bars.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/progressbars/res/layout/fragment_progress_bars.xml).
+Learn more about it at [fragment_progress_bars.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/progressbars/res/layout/fragment_progress_bars.xml).
 
-### Meow RatingBar
+### Meow Rating Bar
 
 There are some styles that is related to `RatingBar`.
 
 |Style|Usage|
 |---|:---:|
-|`Meow.RateView`|RateView default style|
-|`Meow.RateView.Indicator`|RateView Indicator (just show)|
+|`Meow.RatingBar`|RatingBar with default style|
+|`Meow.RatingBar.Indicator`|RatingBar with enabled Indicator style (just show and not clickable)|
 
 Meow RatingBar Attributes:
 
 |Attributes|Descriptions|
 |---|:---:|
-|`meow_numStars`|The numbe of stars|
+|`meow_numStars`|The number of stars|
 |`meow_minimumStars`|The minimum selected stars|
 |`meow_rating`|Show while when use it|
 |`meow_starPadding`|Stars padding|
 |`meow_drawableEmpty`|Stars drawable when is empty|
 |`meow_drawableFilled`|Stars drawable when is filled|
-|`meow_isIndicator`|Dramatic or selective.|
-|`meow_scrollable`|Scrollable|
-|`meow_clickable`|Clickable|
-|`meow_clearRatingEnabled`|Clear rating|
-|`meow_starWidth`|Star Width|
-|`meow_starHeight`|Star Height|
+|`meow_isIndicator`|Specify that it is indicator or not|
+|`meow_scrollable`|Specify that it is scrollable or not|
+|`meow_clickable`|Specify that it is clickable or not|
+|`meow_clearRatingEnabled`|Specify that `clearRating` is enabled or not|
+|`meow_starWidth`|Stars Width|
+|`meow_starHeight`|Stars Height|
 |`meow_stepSize`|Step Size|
 
 Use it like this in XML Layout :
 
 ```xml
-<meow.widget.MeowRateView
-    style="@style/Meow.RateView" 
+<meow.widget.MeowRatingBar
+    style="@style/Meow.RatingBar" 
     app:meow_drawableEmpty="@drawable/ic_star"
     app:meow_drawableFilled="@drawable/ic_star_fill"
     app:meow_numStars="5"
     app:meow_stepSize="0.5" />
 ```
 
-Learn more about it at [fragment_rate.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/rateview/res/layout/fragment_rate.xml).
+Learn more about it at [fragment_rating_bars.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/ratingbars/res/layout/fragment_rating_bars.xml).
 
 ### Meow FormView (a cool widget😎)
 
->With this widget, you no longer need to check the form fields (like editext and spinner) one by one
->
-
-Meow FormView Attributes:
-
-|Attributes|Descriptions|
-|---|:---:|
-|`meow_resetForm`|To clear the text of all widgets in it|
+>With this widget, you no longer need to check the form fields (like editTexts and spinners) one by one.
 
 Use it like this in XML Layout :
 
@@ -1233,19 +1223,20 @@ Use it like this in XML Layout :
     android:orientation="vertical"
     app:resetForm="true">
     
-    <!--you can add MeowTextField,MeowSpinner,Button and other views in this layout-->
+    <!-- You can add MeowTextField,MeowSpinner,Button and other views in this layout -->
     
 </meow.widget.MeowFormView>
 ```
 
-You can call `validate()` function for validate all widgets in `MeowFormView`:
+You can call `validate()` function to validate all widgets which are in `MeowFormView` as children :
+
 ```kotlin
 binding.fv.validate {
-    //When MeowFormView validate all widgets with thier validate type you can do anythings here
+    // When MeowFormView validate all widgets with their validate type, this line runs.
 }
 ```
 
-Learn more about it at [fragment_form.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/form/res/layout/fragment_form.xml).
+Learn more about it at [fragment_form.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/form/res/layout/fragment_form.xml).
 
 ### Meow Spinner
 
@@ -1258,9 +1249,8 @@ There are some styles that is related to `Spinner`.
 |`Meow.Spinner.Filled`|Spinner with Filled style|
 |`Meow.Spinner.Filled.Dense`|Spinner with Filled dense style|
 
-Meow Spinner Attributes:
- > For use validation Feature you should add `MeowSpinner` to `FormView` Layout
->
+> If you want to use Validation Feature, you should add `MeowSpinner` to `FormView` Layout.
+
 |Attributes|Descriptions|
 |---|:---:|
 |`meow_validateType`|Types: `empty`,`optional`|
@@ -1290,7 +1280,7 @@ Supports : title , description and icon
     .build()
 ```
 
-Learn more about it at [Material Exposed Dropdown Menu Component](https://material.io/components/menus#exposed-dropdown-menu) and [fragment_form.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/masterhttps://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/form/res/layout/fragment_form.xml).
+Learn more about it at [Material Exposed Dropdown Menu Component](https://material.io/components/menus#exposed-dropdown-menu) and [fragment_form.xml](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/meowwidget/form/res/layout/fragment_form.xml).
 
 ### Meow TextField
 
@@ -1304,9 +1294,9 @@ There are some styles that is related to `TextField`.
 |`Meow.TextField.Filled.Dense`|TextField with Filled dense style|
 
 Meow TextField Attributes:
- > For use validation Feature you should add `MeowTextField` to `FormView` Layout
+> For use validation Feature you should add `MeowTextField` to `FormView` Layout.
 >
- > If the error text is blank, the default message will be displayed
+> If the error text is blank, the default message will be displayed.
 >
 |Attributes|Descriptions|
 |---|:---:|
@@ -1334,7 +1324,7 @@ Learn more about it at [Material TextField Component](https://material.io/compon
 
 ## 👮 ‍R8/Proguard
 
-Just include contents of [proguard-rules.pro](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/proguard-rules.pro)
+Just include rules of [proguard-rules.pro](http://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/proguard-rules.pro) at your application Proguard config file.
 
 ## 🖐 Contributing
 

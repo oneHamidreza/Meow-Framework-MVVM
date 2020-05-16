@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="sample.ui.material.imageviewes.ImageviewsViewModel" />
+            type="sample.ui.material.imageviews.ImageviewsViewModel" />
     </data>
 
     <LinearLayout

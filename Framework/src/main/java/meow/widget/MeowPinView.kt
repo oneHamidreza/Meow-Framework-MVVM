@@ -84,10 +84,10 @@ open class MeowPinView @JvmOverloads constructor(
             binding.icon = icon
         }
 
-    var iconColor = 0
+    var iconTint = 0
         set(value) {
             field = value
-            binding.iconColor = iconColor
+            binding.iconTint = iconTint
         }
 
     var hintColor = 0
@@ -127,7 +127,7 @@ open class MeowPinView @JvmOverloads constructor(
             count = it.getInt(R.styleable.MeowPinView_meow_count, count)
             hint = it.getString(R.styleable.MeowPinView_meow_hint) ?: hint
             icon = it.getResourceId(R.styleable.MeowPinView_meow_icon, icon)
-            iconColor = it.getColor(R.styleable.MeowPinView_meow_iconColor, iconColor)
+            iconTint = it.getColor(R.styleable.MeowPinView_meow_iconTint, iconTint)
             textColor = it.getColor(R.styleable.MeowPinView_meow_textColor, textColor)
             hintColor = it.getColor(R.styleable.MeowPinView_meow_hintColor, hintColor)
             showBack = it.getBoolean(R.styleable.MeowPinView_meow_showBack, showBack)

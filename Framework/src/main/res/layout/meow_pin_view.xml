@@ -20,7 +20,7 @@
             type="int" />
 
         <variable
-            name="iconColor"
+            name="iconTint"
             type="Integer" />
 
         <variable
@@ -44,7 +44,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginEnd="8dp"
-                android:tint="@{iconColor}"
+                android:tint="@{iconTint}"
                 android:visibility="@{icon != 0 ? View.VISIBLE : View.GONE}"
                 tools:ignore="ContentDescription" />
 

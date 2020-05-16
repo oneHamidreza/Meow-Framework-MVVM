@@ -25,19 +25,19 @@
 
             <meow.widget.MeowProgressBar
                 style="@style/Meow.ProgressBar.Small.Primary"
-                app:meow_progress_showOnInit="true" />
+                app:meow_showOnInit="true" />
 
             <meow.widget.MeowProgressBar
                 style="@style/Meow.ProgressBar.Small.PrimaryVariant"
-                app:meow_progress_showOnInit="true" />
+                app:meow_showOnInit="true" />
 
             <meow.widget.MeowProgressBar
                 style="@style/Meow.ProgressBar.Small.Secondary"
-                app:meow_progress_showOnInit="true" />
+                app:meow_showOnInit="true" />
 
             <meow.widget.MeowProgressBar
                 style="@style/Meow.ProgressBar.Small.SecondaryVariant"
-                app:meow_progress_showOnInit="true" />
+                app:meow_showOnInit="true" />
 
         </LinearLayout>
 
@@ -48,13 +48,21 @@
             android:orientation="horizontal"
             app:meow_gap="@{16}">
 
-            <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Medium.Primary" />
+            <meow.widget.MeowProgressBar
+                style="@style/Meow.ProgressBar.Medium.Primary"
+                app:meow_showOnInit="true" />
 
-            <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Medium.PrimaryVariant" />
+            <meow.widget.MeowProgressBar
+                style="@style/Meow.ProgressBar.Medium.PrimaryVariant"
+                app:meow_showOnInit="true" />
 
-            <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Medium.Secondary" />
+            <meow.widget.MeowProgressBar
+                style="@style/Meow.ProgressBar.Medium.Secondary"
+                app:meow_showOnInit="true" />
 
-            <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Medium.SecondaryVariant" />
+            <meow.widget.MeowProgressBar
+                style="@style/Meow.ProgressBar.Medium.SecondaryVariant"
+                app:meow_showOnInit="true" />
 
         </LinearLayout>
 
@@ -65,13 +73,21 @@
             android:orientation="horizontal"
             app:meow_gap="@{16}">
 
-            <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Large.Primary" />
+            <meow.widget.MeowProgressBar
+                style="@style/Meow.ProgressBar.Large.Primary"
+                app:meow_showOnInit="true" />
 
-            <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Large.PrimaryVariant" />
+            <meow.widget.MeowProgressBar
+                style="@style/Meow.ProgressBar.Large.PrimaryVariant"
+                app:meow_showOnInit="true" />
 
-            <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Large.Secondary" />
+            <meow.widget.MeowProgressBar
+                style="@style/Meow.ProgressBar.Large.Secondary"
+                app:meow_showOnInit="true" />
 
-            <meow.widget.MeowProgressBar style="@style/Meow.ProgressBar.Large.SecondaryVariant" />
+            <meow.widget.MeowProgressBar
+                style="@style/Meow.ProgressBar.Large.SecondaryVariant"
+                app:meow_showOnInit="true" />
 
         </LinearLayout>
 

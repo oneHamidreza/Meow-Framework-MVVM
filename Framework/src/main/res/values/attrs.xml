@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <attr name="meow_orientation" format="enum">
+        <enum name="vertical" value="0" />
+        <enum name="horizontal" value="1" />
+    </attr>
+
     <attr name="meow_validateType" format="enum">
         <enum name="optional" value="0" />
         <enum name="empty" value="1" />
@@ -17,7 +22,8 @@
     <attr name="meow_hintColor" format="color" />
     <attr name="meow_hintTextAppearance" format="reference" />
     <attr name="meow_icon" format="reference" />
-    <attr name="meow_iconColor" format="color" />
+    <attr name="meow_iconSize" format="dimension" />
+    <attr name="meow_iconTint" format="color" />
 
     <declare-styleable name="MeowDashView">
         <attr name="meow_dash_orientation" format="enum">
@@ -31,14 +37,14 @@
     </declare-styleable>
 
     <declare-styleable name="MeowEmptyState">
-        <attr name="meow_empty_iconRes" format="reference" />
-        <attr name="meow_empty_iconSize" format="dimension" />
-        <attr name="meow_empty_iconTint" format="color" />
-        <attr name="meow_empty_title" format="string" />
-        <attr name="meow_empty_titleTextColor" format="color" />
-        <attr name="meow_empty_desc" format="string" />
-        <attr name="meow_empty_descTextColor" format="color" />
-        <attr name="meow_empty_primaryActionText" format="string" />
+        <attr name="meow_icon" />
+        <attr name="meow_iconSize" />
+        <attr name="meow_iconTint" />
+        <attr name="meow_title" format="string" />
+        <attr name="meow_titleTextColor" format="color" />
+        <attr name="meow_desc" format="string" />
+        <attr name="meow_descTextColor" format="color" />
+        <attr name="meow_primaryActionText" format="string" />
     </declare-styleable>
 
     <declare-styleable name="MeowSpinner">
@@ -232,7 +238,7 @@
         <attr name="meow_hintTextAppearance" />
         <attr name="meow_count" format="integer" />
         <attr name="meow_icon" />
-        <attr name="meow_iconColor" />
+        <attr name="meow_iconTint" />
         <attr name="meow_textColor" format="color" />
         <attr name="meow_showBack" format="boolean" />
         <attr name="meow_textAppearance" format="reference" />
@@ -244,31 +250,28 @@
     </declare-styleable>
 
     <declare-styleable name="MeowDivider">
-        <attr name="meow_divider_background_type" format="enum">
+        <attr name="meow_background_type" format="enum">
             <enum name="background" value="0" />
             <enum name="surface" value="1" />
             <enum name="primary" value="2" />
             <enum name="secondary" value="3" />
         </attr>
-        <attr name="meow_divider_orientation" format="enum">
-            <enum name="vertical" value="0" />
-            <enum name="horizontal" value="1" />
-        </attr>
+        <attr name="meow_orientation" />
     </declare-styleable>
 
     <declare-styleable name="MeowHintButton">
         <attr name="meow_hint" />
         <attr name="meow_hintColor" />
         <attr name="meow_hintTextAppearance" />
-        <attr name="meow_title" format="string" />
+        <attr name="meow_title" />
         <attr name="meow_titleColor" format="color" />
         <attr name="meow_titleTextAppearance" format="reference" />
         <attr name="meow_icon" />
-        <attr name="meow_iconColor" />
+        <attr name="meow_iconTint" />
     </declare-styleable>
 
     <declare-styleable name="MeowProgressBar">
-        <attr name="meow_progress_showOnInit" format="boolean" />
+        <attr name="meow_showOnInit" format="boolean" />
     </declare-styleable>
 
 </resources>

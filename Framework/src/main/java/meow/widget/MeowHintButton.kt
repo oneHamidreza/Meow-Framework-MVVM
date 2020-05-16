@@ -72,11 +72,11 @@ class MeowHintButton @JvmOverloads constructor(
                 binding.ivIcon.setImageResource(field)
         }
 
-    var iconColor = 0
+    var iconTint = 0
         set(value) {
             field = value
             if (field != 0)
-                binding.iconColor = iconColor
+                binding.iconTint = iconTint
         }
 
     init {
@@ -94,7 +94,7 @@ class MeowHintButton @JvmOverloads constructor(
                 titleTextAppearance
             )
             icon = it.getResourceId(R.styleable.MeowHintButton_meow_icon, icon)
-            iconColor = it.getColor(R.styleable.MeowHintButton_meow_iconColor, iconColor)
+            iconTint = it.getColor(R.styleable.MeowHintButton_meow_iconTint, iconTint)
         }
         initializeView()
     }

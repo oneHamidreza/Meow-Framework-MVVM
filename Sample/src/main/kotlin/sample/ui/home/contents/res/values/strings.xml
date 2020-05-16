@@ -67,12 +67,10 @@
     </string-array>
 
     <string-array name="contents_widget_titles">
-        <item>Android</item>
-        <item>Dash</item>
-        <item>Form</item>
-        <item>Progress Bar</item>
-        <item>Rate Bar</item>
-        <item>Text Field</item>
+        <item>@string/fragment_dash</item>
+        <item>@string/fragment_form</item>
+        <item>@string/fragment_progress_bars</item>
+        <item>@string/fragment_rating_bars</item>
     </string-array>
 
 </resources>

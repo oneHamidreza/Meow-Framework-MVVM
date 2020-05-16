@@ -14,27 +14,17 @@
  * limitations under the License.
  */
 
-package sample.ui.meowwidget.rateview
+package sample.ui.meowwidget.ratingbars
 
-import meow.ktx.instanceViewModel
-import sample.R
-import sample.databinding.FragmentRateBinding
-import sample.ui.base.BaseFragment
+import meow.core.arch.MeowViewModel
+import sample.App
 
 /**
- * Meow Rate Fragment.
+ * Meow Rating Bar View Model class.
  *
  * @author  Ali Modares
  * @version 1.0.0
  * @since   2020-04-10
  */
 
-class RateFragment : BaseFragment<FragmentRateBinding>() {
-
-    private val viewModel: RateViewModel by instanceViewModel()
-    override fun layoutId() = R.layout.fragment_rate
-
-    override fun initViewModel() {
-        binding.viewModel = viewModel
-    }
-}
+class RatingBarsViewModel(app: App) : MeowViewModel(app)

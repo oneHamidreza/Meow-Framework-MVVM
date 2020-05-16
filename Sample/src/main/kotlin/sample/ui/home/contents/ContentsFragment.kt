@@ -27,7 +27,6 @@ import sample.data.Content.Action.*
 import sample.databinding.FragmentContentsBinding
 import sample.ui.base.BaseFragment
 import sample.ui.content.ContentAdapter
-import sample.ui.content.ContentViewModel
 import sample.ui.home.HomeFragmentDirections
 import sample.ui.material.collapsing.toolbar.CollapsingToolbarActivity
 import sample.ui.material.topappbar.TopAppBarActivity
@@ -67,7 +66,6 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
     var type: Type? = null
 
     private val viewModel: ContentsViewModel by instanceViewModel()
-    private val contentViewModel: ContentViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_contents
 
     override fun initViewModel() {
@@ -140,12 +138,10 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                 EXTENSIONS_VALIDATE
             )
             Type.WIDGET -> arrayOf(
-                WIDGET_ANDROID,
                 WIDGET_DASH,
                 WIDGET_FORM,
                 WIDGET_PROGRESS_BARS,
-                WIDGET_RATEBAR,
-                WIDGET_FIELD
+                WIDGET_RATEBAR
             )
         }).toList()
         val descs = titles.map { "" }
@@ -196,7 +192,7 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                     WIDGET_DASH -> findNavController().navigate(HomeFragmentDirections.actionToDash())
                     WIDGET_FORM -> findNavController().navigate(HomeFragmentDirections.actionToForm())
                     WIDGET_PROGRESS_BARS -> findNavController().navigate(HomeFragmentDirections.actionToProgressBars())
-                    WIDGET_RATEBAR -> findNavController().navigate(HomeFragmentDirections.actionToRateBar())
+                    WIDGET_RATEBAR -> findNavController().navigate(HomeFragmentDirections.actionToRatingBars())
 
                     EXTENSIONS_ANDROID -> findNavController().navigate(
                         HomeFragmentDirections.actionToMarkdown(

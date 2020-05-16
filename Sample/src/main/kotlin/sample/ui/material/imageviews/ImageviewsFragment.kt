@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package sample.ui.material.imageviewes
+package sample.ui.material.imageviews
 
 import meow.ktx.instanceViewModel
 import sample.R

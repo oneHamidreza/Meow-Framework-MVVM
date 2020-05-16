@@ -121,21 +121,21 @@ class MeowEmptyState @JvmOverloads constructor(
         orientation = VERTICAL
         gravity = Gravity.CENTER
         setAttributesFromXml(attrs, R.styleable.MeowEmptyState) {
-            icon = it.getDrawable(R.styleable.MeowEmptyState_meow_empty_iconRes) ?: icon
+            icon = it.getDrawable(R.styleable.MeowEmptyState_meow_icon) ?: icon
             iconTint =
-                it.getColorStateList(R.styleable.MeowEmptyState_meow_empty_iconTint) ?: iconTint
+                it.getColorStateList(R.styleable.MeowEmptyState_meow_iconTint) ?: iconTint
             iconSize =
-                it.getDimensionPixelSize(R.styleable.MeowEmptyState_meow_empty_iconSize, iconSize)
-            title = it.getString(R.styleable.MeowEmptyState_meow_empty_title)
+                it.getDimensionPixelSize(R.styleable.MeowEmptyState_meow_iconSize, iconSize)
+            title = it.getString(R.styleable.MeowEmptyState_meow_title)
             titleTextColor =
-                it.getColorStateList(R.styleable.MeowEmptyState_meow_empty_titleTextColor)
+                it.getColorStateList(R.styleable.MeowEmptyState_meow_titleTextColor)
                 ?: titleTextColor
-            desc = it.getString(R.styleable.MeowEmptyState_meow_empty_desc)
+            desc = it.getString(R.styleable.MeowEmptyState_meow_desc)
             descTextColor =
-                it.getColorStateList(R.styleable.MeowEmptyState_meow_empty_descTextColor)
+                it.getColorStateList(R.styleable.MeowEmptyState_meow_descTextColor)
                 ?: descTextColor
             primaryActionText =
-                it.getString(R.styleable.MeowEmptyState_meow_empty_primaryActionText)
+                it.getString(R.styleable.MeowEmptyState_meow_primaryActionText)
         }
 
         afterMeasured {

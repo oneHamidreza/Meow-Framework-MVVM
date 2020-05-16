@@ -23,16 +23,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    prefixText="@{@string/prefix}"
-                    suffixText="@{@string/suffix}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/hello_world"
-                    android:textAppearance="?textAppearanceBody2"
-                    android:textColor="@{@color/black}" />
-
                 <meow.widget.MeowFormView
                     android:id="@+id/fv"
                     android:layout_width="match_parent"
