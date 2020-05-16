@@ -31,8 +31,7 @@ import java.io.File
 import java.util.concurrent.TimeUnit
 
 /**
- * The class of Api Utils such as OKHTTP client, Retrofit Configuration containing Moshi Adapter.
- * and containing Authorization methods.
+ * Meow Api class containing  OKHTTP client, Authorization methods, Retrofit Configuration with Moshi Adapter.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

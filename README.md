@@ -38,10 +38,10 @@ We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow
 ## 😍 Donate & Support
 
 We are developing this framework in open source community without financial planning. But the maintenance & preparing updates at periodic times is Time-consuming.
-If you like this project and you want to give us peace of mind, you can support us by sending a payment to `imehrzadm@outlook.com` :
+If you like this project and you want to give us peace of mind, you can support us by clicking this button :
 
 <p>
-<a href="https://paypal.com/">
+<a href="https://paypal.me/imehrzadm">
 <img width="20%" src="https://raw.githubusercontent.com/oneHamidreza/Meow-Framework-MVVM/master/Resources/img_support.png"/>
 </a>
 </p>
