@@ -37,7 +37,7 @@ We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow
 
 ## 😍 Donate & Support
 
-We are developing this framework in open source community without financial planning. But the maintenance & preparing updates at periodic times is Time-consuming.
+We are developing this framework in open source community without financial planning but the maintenance & preparing updates at periodic times is Time-consuming.
 If you like this project and you want to give us peace of mind, you can support us by clicking this button :
 
 <p>
