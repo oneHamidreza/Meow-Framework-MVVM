@@ -563,7 +563,7 @@ fun testLoadingAlertDialog() {
 }
 ```
 
-Learn more about it at [AlertsFragment.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/alert/AlertsFragment.kt).
+Learn more about it at [AlertsFragment.kt](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Sample/src/main/kotlin/sample/ui/material/alerts/AlertsFragment.kt).
 
 ### Button
 
