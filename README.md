@@ -85,7 +85,7 @@ We recommend that use `Kotlin DSL Gradle` instead of `Groovy` . That is not Bugg
 
 - [Ⓜ Material Design Setup](https://github.com/oneHamidreza/Meow-Framework-MVVM#-material-design-setup)
 
-- [🎨 Material Components](https://github.com/oneHamidreza/Meow-Framework-MVVM#material-components)
+- [🎨 Material Components](https://github.com/oneHamidreza/Meow-Framework-MVVM#-material-components)
 
 - [🌌 Meow Custom Widgets](https://github.com/oneHamidreza/Meow-Framework-MVVM#-meow-custom-widgets)
 
