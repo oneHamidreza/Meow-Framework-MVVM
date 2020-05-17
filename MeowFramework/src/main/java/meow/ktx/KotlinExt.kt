@@ -20,7 +20,7 @@ import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
 /**
- * Extensions of Kotlin.
+ * Kotlin Extensions.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

@@ -461,7 +461,7 @@ Above sample can be used for other types of REST API patterns/flows (such as `De
 
 We have developed some Kotlin Extensions that can be help us in building Android Apps. Just import `meow.ktx` package which include the following :
 
-- [🧩 Android Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Android.md)
+- [🧩 Androidx Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Androidx.md)
 - [💵 Currency Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Currency.md)
 - [📅 Date Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Date.md)
 - [📂 File Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_File.md)
@@ -469,6 +469,7 @@ We have developed some Kotlin Extensions that can be help us in building Android
 - [💉 Kodein Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Kodein.md)
 - [💎 Kotlin Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Kotlin.md)
 - [📃 Log Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Log.md)
+- [🧮 Math Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Math.md)
 - [📶 Network Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Network.md)
 - [🚦 Permission Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Permission.md)
 - [📬 Shared Preferences Extensions](https://github.com/oneHamidreza/Meow-Framework-MVVM/blob/master/Docs/ReadME_Extensions_Shared_Preferences.md)
@@ -537,9 +538,7 @@ You can show Alert Dialog with `alert()` function in `MeowActivity/MeowFragment`
 
 ```kotlin
 fun testAlert() {
-    alert()
-        .setTitle(R.string.alert_title)
-        .setMessage(R.string.alert_message)
+    alert(R.string.alert_title,R.string.alert_message)
         .setPositiveButton(R.string.ok) { d, _ ->
             toastL(R.string.alerts_warn_ok_clicked)
             d.dismiss()

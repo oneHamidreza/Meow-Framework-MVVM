@@ -32,11 +32,11 @@ import androidx.annotation.*
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.drawable.DrawableCompat
+import androidx.fragment.app.Fragment
 import meow.controller
-import meow.core.ui.MeowFragment
 
 /**
- * Extensions of [Resources] class.
+ * Resource Extensions.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -135,11 +135,11 @@ fun Context?.getDrawableCompat(
 ) =
     this?.resources().getDrawableCompat(resId, theme)
 
-fun MeowFragment<*>?.getDrawableCompat(
+fun Fragment?.getDrawableCompat(
     @DrawableRes resId: Int,
     theme: Resources.Theme? = null
 ) =
-    this?.resources().getDrawableCompat(resId, theme)
+    this?.requireContext()?.resources().getDrawableCompat(resId, theme)
 
 fun Context?.getFontCompat(@FontRes resId: Int = 0): Typeface =
     if (this == null || resId == 0) Typeface.DEFAULT else avoidException {
@@ -149,8 +149,8 @@ fun Context?.getFontCompat(@FontRes resId: Int = 0): Typeface =
         )
     } ?: Typeface.DEFAULT
 
-fun MeowFragment<*>?.getFontCompat(@FontRes resId: Int = 0): Typeface =
-    this?.context().getFontCompat(resId)
+fun Fragment?.getFontCompat(@FontRes resId: Int = 0): Typeface =
+    this?.requireContext().getFontCompat(resId)
 
 fun TypedArray.getColorCompat(index: Int, defValue: Int) =
     controller.onColorGet(getColor(index, defValue))
@@ -168,10 +168,10 @@ fun Context?.getColorCompat(
     theme: Resources.Theme? = this?.theme
 ) = this?.resources().getColorCompat(resId, theme)
 
-fun MeowFragment<*>?.getColorCompat(
+fun Fragment?.getColorCompat(
     @ColorRes resId: Int,
     theme: Resources.Theme? = null
-) = this?.resources().getColorCompat(resId, theme)
+) = this?.requireContext()?.resources().getColorCompat(resId, theme)
 
 
 fun Context?.ofColorStateList(
@@ -180,24 +180,25 @@ fun Context?.ofColorStateList(
 
 fun Resources?.getDimensionToPx(@DimenRes resId: Int) = this?.getDimension(resId)?.toInt() ?: 0
 fun Context?.getDimensionToPx(@DimenRes resId: Int) = this?.resources().getDimensionToPx(resId)
-fun MeowFragment<*>?.getDimensionToPx(@DimenRes resId: Int) =
-    this?.resources().getDimensionToPx(resId)
+fun Fragment?.getDimensionToPx(@DimenRes resId: Int) =
+    this?.requireContext()?.resources().getDimensionToPx(resId)
 
 fun Resources?.getFloatCompat(@DimenRes resId: Int) =
     if (this == null) 0f else ResourcesCompat.getFloat(this, resId)
 
 fun Context?.getFloatCompat(@DimenRes resId: Int) = this?.resources().getFloatCompat(resId)
-fun MeowFragment<*>?.getFloatCompat(@DimenRes resId: Int) =
-    this?.resources().getFloatCompat(resId)
+fun Fragment?.getFloatCompat(@DimenRes resId: Int) =
+    this?.requireContext()?.resources().getFloatCompat(resId)
 
 fun Resources?.getIntCompat(@IntegerRes resId: Int) = this?.getInteger(resId) ?: 0
 fun Context?.getIntCompat(@IntegerRes resId: Int) = this?.resources().getIntCompat(resId)
-fun MeowFragment<*>?.getIntCompat(@IntegerRes resId: Int) = this?.resources().getIntCompat(resId)
+fun Fragment?.getIntCompat(@IntegerRes resId: Int) =
+    this?.requireContext()?.resources().getIntCompat(resId)
 
 fun Resources?.getBooleanCompat(@BoolRes resId: Int) = this?.getBoolean(resId) ?: false
 fun Context?.getBooleanCompat(@BoolRes resId: Int) = this?.resources().getBooleanCompat(resId)
-fun MeowFragment<*>?.getBooleanCompat(@BoolRes resId: Int) =
-    this?.resources().getBooleanCompat(resId)
+fun Fragment?.getBooleanCompat(@BoolRes resId: Int) =
+    this?.requireContext()?.resources().getBooleanCompat(resId)
 
 fun Resources?.getStringArrayCompat(@ArrayRes resId: Int): Array<String> =
     this?.getStringArray(resId) ?: emptyArray()
@@ -205,8 +206,8 @@ fun Resources?.getStringArrayCompat(@ArrayRes resId: Int): Array<String> =
 fun Context?.getStringArrayCompat(@ArrayRes resId: Int): Array<String> =
     this?.resources().getStringArrayCompat(resId)
 
-fun MeowFragment<*>?.getStringArrayCompat(@ArrayRes resId: Int): Array<String> =
-    this?.resources().getStringArrayCompat(resId)
+fun Fragment?.getStringArrayCompat(@ArrayRes resId: Int): Array<String> =
+    this?.requireContext()?.resources().getStringArrayCompat(resId)
 
 fun Drawable?.setTintCompat(@ColorInt color: Int): Drawable {
     if (this == null) return ColorDrawable(Color.TRANSPARENT)

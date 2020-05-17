@@ -25,14 +25,13 @@ import com.etebarian.meowframework.R
 import meow.core.ui.MeowFragment
 
 /**
- * Notification Utils.
+ * Meow Notification Utils object.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
  * @since   2020-03-19
  */
 
-//todo improve by documents and support all features
 object MeowNotificationUtils {
 
     private const val CHANNEL_ID_DEFAULT = "default"

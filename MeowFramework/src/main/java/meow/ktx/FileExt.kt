@@ -19,8 +19,8 @@ package meow.ktx
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Environment
+import androidx.fragment.app.Fragment
 import meow.controller
-import meow.core.ui.FragmentActivityInterface
 import java.io.File
 import java.io.FileOutputStream
 
@@ -81,6 +81,8 @@ fun Context.clearCache() {
     MeowFileUtils.deleteAllFiles(f.path ?: "")
 }
 
+fun Fragment.clearCache() = requireContext().clearCache()
+
 fun File?.safeListFiles(): Array<File> =
     avoidException { if (safeExist()) this?.listFiles() else null } ?: arrayOf()
 
@@ -88,7 +90,7 @@ fun File?.safeDelete() = avoidException { this?.delete() } ?: false
 fun File?.safeExist() = avoidException { this?.exists() } ?: false
 fun File?.safeLength() = avoidException { this?.length() } ?: 0L
 
-fun FragmentActivityInterface<*>.getAppRootPath(
+fun Context.getAppRootPath(
     folderName: String,
     fileName: String? = null,
     forceInternal: Boolean = false
@@ -98,7 +100,7 @@ fun FragmentActivityInterface<*>.getAppRootPath(
             @Suppress("DEPRECATION")
             Environment.getExternalStorageDirectory().toString()
         } else {
-            context().filesDir.path
+            filesDir.path
         }
 
         val rootFolderName = controller.rootFolderName
@@ -119,7 +121,13 @@ fun FragmentActivityInterface<*>.getAppRootPath(
     } ?: "sdcard/"
 }
 
-fun FragmentActivityInterface<*>.getAppCachePath(
+fun Fragment.getAppRootPath(
+    folderName: String,
+    fileName: String? = null,
+    forceInternal: Boolean = false
+) = requireContext().getAppRootPath(folderName, fileName, forceInternal)
+
+fun Context.getAppCachePath(
     folderName: String,
     fileName: String? = null,
     forceInternal: Boolean = false
@@ -128,9 +136,9 @@ fun FragmentActivityInterface<*>.getAppCachePath(
         val cachePath = if (Environment.MEDIA_MOUNTED == Environment.getExternalStorageState() ||
             !MeowFileUtils.isExternalStorageAvailable() && !forceInternal
         )
-            context().externalCacheDir?.path
+            externalCacheDir?.path
         else
-            context().cacheDir.path
+            cacheDir.path
 
         val folder = File(cachePath, folderName)
 
@@ -142,19 +150,24 @@ fun FragmentActivityInterface<*>.getAppCachePath(
     } ?: "sdcard/"
 }
 
-fun saveBitmapInFile(
-    bitmap: Bitmap,
+fun Fragment.getAppCachePath(
+    folderName: String,
+    fileName: String? = null,
+    forceInternal: Boolean = false
+) = requireContext().getAppCachePath(folderName, fileName, forceInternal)
+
+fun Bitmap.saveInFile(
     folderPath: String,
     name: String? = null
 ) = avoidException {
     val fileName = name ?: generateUUID() + ".jpeg"
-        val path = folderPath + fileName
-        val fos = FileOutputStream(path)
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
-        fos.flush()
-        fos.close()
-        path
-    }
+    val path = folderPath + fileName
+    val fos = FileOutputStream(path)
+    compress(Bitmap.CompressFormat.JPEG, 100, fos)
+    fos.flush()
+    fos.close()
+    path
+}
 
 fun Context?.loadStringFromAssets(fileName: String): String? {
     if (this == null)
@@ -168,3 +181,6 @@ fun Context?.loadStringFromAssets(fileName: String): String? {
         String(buffer, charset("UTF-8"))
     }
 }
+
+fun Fragment?.loadStringFromAssets(fileName: String) =
+    this?.requireContext()?.loadStringFromAssets(fileName)

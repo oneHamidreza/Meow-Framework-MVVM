@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *

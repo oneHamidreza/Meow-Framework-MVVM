@@ -26,7 +26,7 @@ import kotlin.math.*
  * @since   2020-03-14
  */
 
-fun Double?.round(places: Int): Double {
+fun Double?.round(places: Int = 0): Double {
     if (this == null)
         return 0.0
 

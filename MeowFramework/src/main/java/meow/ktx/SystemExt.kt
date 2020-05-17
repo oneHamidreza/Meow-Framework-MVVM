@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -32,12 +34,12 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.etebarian.meowframework.R
 import meow.controller
-import meow.core.ui.MeowFragment
 
 /**
- * Extensions of OS & Build.
+ * System/OS Extensions.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -64,8 +66,8 @@ fun Context?.isPackageInstalled(packageName: String): Boolean {
     } ?: false
 }
 
-fun MeowFragment<*>?.isPackageInstalled(packageName: String) =
-    this?.context().isPackageInstalled(packageName)
+fun Fragment?.isPackageInstalled(packageName: String) =
+    this?.requireContext().isPackageInstalled(packageName)
 
 @Suppress("DEPRECATION")
 @SuppressLint("HardwareIds", "MissingPermission")
@@ -78,7 +80,7 @@ fun Context?.getIMEI(): String {
     } ?: "0"
 }
 
-fun MeowFragment<*>?.getIMEI() = this?.context().getIMEI()
+fun Fragment?.getIMEI() = this?.requireContext().getIMEI()
 
 @SuppressLint("HardwareIds", "MissingPermission", "NewApi")
 fun Context?.getPhoneNumber(): String? {
@@ -131,16 +133,16 @@ fun Context?.getDisplaySize(): Point {
         return Point(0, 0)
 
     return avoidException {
-            val wm = this.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-            val display = wm.defaultDisplay
-            val p = Point()
+        val wm = this.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val display = wm.defaultDisplay
+        val p = Point()
 
-            val realMetrics = DisplayMetrics()
-            display.getRealMetrics(realMetrics)
-            p.x = realMetrics.widthPixels
-            p.y = realMetrics.heightPixels
+        val realMetrics = DisplayMetrics()
+        display.getRealMetrics(realMetrics)
+        p.x = realMetrics.widthPixels
+        p.y = realMetrics.heightPixels
 
-            p
+        p
     } ?: Point()
 }
 

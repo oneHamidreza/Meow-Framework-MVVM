@@ -1,6 +1,6 @@
 ## 🤡 Exception Extensions 
 
-Use `avoidException`  instead of `try{} catch()` to can handle when an exception has been occurred in your app. Just set `onException` block in your `MeowController`  then you can access the happen exceptions (Only Non-Fatal Error). 
+Use `avoidException`  instead of `try{} catch()` to can handle when an exception has been occurred in your app. Just set `onException` block in your `MeowController`  then you can access the happen exceptions (Only Non-Fatal Error).
 
 ```kotlin
 // MeowController() ...
@@ -9,13 +9,13 @@ onException = { exception ->
 }
 ```
 
-### Migrating from `try{} catch()` into `avoidException{}` 
+### Migrating from `try{} catch()` into `avoidException{}`
 
-Consider that usage of `avoidException` is easier than `try{} catch()`. See this examples : 
+Consider that usage of `avoidException` is easier than `try{} catch()`. See this examples :
   
 #### 1. Simple Exception Handling
  
-Legacy  `try{} catch()` : 
+Legacy  `try{} catch()` :
 
 ```kotlin
 try { 
@@ -24,7 +24,9 @@ try {
     e.printStackTrace()
 }
 ```
+
 Above codes with `avoidException` will be like this :  
+
 ```kotlin
 avoidException {
     someCallFunction()
@@ -33,7 +35,7 @@ avoidException {
 
 #### 2. Advanced Exception Handling
  
-Legacy  `try{} catch() finally{}` : 
+Legacy  `try{} catch() finally{}` :
 
 ```kotlin
 try { 
@@ -42,10 +44,12 @@ try {
     e.printStackTrace()
     someErrorFunction()
 } finally {
-    someFinallyFuntion()
+    someFinallyFunction()
 }
 ```
-Above codes with `avoidException` will be like this :  
+
+Above codes with `avoidException` will be like this :
+
 ```kotlin
 avoidException (
     tryBlock = {
@@ -55,7 +59,7 @@ avoidException (
         someErrorFunction()
     },
     finallyBlock = {
-        someFinallyFuntion()
+        someFinallyFunction()
     }
 )
 ```
@@ -65,14 +69,14 @@ avoidException (
 Legacy  `val v = try{} catch()` : 
 
 ```kotlin
-val someValue = try { 
-        someReturnFunction()
+val someValue = try {
+    someReturnFunction()
 } catch(e:Exception) {
     e.printStackTrace()
     null // or `someValueForErrors`
 }
 ```
-Above codes with `avoidException` will be like this :  
+Above codes with `avoidException` will be like this :
 ```kotlin
 val someValue = avoidException { 
     someReturnFunction()

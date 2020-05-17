@@ -21,9 +21,9 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
 import androidx.core.view.forEach
+import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import meow.controller
-import meow.core.ui.MeowFragment
 import meow.widget.MeowLoadingView
 
 /**
@@ -34,25 +34,71 @@ import meow.widget.MeowLoadingView
  * @since   2020-03-22
  */
 
-fun Context.alert(overrideThemeResId: Int = 0) =
-    MaterialAlertDialogBuilder(this, overrideThemeResId)
+private fun Context.createAlertDialog(
+    title: String? = null,
+    message: String? = null,
+    overrideThemeResId: Int = 0
+) = MaterialAlertDialogBuilder(this, overrideThemeResId)
+    .setTitle(title)
+    .setMessage(message)
 
-fun MeowFragment<*>.alert(overrideThemeResId: Int = 0) =
-    MaterialAlertDialogBuilder(context(), overrideThemeResId)
+private fun Context.createAlertDialog(
+    titleResId: Int = 0,
+    messageResId: Int = 0,
+    overrideThemeResId: Int = 0
+) = MaterialAlertDialogBuilder(this, overrideThemeResId)
+    .apply {
+        if (titleResId != 0)
+            setTitle(getString(titleResId))
+        if (messageResId != 0)
+            setMessage(getString(messageResId))
+    }
 
-fun MeowFragment<*>.loadingAlert(
+fun Context.alert(
+    title: String? = null,
+    message: String? = null,
+    overrideThemeResId: Int = 0
+) =
+    createAlertDialog(title, message, overrideThemeResId)
+
+fun Fragment.alert(
+    title: String? = null,
+    message: String? = null,
+    overrideThemeResId: Int = 0
+) =
+    requireContext().createAlertDialog(title, message, overrideThemeResId)
+
+fun Context.alert(
+    titleResId: Int = 0,
+    messageResId: Int = 0,
+    overrideThemeResId: Int = 0
+) =
+    createAlertDialog(titleResId, messageResId, overrideThemeResId)
+
+fun Fragment.alert(
+    titleResId: Int = 0,
+    messageResId: Int = 0,
+    overrideThemeResId: Int = 0
+) =
+    requireContext().createAlertDialog(titleResId, messageResId, overrideThemeResId)
+
+fun Fragment.loadingAlert(
     titleResId: Int,
     overrideThemeResId: Int = 0,
     onCanceledBlock: () -> Unit = {}
 ) =
-    context().loadingAlert(resources().getString(titleResId), overrideThemeResId, onCanceledBlock)
+    requireContext().loadingAlert(
+        resources.getString(titleResId),
+        overrideThemeResId,
+        onCanceledBlock
+    )
 
-fun MeowFragment<*>.loadingAlert(
+fun Fragment.loadingAlert(
     title: String,
     overrideThemeResId: Int = 0,
     onCanceledBlock: () -> Unit = {}
 ) =
-    context().loadingAlert(title, overrideThemeResId, onCanceledBlock)
+    requireContext().loadingAlert(title, overrideThemeResId, onCanceledBlock)
 
 fun Context.loadingAlert(
     title: String,
@@ -65,13 +111,6 @@ fun Context.loadingAlert(
                 .setTitle(title)
         )
         .setOnCancelListener { onCanceledBlock() }
-
-
-fun MeowFragment<*>.popup(
-    view: View,
-    menuResId: Int,
-    onClickedItem: (item: MenuItem) -> Unit
-) = context().popup(view, menuResId, onClickedItem)
 
 fun Context.popup(
     view: View,
@@ -87,3 +126,9 @@ fun Context.popup(
         it.setTypefaceResId(this@popup, controller.defaultTypefaceResId)
     }
 }
+
+fun Fragment.popup(
+    view: View,
+    menuResId: Int,
+    onClickedItem: (item: MenuItem) -> Unit
+) = requireContext().popup(view, menuResId, onClickedItem)

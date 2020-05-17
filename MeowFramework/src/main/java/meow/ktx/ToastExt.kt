@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -24,13 +26,12 @@ import android.text.SpannableString
 import android.text.TextPaint
 import android.text.style.MetricAffectingSpan
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import meow.controller
 import meow.core.ui.FragmentActivityInterface
-import meow.core.ui.MeowActivity
-import meow.core.ui.MeowFragment
 
 /**
- * [Toast] Extensions for use in [FragmentActivityInterface] instances like [MeowActivity], [MeowFragment] .
+ * [Toast] Extensions.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -116,14 +117,14 @@ private fun Context?.toast(
     }
 }
 
-private fun MeowFragment<*>?.toast(
+private fun Fragment?.toast(
     message: String?,
     duration: Int,
     gravity: Int,
     xOffset: Int,
     yOffset: Int
 ) =
-    this?.context().toast(message, duration, gravity, xOffset, yOffset)
+    this?.requireContext().toast(message, duration, gravity, xOffset, yOffset)
 
 class CustomTypefaceSpan(private val typeface: Typeface?) : MetricAffectingSpan() {
 

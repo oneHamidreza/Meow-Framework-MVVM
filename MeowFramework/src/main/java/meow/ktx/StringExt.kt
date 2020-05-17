@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 /*
  * Copyright (C) 2020 Hamidreza Etebarian & Ali Modares.
  *
@@ -26,7 +28,7 @@ import java.net.URL
 import java.util.*
 
 /**
- * Extensions of [String].
+ * [String] Extensions.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -36,7 +38,6 @@ import java.util.*
 fun generateUUID() = UUID.randomUUID().toString()
 
 fun String?.isNotNullOrEmpty() = !isNullOrEmpty()
-
 
 /**
  * Trim a string with check nullability.
@@ -62,7 +63,6 @@ fun String?.isEmptyTrimAllSpaces(): Boolean {
     s = s.trimAllSpaces()
     return s == "" || s.isEmpty()
 }
-
 
 /**
  * create a string from array.

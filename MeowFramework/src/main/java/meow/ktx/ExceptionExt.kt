@@ -20,7 +20,7 @@ import com.google.i18n.phonenumbers.NumberParseException
 import meow.controller
 
 /**
- * Extensions of [Exception].
+ * [Exception] Extensions.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

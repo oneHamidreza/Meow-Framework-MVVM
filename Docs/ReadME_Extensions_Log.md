@@ -4,14 +4,14 @@ Set `isDebugMode` in `MeowController` in Application's `onCreate()` to Use `log{
 
 ```kotlin
 // MeowController() ...
-isDebugMode = BuildConfig.DEBUG // By setting this property, logs are enabled only in DEBUG mode. 
+isDebugMode = BuildConfig.DEBUG // By setting this property, logs are enabled only in DEBUG mode.
 ```
 
-Tags is append on end with by `Thread.stackThread[5].fileName_`. See this  example : 
+Tags is append on end with by `Thread.stackThread[5].fileName_`. See this  example :
 
 ```kotlin
 class Foo {
-    fun bar(){
+    fun bar() {
         // `_Thread.stackThread[5].fileName` = `X` here
 		logD("tag","message") // Simple Log.d("X_tag","message")
 
@@ -28,5 +28,3 @@ Above example can be used for this types :
  - `logI()`
  - `logV()`
  - `logW()`
-
- 

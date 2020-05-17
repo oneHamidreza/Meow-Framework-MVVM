@@ -1,5 +1,4 @@
-
-## 🍞 Toast Extensions 
+## 🍞 Toast Extensions
 
 You can show toast with `toastL()` or `toastS()` in `MeowActivity/MeowFragment`.  See this example :
 

@@ -24,7 +24,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 /**
- * Jalali Calendar class inherits from {@link Calendar}.
+ * Jalali Calendar class extends {@link Calendar}.
  *
  * @author Hamidreza Etebarian
  * @version 1.0.0

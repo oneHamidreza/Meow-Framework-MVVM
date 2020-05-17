@@ -4,7 +4,7 @@ Use `generateUUID()` to generate an UUID String.
 
 Use `String?.isNotNullOrEmpty()` to check a String is not Null or Empty.
 
-Use `String?.trimOrEmpty()` to trim a String. if it is `Null` , returns Empty String. 
+Use `String?.trimOrEmpty()` to trim a String. if it is `Null` , returns Empty String.
 
 Use `String?.trimAllSpaces()` to trim all of `spaces` in a String.
 
@@ -24,7 +24,7 @@ Use `String?.toEnglishNumber()` to convert all numbers to English format in a St
 
 Use `String?.fetchAllDigit()` to fetch all digit characters as a String.
 
-Use `String?.normalizePhoneNumberIran()` to normalize a Phone Number with Iran format with low validation.
+Use `String?.normalizePhoneNumberIran()` to normalize a Phone Number with Iran format only.
 
 Use `String?.normalizePhoneNumberI18N()` to normalize a Phone Number with i18n format.
 

@@ -3,6 +3,7 @@
 package meow.ktx
 
 import android.content.Context
+import androidx.fragment.app.Fragment
 import com.etebarian.meowframework.R
 import meow.MeowController
 import meow.controller
@@ -16,7 +17,6 @@ import java.util.*
  * @since   2020-03-20
  */
 
-//todo improve by native classes
 
 fun Context.getStringArrayCalendar(res: Int): Array<String> {
     val calendarMode = controller.calendar
@@ -98,10 +98,11 @@ fun Int.toTwoDigit(): String {
     return if (this < 10) "0$this" else toString()
 }
 
-fun Context?.getTimeTwelveHour(calendar: Calendar): String {
+fun Context?.getTimeTwelveHour(timestamp: Long): String {
     if (this == null)
         return ""
     avoidException {
+        val calendar = Calendar.getInstance().apply { timeInMillis = timestamp }
         val amText = getStringCalendar(R.string.georgian_amDate)
         val pmText = getStringCalendar(R.string.georgian_pmDate)
         var hour = calendar.get(Calendar.HOUR)
@@ -117,6 +118,14 @@ fun Context?.getTimeTwelveHour(calendar: Calendar): String {
     }
     return ""
 }
+
+fun Fragment?.getTimeTwelveHour(timestamp: Long) =
+    this?.requireContext().getTimeTwelveHour(timestamp)
+
+fun Context?.getTimeTwelveHour(calendar: Calendar) = this?.getTimeTwelveHour(calendar.timeInMillis)
+
+fun Fragment?.getTimeTwelveHour(calendar: Calendar) =
+    this?.requireContext().getTimeTwelveHour(calendar)
 
 fun Context?.dateFormatSimple(calendar: Calendar) =
     this?.dateFormatSimple(calendar.timeInMillis)//ex: 2 years ago
@@ -179,6 +188,12 @@ fun Context?.dateFormatSimple(timestamp: Long): String {//ex: 2 years ago
 
     return ""
 }
+
+fun Fragment?.dateFormatSimple(calendar: Calendar) =
+    this?.context.dateFormatSimple(calendar.timeInMillis)//ex: 2 years ago
+
+fun Fragment?.dateFormatSimple(timestamp: Long) =
+    this?.context.dateFormatSimple(timestamp)//ex: 2 years ago
 
 fun Context?.dateFormatDetail(calendar: Calendar) =
     dateFormatDetail(calendar.timeInMillis)//ex: yesterday 20:50 a.m.
@@ -247,6 +262,12 @@ fun Context?.dateFormatDetail(timestamp: Long): String {//ex: yesterday 20:50 a.
 
     } ?: ""
 }
+
+fun Fragment?.dateFormatDetail(calendar: Calendar) =
+    this?.requireContext().dateFormatDetail(calendar.timeInMillis)//ex: yesterday 20:50 a.m.
+
+fun Fragment?.dateFormatDetail(timestamp: Long) =
+    this?.requireContext().dateFormatDetail(timestamp)//ex: yesterday 20:50 a.m.
 
 fun Long.createJalaliCalendar(): JalaliCalendar.YearMonthDate {
     val c = Calendar.getInstance()
@@ -323,6 +344,12 @@ fun Context?.dateFormatNormal(time: Long): String {//ex: 23 month 1397
         }
     } ?: ""
 }
+
+fun Fragment?.dateFormatNormal(calendar: Calendar) =
+    this?.requireContext().dateFormatNormal(calendar.timeInMillis)//ex: 23 month 1397
+
+fun Fragment?.dateFormatNormal(timestamp: Long) =
+    this?.requireContext().dateFormatNormal(timestamp)//ex: 23 month 1397
 
 fun Long.dateSmall() = avoidException {//ex: 6/20
     if (controller.calendar == MeowController.Calendar.GEORGIAN) {

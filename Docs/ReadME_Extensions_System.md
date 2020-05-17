@@ -1,9 +1,8 @@
-
 ## 🚂 System Extensions
 
 Use `getDeviceModel()` to get model of Device as a String.
 
-Use `Context?.isPackageInstalled(packageName)` to check a package name is installed or not. 
+Use `Context?.isPackageInstalled(packageName)` to check a package name is installed or not.
 
 Use `Context?.getIMEI()` to get IMEI of Device as a String.
 
@@ -26,7 +25,9 @@ fun testDisplayMetricsDP() {
     val someDpInt = 2.dp()
 }
 ```
+
 Use `Float.px()` or `Int.px()` to get a value of float or int (dip) into px unit. See this example :
+
 ```kotlin
 fun testDisplayMetricsPX() {
     // Returns 6f / app.resources.displayMetrics.density. If device has xxhdpi density (factor = 3) , the value of `someDp` will be `2f`.

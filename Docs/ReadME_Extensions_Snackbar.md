@@ -23,9 +23,9 @@ class MyActivity : MeowActivity<*> {
             // Optional - if you want to set custom textApperance to message and action, set this attributes.
             messageTextAppearanceId = R.style.textAppearance_Snack_Message, 
             actionTextAppearanceId = R.style.textAppearance_Snack_Action  
-            ) {
-                // Callback for action button click.
-         }
+        ) {
+             // Callback for action button click.
+          }
     }
 }
 ```

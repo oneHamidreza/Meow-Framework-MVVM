@@ -23,7 +23,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 /**
- * [android.graphics.Bitmap] Utils.
+ * [Bitmap] Utils object.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

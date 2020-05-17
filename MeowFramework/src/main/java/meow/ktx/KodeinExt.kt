@@ -21,7 +21,7 @@ import org.kodein.di.Kodein
 import org.kodein.di.erased.bind
 
 /**
- * Extensions of [Kodein] class.
+ * [Kodein] Extensions.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

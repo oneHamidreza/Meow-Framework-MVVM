@@ -322,7 +322,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     fun test() {
-
     }
 
 }

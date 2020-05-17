@@ -26,7 +26,7 @@ import java.lang.reflect.Type
 import kotlin.reflect.full.primaryConstructor
 
 /**
- * Extensions of Json Data.
+ * Json Extensions.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

@@ -1,10 +1,11 @@
 ## 💵 Currency Extensions
 
-First set Currency mode in Application's `MeowController`. Supported currencies are `Rial` , `Toman` , `USD`. 
+First set Currency mode in Application's `MeowController`. Supported currencies are `Rial` , `Toman` , `USD`.
+
 ```kotlin
 class App : MeowApp() {
     override fun onCreate() {
-        MeowController().apply {         
+        MeowController().apply {     
             // ...
             currency = MeowCurrency.Toman // or USD or Rial 
         }.bindApp(this)
@@ -12,11 +13,11 @@ class App : MeowApp() {
 }
 ```
 
-Use `String?.formatCurrency()` to have a Currency String by `meow.controller.currency` mode. See this example : 
+Use `String?.formatCurrency()` to have a Currency String by `meow.controller.currency` mode. See this example :
 
 ```kotlin
 // When `meow.controller.currency` is `Toman` or Rial Return "124,569,874" 
-// When `meow.controller.currency` is `USD` Return "$124,569,874.00" 
+// When `meow.controller.currency` is `USD` Return "$124,569,874.00"
 "124569874.00".formatCurrency()
 ```
 
@@ -24,7 +25,7 @@ Use `Context?.createCurrency(string)` to have a Currency String with unit text. 
 
 ```kotlin
 class MyActivity : MeowActivity<*> {
-    override fun onCreate(){
+    override fun onCreate() {
         // ...
         // A TextView's text = "124,569,874 ریال" when `meow.controller.currency` is Currency.Rial
         // A TextView's text = "124,569,874 تومان" when `meow.controller.currency` is Currency.Toman

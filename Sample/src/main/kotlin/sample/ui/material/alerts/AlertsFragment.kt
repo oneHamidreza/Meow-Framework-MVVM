@@ -59,15 +59,13 @@ class AlertsFragment : BaseFragment<FragmentAlertsBinding>() {
             adapter = ContentAdapter { _, it, _ ->
                 when (it.action) {
                     Content.Action.ALERT_SIMPLE -> {
-                        alert()
-                            .setTitle(R.string.alerts_simple_title)
-                            .setMessage(R.string.alerts_simple_message)
-                            .show()
+                        alert(R.string.alerts_simple_title, R.string.alerts_simple_message).show()
                     }
                     Content.Action.ALERT_SIMPLE_WITH_LISTENER -> {
-                        alert()
-                            .setTitle(R.string.alerts_simple_with_listener_title)
-                            .setMessage(R.string.alerts_simple_with_listener_message)
+                        alert(
+                            R.string.alerts_simple_with_listener_title,
+                            R.string.alerts_simple_with_listener_message
+                        )
                             .setPositiveButton(R.string.ok) { d, _ ->
                                 toastL(R.string.alerts_warn_ok_clicked)
                                 d.dismiss()

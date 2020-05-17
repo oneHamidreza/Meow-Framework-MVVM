@@ -3,10 +3,10 @@
 package meow.ktx
 
 import android.content.Context
+import androidx.fragment.app.Fragment
 import com.etebarian.meowframework.R
 import meow.MeowController
 import meow.controller
-import meow.core.ui.MeowFragment
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -15,13 +15,12 @@ import java.text.NumberFormat
 import java.util.*
 
 /**
- * The helper class for currency.
+ * Currency Extensions.
+ *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
- * @since   2018-10-01
+ * @since   2020-04-01
  */
-
-private val currencyDefault = controller.currency.default
 
 fun Double?.formatCurrencyRial(dec: Int = 0, original: String? = null) = avoidException {
     val sb = StringBuilder("#.")
@@ -61,16 +60,16 @@ fun Double?.formatCurrencyRial(dec: Int = 0, original: String? = null) = avoidEx
             out.append(".")
     }
     out.toString()
-} ?: currencyDefault
+} ?: controller.currency.default
 
 fun Double?.formatCurrencyUSD() = avoidException {
     BigDecimal(this ?: 0.0).setScale(2, RoundingMode.HALF_UP).toString().formatCurrencyUSD()
-} ?: currencyDefault
+} ?: controller.currency.default
 
 fun String?.formatCurrencyUSD() = avoidException {
     var s = this
     if (isNullOrEmpty())
-        currencyDefault
+        controller.currency.default
 
     val splits = s!!.split("\\.".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
 
@@ -89,7 +88,7 @@ fun String?.formatCurrencyUSD() = avoidException {
     val parsed = BigDecimal(cleanString).setScale(2, BigDecimal.ROUND_HALF_EVEN)
         .divide(BigDecimal(100), BigDecimal.ROUND_HALF_EVEN)
     NumberFormat.getCurrencyInstance(Locale.US).format(parsed).replace("[$]".toRegex(), "")
-} ?: currencyDefault
+} ?: controller.currency.default
 
 fun String?.toDoubleCurrency() = avoidException {
     if (isNullOrEmpty())
@@ -99,18 +98,18 @@ fun String?.toDoubleCurrency() = avoidException {
 
 fun String?.formatCurrency(dec: Int = 0) = avoidException {
     if (isNullOrEmpty())
-        currencyDefault
+        controller.currency.default
 
     when (controller.currency) {
         MeowController.Currency.USD -> this.formatCurrencyUSD()
         MeowController.Currency.RIAL, MeowController.Currency.TOMAN -> this.toDoubleCurrency()
             .formatCurrencyRial(dec, this)
     }
-} ?: currencyDefault
+} ?: controller.currency.default
 
 fun Double?.formatCurrency(dec: Int = 0) = avoidException {
     if (this == null)
-        currencyDefault
+        controller.currency.default
 
     when (controller.currency) {
         MeowController.Currency.USD -> this.formatCurrencyUSD()
@@ -119,7 +118,7 @@ fun Double?.formatCurrency(dec: Int = 0) = avoidException {
             BigDecimal(this!!).toString()
         )
     }
-} ?: currencyDefault
+} ?: controller.currency.default
 
 fun String?.formatCurrencyEmpty(dec: Int = 0) = avoidException {
     if (isNullOrEmpty())
@@ -138,8 +137,8 @@ fun Context?.createCurrency(s: String?, dec: Int = 0): String {
     }
 }
 
-fun MeowFragment<*>?.createCurrency(s: String?, dec: Int = 0) =
-    this?.context().createCurrency(s, dec)
+fun Fragment?.createCurrency(s: String?, dec: Int = 0) =
+    this?.requireContext().createCurrency(s, dec)
 
 fun Context?.createCurrency(d: Double?, dec: Int = 0): String {
     if (this == null)
@@ -147,8 +146,8 @@ fun Context?.createCurrency(d: Double?, dec: Int = 0): String {
     return createCurrency(BigDecimal(d ?: 0.0).toString(), dec)
 }
 
-fun MeowFragment<*>?.createCurrency(d: Double?, dec: Int = 0) =
-    this?.context().createCurrency(d, dec)
+fun Fragment?.createCurrency(d: Double?, dec: Int = 0) =
+    this?.requireContext().createCurrency(d, dec)
 
 fun BigDecimal.createPrice(): BigDecimal = setScale(2, BigDecimal.ROUND_HALF_EVEN)
 
