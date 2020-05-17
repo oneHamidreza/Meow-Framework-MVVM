@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
 /**
- * Meow Adapter class inherits from [RecyclerView.Adapter].
+ * Meow Adapter class extends [RecyclerView.Adapter].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -31,6 +31,7 @@ import androidx.recyclerview.widget.RecyclerView
 abstract class MeowAdapter<T, VH : MeowViewHolder<T>>(
     diffCallback: DiffUtil.ItemCallback<T>
 ) : ListAdapter<T, VH>(diffCallback) {
+
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.onBind(position, getItem(position))
     }

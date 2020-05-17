@@ -32,7 +32,6 @@ import meow.ktx.toJson
  * @since   2020-03-06
  */
 
-//todo farsi devices all apis
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 class MeowSharedPreferences(
     application: Application,

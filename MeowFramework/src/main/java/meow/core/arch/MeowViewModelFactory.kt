@@ -22,7 +22,7 @@ import org.kodein.di.DKodein
 import org.kodein.di.erased.instance
 
 /**
- * Kodein View Model Factory class.
+ * Meow View Model Factory class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

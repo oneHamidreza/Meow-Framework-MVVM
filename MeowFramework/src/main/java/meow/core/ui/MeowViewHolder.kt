@@ -21,7 +21,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 /**
- * Meow View Holder class.
+ * Meow View Holder class extends [RecyclerView.ViewHolder].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

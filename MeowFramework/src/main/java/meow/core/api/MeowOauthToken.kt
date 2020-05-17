@@ -18,12 +18,9 @@ package meow.core.api
 
 import android.annotation.SuppressLint
 import com.squareup.moshi.Json
-import retrofit2.http.Body
-import retrofit2.http.POST
 
 /**
- * The class of Api Utils such as OKHTTP client, Retrofit Configuration containing Moshi Adapter.
- * and containing Authorization methods.
+ * Meow Oauth Token class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -83,7 +80,7 @@ class MeowOauthToken {
 
     open class RequestPrimary(
         session: MeowSession,
-        @property:Json(name = "grant_type") var grantType: String? = null
+        @Json(name = "grant_type") var grantType: String? = null
     ) {
 
         @Json(name = "client_id")
@@ -106,14 +103,6 @@ class MeowOauthToken {
 
         @Json(name = "app_version")
         var appVersion: Int? = session.appVersionCode
-    }
-
-    interface Api {
-        @POST("/api/oauth2/token")
-        fun refreshToken(
-            @Body request: RequestRefreshToken
-        ): MeowOauthToken
-
     }
 
 }

@@ -28,7 +28,7 @@ import meow.ktx.*
 import retrofit2.HttpException
 
 /**
- * The model of Response in restful api by success and fail statuses.
+ * Meow Response class containing the model of Response in restful api with success and fail statuses.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -106,12 +106,6 @@ sealed class MeowResponse<T>(
     class ConnectionError : Error<Nothing>(exception = NetworkConnectionException())
 
     /**
-     * Request Not Valid Error response model in restful api with http code UNKNOWN.
-     *
-     */
-    class RequestNotValid(override var data: MeowRequest? = null) : Error<MeowRequest>()
-
-    /**
      * Error response in restful api.
      *
      * @property exception containing the exception at fail status
@@ -164,29 +158,28 @@ fun MeowResponse<*>?.isParseError() = this is MeowResponse.ParseError
 fun MeowResponse<*>?.isConnectionError() = this is MeowResponse.ConnectionError
 fun MeowResponse<*>?.isNetworkError() = this is MeowResponse.NetworkError
 fun MeowResponse<*>?.isUnexpectedError() = this is MeowResponse.UnExpectedError
-fun MeowResponse<*>?.isRequestNotValidError() = this is MeowResponse.RequestNotValid
 fun MeowResponse<*>?.isUnprocessableEntityError() = this is MeowResponse.UnprocessableEntityError
 
-fun createResponseFromHttpError(throwable: HttpException): MeowResponse.Error<*> {
+fun HttpException.createMeowResponse(): MeowResponse.Error<*> {
     return avoidException(
         tryBlock = {
-            throwable.response()?.errorBody()?.source()?.let {
-                if (throwable.code() == HttpCodes.UNPROCESSABLE_ENTITY.code) MeowResponse.UnprocessableEntityError(
-                    code = throwable.code(),
+            response()?.errorBody()?.source()?.let {
+                if (code() == HttpCodes.UNPROCESSABLE_ENTITY.code) MeowResponse.UnprocessableEntityError(
+                    code = code(),
                     data = it.fromJsonList<FormErrorModel>().apply { logD(m = this?.size) },
-                    exception = throwable
+                    exception = this
                 ) else
                     MeowResponse.HttpError(
-                        code = throwable.code(),
+                        code = code(),
                         data = it.fromJson(),
-                        exception = throwable
+                        exception = this
                     )
             } ?: MeowResponse.UnExpectedError()
         },
         exceptionBlock = {
             MeowResponse.HttpError(
-                code = throwable.code(),
-                exception = throwable
+                code = code(),
+                exception = this
             )
         }) ?: MeowResponse.UnExpectedError()
 }
@@ -199,7 +192,6 @@ fun MeowResponse<*>.processAndPush(liveData: MutableLiveData<MeowEvent<*>>) {
             isCancellation() -> MeowEvent.Api.Cancellation()
             else -> MeowEvent.Api.Error(this)
         }
-        logD(m = eventWithRepository.javaClass.name)
         liveData.postValue(eventWithRepository)
     }
 }
@@ -293,12 +285,6 @@ fun MeowResponse<*>?.createErrorModel(
             UIErrorModel(
                 title = resources.getString(R.string.error_response_unexpected_title),
                 message = resources.getString(R.string.error_response_unexpected_message),
-                actionText = resources.getString(R.string.error_actiontry_again)
-            )
-        isRequestNotValidError() ->
-            UIErrorModel(
-                title = resources.getString(R.string.error_response_request_not_valid_title),
-                message = resources.getString(R.string.error_response_request_not_valid_message),
                 actionText = resources.getString(R.string.error_actiontry_again)
             )
         else -> unexpected(-500)

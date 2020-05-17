@@ -25,7 +25,6 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 /**
  * Single Live Data class.
- * Use for navigation in [MeowViewModel] .
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

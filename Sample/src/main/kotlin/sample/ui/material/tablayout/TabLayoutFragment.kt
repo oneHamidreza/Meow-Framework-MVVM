@@ -39,6 +39,7 @@ class TabLayoutFragment : BaseFragment<FragmentTablayoutBinding>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.apply {
+            viewpager.isSaveEnabled = false
             viewpager.adapter = TabLayoutPagerAdapter(childFragmentManager, lifecycle)
             TabLayoutMediator(tabLayout, viewpager) { tab, position ->
                 tab.text = getString(R.string.tab_title).format(position + 1)

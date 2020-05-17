@@ -29,7 +29,7 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 
 /**
- * The Base of Activity.
+ * Meow Activity class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -46,6 +46,9 @@ abstract class MeowActivity<B : ViewDataBinding> : LocalizationActivity(),
     override var isEnabledKeyboardUtils = true
     override var isShowingKeyboard = false
     override var keyboardUtils: KeyboardUtils? = null
+
+    override var rootView: View? = null
+    override var isFromNavigateUp = false
 
     override val kodein by closestKodein()
 

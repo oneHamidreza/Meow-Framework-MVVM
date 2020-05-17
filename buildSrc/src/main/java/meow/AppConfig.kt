@@ -80,6 +80,7 @@ object AppConfig {//todo find way for show sources
         const val SECURE_PREFERENCES = "0.1.3"
         const val SERIALIZATION_RUNTIME = "0.20.0"
         const val SWIPE_REFRESH_LAYOUT = "1.0.0"
+        const val VIEWPAGER2 = "1.1.0-alpha01"
     }
 
     object Dependencies {
@@ -93,8 +94,9 @@ object AppConfig {//todo find way for show sources
             "androidx.multidex:multidex:${Versions.MULTIDEX}",
             // Material
             "com.google.android.material:material:${Versions.MATERIAL}",
-            "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.SWIPE_REFRESH_LAYOUT}",
             "androidx.browser:browser:${Versions.BROWSER}",
+            "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.SWIPE_REFRESH_LAYOUT}",
+            "androidx.viewpager2:viewpager2:${Versions.VIEWPAGER2}",
             // Lifecycle
             "androidx.lifecycle:lifecycle-common-java8:${Versions.LIFECYCLE}",
             "androidx.lifecycle:lifecycle-extensions:${Versions.LIFECYCLE}",

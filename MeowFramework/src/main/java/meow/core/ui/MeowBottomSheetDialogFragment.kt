@@ -20,7 +20,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import meow.ktx.KeyboardUtils
@@ -32,7 +31,7 @@ import org.kodein.di.android.x.closestKodein
 import org.kodein.di.erased.kcontext
 
 /**
- * Meow Bottom Sheet Dialog Fragment class inherits from [BottomSheetDialogFragment] , [FragmentActivityInterface] , [KodeinAware].
+ * Meow Bottom Sheet Dialog Fragment class extends [BottomSheetDialogFragment] , [FragmentActivityInterface] , [KodeinAware].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -46,6 +45,9 @@ abstract class MeowBottomSheetDialogFragment<B : ViewDataBinding> : BottomSheetD
     override var isEnabledKeyboardUtils = true
     override var isShowingKeyboard = false
     override var keyboardUtils: KeyboardUtils? = null
+
+    override var isFromNavigateUp = false
+    override var rootView: View? = null
 
     override val kodeinContext: KodeinContext<*> get() = kcontext(activity)
     private val _parentKodein by closestKodein()
@@ -63,9 +65,7 @@ abstract class MeowBottomSheetDialogFragment<B : ViewDataBinding> : BottomSheetD
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        if (!::binding.isInitialized)//todo check
-            binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
-        return binding.root
+        return getPersistentView(inflater, container, layoutId())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

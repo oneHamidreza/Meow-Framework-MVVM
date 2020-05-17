@@ -189,8 +189,7 @@ sealed class MeowFlow(open val fragmentActivity: FragmentActivityInterface<*>) {
 
         fun observeForForm(
             eventLiveData: LiveData<*>
-        ) =
-            observe(eventLiveData)
+        ) = observe(eventLiveData)
 
         private fun observe(
             eventLiveData: LiveData<*>,

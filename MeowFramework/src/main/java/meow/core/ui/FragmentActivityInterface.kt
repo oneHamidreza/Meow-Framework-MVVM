@@ -18,9 +18,12 @@ package meow.core.ui
 
 import android.content.Context
 import android.content.res.Resources
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
@@ -33,7 +36,7 @@ import meow.ktx.KeyboardUtils
 import meow.ktx.PermissionUtils
 
 /**
- * MVVM interface.
+ * Fragment Activity interface.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -49,6 +52,9 @@ interface FragmentActivityInterface<B : ViewDataBinding> : LifecycleOwner {
     var isEnabledKeyboardUtils: Boolean
     var isShowingKeyboard: Boolean
     var keyboardUtils: KeyboardUtils?
+
+    var isFromNavigateUp: Boolean
+    var rootView: View?
 
     @LayoutRes
     fun layoutId(): Int
@@ -100,6 +106,23 @@ interface FragmentActivityInterface<B : ViewDataBinding> : LifecycleOwner {
     fun onKeyboardDestroy() {
         if (isEnabledKeyboardUtils)
             keyboardUtils?.disable()
+    }
+
+    fun getPersistentView(inflater: LayoutInflater, container: ViewGroup?, layout: Int): View {
+        if (rootView == null) {
+            // Inflate the layout for this fragment
+            binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
+            rootView = binding.root
+        } else {
+            // Do not inflate the layout again.
+            // The returned View of onCreateView will be added into the fragment.
+            // However it is not allowed to be added twice even if the parent is same.
+            // So we must remove rootView from the existing parent view group
+            // (it will be added back).
+            (rootView?.parent as? ViewGroup)?.removeView(rootView)
+            isFromNavigateUp = true
+        }
+        return rootView!!
     }
 }
 

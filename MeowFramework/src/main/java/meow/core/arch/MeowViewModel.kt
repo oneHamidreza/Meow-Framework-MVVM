@@ -23,7 +23,10 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Job
 import meow.MeowApp
 import meow.controller
-import meow.core.api.*
+import meow.core.api.MeowEvent
+import meow.core.api.MeowResponse
+import meow.core.api.createMeowResponse
+import meow.core.api.processAndPush
 import meow.ktx.avoidException
 import meow.ktx.hasNotNetwork
 import meow.ktx.resources
@@ -37,7 +40,7 @@ import java.net.SocketException
 import java.net.SocketTimeoutException
 
 /**
- * The Base of View Model in MVVM architecture.
+ * Meow View Model class in MVVM architecture.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -58,7 +61,6 @@ open class MeowViewModel(open val app: MeowApp) : AndroidViewModel(app), KodeinA
 
     protected fun <T> safeCallApi(
         liveData: MutableLiveData<MeowEvent<*>>,
-        request: MeowRequest? = null,
         isNetworkRequired: Boolean = true,
         job: Job = Job(),
         apiAction: suspend () -> T,
@@ -67,11 +69,6 @@ open class MeowViewModel(open val app: MeowApp) : AndroidViewModel(app), KodeinA
         exceptionHandler = exceptionHandler,
         job = job
     ) {
-
-        if (request != null && !request.validate()) {
-            resultBlock(MeowResponse.RequestNotValid(request), null)
-            return@scopeLaunch
-        }
 
         if (isNetworkRequired && app.hasNotNetwork()) {
             liveData.postValue(MeowEvent.Api.Error(MeowResponse.NetworkError()))
@@ -98,7 +95,7 @@ open class MeowViewModel(open val app: MeowApp) : AndroidViewModel(app), KodeinA
             when (e) {
                 is SocketTimeoutException, is SocketException -> MeowResponse.ConnectionError()
                 is IOException -> MeowResponse.NetworkError()
-                is HttpException -> createResponseFromHttpError(e)
+                is HttpException -> e.createMeowResponse()
                 is CancellationException -> MeowResponse.Cancellation()
                 else -> MeowResponse.ParseError(exception = e)
             }

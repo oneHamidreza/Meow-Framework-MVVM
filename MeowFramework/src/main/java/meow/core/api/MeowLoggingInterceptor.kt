@@ -21,7 +21,7 @@ import okhttp3.Interceptor
 import okhttp3.Response
 
 /**
- * The class of Http Logging Interceptor inherits from [Interceptor].
+ * Meow Logging Interceptor class extends [Interceptor].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

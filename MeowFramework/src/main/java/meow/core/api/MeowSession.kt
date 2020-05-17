@@ -20,7 +20,7 @@ import android.os.Build
 import meow.ktx.getDeviceModel
 
 /**
- * The Meow Session Api class.
+ * Meow Session class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0

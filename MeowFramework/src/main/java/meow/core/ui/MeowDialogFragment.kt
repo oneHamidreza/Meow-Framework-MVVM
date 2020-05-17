@@ -20,7 +20,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import meow.ktx.KeyboardUtils
@@ -32,7 +31,7 @@ import org.kodein.di.android.x.closestKodein
 import org.kodein.di.erased.kcontext
 
 /**
- * Meow Dialog Fragment class inherits from [DialogFragment] , [FragmentActivityInterface] , [KodeinAware].
+ * Meow Dialog Fragment class extends [DialogFragment] , [FragmentActivityInterface] , [KodeinAware].
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
@@ -46,6 +45,9 @@ abstract class MeowDialogFragment<B : ViewDataBinding> : DialogFragment(),
     override var isEnabledKeyboardUtils = true
     override var isShowingKeyboard = false
     override var keyboardUtils: KeyboardUtils? = null
+
+    override var isFromNavigateUp = false
+    override var rootView: View? = null
 
     override val kodeinContext: KodeinContext<*> get() = kcontext(activity)
     private val _parentKodein by closestKodein()
@@ -63,9 +65,7 @@ abstract class MeowDialogFragment<B : ViewDataBinding> : DialogFragment(),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        if (!::binding.isInitialized)//todo check
-            binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
-        return binding.root
+        return getPersistentView(inflater, container, layoutId())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

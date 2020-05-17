@@ -177,7 +177,6 @@ abstract class MeowApi(
 
                             val newToken = tokenResponse.body() ?: return null
                             meowApi.onSaveOauth(newToken)
-                            token
 
                             response.request().newBuilder()
                                 .header("Authorization", token.apply { isLogin = true }.token)
