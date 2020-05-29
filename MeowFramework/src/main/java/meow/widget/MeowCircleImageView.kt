@@ -42,7 +42,17 @@ open class MeowCircleImageView @JvmOverloads constructor(
 ) : AppCompatImageView(context, attrs, defStyleAttrs) {
 
     var strokeColor = 0
+        set(value) {
+            field = value
+            if (isAttachedToWindow)
+                invalidate()
+        }
     var strokeWidth = 0f
+        set(value) {
+            field = value
+            if (isAttachedToWindow)
+                invalidate()
+        }
 
     init {
         setAttributesFromXml(attrs, R.styleable.MeowCircleImageView) {
