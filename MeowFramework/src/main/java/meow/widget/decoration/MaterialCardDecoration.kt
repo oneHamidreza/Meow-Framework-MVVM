@@ -24,7 +24,7 @@ import meow.controller
 import meow.ktx.dp
 
 /**
- * todo improve & write test
+ *
  * The Material Card Recycler View Decoration class inherits from [RecyclerView.ItemDecoration].
  *
  * @author  Hamidreza Etebarian

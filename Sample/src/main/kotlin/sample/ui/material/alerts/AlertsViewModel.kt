@@ -32,9 +32,8 @@ import sample.data.Content
  */
 
 class AlertsViewModel(app: App) : MeowViewModel(app) {
-    //todo @Ali find way for create this class automatically
 
-    val listLiveData = SingleLiveData<List<Content>>() //todo @Hamid search single vs normal
+    val listLiveData = SingleLiveData<List<Content>>()
 
     fun fillList() {
         val actions = arrayOf(

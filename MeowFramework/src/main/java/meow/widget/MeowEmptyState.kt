@@ -30,12 +30,8 @@ import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import com.etebarian.meowframework.R
 import com.etebarian.meowframework.databinding.MeowEmptyStateBinding
-import com.google.android.material.color.MaterialColors
 import meow.core.api.UIErrorModel
-import meow.ktx.dp
-import meow.ktx.getDrawableCompat
-import meow.ktx.isNotNullOrEmpty
-import meow.ktx.ofColorStateList
+import meow.ktx.*
 import meow.widget.impl.MeowEmptyStateInterface
 
 /**
@@ -73,7 +69,7 @@ class MeowEmptyState @JvmOverloads constructor(
 
     @SuppressLint("RestrictedApi")
     var iconTint: ColorStateList =
-        ColorStateList.valueOf(MaterialColors.getColor(this, R.attr.colorPrimary))
+        ColorStateList.valueOf(getMaterialColor(R.attr.colorPrimary))
         set(value) {
             field = value
             binding.iconTint = value

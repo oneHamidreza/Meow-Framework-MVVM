@@ -22,8 +22,8 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.core.graphics.ColorUtils
 import com.etebarian.meowframework.R
-import com.google.android.material.color.MaterialColors
 import meow.ktx.dp
+import meow.ktx.getMaterialColor
 
 /**
  * Meow Divider View class.
@@ -54,7 +54,7 @@ class MeowDivider @JvmOverloads constructor(
     var type = Type.BACKGROUND
         set(value) {
             field = value
-            val color = MaterialColors.getColor(this, value.res)//todo convert to a better function
+            val color = getMaterialColor(value.res)
             background = ColorDrawable(ColorUtils.setAlphaComponent(color, (0.12 * 255).toInt()))
         }
 

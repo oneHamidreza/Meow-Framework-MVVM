@@ -40,9 +40,6 @@ import meow.widget.impl.FormInterface
  * @since   2020-03-07
  */
 
-
-//todo @ali all of class in meow.widget must be test in Android 4.4.
-//todo @ali add username validation
 class MeowTextField : TextInputLayout, FormInterface {
 
     private var fontFamily: Int = 0

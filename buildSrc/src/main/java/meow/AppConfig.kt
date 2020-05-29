@@ -27,7 +27,7 @@ import java.io.File
  * @since   2020-02-24
  */
 
-object AppConfig {//todo find way for show sources
+object AppConfig {
 
     object Build {
         const val APPLICATION_ID = "com.etebarian.meowframework"
@@ -75,7 +75,7 @@ object AppConfig {//todo find way for show sources
         const val MOSHI = "1.9.2"
         const val MULTIDEX = "2.0.1"
         const val NAVIGATION = "2.3.0-alpha04"
-        const val OKHTTP = "3.12.0" // Don't update. //todo not working on 4.4 @Ali Help.
+        const val OKHTTP = "3.12.0" // Don't update.
         const val RETROFIT = "2.8.1"
         const val SECURE_PREFERENCES = "0.1.3"
         const val SERIALIZATION_RUNTIME = "0.20.0"

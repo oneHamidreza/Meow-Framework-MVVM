@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="title"
             type="String" />
@@ -11,6 +13,7 @@
 
         <meow.widget.MeowProgressBar
             style="@style/Meow.ProgressBar.Medium.Primary"
+            app:meow_showOnInit="true"
             android:layout_margin="8dp" />
 
         <TextView

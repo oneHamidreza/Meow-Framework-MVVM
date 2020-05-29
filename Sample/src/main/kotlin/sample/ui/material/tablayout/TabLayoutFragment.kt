@@ -48,7 +48,6 @@ class TabLayoutFragment : BaseFragment<FragmentTablayoutBinding>() {
             tabLayout.getTabAt(0)?.orCreateBadge?.apply {
                 isVisible = true
                 number = viewModel!!.getBadgeNumber()
-                //todo typeface not supporting
             }
         }
     }

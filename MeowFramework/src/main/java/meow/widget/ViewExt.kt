@@ -71,7 +71,7 @@ object ViewBindingAdapter {
             val second = aspectRatio!!.substring(aspectRatio.lastIndexOf(":") + 1)
             val first = aspectRatio.replace(":$second", "")
             view.viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
-                override fun onPreDraw(): Boolean {//todo @modares layout margin -> aspect ratio
+                override fun onPreDraw(): Boolean {
                     view.viewTreeObserver.removeOnPreDrawListener(this)
 
                     val widthSize = View.MeasureSpec.getSize(view.measuredWidth)

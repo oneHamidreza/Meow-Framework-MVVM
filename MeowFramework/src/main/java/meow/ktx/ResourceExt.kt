@@ -16,6 +16,7 @@
 
 package meow.ktx
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.Resources
@@ -28,11 +29,13 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
+import android.view.View
 import androidx.annotation.*
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
+import com.google.android.material.color.MaterialColors
 import meow.controller
 
 /**
@@ -173,6 +176,24 @@ fun Fragment?.getColorCompat(
     theme: Resources.Theme? = null
 ) = this?.requireContext()?.resources().getColorCompat(resId, theme)
 
+@SuppressLint("RestrictedApi")
+fun Context?.getMaterialColor(
+    @AttrRes resAttr: Int,
+    defaultValue: Int = 0
+) = when {
+    this == null -> 0
+    else -> controller.onColorGet(MaterialColors.getColor(this, resAttr, defaultValue))
+}
+
+fun Fragment?.getMaterialColor(
+    @AttrRes resAttr: Int,
+    defaultValue: Int = 0
+) = this?.requireContext()?.getMaterialColor(resAttr, defaultValue) ?: defaultValue
+
+fun View?.getMaterialColor(
+    @AttrRes resAttr: Int,
+    defaultValue: Int = 0
+) = this?.context?.getMaterialColor(resAttr, defaultValue) ?: defaultValue
 
 fun Context?.ofColorStateList(
     @ColorRes resId: Int

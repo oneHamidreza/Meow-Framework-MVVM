@@ -158,7 +158,7 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                     API_INDEX -> findNavController().navigate(HomeFragmentDirections.actionToApiCatBreedIndex())
                     API_DETAIL -> findNavController().navigate(HomeFragmentDirections.actionToApiCatBreedDetail())
                     API_FORM -> findNavController().navigate(HomeFragmentDirections.actionToApiCatBreedForm())
-                    API_LOGIN -> findNavController().navigate(HomeFragmentDirections.actionToApiLogin())//todo safeNavigate()
+                    API_LOGIN -> findNavController().navigate(HomeFragmentDirections.actionToApiLogin())
 
                     MATERIAL_ALERTS -> findNavController().navigate(HomeFragmentDirections.actionToMaterialAlerts())
                     MATERIAL_BOTTOM_APP_BAR -> findNavController().navigate(HomeFragmentDirections.actionToMaterialBottomAppBar())
@@ -173,7 +173,7 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding>() {
                             context(),
                             CollapsingToolbarActivity::class.java
                         )
-                    )//todo add IntentExt
+                    )
                     MATERIAL_FAB_EXTENDED -> findNavController().navigate(HomeFragmentDirections.actionToMaterialFabExtended())
                     MATERIAL_FAB_SIMPLE -> findNavController().navigate(HomeFragmentDirections.actionToMaterialFabSimple())
                     MATERIAL_IMAGEVIEWS -> findNavController().navigate(HomeFragmentDirections.actionToMaterialImageviews())

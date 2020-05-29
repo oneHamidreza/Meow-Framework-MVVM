@@ -51,7 +51,6 @@ class BottomNavigationActivity : BaseActivity<ActivityBottomNavigationBinding>()
 
     private fun setupBottomNavigation() {
         binding.bottomNavigation.apply {
-//            setupWithNavController(findNavController(R.id.))//todo handle navigation
             setOnNavigationItemSelectedListener {
                 toastL(it.title.toString(), gravity = Gravity.CENTER)
                 true
