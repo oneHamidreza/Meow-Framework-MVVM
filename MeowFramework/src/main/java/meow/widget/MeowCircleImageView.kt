@@ -61,6 +61,9 @@ open class MeowCircleImageView @JvmOverloads constructor(
             strokeWidth =
                 it.getDimension(R.styleable.MeowCircleImageView_meow_strokeWidth, strokeWidth)
         }
+
+        strokeColor = strokeColor
+        strokeWidth = strokeWidth
     }
 
     override fun onDraw(canvas: Canvas) {

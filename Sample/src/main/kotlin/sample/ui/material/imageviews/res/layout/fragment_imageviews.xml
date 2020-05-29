@@ -16,7 +16,7 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
             app:meow_aspectRatio="@{`16:9`}"
@@ -28,7 +28,7 @@
             android:layout_height="56dp"
             android:layout_gravity="center"
             android:layout_margin="16dp"
-            app:meow_strokeColor="@color/white"
+            app:meow_strokeColor="?colorOnBackground"
             app:meow_strokeWidth="2dp"
             app:srcCompat="@drawable/avatar" />
 
