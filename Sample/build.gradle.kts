@@ -4,7 +4,6 @@ import meow.AppConfig
 import meow.AppConfig.Build
 import meow.AppConfig.Dependencies
 import meow.AppConfig.Versions
-import meow.getAllResourcesSrcDirs
 import meow.getPropertyAny
 
 plugins {
@@ -78,7 +77,7 @@ android {
             java.includes.add("/${Build.SRC_MAIN}**")
             java.excludes.add("**/build/**")
 
-            res.srcDirs(getAllResourcesSrcDirs(project))
+            res.srcDirs(meow.getAllResourcesSrcDirs(project))
         }
     }
 
@@ -120,8 +119,8 @@ dependencies {
     }
 
     // Firebase
-    implementation("com.google.firebase:firebase-analytics:17.4.0")
-    implementation("com.google.firebase:firebase-messaging:20.1.6")
+    implementation("com.google.firebase:firebase-analytics:17.4.3")
+    implementation("com.google.firebase:firebase-messaging:20.2.0")
 
     // Markwon
     val markwonVersion = "4.3.1"

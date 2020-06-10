@@ -75,7 +75,7 @@ fun logW(tag: String = "", m: Any?, tr: Throwable? = null): Int {
 
 private fun createTag(tag: String): String {
     if (controller.isLogTagNative)
-        return if (tag.isEmpty()) "meow" else tag
+        return if (tag.isEmpty()) "src/main/kotlin/meow" else tag
 
     val t = avoidException {
         val stackThread = Thread.currentThread().stackTrace

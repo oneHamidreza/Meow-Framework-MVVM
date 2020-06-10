@@ -118,7 +118,6 @@
                 <!--                    android:button="@drawable/selector_favorite"-->
                 <!--                    android:visibility="gone"-->
                 <!--                    app:buttonTint="?colorOnSurface" />-->
-                <!-- todo @Ali 4.4 force close on android:button -->
 
                 <TextView
                     android:layout_width="match_parent"

@@ -31,8 +31,10 @@ object AppConfig {
 
     object Build {
         const val APPLICATION_ID = "com.etebarian.meowframework"
-        const val APP_MODULE = "sample"
+        const val APP_MODULE = "Sample"
         const val APP_PACKAGE = "sample"
+        const val LIBRARY_MODULE = "MeowFramework"
+        const val LIBRARY_PACKAGE = "meow"
         const val SRC_MAIN = "src/main/"
 
         enum class PHASE(var alias: String) {
@@ -169,12 +171,15 @@ fun kotlinx(module: String, version: String? = null): Any =
 fun kotlin(module: String, version: String? = null): Any =
     "org.jetbrains.kotlin:kotlin-$module${version?.let { ":$version" } ?: ""}"
 
-fun getAllResourcesSrcDirs(project: Project): ArrayList<String> {
+fun getAllResourcesSrcDirs(project: Project, isLibrary: Boolean = false): ArrayList<String> {
+    val moduleName = if (isLibrary) AppConfig.Build.LIBRARY_MODULE else AppConfig.Build.APP_MODULE
+    val packageName =
+        if (isLibrary) AppConfig.Build.LIBRARY_PACKAGE else AppConfig.Build.APP_PACKAGE
     val list = arrayListOf<String>()
     val path =
-        project.rootDir.absolutePath + "\\" + AppConfig.Build.APP_MODULE + "\\src\\main\\kotlin\\" + AppConfig.Build.APP_PACKAGE
+        project.rootDir.absolutePath + "\\" + moduleName + "\\src\\main\\kotlin\\" + packageName
     val root = File(path)
-    list.add(project.rootDir.absolutePath + "\\" + AppConfig.Build.APP_MODULE + "\\src\\main\\res")
+    list.add(project.rootDir.absolutePath + "\\" + moduleName + "\\src\\main\\res")
     root.listDirectoriesWithChild().forEach { directory ->
         if (directory.isRes())
             list.add(directory.path)

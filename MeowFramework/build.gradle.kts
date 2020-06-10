@@ -59,6 +59,19 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    sourceSets {
+        getByName("main") {
+            setRoot(meow.AppConfig.Build.SRC_MAIN)
+            manifest.srcFile("${meow.AppConfig.Build.SRC_MAIN}AndroidManifest.xml")
+
+            java.srcDirs("${meow.AppConfig.Build.SRC_MAIN}kotlin")
+            java.includes.add("/${meow.AppConfig.Build.SRC_MAIN}**")
+            java.excludes.add("**/build/**")
+
+            res.srcDirs(meow.getAllResourcesSrcDirs(project, true))
+        }
+    }
 }
 
 dependencies {
@@ -89,7 +102,7 @@ https://medium.com/@sergio.igwt/publishing-a-kotlin-library-to-your-bintray-repo
 https://github.com/nwillc/kretry/blob/master/build.gradle.kts
 */
 sourceSets.create("main") {
-    java.srcDirs("${meow.AppConfig.Build.SRC_MAIN}java")
+    java.srcDirs("${meow.AppConfig.Build.SRC_MAIN}kotlin")
     java.includes.add("/${meow.AppConfig.Build.SRC_MAIN}**")
     java.excludes.add("**/build/**")
     resources.srcDirs("${meow.AppConfig.Build.SRC_MAIN}res")
