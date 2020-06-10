@@ -58,10 +58,6 @@ android {
         }
     }
 
-    dataBinding {
-        isEnabled = true
-    }
-
     lintOptions {
         isAbortOnError = false
         isIgnoreWarnings = true
