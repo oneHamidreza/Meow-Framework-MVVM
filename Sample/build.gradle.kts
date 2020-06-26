@@ -33,6 +33,10 @@ android {
         multiDexEnabled = true
     }
 
+    buildFeatures {
+        dataBinding = true
+    }
+
     applicationVariants.all {
         outputs.all {
             val fileName = "Meow-Framework-Sample-v${AppConfig.generateVersionName()}.apk"
