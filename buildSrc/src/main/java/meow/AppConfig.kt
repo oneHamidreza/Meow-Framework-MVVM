@@ -187,7 +187,7 @@ fun getAllResourcesSrcDirs(project: Project, isLibrary: Boolean = false): ArrayL
     return list
 }
 
-fun File.listDirectories() = listFiles()!!.filter { it.isDirectory }
+fun File.listDirectories() = listFiles()?.filter { it.isDirectory } ?: arrayListOf()
 fun File.listDirectoriesWithChild(): List<File> {
     val list = ArrayList<File>()
 
