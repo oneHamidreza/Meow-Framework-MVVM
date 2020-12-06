@@ -29,7 +29,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.etebarian.meowframework.R
 import com.google.android.material.textfield.TextInputLayout
-import com.google.android.material.textview.MaterialAutoCompleteTextView
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import meow.ktx.dp
 
 

@@ -54,34 +54,34 @@ object AppConfig {
          */
         const val API = 1
         const val MAJOR = 0
-        const val MINOR = 8
-        const val PATCH = 1
+        const val MINOR = 9
+        const val PATCH = 0
         val BUILD_PHASE = Build.PHASE.STABLE
 
-        const val SDK_COMPILE = 29
+        const val SDK_COMPILE = 30
         const val SDK_MIN = 19
-        const val SDK_TARGET = 29
+        const val SDK_TARGET = 30
 
         const val BROWSER = "1.2.0"
-        const val COROUTINE = "1.3.5"
+        const val COROUTINE = "1.4.2"
         const val DOKKA = "0.10.1"
-        const val EXIF_INTERFACE = "1.1.0"
+        const val EXIF_INTERFACE = "1.3.1"
         const val GLIDE = "4.11.0"
-        const val GOOGLE_PHONE_NUMBER = "8.12.2"
+        const val GOOGLE_PHONE_NUMBER = "8.12.14"
         const val KODEIN = "6.5.5"
-        const val KOTLIN = "1.3.72"
-        const val KOTLINX_SERIALIZATION = "1.3.70"
+        const val KOTLIN = "1.4.20"
+        const val KOTLINX_SERIALIZATION = "1.4.20"
         const val LIFECYCLE = "2.2.0"
         const val LOCALIZATION = "1.2.5"
-        const val MATERIAL = "1.2.0-alpha04"
-        const val MOSHI = "1.9.2"
+        const val MATERIAL = "1.3.0-alpha04"
+        const val MOSHI = "1.11.0"
         const val MULTIDEX = "2.0.1"
-        const val NAVIGATION = "2.3.0-alpha04"
+        const val NAVIGATION = "2.3.1"
         const val OKHTTP = "3.12.0" // Don't update.
-        const val RETROFIT = "2.8.1"
+        const val RETROFIT = "2.9.0"
         const val SECURE_PREFERENCES = "0.1.3"
-        const val SERIALIZATION_RUNTIME = "0.20.0"
-        const val SWIPE_REFRESH_LAYOUT = "1.0.0"
+        const val SERIALIZATION_RUNTIME = "1.0-M1-1.4.0-rc"
+        const val SWIPE_REFRESH_LAYOUT = "1.1.0"
         const val VIEWPAGER2 = "1.1.0-alpha01"
     }
 
