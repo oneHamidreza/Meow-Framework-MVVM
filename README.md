@@ -8,14 +8,14 @@ Dynamic Localization and Day/Night Theme & Meow Custom Widgets are another featu
 </p>
 
 <p align="center">
-<a href="https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.9.1/link">
-<img src="https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.9.1"/>
+<a href="https://bintray.com/infinitydesign/meow/Meow-Framework-MVVM/0.9.2/link">
+<img src="https://api.bintray.com/packages/infinitydesign/meow/Meow-Framework-MVVM/images/download.svg?version=0.9.2"/>
 </a>
 </p>
 
 ## 📱 Sample Application
 
-We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.9.1/Meow-Framework-Sample-v0.9.1.apk) to be familiar with `Meow Framework`.
+We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.9.2/Meow-Framework-Sample-v0.9.2.apk) to be familiar with `Meow Framework`.
 
 <p>
 <a target="_blank" href="https://play.google.com/store/apps/details?id=com.etebarian.meowframework_sample&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
@@ -49,7 +49,7 @@ If you like this project and you want to give us peace of mind, you can support 
 ## 🛠 Setup
 
 ```groovy
-implementation("com.etebarian:meow-framework-mvvm:0.9.1")
+implementation("com.etebarian:meow-framework-mvvm:0.9.2")
 ```
 
 After adding library, some of most useful libraries (such as `Androidx AppCompat` , `Coroutine` , `Glide` , `Kodein` , `Kotlinx Serialization` , `Material Components` , `Moshi` , `Navigation Components` , `Retrofit` ) will be added in your app. So you would'nt need to add this libraries manually.
@@ -171,7 +171,7 @@ controller.updateLanguage(meowActivity, string)
 controller.updateTheme(meowActivity, theme)
 ```
 
-The Sample Application has above features. try to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.9.1/Meow-Framework-Sample-v0.9.1.apk) .
+The Sample Application has above features. try to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.9.2/Meow-Framework-Sample-v0.9.2.apk) .
 
 ### 📐 MVVM Architecture
 
