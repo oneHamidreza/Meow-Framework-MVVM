@@ -16,10 +16,11 @@
 
 package meow.core.data
 
-import `in`.co.ophio.secure.core.KeyStoreKeyGenerator
-import `in`.co.ophio.secure.core.ObscuredPreferencesBuilder
 import android.app.Application
 import android.content.SharedPreferences
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKey
+import androidx.security.crypto.MasterKeys
 import meow.ktx.avoidException
 import meow.ktx.fromJson
 import meow.ktx.toJson
@@ -36,16 +37,16 @@ import meow.ktx.toJson
 class MeowSharedPreferences(
     application: Application,
     settingName: String? = null,
-    isEnabledObfuscated: Boolean = true,
-    key: String = KeyStoreKeyGenerator.get(application, application.packageName)
-        .loadOrGenerateKeys(),
-    val sp: SharedPreferences = ObscuredPreferencesBuilder()
-        .setApplication(application)
-        .obfuscateValue(isEnabledObfuscated)
-        .obfuscateKey(isEnabledObfuscated)
-        .setSharePrefFileName(settingName)
-        .setSecret(key)
-        .createSharedPrefs()
+    key: MasterKey = MasterKey.Builder(application)
+        .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+        .build(),
+    val sp: SharedPreferences = EncryptedSharedPreferences.create(
+        application,
+        settingName ?: "encrypted_shared_preferences",
+        key,
+        EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM,
+    )
 ) {
 
     @Suppress("UNCHECKED_CAST")

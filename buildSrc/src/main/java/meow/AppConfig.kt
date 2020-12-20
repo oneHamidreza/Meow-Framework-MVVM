@@ -59,7 +59,7 @@ object AppConfig {
         val BUILD_PHASE = Build.PHASE.STABLE
 
         const val SDK_COMPILE = 30
-        const val SDK_MIN = 19
+        const val SDK_MIN = 21
         const val SDK_TARGET = 30
 
         const val BROWSER = "1.2.0"
@@ -79,7 +79,7 @@ object AppConfig {
         const val NAVIGATION = "2.3.1"
         const val OKHTTP = "3.12.0" // Don't update.
         const val RETROFIT = "2.9.0"
-        const val SECURE_PREFERENCES = "0.1.3"
+        const val SECURITY_CRYPTO = "1.1.0-alpha01"
         const val SERIALIZATION_RUNTIME = "1.0-M1-1.4.0-rc"
         const val SWIPE_REFRESH_LAYOUT = "1.1.0"
         const val VIEWPAGER2 = "1.1.0-alpha01"
@@ -119,7 +119,7 @@ object AppConfig {
             "org.kodein.di:kodein-di-erased:${Versions.KODEIN}",
             "org.kodein.di:kodein-di-framework-android-x:${Versions.KODEIN}",
             // Secure Shared Preferences
-            "in.co.ophio:secure-preferences:${Versions.SECURE_PREFERENCES}",
+            "androidx.security:security-crypto:${Versions.SECURITY_CRYPTO}",
             // Navigation
             "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}",
             "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}",
