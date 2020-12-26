@@ -17,6 +17,7 @@
 package meow.ktx
 
 import android.content.Context
+import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
@@ -113,10 +114,11 @@ fun Context.loadingAlert(
         .setOnCancelListener { onCanceledBlock() }
 
 fun Context.popup(
-    view: View,
-    menuResId: Int,
-    onClickedItem: (item: MenuItem) -> Unit
-) = PopupMenu(this, view).apply {
+        view: View,
+        menuResId: Int,
+        onClickedItem: (item: MenuItem) -> Unit,
+        gravity: Int = Gravity.NO_GRAVITY,
+) = PopupMenu(this, view, gravity).apply {
     menuInflater.inflate(menuResId, menu)
     setOnMenuItemClickListener { m ->
         onClickedItem(m)
