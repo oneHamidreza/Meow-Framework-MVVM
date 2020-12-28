@@ -56,9 +56,9 @@ object ViewBindingAdapter {
                 val nextView = if (pos != view.childCount - 1) view.getChildAt(pos + 1) else null
                 if (nextView?.visibility == View.VISIBLE) {
                     if (view.orientation == LinearLayout.HORIZONTAL)
-                        it.marginEnd = margin
+                        it.marginEnd = it.marginEnd + margin
                     if (view.orientation == LinearLayout.VERTICAL)
-                        it.bottomMargin = margin
+                        it.bottomMargin = it.bottomMargin + margin
                 }
             }
         }
@@ -77,23 +77,23 @@ object ViewBindingAdapter {
                     val widthSize = View.MeasureSpec.getSize(view.measuredWidth)
                     val heightSize = (second.toFloat() / first.toFloat() * widthSize).toInt()
                     val newHeightSpec =
-                        View.MeasureSpec.makeMeasureSpec(heightSize, View.MeasureSpec.EXACTLY)
+                            View.MeasureSpec.makeMeasureSpec(heightSize, View.MeasureSpec.EXACTLY)
                     logD(m = "width: $widthSize, height : $newHeightSpec, $first:$second")
                     if (view.layoutParams is LinearLayout.LayoutParams)
                         view.layoutParams =
-                            LinearLayout.LayoutParams(view.measuredWidth, newHeightSpec)
+                                LinearLayout.LayoutParams(view.measuredWidth, newHeightSpec)
                     if (view.layoutParams is FrameLayout.LayoutParams)
                         view.layoutParams =
-                            FrameLayout.LayoutParams(view.measuredWidth, newHeightSpec)
+                                FrameLayout.LayoutParams(view.measuredWidth, newHeightSpec)
                     if (view.layoutParams is RelativeLayout.LayoutParams)
                         view.layoutParams =
-                            RelativeLayout.LayoutParams(view.measuredWidth, newHeightSpec)
+                                RelativeLayout.LayoutParams(view.measuredWidth, newHeightSpec)
                     if (view.layoutParams is CoordinatorLayout.LayoutParams)
                         view.layoutParams =
-                            CoordinatorLayout.LayoutParams(view.measuredWidth, newHeightSpec)
+                                CoordinatorLayout.LayoutParams(view.measuredWidth, newHeightSpec)
                     if (view.layoutParams is AppBarLayout.LayoutParams)
                         view.layoutParams =
-                            AppBarLayout.LayoutParams(view.measuredWidth, newHeightSpec)
+                                AppBarLayout.LayoutParams(view.measuredWidth, newHeightSpec)
                     return true
                 }
             })
@@ -102,38 +102,38 @@ object ViewBindingAdapter {
 }
 
 inline fun <T : View?> T.afterMeasured(
-    observeForEver: Boolean = false,
-    crossinline block: T.() -> Unit
+        observeForEver: Boolean = false,
+        crossinline block: T.() -> Unit
 ) =
-    this?.viewTreeObserver?.addOnGlobalLayoutListener(object :
-        ViewTreeObserver.OnGlobalLayoutListener {
-        override fun onGlobalLayout() {
-            avoidException {
-                block()
-                if (!observeForEver)
-                    viewTreeObserver.removeOnGlobalLayoutListener(this)
+        this?.viewTreeObserver?.addOnGlobalLayoutListener(object :
+                ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                avoidException {
+                    block()
+                    if (!observeForEver)
+                        viewTreeObserver.removeOnGlobalLayoutListener(this)
+                }
             }
-        }
-    })
+        })
 
 inline fun <T : View?> T.safePost(
-    delay: Long = 0L,
-    crossinline block: T.() -> Unit
+        delay: Long = 0L,
+        crossinline block: T.() -> Unit
 ) =
-    if (delay == 0L)
-        this?.post { avoidException { block() } }
-    else
-        this?.postDelayed({
-            avoidException { block() }
-        }, delay)
+        if (delay == 0L)
+            this?.post { avoidException { block() } }
+        else
+            this?.postDelayed({
+                avoidException { block() }
+            }, delay)
 
 inline fun <T : ViewDataBinding?> T.afterMeasured(
-    crossinline block: View?.() -> Unit
+        crossinline block: View?.() -> Unit
 ) = this?.root.afterMeasured(block = block)
 
 inline fun <T : ViewDataBinding?> T.safePost(
-    delay: Long = 0L,
-    crossinline block: View?.() -> Unit
+        delay: Long = 0L,
+        crossinline block: View?.() -> Unit
 ) = this?.root.safePost(delay, block)
 
 fun View?.setElevationCompat(elevation: Float) {
@@ -167,26 +167,26 @@ fun <T> View?.updateLayoutParams(onLayoutChange: (params: T) -> Unit) {
 }
 
 fun View?.setAttributesFromXml(
-    set: AttributeSet?,
-    attrs: IntArray,
-    block: (it: TypedArray) -> Unit
+        set: AttributeSet?,
+        attrs: IntArray,
+        block: (it: TypedArray) -> Unit
 ) {
     if (set == null)
         return
 
     val a = this?.context?.theme?.obtainStyledAttributes(set, attrs, 0, 0) ?: return
     avoidException(
-        tryBlock = {
-            block(a)
-        },
-        finallyBlock = {
-            a.recycle()
-        }
+            tryBlock = {
+                block(a)
+            },
+            finallyBlock = {
+                a.recycle()
+            }
     )
 }
 
 fun View.setPaddingRelativeAll(padding: Int) =
-    setPaddingRelative(padding, padding, padding, padding)
+        setPaddingRelative(padding, padding, padding, padding)
 
 fun MeowDraggableLinearLayout.setViewDragListener(vararg cards: MaterialCardView) {
     cards.forEach {

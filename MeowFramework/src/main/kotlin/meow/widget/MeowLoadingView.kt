@@ -27,7 +27,7 @@ import com.etebarian.meowframework.databinding.MeowDialogLoadingBinding
 import meow.ktx.dp
 
 /**
- * Meow Progress Bar class.
+ * Meow Loading View class.
  *
  * @author  Hamidreza Etebarian
  * @version 1.0.0
