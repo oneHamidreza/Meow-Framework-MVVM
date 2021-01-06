@@ -42,7 +42,7 @@ inline fun <reified T> BufferedSource?.fromJson(): T? {
 }
 
 inline fun <reified T> String?.fromJson(): T? {
-    if (this == null) return null
+    if (this.isNullOrEmpty()) return null
     return avoidException {
         ofMoshi().adapter(javaClass<T>())
             .fromJson(this)
@@ -59,7 +59,7 @@ inline fun <reified T> BufferedSource?.fromJsonList(): List<T>? {
 }
 
 inline fun <reified T> String?.fromJsonList(): List<T>? {
-    if (this == null) return null
+    if (this.isNullOrEmpty()) return null
     return avoidException {
         val type = Types.newParameterizedType(javaClass<List<*>>(), javaClass<T>())
         ofMoshi().adapter<List<T>>(type)

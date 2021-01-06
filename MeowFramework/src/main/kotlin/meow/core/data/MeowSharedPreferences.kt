@@ -50,15 +50,17 @@ class MeowSharedPreferences(
 
     @Suppress("UNCHECKED_CAST")
     inline fun <reified T> get(key: String, def: T): T {
-        return when (def) {
-            is Boolean -> sp.getBoolean(key, def) as T
-            is Int -> sp.getInt(key, def) as T
-            is Long -> sp.getLong(key, def) as T
-            is Float -> sp.getFloat(key, def) as T
-            is Double -> sp.getFloat(key, def.toFloat()).toDouble() as T
-            is String -> sp.getString(key, def) as T
-            else -> sp.getString(key, "").fromJson() ?: def
-        }
+        return avoidException {
+            when (def) {
+                is Boolean -> sp.getBoolean(key, def) as T
+                is Int -> sp.getInt(key, def) as T
+                is Long -> sp.getLong(key, def) as T
+                is Float -> sp.getFloat(key, def) as T
+                is Double -> sp.getFloat(key, def.toFloat()).toDouble() as T
+                is String -> sp.getString(key, def) as T
+                else -> sp.getString(key, "").fromJson() ?: def
+            }
+        } ?: def
     }
 
     fun put(key: String, value: Any?) {
