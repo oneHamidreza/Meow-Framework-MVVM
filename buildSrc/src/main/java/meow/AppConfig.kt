@@ -79,6 +79,7 @@ object AppConfig {
         const val NAVIGATION = "2.3.1"
         const val OKHTTP = "3.12.0" // Don't update.
         const val RETROFIT = "2.9.0"
+        const val RECYCLER_VIEW = "1.2.0-beta01"
         const val SECURITY_CRYPTO = "1.1.0-alpha01"
         const val SERIALIZATION_RUNTIME = "1.0-M1-1.4.0-rc"
         const val SWIPE_REFRESH_LAYOUT = "1.1.0"
@@ -87,53 +88,55 @@ object AppConfig {
 
     object Dependencies {
         val implementationItems = arrayOf(
-            // Kotlin
-            kotlin("stdlib-jdk8", Versions.KOTLIN),
-            // Kotlinx
-            kotlinx("coroutines-core", Versions.COROUTINE),
-            kotlinx("serialization-runtime", Versions.SERIALIZATION_RUNTIME),
-            // MultiDex
-            "androidx.multidex:multidex:${Versions.MULTIDEX}",
-            // Material
-            "com.google.android.material:material:${Versions.MATERIAL}",
-            "androidx.browser:browser:${Versions.BROWSER}",
-            "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.SWIPE_REFRESH_LAYOUT}",
-            "androidx.viewpager2:viewpager2:${Versions.VIEWPAGER2}",
-            // Lifecycle
-            "androidx.lifecycle:lifecycle-common-java8:${Versions.LIFECYCLE}",
-            "androidx.lifecycle:lifecycle-extensions:${Versions.LIFECYCLE}",
-            "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE}",
-            "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.LIFECYCLE}",
-            "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.LIFECYCLE}",
-            // ExifInterface
-            "androidx.exifinterface:exifinterface:${Versions.EXIF_INTERFACE}",
-            // OkHttp & Retrofit & Moshi
-            "com.squareup.okhttp3:okhttp:${Versions.OKHTTP}",
-            "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}",
-            "com.squareup.retrofit2:converter-moshi:${Versions.RETROFIT}",
-            "com.squareup.retrofit2:converter-scalars:${Versions.RETROFIT}",
-            "com.squareup.moshi:moshi:${Versions.MOSHI}",
-            "com.squareup.moshi:moshi-kotlin:${Versions.MOSHI}",
-            // Kodein
-            "org.kodein.di:kodein-di-core:${Versions.KODEIN}",
-            "org.kodein.di:kodein-di-erased:${Versions.KODEIN}",
-            "org.kodein.di:kodein-di-framework-android-x:${Versions.KODEIN}",
-            // Secure Shared Preferences
-            "androidx.security:security-crypto:${Versions.SECURITY_CRYPTO}",
-            // Navigation
-            "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}",
-            "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}",
-            // Glide
-            "com.github.bumptech.glide:glide:${Versions.GLIDE}",
-            // Google Phone Number
-            "com.googlecode.libphonenumber:libphonenumber:${Versions.GOOGLE_PHONE_NUMBER}",
-            // Localization
-            "com.akexorcist:localization:${Versions.LOCALIZATION}"
+                // Kotlin
+                kotlin("stdlib-jdk8", Versions.KOTLIN),
+                // Kotlinx
+                kotlinx("coroutines-core", Versions.COROUTINE),
+                kotlinx("serialization-runtime", Versions.SERIALIZATION_RUNTIME),
+                // MultiDex
+                "androidx.multidex:multidex:${Versions.MULTIDEX}",
+                // Material
+                "com.google.android.material:material:${Versions.MATERIAL}",
+                "androidx.browser:browser:${Versions.BROWSER}",
+                "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.SWIPE_REFRESH_LAYOUT}",
+                "androidx.viewpager2:viewpager2:${Versions.VIEWPAGER2}",
+                // Recycler View
+                "androidx.recyclerview:recyclerview:${Versions.RECYCLER_VIEW}",
+                // Lifecycle
+                "androidx.lifecycle:lifecycle-common-java8:${Versions.LIFECYCLE}",
+                "androidx.lifecycle:lifecycle-extensions:${Versions.LIFECYCLE}",
+                "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE}",
+                "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.LIFECYCLE}",
+                "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.LIFECYCLE}",
+                // ExifInterface
+                "androidx.exifinterface:exifinterface:${Versions.EXIF_INTERFACE}",
+                // OkHttp & Retrofit & Moshi
+                "com.squareup.okhttp3:okhttp:${Versions.OKHTTP}",
+                "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}",
+                "com.squareup.retrofit2:converter-moshi:${Versions.RETROFIT}",
+                "com.squareup.retrofit2:converter-scalars:${Versions.RETROFIT}",
+                "com.squareup.moshi:moshi:${Versions.MOSHI}",
+                "com.squareup.moshi:moshi-kotlin:${Versions.MOSHI}",
+                // Kodein
+                "org.kodein.di:kodein-di-core:${Versions.KODEIN}",
+                "org.kodein.di:kodein-di-erased:${Versions.KODEIN}",
+                "org.kodein.di:kodein-di-framework-android-x:${Versions.KODEIN}",
+                // Secure Shared Preferences
+                "androidx.security:security-crypto:${Versions.SECURITY_CRYPTO}",
+                // Navigation
+                "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}",
+                "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}",
+                // Glide
+                "com.github.bumptech.glide:glide:${Versions.GLIDE}",
+                // Google Phone Number
+                "com.googlecode.libphonenumber:libphonenumber:${Versions.GOOGLE_PHONE_NUMBER}",
+                // Localization
+                "com.akexorcist:localization:${Versions.LOCALIZATION}"
         )
 
         val kaptItems = arrayListOf(
-            "com.github.bumptech.glide:compiler:${Versions.GLIDE}",
-            "com.squareup.moshi:moshi-kotlin-codegen:${Versions.MOSHI}"
+                "com.github.bumptech.glide:compiler:${Versions.GLIDE}",
+                "com.squareup.moshi:moshi-kotlin-codegen:${Versions.MOSHI}"
         )
     }
 
@@ -166,18 +169,18 @@ fun <T> Project.getPropertyAny(key: String): T {
 }
 
 fun kotlinx(module: String, version: String? = null): Any =
-    "org.jetbrains.kotlinx:kotlinx-$module${version?.let { ":$version" } ?: ""}"
+        "org.jetbrains.kotlinx:kotlinx-$module${version?.let { ":$version" } ?: ""}"
 
 fun kotlin(module: String, version: String? = null): Any =
-    "org.jetbrains.kotlin:kotlin-$module${version?.let { ":$version" } ?: ""}"
+        "org.jetbrains.kotlin:kotlin-$module${version?.let { ":$version" } ?: ""}"
 
 fun getAllResourcesSrcDirs(project: Project, isLibrary: Boolean = false): ArrayList<String> {
     val moduleName = if (isLibrary) AppConfig.Build.LIBRARY_MODULE else AppConfig.Build.APP_MODULE
     val packageName =
-        if (isLibrary) AppConfig.Build.LIBRARY_PACKAGE else AppConfig.Build.APP_PACKAGE
+            if (isLibrary) AppConfig.Build.LIBRARY_PACKAGE else AppConfig.Build.APP_PACKAGE
     val list = arrayListOf<String>()
     val path =
-        project.rootDir.absolutePath + "\\" + moduleName + "\\src\\main\\kotlin\\" + packageName
+            project.rootDir.absolutePath + "\\" + moduleName + "\\src\\main\\kotlin\\" + packageName
     val root = File(path)
     list.add(project.rootDir.absolutePath + "\\" + moduleName + "\\src\\main\\res")
     root.listDirectoriesWithChild().forEach { directory ->

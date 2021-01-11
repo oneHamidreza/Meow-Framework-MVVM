@@ -15,7 +15,7 @@ Dynamic Localization and Day/Night Theme & Meow Custom Widgets are another featu
 
 ## 📱 Sample Application
 
-We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.9.5/Meow-Framework-Sample-v0.9.5.apk) to be familiar with `Meow Framework`.
+We suggest you to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.9.6/Meow-Framework-Sample-v0.9.6.apk) to be familiar with `Meow Framework`.
 
 <p>
 <a target="_blank" href="https://play.google.com/store/apps/details?id=com.etebarian.meowframework_sample&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
@@ -171,7 +171,7 @@ controller.updateLanguage(meowActivity, string)
 controller.updateTheme(meowActivity, theme)
 ```
 
-The Sample Application has above features. try to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.9.5/Meow-Framework-Sample-v0.9.5.apk) .
+The Sample Application has above features. try to install [Meow-Sample.apk](https://github.com/oneHamidreza/Meow-Framework-MVVM/releases/download/v0.9.6/Meow-Framework-Sample-v0.9.6.apk) .
 
 ### 📐 MVVM Architecture
 
