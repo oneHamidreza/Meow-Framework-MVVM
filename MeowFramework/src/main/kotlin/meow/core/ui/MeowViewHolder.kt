@@ -28,12 +28,12 @@ import androidx.recyclerview.widget.RecyclerView
  * @since   2020-03-11
  */
 
-class MeowViewHolder<T>(
+open class MeowViewHolder<T>(
     itemView: View?,
     var onBindBlock: (position: Int, model: T) -> Unit = { _, _ -> }
 ) : RecyclerView.ViewHolder(itemView!!) {
 
-    fun onBind(position: Int, model: T) {
+    open fun onBind(position: Int, model: T) {
         onBindBlock(position, model)
     }
 }
