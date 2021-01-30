@@ -37,6 +37,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.etebarian.meowframework.R
 import meow.controller
+import kotlin.math.ceil
 
 /**
  * System/OS Extensions.
@@ -174,7 +175,7 @@ fun Context?.getStatusBarHeight(): Int {
 }
 
 fun Float.dp() = this * controller.dpi
-fun Int.dp() = (this.toFloat() * controller.dpi).toInt()
+fun Int.dp() = ceil(this.toFloat() * controller.dpi).toInt()
 
 fun Float.px() = this / controller.dpi
 fun Int.px() = (this.toFloat() / controller.dpi).toInt()
