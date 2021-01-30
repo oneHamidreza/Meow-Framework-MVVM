@@ -174,7 +174,7 @@ fun Context?.getStatusBarHeight(): Int {
 }
 
 fun Float.dp() = this * controller.dpi
-fun Int.dp() = this * controller.dpi.toInt()
+fun Int.dp() = (this.toFloat() * controller.dpi).toInt()
 
 fun Float.px() = this / controller.dpi
 fun Int.px() = (this.toFloat() / controller.dpi).toInt()
