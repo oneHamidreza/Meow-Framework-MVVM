@@ -322,6 +322,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     fun test() {
+        logD(m = "zzz : ${24.dp()}")
     }
 
 }
