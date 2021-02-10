@@ -21,7 +21,7 @@
         <item name="fontFamily">@font/english_regular</item>
     </style>
 
-    <style name="App.TextAppearance.Headline3.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Headline3.dp" parent="@style/Meow.TextAppearance.Headline3">
         <item name="android:textSize" tools:ignore="SpUsage">48dp</item>
     </style>
 
@@ -29,7 +29,7 @@
         <item name="fontFamily">@font/english_regular</item>
     </style>
 
-    <style name="App.TextAppearance.Headline4.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Headline4.dp" parent="@style/Meow.TextAppearance.Headline4">
         <item name="android:textSize" tools:ignore="SpUsage">34dp</item>
     </style>
 
@@ -37,7 +37,7 @@
         <item name="fontFamily">@font/english_regular</item>
     </style>
 
-    <style name="App.TextAppearance.Headline5.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Headline5.dp" parent="@style/Meow.TextAppearance.Headline5">
         <item name="android:textSize" tools:ignore="SpUsage">24dp</item>
     </style>
 
@@ -45,7 +45,7 @@
         <item name="fontFamily">@font/english_bold</item>
     </style>
 
-    <style name="App.TextAppearance.Headline6.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Headline6.dp" parent="@style/Meow.TextAppearance.Headline6">
         <item name="android:textSize" tools:ignore="SpUsage">20dp</item>
     </style>
 
@@ -53,7 +53,7 @@
         <item name="fontFamily">@font/english_regular</item>
     </style>
 
-    <style name="App.TextAppearance.Body1.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Body1.dp" parent="@style/Meow.TextAppearance.Body1">
         <item name="android:textSize" tools:ignore="SpUsage">16dp</item>
     </style>
 
@@ -61,7 +61,7 @@
         <item name="fontFamily">@font/english_regular</item>
     </style>
 
-    <style name="App.TextAppearance.Body2.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Body2.dp" parent="@style/Meow.TextAppearance.Body2">
         <item name="android:textSize" tools:ignore="SpUsage">14dp</item>
     </style>
 
@@ -69,7 +69,7 @@
         <item name="fontFamily">@font/english_bold</item>
     </style>
 
-    <style name="App.TextAppearance.Subtitle1.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Subtitle1.dp" parent="@style/Meow.TextAppearance.Subtitle1">
         <item name="android:textSize" tools:ignore="SpUsage">14dp</item>
     </style>
 
@@ -77,7 +77,7 @@
         <item name="fontFamily">@font/english_bold</item>
     </style>
 
-    <style name="App.TextAppearance.Subtitle2.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Subtitle2.dp" parent="@style/Meow.TextAppearance.Subtitle2">
         <item name="android:textSize" tools:ignore="SpUsage">14dp</item>
     </style>
 
@@ -85,7 +85,7 @@
         <item name="fontFamily">@font/english_regular</item>
     </style>
 
-    <style name="App.TextAppearance.Caption.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Caption.dp" parent="@style/Meow.TextAppearance.Caption">
         <item name="android:textSize" tools:ignore="SpUsage">12dp</item>
     </style>
 
@@ -93,7 +93,7 @@
         <item name="fontFamily">@font/english_regular</item>
     </style>
 
-    <style name="App.TextAppearance.Overline.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Overline.dp" parent="@style/Meow.TextAppearance.Overline">
         <item name="android:textSize" tools:ignore="SpUsage">12dp</item>
     </style>
 
@@ -101,7 +101,7 @@
         <item name="fontFamily">@font/english_bold</item>
     </style>
 
-    <style name="App.TextAppearance.Button.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Button.dp" parent="@style/Meow.TextAppearance.Button">
         <item name="android:textSize" tools:ignore="SpUsage">14dp</item>
     </style>
 

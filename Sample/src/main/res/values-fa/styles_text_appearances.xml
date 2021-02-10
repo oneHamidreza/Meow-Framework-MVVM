@@ -33,7 +33,7 @@
         <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
-    <style name="App.TextAppearance.Headline4.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Headline4.dp" parent="@style/Meow.TextAppearance.Headline4">
         <item name="android:textSize" tools:ignore="SpUsage">34dp</item>
     </style>
 
@@ -42,7 +42,7 @@
         <item name="android:letterSpacing" tools:targetApi="lollipop">0</item>
     </style>
 
-    <style name="App.TextAppearance.Headline5.dp" parent="@style/Meow.TextAppearance.Headline2">
+    <style name="App.TextAppearance.Headline5.dp" parent="@style/Meow.TextAppearance.Headline5">
         <item name="android:textSize" tools:ignore="SpUsage">24dp</item>
     </style>
 
