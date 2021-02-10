@@ -47,7 +47,6 @@ abstract class MeowFragment<B : ViewDataBinding> : Fragment(),
     override var keyboardUtils: KeyboardUtils? = null
 
     override var isFromNavigateUp = false
-    override var rootView: View? = null
 
     override val kodeinContext: KodeinContext<*> get() = kcontext(activity)
     private val _parentKodein by closestKodein()

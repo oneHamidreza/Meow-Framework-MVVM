@@ -51,6 +51,7 @@ class MenuFragment : BaseFragment<FragmentMenuBinding>() {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
         setupRecyclerView()
+        observeData()
         viewModel.fillList()
 
         binding.completeTextView.addTextChangedListener {
@@ -60,7 +61,15 @@ class MenuFragment : BaseFragment<FragmentMenuBinding>() {
 
     override fun initViewModel() {
         binding.viewModel = viewModel
-        viewModel.listLiveData.safeObserve(this) {
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_sample, menu)
+    }
+
+    private fun observeData() {
+        viewModel.listLiveData.safeObserve(viewLifecycleOwner) {
             if (binding.completeTextView.adapter == null) {
                 val suggesteds =
                     it.filterIndexed { i, _ -> i % 10 == 0 }.map { content -> content.title }
@@ -73,11 +82,6 @@ class MenuFragment : BaseFragment<FragmentMenuBinding>() {
                 )
             }
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu_sample, menu)
     }
 
     private fun setupRecyclerView() {

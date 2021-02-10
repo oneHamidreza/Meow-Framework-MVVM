@@ -72,7 +72,7 @@ class FormFragment : BaseFragment<FragmentFormBinding>() {
 
         val items = arrayOf("Item 1", "Item 2", "Item 3", "Item 4", "آیتم 1")
         val adapter = ArrayAdapter(
-            context!!,
+            requireContext(),
             R.layout.dropdown_menu_popup_item,
             items
         )

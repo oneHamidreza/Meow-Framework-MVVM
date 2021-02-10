@@ -44,11 +44,11 @@ class CatBreedIndexFragment : BaseFragment<FragmentCatBreedIndexBinding>() {
         binding.recyclerView.apply {
             adapter = CatBreedAdapter()
         }
+        callApiAndObserve()
     }
 
     override fun initViewModel() {
         binding.viewModel = viewModel
-        callApiAndObserve()
     }
 
     private fun callApiAndObserve() {

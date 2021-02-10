@@ -47,7 +47,6 @@ abstract class MeowActivity<B : ViewDataBinding> : LocalizationActivity(),
     override var isShowingKeyboard = false
     override var keyboardUtils: KeyboardUtils? = null
 
-    override var rootView: View? = null
     override var isFromNavigateUp = false
 
     override val kodein by closestKodein()

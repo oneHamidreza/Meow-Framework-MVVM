@@ -46,7 +46,17 @@ class FABExtendedFragment : BaseFragment<FragmentFabExtendedBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        observeData()
         viewModel.fillList()
+    }
+
+    private fun observeData() {
+        viewModel.scrollToFirstLiveData.safeObserve(viewLifecycleOwner) {
+            binding.recyclerView.safePost(50) {
+                scrollToPosition(0)
+            }
+            snackL(R.string.fab_extended_warn_success)
+        }
     }
 
     private fun setupRecyclerView() {
@@ -62,12 +72,6 @@ class FABExtendedFragment : BaseFragment<FragmentFabExtendedBinding>() {
 
     override fun initViewModel() {
         binding.viewModel = viewModel
-        viewModel.scrollToFirstLiveData.safeObserve(this) {
-            binding.recyclerView.safePost(50) {
-                scrollToPosition(0)
-            }
-            snackL(R.string.fab_extended_warn_success)
-        }
     }
 
 }

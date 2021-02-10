@@ -16,7 +16,9 @@
 
 package sample.ui.markdown
 
+import android.os.Bundle
 import android.text.Spanned
+import android.view.View
 import androidx.navigation.fragment.navArgs
 import meow.core.arch.MeowFlow
 import meow.ktx.instanceViewModel
@@ -41,19 +43,24 @@ class MarkdownFragment : BaseFragment<FragmentMarkdownBinding>() {
     private val viewModel: MarkdownViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_markdown
 
-    override fun initViewModel() {
-        if (binding.viewModel == null) {
-            binding.viewModel = viewModel
-            callApiAndObserve()
-        }
-
-        viewModel.modelLiveData.safeObserve(this) {
-            binding.tv.setMarkdownData(it)
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observeData()
+        callApiAndObserve()
 
         if (navArgs.title != null)
             activity().supportActionBar?.title = navArgs.title
 
+    }
+
+    override fun initViewModel() {
+        binding.viewModel = viewModel
+    }
+
+    private fun observeData() {
+        viewModel.modelLiveData.safeObserve(viewLifecycleOwner) {
+            binding.tv.setMarkdownData(it)
+        }
     }
 
     private fun callApiAndObserve() {

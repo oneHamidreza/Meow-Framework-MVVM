@@ -16,6 +16,8 @@
 
 package sample.ui.api.catbreed.detail
 
+import android.os.Bundle
+import android.view.View
 import meow.controller
 import meow.core.arch.MeowFlow
 import meow.ktx.instanceViewModel
@@ -37,10 +39,14 @@ class CatBreedDetailFragment : BaseFragment<FragmentCatBreedDetailBinding>() {
     private val viewModel: CatBreedDetailViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_cat_breed_detail
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        callApiAndObserve()
+    }
+
     override fun initViewModel() {
         binding.viewModel = viewModel
         binding.controller = controller
-        callApiAndObserve()
     }
 
     private fun callApiAndObserve() {

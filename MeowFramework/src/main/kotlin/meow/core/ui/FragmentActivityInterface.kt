@@ -54,7 +54,6 @@ interface FragmentActivityInterface<B : ViewDataBinding> : LifecycleOwner {
     var keyboardUtils: KeyboardUtils?
 
     var isFromNavigateUp: Boolean
-    var rootView: View?
 
     @LayoutRes
     fun layoutId(): Int
@@ -109,20 +108,9 @@ interface FragmentActivityInterface<B : ViewDataBinding> : LifecycleOwner {
     }
 
     fun getPersistentView(inflater: LayoutInflater, container: ViewGroup?, layout: Int): View {
-        if (rootView == null) {
-            // Inflate the layout for this fragment
-            binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
-            rootView = binding.root
-        } else {
-            // Do not inflate the layout again.
-            // The returned View of onCreateView will be added into the fragment.
-            // However it is not allowed to be added twice even if the parent is same.
-            // So we must remove rootView from the existing parent view group
-            // (it will be added back).
-            (rootView?.parent as? ViewGroup)?.removeView(rootView)
-            isFromNavigateUp = true
-        }
-        return rootView!!
+        // Inflate the layout for this fragment
+        binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
+        return binding.root
     }
 }
 
@@ -131,7 +119,7 @@ fun FragmentActivityInterface<*>.isFragment() = this is Fragment
 fun FragmentActivityInterface<*>.isDialogFragment() = this is DialogFragment
 fun FragmentActivityInterface<*>.isBottomSheet() = this is BottomSheetDialogFragment
 fun FragmentActivityInterface<*>.findNavControllerIfExists(): NavController? =
-    if(isFragment())
-    NavHostFragment.findNavController(this as Fragment)
-else
+    if (isFragment())
+        NavHostFragment.findNavController(this as Fragment)
+    else
         null

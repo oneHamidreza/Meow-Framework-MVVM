@@ -43,6 +43,7 @@ class SharedPreferencesFragment : BaseFragment<FragmentSharedPreferencesBinding>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeData()
         callApiAndObserve()
     }
 
@@ -54,14 +55,13 @@ class SharedPreferencesFragment : BaseFragment<FragmentSharedPreferencesBinding>
             progressBarInterface = binding.progressbar
             emptyStateInterface = binding.emptyState
         }.observeForDetail(viewModel.eventLiveData)
+    }
 
+    private fun observeData() {
         viewModel.modelLiveData.safeObserve(this) {
             binding.tv.setMarkdownData(it)
         }
-    }
 
-    override fun initViewModel() {
-        binding.viewModel = viewModel
         viewModel.userStateLiveData.safeObserve(this) {
             val text = it.second.toString()
             when (it.first) {
@@ -77,6 +77,11 @@ class SharedPreferencesFragment : BaseFragment<FragmentSharedPreferencesBinding>
         viewModel.testStateLiveData.safeObserve(this) {
             snackL(it)
         }
+    }
+
+    override fun initViewModel() {
+        binding.viewModel = viewModel
+
     }
 
 }

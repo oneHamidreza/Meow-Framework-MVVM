@@ -16,6 +16,11 @@
 
 package sample.ui.home
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.google.android.material.tabs.TabLayoutMediator
 import meow.ktx.getStringArrayCompat
 import meow.ktx.instanceViewModel
@@ -33,11 +38,13 @@ import sample.ui.base.BaseFragment
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
+    private var rootView: View? = null
+
     private val viewModel: HomeViewModel by instanceViewModel()
     override fun layoutId() = R.layout.fragment_home
 
-    override fun initViewModel() {
-        binding.viewModel = viewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.apply {
             viewpager.offscreenPageLimit = 5
             viewpager.isSaveEnabled =
@@ -47,6 +54,31 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 tab.text = getStringArrayCompat(R.array.home_tab_titles)[position]
             }.attach()
         }
+    }
+
+    override fun getPersistentView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        layout: Int
+    ): View {
+        if (rootView == null) {
+            // Inflate the layout for this fragment
+            binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
+            rootView = binding.root
+        } else {
+            // Do not inflate the layout again.
+            // The returned View of onCreateView will be added into the fragment.
+            // However it is not allowed to be added twice even if the parent is same.
+            // So we must remove rootView from the existing parent view group
+            // (it will be added back).
+            (rootView?.parent as? ViewGroup)?.removeView(rootView)
+            isFromNavigateUp = true
+        }
+        return rootView!!
+    }
+
+    override fun initViewModel() {
+        binding.viewModel = viewModel
     }
 
 }
