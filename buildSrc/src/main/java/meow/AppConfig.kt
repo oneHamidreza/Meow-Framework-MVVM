@@ -55,7 +55,7 @@ object AppConfig {
         const val API = 1
         const val MAJOR = 0
         const val MINOR = 10
-        const val PATCH = 0
+        const val PATCH = 1
         val BUILD_PHASE = Build.PHASE.STABLE
 
         const val SDK_COMPILE = 30
